@@ -1,0 +1,1 @@
+{"id":"CTL-071","links":[{"typ":"BC-FBRIBE","inds":["IND-BEH-024"]},{"typ":"FR-APP","inds":["IND-TXN-063"]},{"typ":"FR-ATO","inds":["IND-TXN-064"]},{"typ":"FR-ROM","inds":["IND-PRD-038"]},{"typ":"FR-VULN","inds":["IND-BEH-084","IND-TXN-087"]}]}

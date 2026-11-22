@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coverage matrix: typologies by control family | FC Risk Indicators</title>
+<meta name="description" content="Matrix of every typology against 19 control families showing counts of linked controls. Counts show linkage only, not effectiveness or risk. v0.1 draft, unreviewed.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FC Risk Indicators">
+<meta property="og:title" content="Coverage matrix: typologies by control family | FC Risk Indicators">
+<meta property="og:description" content="Matrix of every typology against 19 control families showing counts of linked controls. Counts show linkage only, not effectiveness or risk. v0.1 draft, unreviewed.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232a4fc4'/%3E%3Cpath d='M8 22V10m8 12V14m8 8V8' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<script>try{var t=localStorage.getItem('fcri-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body class="" data-page="coverage">
+<a class="skip" href="#main">Skip to content</a>
+<div class="top" id="top">
+<div class="status" role="note"><strong>v0.1 draft:</strong> AI-drafted, not reviewed. Not a risk rating or compliance advice.</div>
+<header class="site-header">
+ <div class="wrap hdr">
+  <a class="brand" href="./">FC Risk Indicators</a>
+  <nav aria-label="Main" class="nav">
+   <a href="./" data-nav="search">Search</a>
+   <a href="typologies" data-nav="typologies">Typologies</a>
+   <a href="coverage" data-nav="coverage">Coverage</a>
+   <a href="about" data-nav="about">About</a>
+  </nav>
+  <button type="button" class="btn theme" id="theme" aria-label="Switch colour theme" title="Switch colour theme"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="5.2"/><path d="M8 2.8v10.4" /><path d="M8 2.8a5.2 5.2 0 0 1 0 10.4z" fill="currentColor"/></svg><span class="theme-l">Theme</span></button>
+ </div>
+</header>
+</div>
+<div id="nofetch" class="wrap" hidden><div class="callout warn" role="alert"><strong>Data could not be loaded.</strong> This site loads its data with <code>fetch()</code>, which browsers block when a page is opened directly from disk (file://). Serve the <code>site/</code> folder over HTTP, for example <code>python3 tools/serve_site.py</code>, or view the deployed site.</div></div>
+<main id="main" tabindex="-1">
+<div class="wrap cov-head">
+ <h1>Coverage matrix</h1>
+ <p class="lead">Every typology against the 19 control families. Each cell counts the distinct controls from that family linked to the typology. Select a cell, a typology name or a family heading to see the controls behind the number.</p>
+ <div class="callout legend-box" role="note"><strong>Read this first.</strong> Counts show <strong>linkage, NOT effectiveness or risk</strong>. A darker cell means more controls are linked in the library. It does not mean the typology is well controlled, adequately covered or low risk, and an empty cell is not necessarily a gap. This is v0.1 draft content that has not been reviewed.
+  <div class="legend" style="margin-top:8px" aria-label="Legend. Linked controls per cell">Linked controls per cell: <span><i style="background:var(--h0)"></i>0</span><span><i style="background:var(--h1)"></i>1</span><span><i style="background:var(--h2)"></i>2</span><span><i style="background:var(--h3)"></i>3-4</span><span><i style="background:var(--h4)"></i>5-7</span><span><i style="background:var(--h5)"></i>8+</span></div></div>
+</div>
+<div class="wrap">
+ <div class="tools"><label class="note">Domain <select id="dom"></select></label><label class="note">Typology <input type="search" id="tq" placeholder="Filter typologies" autocomplete="off"></label><span class="note" id="mcount" role="status" aria-live="polite"></span></div>
+ <div class="mxwrap" id="mxwrap"><div id="mxholder" style="min-width:0"></div><aside class="mpanel" id="mpanel" aria-label="Detail" aria-live="polite" hidden></aside></div>
+</div>
+
+</main>
+<footer class="site-footer">
+ <div class="wrap">
+  <p><strong>FC Risk Indicators</strong> v0.1 draft. AI-drafted, not reviewed by subject-matter experts; citations unverified. Indicators are red flags, not proof of crime. Nothing here is legal or compliance advice.</p>
+  <p>Code: <a href="https://github.com/banksy2560/fc-risk-indicators/blob/main/LICENSE">Apache-2.0</a>. Content: <a href="https://github.com/banksy2560/fc-risk-indicators/blob/main/LICENSE-CONTENT">CC-BY-4.0</a>. <a href="https://github.com/banksy2560/fc-risk-indicators">Source on GitHub</a> | <a href="about#contribute">Contribute or review</a></p>
+ </div>
+</footer>
+<script src="assets/app.js"></script>
+<script src="assets/coverage.js"></script>
+</body>
+</html>

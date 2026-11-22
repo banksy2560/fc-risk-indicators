@@ -15,7 +15,7 @@ typology:
   - FATF, Money Laundering through the Physical Transportation of Cash (2015) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/money-laundering-through-physical-transportation-of-cash.html>
     [agent-reviewed]
   - FFIEC, BSA/AML Examination Manual (FinCEN is not publisher) <https://bsaaml.ffiec.gov/manual> [corrected,
-    checked]
+    agent-reviewed]
   indicators:
   - ref: IND-GEO-014
     legacy_id: ML-FUNNEL-001

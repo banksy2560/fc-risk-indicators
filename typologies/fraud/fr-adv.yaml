@@ -10,7 +10,7 @@ typology:
   - mvts
   sources:
   - UK Finance, Annual Fraud Report (specify year, e.g. 2025) <https://www.ukfinance.org.uk/> [corrected,
-    checked]
+    agent-reviewed]
   - FinCEN, advisories on fraud typologies (general) [too vague, unverified]
   - FATF, guidance on proceeds of fraud (general) [too vague, unverified]
   indicators:

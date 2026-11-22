@@ -1,0 +1,1 @@
+{"id":"CTL-088","links":[{"typ":"FR-ATO","inds":["IND-BEH-010","IND-BEH-059","IND-CUS-014","IND-PRD-029"]},{"typ":"FR-VULN","inds":["IND-CUS-014","IND-CUS-035","IND-TXN-086"]},{"typ":"TF-CROWDFUND","inds":["IND-CPT-010"]},{"typ":"XC-CUSTOMER","inds":["IND-BEH-016"]}]}

@@ -1,0 +1,1 @@
+{"id":"CTL-054","links":[{"typ":"FR-SCOMP","inds":["IND-CUS-028","IND-TXN-003"]},{"typ":"ML-MULE","inds":["IND-BEH-020"]},{"typ":"ML-SHELL","inds":["IND-BEH-020"]},{"typ":"OP-MKTABUSE","inds":["IND-CUS-010"]},{"typ":"TF-STATESPONSOR","inds":["IND-CUS-010"]},{"typ":"TX-VATFRAUD","inds":["IND-CUS-010"]},{"typ":"XC-OWNERSHIP","inds":["IND-OWN-007"]}]}

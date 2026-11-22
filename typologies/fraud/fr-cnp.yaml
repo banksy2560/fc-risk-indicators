@@ -11,7 +11,7 @@ typology:
   - fintech
   sources:
   - UK Finance, Annual Fraud Report (specify year, e.g. 2025) <https://www.ukfinance.org.uk/> [corrected,
-    checked]
+    agent-reviewed]
   - EMVCo and card scheme guidance on 3-D Secure and chargebacks (general) [too vague, unverified]
   - FinCEN, advisories on cyber-enabled fraud (general) [too vague, unverified]
   indicators:

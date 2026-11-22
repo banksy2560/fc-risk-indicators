@@ -1,0 +1,113 @@
+<!--
+title: About: status, how linking works, glossary and licences | FC Risk Indicators
+description: Status of the FC Risk Indicators library (v0.1 draft, AI-drafted, unreviewed), how typologies, indicators and controls are linked, design principles, citation tags, glossary, contribution and licences.
+nav: about
+-->
+<div class="wrap">
+<div class="prose">
+ <h1>About FC Risk Indicators</h1>
+ <p class="lead">An open catalogue of financial crime <strong>risk indicators (red flags)</strong> organised by <strong>typology</strong>, each paired with candidate <strong>controls</strong>. It covers money laundering, terrorist and proliferation financing, sanctions evasion, fraud, bribery and corruption, tax evasion, human trafficking, environmental crime, cyber-enabled crime and cross-cutting factors.</p>
+ <ul class="toc" aria-label="On this page">
+  <li><a href="#status">Status</a></li><li><a href="#linking">How linking works</a></li><li><a href="#principles">Design principles</a></li><li><a href="#citations">Citation tags</a></li><li><a href="#glossary">Glossary</a></li><li><a href="#contribute">Contribute</a></li><li><a href="#licences">Licences</a></li><li><a href="#gaps">Known gaps</a></li>
+ </ul>
+
+ <h2 id="status">Status</h2>
+ <div class="callout warn"><strong>v0.1 draft. AI-drafted. Not reviewed. Citations unverified.</strong></div>
+ <ul>
+  <li>Content was drafted with AI assistance and has <strong>not</strong> been validated by subject-matter experts.</li>
+  <li>Source citations were written from model knowledge. <strong>No citation has been confirmed by a human</strong>: check any citation before relying on it.</li>
+  <li>Indicators are red flags, not proof of crime. Nothing here is legal or compliance advice, and no institution should treat it as a complete or approved risk assessment.</li>
+  <li>Right now the library holds {{N_TYP}} typologies, {{N_IND}} canonical indicators and {{N_CTL}} canonical controls across {{N_FAM}} control families.</li>
+ </ul>
+
+ <h2 id="linking">How linking works</h2>
+ <p>Every indicator and every control is <strong>defined once</strong> and <strong>linked many times</strong>. Nothing is copied between typologies.</p>
+ <div class="diagram" role="img" aria-label="A typology links to indicators; each link names the controls used; controls and indicators are shared across typologies">
+  <div class="node"><b class="k-typology">Typology</b>The unit of analysis. Owns a description, sectors and sources.</div><span class="arrow" aria-hidden="true">links to</span>
+  <div class="node"><b class="k-indicator">Indicator</b>An observable red flag, defined once. Context and false-positive notes can be typology-specific.</div><span class="arrow" aria-hidden="true">mitigated by</span>
+  <div class="node"><b class="k-control">Control</b>A candidate control, defined once, reused across many indicators and typologies.</div>
+ </div>
+ <ul>
+  <li>A typology links to canonical indicators. Each link states how the indicator shows up in <em>that</em> typology and names the controls used there.</li>
+  <li>A control page lists every indicator and typology that uses it; an indicator page lists its typologies and controls. "Used in N typologies" simply counts these links.</li>
+  <li>Adding something that already exists in spirit means linking the existing item, not creating a near-duplicate.</li>
+  <li><a href="./">Search</a> finds any item; <a href="typologies">Typologies</a> gives a citable page for each; <a href="coverage">Coverage</a> shows link counts per control family.</li>
+ </ul>
+
+ <h2 id="principles">Design principles</h2>
+ <p>This library is deliberately <strong>not</strong> a risk register, an RCSA or a competing risk-assessment methodology. It is a reusable <em>input</em> that an institution's own ML/TF/fraud risk assessment consumes.</p>
+ <div class="principles">
+  <div class="card"><h3>Typology is the unit</h3><p>Products, channels, payment rails and customer segments are exposure dimensions, not separate registers. A typology is owned once, not duplicated across product views.</p></div>
+  <div class="card"><h3>No scoring</h3><p>The library prescribes no residual-risk calculation and no worst-of aggregation. Signal (high, medium, low) is indicative strength of an indicator, never a risk rating and never rolled up.</p></div>
+  <div class="card"><h3>Input, not methodology</h3><p>It supplies what is often missing: a shared, citable catalogue of observable indicators and candidate controls. Scoring and prioritisation stay with the adopting institution.</p></div>
+  <div class="card"><h3>No institution data</h3><p>It contains candidate controls and no assessments of any institution. Gap assessments belong in the adopter's own environment and governance.</p></div>
+  <div class="card"><h3>Human review before trust</h3><p>Every item is draft until a named, independent subject-matter expert reviews it. AI-drafted content is labelled as such.</p></div>
+  <div class="card"><h3>Versioned, not live</h3><p>Only versioned releases and review dates are promised. There is no continuous-update claim, and detection bias means you should not calibrate against your own SAR or loss data alone.</p></div>
+ </div>
+ <p>Counts and colours on the <a href="coverage">Coverage</a> page describe linkage only. They are not effectiveness, adequacy or risk.</p>
+
+ <h2 id="citations">Citation status tags</h2>
+ <p>Each typology source carries a tag. <strong>No citation has been confirmed by a human.</strong></p>
+ <ul>
+  <li><span class="cite">agent-reviewed</span> an AI agent searched for it and found a matching real document (a listed URL may not have been fetched). Still verify before relying on it.</li>
+  <li><span class="cite">corrected, agent-reviewed</span> the original title, year or publisher was wrong and was corrected by the same process.</li>
+  <li><span class="cite warn">unverified</span> and <span class="cite warn">corrected, unverified</span> not confirmed by search; from model knowledge.</li>
+  <li><span class="cite warn">too vague, unverified</span> names a body or topic but not a specific document.</li>
+  <li><span class="cite warn">replacement suggested, unverified</span> the original could not be found; a nearest real document is suggested.</li>
+  <li><span class="cite">corrected, checked</span> corrected and checked by search; still not human-confirmed.</li>
+ </ul>
+
+ <h2 id="glossary">Glossary</h2>
+ <dl class="gloss">
+  <dt>AML/CTF</dt><dd>Anti-money laundering and counter-terrorism financing.</dd>
+  <dt>AML/CTF program</dt><dd>The documented set of policies, procedures and controls a reporting entity maintains to identify, mitigate and manage money laundering and terrorism financing risk.</dd>
+  <dt>Reporting entity</dt><dd>A business or person with AML/CTF obligations, such as a bank, payments firm, crypto exchange, casino or other regulated service provider. The exact term varies by jurisdiction.</dd>
+  <dt>SMR / SAR / STR</dt><dd>Suspicious matter report, suspicious activity report or suspicious transaction report: a report a reporting entity files with the financial intelligence unit when it suspects crime. Terminology differs by jurisdiction.</dd>
+  <dt>Predicate offence</dt><dd>The underlying criminal offence (for example fraud, bribery or drug trafficking) that generates the proceeds being laundered.</dd>
+  <dt>Typology</dt><dd>A recognisable method or scheme by which a financial crime is carried out. In this library, the unit of analysis.</dd>
+  <dt>Indicator (red flag)</dt><dd>An observable pattern or characteristic that may point to a typology. It is not proof of crime and often has legitimate explanations.</dd>
+  <dt>Control</dt><dd>A measure that prevents, detects, corrects or governs a risk, such as a monitoring rule, a verification step or a training programme. Here, controls are candidates, not assessments of what any institution has.</dd>
+  <dt>Control family</dt><dd>A grouping of controls by purpose, such as customer due diligence or transaction monitoring.</dd>
+  <dt>Signal</dt><dd>The indicative strength of an indicator (high, medium, low). Not a risk rating and never aggregated into a score.</dd>
+  <dt>Typical effectiveness</dt><dd>An indicative, drafted label on a control. It is not a measurement and not an assessment of any institution.</dd>
+  <dt>CDD / KYC</dt><dd>Customer due diligence and know your customer: identifying and verifying customers and understanding their activity.</dd>
+  <dt>EDD</dt><dd>Enhanced due diligence: additional scrutiny applied to higher-risk customers or situations.</dd>
+  <dt>PEP</dt><dd>Politically exposed person: someone with a prominent public function, and often their family and close associates, who may present higher bribery and corruption risk.</dd>
+  <dt>UBO / beneficial owner</dt><dd>The natural person who ultimately owns or controls a customer or legal entity.</dd>
+  <dt>TBML</dt><dd>Trade-based money laundering: disguising proceeds through trade transactions, such as over- or under-invoicing.</dd>
+  <dt>MVTS</dt><dd>Money or value transfer service.</dd>
+  <dt>DNFBP</dt><dd>Designated non-financial businesses and professions, such as dealers, lawyers, accountants and corporate service providers.</dd>
+  <dt>FATF</dt><dd>Financial Action Task Force, the intergovernmental body that sets international AML/CTF standards.</dd>
+  <dt>RCSA</dt><dd>Risk and control self-assessment, a common internal method this library deliberately does not replace.</dd>
+  <dt>Residual risk</dt><dd>Risk remaining after controls are considered. This library does not calculate it.</dd>
+  <dt>False positive</dt><dd>A flagged case that turns out to have a legitimate explanation. Each indicator lists common ones.</dd>
+ </dl>
+
+ <h2 id="contribute">Contribute or review</h2>
+ <p>Source, data and issue tracker are on GitHub: <a href="https://github.com/banksy2560/fc-risk-indicators">github.com/banksy2560/fc-risk-indicators</a>.</p>
+ <ul>
+  <li><strong>Review.</strong> SME review, corrections and verified citations are the most valuable contributions. Mark reviewed items <code>status: sme_reviewed</code> with <code>last_reviewed</code>. Reviewers should be independent of whoever drafted the content.</li>
+  <li><strong>Extend.</strong> Propose new typologies, indicators or controls. Search first, and link an existing item rather than adding a near-duplicate.</li>
+  <li><strong>Check merges.</strong> Borderline AI merges are listed in the repository's review queue; each typology link keeps its legacy id so a merge can be split out.</li>
+  <li><strong>Do not submit</strong> real customer, case or personal data.</li>
+  <li>The site is rebuilt from the YAML files by <code>tools/build_site.py</code>.</li>
+ </ul>
+
+ <h2 id="licences">Licences</h2>
+ <ul>
+  <li>Code (<code>tools/</code> and this site's scripts): <a href="https://github.com/banksy2560/fc-risk-indicators/blob/main/LICENSE">Apache-2.0</a>.</li>
+  <li>Content (typologies, indicators, controls and documentation): <a href="https://github.com/banksy2560/fc-risk-indicators/blob/main/LICENSE-CONTENT">CC-BY-4.0</a>. Please attribute "FC Risk Indicators" and note that it is a v0.1 unreviewed draft.</li>
+ </ul>
+
+ <h2 id="gaps">Known gaps</h2>
+ <p>Drawn from the repository's review queue. Treat the catalogue as incomplete.</p>
+ <ul>
+  <li><strong>Merges awaiting review.</strong> Indicators and controls were de-duplicated by AI clustering. Two controls, "Customer enquiry" and "Profile-versus-activity deviation", are broad merges; "Typology-based scenario design", "Product-specific misuse surveillance" and "Sector-tailored EDD" may need splitting.</li>
+  <li><strong>Missing controls.</strong> No suitable catalogue control yet for: independent AML programme-effectiveness testing; alert-queue ageing and capacity forecasting; order-book and spoofing surveillance; licensing and change-in-control fit-and-proper review; court-record verification; safe-deposit-box access logging; transfer-pricing benchmarking; cross-border real-time freeze or recall coordination; scam-compound infrastructure or telecoms-spend monitoring; a unified fraud and AML view across silos. Links to the "closest fit" are approximate.</li>
+  <li><strong>Thin governance coverage.</strong> Institutional-governance indicators lean on one sampling-QA control as the only detective option. The family <em>corrective response</em> has a single control.</li>
+  <li><strong>Data quality.</strong> Some singleton indicators keep original typology-flavoured wording and generic default detection types, data sources and false-positive notes.</li>
+  <li><strong>Not yet populated.</strong> Exposure tags (channels, payment rails, customer segments, products), evidence basis, confidence, provenance and review fields.</li>
+  <li><strong>Citations.</strong> All unverified or agent-checked only, as described above.</li>
+ </ul>
+</div>
+</div>

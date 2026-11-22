@@ -1,0 +1,28 @@
+<!--
+title: FC Risk Indicators: search financial crime typologies, indicators and controls
+description: Open, citable catalogue of financial crime risk indicators (red flags) organised by typology, each linked to candidate controls. v0.1 draft, AI-drafted and unreviewed.
+nav: search
+script: <script src="assets/home.js"></script>
+-->
+<section class="hero">
+ <h1>Find a typology, indicator or control</h1>
+ <p class="lede" id="tot">{{N_TYP}} typologies, {{N_IND}} indicators, {{N_CTL}} controls. Press / to search.</p>
+ <form class="sbox" role="search" onsubmit="return false">
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6"/><path d="M13 13l5 5"/></svg>
+  <label for="q" class="sr">Search the catalogue</label>
+  <input id="q" type="search" autocomplete="off" placeholder="Search, e.g. shell company, structuring" aria-controls="results"><span class="kbd" aria-hidden="true">/</span>
+ </form>
+ <div class="try" id="try"><span>Try:</span></div>
+ <div class="kinds" role="group" aria-label="Show"><button type="button" class="btn" data-k="" aria-pressed="true">All</button><button type="button" class="btn" data-k="typology" aria-pressed="false">Typologies</button><button type="button" class="btn" data-k="indicator" aria-pressed="false">Indicators</button><button type="button" class="btn" data-k="control" aria-pressed="false">Controls</button></div>
+</section>
+<div class="wrap shell">
+ <aside class="facets" id="facets" aria-label="Filters"></aside>
+ <section aria-label="Results">
+  <div class="toolbar"><button type="button" class="btn fbtn" id="fbtn" aria-expanded="false" aria-controls="facets">Filters</button><span id="count" class="note" role="status" aria-live="polite"></span><span id="pills"></span><label class="note grow">Sort <select id="sort"><option value="rel">Relevance</option><option value="reuse">Most reused</option><option value="name">Name</option></select></label></div>
+  <div class="results" id="results"><noscript><div class="empty">This catalogue needs JavaScript.</div></noscript></div>
+  <p style="margin-top:14px"><button type="button" class="btn" id="more" hidden>Show more</button></p>
+  <div class="callout" style="margin-top:28px"><strong>How linking works.</strong> Typologies link to canonical indicators; each link names the controls used. Every indicator and control is defined once and linked many times, so open any result to move between a typology, its indicators and its controls. Signal is indicative only and never combined into a score. <a href="about">More on the About page</a>.</div>
+ </section>
+</div>
+<div class="scrim" id="scrim" hidden></div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Item detail" hidden><div class="dh"><button type="button" class="btn" id="back">Back</button><span class="note">Detail</span><span class="sp"></span><button type="button" class="btn" id="dx">Close</button></div><div class="db" id="db" tabindex="-1"></div></div>

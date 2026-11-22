@@ -13,7 +13,7 @@ typology:
   - IRS and HMRC public guidance on refund and identity fraud (general) [too vague, unverified]
   - FinCEN, advisories on tax-refund fraud (general) [too vague, unverified]
   - UK Finance, Annual Fraud Report (specify year, e.g. 2025) <https://www.ukfinance.org.uk/> [corrected,
-    checked]
+    agent-reviewed]
   indicators:
   - ref: IND-TXN-024
     legacy_id: FR-TAX-001

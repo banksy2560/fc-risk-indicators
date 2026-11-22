@@ -19,7 +19,7 @@ typology:
   - FATF, Guidance on Digital ID (2020) <https://www.fatf-gafi.org/content/fatf-gafi/en/publications/Financialinclusionandnpoissues/Digital-identity-guidance.html>
     [agent-reviewed]
   - NIST, Digital Identity Guidelines, SP 800-63-4 (2025) <https://pages.nist.gov/800-63-4/> [corrected,
-    checked]
+    agent-reviewed]
   indicators:
   - ref: IND-DOC-009
     legacy_id: CY-SYNTHID-001

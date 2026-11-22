@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indicators: financial crime red flags | FC Risk Indicators</title>
+<meta name="description" content="Canonical financial crime risk indicators (red flags), each linked to typologies and candidate controls. Signal is indicative only, not a risk rating. v0.1 draft.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FC Risk Indicators">
+<meta property="og:title" content="Indicators: financial crime red flags | FC Risk Indicators">
+<meta property="og:description" content="Canonical financial crime risk indicators (red flags), each linked to typologies and candidate controls. Signal is indicative only, not a risk rating. v0.1 draft.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232a4fc4'/%3E%3Cpath d='M8 22V10m8 12V14m8 8V8' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<script>try{var t=localStorage.getItem('fcri-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body class="" data-page="indicators">
+<a class="skip" href="#main">Skip to content</a>
+<div class="top" id="top">
+<div class="status" role="note"><strong>v0.1 draft:</strong> AI-drafted, not reviewed. Not a risk rating or compliance advice.</div>
+<header class="site-header">
+ <div class="wrap hdr">
+  <a class="brand" href="./">FC Risk Indicators</a>
+  <nav aria-label="Main" class="nav">
+   <a href="./" data-nav="search">Search</a>
+   <a href="typologies" data-nav="typologies">Typologies</a>
+   <a href="coverage" data-nav="coverage">Coverage</a>
+   <a href="about" data-nav="about">About</a>
+  </nav>
+  <button type="button" class="btn theme" id="theme" aria-label="Switch colour theme" title="Switch colour theme"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="5.2"/><path d="M8 2.8v10.4" /><path d="M8 2.8a5.2 5.2 0 0 1 0 10.4z" fill="currentColor"/></svg><span class="theme-l">Theme</span></button>
+ </div>
+</header>
+</div>
+<div id="nofetch" class="wrap" hidden><div class="callout warn" role="alert"><strong>Data could not be loaded.</strong> This site loads its data with <code>fetch()</code>, which browsers block when a page is opened directly from disk (file://). Serve the <code>site/</code> folder over HTTP, for example <code>python3 tools/serve_site.py</code>, or view the deployed site.</div></div>
+<main id="main" tabindex="-1">
+<div class="wrap split">
+ <aside class="sidenav" id="sidenav" aria-label="Browse indicators"></aside>
+ <div style="min-width:0">
+  <button type="button" class="btn navtoggle" id="navtoggle" aria-expanded="false" aria-controls="sidenav">Browse indicators</button>
+  <article class="article" id="article" aria-live="polite"></article>
+ </div>
+</div>
+
+</main>
+<footer class="site-footer">
+ <div class="wrap">
+  <p><strong>FC Risk Indicators</strong> v0.1 draft. AI-drafted, not reviewed by subject-matter experts; citations unverified. Indicators are red flags, not proof of crime. Nothing here is legal or compliance advice.</p>
+  <p>Code: <a href="https://github.com/banksy2560/fc-risk-indicators/blob/main/LICENSE">Apache-2.0</a>. Content: <a href="https://github.com/banksy2560/fc-risk-indicators/blob/main/LICENSE-CONTENT">CC-BY-4.0</a>. <a href="https://github.com/banksy2560/fc-risk-indicators">Source on GitHub</a> | <a href="about#contribute">Contribute or review</a></p>
+ </div>
+</footer>
+<script src="assets/app.js"></script>
+<script src="assets/entity.js"></script>
+</body>
+</html>

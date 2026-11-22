@@ -16,7 +16,7 @@ typology:
   - FATF, Interpol and Egmont Group, Illicit Financial Flows from Cyber-enabled Fraud (2023) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/illicit-financial-flows-cyber-enabled-fraud.html>
     [corrected, agent-reviewed]
   - UK Finance, Annual Fraud Report (specify year, e.g. 2025) <https://www.ukfinance.org.uk/> [corrected,
-    checked]
+    agent-reviewed]
   indicators:
   - ref: IND-TXN-078
     legacy_id: FR-ROM-001

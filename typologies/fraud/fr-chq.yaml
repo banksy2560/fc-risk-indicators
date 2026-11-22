@@ -8,7 +8,7 @@ typology:
   - banking
   sources:
   - UK Finance, Annual Fraud Report (specify year, e.g. 2025) <https://www.ukfinance.org.uk/> [corrected,
-    checked]
+    agent-reviewed]
   - FinCEN, advisories on check fraud (general) [too vague, unverified]
   - Industry guidance on funds availability and check clearing (general) [too vague, unverified]
   indicators:

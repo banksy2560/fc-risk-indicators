@@ -15,7 +15,7 @@ typology:
     year) <https://wolfsberg-group.org/> [corrected, agent-reviewed]
   - 'Basel Committee on Banking Supervision, Guidelines: Sound management of risks related to money laundering
     and financing of terrorism (2014, rev. 2020) <https://www.bis.org/bcbs/publ/d505.htm> [corrected,
-    checked]'
+    agent-reviewed]'
   indicators:
   - ref: IND-CPT-034
     legacy_id: ML-CORRBANK-001

@@ -1,0 +1,1 @@
+{"id":"CTL-075","links":[{"typ":"FR-ADV","inds":["IND-BEH-058"]},{"typ":"FR-APP","inds":["IND-CUS-029"]},{"typ":"FR-ROM","inds":["IND-BEH-078","IND-BEH-080"]},{"typ":"FR-VULN","inds":["IND-BEH-004","IND-BEH-083","IND-BEH-084","IND-CUS-014","IND-TXN-013","IND-TXN-085","IND-TXN-086","IND-TXN-087"]},{"typ":"ML-PENSION","inds":["IND-BEH-084"]}]}

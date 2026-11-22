@@ -1,0 +1,1 @@
+{"id":"CTL-151","links":[{"typ":"ML-LOANBACK","inds":["IND-DOC-042","IND-GEO-017","IND-TXN-112"]},{"typ":"ML-REALESTATE","inds":["IND-TXN-116"]},{"typ":"ML-SHELL","inds":["IND-DOC-047"]},{"typ":"ML-THIRDPARTY","inds":["IND-DOC-047"]},{"typ":"TF-FTF","inds":["IND-TXN-149"]},{"typ":"TX-OFFSHORE","inds":["IND-PRD-060"]},{"typ":"XC-COMPLICITFI","inds":["IND-BEH-075"]}]}

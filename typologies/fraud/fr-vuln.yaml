@@ -1,0 +1,329 @@
+typology:
+  id: FR-VULN
+  name: Elder and Vulnerable Customer Financial Abuse
+  domain: fraud
+  description: Older or vulnerable people are exploited by relatives, carers, scammers or persons holding
+    power of attorney. Warning signs include sudden changes in banking behaviour and the presence of third
+    parties directing transactions.
+  sectors:
+  - banking
+  - securities
+  - insurance
+  sources:
+  - FinCEN, Advisory on Elder Financial Exploitation (2022)
+  - UK Finance, Annual Fraud Report (published annually)
+  - FCA, guidance on the fair treatment of vulnerable customers (2021)
+  indicators:
+  - id: FR-VULN-001
+    name: Uncharacteristic large withdrawals or transfers
+    description: 'Victim-side: unusual cash or transfers inconsistent with usual pattern.'
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - customer_behaviour
+    data_sources:
+    - account_data
+    false_positive_notes: Planned gifts or care costs.
+    controls:
+    - id: FR-VULN-001-C1
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    - id: FR-VULN-001-C2
+      name: Trusted-contact and vulnerable-customer process
+      type: preventive
+      description: Customers can nominate a trusted contact; flagged vulnerability triggers tailored handling
+        and permitted escalation.
+      implementation: process
+      effectiveness: medium
+    - id: FR-VULN-001-C3
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    references:
+    - FinCEN, Advisory on Elder Financial Exploitation (2022)
+  - id: FR-VULN-002
+    name: Third party accompanies and directs the customer
+    description: Another person speaks for the customer or dictates instructions.
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    - investigator_judgement
+    data_sources:
+    - branch_interaction
+    false_positive_notes: Helpful relatives.
+    controls:
+    - id: FR-VULN-002-C1
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    - id: FR-VULN-002-C2
+      name: Trusted-contact and vulnerable-customer process
+      type: preventive
+      description: Customers can nominate a trusted contact; flagged vulnerability triggers tailored handling
+        and permitted escalation.
+      implementation: process
+      effectiveness: medium
+    - id: FR-VULN-002-C3
+      name: Out-of-band callback verification
+      type: preventive
+      description: Instructions or detail changes are verified by calling a number held on file, never
+        one supplied in the request.
+      implementation: process
+      effectiveness: high
+    references:
+    - FinCEN, Advisory on Elder Financial Exploitation (2022)
+  - id: FR-VULN-003
+    name: New joint account holder or power of attorney added
+    description: Access given to a new person shortly before unusual activity.
+    category: customer
+    severity: high
+    detection_type:
+    - kyc_review
+    data_sources:
+    - account_data
+    - poa_records
+    false_positive_notes: Genuine care arrangements.
+    controls:
+    - id: FR-VULN-003-C1
+      name: Enhanced due diligence and periodic KYC review
+      type: detective
+      description: Targeted review of purpose, source of funds and expected activity when behaviour diverges
+        from the profile.
+      implementation: process
+      effectiveness: medium
+    - id: FR-VULN-003-C2
+      name: Cooling period and notification on detail changes
+      type: preventive
+      description: Contact-detail, device or payee changes trigger notification to the prior channel and
+        restrict high-risk actions for a short period.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-VULN-003-C3
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    references:
+    - FinCEN, Advisory on Elder Financial Exploitation (2022)
+  - id: FR-VULN-004
+    name: Confusion or fear about own finances
+    description: Customer appears unsure of balances, recent transactions or reason for payments.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    - investigator_judgement
+    data_sources:
+    - branch_interaction
+    - call_notes
+    false_positive_notes: Normal ageing or stress.
+    controls:
+    - id: FR-VULN-004-C1
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    - id: FR-VULN-004-C2
+      name: Trusted-contact and vulnerable-customer process
+      type: preventive
+      description: Customers can nominate a trusted contact; flagged vulnerability triggers tailored handling
+        and permitted escalation.
+      implementation: process
+      effectiveness: medium
+    - id: FR-VULN-004-C3
+      name: Customer education and awareness
+      type: preventive
+      description: Targeted messaging helps customers recognise the scam script and know how to verify.
+      implementation: training
+      effectiveness: low
+    references:
+    - FinCEN, Advisory on Elder Financial Exploitation (2022)
+  - id: FR-VULN-005
+    name: Sudden new spending on unrelated person
+    description: Frequent payments or purchases benefiting a carer or acquaintance.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payment_data
+    false_positive_notes: Genuine family support.
+    controls:
+    - id: FR-VULN-005-C1
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    - id: FR-VULN-005-C2
+      name: Trusted-contact and vulnerable-customer process
+      type: preventive
+      description: Customers can nominate a trusted contact; flagged vulnerability triggers tailored handling
+        and permitted escalation.
+      implementation: process
+      effectiveness: medium
+    - id: FR-VULN-005-C3
+      name: Case management and fraud MI governance
+      type: governance
+      description: Outcomes, losses and false positives are tracked and fed back into rule tuning and
+        risk appetite.
+      implementation: process
+      effectiveness: medium
+    references:
+    - FinCEN, Advisory on Elder Financial Exploitation (2022)
+  - id: FR-VULN-006
+    name: Frequent ATM use by carer or unusual card use
+    description: Cards used where customer is unlikely to be present.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - card_data
+    - atm_data
+    false_positive_notes: Delegated errands.
+    controls:
+    - id: FR-VULN-006-C1
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    - id: FR-VULN-006-C2
+      name: Cooling period and notification on detail changes
+      type: preventive
+      description: Contact-detail, device or payee changes trigger notification to the prior channel and
+        restrict high-risk actions for a short period.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-VULN-006-C3
+      name: Trusted-contact and vulnerable-customer process
+      type: preventive
+      description: Customers can nominate a trusted contact; flagged vulnerability triggers tailored handling
+        and permitted escalation.
+      implementation: process
+      effectiveness: medium
+    references:
+    - FinCEN, Advisory on Elder Financial Exploitation (2022)
+  - id: FR-VULN-007
+    name: Customer targeted by scams
+    description: 'Victim-side: repeated scam payments or telephone contacts.'
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    - transaction_monitoring
+    data_sources:
+    - fraud_case_history
+    false_positive_notes: One-off events.
+    controls:
+    - id: FR-VULN-007-C1
+      name: Trusted-contact and vulnerable-customer process
+      type: preventive
+      description: Customers can nominate a trusted contact; flagged vulnerability triggers tailored handling
+        and permitted escalation.
+      implementation: process
+      effectiveness: medium
+    - id: FR-VULN-007-C2
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-VULN-007-C3
+      name: Hold or cooling-off on new high-value payees
+      type: preventive
+      description: Delays the first large payment to a new payee or newly changed details so that the
+        victim, or the bank, can verify before funds leave.
+      implementation: policy
+      effectiveness: medium
+    references:
+    - FinCEN, Advisory on Elder Financial Exploitation (2022)
+  - id: FR-VULN-008
+    name: Changes to statements delivery, address or contact
+    description: Mail redirected to a third party.
+    category: customer
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    data_sources:
+    - customer_change_logs
+    false_positive_notes: Moving home.
+    controls:
+    - id: FR-VULN-008-C1
+      name: Cooling period and notification on detail changes
+      type: preventive
+      description: Contact-detail, device or payee changes trigger notification to the prior channel and
+        restrict high-risk actions for a short period.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-VULN-008-C2
+      name: Out-of-band callback verification
+      type: preventive
+      description: Instructions or detail changes are verified by calling a number held on file, never
+        one supplied in the request.
+      implementation: process
+      effectiveness: high
+    - id: FR-VULN-008-C3
+      name: Trusted-contact and vulnerable-customer process
+      type: preventive
+      description: Customers can nominate a trusted contact; flagged vulnerability triggers tailored handling
+        and permitted escalation.
+      implementation: process
+      effectiveness: medium
+    references:
+    - FinCEN, Advisory on Elder Financial Exploitation (2022)
+  - id: FR-VULN-009
+    name: Property or investment sold under pressure
+    description: Large assets liquidated with hurried instructions.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - transaction_data
+    false_positive_notes: Downsizing.
+    controls:
+    - id: FR-VULN-009-C1
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    - id: FR-VULN-009-C2
+      name: Hold or cooling-off on new high-value payees
+      type: preventive
+      description: Delays the first large payment to a new payee or newly changed details so that the
+        victim, or the bank, can verify before funds leave.
+      implementation: policy
+      effectiveness: medium
+    - id: FR-VULN-009-C3
+      name: Trusted-contact and vulnerable-customer process
+      type: preventive
+      description: Customers can nominate a trusted contact; flagged vulnerability triggers tailored handling
+        and permitted escalation.
+      implementation: process
+      effectiveness: medium
+    references:
+    - FinCEN, Advisory on Elder Financial Exploitation (2022)

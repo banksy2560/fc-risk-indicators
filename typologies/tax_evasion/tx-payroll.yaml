@@ -1,0 +1,219 @@
+typology:
+  id: TX-PAYROLL
+  name: Payroll and Ghost-Employer Tax Fraud
+  domain: tax_evasion
+  description: Employers or labour providers underreport wages, create phantom workers, or operate short-lived
+    'ghost' companies that collect payroll funds and never remit social insurance or withholding tax.
+    Common in labour-intensive sectors using subcontracting chains and agency labour.
+  sectors:
+  - banking
+  - payments
+  - corporate_services
+  sources:
+  - 'OECD, Shining Light on the Shadow Economy: Opportunities and Threats (2017)'
+  - FATF, Money Laundering from Tax Crimes (2021)
+  - ILO and tax authority guidance on undeclared work and bogus self-employment
+  - FATF and OECD, Money Laundering Awareness Handbook for Tax Examiners and Tax Auditors (2012)
+  indicators:
+  - id: TX-PAYROLL-001
+    name: Cash withdrawals match payroll amounts
+    description: Large cash withdrawals shortly after receiving client funds, close to total weekly wages,
+      with no matching payroll tax payments.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - payment_records
+    - tax_payments
+    false_positive_notes: Genuine cash-in-hand wages exist in some sectors.
+    controls:
+    - id: TX-PAYROLL-001-C1
+      name: Wage-cycle cash rule
+      type: detective
+      description: Alert on repeated cash withdrawals aligned to pay cycles in labour-supply businesses.
+      implementation: rule
+      effectiveness: medium
+    - id: TX-PAYROLL-001-C2
+      name: Tax remittance reconciliation
+      type: detective
+      description: Compare funds drawn for wages with payments to tax and social authorities.
+      implementation: process
+      effectiveness: high
+  - id: TX-PAYROLL-002
+    name: Short-lived labour supplier with rotating entities
+    description: Company wound up or abandoned within one to two years, with successor firm at same address,
+      same workers and clients.
+    category: ownership_structure
+    severity: high
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - company_registry
+    - insolvency_records
+    false_positive_notes: Contractors may restructure for commercial reasons.
+    controls:
+    - id: TX-PAYROLL-002-C1
+      name: Phoenix company detection
+      type: detective
+      description: Link successor companies using shared officers, addresses and customers.
+      implementation: model
+      effectiveness: medium
+    - id: TX-PAYROLL-002-C2
+      name: Enhanced due diligence for labour suppliers
+      type: preventive
+      description: Verify registration, tax compliance and wage payment evidence at onboarding and review.
+      implementation: process
+      effectiveness: high
+  - id: TX-PAYROLL-003
+    name: Workers paid to multiple accounts or via third parties
+    description: Salaries are paid into accounts that control multiple 'employees' or into one account
+      for numerous workers.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - payment_records
+    - payroll_files
+    false_positive_notes: Family or agency pooling can legitimately concentrate payments.
+    controls:
+    - id: TX-PAYROLL-003-C1
+      name: Many-to-one beneficiary alerts
+      type: detective
+      description: Detect multiple 'wages' to the same account or from same sender.
+      implementation: rule
+      effectiveness: medium
+    - id: TX-PAYROLL-003-C2
+      name: Payroll bank-account validation
+      type: preventive
+      description: Check employee payments match known workers' own accounts.
+      implementation: process
+      effectiveness: medium
+  - id: TX-PAYROLL-004
+    name: Payroll volume inconsistent with declared headcount
+    description: Wages paid or invoiced greatly exceed declared staff and reported payroll tax.
+    category: customer
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - tax_filings
+    - payment_records
+    false_positive_notes: Seasonal hires may inflate volumes.
+    controls:
+    - id: TX-PAYROLL-004-C1
+      name: Declared versus observed payroll review
+      type: detective
+      description: Compare payroll flows to declared headcount in KYC.
+      implementation: process
+      effectiveness: high
+    - id: TX-PAYROLL-004-C2
+      name: Information sharing with authorities
+      type: governance
+      description: Use legal gateways to share suspicion about undeclared payroll.
+      implementation: process
+      effectiveness: medium
+  - id: TX-PAYROLL-005
+    name: Sole-trader or bogus self-employment structure for large workforce
+    description: Many workers treated as independent contractors despite working under direction for one
+      client.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    - kyc_review
+    data_sources:
+    - contracts
+    - payment_records
+    false_positive_notes: Contracting is lawful where genuinely independent.
+    controls:
+    - id: TX-PAYROLL-005-C1
+      name: Contractor classification review
+      type: detective
+      description: Review structures for markers of employment misclassification.
+      implementation: process
+      effectiveness: medium
+    - id: TX-PAYROLL-005-C2
+      name: Training for relationship managers
+      type: preventive
+      description: Train staff on misclassification and undeclared work signs.
+      implementation: training
+      effectiveness: low
+  - id: TX-PAYROLL-006
+    name: Payments to workers just under tax or reporting thresholds
+    description: Pay split into amounts staying below withholding or reporting thresholds.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payment_records
+    false_positive_notes: Part-time work may legitimately fall below thresholds.
+    controls:
+    - id: TX-PAYROLL-006-C1
+      name: Threshold clustering analytics
+      type: detective
+      description: Detect repeated payments just below thresholds.
+      implementation: rule
+      effectiveness: medium
+    - id: TX-PAYROLL-006-C2
+      name: Payee verification
+      type: preventive
+      description: Check identities and tax numbers for recipients of regular wages.
+      implementation: process
+      effectiveness: medium
+  - id: TX-PAYROLL-007
+    name: Unusual payments from clients to labour firm without sector-typical costs
+    description: Labour provider shows no pension, insurance, equipment or accommodation costs.
+    category: customer
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    - transaction_monitoring
+    data_sources:
+    - payment_records
+    - financial_statements
+    false_positive_notes: New firms may have lean cost bases.
+    controls:
+    - id: TX-PAYROLL-007-C1
+      name: Cost-profile benchmark
+      type: detective
+      description: Compare cost structure to peers.
+      implementation: model
+      effectiveness: medium
+    - id: TX-PAYROLL-007-C2
+      name: Client-side labour supplier checks
+      type: preventive
+      description: Require clients to verify supplier tax compliance.
+      implementation: process
+      effectiveness: medium
+  - id: TX-PAYROLL-008
+    name: Multiple businesses sharing addresses, phones and bank signatories
+    description: A group of firms pooling workers share control and registered details with no group disclosed.
+    category: ownership_structure
+    severity: medium
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - company_registry
+    - kyc_files
+    false_positive_notes: Business parks and accountants' addresses are shared.
+    controls:
+    - id: TX-PAYROLL-008-C1
+      name: Shared-attribute linking
+      type: detective
+      description: Cluster customers by shared identifiers.
+      implementation: model
+      effectiveness: medium
+    - id: TX-PAYROLL-008-C2
+      name: Group structure confirmation
+      type: preventive
+      description: Request declaration of connected entities at onboarding.
+      implementation: process
+      effectiveness: medium

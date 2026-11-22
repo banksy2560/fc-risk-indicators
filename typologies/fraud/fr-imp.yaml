@@ -1,0 +1,332 @@
+typology:
+  id: FR-IMP
+  name: Impersonation, Vishing and Smishing
+  domain: fraud
+  description: Fraudsters pose as banks, police, tax authorities or delivery firms by phone, SMS or email,
+    harvesting credentials or inducing customers to move money. The criminal often spoofs numbers and
+    uses urgency and fear.
+  sectors:
+  - banking
+  - payments
+  - fintech
+  sources:
+  - UK Finance, Annual Fraud Report (published annually)
+  - FCA, consumer warnings on impersonation fraud (general)
+  - FinCEN, advisories on cyber-enabled fraud (general)
+  indicators:
+  - id: FR-IMP-001
+    name: Customer reports unsolicited call or text from 'the bank'
+    description: 'Victim-side: contact claims to be from the bank''s fraud team and requests action, codes
+      or transfers.'
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    - external_intel
+    data_sources:
+    - customer_reports
+    - call_logs
+    false_positive_notes: Genuine outbound contact.
+    controls:
+    - id: FR-IMP-001-C1
+      name: Customer education and awareness
+      type: preventive
+      description: Targeted messaging helps customers recognise the scam script and know how to verify.
+      implementation: training
+      effectiveness: low
+    - id: FR-IMP-001-C2
+      name: Threat intelligence and takedown
+      type: detective
+      description: Monitors for spoofed domains, fake apps, adverts and numbers and arranges their takedown
+        and customer alerts.
+      implementation: technology
+      effectiveness: medium
+    - id: FR-IMP-001-C3
+      name: Out-of-band callback verification
+      type: preventive
+      description: Instructions or detail changes are verified by calling a number held on file, never
+        one supplied in the request.
+      implementation: process
+      effectiveness: high
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-IMP-002
+    name: One-time passcode shared or requested during a call
+    description: 'Victim-side: authentication codes are read out or entered while the customer is on a
+      live call.'
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    - transaction_monitoring
+    data_sources:
+    - session_telemetry
+    - otp_logs
+    false_positive_notes: Genuine support calls.
+    controls:
+    - id: FR-IMP-002-C1
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    - id: FR-IMP-002-C2
+      name: Strong authentication and step-up
+      type: preventive
+      description: Requires phishing-resistant authentication for logins and sensitive changes, with step-up
+        on risk.
+      implementation: technology
+      effectiveness: high
+    - id: FR-IMP-002-C3
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-IMP-003
+    name: Login from new device shortly after phishing click
+    description: 'Attacker-side: credentials harvested via a fake site are used on an unfamiliar device
+      or location.'
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    - transaction_monitoring
+    data_sources:
+    - device_data
+    - login_logs
+    false_positive_notes: Customers changing phones.
+    controls:
+    - id: FR-IMP-003-C1
+      name: Device and network intelligence
+      type: detective
+      description: Fingerprints devices, IPs and emulators to link applications or sessions and flag anomalous
+        or shared infrastructure.
+      implementation: technology
+      effectiveness: high
+    - id: FR-IMP-003-C2
+      name: Strong authentication and step-up
+      type: preventive
+      description: Requires phishing-resistant authentication for logins and sensitive changes, with step-up
+        on risk.
+      implementation: technology
+      effectiveness: high
+    - id: FR-IMP-003-C3
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-IMP-004
+    name: Spoofed phone number matching the bank's real number
+    description: Outbound spoofing makes calls appear genuine; call-detail records reveal the discrepancy.
+    category: product_channel
+    severity: medium
+    detection_type:
+    - external_intel
+    data_sources:
+    - telco_intel
+    false_positive_notes: Legitimate forwarding.
+    controls:
+    - id: FR-IMP-004-C1
+      name: Threat intelligence and takedown
+      type: detective
+      description: Monitors for spoofed domains, fake apps, adverts and numbers and arranges their takedown
+        and customer alerts.
+      implementation: technology
+      effectiveness: medium
+    - id: FR-IMP-004-C2
+      name: Customer education and awareness
+      type: preventive
+      description: Targeted messaging helps customers recognise the scam script and know how to verify.
+      implementation: training
+      effectiveness: low
+    - id: FR-IMP-004-C3
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-IMP-005
+    name: Mass of near-identical SMS or links referencing parcels or fines
+    description: Bank brand impersonation campaigns observed in threat feeds and customer reports.
+    category: typology_specific
+    severity: medium
+    detection_type:
+    - external_intel
+    data_sources:
+    - threat_intel
+    - customer_reports
+    false_positive_notes: Legitimate notices.
+    controls:
+    - id: FR-IMP-005-C1
+      name: Threat intelligence and takedown
+      type: detective
+      description: Monitors for spoofed domains, fake apps, adverts and numbers and arranges their takedown
+        and customer alerts.
+      implementation: technology
+      effectiveness: medium
+    - id: FR-IMP-005-C2
+      name: Customer education and awareness
+      type: preventive
+      description: Targeted messaging helps customers recognise the scam script and know how to verify.
+      implementation: training
+      effectiveness: low
+    - id: FR-IMP-005-C3
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-IMP-006
+    name: Customer instructed to move money to a 'safe' account
+    description: 'Victim-side: pretext of protection leads to transfers to unfamiliar accounts.'
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - customer_behaviour
+    data_sources:
+    - payment_data
+    false_positive_notes: Genuine account moves.
+    controls:
+    - id: FR-IMP-006-C1
+      name: Confirmation of payee / name-matching
+      type: preventive
+      description: Checks the payee name against the destination account before release and warns on a
+        no-match or close-match, interrupting misdirected or spoofed payments.
+      implementation: technology
+      effectiveness: high
+    - id: FR-IMP-006-C2
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-IMP-006-C3
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-IMP-007
+    name: Mule accounts receiving phished funds then cashing out
+    description: Receiving accounts withdraw cash or buy crypto promptly after credits.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - account_data
+    - atm_data
+    false_positive_notes: Cash-heavy businesses.
+    controls:
+    - id: FR-IMP-007-C1
+      name: Mule account detection model
+      type: detective
+      description: Detects inbound-funds-then-rapid-outflow and other mule patterns on receiving accounts,
+        enabling holds and exits.
+      implementation: model
+      effectiveness: high
+    - id: FR-IMP-007-C2
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    - id: FR-IMP-007-C3
+      name: Rapid recall and fund-freeze procedure
+      type: corrective
+      description: Defined process to notify receiving institutions, freeze onward movement and recover
+        funds quickly.
+      implementation: process
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-IMP-008
+    name: Payment card details used at new merchants immediately after a call
+    description: 'Victim-side: card details given verbally are used for online purchases or wallet provisioning.'
+    category: product_channel
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - card_data
+    - wallet_provisioning
+    false_positive_notes: Customer purchases.
+    controls:
+    - id: FR-IMP-008-C1
+      name: 3-D Secure and tokenisation
+      type: preventive
+      description: Authenticates the cardholder on online purchases and replaces card data with tokens
+        to shift liability and block misuse.
+      implementation: technology
+      effectiveness: high
+    - id: FR-IMP-008-C2
+      name: Device and network intelligence
+      type: detective
+      description: Fingerprints devices, IPs and emulators to link applications or sessions and flag anomalous
+        or shared infrastructure.
+      implementation: technology
+      effectiveness: high
+    - id: FR-IMP-008-C3
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-IMP-009
+    name: Spike in digital wallet provisioning on one customer card
+    description: Attacker provisions the card to multiple wallets after obtaining one-time codes.
+    category: product_channel
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - wallet_provisioning
+    false_positive_notes: Multiple devices owned by customer.
+    controls:
+    - id: FR-IMP-009-C1
+      name: Strong authentication and step-up
+      type: preventive
+      description: Requires phishing-resistant authentication for logins and sensitive changes, with step-up
+        on risk.
+      implementation: technology
+      effectiveness: high
+    - id: FR-IMP-009-C2
+      name: Device and network intelligence
+      type: detective
+      description: Fingerprints devices, IPs and emulators to link applications or sessions and flag anomalous
+        or shared infrastructure.
+      implementation: technology
+      effectiveness: high
+    - id: FR-IMP-009-C3
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules on count, value, geography and timing alert analysts to bursts or structured
+        activity.
+      implementation: rule
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)

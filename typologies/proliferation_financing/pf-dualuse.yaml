@@ -1,0 +1,227 @@
+typology:
+  id: PF-DUALUSE
+  name: Dual-Use Goods Procurement via Front Companies
+  domain: proliferation_financing
+  description: Proliferation networks seek controlled or dual-use items through front companies, brokers
+    and intermediaries that disguise the true end user. Financial institutions mainly see this through
+    payments and trade documents, so detection depends on matching customer profile, goods and destination.
+  sectors:
+  - banking
+  - trade_finance
+  - corporate_services
+  sources:
+  - FATF, Guidance on Counter Proliferation Financing (2018)
+  - FATF, Guidance on Proliferation Financing Risk Assessment and Mitigation (2021)
+  - UN Security Council Resolution 1540 (2004)
+  indicators:
+  - id: PF-DUALUSE-001
+    name: Customer or counterparty business inconsistent with technical goods traded
+    description: Trading or logistics firm with no technical background transacts in items with possible
+      weapons or missile applications.
+    category: customer
+    severity: high
+    detection_type:
+    - kyc_review
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - registry_data
+    - trade_documents
+    false_positive_notes: Distributors do handle technical goods outside their main specialty.
+    controls:
+    - id: PF-DUALUSE-001-C1
+      name: Business rationale test
+      type: preventive
+      description: Assess whether customer capability and market fit the traded goods at onboarding and
+        review.
+      implementation: process
+      effectiveness: high
+    - id: PF-DUALUSE-001-C2
+      name: Goods-to-profile mismatch rule
+      type: detective
+      description: Alert when goods categories deviate from expected profile.
+      implementation: rule
+      effectiveness: medium
+    - id: PF-DUALUSE-001-C3
+      name: Control-list keyword screening
+      type: preventive
+      description: Screen descriptions against export-control list terms and HS codes.
+      implementation: technology
+      effectiveness: medium
+  - id: PF-DUALUSE-002
+    name: End user vague, missing or reluctant to provide details
+    description: Customer or counterparty is evasive about final destination, use or end-user certificate.
+    category: document
+    severity: high
+    detection_type:
+    - document_review
+    - customer_behaviour
+    data_sources:
+    - end_use_certificates
+    - orders
+    false_positive_notes: Commercial confidentiality can explain limited detail.
+    controls:
+    - id: PF-DUALUSE-002-C1
+      name: End-use certificate requirement
+      type: preventive
+      description: Require end-user statements for controlled goods; verify signatory and authenticity.
+      implementation: process
+      effectiveness: high
+    - id: PF-DUALUSE-002-C2
+      name: Escalation for refusal
+      type: governance
+      description: Escalate and decline where information is withheld.
+      implementation: policy
+      effectiveness: medium
+  - id: PF-DUALUSE-003
+    name: Delivery to freight forwarder, free-trade zone or address unrelated to the buyer
+    description: Goods shipped to a forwarder, bonded zone or residential address rather than the end
+      user.
+    category: geographic
+    severity: medium
+    detection_type:
+    - document_review
+    - transaction_monitoring
+    data_sources:
+    - shipping_documents
+    false_positive_notes: Forwarders are standard in trade.
+    controls:
+    - id: PF-DUALUSE-003-C1
+      name: Consignee and address analytics
+      type: detective
+      description: Analyse consignees for known risk addresses and zones.
+      implementation: rule
+      effectiveness: medium
+    - id: PF-DUALUSE-003-C2
+      name: Delivery rationale review
+      type: preventive
+      description: Seek commercial rationale for indirect delivery.
+      implementation: process
+      effectiveness: medium
+  - id: PF-DUALUSE-004
+    name: Front company characteristics
+    description: Recently formed company with minimal premises or staff, shared address or officers with
+      other trading firms, and large-value technical trades.
+    category: ownership_structure
+    severity: medium
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - registry_data
+    - corporate_filings
+    false_positive_notes: Start-ups and virtual offices are legitimate.
+    controls:
+    - id: PF-DUALUSE-004-C1
+      name: Entity link analysis
+      type: detective
+      description: Network analysis of shared officers, addresses and phone numbers.
+      implementation: technology
+      effectiveness: medium
+    - id: PF-DUALUSE-004-C2
+      name: Enhanced onboarding for technical trading
+      type: preventive
+      description: Increase evidence requirements for new traders in controlled goods.
+      implementation: process
+      effectiveness: medium
+  - id: PF-DUALUSE-005
+    name: Payments from third parties unrelated to the trade
+    description: Invoices are settled by firms that are not named in trade documents, often from high-risk
+      or diversion-prone jurisdictions.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - document_review
+    data_sources:
+    - payment_messages
+    - invoices
+    false_positive_notes: Treasury centres and group payment arrangements are common.
+    controls:
+    - id: PF-DUALUSE-005-C1
+      name: Third-party payment review
+      type: preventive
+      description: Challenge unrelated payers and request linkage evidence.
+      implementation: process
+      effectiveness: medium
+    - id: PF-DUALUSE-005-C2
+      name: Payer-payee consistency rule
+      type: detective
+      description: Compare payer identity to contracting parties.
+      implementation: rule
+      effectiveness: medium
+  - id: PF-DUALUSE-006
+    name: Price or specification not in line with commercial norms
+    description: Equipment priced far above or below market, or specifications altered to fall below control
+      thresholds.
+    category: document
+    severity: medium
+    detection_type:
+    - document_review
+    - investigator_judgement
+    data_sources:
+    - invoices
+    - technical_specifications
+    false_positive_notes: Prices vary with customisation and volume.
+    controls:
+    - id: PF-DUALUSE-006-C1
+      name: Technical review support
+      type: detective
+      description: Access subject-matter advice for specialised goods.
+      implementation: process
+      effectiveness: medium
+    - id: PF-DUALUSE-006-C2
+      name: Price benchmarking
+      type: detective
+      description: Benchmark where public pricing is available.
+      implementation: technology
+      effectiveness: low
+  - id: PF-DUALUSE-007
+    name: Orders for items matching procurement watch lists or inquiries
+    description: Goods, parties or addresses match published alerts by export-control or enforcement authorities.
+    category: typology_specific
+    severity: high
+    detection_type:
+    - screening
+    - external_intel
+    data_sources:
+    - watchlists
+    - government_alerts
+    false_positive_notes: List data may be dated or generic.
+    controls:
+    - id: PF-DUALUSE-007-C1
+      name: Procurement watch list integration
+      type: preventive
+      description: Integrate government alert lists into screening.
+      implementation: technology
+      effectiveness: high
+    - id: PF-DUALUSE-007-C2
+      name: Prompt reporting protocol
+      type: governance
+      description: Set timelines for escalation and reporting.
+      implementation: policy
+      effectiveness: high
+  - id: PF-DUALUSE-008
+    name: Use of multiple intermediaries or repeated changes of consignee
+    description: Shipments are re-routed or re-invoiced through successive parties.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - document_review
+    - investigator_judgement
+    data_sources:
+    - shipping_documents
+    false_positive_notes: Resale and drop-shipping are common.
+    controls:
+    - id: PF-DUALUSE-008-C1
+      name: Chain-of-transaction mapping
+      type: detective
+      description: Map parties across order, shipping and payment.
+      implementation: process
+      effectiveness: medium
+    - id: PF-DUALUSE-008-C2
+      name: Amendment monitoring
+      type: detective
+      description: Alert on late changes to consignee or destination.
+      implementation: rule
+      effectiveness: medium

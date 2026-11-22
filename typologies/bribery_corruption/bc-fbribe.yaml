@@ -1,0 +1,243 @@
+typology:
+  id: BC-FBRIBE
+  name: Bribery of Foreign Public Officials
+  domain: bribery_corruption
+  description: Payments or benefits offered to foreign public officials to obtain or retain business or
+    an improper advantage, typically disguised as consultancy, marketing, or commission payments routed
+    through third parties or offshore entities. Financial institutions see the flows as unusual payments
+    to or from intermediaries, officials' relatives, or shell companies.
+  sectors:
+  - banking
+  - corporate_services
+  - payments
+  sources:
+  - FATF, Specific Risk Factors in Laundering the Proceeds of Corruption (2012)
+  - OECD, Convention on Combating Bribery of Foreign Public Officials in International Business Transactions
+    and related guidance
+  - OECD, UNODC and World Bank, Anti-Corruption Ethics and Compliance Handbook for Business (2013)
+  - Wolfsberg Group, Anti-Bribery and Corruption Compliance Programme Guidance (2017)
+  indicators:
+  - id: BC-FBRIBE-001
+    name: Success fee paid to consultant in a high-corruption market
+    description: Large success-based or commission payments to a consultant or agent tied to winning a
+      contract with a state body in a high-corruption-risk jurisdiction.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - payment_records
+    - contract_files
+    - corruption_indices
+    false_positive_notes: Genuine commercial agents are commonly paid success fees; rates in some sectors
+      are legitimately high.
+    controls:
+    - id: BC-FBRIBE-001-C1
+      name: Commission benchmarking
+      type: detective
+      description: Compare agent fees against sector norms and flag payments above a calibrated percentage
+        of contract value.
+      implementation: rule
+      effectiveness: medium
+    - id: BC-FBRIBE-001-C2
+      name: Agent payment pre-approval
+      type: preventive
+      description: Require documented business justification and compliance sign-off before payments to
+        agents in high-risk markets.
+      implementation: process
+      effectiveness: high
+  - id: BC-FBRIBE-002
+    name: Payment to account in third country unrelated to services
+    description: Intermediary asks for payment to a bank account in a jurisdiction where neither the service
+      nor the intermediary operates.
+    category: geographic
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - document_review
+    data_sources:
+    - payment_instructions
+    - invoices
+    false_positive_notes: Treasury centralisation or tax-driven structures can place accounts in other
+      countries.
+    controls:
+    - id: BC-FBRIBE-002-C1
+      name: Beneficiary-jurisdiction mismatch rule
+      type: detective
+      description: Alert when beneficiary account country differs from service delivery and contracting
+        country.
+      implementation: rule
+      effectiveness: medium
+    - id: BC-FBRIBE-002-C2
+      name: Payment redirection challenge
+      type: preventive
+      description: Require independent verification and written rationale before paying to a changed or
+        third-country account.
+      implementation: process
+      effectiveness: high
+  - id: BC-FBRIBE-003
+    name: Intermediary shell with no operating footprint
+    description: Consultant is a recently formed company with no website, staff, or track record yet receives
+      large fees from a firm bidding for government work.
+    category: ownership_structure
+    severity: high
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - company_registry
+    - kyc_files
+    - open_source
+    false_positive_notes: Start-ups and sole-trader specialists may have a limited online presence.
+    controls:
+    - id: BC-FBRIBE-003-C1
+      name: Third-party due diligence
+      type: preventive
+      description: Perform risk-based due diligence on intermediaries covering ownership, experience,
+        references and public-official links.
+      implementation: process
+      effectiveness: high
+    - id: BC-FBRIBE-003-C2
+      name: Beneficial ownership verification
+      type: preventive
+      description: Identify and verify ultimate owners and check them against PEP and sanctions lists.
+      implementation: process
+      effectiveness: high
+  - id: BC-FBRIBE-004
+    name: Intermediary linked to a public official or relative
+    description: Agent or its owners are relatives, associates or former colleagues of an official with
+      influence over the relevant decision.
+    category: counterparty
+    severity: high
+    detection_type:
+    - screening
+    - kyc_review
+    data_sources:
+    - pep_lists
+    - adverse_media
+    - kyc_files
+    false_positive_notes: Small markets mean many people have family ties to government; links alone are
+      not wrongdoing.
+    controls:
+    - id: BC-FBRIBE-004-C1
+      name: PEP and associate screening
+      type: preventive
+      description: Screen owners, directors and known associates of intermediaries against PEP data, including
+        family and close associates.
+      implementation: technology
+      effectiveness: high
+    - id: BC-FBRIBE-004-C2
+      name: Conflict-of-interest declarations
+      type: preventive
+      description: Require intermediaries to disclose relationships with public officials and refresh
+        annually.
+      implementation: policy
+      effectiveness: medium
+  - id: BC-FBRIBE-005
+    name: Vague invoices for unspecified services
+    description: Invoices describe 'consulting', 'marketing support' or 'liaison services' without deliverables,
+      timesheets or reports.
+    category: document
+    severity: medium
+    detection_type:
+    - document_review
+    - investigator_judgement
+    data_sources:
+    - invoices
+    - contracts
+    false_positive_notes: Early-stage or informal advisers may keep thin paperwork.
+    controls:
+    - id: BC-FBRIBE-005-C1
+      name: Deliverables evidence check
+      type: detective
+      description: Sample and test invoices for supporting evidence of services actually performed.
+      implementation: process
+      effectiveness: medium
+    - id: BC-FBRIBE-005-C2
+      name: Invoice description analytics
+      type: detective
+      description: Use text analytics to flag generic service wording on high-value payments.
+      implementation: model
+      effectiveness: low
+  - id: BC-FBRIBE-006
+    name: Gifts, travel or hospitality for officials paid through third parties
+    description: Payments for luxury travel, tuition, medical treatment or property for officials or relatives,
+      booked via a vendor or card.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - expense_reports
+    - card_data
+    - payments
+    false_positive_notes: Official delegations legitimately receive modest hospitality and reasonable
+      travel for site visits.
+    controls:
+    - id: BC-FBRIBE-006-C1
+      name: Hospitality thresholds and logging
+      type: preventive
+      description: Set limits and a register for anything of value given to officials, with pre-approval.
+      implementation: policy
+      effectiveness: medium
+    - id: BC-FBRIBE-006-C2
+      name: Merchant category monitoring
+      type: detective
+      description: Flag spending at luxury, education and travel merchants linked to official-related
+        counterparties.
+      implementation: rule
+      effectiveness: low
+  - id: BC-FBRIBE-007
+    name: Payments timed around contract award
+    description: Cluster of payments to an intermediary just before or after a tender decision, licence
+      grant or regulatory approval.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - payment_records
+    - tender_calendars
+    false_positive_notes: Milestone payments often legitimately align with contract events.
+    controls:
+    - id: BC-FBRIBE-007-C1
+      name: Event-linked payment review
+      type: detective
+      description: Map payments to award timelines and review clusters around decision dates.
+      implementation: process
+      effectiveness: medium
+    - id: BC-FBRIBE-007-C2
+      name: Pre-payment hold for novel counterparties
+      type: preventive
+      description: Hold first payments above a threshold to new intermediaries for compliance review.
+      implementation: rule
+      effectiveness: medium
+  - id: BC-FBRIBE-008
+    name: Round-sum payments split below approval limits
+    description: Payments to an intermediary are repeatedly broken into amounts just under internal authorisation
+      thresholds.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payment_records
+    - approval_logs
+    false_positive_notes: Budget cycles and instalment schedules can create similar patterns.
+    controls:
+    - id: BC-FBRIBE-008-C1
+      name: Threshold-avoidance detection
+      type: detective
+      description: Detect multiple same-beneficiary payments just below approval limits within rolling
+        windows.
+      implementation: rule
+      effectiveness: medium
+    - id: BC-FBRIBE-008-C2
+      name: Anti-bribery training for finance teams
+      type: preventive
+      description: Train payment approvers to spot structuring and escalate concerns.
+      implementation: training
+      effectiveness: medium

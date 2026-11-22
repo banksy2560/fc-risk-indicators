@@ -1,0 +1,329 @@
+typology:
+  id: FR-IDT
+  name: Identity Theft and Synthetic Identity
+  domain: fraud
+  description: Offenders use stolen personal data or blend real and fabricated data to open accounts and
+    credit. Synthetic identities are nurtured over time before large drawdowns, making them hard to link
+    to a real victim.
+  sectors:
+  - banking
+  - payments
+  - fintech
+  sources:
+  - FATF, Guidance on Digital Identity (2020)
+  - UK Finance, Annual Fraud Report (published annually)
+  - FinCEN, advisories on identity-related fraud (general)
+  indicators:
+  - id: FR-IDT-001
+    name: Application data inconsistent across sources
+    description: Name, address, date of birth or SSN/national ID disagree across bureaux and documents.
+    category: document
+    severity: high
+    detection_type:
+    - kyc_review
+    - document_review
+    data_sources:
+    - application_data
+    - bureau_data
+    false_positive_notes: Data entry errors and recent moves.
+    controls:
+    - id: FR-IDT-001-C1
+      name: Document and biometric identity verification
+      type: preventive
+      description: Verifies identity documents and liveness at onboarding or high-risk events, with checks
+        against authoritative data sources.
+      implementation: technology
+      effectiveness: high
+    - id: FR-IDT-001-C2
+      name: Entity resolution and link analysis
+      type: detective
+      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
+        identities.
+      implementation: model
+      effectiveness: high
+    - id: FR-IDT-001-C3
+      name: Income, affordability and bureau verification
+      type: preventive
+      description: Verifies stated income, employment and obligations independently and cross-checks bureau
+        and application data.
+      implementation: process
+      effectiveness: high
+    references:
+    - FATF, Guidance on Digital Identity (2020)
+  - id: FR-IDT-002
+    name: Thin or recently created credit file with high requested limits
+    description: 'Synthetic: little history yet applications seek large lines or multiple facilities.'
+    category: customer
+    severity: high
+    detection_type:
+    - kyc_review
+    data_sources:
+    - bureau_data
+    false_positive_notes: Young adults or new arrivals.
+    controls:
+    - id: FR-IDT-002-C1
+      name: Income, affordability and bureau verification
+      type: preventive
+      description: Verifies stated income, employment and obligations independently and cross-checks bureau
+        and application data.
+      implementation: process
+      effectiveness: high
+    - id: FR-IDT-002-C2
+      name: Entity resolution and link analysis
+      type: detective
+      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
+        identities.
+      implementation: model
+      effectiveness: high
+    - id: FR-IDT-002-C3
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    references:
+    - FATF, Guidance on Digital Identity (2020)
+  - id: FR-IDT-003
+    name: Same device or contact data across many applicants
+    description: Shared phone, email or device fingerprint appears across applications with different
+      identities.
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    - transaction_monitoring
+    data_sources:
+    - device_data
+    - application_data
+    false_positive_notes: Shared family devices.
+    controls:
+    - id: FR-IDT-003-C1
+      name: Device and network intelligence
+      type: detective
+      description: Fingerprints devices, IPs and emulators to link applications or sessions and flag anomalous
+        or shared infrastructure.
+      implementation: technology
+      effectiveness: high
+    - id: FR-IDT-003-C2
+      name: Entity resolution and link analysis
+      type: detective
+      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
+        identities.
+      implementation: model
+      effectiveness: high
+    - id: FR-IDT-003-C3
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    references:
+    - FATF, Guidance on Digital Identity (2020)
+  - id: FR-IDT-004
+    name: Identity document shows tampering or deepfake artefacts
+    description: Document or selfie fails forensic checks, shows reuse or injection attack signs.
+    category: document
+    severity: high
+    detection_type:
+    - document_review
+    data_sources:
+    - id_images
+    false_positive_notes: Poor image quality.
+    controls:
+    - id: FR-IDT-004-C1
+      name: Document and biometric identity verification
+      type: preventive
+      description: Verifies identity documents and liveness at onboarding or high-risk events, with checks
+        against authoritative data sources.
+      implementation: technology
+      effectiveness: high
+    - id: FR-IDT-004-C2
+      name: Document forensics and source verification
+      type: detective
+      description: Analyses supporting documents for tampering, template reuse and metadata anomalies,
+        and confirms with the issuer.
+      implementation: technology
+      effectiveness: medium
+    - id: FR-IDT-004-C3
+      name: Device and network intelligence
+      type: detective
+      description: Fingerprints devices, IPs and emulators to link applications or sessions and flag anomalous
+        or shared infrastructure.
+      implementation: technology
+      effectiveness: high
+    references:
+    - FATF, Guidance on Digital Identity (2020)
+  - id: FR-IDT-005
+    name: Address is mail-drop, virtual or shared by many applicants
+    description: Multiple unrelated applicants share an address with no occupancy history.
+    category: geographic
+    severity: medium
+    detection_type:
+    - kyc_review
+    data_sources:
+    - address_data
+    false_positive_notes: Student halls, care homes.
+    controls:
+    - id: FR-IDT-005-C1
+      name: Entity resolution and link analysis
+      type: detective
+      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
+        identities.
+      implementation: model
+      effectiveness: high
+    - id: FR-IDT-005-C2
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    - id: FR-IDT-005-C3
+      name: Income, affordability and bureau verification
+      type: preventive
+      description: Verifies stated income, employment and obligations independently and cross-checks bureau
+        and application data.
+      implementation: process
+      effectiveness: high
+    references:
+    - FATF, Guidance on Digital Identity (2020)
+  - id: FR-IDT-006
+    name: Authorised-user or piggyback tradeline abuse
+    description: 'Synthetic: new identity added as authorised user to build a credit score.'
+    category: product_channel
+    severity: medium
+    detection_type:
+    - kyc_review
+    data_sources:
+    - bureau_data
+    false_positive_notes: Family arrangements.
+    controls:
+    - id: FR-IDT-006-C1
+      name: Entity resolution and link analysis
+      type: detective
+      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
+        identities.
+      implementation: model
+      effectiveness: high
+    - id: FR-IDT-006-C2
+      name: Income, affordability and bureau verification
+      type: preventive
+      description: Verifies stated income, employment and obligations independently and cross-checks bureau
+        and application data.
+      implementation: process
+      effectiveness: high
+    - id: FR-IDT-006-C3
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    references:
+    - FATF, Guidance on Digital Identity (2020)
+  - id: FR-IDT-007
+    name: Victim reports unknown accounts or credit enquiries
+    description: 'Victim-side: customer discovers accounts opened in their name through alerts or reports.'
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    - external_intel
+    data_sources:
+    - customer_reports
+    - bureau_alerts
+    false_positive_notes: Forgotten own accounts.
+    controls:
+    - id: FR-IDT-007-C1
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    - id: FR-IDT-007-C2
+      name: Case management and fraud MI governance
+      type: governance
+      description: Outcomes, losses and false positives are tracked and fed back into rule tuning and
+        risk appetite.
+      implementation: process
+      effectiveness: medium
+    - id: FR-IDT-007-C3
+      name: Customer education and awareness
+      type: preventive
+      description: Targeted messaging helps customers recognise the scam script and know how to verify.
+      implementation: training
+      effectiveness: low
+    references:
+    - FATF, Guidance on Digital Identity (2020)
+  - id: FR-IDT-008
+    name: Bust-out of newly seasoned account
+    description: 'Perpetrator-side: sudden max utilisation and non-payment after months of good conduct.'
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - account_data
+    false_positive_notes: Genuine hardship.
+    controls:
+    - id: FR-IDT-008-C1
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules on count, value, geography and timing alert analysts to bursts or structured
+        activity.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-IDT-008-C2
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    - id: FR-IDT-008-C3
+      name: Entity resolution and link analysis
+      type: detective
+      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
+        identities.
+      implementation: model
+      effectiveness: high
+    references:
+    - FATF, Guidance on Digital Identity (2020)
+  - id: FR-IDT-009
+    name: Rapid account opening across multiple institutions
+    description: Identity is used for several products in a short window.
+    category: product_channel
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - external_intel
+    data_sources:
+    - bureau_enquiries
+    false_positive_notes: Rate shopping.
+    controls:
+    - id: FR-IDT-009-C1
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    - id: FR-IDT-009-C2
+      name: Document and biometric identity verification
+      type: preventive
+      description: Verifies identity documents and liveness at onboarding or high-risk events, with checks
+        against authoritative data sources.
+      implementation: technology
+      effectiveness: high
+    - id: FR-IDT-009-C3
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules on count, value, geography and timing alert analysts to bursts or structured
+        activity.
+      implementation: rule
+      effectiveness: medium
+    references:
+    - FATF, Guidance on Digital Identity (2020)

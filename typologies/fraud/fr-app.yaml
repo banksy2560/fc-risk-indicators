@@ -1,0 +1,383 @@
+typology:
+  id: FR-APP
+  name: Authorised Push Payment Scams
+  domain: fraud
+  description: Victims are deceived or coerced into authorising a payment to an account controlled by
+    a criminal, often under a false pretext such as a safe-account request, a fake invoice or an invented
+    purchase. Because the customer authorises the payment, controls rely on spotting behavioural change
+    and mule receiving accounts.
+  sectors:
+  - banking
+  - payments
+  - fintech
+  sources:
+  - UK Finance, Annual Fraud Report (published annually)
+  - Payment Systems Regulator (UK), APP scams reimbursement requirements and related publications (2023-2024)
+  - FATF, guidance on the laundering of proceeds from fraud (general)
+  indicators:
+  - id: FR-APP-001
+    name: Payment to new payee under apparent time pressure
+    description: 'Victim-side: a first payment of unusually high value to a newly created payee, made
+      quickly after a phone call or message and often outside normal patterns.'
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - customer_behaviour
+    data_sources:
+    - payment_data
+    - payee_history
+    false_positive_notes: Genuine house purchases, one-off large bills or planned gifts to new payees.
+    controls:
+    - id: FR-APP-001-C1
+      name: Confirmation of payee / name-matching
+      type: preventive
+      description: Checks the payee name against the destination account before release and warns on a
+        no-match or close-match, interrupting misdirected or spoofed payments.
+      implementation: technology
+      effectiveness: high
+    - id: FR-APP-001-C2
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-APP-001-C3
+      name: Hold or cooling-off on new high-value payees
+      type: preventive
+      description: Delays the first large payment to a new payee or newly changed details so that the
+        victim, or the bank, can verify before funds leave.
+      implementation: policy
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-APP-002
+    name: Customer on an active call while paying
+    description: 'Victim-side: session signals show the customer is on a live phone call, navigating hesitantly,
+      or following dictation during online banking.'
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    - transaction_monitoring
+    data_sources:
+    - session_telemetry
+    - device_data
+    false_positive_notes: Customers legitimately on hand-free calls with family or advisers.
+    controls:
+    - id: FR-APP-002-C1
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    - id: FR-APP-002-C2
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-APP-002-C3
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-APP-003
+    name: Evasive or scripted answers about payment purpose
+    description: 'Victim-side: when asked about the payment, the customer gives rehearsed, inconsistent
+      or irritated answers, or says they were told to mislead the bank.'
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    - investigator_judgement
+    data_sources:
+    - branch_interaction
+    - call_notes
+    false_positive_notes: Privacy-minded customers or those unsure of terminology.
+    controls:
+    - id: FR-APP-003-C1
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    - id: FR-APP-003-C2
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-APP-003-C3
+      name: Customer education and awareness
+      type: preventive
+      description: Targeted messaging helps customers recognise the scam script and know how to verify.
+      implementation: training
+      effectiveness: low
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-APP-004
+    name: Remote-access software present during banking session
+    description: 'Victim-side: remote desktop or screen-sharing tools detected while the customer logs
+      in or pays.'
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    - transaction_monitoring
+    data_sources:
+    - session_telemetry
+    - device_data
+    false_positive_notes: IT support or family helping a customer with consent.
+    controls:
+    - id: FR-APP-004-C1
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    - id: FR-APP-004-C2
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-APP-004-C3
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-APP-005
+    name: Sudden liquidation of savings or investments to fund payments
+    description: 'Victim-side: movement of long-held savings, fixed deposits or investments into the current
+      account followed by outbound transfers.'
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - account_history
+    - payment_data
+    false_positive_notes: Home deposits, life events or planned purchases.
+    controls:
+    - id: FR-APP-005-C1
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules on count, value, geography and timing alert analysts to bursts or structured
+        activity.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-APP-005-C2
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-APP-005-C3
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-APP-006
+    name: Beneficiary account name mismatch or no-match result
+    description: 'Victim-side: confirmation-of-payee check returns no match or close match and the customer
+      proceeds regardless.'
+    category: counterparty
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - customer_behaviour
+    data_sources:
+    - payee_check_results
+    - payment_data
+    false_positive_notes: Typos, trading names or joint accounts producing benign mismatches.
+    controls:
+    - id: FR-APP-006-C1
+      name: Confirmation of payee / name-matching
+      type: preventive
+      description: Checks the payee name against the destination account before release and warns on a
+        no-match or close-match, interrupting misdirected or spoofed payments.
+      implementation: technology
+      effectiveness: high
+    - id: FR-APP-006-C2
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-APP-006-C3
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-APP-007
+    name: Receiving account rapidly forwards incoming credits
+    description: 'Mule-side: funds credited by multiple unrelated individuals are moved out within minutes
+      or hours to other accounts, cash or crypto.'
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - account_data
+    - payment_data
+    false_positive_notes: Pass-through for legitimate marketplace sellers or agents.
+    controls:
+    - id: FR-APP-007-C1
+      name: Mule account detection model
+      type: detective
+      description: Detects inbound-funds-then-rapid-outflow and other mule patterns on receiving accounts,
+        enabling holds and exits.
+      implementation: model
+      effectiveness: high
+    - id: FR-APP-007-C2
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    - id: FR-APP-007-C3
+      name: Enhanced due diligence and periodic KYC review
+      type: detective
+      description: Targeted review of purpose, source of funds and expected activity when behaviour diverges
+        from the profile.
+      implementation: process
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-APP-008
+    name: Receiving account is new or recently dormant with many unrelated senders
+    description: 'Mule-side: a recently opened or reactivated account receives payments from many unrelated
+      people with narratives that do not fit the stated profile.'
+    category: customer
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - account_data
+    - kyc_profile
+    false_positive_notes: Fundraising, club accounts or small traders with genuine many-to-one inflows.
+    controls:
+    - id: FR-APP-008-C1
+      name: Mule account detection model
+      type: detective
+      description: Detects inbound-funds-then-rapid-outflow and other mule patterns on receiving accounts,
+        enabling holds and exits.
+      implementation: model
+      effectiveness: high
+    - id: FR-APP-008-C2
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    - id: FR-APP-008-C3
+      name: Document and biometric identity verification
+      type: preventive
+      description: Verifies identity documents and liveness at onboarding or high-risk events, with checks
+        against authoritative data sources.
+      implementation: technology
+      effectiveness: high
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-APP-009
+    name: Payment narrative or reference suggests safe-account or investment script
+    description: 'Victim-side: references such as ''safe account'', ''HMRC'', ''fees'' or crypto platform
+      names appear alongside atypical transfers.'
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payment_data
+    - narratives
+    false_positive_notes: Genuine references to tax or investment platforms.
+    controls:
+    - id: FR-APP-009-C1
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-APP-009-C2
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    - id: FR-APP-009-C3
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-APP-010
+    name: Multiple prior scam alerts or repeat victimisation
+    description: 'Victim-side: the customer previously reported or was warned of fraud and is again sending
+      payments to new payees.'
+    category: customer
+    severity: medium
+    detection_type:
+    - kyc_review
+    - customer_behaviour
+    data_sources:
+    - fraud_case_history
+    - customer_profile
+    false_positive_notes: Customers who have since become aware and are genuinely transacting.
+    controls:
+    - id: FR-APP-010-C1
+      name: Trusted-contact and vulnerable-customer process
+      type: preventive
+      description: Customers can nominate a trusted contact; flagged vulnerability triggers tailored handling
+        and permitted escalation.
+      implementation: process
+      effectiveness: medium
+    - id: FR-APP-010-C2
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-APP-010-C3
+      name: Case management and fraud MI governance
+      type: governance
+      description: Outcomes, losses and false positives are tracked and fed back into rule tuning and
+        risk appetite.
+      implementation: process
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)

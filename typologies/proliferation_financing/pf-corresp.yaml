@@ -1,0 +1,214 @@
+typology:
+  id: PF-CORRESP
+  name: Correspondent Banking and Joint Ventures in Proliferation Financing
+  domain: proliferation_financing
+  description: Proliferation-linked entities may reach the international financial system via correspondent
+    relationships, nested accounts or joint ventures that mask the involvement of restricted parties.
+    Respondent due diligence and payment-message review are the main tools for detecting this exposure.
+  sectors:
+  - banking
+  - payments
+  sources:
+  - FATF, Guidance on Counter Proliferation Financing (2018)
+  - Wolfsberg Group, Correspondent Banking Due Diligence Questionnaire (CBDDQ)
+  - FATF, Guidance on Correspondent Banking Services (2016)
+  indicators:
+  - id: PF-CORRESP-001
+    name: Respondent bank with presence or business in jurisdictions of proliferation concern
+    description: Respondent holds accounts or branches in higher-risk countries without strong controls.
+    category: customer
+    severity: high
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - cbddq
+    - regulatory_reports
+    false_positive_notes: Global banks operate in many markets.
+    controls:
+    - id: PF-CORRESP-001-C1
+      name: Respondent risk assessment
+      type: preventive
+      description: Assess jurisdiction, ownership and controls at onboarding and review.
+      implementation: process
+      effectiveness: high
+    - id: PF-CORRESP-001-C2
+      name: Periodic respondent review
+      type: detective
+      description: Review respondent activity and changes.
+      implementation: process
+      effectiveness: medium
+    - id: PF-CORRESP-001-C3
+      name: Exit criteria
+      type: governance
+      description: Define exit triggers for inadequate controls.
+      implementation: policy
+      effectiveness: medium
+  - id: PF-CORRESP-002
+    name: Payments that include references to designated or restricted entities
+    description: Payment messages show names, addresses or vessels linked to restricted lists.
+    category: transaction
+    severity: high
+    detection_type:
+    - screening
+    - transaction_monitoring
+    data_sources:
+    - swift_messages
+    - sanctions_lists
+    false_positive_notes: Partial name matches generate false hits.
+    controls:
+    - id: PF-CORRESP-002-C1
+      name: Payment screening with tuned fuzzy logic
+      type: preventive
+      description: Screen messages and free text with tuned matching.
+      implementation: rule
+      effectiveness: high
+    - id: PF-CORRESP-002-C2
+      name: Alert adjudication standards
+      type: governance
+      description: Document decisions on potential matches.
+      implementation: policy
+      effectiveness: medium
+  - id: PF-CORRESP-003
+    name: Nested relationships with unidentified downstream banks
+    description: Respondent processes payments for other banks without disclosure.
+    category: typology_specific
+    severity: high
+    detection_type:
+    - kyc_review
+    - transaction_monitoring
+    data_sources:
+    - respondent_data
+    false_positive_notes: Some nested arrangements are legitimate and permitted.
+    controls:
+    - id: PF-CORRESP-003-C1
+      name: Nested activity disclosure requirement
+      type: preventive
+      description: Require respondent to disclose and control nested activity.
+      implementation: process
+      effectiveness: high
+    - id: PF-CORRESP-003-C2
+      name: Nested pattern analytics
+      type: detective
+      description: Detect payments suggesting nested usage.
+      implementation: model
+      effectiveness: medium
+  - id: PF-CORRESP-004
+    name: Joint venture with opaque ownership involving state-affiliated partner in higher-risk country
+    description: Joint venture entity has partners or beneficial owners that cannot be verified.
+    category: ownership_structure
+    severity: medium
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - ownership_documents
+    false_positive_notes: State partners are common in JV structures.
+    controls:
+    - id: PF-CORRESP-004-C1
+      name: Beneficial ownership verification
+      type: preventive
+      description: Verify owners to natural persons or state entity.
+      implementation: process
+      effectiveness: medium
+    - id: PF-CORRESP-004-C2
+      name: Control and funding flow analysis
+      type: detective
+      description: Map funding sources and control.
+      implementation: process
+      effectiveness: medium
+  - id: PF-CORRESP-005
+    name: Payments with missing, truncated or inconsistent ordering or beneficiary information
+    description: Messages omit key details or show inconsistent data.
+    category: document
+    severity: medium
+    detection_type:
+    - document_review
+    - transaction_monitoring
+    data_sources:
+    - payment_messages
+    false_positive_notes: Technical limitations cause some gaps.
+    controls:
+    - id: PF-CORRESP-005-C1
+      name: Message quality controls
+      type: preventive
+      description: Reject or query incomplete payments.
+      implementation: rule
+      effectiveness: medium
+    - id: PF-CORRESP-005-C2
+      name: Respondent feedback
+      type: corrective
+      description: Notify respondents of repeated deficiencies.
+      implementation: process
+      effectiveness: low
+  - id: PF-CORRESP-006
+    name: Trade-related payments through correspondent for goods of proliferation concern
+    description: Payments relate to goods on control lists or to parties on alerts.
+    category: typology_specific
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - screening
+    data_sources:
+    - payment_references
+    false_positive_notes: Generic words can create false hits.
+    controls:
+    - id: PF-CORRESP-006-C1
+      name: Goods keyword screening in payments
+      type: preventive
+      description: Screen references for relevant goods.
+      implementation: technology
+      effectiveness: medium
+    - id: PF-CORRESP-006-C2
+      name: Trade desk escalation
+      type: governance
+      description: Route alerts to trade finance specialists.
+      implementation: policy
+      effectiveness: medium
+  - id: PF-CORRESP-007
+    name: Sudden increase in volume through a respondent or dormant account reactivation
+    description: Significant, unexplained increase in activity from a respondent.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - account_activity
+    false_positive_notes: Business growth or market shifts.
+    controls:
+    - id: PF-CORRESP-007-C1
+      name: Respondent volume baselines
+      type: detective
+      description: Compare against expected activity.
+      implementation: model
+      effectiveness: medium
+    - id: PF-CORRESP-007-C2
+      name: Relationship manager enquiry
+      type: preventive
+      description: Seek explanation.
+      implementation: process
+      effectiveness: medium
+  - id: PF-CORRESP-008
+    name: Respondent processing for front companies of concern in prior reports
+    description: Respondent's customers appear in prior internal or external reports.
+    category: counterparty
+    severity: medium
+    detection_type:
+    - external_intel
+    - investigator_judgement
+    data_sources:
+    - internal_sar_history
+    false_positive_notes: Coincidental overlap.
+    controls:
+    - id: PF-CORRESP-008-C1
+      name: Cross-referencing prior cases
+      type: detective
+      description: Compare payments with prior case entities.
+      implementation: technology
+      effectiveness: medium
+    - id: PF-CORRESP-008-C2
+      name: Peer information sharing
+      type: governance
+      description: Share anonymised typologies where permitted.
+      implementation: policy
+      effectiveness: medium

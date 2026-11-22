@@ -1,0 +1,266 @@
+typology:
+  id: XC-GEOGRAPHY
+  name: Geographic Risk
+  domain: cross_cutting
+  description: Inherent-risk factors linked to the countries and regions connected to a customer, product
+    or transaction. Covers FATF-listed jurisdictions, secrecy havens, conflict areas, high-corruption
+    environments and trade-diversion hubs.
+  sectors:
+  - all
+  sources:
+  - FATF, Guidance for a Risk-Based Approach (sector-specific guidance series, general principles)
+  - FATF Recommendations, Recommendation 1 and Interpretive Note (assessing risks and applying a risk-based
+    approach)
+  - Wolfsberg Group, Guidance on a Risk Based Approach for Managing Money Laundering Risks
+  indicators:
+  - id: XC-GEOGRAPHY-001
+    name: Nexus to FATF black-listed jurisdiction
+    description: Customer, owner or counterparty is connected to a jurisdiction subject to a FATF call
+      for action.
+    category: geographic
+    severity: high
+    detection_type:
+    - screening
+    - transaction_monitoring
+    data_sources:
+    - fatf_lists
+    - country_data
+    false_positive_notes: Humanitarian, diaspora and long-standing commercial links exist.
+    controls:
+    - id: XC-GEOGRAPHY-001-C1
+      name: Automated country-list screening
+      type: preventive
+      description: Screen customer addresses, nationality and payment countries against current list updates.
+      implementation: technology
+      effectiveness: high
+    - id: XC-GEOGRAPHY-001-C2
+      name: Mandatory EDD and approval
+      type: preventive
+      description: Apply enhanced measures and senior approval to any nexus.
+      implementation: process
+      effectiveness: high
+  - id: XC-GEOGRAPHY-002
+    name: Nexus to FATF grey-listed jurisdiction
+    description: Connection to a jurisdiction under increased monitoring for strategic deficiencies.
+    category: geographic
+    severity: medium
+    detection_type:
+    - screening
+    - transaction_monitoring
+    data_sources:
+    - fatf_lists
+    - country_data
+    false_positive_notes: Listed jurisdictions change and many controls are improving.
+    controls:
+    - id: XC-GEOGRAPHY-002-C1
+      name: Country-risk table with scheduled updates
+      type: governance
+      description: Update the country risk table promptly after each plenary.
+      implementation: process
+      effectiveness: medium
+    - id: XC-GEOGRAPHY-002-C2
+      name: Risk-based EDD triggers
+      type: preventive
+      description: Trigger review for flows exceeding thresholds to listed countries.
+      implementation: rule
+      effectiveness: medium
+  - id: XC-GEOGRAPHY-003
+    name: Secrecy or low-transparency jurisdiction
+    description: Entities, accounts or assets booked in a jurisdiction offering strong secrecy or limited
+      ownership registers.
+    category: geographic
+    severity: high
+    detection_type:
+    - kyc_review
+    - transaction_monitoring
+    data_sources:
+    - country_data
+    - corporate_registry
+    false_positive_notes: Established financial centres host legitimate funds and holdings.
+    controls:
+    - id: XC-GEOGRAPHY-003-C1
+      name: Transparency-based country scoring
+      type: governance
+      description: Use tax and ownership transparency assessments within country scoring.
+      implementation: model
+      effectiveness: medium
+    - id: XC-GEOGRAPHY-003-C2
+      name: Rationale documentation for booking location
+      type: preventive
+      description: Require commercial reasons for using secrecy jurisdictions.
+      implementation: process
+      effectiveness: medium
+  - id: XC-GEOGRAPHY-004
+    name: Conflict zone or fragile state exposure
+    description: Activity involves regions with armed conflict, weak governance or active terrorist groups.
+    category: geographic
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - screening
+    data_sources:
+    - country_data
+    - payment_messages
+    false_positive_notes: Aid agencies, journalists and remittance senders operate there lawfully.
+    controls:
+    - id: XC-GEOGRAPHY-004-C1
+      name: Conflict-area geofencing
+      type: detective
+      description: Alert on payments to or from defined conflict regions and bordering areas.
+      implementation: rule
+      effectiveness: high
+    - id: XC-GEOGRAPHY-004-C2
+      name: NPO and humanitarian due diligence
+      type: preventive
+      description: Apply tailored diligence to charities operating in these regions.
+      implementation: process
+      effectiveness: medium
+  - id: XC-GEOGRAPHY-005
+    name: High-corruption jurisdiction nexus
+    description: Source of wealth or funds linked to jurisdictions with high perceived corruption.
+    category: geographic
+    severity: medium
+    detection_type:
+    - kyc_review
+    - transaction_monitoring
+    data_sources:
+    - country_data
+    - corruption_indices
+    false_positive_notes: Perception indices are broad and many clients are legitimate.
+    controls:
+    - id: XC-GEOGRAPHY-005-C1
+      name: Corruption index in country risk model
+      type: preventive
+      description: Incorporate published corruption perception data into scoring.
+      implementation: model
+      effectiveness: medium
+    - id: XC-GEOGRAPHY-005-C2
+      name: Source-of-wealth enhanced checks
+      type: preventive
+      description: Corroborate wealth from high-corruption regions.
+      implementation: process
+      effectiveness: high
+  - id: XC-GEOGRAPHY-006
+    name: Trade-diversion or transshipment hub
+    description: Flows or goods route through hubs commonly used to reroute goods or avoid restrictions.
+    category: geographic
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - trade_documents
+    - payment_messages
+    false_positive_notes: Hubs handle huge volumes of legitimate trade.
+    controls:
+    - id: XC-GEOGRAPHY-006-C1
+      name: Transshipment route analysis
+      type: detective
+      description: Compare shipping routes with counterparties and goods.
+      implementation: technology
+      effectiveness: medium
+    - id: XC-GEOGRAPHY-006-C2
+      name: Export-control and diversion red-flag checklist
+      type: preventive
+      description: Apply a checklist for trade customers using hubs.
+      implementation: process
+      effectiveness: medium
+  - id: XC-GEOGRAPHY-007
+    name: Sanctioned country proximity
+    description: Customer or flows are located in or adjacent to comprehensively sanctioned areas.
+    category: geographic
+    severity: high
+    detection_type:
+    - screening
+    - transaction_monitoring
+    data_sources:
+    - sanctions_lists
+    - ip_data
+    false_positive_notes: Border communities lawfully trade.
+    controls:
+    - id: XC-GEOGRAPHY-007-C1
+      name: Geolocation and IP screening
+      type: preventive
+      description: Block access from restricted regions using IP and device geolocation.
+      implementation: technology
+      effectiveness: medium
+    - id: XC-GEOGRAPHY-007-C2
+      name: Payment screening for geography keywords
+      type: detective
+      description: Screen messages for cities, ports and regions.
+      implementation: rule
+      effectiveness: high
+  - id: XC-GEOGRAPHY-008
+    name: Mismatch between customer location and activity geography
+    description: Transactions concentrate in countries with no link to the customer's residence, business
+      or stated purpose.
+    category: geographic
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - transaction_data
+    - kyc_profile
+    false_positive_notes: Travel, new suppliers and migration can explain changes.
+    controls:
+    - id: XC-GEOGRAPHY-008-C1
+      name: Expected-geography profile
+      type: preventive
+      description: Capture expected countries at onboarding.
+      implementation: process
+      effectiveness: medium
+    - id: XC-GEOGRAPHY-008-C2
+      name: Out-of-profile country alerts
+      type: detective
+      description: Alert on first-time and unusual countries.
+      implementation: rule
+      effectiveness: medium
+  - id: XC-GEOGRAPHY-009
+    name: Offshore financial centre use for non-resident clients
+    description: Funds booked or routed via offshore centres with minimal client ties.
+    category: geographic
+    severity: medium
+    detection_type:
+    - kyc_review
+    data_sources:
+    - country_data
+    - kyc_profile
+    false_positive_notes: Offshore centres serve legitimate wealth planning.
+    controls:
+    - id: XC-GEOGRAPHY-009-C1
+      name: Booking-centre risk tiering
+      type: governance
+      description: Tier booking centres and align due diligence.
+      implementation: policy
+      effectiveness: medium
+    - id: XC-GEOGRAPHY-009-C2
+      name: Tax-compliance assurance
+      type: preventive
+      description: Obtain tax residence declarations and self-certifications.
+      implementation: process
+      effectiveness: medium
+  - id: XC-GEOGRAPHY-010
+    name: Cross-border corridor with known abuse typologies
+    description: Payments to or from corridors identified in public typology reports as high abuse.
+    category: geographic
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - external_intel
+    data_sources:
+    - payment_messages
+    - typology_reports
+    false_positive_notes: Corridors also carry legitimate migrant remittances.
+    controls:
+    - id: XC-GEOGRAPHY-010-C1
+      name: Corridor risk scoring
+      type: preventive
+      description: Score corridors using intelligence and historic cases.
+      implementation: model
+      effectiveness: medium
+    - id: XC-GEOGRAPHY-010-C2
+      name: Corridor-specific monitoring scenarios
+      type: detective
+      description: Tune scenarios by corridor.
+      implementation: rule
+      effectiveness: medium

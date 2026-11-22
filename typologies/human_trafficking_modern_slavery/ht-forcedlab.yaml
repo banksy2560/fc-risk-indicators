@@ -1,0 +1,246 @@
+typology:
+  id: HT-FORCEDLAB
+  name: Forced Labour in Supply Chains and Employment
+  domain: human_trafficking_modern_slavery
+  description: Labour obtained through coercion, deception, debt bondage, wage withholding, document retention
+    or threats. Businesses and financial institutions encounter risks via labour intermediaries, suppliers
+    in high-risk sectors and unusual wage patterns. Controls combine supply-chain due diligence with worker-centred
+    escalation.
+  sectors:
+  - banking
+  - payments
+  - corporate_services
+  sources:
+  - 'ILO, Profits and Poverty: The Economics of Forced Labour (2014)'
+  - ILO, Indicators of Forced Labour (2012)
+  - OECD, Due Diligence Guidance for Responsible Business Conduct (2018)
+  - FATF and APG, Financial Flows from Human Trafficking (2018)
+  indicators:
+  - id: HT-FORCEDLAB-001
+    name: Recruitment fees charged to workers
+    description: Payments from workers to recruiters or employers for placement, visas or training, creating
+      debt.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - payment_records
+    - supplier_audits
+    false_positive_notes: Fees may be legitimately borne by employers in compliant models.
+    controls:
+    - id: HT-FORCEDLAB-001-C1
+      name: Employer-pays policy verification
+      type: preventive
+      description: Require suppliers to confirm no worker-paid fees and audit evidence.
+      implementation: process
+      effectiveness: high
+    - id: HT-FORCEDLAB-001-C2
+      name: Recruiter payment screening
+      type: detective
+      description: Flag worker-originated payments to recruiters.
+      implementation: rule
+      effectiveness: medium
+  - id: HT-FORCEDLAB-002
+    name: Wages paid to accounts controlled by employer or agent
+    description: Workers' pay lands in accounts accessed by employer, with cards held by employer or agent.
+    category: behavioural
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - payroll_data
+    - card_data
+    false_positive_notes: Some employers manage accounts for migrant workers with consent.
+    controls:
+    - id: HT-FORCEDLAB-002-C1
+      name: Account ownership checks
+      type: detective
+      description: Verify workers hold control of their accounts.
+      implementation: process
+      effectiveness: high
+    - id: HT-FORCEDLAB-002-C2
+      name: Worker-voice escalation channel
+      type: governance
+      description: Provide confidential grievance channels for workers.
+      implementation: process
+      effectiveness: medium
+  - id: HT-FORCEDLAB-003
+    name: Unusually low wages, deductions or accommodation charges
+    description: Pay after deductions is far below minimum wage standards; heavy deductions for housing,
+      food and transport.
+    category: document
+    severity: high
+    detection_type:
+    - document_review
+    - investigator_judgement
+    data_sources:
+    - payslips
+    - audit_reports
+    false_positive_notes: Statutory deductions and employer housing are lawful.
+    controls:
+    - id: HT-FORCEDLAB-003-C1
+      name: Supplier wage audits
+      type: detective
+      description: Verify wages and deductions through audits including worker interviews.
+      implementation: process
+      effectiveness: high
+    - id: HT-FORCEDLAB-003-C2
+      name: Contractual wage standards
+      type: preventive
+      description: Include minimum wage and deduction limits in supplier contracts.
+      implementation: policy
+      effectiveness: medium
+  - id: HT-FORCEDLAB-004
+    name: Suppliers in sectors or regions with high forced-labour risk
+    description: Sourcing from sectors such as agriculture, fishing, garments or mining in regions flagged
+      by credible reports.
+    category: geographic
+    severity: medium
+    detection_type:
+    - external_intel
+    - kyc_review
+    data_sources:
+    - supplier_lists
+    - risk_indexes
+    false_positive_notes: Most suppliers in these areas comply.
+    controls:
+    - id: HT-FORCEDLAB-004-C1
+      name: Supply-chain risk mapping
+      type: preventive
+      description: Map suppliers and tiers against risk indexes.
+      implementation: process
+      effectiveness: medium
+    - id: HT-FORCEDLAB-004-C2
+      name: Traceability and audit programme
+      type: detective
+      description: Trace key inputs to origin and audit higher-risk tiers.
+      implementation: process
+      effectiveness: medium
+  - id: HT-FORCEDLAB-005
+    name: Labour provider with no registration or opaque ownership
+    description: Unlicensed gangmaster supplying workers, with nominee owners and frequent name changes.
+    category: ownership_structure
+    severity: high
+    detection_type:
+    - kyc_review
+    - screening
+    data_sources:
+    - registry_data
+    - licence_data
+    false_positive_notes: Small agencies may be informal.
+    controls:
+    - id: HT-FORCEDLAB-005-C1
+      name: Labour provider licensing checks
+      type: preventive
+      description: Verify licences and registry status before contracting.
+      implementation: process
+      effectiveness: high
+    - id: HT-FORCEDLAB-005-C2
+      name: Beneficial ownership review
+      type: preventive
+      description: Identify owners and screen for adverse media.
+      implementation: process
+      effectiveness: medium
+  - id: HT-FORCEDLAB-006
+    name: Document retention or restricted movement reported
+    description: Audit or customer information indicates passports withheld, workers housed on site or
+      unable to leave.
+    category: behavioural
+    severity: high
+    detection_type:
+    - investigator_judgement
+    - external_intel
+    data_sources:
+    - audit_reports
+    - grievances
+    false_positive_notes: Employers may safeguard documents at workers' request in limited cases.
+    controls:
+    - id: HT-FORCEDLAB-006-C1
+      name: Remediation protocol
+      type: corrective
+      description: Require immediate remediation and support for affected workers.
+      implementation: process
+      effectiveness: high
+    - id: HT-FORCEDLAB-006-C2
+      name: Supplier suspension criteria
+      type: preventive
+      description: Set preventive conditions for suspension and reporting.
+      implementation: policy
+      effectiveness: medium
+  - id: HT-FORCEDLAB-007
+    name: Adverse media or import bans related to supplier
+    description: Credible allegations or customs detentions connected with forced labour.
+    category: counterparty
+    severity: high
+    detection_type:
+    - screening
+    - external_intel
+    data_sources:
+    - adverse_media
+    - customs_notices
+    false_positive_notes: Allegations may be contested.
+    controls:
+    - id: HT-FORCEDLAB-007-C1
+      name: Continuous supplier screening
+      type: detective
+      description: Screen suppliers against import bans and media.
+      implementation: technology
+      effectiveness: medium
+    - id: HT-FORCEDLAB-007-C2
+      name: Enhanced supplier engagement
+      type: corrective
+      description: Engage suppliers on corrective action plans.
+      implementation: process
+      effectiveness: medium
+  - id: HT-FORCEDLAB-008
+    name: Payment of workers in cash with no payroll records
+    description: Large cash payroll withdrawals with no tax or social contributions.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - document_review
+    data_sources:
+    - payment_records
+    - tax_filings
+    false_positive_notes: Informal economy may lawfully include cash wages.
+    controls:
+    - id: HT-FORCEDLAB-008-C1
+      name: Cash payroll rule
+      type: detective
+      description: Flag cash payroll patterns in at-risk sectors.
+      implementation: rule
+      effectiveness: medium
+    - id: HT-FORCEDLAB-008-C2
+      name: Tax and payroll reconciliation
+      type: detective
+      description: Reconcile payroll to declared contributions.
+      implementation: process
+      effectiveness: medium
+  - id: HT-FORCEDLAB-009
+    name: Seasonal worker mass remittance to few beneficiaries
+    description: Many workers all send funds to one recipient in home country.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - remittance_data
+    false_positive_notes: Workers from one village may send to a single trusted agent.
+    controls:
+    - id: HT-FORCEDLAB-009-C1
+      name: Beneficiary concentration analytics
+      type: detective
+      description: Detect many-to-one worker remittances.
+      implementation: model
+      effectiveness: medium
+    - id: HT-FORCEDLAB-009-C2
+      name: Corridor knowledge training
+      type: preventive
+      description: Train analysts on labour migration corridors.
+      implementation: training
+      effectiveness: low

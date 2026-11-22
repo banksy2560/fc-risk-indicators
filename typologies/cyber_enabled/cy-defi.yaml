@@ -1,0 +1,358 @@
+typology:
+  id: CY-DEFI
+  name: DeFi, Bridge and Cross-Chain Laundering
+  domain: cyber_enabled
+  description: Decentralised protocols, automated market makers and cross-chain bridges let value move
+    without a central intermediary performing customer checks. Criminals including hackers exploit these
+    to swap, pool and hop assets before reaching a regulated off-ramp. Obligated entities usually observe
+    this only at on- and off-ramps through exposure analysis and behaviour.
+  stage:
+  - layering
+  sectors:
+  - crypto
+  - fintech
+  sources:
+  - 'FATF, Virtual Assets: Red Flag Indicators of Money Laundering and Terrorist Financing (2020)'
+  - FATF, Updated Guidance for a Risk-Based Approach to Virtual Assets and Virtual Asset Service Providers
+    (2021)
+  - US Department of the Treasury, Illicit Finance Risk Assessment of Decentralized Finance (2023)
+  indicators:
+  - id: CY-DEFI-001
+    name: Inbound funds traced to exploited protocols or hacks
+    description: Deposits have provenance in a smart-contract exploit, bridge hack or theft attributed
+      by analytics providers.
+    category: typology_specific
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - external_intel
+    data_sources:
+    - blockchain_analytics
+    - threat_intel
+    false_positive_notes: Funds returned under a bounty or recovered legitimately.
+    controls:
+    - id: CY-DEFI-001-C1
+      name: Blockchain analytics and wallet attribution
+      type: detective
+      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
+        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
+      implementation: technology
+      effectiveness: high
+    - id: CY-DEFI-001-C2
+      name: External intelligence and consortium feeds
+      type: detective
+      description: Ingest law-enforcement, industry and commercial threat intelligence on indicators,
+        mule accounts and scam infrastructure.
+      implementation: technology
+      effectiveness: medium
+    - id: CY-DEFI-001-C3
+      name: Account restriction and fund holds
+      type: corrective
+      description: Ability to restrict, hold or recall funds rapidly pending review, with defined legal
+        and operational triggers.
+      implementation: process
+      effectiveness: medium
+  - id: CY-DEFI-002
+    name: Layered swaps through multiple DEX pools and bridges
+    description: On-chain history shows repeated swaps and bridge crossings with no yield or trading logic
+      before arrival at the platform.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - blockchain_analytics
+    false_positive_notes: Yield farmers and aggregators routing automatically.
+    controls:
+    - id: CY-DEFI-002-C1
+      name: Blockchain analytics and wallet attribution
+      type: detective
+      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
+        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
+      implementation: technology
+      effectiveness: high
+    - id: CY-DEFI-002-C2
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-DEFI-002-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+  - id: CY-DEFI-003
+    name: Use of freshly created wallets funded from a single source
+    description: Chain of new wallets each funded by the previous one before depositing to a regulated
+      service.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - blockchain_analytics
+    - wallet_addresses
+    false_positive_notes: Wallet hygiene and per-protocol wallets.
+    controls:
+    - id: CY-DEFI-003-C1
+      name: Blockchain analytics and wallet attribution
+      type: detective
+      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
+        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
+      implementation: technology
+      effectiveness: high
+    - id: CY-DEFI-003-C2
+      name: Graph and network analytics
+      type: detective
+      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
+        and fan-in/fan-out structures.
+      implementation: model
+      effectiveness: high
+    - id: CY-DEFI-003-C3
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+  - id: CY-DEFI-004
+    name: Interaction with sanctioned or high-risk smart contracts
+    description: History includes contracts, pools or relayers sanctioned or advised against by authorities.
+    category: typology_specific
+    severity: high
+    detection_type:
+    - screening
+    - external_intel
+    data_sources:
+    - sanctions_lists
+    - blockchain_analytics
+    false_positive_notes: Indirect exposure via shared liquidity.
+    controls:
+    - id: CY-DEFI-004-C1
+      name: Sanctions and watchlist screening including wallet addresses
+      type: preventive
+      description: Screen customers, counterparties and wallet addresses against sanctions lists and designated-address
+        data in real time.
+      implementation: technology
+      effectiveness: high
+    - id: CY-DEFI-004-C2
+      name: Blockchain analytics and wallet attribution
+      type: detective
+      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
+        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
+      implementation: technology
+      effectiveness: high
+    - id: CY-DEFI-004-C3
+      name: Account restriction and fund holds
+      type: corrective
+      description: Ability to restrict, hold or recall funds rapidly pending review, with defined legal
+        and operational triggers.
+      implementation: process
+      effectiveness: medium
+  - id: CY-DEFI-005
+    name: Rapid cash-out after cross-chain arrival
+    description: Assets arriving via bridge are sold into fiat or stablecoin and withdrawn within a short
+      window.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - ledger_data
+    - bridge_logs
+    false_positive_notes: Normal arbitrage.
+    controls:
+    - id: CY-DEFI-005-C1
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-DEFI-005-C2
+      name: Blockchain analytics and wallet attribution
+      type: detective
+      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
+        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
+      implementation: technology
+      effectiveness: high
+    - id: CY-DEFI-005-C3
+      name: Risk-based limits and cooling-off periods
+      type: preventive
+      description: Cap transaction size and frequency for new or higher-risk users and delay release of
+        funds for added review.
+      implementation: rule
+      effectiveness: medium
+  - id: CY-DEFI-006
+    name: Wrapped or low-liquidity token conversions at poor rates
+    description: Customer accepts clearly unfavourable swap prices or uses thin-liquidity tokens, suggesting
+      priority on obscuring origin.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - trade_history
+    - market_data
+    false_positive_notes: Illiquid-market inexperience.
+    controls:
+    - id: CY-DEFI-006-C1
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-DEFI-006-C2
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+    - id: CY-DEFI-006-C3
+      name: Typology-focused staff training
+      type: preventive
+      description: Training for front-line, onboarding and investigation staff on current red flags and
+        escalation routes.
+      implementation: training
+      effectiveness: low
+  - id: CY-DEFI-007
+    name: Counterparty is a non-compliant cross-chain service
+    description: Flows route through aggregators or bridges without KYC and with no governance accountability.
+    category: counterparty
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - external_intel
+    data_sources:
+    - blockchain_analytics
+    - service_attribution
+    false_positive_notes: Many such services are used by mainstream traders.
+    controls:
+    - id: CY-DEFI-007-C1
+      name: Counterparty provider due diligence
+      type: preventive
+      description: Assess licensing, controls and reputation of counterpart VASPs, PSPs and platforms
+        before enabling flows, and review periodically.
+      implementation: process
+      effectiveness: medium
+    - id: CY-DEFI-007-C2
+      name: Blockchain analytics and wallet attribution
+      type: detective
+      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
+        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
+      implementation: technology
+      effectiveness: high
+    - id: CY-DEFI-007-C3
+      name: Risk appetite and product risk assessment
+      type: governance
+      description: Documented appetite, product-level risk assessment and approval gate covering this
+        activity, reviewed on a set cadence.
+      implementation: policy
+      effectiveness: medium
+  - id: CY-DEFI-008
+    name: Use of privacy-preserving or zero-knowledge pools
+    description: Value passes through pools designed to hide linkage, immediately before or after platform
+      activity.
+    category: typology_specific
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - blockchain_analytics
+    false_positive_notes: Privacy-minded users.
+    controls:
+    - id: CY-DEFI-008-C1
+      name: Blockchain analytics and wallet attribution
+      type: detective
+      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
+        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
+      implementation: technology
+      effectiveness: high
+    - id: CY-DEFI-008-C2
+      name: Sanctions and watchlist screening including wallet addresses
+      type: preventive
+      description: Screen customers, counterparties and wallet addresses against sanctions lists and designated-address
+        data in real time.
+      implementation: technology
+      effectiveness: high
+    - id: CY-DEFI-008-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+  - id: CY-DEFI-009
+    name: Customer claims to be a DeFi developer or protocol team without evidence
+    description: Large treasury-type movements from a stated protocol with no verifiable entity, audits
+      or governance record.
+    category: customer
+    severity: medium
+    detection_type:
+    - kyc_review
+    data_sources:
+    - customer_profile
+    - corporate_records
+    false_positive_notes: Pseudonymous but legitimate teams.
+    controls:
+    - id: CY-DEFI-009-C1
+      name: Enhanced due diligence
+      type: preventive
+      description: Collect additional information on activity purpose, expected volumes and ownership
+        before approval or continued service, with senior sign-off.
+      implementation: process
+      effectiveness: medium
+    - id: CY-DEFI-009-C2
+      name: Source of funds and wealth verification
+      type: preventive
+      description: Obtain and corroborate evidence of where funds originate when activity exceeds thresholds
+        or profile.
+      implementation: process
+      effectiveness: medium
+    - id: CY-DEFI-009-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+  - id: CY-DEFI-010
+    name: Withdrawals to bridge contracts at odds with profile
+    description: Retail customers with no on-chain history send large sums directly to bridges or DeFi
+      contracts.
+    category: behavioural
+    severity: low
+    detection_type:
+    - transaction_monitoring
+    - customer_behaviour
+    data_sources:
+    - withdrawal_addresses
+    - customer_profile
+    false_positive_notes: Newly curious customers.
+    controls:
+    - id: CY-DEFI-010-C1
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-DEFI-010-C2
+      name: Customer intervention and scam warnings
+      type: corrective
+      description: Contextual warnings and call-backs when a payment shows scam or coercion indicators.
+      implementation: process
+      effectiveness: medium
+    - id: CY-DEFI-010-C3
+      name: Typology-focused staff training
+      type: preventive
+      description: Training for front-line, onboarding and investigation staff on current red flags and
+        escalation routes.
+      implementation: training
+      effectiveness: low

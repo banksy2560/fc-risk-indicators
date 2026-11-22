@@ -1,0 +1,351 @@
+typology:
+  id: CY-MVTS
+  name: Mobile Money and Remittance (MVTS) Abuse
+  domain: cyber_enabled
+  description: Money or value transfer services and mobile money wallets move funds quickly across borders,
+    often to cash-based endpoints. Offenders use them to send scam proceeds, structure payments through
+    many senders and receivers, and operate unlicensed or complicit agents. Cyber-enabled aspects include
+    compromised wallets, SIM swaps and automated account farms.
+  stage:
+  - layering
+  sectors:
+  - mvts
+  - payments
+  - fintech
+  sources:
+  - FATF, Guidance for a Risk-Based Approach to Money or Value Transfer Services (2016)
+  - FATF, Guidance for a Risk-Based Approach to Prepaid Cards, Mobile Payments and Internet-Based Payment
+    Services (2013)
+  - FATF, Recommendation 16 and Interpretive Note on payment transparency
+  indicators:
+  - id: CY-MVTS-001
+    name: Many senders paying one beneficiary or many beneficiaries paid by one sender
+    description: Fan-in or fan-out structures with no family or business link.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - remittance_data
+    false_positive_notes: Diaspora family support or charity collection.
+    controls:
+    - id: CY-MVTS-001-C1
+      name: Graph and network analytics
+      type: detective
+      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
+        and fan-in/fan-out structures.
+      implementation: model
+      effectiveness: high
+    - id: CY-MVTS-001-C2
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-MVTS-001-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+  - id: CY-MVTS-002
+    name: Transfers just under identification or reporting thresholds
+    description: Repeated sends sized to avoid additional checks.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - remittance_data
+    false_positive_notes: Small recurring family remittances.
+    controls:
+    - id: CY-MVTS-002-C1
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-MVTS-002-C2
+      name: Risk-based limits and cooling-off periods
+      type: preventive
+      description: Cap transaction size and frequency for new or higher-risk users and delay release of
+        funds for added review.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-MVTS-002-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+  - id: CY-MVTS-003
+    name: Sender profile does not match volume or purpose
+    description: Low-income or newly joined sender moves large sums with vague purpose.
+    category: customer
+    severity: medium
+    detection_type:
+    - kyc_review
+    - transaction_monitoring
+    data_sources:
+    - customer_profile
+    - remittance_data
+    false_positive_notes: Pooled family funds.
+    controls:
+    - id: CY-MVTS-003-C1
+      name: Enhanced due diligence
+      type: preventive
+      description: Collect additional information on activity purpose, expected volumes and ownership
+        before approval or continued service, with senior sign-off.
+      implementation: process
+      effectiveness: medium
+    - id: CY-MVTS-003-C2
+      name: Source of funds and wealth verification
+      type: preventive
+      description: Obtain and corroborate evidence of where funds originate when activity exceeds thresholds
+        or profile.
+      implementation: process
+      effectiveness: medium
+    - id: CY-MVTS-003-C3
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+  - id: CY-MVTS-004
+    name: Wallet SIM swap followed by outbound transfers
+    description: Number is ported or SIM replaced, then funds drained to new payees.
+    category: behavioural
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - customer_behaviour
+    data_sources:
+    - telco_signals
+    - device_data
+    false_positive_notes: Genuine phone replacements.
+    controls:
+    - id: CY-MVTS-004-C1
+      name: Step-up authentication on risky events
+      type: preventive
+      description: Trigger strong re-authentication for credential, device or payee changes and large
+        or unusual payments.
+      implementation: technology
+      effectiveness: high
+    - id: CY-MVTS-004-C2
+      name: Device intelligence and behavioural biometrics
+      type: detective
+      description: Fingerprint devices and analyse session behaviour (typing, navigation, remote-access
+        tools, emulators) to spot shared, scripted or hijacked sessions.
+      implementation: technology
+      effectiveness: high
+    - id: CY-MVTS-004-C3
+      name: Account restriction and fund holds
+      type: corrective
+      description: Ability to restrict, hold or recall funds rapidly pending review, with defined legal
+        and operational triggers.
+      implementation: process
+      effectiveness: medium
+  - id: CY-MVTS-005
+    name: Agent with unusual cash volumes or splitting behaviour
+    description: Agent location processes volumes far above peers, with suspicious customer splitting.
+    category: counterparty
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - agent_data
+    - transaction_data
+    false_positive_notes: High-footfall locations.
+    controls:
+    - id: CY-MVTS-005-C1
+      name: Merchant and portfolio transaction monitoring
+      type: detective
+      description: Monitor merchant-level patterns such as ticket size, refund and chargeback rates, descriptor
+        mismatch and cross-merchant flows.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-MVTS-005-C2
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+    - id: CY-MVTS-005-C3
+      name: Risk appetite and product risk assessment
+      type: governance
+      description: Documented appetite, product-level risk assessment and approval gate covering this
+        activity, reviewed on a set cadence.
+      implementation: policy
+      effectiveness: medium
+  - id: CY-MVTS-006
+    name: Beneficiary account in high-risk or uncooperative jurisdiction
+    description: Receiving corridors are known for weak controls or sanctions risk.
+    category: geographic
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - screening
+    data_sources:
+    - corridor_data
+    - sanctions_lists
+    false_positive_notes: Legitimate corridors for diaspora.
+    controls:
+    - id: CY-MVTS-006-C1
+      name: Sanctions and watchlist screening including wallet addresses
+      type: preventive
+      description: Screen customers, counterparties and wallet addresses against sanctions lists and designated-address
+        data in real time.
+      implementation: technology
+      effectiveness: high
+    - id: CY-MVTS-006-C2
+      name: Counterparty provider due diligence
+      type: preventive
+      description: Assess licensing, controls and reputation of counterpart VASPs, PSPs and platforms
+        before enabling flows, and review periodically.
+      implementation: process
+      effectiveness: medium
+    - id: CY-MVTS-006-C3
+      name: Enhanced due diligence
+      type: preventive
+      description: Collect additional information on activity purpose, expected volumes and ownership
+        before approval or continued service, with senior sign-off.
+      implementation: process
+      effectiveness: medium
+  - id: CY-MVTS-007
+    name: Same device or phone used by many senders
+    description: Single device initiates transfers for multiple apparent customers.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    - transaction_monitoring
+    data_sources:
+    - device_data
+    false_positive_notes: Shared household or shop devices.
+    controls:
+    - id: CY-MVTS-007-C1
+      name: Device intelligence and behavioural biometrics
+      type: detective
+      description: Fingerprint devices and analyse session behaviour (typing, navigation, remote-access
+        tools, emulators) to spot shared, scripted or hijacked sessions.
+      implementation: technology
+      effectiveness: high
+    - id: CY-MVTS-007-C2
+      name: Graph and network analytics
+      type: detective
+      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
+        and fan-in/fan-out structures.
+      implementation: model
+      effectiveness: high
+    - id: CY-MVTS-007-C3
+      name: Onboarding data consistency rules
+      type: preventive
+      description: Rules that compare submitted identifiers (email, phone, address, device, bank account)
+        against existing records and known-bad data.
+      implementation: rule
+      effectiveness: medium
+  - id: CY-MVTS-008
+    name: Rapid wallet-to-wallet hops then cash-out at agent
+    description: Value passes through several mobile wallets within hours before cash-out.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - wallet_data
+    false_positive_notes: Peer-to-peer payments.
+    controls:
+    - id: CY-MVTS-008-C1
+      name: Mule account detection model
+      type: detective
+      description: Model that scores inbound-then-outbound pass-through, new payee churn and profile mismatch
+        to flag likely mule accounts.
+      implementation: model
+      effectiveness: high
+    - id: CY-MVTS-008-C2
+      name: Graph and network analytics
+      type: detective
+      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
+        and fan-in/fan-out structures.
+      implementation: model
+      effectiveness: high
+    - id: CY-MVTS-008-C3
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+  - id: CY-MVTS-009
+    name: Missing or inconsistent originator and beneficiary information
+    description: Payment messages incomplete, inconsistent or use placeholder data.
+    category: document
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payment_messages
+    false_positive_notes: Poor data from correspondent partners.
+    controls:
+    - id: CY-MVTS-009-C1
+      name: Travel rule data exchange and counterparty checks
+      type: preventive
+      description: Collect and transmit originator and beneficiary information with transfers, and block
+        or hold transfers where counterparty data is missing or unreliable.
+      implementation: technology
+      effectiveness: medium
+    - id: CY-MVTS-009-C2
+      name: Counterparty provider due diligence
+      type: preventive
+      description: Assess licensing, controls and reputation of counterpart VASPs, PSPs and platforms
+        before enabling flows, and review periodically.
+      implementation: process
+      effectiveness: medium
+    - id: CY-MVTS-009-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+  - id: CY-MVTS-010
+    name: Unlicensed or unregistered operator behaviour
+    description: Individuals operate collection points or chat-app based services with no licence.
+    category: typology_specific
+    severity: high
+    detection_type:
+    - investigator_judgement
+    - external_intel
+    data_sources:
+    - web_intel
+    - complaints
+    false_positive_notes: Informal community services without profit.
+    controls:
+    - id: CY-MVTS-010-C1
+      name: External intelligence and consortium feeds
+      type: detective
+      description: Ingest law-enforcement, industry and commercial threat intelligence on indicators,
+        mule accounts and scam infrastructure.
+      implementation: technology
+      effectiveness: medium
+    - id: CY-MVTS-010-C2
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+    - id: CY-MVTS-010-C3
+      name: Account restriction and fund holds
+      type: corrective
+      description: Ability to restrict, hold or recall funds rapidly pending review, with defined legal
+        and operational triggers.
+      implementation: process
+      effectiveness: medium

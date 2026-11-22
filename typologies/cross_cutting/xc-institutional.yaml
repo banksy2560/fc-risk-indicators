@@ -1,0 +1,274 @@
+typology:
+  id: XC-INSTITUTIONAL
+  name: Institutional Control Environment Risk
+  domain: cross_cutting
+  description: Indicators that the institution's own control environment may be weakened, increasing residual
+    exposure to financial crime. Covers governance, alert backlogs, tuning gaps, insider risk, data quality
+    and outsourcing. Intended for the control-effectiveness side of an enterprise-wide risk assessment.
+  sectors:
+  - all
+  sources:
+  - FATF, Guidance for a Risk-Based Approach (sector-specific guidance series, general principles)
+  - FATF Recommendations, Recommendation 1 and Interpretive Note (assessing risks and applying a risk-based
+    approach)
+  - Wolfsberg Group, Guidance on a Risk Based Approach for Managing Money Laundering Risks
+  indicators:
+  - id: XC-INSTITUTIONAL-001
+    name: Weak AML governance and oversight
+    description: Board and senior management receive limited or irregular financial crime reporting and
+      there is unclear accountability.
+    category: behavioural
+    severity: high
+    detection_type:
+    - investigator_judgement
+    data_sources:
+    - governance_minutes
+    - mi_reports
+    false_positive_notes: Small firms may have lean but effective governance.
+    controls:
+    - id: XC-INSTITUTIONAL-001-C1
+      name: Defined three-lines accountability
+      type: governance
+      description: Document roles, escalation and ownership.
+      implementation: policy
+      effectiveness: high
+    - id: XC-INSTITUTIONAL-001-C2
+      name: Regular board MI and challenge
+      type: detective
+      description: Report KPIs and issues quarterly.
+      implementation: process
+      effectiveness: high
+  - id: XC-INSTITUTIONAL-002
+    name: Persistent alert backlog
+    description: Monitoring or screening alerts stay unreviewed beyond service levels.
+    category: behavioural
+    severity: high
+    detection_type:
+    - investigator_judgement
+    data_sources:
+    - case_management_data
+    false_positive_notes: Temporary spikes follow list changes.
+    controls:
+    - id: XC-INSTITUTIONAL-002-C1
+      name: Backlog ageing reporting
+      type: detective
+      description: Track ageing and breach of SLAs.
+      implementation: technology
+      effectiveness: high
+    - id: XC-INSTITUTIONAL-002-C2
+      name: Surge resourcing and prioritisation
+      type: corrective
+      description: Triage by risk and add capacity.
+      implementation: process
+      effectiveness: medium
+  - id: XC-INSTITUTIONAL-003
+    name: Monitoring scenarios not tuned or validated
+    description: Rules and models have not been calibrated, tested or reviewed against current risk.
+    category: behavioural
+    severity: high
+    detection_type:
+    - investigator_judgement
+    data_sources:
+    - model_validation_records
+    false_positive_notes: Stable portfolios may need little change.
+    controls:
+    - id: XC-INSTITUTIONAL-003-C1
+      name: Periodic tuning and above/below-the-line testing
+      type: preventive
+      description: Test thresholds and coverage.
+      implementation: process
+      effectiveness: high
+    - id: XC-INSTITUTIONAL-003-C2
+      name: Independent model validation
+      type: governance
+      description: Validate scenarios and models independently.
+      implementation: process
+      effectiveness: high
+  - id: XC-INSTITUTIONAL-004
+    name: Staff collusion or insider risk indicators
+    description: Employees show unusual relationships with customers, override controls or access records
+      without need.
+    category: behavioural
+    severity: high
+    detection_type:
+    - investigator_judgement
+    data_sources:
+    - access_logs
+    - hr_data
+    false_positive_notes: Many access anomalies are benign.
+    controls:
+    - id: XC-INSTITUTIONAL-004-C1
+      name: Privileged access and user-activity monitoring
+      type: detective
+      description: Monitor and alert on anomalous access.
+      implementation: technology
+      effectiveness: high
+    - id: XC-INSTITUTIONAL-004-C2
+      name: Whistleblowing and conflicts framework
+      type: governance
+      description: Provide protected reporting and conflict declarations.
+      implementation: policy
+      effectiveness: medium
+  - id: XC-INSTITUTIONAL-005
+    name: Poor customer and transaction data quality
+    description: Missing, inconsistent or incorrectly mapped data weakens screening and monitoring.
+    category: behavioural
+    severity: high
+    detection_type:
+    - investigator_judgement
+    data_sources:
+    - data_quality_reports
+    false_positive_notes: Legacy systems carry known gaps.
+    controls:
+    - id: XC-INSTITUTIONAL-005-C1
+      name: Data quality controls and reconciliation
+      type: detective
+      description: Measure completeness and accuracy.
+      implementation: technology
+      effectiveness: high
+    - id: XC-INSTITUTIONAL-005-C2
+      name: Data ownership and remediation plan
+      type: governance
+      description: Assign owners and deadlines.
+      implementation: process
+      effectiveness: medium
+  - id: XC-INSTITUTIONAL-006
+    name: Significant outsourcing of control activities
+    description: Screening, onboarding or investigation tasks are outsourced with limited oversight.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    data_sources:
+    - vendor_records
+    false_positive_notes: Outsourcing is common and manageable.
+    controls:
+    - id: XC-INSTITUTIONAL-006-C1
+      name: Vendor due diligence and SLAs
+      type: preventive
+      description: Contract quality standards and audit rights.
+      implementation: process
+      effectiveness: medium
+    - id: XC-INSTITUTIONAL-006-C2
+      name: Outsourced quality assurance sampling
+      type: detective
+      description: Test outsourced outputs.
+      implementation: process
+      effectiveness: medium
+  - id: XC-INSTITUTIONAL-007
+    name: Overdue periodic reviews or KYC refresh
+    description: Customer reviews exceed scheduled dates, particularly for high-risk customers.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    data_sources:
+    - kyc_schedule
+    false_positive_notes: Short delays can happen.
+    controls:
+    - id: XC-INSTITUTIONAL-007-C1
+      name: Review calendar with ageing MI
+      type: detective
+      description: Track overdue reviews.
+      implementation: technology
+      effectiveness: medium
+    - id: XC-INSTITUTIONAL-007-C2
+      name: Resourcing and remediation programme
+      type: corrective
+      description: Clear backlogs by risk.
+      implementation: process
+      effectiveness: medium
+  - id: XC-INSTITUTIONAL-008
+    name: Inadequate or outdated enterprise risk assessment
+    description: Risk assessment is stale, unscoped, or not used to drive controls.
+    category: behavioural
+    severity: high
+    detection_type:
+    - investigator_judgement
+    data_sources:
+    - risk_assessment_documents
+    false_positive_notes: Cycles vary by firm size.
+    controls:
+    - id: XC-INSTITUTIONAL-008-C1
+      name: Annual risk assessment refresh
+      type: preventive
+      description: Refresh with data and events.
+      implementation: process
+      effectiveness: high
+    - id: XC-INSTITUTIONAL-008-C2
+      name: Linkage to control framework
+      type: governance
+      description: Map risks to controls and gaps.
+      implementation: process
+      effectiveness: medium
+  - id: XC-INSTITUTIONAL-009
+    name: Insufficient training or low staff awareness
+    description: Staff cannot recognise red flags, late completion of training, high error rates in quality
+      checks.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    data_sources:
+    - training_records
+    - qa_results
+    false_positive_notes: New joiners are temporarily untrained.
+    controls:
+    - id: XC-INSTITUTIONAL-009-C1
+      name: Role-based training
+      type: preventive
+      description: Tailor training by role and risk.
+      implementation: training
+      effectiveness: medium
+    - id: XC-INSTITUTIONAL-009-C2
+      name: QA feedback loop
+      type: corrective
+      description: Feed errors back to training.
+      implementation: process
+      effectiveness: medium
+  - id: XC-INSTITUTIONAL-010
+    name: Slow or poor-quality suspicious activity reporting
+    description: Reports are filed late, are thin in content or the volume is out of line with peers.
+    category: behavioural
+    severity: high
+    detection_type:
+    - investigator_judgement
+    data_sources:
+    - sar_data
+    false_positive_notes: Volumes depend on portfolio.
+    controls:
+    - id: XC-INSTITUTIONAL-010-C1
+      name: SAR timeliness and quality metrics
+      type: detective
+      description: Measure and review.
+      implementation: process
+      effectiveness: high
+    - id: XC-INSTITUTIONAL-010-C2
+      name: Filing quality review
+      type: governance
+      description: Peer review of narratives.
+      implementation: process
+      effectiveness: medium
+  - id: XC-INSTITUTIONAL-011
+    name: Unresolved audit or regulatory findings
+    description: Previous findings remain open or recur.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    data_sources:
+    - audit_reports
+    false_positive_notes: Remediation can be long-running by design.
+    controls:
+    - id: XC-INSTITUTIONAL-011-C1
+      name: Issue tracking with ownership
+      type: governance
+      description: Track to closure with escalation.
+      implementation: process
+      effectiveness: medium
+    - id: XC-INSTITUTIONAL-011-C2
+      name: Validation of closure
+      type: detective
+      description: Independently confirm remediation.
+      implementation: process
+      effectiveness: medium

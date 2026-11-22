@@ -1,0 +1,240 @@
+typology:
+  id: ML-MULE
+  name: Money Mules
+  domain: money_laundering
+  description: Individuals, witting or unwitting, whose accounts or identities are used to receive and
+    move criminal proceeds on behalf of others, often recruited via fake job offers, romance scams or
+    social media. Mule activity is a key layering and cash-out step for fraud and other crime proceeds.
+  stage:
+  - placement
+  - layering
+  sectors:
+  - banking
+  - payments
+  - fintech
+  - crypto
+  sources:
+  - Europol, EU Money Mule Action (EMMA) public materials (general)
+  - FATF, Money Laundering from Fraud typology guidance (general)
+  - FinCEN, advisories on money mule activity (general)
+  indicators:
+  - id: ML-MULE-001
+    name: Inbound third-party payments followed by rapid outbound transfers
+    description: Account receives credits from unrelated payers and sends most funds onward within hours
+      or days, retaining a small amount.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - transaction_data
+    false_positive_notes: Marketplace sellers, agents and family support flows may pass funds on quickly.
+    controls:
+    - id: ML-MULE-001-C1
+      name: Pass-through mule model
+      type: detective
+      description: Score inbound/outbound ratio, dwell time and counterparty diversity to rank likely
+        mule accounts.
+      implementation: model
+      effectiveness: high
+    - id: ML-MULE-001-C2
+      name: Outbound hold on suspicious pass-through
+      type: corrective
+      description: Allow temporary restriction and review of outbound payments from flagged accounts.
+      implementation: process
+      effectiveness: medium
+  - id: ML-MULE-002
+    name: New or recently opened account with sudden high activity
+    description: Account shows little history then abruptly receives many payments unrelated to the profile.
+    category: behavioural
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - transaction_data
+    - kyc_profile
+    false_positive_notes: Students or new arrivals may receive lump sums such as loans or grants.
+    controls:
+    - id: ML-MULE-002-C1
+      name: New-account velocity rule
+      type: detective
+      description: Tighter thresholds on value and count during first months.
+      implementation: rule
+      effectiveness: high
+    - id: ML-MULE-002-C2
+      name: Staged limits for new accounts
+      type: preventive
+      description: Increase limits as legitimate behaviour is established.
+      implementation: policy
+      effectiveness: medium
+  - id: ML-MULE-003
+    name: Account holder profile matches common recruitment demographics
+    description: Young, unemployed or newly arrived customers with high flows inconsistent with their
+      stated circumstances.
+    category: customer
+    severity: medium
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - kyc_profile
+    false_positive_notes: Profile alone is not suspicious and must not drive discrimination.
+    controls:
+    - id: ML-MULE-003-C1
+      name: Profile-vs-activity analytics
+      type: detective
+      description: Compare activity against occupation and income as one input.
+      implementation: model
+      effectiveness: medium
+    - id: ML-MULE-003-C2
+      name: Fair-treatment safeguards
+      type: governance
+      description: Document that profile attributes are never sole grounds for adverse action.
+      implementation: policy
+      effectiveness: medium
+  - id: ML-MULE-004
+    name: Customer follows instructions or is coached
+    description: In branch or in contact, the customer cannot explain transactions, reads from scripts,
+      or is accompanied by a handler.
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    - investigator_judgement
+    data_sources:
+    - branch_notes
+    - call_recordings
+    false_positive_notes: Vulnerable or elderly customers may need help for genuine reasons.
+    controls:
+    - id: ML-MULE-004-C1
+      name: Frontline mule awareness training
+      type: preventive
+      description: Train staff to spot coached behaviour and use structured questions.
+      implementation: training
+      effectiveness: medium
+    - id: ML-MULE-004-C2
+      name: Customer conversation and referral process
+      type: corrective
+      description: Defined path to speak with customer privately and refer to specialist team.
+      implementation: process
+      effectiveness: medium
+  - id: ML-MULE-005
+    name: Shared devices, IP addresses or contact details across accounts
+    description: Multiple unrelated accounts share devices, phone numbers, email or addresses.
+    category: counterparty
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - device_data
+    - kyc_file
+    false_positive_notes: Households and shared workplaces share details.
+    controls:
+    - id: ML-MULE-005-C1
+      name: Device and identifier linkage
+      type: detective
+      description: Link accounts by device fingerprint and contact data to detect networks.
+      implementation: technology
+      effectiveness: high
+    - id: ML-MULE-005-C2
+      name: Network case investigation
+      type: detective
+      description: Investigate clusters, not just single accounts.
+      implementation: process
+      effectiveness: medium
+  - id: ML-MULE-006
+    name: Payments carrying scam-related references
+    description: Inbound payments with references typical of fraud, e.g. invoice, loan fee, investment
+      or romance context.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payment_references
+    false_positive_notes: Free-text references vary legitimately.
+    controls:
+    - id: ML-MULE-006-C1
+      name: Reference text analytics
+      type: detective
+      description: Keyword and pattern detection on payment narratives.
+      implementation: model
+      effectiveness: medium
+    - id: ML-MULE-006-C2
+      name: Victim data sharing
+      type: detective
+      description: Use alerts from other banks about scam payments.
+      implementation: process
+      effectiveness: high
+  - id: ML-MULE-007
+    name: Account credentials accessed from remote locations or by third parties
+    description: Logins from foreign IPs or remote-access tools soon after opening.
+    category: product_channel
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - customer_behaviour
+    data_sources:
+    - digital_logs
+    false_positive_notes: Travel and VPN use are common.
+    controls:
+    - id: ML-MULE-007-C1
+      name: Remote access and login anomaly detection
+      type: detective
+      description: Detect remote tools, new devices and foreign logins.
+      implementation: technology
+      effectiveness: medium
+    - id: ML-MULE-007-C2
+      name: Step-up authentication
+      type: preventive
+      description: Strong authentication on payee and device changes.
+      implementation: technology
+      effectiveness: medium
+  - id: ML-MULE-008
+    name: International transfers or cryptocurrency purchases following credits
+    description: Funds exit via overseas transfers, gift cards or crypto purchases after receipt.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - transaction_data
+    false_positive_notes: International students and migrants send money abroad.
+    controls:
+    - id: ML-MULE-008-C1
+      name: Cash-out channel rule
+      type: detective
+      description: Alert on conversion to crypto, cards or overseas transfers soon after inbound flows.
+      implementation: rule
+      effectiveness: medium
+    - id: ML-MULE-008-C2
+      name: Confirmation call-back
+      type: preventive
+      description: Call customer before releasing large first-time international transfers.
+      implementation: process
+      effectiveness: medium
+  - id: ML-MULE-009
+    name: Multiple accounts opened for same individual or by same agent
+    description: One person or intermediary opens accounts at several institutions or products.
+    category: customer
+    severity: medium
+    detection_type:
+    - kyc_review
+    data_sources:
+    - onboarding_data
+    false_positive_notes: Customers hold multiple accounts normally.
+    controls:
+    - id: ML-MULE-009-C1
+      name: Entity resolution at onboarding
+      type: preventive
+      description: Match new applications to existing customers and known mule records.
+      implementation: technology
+      effectiveness: medium
+    - id: ML-MULE-009-C2
+      name: Consortium data sharing
+      type: detective
+      description: Exchange confirmed mule account data with other institutions where lawful.
+      implementation: process
+      effectiveness: high

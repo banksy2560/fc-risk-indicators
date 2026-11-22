@@ -1,0 +1,222 @@
+typology:
+  id: TF-HAWALA
+  name: Hawala and Money or Value Transfer Services for Terrorist Financing
+  domain: terrorist_financing
+  description: Informal value transfer systems and unregulated or poorly supervised MVTS can move funds
+    across borders using settlement by trade, netting or cash, leaving limited records. They are important
+    to many legitimate communities but can be abused to transfer money to terrorist actors in regions
+    with limited banking access.
+  sectors:
+  - mvts
+  - banking
+  - payments
+  sources:
+  - FATF, The Role of Hawala and Other Similar Service Providers in Money Laundering and Terrorist Financing
+    (2013)
+  - FATF, Money or Value Transfer Services Guidance for a Risk-Based Approach (2016)
+  - FATF Recommendation 14
+  indicators:
+  - id: TF-HAWALA-001
+    name: Operator account with transactions inconsistent with a retail remittance profile
+    description: Business accounts of an MVTS or agent receive large pooled deposits and send bulk payments
+      to a small set of foreign counterparties.
+    category: customer
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - account_activity
+    - licensing_data
+    false_positive_notes: Genuine MVTS legitimately pool funds.
+    controls:
+    - id: TF-HAWALA-001-C1
+      name: Licensing and registration verification
+      type: preventive
+      description: Verify the operator is registered or licensed with the competent supervisor.
+      implementation: process
+      effectiveness: high
+    - id: TF-HAWALA-001-C2
+      name: Pooled-activity analytics
+      type: detective
+      description: Model expected pooled flows and alert on deviations.
+      implementation: model
+      effectiveness: medium
+    - id: TF-HAWALA-001-C3
+      name: Enhanced due diligence on MVTS customers
+      type: governance
+      description: Assess AML/CFT controls, volumes and corridors.
+      implementation: policy
+      effectiveness: medium
+  - id: TF-HAWALA-002
+    name: Unlicensed operator or no evidence of registration
+    description: Customer offers transfers but cannot evidence registration or supervision.
+    category: customer
+    severity: high
+    detection_type:
+    - kyc_review
+    - external_intel
+    data_sources:
+    - registry_data
+    false_positive_notes: Small agents of licensed principals may hold no own licence.
+    controls:
+    - id: TF-HAWALA-002-C1
+      name: Regulator register checks
+      type: preventive
+      description: Check supervisory registers and principal-agent status.
+      implementation: technology
+      effectiveness: high
+    - id: TF-HAWALA-002-C2
+      name: Exit and report process
+      type: corrective
+      description: Exit unlicensed relationships and consider reporting.
+      implementation: process
+      effectiveness: medium
+  - id: TF-HAWALA-003
+    name: Structured cash deposits across branches followed by overseas settlement
+    description: Numerous cash deposits below thresholds by different people into one account, then wires
+      to settlement partners.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - cash_deposits
+    - wire_data
+    false_positive_notes: Cash-heavy communities and retail trades show similar patterns.
+    controls:
+    - id: TF-HAWALA-003-C1
+      name: Structuring rule
+      type: detective
+      description: Detect repeated just-below-threshold cash activity.
+      implementation: rule
+      effectiveness: medium
+    - id: TF-HAWALA-003-C2
+      name: Depositor-to-account relationship check
+      type: preventive
+      description: Gather information on deposit purpose by third parties.
+      implementation: process
+      effectiveness: medium
+  - id: TF-HAWALA-004
+    name: Settlement via trade, with mismatched invoices
+    description: Offsetting flows are arranged through trade payments unrelated to the underlying goods.
+    category: transaction
+    severity: medium
+    detection_type:
+    - document_review
+    - transaction_monitoring
+    data_sources:
+    - trade_documents
+    - payment_data
+    false_positive_notes: Genuine trade can be netted among related firms.
+    controls:
+    - id: TF-HAWALA-004-C1
+      name: Trade-and-remittance reconciliation
+      type: detective
+      description: Compare trade documents with payment logic.
+      implementation: process
+      effectiveness: medium
+    - id: TF-HAWALA-004-C2
+      name: Price and quantity benchmarking
+      type: detective
+      description: Test declared values against benchmarks.
+      implementation: technology
+      effectiveness: medium
+  - id: TF-HAWALA-005
+    name: Payments to or from higher-risk jurisdictions without clear relationship
+    description: Transfers to recipients in conflict-affected areas with no documented relationship or
+      stated purpose.
+    category: geographic
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - remittance_data
+    false_positive_notes: Many families lack documentation but have genuine needs.
+    controls:
+    - id: TF-HAWALA-005-C1
+      name: Corridor risk limits
+      type: preventive
+      description: Risk-rate corridors and set controls proportionate to risk.
+      implementation: policy
+      effectiveness: medium
+    - id: TF-HAWALA-005-C2
+      name: Recipient concentration analytics
+      type: detective
+      description: Flag many senders to few recipients.
+      implementation: model
+      effectiveness: medium
+  - id: TF-HAWALA-006
+    name: Poor or missing sender and recipient information in transfers
+    description: Payment messages lack complete originator or beneficiary details.
+    category: document
+    severity: medium
+    detection_type:
+    - document_review
+    - transaction_monitoring
+    data_sources:
+    - payment_messages
+    false_positive_notes: Systems limitations may cause incomplete data.
+    controls:
+    - id: TF-HAWALA-006-C1
+      name: Payment message completeness checks
+      type: preventive
+      description: Reject or query messages with missing data.
+      implementation: rule
+      effectiveness: medium
+    - id: TF-HAWALA-006-C2
+      name: Repeat-offender follow-up
+      type: corrective
+      description: Escalate partners with recurring deficiencies.
+      implementation: process
+      effectiveness: low
+  - id: TF-HAWALA-007
+    name: Agent network with rapid expansion in higher-risk locations
+    description: Operator adds agents quickly in areas with terrorist presence without strengthened oversight.
+    category: product_channel
+    severity: medium
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - agent_lists
+    false_positive_notes: Growth in diaspora markets is common.
+    controls:
+    - id: TF-HAWALA-007-C1
+      name: Agent oversight review
+      type: detective
+      description: Review principal's agent due diligence and monitoring.
+      implementation: process
+      effectiveness: medium
+    - id: TF-HAWALA-007-C2
+      name: Location-based risk requirements
+      type: governance
+      description: Apply higher standards in high-risk locations.
+      implementation: policy
+      effectiveness: medium
+  - id: TF-HAWALA-008
+    name: Linked parties with previous suspicious reports or designation
+    description: Operator, owners or agents match prior reports, adverse media or designation lists.
+    category: ownership_structure
+    severity: high
+    detection_type:
+    - screening
+    - external_intel
+    data_sources:
+    - sanctions_lists
+    - internal_sar_history
+    false_positive_notes: Name similarities create false matches.
+    controls:
+    - id: TF-HAWALA-008-C1
+      name: Owner and agent screening
+      type: preventive
+      description: Screen owners, agents and key staff.
+      implementation: rule
+      effectiveness: high
+    - id: TF-HAWALA-008-C2
+      name: Historical SAR cross-reference
+      type: detective
+      description: Check linkage to prior internal reports.
+      implementation: technology
+      effectiveness: medium

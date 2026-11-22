@@ -1,0 +1,235 @@
+typology:
+  id: ML-PEP
+  name: PEP and High-Risk Person Laundering
+  domain: money_laundering
+  description: Laundering of proceeds of corruption or other crimes by or on behalf of politically exposed
+    persons, relatives, close associates and other high-risk individuals, often through intermediaries,
+    companies and foreign accounts. Such flows may be integrated through property, luxury assets and investments.
+  stage:
+  - layering
+  - integration
+  sectors:
+  - banking
+  - dnfbp
+  - securities
+  sources:
+  - FATF, Guidance on Politically Exposed Persons (Recommendations 12 and 22) (2013)
+  - FATF, Laundering the Proceeds of Corruption (2011)
+  - Wolfsberg Group, Guidance on Politically Exposed Persons (general)
+  indicators:
+  - id: ML-PEP-001
+    name: Wealth inconsistent with official income
+    description: Assets and flows clearly exceed the legitimate income expected for the individual's official
+      position.
+    category: customer
+    severity: high
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - kyc_profile
+    - asset_data
+    false_positive_notes: Family wealth and prior career can explain.
+    controls:
+    - id: ML-PEP-001-C1
+      name: Source-of-wealth corroboration
+      type: preventive
+      description: Independent evidence for wealth and funds.
+      implementation: process
+      effectiveness: high
+    - id: ML-PEP-001-C2
+      name: Senior management approval
+      type: governance
+      description: Approval and periodic review.
+      implementation: policy
+      effectiveness: high
+  - id: ML-PEP-002
+    name: Use of relatives or close associates as account holders
+    description: Accounts or assets held by family or associates who have limited own means.
+    category: ownership_structure
+    severity: high
+    detection_type:
+    - kyc_review
+    - screening
+    data_sources:
+    - kyc_file
+    false_positive_notes: Families pool wealth legitimately.
+    controls:
+    - id: ML-PEP-002-C1
+      name: Relatives and close associates screening
+      type: preventive
+      description: Extend PEP screening to RCAs.
+      implementation: technology
+      effectiveness: high
+    - id: ML-PEP-002-C2
+      name: Association mapping
+      type: detective
+      description: Map known connections.
+      implementation: process
+      effectiveness: medium
+  - id: ML-PEP-003
+    name: Opaque structures for PEP-connected assets
+    description: Foundations, trusts or companies hide PEP's interest.
+    category: ownership_structure
+    severity: high
+    detection_type:
+    - kyc_review
+    data_sources:
+    - ownership_charts
+    false_positive_notes: Estate planning is legitimate.
+    controls:
+    - id: ML-PEP-003-C1
+      name: UBO and control verification
+      type: preventive
+      description: Look through structures to controllers.
+      implementation: process
+      effectiveness: high
+    - id: ML-PEP-003-C2
+      name: Structure justification
+      type: preventive
+      description: Documented rationale.
+      implementation: process
+      effectiveness: medium
+  - id: ML-PEP-004
+    name: Large payments from state entities or contractors
+    description: Receipts from government bodies, state-owned firms or contractors linked to PEP's remit.
+    category: counterparty
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - transaction_data
+    false_positive_notes: Legitimate fees from state-owned firms.
+    controls:
+    - id: ML-PEP-004-C1
+      name: Public-contract link analysis
+      type: detective
+      description: Cross-reference payers with procurement data.
+      implementation: technology
+      effectiveness: medium
+    - id: ML-PEP-004-C2
+      name: Contract documentation requirement
+      type: preventive
+      description: Obtain contracts and evidence of services.
+      implementation: process
+      effectiveness: medium
+  - id: ML-PEP-005
+    name: Transfers to or from jurisdictions of high corruption risk
+    description: Flows linked to countries with high corruption or secrecy.
+    category: geographic
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - screening
+    data_sources:
+    - transaction_data
+    false_positive_notes: Business operations abroad.
+    controls:
+    - id: ML-PEP-005-C1
+      name: Corruption-risk jurisdiction rule
+      type: detective
+      description: Alert on flows involving specified jurisdictions.
+      implementation: rule
+      effectiveness: medium
+    - id: ML-PEP-005-C2
+      name: EDD on origin
+      type: preventive
+      description: Verify origin of funds.
+      implementation: process
+      effectiveness: medium
+  - id: ML-PEP-006
+    name: Newly acquired PEP status not re-assessed
+    description: Customer becomes PEP after onboarding without update.
+    category: customer
+    severity: medium
+    detection_type:
+    - screening
+    data_sources:
+    - customer_data
+    false_positive_notes: Appointments follow election cycles.
+    controls:
+    - id: ML-PEP-006-C1
+      name: Ongoing PEP screening
+      type: detective
+      description: Daily screening against PEP data.
+      implementation: technology
+      effectiveness: high
+    - id: ML-PEP-006-C2
+      name: Event-driven review
+      type: preventive
+      description: Trigger EDD on status change.
+      implementation: process
+      effectiveness: medium
+  - id: ML-PEP-007
+    name: Unusual real-estate or luxury purchases
+    description: High-value purchases by PEPs or associates abroad.
+    category: transaction
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    - external_intel
+    data_sources:
+    - land_registry
+    - adverse_media
+    false_positive_notes: Wealthy PEPs may buy property.
+    controls:
+    - id: ML-PEP-007-C1
+      name: High-value asset monitoring
+      type: detective
+      description: Monitor purchases via registries and media.
+      implementation: process
+      effectiveness: medium
+    - id: ML-PEP-007-C2
+      name: Adverse media screening
+      type: detective
+      description: Screen on negative reports.
+      implementation: technology
+      effectiveness: medium
+  - id: ML-PEP-008
+    name: Attempts to avoid disclosure of PEP status
+    description: Customer denies or omits political role despite evidence.
+    category: behavioural
+    severity: high
+    detection_type:
+    - kyc_review
+    - screening
+    data_sources:
+    - kyc_file
+    false_positive_notes: Misunderstanding of definition.
+    controls:
+    - id: ML-PEP-008-C1
+      name: Self-declaration and verification
+      type: preventive
+      description: Compare declarations with screening data.
+      implementation: process
+      effectiveness: medium
+    - id: ML-PEP-008-C2
+      name: Consequence policy
+      type: governance
+      description: Exit or escalate on false declarations.
+      implementation: policy
+      effectiveness: medium
+  - id: ML-PEP-009
+    name: Use of intermediaries and agents to handle funds
+    description: Lawyers, brokers or fixers move funds on behalf of PEP.
+    category: counterparty
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    data_sources:
+    - transaction_data
+    false_positive_notes: Professionals commonly act for wealthy clients.
+    controls:
+    - id: ML-PEP-009-C1
+      name: Intermediary due diligence
+      type: preventive
+      description: Check role and authority.
+      implementation: process
+      effectiveness: medium
+    - id: ML-PEP-009-C2
+      name: Third-party payment controls
+      type: detective
+      description: Alert on third-party flows.
+      implementation: rule
+      effectiveness: medium

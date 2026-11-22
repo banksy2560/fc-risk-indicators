@@ -1,0 +1,220 @@
+typology:
+  id: TF-FTF
+  name: Foreign Terrorist Fighter Travel and Support Financing
+  domain: terrorist_financing
+  description: Individuals who travel to join terrorist groups abroad, and networks that support them,
+    finance their journeys through personal funds, loans, family transfers and cash. Financial signals
+    typically cluster around the preparatory period before travel and continue through remittances to
+    the destination region.
+  sectors:
+  - banking
+  - payments
+  - mvts
+  sources:
+  - FATF, Financing of the Terrorist Organisation Islamic State in Iraq and the Levant (ISIL) (2015)
+  - FATF, Emerging Terrorist Financing Risks (2015)
+  - UN Security Council Resolution 2178 (2014) on foreign terrorist fighters
+  indicators:
+  - id: TF-FTF-001
+    name: Closure of accounts and withdrawal of savings before travel
+    description: Customer empties accounts, cancels commitments or sells possessions in a short interval
+      without clear purpose.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - account_activity
+    false_positive_notes: Emigration, study abroad and relocation are common legitimate reasons.
+    controls:
+    - id: TF-FTF-001-C1
+      name: Account closure with cash-out rule
+      type: detective
+      description: Alert on full cash-out of accounts followed by no further activity.
+      implementation: rule
+      effectiveness: medium
+    - id: TF-FTF-001-C2
+      name: Purpose enquiry at closure
+      type: preventive
+      description: Collect rationale at closure for retrospective review.
+      implementation: process
+      effectiveness: low
+  - id: TF-FTF-002
+    name: Card and ATM use at transit points near conflict zones
+    description: Card or ATM activity in locations commonly used as transit routes to conflict areas,
+      followed by cessation of usage.
+    category: geographic
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - external_intel
+    data_sources:
+    - card_transactions
+    - atm_data
+    false_positive_notes: Tourism, trade, humanitarian and diaspora travel produce overlapping footprints.
+    controls:
+    - id: TF-FTF-002-C1
+      name: Transit-region geography rule
+      type: detective
+      description: Monitor use in jurisdictions identified in public risk guidance and combine with behavioural
+        signals.
+      implementation: rule
+      effectiveness: medium
+    - id: TF-FTF-002-C2
+      name: Intelligence-informed route updates
+      type: governance
+      description: Periodically update locations of concern from national assessments.
+      implementation: policy
+      effectiveness: medium
+  - id: TF-FTF-003
+    name: Remittances from family or associates to individuals in border areas
+    description: Recurrent small transfers to recipients in or near conflict zones with no clear family
+      relationship or humanitarian need.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - remittance_data
+    false_positive_notes: Diaspora families routinely support relatives in affected regions.
+    controls:
+    - id: TF-FTF-003-C1
+      name: Corridor-risk monitoring
+      type: detective
+      description: Monitor volume and recipient concentration in higher-risk corridors.
+      implementation: rule
+      effectiveness: medium
+    - id: TF-FTF-003-C2
+      name: Relationship validation
+      type: preventive
+      description: Seek stated relationship and purpose for repeated transfers to higher-risk recipients.
+      implementation: process
+      effectiveness: medium
+  - id: TF-FTF-004
+    name: Loans or credit taken with no repayment intent
+    description: Customer obtains borrowing and then leaves the jurisdiction, defaulting.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - loan_data
+    false_positive_notes: Job loss and financial trouble cause defaults.
+    controls:
+    - id: TF-FTF-004-C1
+      name: Early default and departure analysis
+      type: detective
+      description: Review early defaults for connection to cash-out and travel indicators.
+      implementation: model
+      effectiveness: medium
+    - id: TF-FTF-004-C2
+      name: Credit application consistency check
+      type: preventive
+      description: Verify stated purpose and income at origination.
+      implementation: process
+      effectiveness: medium
+  - id: TF-FTF-005
+    name: Purchase of equipment commonly carried by fighters
+    description: Retail purchases of outdoor, protective, communication or medical gear in unusual quantity
+      shortly before travel.
+    category: typology_specific
+    severity: low
+    detection_type:
+    - transaction_monitoring
+    - external_intel
+    data_sources:
+    - card_transactions
+    false_positive_notes: Hiking, camping and humanitarian volunteering generate the same purchases.
+    controls:
+    - id: TF-FTF-005-C1
+      name: Context-aware scenario
+      type: detective
+      description: Use as supporting indicator only in combination with other signals.
+      implementation: rule
+      effectiveness: low
+    - id: TF-FTF-005-C2
+      name: Typology training
+      type: preventive
+      description: Brief analysts on interpretive limits to avoid bias.
+      implementation: training
+      effectiveness: medium
+  - id: TF-FTF-006
+    name: Connections to known facilitators or recruiters
+    description: Customer transacts with parties identified in public or law enforcement material as facilitators
+      of travel.
+    category: counterparty
+    severity: high
+    detection_type:
+    - screening
+    - external_intel
+    data_sources:
+    - transaction_data
+    - law_enforcement_requests
+    false_positive_notes: Social contacts and shared community groups cause innocent links.
+    controls:
+    - id: TF-FTF-006-C1
+      name: Counterparty network analysis
+      type: detective
+      description: Map links to previously reported facilitator accounts.
+      implementation: technology
+      effectiveness: medium
+    - id: TF-FTF-006-C2
+      name: Prompt SAR decision process
+      type: governance
+      description: Require timely review and reporting decision on credible facilitator links.
+      implementation: policy
+      effectiveness: high
+  - id: TF-FTF-007
+    name: Travel booked to destination near conflict via indirect route
+    description: Itineraries with unusual routing, one-way tickets and short-notice booking inconsistent
+      with customer profile.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - external_intel
+    data_sources:
+    - travel_booking_data
+    false_positive_notes: Budget travellers, migrants and workers regularly use multi-leg routes.
+    controls:
+    - id: TF-FTF-007-C1
+      name: Travel pattern scoring
+      type: detective
+      description: Score itineraries only where data is lawfully available and combine with other signals.
+      implementation: model
+      effectiveness: low
+    - id: TF-FTF-007-C2
+      name: Travel-industry intelligence sharing
+      type: governance
+      description: Participate in sectoral information-sharing arrangements.
+      implementation: policy
+      effectiveness: medium
+  - id: TF-FTF-008
+    name: Minors or young adults funded by third parties
+    description: Accounts of young customers receive small repeated funds from unrelated adults, followed
+      by cash-out.
+    category: customer
+    severity: medium
+    detection_type:
+    - kyc_review
+    - transaction_monitoring
+    data_sources:
+    - account_activity
+    - customer_age_data
+    false_positive_notes: Gifting from relatives and part-time work are normal.
+    controls:
+    - id: TF-FTF-008-C1
+      name: Youth account monitoring
+      type: detective
+      description: Detect third-party funding patterns on youth accounts.
+      implementation: rule
+      effectiveness: medium
+    - id: TF-FTF-008-C2
+      name: Safeguarding escalation route
+      type: corrective
+      description: Provide a route for safeguarding concerns to relevant authorities.
+      implementation: process
+      effectiveness: medium

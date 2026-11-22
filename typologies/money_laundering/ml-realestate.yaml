@@ -1,0 +1,235 @@
+typology:
+  id: ML-REALESTATE
+  name: Real Estate
+  domain: money_laundering
+  description: Purchase, sale, development or financing of property to integrate illicit funds, taking
+    advantage of high values, price opacity and the involvement of intermediaries. Techniques include
+    buying with cash or via complex structures, rapid flipping, and mortgage fraud.
+  stage:
+  - layering
+  - integration
+  sectors:
+  - real_estate
+  - banking
+  - dnfbp
+  sources:
+  - FATF, Money Laundering and Terrorist Financing in the Real Estate Sector (2007)
+  - FATF and Egmont Group, Concealment of Beneficial Ownership (2018)
+  - 'FATF, Guidance for a Risk-Based Approach: Real Estate Sector (2022)'
+  indicators:
+  - id: ML-REALESTATE-001
+    name: Purchase price inconsistent with buyer's known means
+    description: Property acquired is far beyond the buyer's declared income or wealth, with no verifiable
+      source.
+    category: customer
+    severity: high
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - kyc_profile
+    - purchase_documents
+    false_positive_notes: Inheritance, business sale or gifts may explain.
+    controls:
+    - id: ML-REALESTATE-001-C1
+      name: Source-of-wealth verification
+      type: preventive
+      description: Verify wealth with documents for purchases above threshold.
+      implementation: process
+      effectiveness: high
+    - id: ML-REALESTATE-001-C2
+      name: Affordability test
+      type: preventive
+      description: Compare price against declared means.
+      implementation: rule
+      effectiveness: medium
+  - id: ML-REALESTATE-002
+    name: Purchase through opaque company or trust
+    description: Buyer is an offshore company, nominee or trust with hidden beneficial owners.
+    category: ownership_structure
+    severity: high
+    detection_type:
+    - kyc_review
+    data_sources:
+    - corporate_registry
+    - purchase_documents
+    false_positive_notes: Tax and estate planning vehicles are used.
+    controls:
+    - id: ML-REALESTATE-002-C1
+      name: UBO verification
+      type: preventive
+      description: Verify controllers before facilitating transaction.
+      implementation: process
+      effectiveness: high
+    - id: ML-REALESTATE-002-C2
+      name: Opaque structure EDD
+      type: preventive
+      description: Document purpose and approval for complex vehicles.
+      implementation: process
+      effectiveness: medium
+  - id: ML-REALESTATE-003
+    name: Price materially above or below market
+    description: Declared price differs from valuation, followed by resale or loan at different value.
+    category: transaction
+    severity: high
+    detection_type:
+    - document_review
+    - investigator_judgement
+    data_sources:
+    - valuation_reports
+    - land_registry
+    false_positive_notes: Distressed sales and developer incentives.
+    controls:
+    - id: ML-REALESTATE-003-C1
+      name: Independent valuation comparison
+      type: detective
+      description: Compare to automated valuation and registry data.
+      implementation: technology
+      effectiveness: medium
+    - id: ML-REALESTATE-003-C2
+      name: Price variance escalation
+      type: governance
+      description: Escalate variances above set tolerance.
+      implementation: policy
+      effectiveness: medium
+  - id: ML-REALESTATE-004
+    name: Rapid resale or flipping with no improvement
+    description: Property bought and sold in a short time at changing prices or with no apparent reason.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    data_sources:
+    - land_registry
+    false_positive_notes: Developers and investors flip legitimately.
+    controls:
+    - id: ML-REALESTATE-004-C1
+      name: Holding period monitoring
+      type: detective
+      description: Flag short holding periods in registry data.
+      implementation: rule
+      effectiveness: medium
+    - id: ML-REALESTATE-004-C2
+      name: Rationale review
+      type: preventive
+      description: Request reason for sale.
+      implementation: process
+      effectiveness: low
+  - id: ML-REALESTATE-005
+    name: Large cash component or non-standard funding
+    description: Part of purchase paid in cash, third-party transfers or unexplained funding routes.
+    category: transaction
+    severity: high
+    detection_type:
+    - document_review
+    - transaction_monitoring
+    data_sources:
+    - payment_records
+    false_positive_notes: Some sellers accept cash legitimately.
+    controls:
+    - id: ML-REALESTATE-005-C1
+      name: Cash threshold restriction
+      type: preventive
+      description: Prohibit or restrict cash above set limit.
+      implementation: policy
+      effectiveness: high
+    - id: ML-REALESTATE-005-C2
+      name: Third-party funder checks
+      type: preventive
+      description: Verify identity and relationship of funders.
+      implementation: process
+      effectiveness: medium
+  - id: ML-REALESTATE-006
+    name: Mortgage repaid early or from unusual sources
+    description: Loan quickly settled in lump sum or by third parties.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - loan_data
+    false_positive_notes: Windfalls trigger early repayment.
+    controls:
+    - id: ML-REALESTATE-006-C1
+      name: Early repayment rule
+      type: detective
+      description: Alert on unusual lump-sum repayments.
+      implementation: rule
+      effectiveness: medium
+    - id: ML-REALESTATE-006-C2
+      name: Repayment source check
+      type: preventive
+      description: Check origin of settlement funds.
+      implementation: process
+      effectiveness: medium
+  - id: ML-REALESTATE-007
+    name: Multiple properties bought by same person or nominees
+    description: Portfolio built through different names or relatives.
+    category: ownership_structure
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    data_sources:
+    - land_registry
+    false_positive_notes: Landlords build portfolios.
+    controls:
+    - id: ML-REALESTATE-007-C1
+      name: Related-party property linkage
+      type: detective
+      description: Link registry data via addresses and associates.
+      implementation: model
+      effectiveness: medium
+    - id: ML-REALESTATE-007-C2
+      name: Portfolio EDD
+      type: preventive
+      description: Verify funding for multiple acquisitions.
+      implementation: process
+      effectiveness: medium
+  - id: ML-REALESTATE-008
+    name: Buyers or agents reluctant to provide information
+    description: Parties avoid face-to-face contact, deal via representatives or insist on speed.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    - investigator_judgement
+    data_sources:
+    - agent_notes
+    false_positive_notes: Remote deals are common.
+    controls:
+    - id: ML-REALESTATE-008-C1
+      name: Agent CDD obligations
+      type: preventive
+      description: Ensure agents conduct customer due diligence.
+      implementation: policy
+      effectiveness: medium
+    - id: ML-REALESTATE-008-C2
+      name: Remote buyer verification
+      type: preventive
+      description: Strong remote ID checks.
+      implementation: technology
+      effectiveness: medium
+  - id: ML-REALESTATE-009
+    name: High-risk jurisdiction funds or buyer connections
+    description: Funds or buyers come from jurisdictions with weak controls or sanctions exposure.
+    category: geographic
+    severity: medium
+    detection_type:
+    - screening
+    - kyc_review
+    data_sources:
+    - payment_records
+    false_positive_notes: Overseas buyers are many.
+    controls:
+    - id: ML-REALESTATE-009-C1
+      name: Jurisdiction risk screening
+      type: preventive
+      description: Risk-score funds origin.
+      implementation: technology
+      effectiveness: medium
+    - id: ML-REALESTATE-009-C2
+      name: Senior sign-off
+      type: governance
+      description: Require senior approval for high-risk geography deals.
+      implementation: policy
+      effectiveness: medium

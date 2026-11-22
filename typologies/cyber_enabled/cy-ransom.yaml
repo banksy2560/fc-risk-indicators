@@ -1,0 +1,362 @@
+typology:
+  id: CY-RANSOM
+  name: Ransomware Payment Laundering
+  domain: cyber_enabled
+  description: Ransomware operators demand payment in virtual assets and then launder proceeds through
+    chains of wallets, mixers, exchanges and over-the-counter brokers. Victims and their facilitators,
+    such as incident response firms and insurers, also create exposure. Institutions may detect either
+    victim payments or operator cash-out.
+  stage:
+  - layering
+  - integration
+  sectors:
+  - crypto
+  - banking
+  - fintech
+  - insurance
+  sources:
+  - FATF, Countering Ransomware Financing (2023)
+  - FinCEN, Advisory on Ransomware and the Use of the Financial System to Facilitate Ransom Payments (FIN-2021-A004,
+    2021)
+  - 'FATF, Virtual Assets: Red Flag Indicators of Money Laundering and Terrorist Financing (2020)'
+  indicators:
+  - id: CY-RANSOM-001
+    name: Customer purchases virtual assets and sends them immediately to a new wallet
+    description: A first-time or unsophisticated buyer buys a large amount and withdraws it all to an
+      unfamiliar address, consistent with a victim ransom payment.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - customer_behaviour
+    data_sources:
+    - trade_history
+    - withdrawal_addresses
+    false_positive_notes: Legitimate first-time investors.
+    controls:
+    - id: CY-RANSOM-001-C1
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-RANSOM-001-C2
+      name: Risk-based limits and cooling-off periods
+      type: preventive
+      description: Cap transaction size and frequency for new or higher-risk users and delay release of
+        funds for added review.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-RANSOM-001-C3
+      name: Customer intervention and scam warnings
+      type: corrective
+      description: Contextual warnings and call-backs when a payment shows scam or coercion indicators.
+      implementation: process
+      effectiveness: medium
+  - id: CY-RANSOM-002
+    name: Corporate account pays an unusual crypto purchase after a cyber event
+    description: Business customer suddenly funds a crypto purchase beyond normal activity, with mention
+      of an IT incident or urgent deadline.
+    category: customer
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - customer_profile
+    - payment_data
+    false_positive_notes: Genuine treasury diversification.
+    controls:
+    - id: CY-RANSOM-002-C1
+      name: Enhanced due diligence
+      type: preventive
+      description: Collect additional information on activity purpose, expected volumes and ownership
+        before approval or continued service, with senior sign-off.
+      implementation: process
+      effectiveness: medium
+    - id: CY-RANSOM-002-C2
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-RANSOM-002-C3
+      name: Customer intervention and scam warnings
+      type: corrective
+      description: Contextual warnings and call-backs when a payment shows scam or coercion indicators.
+      implementation: process
+      effectiveness: medium
+  - id: CY-RANSOM-003
+    name: Withdrawal address attributed to ransomware actors
+    description: Destination or source wallet is attributed to ransomware affiliates or flagged in published
+      designations.
+    category: typology_specific
+    severity: high
+    detection_type:
+    - screening
+    - external_intel
+    data_sources:
+    - blockchain_analytics
+    - sanctions_lists
+    false_positive_notes: Attribution may be outdated.
+    controls:
+    - id: CY-RANSOM-003-C1
+      name: Sanctions and watchlist screening including wallet addresses
+      type: preventive
+      description: Screen customers, counterparties and wallet addresses against sanctions lists and designated-address
+        data in real time.
+      implementation: technology
+      effectiveness: high
+    - id: CY-RANSOM-003-C2
+      name: Blockchain analytics and wallet attribution
+      type: detective
+      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
+        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
+      implementation: technology
+      effectiveness: high
+    - id: CY-RANSOM-003-C3
+      name: Account restriction and fund holds
+      type: corrective
+      description: Ability to restrict, hold or recall funds rapidly pending review, with defined legal
+        and operational triggers.
+      implementation: process
+      effectiveness: medium
+  - id: CY-RANSOM-004
+    name: Inbound funds from many victim-like wallets then rapid layering
+    description: Account collects payments of similar sizes from unrelated first-time wallets and moves
+      them on within a short period.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - blockchain_analytics
+    - ledger_data
+    false_positive_notes: Fundraising campaigns.
+    controls:
+    - id: CY-RANSOM-004-C1
+      name: Blockchain analytics and wallet attribution
+      type: detective
+      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
+        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
+      implementation: technology
+      effectiveness: high
+    - id: CY-RANSOM-004-C2
+      name: Graph and network analytics
+      type: detective
+      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
+        and fan-in/fan-out structures.
+      implementation: model
+      effectiveness: high
+    - id: CY-RANSOM-004-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+  - id: CY-RANSOM-005
+    name: Large conversion into privacy coins or mixer use after receipt
+    description: Receipts are converted into privacy-enhanced assets or sent to mixing services before
+      exit.
+    category: typology_specific
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - external_intel
+    data_sources:
+    - blockchain_analytics
+    - trade_history
+    false_positive_notes: Privacy-focused users.
+    controls:
+    - id: CY-RANSOM-005-C1
+      name: Blockchain analytics and wallet attribution
+      type: detective
+      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
+        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
+      implementation: technology
+      effectiveness: high
+    - id: CY-RANSOM-005-C2
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-RANSOM-005-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+  - id: CY-RANSOM-006
+    name: Use of OTC desks or brokers with minimal due diligence
+    description: Large OTC trades for customers that avoid identity verification or pay via third parties.
+    category: counterparty
+    severity: medium
+    detection_type:
+    - kyc_review
+    - transaction_monitoring
+    data_sources:
+    - otc_records
+    - customer_profile
+    false_positive_notes: Legitimate large OTC investors.
+    controls:
+    - id: CY-RANSOM-006-C1
+      name: Enhanced due diligence
+      type: preventive
+      description: Collect additional information on activity purpose, expected volumes and ownership
+        before approval or continued service, with senior sign-off.
+      implementation: process
+      effectiveness: medium
+    - id: CY-RANSOM-006-C2
+      name: Source of funds and wealth verification
+      type: preventive
+      description: Obtain and corroborate evidence of where funds originate when activity exceeds thresholds
+        or profile.
+      implementation: process
+      effectiveness: medium
+    - id: CY-RANSOM-006-C3
+      name: Counterparty provider due diligence
+      type: preventive
+      description: Assess licensing, controls and reputation of counterpart VASPs, PSPs and platforms
+        before enabling flows, and review periodically.
+      implementation: process
+      effectiveness: medium
+  - id: CY-RANSOM-007
+    name: Third-party payer funds purchase on behalf of a victim
+    description: Incident response firm, broker or insurer funds crypto on behalf of a client, with unclear
+      client identity or authorisation.
+    category: customer
+    severity: medium
+    detection_type:
+    - kyc_review
+    data_sources:
+    - customer_profile
+    - contracts
+    false_positive_notes: Legitimate professional ransom-negotiation services, subject to sanctions checks.
+    controls:
+    - id: CY-RANSOM-007-C1
+      name: Enhanced due diligence
+      type: preventive
+      description: Collect additional information on activity purpose, expected volumes and ownership
+        before approval or continued service, with senior sign-off.
+      implementation: process
+      effectiveness: medium
+    - id: CY-RANSOM-007-C2
+      name: Sanctions and watchlist screening including wallet addresses
+      type: preventive
+      description: Screen customers, counterparties and wallet addresses against sanctions lists and designated-address
+        data in real time.
+      implementation: technology
+      effectiveness: high
+    - id: CY-RANSOM-007-C3
+      name: Risk appetite and product risk assessment
+      type: governance
+      description: Documented appetite, product-level risk assessment and approval gate covering this
+        activity, reviewed on a set cadence.
+      implementation: policy
+      effectiveness: medium
+  - id: CY-RANSOM-008
+    name: Chain-hopping or bridge usage after a large inbound payment
+    description: Funds are moved across chains and wrapped tokens shortly after receipt to break attribution.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - blockchain_analytics
+    false_positive_notes: Multi-chain users.
+    controls:
+    - id: CY-RANSOM-008-C1
+      name: Blockchain analytics and wallet attribution
+      type: detective
+      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
+        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
+      implementation: technology
+      effectiveness: high
+    - id: CY-RANSOM-008-C2
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-RANSOM-008-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+  - id: CY-RANSOM-009
+    name: Cash-out in jurisdictions with weak controls
+    description: Final withdrawals go to exchanges or accounts in jurisdictions with poor AML supervision
+      or known to shelter cybercriminals.
+    category: geographic
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - blockchain_analytics
+    - vasp_attribution
+    false_positive_notes: Customers legitimately resident there.
+    controls:
+    - id: CY-RANSOM-009-C1
+      name: Counterparty provider due diligence
+      type: preventive
+      description: Assess licensing, controls and reputation of counterpart VASPs, PSPs and platforms
+        before enabling flows, and review periodically.
+      implementation: process
+      effectiveness: medium
+    - id: CY-RANSOM-009-C2
+      name: Blockchain analytics and wallet attribution
+      type: detective
+      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
+        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
+      implementation: technology
+      effectiveness: high
+    - id: CY-RANSOM-009-C3
+      name: IP, geolocation and anonymisation detection
+      type: detective
+      description: Detect VPN, proxy, Tor and geolocation mismatch against declared residence and sanctioned
+        or high-risk jurisdictions.
+      implementation: rule
+      effectiveness: medium
+  - id: CY-RANSOM-010
+    name: Account use inconsistent with prior low-risk behaviour
+    description: Dormant or low-activity account abruptly receives or sends large volumes in a pattern
+      tied to publicised ransomware campaigns.
+    category: behavioural
+    severity: low
+    detection_type:
+    - transaction_monitoring
+    - customer_behaviour
+    data_sources:
+    - ledger_data
+    false_positive_notes: Seasonal or one-off events.
+    controls:
+    - id: CY-RANSOM-010-C1
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-RANSOM-010-C2
+      name: External intelligence and consortium feeds
+      type: detective
+      description: Ingest law-enforcement, industry and commercial threat intelligence on indicators,
+        mule accounts and scam infrastructure.
+      implementation: technology
+      effectiveness: medium
+    - id: CY-RANSOM-010-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium

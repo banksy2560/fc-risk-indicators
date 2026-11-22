@@ -1,0 +1,346 @@
+typology:
+  id: CY-ATOMULE
+  name: Account Takeover and Money Mule Account Networks (Cyber Angle)
+  domain: cyber_enabled
+  description: Criminals take over legitimate accounts through phishing, malware, credential stuffing
+    and SIM swaps, or recruit and trick people into acting as money mules, in order to receive and move
+    proceeds of cyber-enabled fraud. Networks of mule accounts layer funds quickly to cash-out channels,
+    often across institutions.
+  stage:
+  - layering
+  sectors:
+  - banking
+  - payments
+  - fintech
+  sources:
+  - FinCEN, Advisory to Financial Institutions on Cyber-Events and Cyber-Enabled Crime (FIN-2016-A005,
+    2016)
+  - FATF, Illicit Financial Flows from Cyber-Enabled Fraud (2023)
+  - Europol, European Money Mule Action (EMMA) public reporting
+  indicators:
+  - id: CY-ATOMULE-001
+    name: Credential, device or contact detail change followed by payments
+    description: Password, email or phone change then new payee and payment in the same session or day.
+    category: behavioural
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - customer_behaviour
+    data_sources:
+    - session_logs
+    - payee_data
+    false_positive_notes: Customer changing devices.
+    controls:
+    - id: CY-ATOMULE-001-C1
+      name: Step-up authentication on risky events
+      type: preventive
+      description: Trigger strong re-authentication for credential, device or payee changes and large
+        or unusual payments.
+      implementation: technology
+      effectiveness: high
+    - id: CY-ATOMULE-001-C2
+      name: Device intelligence and behavioural biometrics
+      type: detective
+      description: Fingerprint devices and analyse session behaviour (typing, navigation, remote-access
+        tools, emulators) to spot shared, scripted or hijacked sessions.
+      implementation: technology
+      effectiveness: high
+    - id: CY-ATOMULE-001-C3
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+  - id: CY-ATOMULE-002
+    name: Login from new device with remote-access tooling
+    description: Session uses remote-desktop or screen-sharing applications at payment time.
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    data_sources:
+    - device_data
+    - session_logs
+    false_positive_notes: IT support use.
+    controls:
+    - id: CY-ATOMULE-002-C1
+      name: Device intelligence and behavioural biometrics
+      type: detective
+      description: Fingerprint devices and analyse session behaviour (typing, navigation, remote-access
+        tools, emulators) to spot shared, scripted or hijacked sessions.
+      implementation: technology
+      effectiveness: high
+    - id: CY-ATOMULE-002-C2
+      name: Step-up authentication on risky events
+      type: preventive
+      description: Trigger strong re-authentication for credential, device or payee changes and large
+        or unusual payments.
+      implementation: technology
+      effectiveness: high
+    - id: CY-ATOMULE-002-C3
+      name: Customer intervention and scam warnings
+      type: corrective
+      description: Contextual warnings and call-backs when a payment shows scam or coercion indicators.
+      implementation: process
+      effectiveness: medium
+  - id: CY-ATOMULE-003
+    name: Many failed logins across accounts from one source
+    description: Credential stuffing pattern with later successful access.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    data_sources:
+    - login_logs
+    - ip_logs
+    false_positive_notes: Shared NAT.
+    controls:
+    - id: CY-ATOMULE-003-C1
+      name: Device intelligence and behavioural biometrics
+      type: detective
+      description: Fingerprint devices and analyse session behaviour (typing, navigation, remote-access
+        tools, emulators) to spot shared, scripted or hijacked sessions.
+      implementation: technology
+      effectiveness: high
+    - id: CY-ATOMULE-003-C2
+      name: IP, geolocation and anonymisation detection
+      type: detective
+      description: Detect VPN, proxy, Tor and geolocation mismatch against declared residence and sanctioned
+        or high-risk jurisdictions.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-ATOMULE-003-C3
+      name: External intelligence and consortium feeds
+      type: detective
+      description: Ingest law-enforcement, industry and commercial threat intelligence on indicators,
+        mule accounts and scam infrastructure.
+      implementation: technology
+      effectiveness: medium
+  - id: CY-ATOMULE-004
+    name: Inbound funds quickly forwarded out in near-equal amounts
+    description: Pass-through behaviour with minimal retained balance.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - ledger_data
+    false_positive_notes: Business pass-through.
+    controls:
+    - id: CY-ATOMULE-004-C1
+      name: Mule account detection model
+      type: detective
+      description: Model that scores inbound-then-outbound pass-through, new payee churn and profile mismatch
+        to flag likely mule accounts.
+      implementation: model
+      effectiveness: high
+    - id: CY-ATOMULE-004-C2
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-ATOMULE-004-C3
+      name: Graph and network analytics
+      type: detective
+      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
+        and fan-in/fan-out structures.
+      implementation: model
+      effectiveness: high
+  - id: CY-ATOMULE-005
+    name: Recently opened account receiving payments from multiple unrelated victims
+    description: New account collects scam receipts from varied sources.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - ledger_data
+    - payment_references
+    false_positive_notes: Marketplace sellers.
+    controls:
+    - id: CY-ATOMULE-005-C1
+      name: Mule account detection model
+      type: detective
+      description: Model that scores inbound-then-outbound pass-through, new payee churn and profile mismatch
+        to flag likely mule accounts.
+      implementation: model
+      effectiveness: high
+    - id: CY-ATOMULE-005-C2
+      name: Graph and network analytics
+      type: detective
+      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
+        and fan-in/fan-out structures.
+      implementation: model
+      effectiveness: high
+    - id: CY-ATOMULE-005-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+  - id: CY-ATOMULE-006
+    name: Account holder profile mismatches activity
+    description: Student, pensioner or unemployed customer processes large flows.
+    category: customer
+    severity: medium
+    detection_type:
+    - kyc_review
+    - transaction_monitoring
+    data_sources:
+    - customer_profile
+    false_positive_notes: Gifts and benefits.
+    controls:
+    - id: CY-ATOMULE-006-C1
+      name: Enhanced due diligence
+      type: preventive
+      description: Collect additional information on activity purpose, expected volumes and ownership
+        before approval or continued service, with senior sign-off.
+      implementation: process
+      effectiveness: medium
+    - id: CY-ATOMULE-006-C2
+      name: Mule account detection model
+      type: detective
+      description: Model that scores inbound-then-outbound pass-through, new payee churn and profile mismatch
+        to flag likely mule accounts.
+      implementation: model
+      effectiveness: high
+    - id: CY-ATOMULE-006-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+  - id: CY-ATOMULE-007
+    name: Payments to crypto exchanges or cash-out channels soon after receipt
+    description: Funds sent to exchanges, gift-card merchants or remittance providers immediately.
+    category: counterparty
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payee_data
+    false_positive_notes: Active traders.
+    controls:
+    - id: CY-ATOMULE-007-C1
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-ATOMULE-007-C2
+      name: Blockchain analytics and wallet attribution
+      type: detective
+      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
+        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
+      implementation: technology
+      effectiveness: high
+    - id: CY-ATOMULE-007-C3
+      name: Beneficiary name verification
+      type: preventive
+      description: Check payee name and account details before release to reduce misdirected and fraudulent
+        payments.
+      implementation: technology
+      effectiveness: medium
+  - id: CY-ATOMULE-008
+    name: Same beneficiary reached by many mule accounts
+    description: Graph shows many accounts paying the same ultimate beneficiary.
+    category: counterparty
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payee_data
+    - graph_data
+    false_positive_notes: Landlord or merchant.
+    controls:
+    - id: CY-ATOMULE-008-C1
+      name: Graph and network analytics
+      type: detective
+      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
+        and fan-in/fan-out structures.
+      implementation: model
+      effectiveness: high
+    - id: CY-ATOMULE-008-C2
+      name: Mule account detection model
+      type: detective
+      description: Model that scores inbound-then-outbound pass-through, new payee churn and profile mismatch
+        to flag likely mule accounts.
+      implementation: model
+      effectiveness: high
+    - id: CY-ATOMULE-008-C3
+      name: External intelligence and consortium feeds
+      type: detective
+      description: Ingest law-enforcement, industry and commercial threat intelligence on indicators,
+        mule accounts and scam infrastructure.
+      implementation: technology
+      effectiveness: medium
+  - id: CY-ATOMULE-009
+    name: Payee name verification fails or mismatches
+    description: Names mismatch or accounts recently created for the payee.
+    category: document
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payee_data
+    false_positive_notes: Trading names.
+    controls:
+    - id: CY-ATOMULE-009-C1
+      name: Beneficiary name verification
+      type: preventive
+      description: Check payee name and account details before release to reduce misdirected and fraudulent
+        payments.
+      implementation: technology
+      effectiveness: medium
+    - id: CY-ATOMULE-009-C2
+      name: Customer intervention and scam warnings
+      type: corrective
+      description: Contextual warnings and call-backs when a payment shows scam or coercion indicators.
+      implementation: process
+      effectiveness: medium
+    - id: CY-ATOMULE-009-C3
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+  - id: CY-ATOMULE-010
+    name: Customer recruited online for fake job offering payment handling
+    description: Customer describes job ads asking to receive and forward funds.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - rfi_responses
+    - complaints
+    false_positive_notes: Genuine payment-agent roles.
+    controls:
+    - id: CY-ATOMULE-010-C1
+      name: Customer intervention and scam warnings
+      type: corrective
+      description: Contextual warnings and call-backs when a payment shows scam or coercion indicators.
+      implementation: process
+      effectiveness: medium
+    - id: CY-ATOMULE-010-C2
+      name: Typology-focused staff training
+      type: preventive
+      description: Training for front-line, onboarding and investigation staff on current red flags and
+        escalation routes.
+      implementation: training
+      effectiveness: low
+    - id: CY-ATOMULE-010-C3
+      name: External intelligence and consortium feeds
+      type: detective
+      description: Ingest law-enforcement, industry and commercial threat intelligence on indicators,
+        mule accounts and scam infrastructure.
+      implementation: technology
+      effectiveness: medium

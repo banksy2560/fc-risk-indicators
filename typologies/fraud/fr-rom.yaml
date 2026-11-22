@@ -1,0 +1,342 @@
+typology:
+  id: FR-ROM
+  name: Romance and Pig-Butchering Investment Scams
+  domain: fraud
+  description: Offenders build online trust over weeks or months, then steer the victim into sending money
+    for an emergency or into a fake investment platform that shows fabricated gains. Funds typically flow
+    through exchanges, mule accounts and offshore networks.
+  sectors:
+  - banking
+  - payments
+  - crypto
+  - fintech
+  sources:
+  - FinCEN, Alert on prevalent virtual currency investment scam commonly known as pig butchering (2023)
+  - FATF, report on illicit financial flows from cyber-enabled fraud (2023)
+  - UK Finance, Annual Fraud Report (published annually)
+  indicators:
+  - id: FR-ROM-001
+    name: Escalating transfers to crypto exchanges by a first-time buyer
+    description: 'Victim-side: a customer with no crypto history makes repeated, rising purchases and
+      onward transfers to external wallets within weeks.'
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - customer_behaviour
+    data_sources:
+    - payment_data
+    - exchange_flows
+    false_positive_notes: Genuine retail interest in crypto.
+    controls:
+    - id: FR-ROM-001-C1
+      name: Blockchain analytics and off-ramp monitoring
+      type: detective
+      description: Traces exposure to scam-linked wallets and exchanges and flags fiat-to-crypto flows
+        to risky destinations.
+      implementation: technology
+      effectiveness: high
+    - id: FR-ROM-001-C2
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-ROM-001-C3
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    references:
+    - FinCEN, Alert on prevalent virtual currency investment scam commonly known as pig butchering (2023)
+  - id: FR-ROM-002
+    name: Customer mentions an online partner never met
+    description: 'Victim-side: explanations of payment mention a recent online relationship, overseas
+      partner, military or offshore worker who cannot meet.'
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    - investigator_judgement
+    data_sources:
+    - branch_interaction
+    - call_notes
+    false_positive_notes: Genuine long-distance relationships.
+    controls:
+    - id: FR-ROM-002-C1
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    - id: FR-ROM-002-C2
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-ROM-002-C3
+      name: Trusted-contact and vulnerable-customer process
+      type: preventive
+      description: Customers can nominate a trusted contact; flagged vulnerability triggers tailored handling
+        and permitted escalation.
+      implementation: process
+      effectiveness: medium
+    references:
+    - FinCEN, Alert on prevalent virtual currency investment scam commonly known as pig butchering (2023)
+  - id: FR-ROM-003
+    name: Investment platform with unlicensed or cloned identity
+    description: 'Victim-side: payments go to a platform that lacks regulatory authorisation, imitates
+      a legitimate firm or is hosted on a recently registered domain.'
+    category: counterparty
+    severity: high
+    detection_type:
+    - external_intel
+    - screening
+    data_sources:
+    - regulator_warning_lists
+    - domain_intel
+    false_positive_notes: New but legitimate fintech brands.
+    controls:
+    - id: FR-ROM-003-C1
+      name: Threat intelligence and takedown
+      type: detective
+      description: Monitors for spoofed domains, fake apps, adverts and numbers and arranges their takedown
+        and customer alerts.
+      implementation: technology
+      effectiveness: medium
+    - id: FR-ROM-003-C2
+      name: Registry and adverse-media checks
+      type: detective
+      description: Validates entity existence, licensing and reputation through registries and media screening.
+      implementation: technology
+      effectiveness: medium
+    - id: FR-ROM-003-C3
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    references:
+    - FinCEN, Alert on prevalent virtual currency investment scam commonly known as pig butchering (2023)
+  - id: FR-ROM-004
+    name: Funds routed to multiple small accounts then consolidated
+    description: 'Mule-side: scam proceeds are split across many personal and corporate accounts before
+      consolidation and cash-out.'
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - account_data
+    - payment_data
+    false_positive_notes: Payroll or marketplace payouts with similar structure.
+    controls:
+    - id: FR-ROM-004-C1
+      name: Mule account detection model
+      type: detective
+      description: Detects inbound-funds-then-rapid-outflow and other mule patterns on receiving accounts,
+        enabling holds and exits.
+      implementation: model
+      effectiveness: high
+    - id: FR-ROM-004-C2
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    - id: FR-ROM-004-C3
+      name: Entity resolution and link analysis
+      type: detective
+      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
+        identities.
+      implementation: model
+      effectiveness: high
+    references:
+    - FinCEN, Alert on prevalent virtual currency investment scam commonly known as pig butchering (2023)
+  - id: FR-ROM-005
+    name: Large 'withdrawal fee' or 'tax' payment to release gains
+    description: 'Victim-side: after a seemingly profitable period, the customer sends further funds to
+      unlock profits.'
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - customer_behaviour
+    data_sources:
+    - payment_data
+    false_positive_notes: Genuine exit fees at regulated platforms.
+    controls:
+    - id: FR-ROM-005-C1
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-ROM-005-C2
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    - id: FR-ROM-005-C3
+      name: Customer education and awareness
+      type: preventive
+      description: Targeted messaging helps customers recognise the scam script and know how to verify.
+      implementation: training
+      effectiveness: low
+    references:
+    - FinCEN, Alert on prevalent virtual currency investment scam commonly known as pig butchering (2023)
+  - id: FR-ROM-006
+    name: Loan, credit card or remortgage taken to fund transfers
+    description: 'Victim-side: the customer draws credit or equity shortly before sending money away,
+      often citing a vague purpose.'
+    category: product_channel
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - credit_data
+    - payment_data
+    false_positive_notes: Legitimate refinancing for investment.
+    controls:
+    - id: FR-ROM-006-C1
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-ROM-006-C2
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    - id: FR-ROM-006-C3
+      name: Hold or cooling-off on new high-value payees
+      type: preventive
+      description: Delays the first large payment to a new payee or newly changed details so that the
+        victim, or the bank, can verify before funds leave.
+      implementation: policy
+      effectiveness: medium
+    references:
+    - FinCEN, Alert on prevalent virtual currency investment scam commonly known as pig butchering (2023)
+  - id: FR-ROM-007
+    name: Gift-card or peer-to-peer payments to a single remote contact
+    description: 'Victim-side: regular payments or vouchers sent to one beneficiary overseas with emotional
+      narratives.'
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payment_data
+    false_positive_notes: Family support abroad.
+    controls:
+    - id: FR-ROM-007-C1
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-ROM-007-C2
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    - id: FR-ROM-007-C3
+      name: Customer education and awareness
+      type: preventive
+      description: Targeted messaging helps customers recognise the scam script and know how to verify.
+      implementation: training
+      effectiveness: low
+    references:
+    - FinCEN, Alert on prevalent virtual currency investment scam commonly known as pig butchering (2023)
+  - id: FR-ROM-008
+    name: Accounts used as pass-through for overseas scam operations
+    description: 'Mule-side: recruited accounts receive victim funds and convert quickly to stablecoins
+      or wire abroad.'
+    category: behavioural
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - account_data
+    - blockchain_data
+    false_positive_notes: Cross-border workers sending remittances.
+    controls:
+    - id: FR-ROM-008-C1
+      name: Mule account detection model
+      type: detective
+      description: Detects inbound-funds-then-rapid-outflow and other mule patterns on receiving accounts,
+        enabling holds and exits.
+      implementation: model
+      effectiveness: high
+    - id: FR-ROM-008-C2
+      name: Blockchain analytics and off-ramp monitoring
+      type: detective
+      description: Traces exposure to scam-linked wallets and exchanges and flags fiat-to-crypto flows
+        to risky destinations.
+      implementation: technology
+      effectiveness: high
+    - id: FR-ROM-008-C3
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    references:
+    - FinCEN, Alert on prevalent virtual currency investment scam commonly known as pig butchering (2023)
+  - id: FR-ROM-009
+    name: Customer is isolated and defensive about intervention
+    description: 'Victim-side: customer insists on completing payments, becomes upset with questions or
+      states friends and family do not understand.'
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    - investigator_judgement
+    data_sources:
+    - branch_interaction
+    false_positive_notes: Customers valuing privacy.
+    controls:
+    - id: FR-ROM-009-C1
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    - id: FR-ROM-009-C2
+      name: Trusted-contact and vulnerable-customer process
+      type: preventive
+      description: Customers can nominate a trusted contact; flagged vulnerability triggers tailored handling
+        and permitted escalation.
+      implementation: process
+      effectiveness: medium
+    - id: FR-ROM-009-C3
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    references:
+    - FinCEN, Alert on prevalent virtual currency investment scam commonly known as pig butchering (2023)

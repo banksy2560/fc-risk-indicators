@@ -1,0 +1,326 @@
+typology:
+  id: FR-BUST
+  name: First-Party and Bust-Out Fraud
+  domain: fraud
+  description: Customers or organised groups obtain credit with no intent to repay, or build up credit
+    lines and then max them out and vanish. First-party fraud may also include exaggerated hardship or
+    false disputes.
+  sectors:
+  - banking
+  - payments
+  - fintech
+  sources:
+  - UK Finance, Annual Fraud Report (published annually)
+  - FinCEN, advisories on loan and credit fraud (general)
+  - FATF, guidance on proceeds of fraud (general)
+  indicators:
+  - id: FR-BUST-001
+    name: Sudden utilisation spike to limit after a period of low use
+    description: Balances move from low to maximum across cards or lines within days.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - account_data
+    false_positive_notes: Seasonal spending.
+    controls:
+    - id: FR-BUST-001-C1
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules on count, value, geography and timing alert analysts to bursts or structured
+        activity.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-BUST-001-C2
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    - id: FR-BUST-001-C3
+      name: Entity resolution and link analysis
+      type: detective
+      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
+        identities.
+      implementation: model
+      effectiveness: high
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-BUST-002
+    name: Cash advances and purchases of resaleable goods
+    description: Heavy use of cash advances, gift cards and high-resale items near the credit limit.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - card_data
+    false_positive_notes: Genuine purchases.
+    controls:
+    - id: FR-BUST-002-C1
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules on count, value, geography and timing alert analysts to bursts or structured
+        activity.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-BUST-002-C2
+      name: Merchant onboarding and monitoring
+      type: preventive
+      description: Verifies merchants and monitors for transaction laundering, bust-out and dubious business
+        models.
+      implementation: process
+      effectiveness: medium
+    - id: FR-BUST-002-C3
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-BUST-003
+    name: Rapid payments from third-party or overdrawn accounts to inflate limits
+    description: Payments that bounce or are reversed after credit is restored.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payment_data
+    false_positive_notes: Genuine payment errors.
+    controls:
+    - id: FR-BUST-003-C1
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules on count, value, geography and timing alert analysts to bursts or structured
+        activity.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-BUST-003-C2
+      name: Deposit holds and funds-availability policy
+      type: preventive
+      description: Risk-based holds on uncleared deposits limit withdrawal until the item is confirmed
+        good.
+      implementation: policy
+      effectiveness: medium
+    - id: FR-BUST-003-C3
+      name: Entity resolution and link analysis
+      type: detective
+      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
+        identities.
+      implementation: model
+      effectiveness: high
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-BUST-004
+    name: Multiple linked accounts opened across lenders
+    description: Shared addresses or phones across applicants hitting many lenders.
+    category: behavioural
+    severity: high
+    detection_type:
+    - kyc_review
+    - external_intel
+    data_sources:
+    - bureau_data
+    - application_data
+    false_positive_notes: Family members.
+    controls:
+    - id: FR-BUST-004-C1
+      name: Entity resolution and link analysis
+      type: detective
+      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
+        identities.
+      implementation: model
+      effectiveness: high
+    - id: FR-BUST-004-C2
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    - id: FR-BUST-004-C3
+      name: Device and network intelligence
+      type: detective
+      description: Fingerprints devices, IPs and emulators to link applications or sessions and flag anomalous
+        or shared infrastructure.
+      implementation: technology
+      effectiveness: high
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-BUST-005
+    name: Customer unreachable after account reaches limit
+    description: Contact details become invalid and the customer ceases engagement.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    data_sources:
+    - collections_data
+    false_positive_notes: Genuine change of circumstances.
+    controls:
+    - id: FR-BUST-005-C1
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    - id: FR-BUST-005-C2
+      name: Case management and fraud MI governance
+      type: governance
+      description: Outcomes, losses and false positives are tracked and fed back into rule tuning and
+        risk appetite.
+      implementation: process
+      effectiveness: medium
+    - id: FR-BUST-005-C3
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-BUST-006
+    name: Stated income or employer not verifiable
+    description: Application cites employer or income that cannot be confirmed.
+    category: document
+    severity: medium
+    detection_type:
+    - kyc_review
+    - document_review
+    data_sources:
+    - application_data
+    false_positive_notes: Self-employed.
+    controls:
+    - id: FR-BUST-006-C1
+      name: Income, affordability and bureau verification
+      type: preventive
+      description: Verifies stated income, employment and obligations independently and cross-checks bureau
+        and application data.
+      implementation: process
+      effectiveness: high
+    - id: FR-BUST-006-C2
+      name: Document forensics and source verification
+      type: detective
+      description: Analyses supporting documents for tampering, template reuse and metadata anomalies,
+        and confirms with the issuer.
+      implementation: technology
+      effectiveness: medium
+    - id: FR-BUST-006-C3
+      name: Underwriting verification and data matching
+      type: preventive
+      description: Validates application facts against third-party data and prior-claim or application
+        history.
+      implementation: process
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-BUST-007
+    name: Increased use of merchants known for transaction laundering
+    description: Use at merchants with risky profiles suggesting cash-out.
+    category: counterparty
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - merchant_data
+    false_positive_notes: Legitimate shops.
+    controls:
+    - id: FR-BUST-007-C1
+      name: Merchant onboarding and monitoring
+      type: preventive
+      description: Verifies merchants and monitors for transaction laundering, bust-out and dubious business
+        models.
+      implementation: process
+      effectiveness: medium
+    - id: FR-BUST-007-C2
+      name: Chargeback and merchant-risk analytics
+      type: detective
+      description: Monitors dispute ratios, refund patterns and merchant behaviour, and identifies repeat
+        disputers and friendly fraud.
+      implementation: model
+      effectiveness: medium
+    - id: FR-BUST-007-C3
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules on count, value, geography and timing alert analysts to bursts or structured
+        activity.
+      implementation: rule
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-BUST-008
+    name: Early limit increase requests
+    description: Repeated and quickly sought limit increases soon after account opening.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    data_sources:
+    - servicing_logs
+    false_positive_notes: Genuine need.
+    controls:
+    - id: FR-BUST-008-C1
+      name: Income, affordability and bureau verification
+      type: preventive
+      description: Verifies stated income, employment and obligations independently and cross-checks bureau
+        and application data.
+      implementation: process
+      effectiveness: high
+    - id: FR-BUST-008-C2
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    - id: FR-BUST-008-C3
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules on count, value, geography and timing alert analysts to bursts or structured
+        activity.
+      implementation: rule
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-BUST-009
+    name: Customer disputes legitimate transactions after use
+    description: False claims of non-receipt or unauthorised use.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    - transaction_monitoring
+    data_sources:
+    - dispute_data
+    false_positive_notes: Genuine disputes.
+    controls:
+    - id: FR-BUST-009-C1
+      name: Chargeback and merchant-risk analytics
+      type: detective
+      description: Monitors dispute ratios, refund patterns and merchant behaviour, and identifies repeat
+        disputers and friendly fraud.
+      implementation: model
+      effectiveness: medium
+    - id: FR-BUST-009-C2
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    - id: FR-BUST-009-C3
+      name: Case management and fraud MI governance
+      type: governance
+      description: Outcomes, losses and false positives are tracked and fed back into rule tuning and
+        risk appetite.
+      implementation: process
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)

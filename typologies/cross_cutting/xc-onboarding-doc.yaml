@@ -1,0 +1,256 @@
+typology:
+  id: XC-ONBOARDING-DOC
+  name: Onboarding Documentation and Identity Integrity
+  domain: cross_cutting
+  description: Inherent-risk factors seen during onboarding and refresh that suggest false, altered or
+    reused identity information. Covers document fraud, inconsistent details, fictitious addresses and
+    identifiers shared across unrelated customers.
+  sectors:
+  - all
+  sources:
+  - FATF, Guidance for a Risk-Based Approach (sector-specific guidance series, general principles)
+  - FATF Recommendations, Recommendation 1 and Interpretive Note (assessing risks and applying a risk-based
+    approach)
+  - Wolfsberg Group, Guidance on a Risk Based Approach for Managing Money Laundering Risks
+  indicators:
+  - id: XC-ONBOARDING-DOC-001
+    name: Suspected forged or altered identity document
+    description: Document shows signs of tampering, font or layout anomalies, or fails security-feature
+      checks.
+    category: document
+    severity: high
+    detection_type:
+    - document_review
+    data_sources:
+    - id_documents
+    false_positive_notes: Worn or poorly scanned genuine documents can fail checks.
+    controls:
+    - id: XC-ONBOARDING-DOC-001-C1
+      name: Automated document authentication
+      type: preventive
+      description: Check security features, MRZ and template conformity.
+      implementation: technology
+      effectiveness: high
+    - id: XC-ONBOARDING-DOC-001-C2
+      name: Trained manual review for refers
+      type: detective
+      description: Escalate failures to trained examiners.
+      implementation: process
+      effectiveness: medium
+  - id: XC-ONBOARDING-DOC-002
+    name: Inconsistent personal details across documents
+    description: Names, dates of birth or addresses differ between documents or from the application.
+    category: document
+    severity: medium
+    detection_type:
+    - document_review
+    - kyc_review
+    data_sources:
+    - id_documents
+    - application_data
+    false_positive_notes: Transliteration, marriage name changes and typos are common.
+    controls:
+    - id: XC-ONBOARDING-DOC-002-C1
+      name: Cross-field consistency rules
+      type: preventive
+      description: Flag mismatches at capture.
+      implementation: rule
+      effectiveness: medium
+    - id: XC-ONBOARDING-DOC-002-C2
+      name: Explanation and evidence capture
+      type: preventive
+      description: Record and evidence the reason for discrepancies.
+      implementation: process
+      effectiveness: medium
+  - id: XC-ONBOARDING-DOC-003
+    name: Fictitious or unverifiable address
+    description: Address does not exist, is a mail drop, or fails verification against authoritative data.
+    category: document
+    severity: medium
+    detection_type:
+    - kyc_review
+    data_sources:
+    - address_data
+    false_positive_notes: New builds and rural addresses may not be in databases.
+    controls:
+    - id: XC-ONBOARDING-DOC-003-C1
+      name: Address verification service
+      type: preventive
+      description: Validate addresses against postal or reference data.
+      implementation: technology
+      effectiveness: medium
+    - id: XC-ONBOARDING-DOC-003-C2
+      name: Proof-of-address requirement
+      type: preventive
+      description: Obtain recent independent evidence.
+      implementation: process
+      effectiveness: medium
+  - id: XC-ONBOARDING-DOC-004
+    name: Shared identifiers across unrelated customers
+    description: Same phone, email, address, device or ID number appears across multiple unrelated customers.
+    category: document
+    severity: high
+    detection_type:
+    - kyc_review
+    - transaction_monitoring
+    data_sources:
+    - customer_master
+    - device_data
+    false_positive_notes: Families and shared households legitimately share details.
+    controls:
+    - id: XC-ONBOARDING-DOC-004-C1
+      name: Link analysis on identifiers
+      type: detective
+      description: Detect shared-attribute clusters across the book.
+      implementation: technology
+      effectiveness: high
+    - id: XC-ONBOARDING-DOC-004-C2
+      name: Duplicate-identity checks at onboarding
+      type: preventive
+      description: Block or review records matching existing identities.
+      implementation: rule
+      effectiveness: high
+  - id: XC-ONBOARDING-DOC-005
+    name: Synthetic or fabricated identity indicators
+    description: Thin or newly created credit and digital footprint, mixed attributes from different real
+      persons.
+    category: document
+    severity: high
+    detection_type:
+    - kyc_review
+    data_sources:
+    - bureau_data
+    - digital_footprint
+    false_positive_notes: Young or recently arrived people have thin files.
+    controls:
+    - id: XC-ONBOARDING-DOC-005-C1
+      name: Identity-footprint scoring
+      type: preventive
+      description: Score the depth and age of identity footprint.
+      implementation: model
+      effectiveness: medium
+    - id: XC-ONBOARDING-DOC-005-C2
+      name: Consortium fraud data checks
+      type: preventive
+      description: Check industry fraud databases.
+      implementation: technology
+      effectiveness: medium
+  - id: XC-ONBOARDING-DOC-006
+    name: Documents reused across applications
+    description: Same image or document submitted for different applicants or after previous rejection.
+    category: document
+    severity: high
+    detection_type:
+    - document_review
+    data_sources:
+    - document_images
+    false_positive_notes: Resubmission after a poor-quality upload is legitimate.
+    controls:
+    - id: XC-ONBOARDING-DOC-006-C1
+      name: Image hash matching
+      type: detective
+      description: Hash and compare images across applications.
+      implementation: technology
+      effectiveness: high
+    - id: XC-ONBOARDING-DOC-006-C2
+      name: Rejected-application history check
+      type: preventive
+      description: Search past declined applicants.
+      implementation: process
+      effectiveness: medium
+  - id: XC-ONBOARDING-DOC-007
+    name: Expired, unusual or low-assurance documents
+    description: Applicant offers documents of limited reliability or unusual types without explanation.
+    category: document
+    severity: low
+    detection_type:
+    - document_review
+    data_sources:
+    - id_documents
+    false_positive_notes: Some populations lack standard documents.
+    controls:
+    - id: XC-ONBOARDING-DOC-007-C1
+      name: Accepted document policy
+      type: governance
+      description: Define acceptable documents by risk.
+      implementation: policy
+      effectiveness: medium
+    - id: XC-ONBOARDING-DOC-007-C2
+      name: Alternative evidence pathway
+      type: preventive
+      description: Provide controlled route for those lacking standard documents.
+      implementation: process
+      effectiveness: low
+  - id: XC-ONBOARDING-DOC-008
+    name: Applicant details match watchlist or fraud record
+    description: Application data matches known fraud, mule or exited-customer records.
+    category: document
+    severity: high
+    detection_type:
+    - screening
+    - kyc_review
+    data_sources:
+    - internal_watchlists
+    - fraud_consortium
+    false_positive_notes: Common names cause false matches.
+    controls:
+    - id: XC-ONBOARDING-DOC-008-C1
+      name: Watchlist screening at application
+      type: preventive
+      description: Screen before account opening.
+      implementation: technology
+      effectiveness: high
+    - id: XC-ONBOARDING-DOC-008-C2
+      name: Adjudication with secondary identifiers
+      type: detective
+      description: Use date of birth and address to clear matches.
+      implementation: process
+      effectiveness: medium
+  - id: XC-ONBOARDING-DOC-009
+    name: Pressure to complete onboarding quickly
+    description: Customer or intermediary urges bypassing checks or relies on personal connections.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    - investigator_judgement
+    data_sources:
+    - onboarding_notes
+    false_positive_notes: Commercial deadlines are common.
+    controls:
+    - id: XC-ONBOARDING-DOC-009-C1
+      name: No-exceptions escalation path
+      type: governance
+      description: Require compliance approval for any waiver.
+      implementation: policy
+      effectiveness: medium
+    - id: XC-ONBOARDING-DOC-009-C2
+      name: Staff training on pressure tactics
+      type: preventive
+      description: Teach staff to recognise and report pressure.
+      implementation: training
+      effectiveness: medium
+  - id: XC-ONBOARDING-DOC-010
+    name: Signature or contact details differ on later instructions
+    description: Later instructions carry signatures or contact details that depart from onboarding records.
+    category: document
+    severity: medium
+    detection_type:
+    - document_review
+    - transaction_monitoring
+    data_sources:
+    - signature_records
+    false_positive_notes: Signatures naturally vary.
+    controls:
+    - id: XC-ONBOARDING-DOC-010-C1
+      name: Signature and contact verification
+      type: preventive
+      description: Verify instructions that deviate.
+      implementation: process
+      effectiveness: medium
+    - id: XC-ONBOARDING-DOC-010-C2
+      name: Out-of-band confirmation
+      type: preventive
+      description: Confirm change requests through known channels.
+      implementation: process
+      effectiveness: medium

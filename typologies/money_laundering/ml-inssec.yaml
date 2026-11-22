@@ -1,0 +1,229 @@
+typology:
+  id: ML-INSSEC
+  name: Insurance and Securities Layering
+  domain: money_laundering
+  description: Use of insurance products and securities markets to place and layer funds, for example
+    single-premium policies cancelled early, or trading, wash trades and account transfers that obscure
+    source and ownership.
+  stage:
+  - placement
+  - layering
+  sectors:
+  - insurance
+  - securities
+  sources:
+  - 'FATF, Guidance for a Risk-Based Approach: Life Insurance Sector (2018)'
+  - FATF, Money Laundering and Terrorist Financing in the Securities Sector (2009)
+  - IAIS, Application Paper on combating ML/TF (general)
+  indicators:
+  - id: ML-INSSEC-001
+    name: Large single premium paid then early surrender
+    description: Policy funded with lump sum and cancelled soon after, with refund to third party.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - policy_data
+    false_positive_notes: Policyholder circumstances change.
+    controls:
+    - id: ML-INSSEC-001-C1
+      name: Early surrender rule
+      type: detective
+      description: Alert on early cancellations and payouts to others.
+      implementation: rule
+      effectiveness: high
+    - id: ML-INSSEC-001-C2
+      name: Refund destination control
+      type: preventive
+      description: Refund only to original payer.
+      implementation: policy
+      effectiveness: high
+  - id: ML-INSSEC-002
+    name: Premiums paid by unrelated third parties
+    description: Payers have no insurable interest or link.
+    category: counterparty
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - payment_data
+    false_positive_notes: Employer or family payment.
+    controls:
+    - id: ML-INSSEC-002-C1
+      name: Third-party payer check
+      type: preventive
+      description: Verify relationship.
+      implementation: process
+      effectiveness: medium
+    - id: ML-INSSEC-002-C2
+      name: Payer monitoring
+      type: detective
+      description: Alert on multiple payers.
+      implementation: rule
+      effectiveness: medium
+  - id: ML-INSSEC-003
+    name: Policy loans or assignments to third parties
+    description: Rapid loans, assignments or beneficiary changes.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - kyc_review
+    data_sources:
+    - policy_data
+    false_positive_notes: Estate planning.
+    controls:
+    - id: ML-INSSEC-003-C1
+      name: Assignment review
+      type: preventive
+      description: Review changes.
+      implementation: process
+      effectiveness: medium
+    - id: ML-INSSEC-003-C2
+      name: Beneficiary-change alert
+      type: detective
+      description: Alert on late changes.
+      implementation: rule
+      effectiveness: medium
+  - id: ML-INSSEC-004
+    name: Overfunded policies and partial withdrawals
+    description: Paid in excess of required premium then withdrawn.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - policy_data
+    false_positive_notes: Misestimates happen.
+    controls:
+    - id: ML-INSSEC-004-C1
+      name: Overpayment rule
+      type: detective
+      description: Alert on overpayments.
+      implementation: rule
+      effectiveness: medium
+    - id: ML-INSSEC-004-C2
+      name: Refund validation
+      type: preventive
+      description: Verify before refund.
+      implementation: process
+      effectiveness: medium
+  - id: ML-INSSEC-005
+    name: Wash or matched trades between connected accounts
+    description: Same securities traded between related accounts at unrealistic prices.
+    category: typology_specific
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - trade_data
+    false_positive_notes: Market making.
+    controls:
+    - id: ML-INSSEC-005-C1
+      name: Cross-account trade surveillance
+      type: detective
+      description: Detect matched trades.
+      implementation: model
+      effectiveness: high
+    - id: ML-INSSEC-005-C2
+      name: Linked account analysis
+      type: detective
+      description: Link accounts.
+      implementation: technology
+      effectiveness: medium
+  - id: ML-INSSEC-006
+    name: Securities deposited then transferred out without trading
+    description: Shares deposited and moved with no market activity.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - securities_data
+    false_positive_notes: Custody moves.
+    controls:
+    - id: ML-INSSEC-006-C1
+      name: Free-delivery monitoring
+      type: detective
+      description: Monitor free transfers.
+      implementation: rule
+      effectiveness: medium
+    - id: ML-INSSEC-006-C2
+      name: Origin of securities check
+      type: preventive
+      description: Verify provenance.
+      implementation: process
+      effectiveness: medium
+  - id: ML-INSSEC-007
+    name: Trading in low-liquidity securities with unrelated parties
+    description: Illiquid instruments used to move value.
+    category: product_channel
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - trade_data
+    false_positive_notes: Genuine investors.
+    controls:
+    - id: ML-INSSEC-007-C1
+      name: Illiquid product surveillance
+      type: detective
+      description: Monitor trades.
+      implementation: rule
+      effectiveness: medium
+    - id: ML-INSSEC-007-C2
+      name: Price reasonableness check
+      type: detective
+      description: Compare to market.
+      implementation: process
+      effectiveness: medium
+  - id: ML-INSSEC-008
+    name: Use of omnibus or nominee accounts
+    description: Positions hidden via omnibus or nominee structure.
+    category: ownership_structure
+    severity: high
+    detection_type:
+    - kyc_review
+    data_sources:
+    - account_data
+    false_positive_notes: Custodians.
+    controls:
+    - id: ML-INSSEC-008-C1
+      name: Omnibus due diligence
+      type: preventive
+      description: Review intermediary controls.
+      implementation: process
+      effectiveness: high
+    - id: ML-INSSEC-008-C2
+      name: Look-through requirement
+      type: preventive
+      description: Obtain underlying client data.
+      implementation: policy
+      effectiveness: medium
+  - id: ML-INSSEC-009
+    name: Customer indifferent to investment performance or fees
+    description: Accepts losses or penalties readily.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    - investigator_judgement
+    data_sources:
+    - relationship_notes
+    false_positive_notes: Wealthy customers.
+    controls:
+    - id: ML-INSSEC-009-C1
+      name: Suitability and purpose review
+      type: preventive
+      description: Assess rationale.
+      implementation: process
+      effectiveness: medium
+    - id: ML-INSSEC-009-C2
+      name: Adviser training
+      type: preventive
+      description: Train on behaviours.
+      implementation: training
+      effectiveness: low

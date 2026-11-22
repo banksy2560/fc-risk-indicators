@@ -1,0 +1,367 @@
+typology:
+  id: CY-MIXER
+  name: Virtual Asset Laundering via Mixers, Tumblers and Chain-Hopping
+  domain: cyber_enabled
+  description: Criminals obscure the trail of virtual asset proceeds by routing them through mixing services,
+    privacy-enhancing tools and rapid conversions between assets and blockchains. The aim is to break
+    the link between illicit source and final cash-out point. Regulated platforms see this as exposure
+    to mixers, layered swaps and unusually fast pass-through.
+  stage:
+  - layering
+  sectors:
+  - crypto
+  - fintech
+  sources:
+  - 'FATF, Virtual Assets: Red Flag Indicators of Money Laundering and Terrorist Financing (2020)'
+  - FATF, Updated Guidance for a Risk-Based Approach to Virtual Assets and Virtual Asset Service Providers
+    (2021)
+  - FinCEN, Advisory on Illicit Activity Involving Convertible Virtual Currency (FIN-2019-A003, 2019)
+  - FinCEN, Proposal of special measure regarding convertible virtual currency mixing as a class of transactions
+    of primary money laundering concern (2023)
+  indicators:
+  - id: CY-MIXER-001
+    name: Deposits with direct or indirect exposure to mixing services
+    description: Incoming virtual asset transfers trace to known mixer or tumbler clusters within a small
+      number of hops.
+    category: typology_specific
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - external_intel
+    data_sources:
+    - blockchain_analytics
+    - wallet_addresses
+    false_positive_notes: Users of privacy tools for lawful privacy reasons, or exposure via a long, diluted
+      transaction chain.
+    controls:
+    - id: CY-MIXER-001-C1
+      name: Blockchain analytics and wallet attribution
+      type: detective
+      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
+        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
+      implementation: technology
+      effectiveness: high
+    - id: CY-MIXER-001-C2
+      name: Sanctions and watchlist screening including wallet addresses
+      type: preventive
+      description: Screen customers, counterparties and wallet addresses against sanctions lists and designated-address
+        data in real time.
+      implementation: technology
+      effectiveness: high
+    - id: CY-MIXER-001-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+  - id: CY-MIXER-002
+    name: Rapid sequential conversions across many asset types
+    description: Funds received are swapped through several tokens or stablecoins in quick succession
+      with no apparent trading rationale before withdrawal.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - trade_history
+    - ledger_data
+    false_positive_notes: Active traders, arbitrageurs and market makers.
+    controls:
+    - id: CY-MIXER-002-C1
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-MIXER-002-C2
+      name: Blockchain analytics and wallet attribution
+      type: detective
+      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
+        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
+      implementation: technology
+      effectiveness: high
+    - id: CY-MIXER-002-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+  - id: CY-MIXER-003
+    name: Chain-hopping through bridges shortly after deposit
+    description: Assets are deposited, then moved across blockchains via bridges or wrapped tokens within
+      minutes or hours.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - external_intel
+    data_sources:
+    - blockchain_analytics
+    - withdrawal_addresses
+    false_positive_notes: Legitimate multi-chain users and liquidity providers.
+    controls:
+    - id: CY-MIXER-003-C1
+      name: Blockchain analytics and wallet attribution
+      type: detective
+      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
+        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
+      implementation: technology
+      effectiveness: high
+    - id: CY-MIXER-003-C2
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-MIXER-003-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+  - id: CY-MIXER-004
+    name: Preference for privacy-enhanced coins with no commercial rationale
+    description: Customer converts mainstream assets into anonymity-enhanced coins and withdraws them,
+      or requests such assets despite a simple stated purpose.
+    category: typology_specific
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - trade_history
+    - customer_profile
+    false_positive_notes: Privacy-conscious users; genuine holdings of such assets.
+    controls:
+    - id: CY-MIXER-004-C1
+      name: Enhanced due diligence
+      type: preventive
+      description: Collect additional information on activity purpose, expected volumes and ownership
+        before approval or continued service, with senior sign-off.
+      implementation: process
+      effectiveness: medium
+    - id: CY-MIXER-004-C2
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-MIXER-004-C3
+      name: Typology-focused staff training
+      type: preventive
+      description: Training for front-line, onboarding and investigation staff on current red flags and
+        escalation routes.
+      implementation: training
+      effectiveness: low
+  - id: CY-MIXER-005
+    name: Withdrawals to many fresh addresses in fixed amounts
+    description: Balances are split into many near-identical outputs sent to newly created wallets (peeling
+      or splitting pattern).
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - withdrawal_addresses
+    - blockchain_analytics
+    false_positive_notes: Payroll, airdrops or wallet-hygiene practices.
+    controls:
+    - id: CY-MIXER-005-C1
+      name: Blockchain analytics and wallet attribution
+      type: detective
+      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
+        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
+      implementation: technology
+      effectiveness: high
+    - id: CY-MIXER-005-C2
+      name: Graph and network analytics
+      type: detective
+      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
+        and fan-in/fan-out structures.
+      implementation: model
+      effectiveness: high
+    - id: CY-MIXER-005-C3
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+  - id: CY-MIXER-006
+    name: Use of anonymising network access to the platform
+    description: Sessions originate from Tor, rotating proxies or VPNs inconsistent with declared residence,
+      combined with high-value transfers.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    - transaction_monitoring
+    data_sources:
+    - ip_logs
+    - device_data
+    false_positive_notes: Widespread lawful VPN use for privacy or security.
+    controls:
+    - id: CY-MIXER-006-C1
+      name: IP, geolocation and anonymisation detection
+      type: detective
+      description: Detect VPN, proxy, Tor and geolocation mismatch against declared residence and sanctioned
+        or high-risk jurisdictions.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-MIXER-006-C2
+      name: Device intelligence and behavioural biometrics
+      type: detective
+      description: Fingerprint devices and analyse session behaviour (typing, navigation, remote-access
+        tools, emulators) to spot shared, scripted or hijacked sessions.
+      implementation: technology
+      effectiveness: high
+    - id: CY-MIXER-006-C3
+      name: Enhanced due diligence
+      type: preventive
+      description: Collect additional information on activity purpose, expected volumes and ownership
+        before approval or continued service, with senior sign-off.
+      implementation: process
+      effectiveness: medium
+  - id: CY-MIXER-007
+    name: Very short holding time between receipt and exit
+    description: 'Account behaves as a pass-through: most inbound value leaves within hours with minimal
+      balance retained.'
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - ledger_data
+    false_positive_notes: Custodial arbitrage and treasury operations.
+    controls:
+    - id: CY-MIXER-007-C1
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-MIXER-007-C2
+      name: Mule account detection model
+      type: detective
+      description: Model that scores inbound-then-outbound pass-through, new payee churn and profile mismatch
+        to flag likely mule accounts.
+      implementation: model
+      effectiveness: high
+    - id: CY-MIXER-007-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+  - id: CY-MIXER-008
+    name: Cash-out to high-risk or unregistered exchanges
+    description: Withdrawals go to addresses attributed to exchanges that lack licensing or effective
+      AML controls.
+    category: counterparty
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - external_intel
+    data_sources:
+    - blockchain_analytics
+    - vasp_attribution
+    false_positive_notes: Attribution errors; unlicensed status may be unknown to user.
+    controls:
+    - id: CY-MIXER-008-C1
+      name: Blockchain analytics and wallet attribution
+      type: detective
+      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
+        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
+      implementation: technology
+      effectiveness: high
+    - id: CY-MIXER-008-C2
+      name: Counterparty provider due diligence
+      type: preventive
+      description: Assess licensing, controls and reputation of counterpart VASPs, PSPs and platforms
+        before enabling flows, and review periodically.
+      implementation: process
+      effectiveness: medium
+    - id: CY-MIXER-008-C3
+      name: Travel rule data exchange and counterparty checks
+      type: preventive
+      description: Collect and transmit originator and beneficiary information with transfers, and block
+        or hold transfers where counterparty data is missing or unreliable.
+      implementation: technology
+      effectiveness: medium
+  - id: CY-MIXER-009
+    name: Customer unable to explain transaction purpose or origin
+    description: Explanations for layered transfers are vague, inconsistent or shift when challenged.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - rfi_responses
+    - case_notes
+    false_positive_notes: Inexperienced users who do not understand the tooling.
+    controls:
+    - id: CY-MIXER-009-C1
+      name: Enhanced due diligence
+      type: preventive
+      description: Collect additional information on activity purpose, expected volumes and ownership
+        before approval or continued service, with senior sign-off.
+      implementation: process
+      effectiveness: medium
+    - id: CY-MIXER-009-C2
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+    - id: CY-MIXER-009-C3
+      name: Typology-focused staff training
+      type: preventive
+      description: Training for front-line, onboarding and investigation staff on current red flags and
+        escalation routes.
+      implementation: training
+      effectiveness: low
+  - id: CY-MIXER-010
+    name: Interaction with addresses linked to sanctioned or designated mixers
+    description: Transfers touch addresses designated by sanctions authorities or flagged in official
+      advisories.
+    category: typology_specific
+    severity: high
+    detection_type:
+    - screening
+    - external_intel
+    data_sources:
+    - sanctions_lists
+    - blockchain_analytics
+    false_positive_notes: Inadvertent contact through dusting attacks.
+    controls:
+    - id: CY-MIXER-010-C1
+      name: Sanctions and watchlist screening including wallet addresses
+      type: preventive
+      description: Screen customers, counterparties and wallet addresses against sanctions lists and designated-address
+        data in real time.
+      implementation: technology
+      effectiveness: high
+    - id: CY-MIXER-010-C2
+      name: Blockchain analytics and wallet attribution
+      type: detective
+      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
+        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
+      implementation: technology
+      effectiveness: high
+    - id: CY-MIXER-010-C3
+      name: Account restriction and fund holds
+      type: corrective
+      description: Ability to restrict, hold or recall funds rapidly pending review, with defined legal
+        and operational triggers.
+      implementation: process
+      effectiveness: medium

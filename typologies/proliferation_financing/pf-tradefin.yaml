@@ -1,0 +1,218 @@
+typology:
+  id: PF-TRADEFIN
+  name: Trade Finance and Transshipment Obfuscation for Proliferation
+  domain: proliferation_financing
+  description: Proliferation procurement uses letters of credit, open-account trade and transshipment
+    hubs to obscure origin, destination and end use of controlled items. Document inconsistencies and
+    unusual routing are the principal observable indicators for trade finance teams.
+  sectors:
+  - banking
+  - trade_finance
+  sources:
+  - FATF, Guidance on Counter Proliferation Financing (2018)
+  - FATF, Guidance on Proliferation Financing Risk Assessment and Mitigation (2021)
+  - 'FATF/Egmont, Trade-Based Money Laundering: Trends and Developments (2020)'
+  indicators:
+  - id: PF-TRADEFIN-001
+    name: Routing via transshipment hubs unconnected to buyer or seller
+    description: Goods travel through third-country ports with no commercial need and are reloaded or
+      relabelled.
+    category: geographic
+    severity: high
+    detection_type:
+    - document_review
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - bills_of_lading
+    - shipping_data
+    false_positive_notes: Hubs are efficient routes for many legitimate exporters.
+    controls:
+    - id: PF-TRADEFIN-001-C1
+      name: Route plausibility check
+      type: detective
+      description: Compare routing with typical trade lanes for the goods.
+      implementation: rule
+      effectiveness: medium
+    - id: PF-TRADEFIN-001-C2
+      name: Transshipment due diligence
+      type: preventive
+      description: Request explanation and documents for unusual hubs.
+      implementation: process
+      effectiveness: high
+    - id: PF-TRADEFIN-001-C3
+      name: Port and zone risk list
+      type: governance
+      description: Maintain risk ratings for ports and free zones.
+      implementation: policy
+      effectiveness: medium
+  - id: PF-TRADEFIN-002
+    name: Letter of credit terms that are unusually flexible or amended repeatedly
+    description: Frequent amendments to beneficiary, destination or description, or acceptance of discrepant
+      documents.
+    category: document
+    severity: medium
+    detection_type:
+    - document_review
+    - investigator_judgement
+    data_sources:
+    - lc_documents
+    false_positive_notes: Amendments occur in ordinary trade.
+    controls:
+    - id: PF-TRADEFIN-002-C1
+      name: Amendment pattern monitoring
+      type: detective
+      description: Alert on repeated late amendments.
+      implementation: rule
+      effectiveness: medium
+    - id: PF-TRADEFIN-002-C2
+      name: Discrepancy handling policy
+      type: governance
+      description: Set rules for waiving discrepancies on risk-rated goods.
+      implementation: policy
+      effectiveness: medium
+  - id: PF-TRADEFIN-003
+    name: Goods description vague or generic for high-risk categories
+    description: Documents use generic terms such as 'machinery' or 'parts' where technical specifics
+      would be expected.
+    category: document
+    severity: high
+    detection_type:
+    - document_review
+    data_sources:
+    - invoices
+    - packing_lists
+    false_positive_notes: Commercial shorthand is common.
+    controls:
+    - id: PF-TRADEFIN-003-C1
+      name: Description quality checks
+      type: preventive
+      description: Require adequate goods description and HS code.
+      implementation: process
+      effectiveness: medium
+    - id: PF-TRADEFIN-003-C2
+      name: Control-list term matching
+      type: detective
+      description: Screen for control-list relevance.
+      implementation: technology
+      effectiveness: medium
+  - id: PF-TRADEFIN-004
+    name: Inconsistent origin and destination across documents
+    description: Certificate of origin, invoice and shipping data disagree on country of origin or consignee.
+    category: document
+    severity: medium
+    detection_type:
+    - document_review
+    data_sources:
+    - trade_documents
+    false_positive_notes: Clerical errors are frequent.
+    controls:
+    - id: PF-TRADEFIN-004-C1
+      name: Document cross-matching
+      type: detective
+      description: Compare data across trade documents.
+      implementation: technology
+      effectiveness: medium
+    - id: PF-TRADEFIN-004-C2
+      name: Authenticity verification
+      type: preventive
+      description: Verify certificates with issuers where doubtful.
+      implementation: process
+      effectiveness: medium
+  - id: PF-TRADEFIN-005
+    name: Payments by parties in different jurisdictions with no trade link
+    description: Settlement arrives from unrelated entity or country relative to the trade parties.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payment_messages
+    false_positive_notes: Third-party settlement is not unusual in supply chains.
+    controls:
+    - id: PF-TRADEFIN-005-C1
+      name: Payer relationship validation
+      type: preventive
+      description: Require explanation and evidence of relationship.
+      implementation: process
+      effectiveness: medium
+    - id: PF-TRADEFIN-005-C2
+      name: Corridor-based rule
+      type: detective
+      description: Alert on unusual payer geographies.
+      implementation: rule
+      effectiveness: medium
+  - id: PF-TRADEFIN-006
+    name: Open-account trade with buyers in high-risk jurisdictions lacking track record
+    description: New relationships with large unsecured trade flows to or from countries of proliferation
+      concern.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - account_activity
+    false_positive_notes: Genuine market entry occurs.
+    controls:
+    - id: PF-TRADEFIN-006-C1
+      name: Country risk-based limits
+      type: preventive
+      description: Set conditions for trade into high-risk destinations.
+      implementation: policy
+      effectiveness: medium
+    - id: PF-TRADEFIN-006-C2
+      name: Customer history assessment
+      type: detective
+      description: Assess track record before extending open-account flows.
+      implementation: process
+      effectiveness: medium
+  - id: PF-TRADEFIN-007
+    name: Vessel, voyage or shipper details missing or implausible
+    description: Transport documents lack vessel identifiers or show impossible voyage timing.
+    category: document
+    severity: high
+    detection_type:
+    - document_review
+    - investigator_judgement
+    data_sources:
+    - bills_of_lading
+    - vessel_data
+    false_positive_notes: Booking details can change before departure.
+    controls:
+    - id: PF-TRADEFIN-007-C1
+      name: Vessel verification
+      type: preventive
+      description: Verify IMO number, ownership and voyage plausibility.
+      implementation: technology
+      effectiveness: high
+    - id: PF-TRADEFIN-007-C2
+      name: Document forgery indicators
+      type: detective
+      description: Train staff to recognise altered or inconsistent documents.
+      implementation: process
+      effectiveness: medium
+  - id: PF-TRADEFIN-008
+    name: Re-export of controlled items by distributors in transit jurisdictions
+    description: Importer reorders and quickly re-exports technical items to another country.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - trade_data
+    false_positive_notes: Distribution businesses re-export normally.
+    controls:
+    - id: PF-TRADEFIN-008-C1
+      name: Re-export pattern analysis
+      type: detective
+      description: Flag rapid resale to high-risk destinations.
+      implementation: model
+      effectiveness: medium
+    - id: PF-TRADEFIN-008-C2
+      name: Reexport undertakings
+      type: preventive
+      description: Obtain contractual re-export restrictions.
+      implementation: process
+      effectiveness: medium

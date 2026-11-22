@@ -1,0 +1,287 @@
+typology:
+  id: FR-ADV
+  name: Mass-Marketing and Advance-Fee Scams
+  domain: fraud
+  description: Victims are lured by promises of prizes, inheritances, jobs or loans and asked to pay fees
+    in advance. Scam networks operate across borders using mass communications and mule accounts.
+  sectors:
+  - banking
+  - payments
+  - mvts
+  sources:
+  - UK Finance, Annual Fraud Report (published annually)
+  - FinCEN, advisories on fraud typologies (general)
+  - FATF, guidance on proceeds of fraud (general)
+  indicators:
+  - id: FR-ADV-001
+    name: Payments for fees to release prize, loan or inheritance
+    description: 'Victim-side: repeated small payments for taxes, fees or insurance.'
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - customer_behaviour
+    data_sources:
+    - payment_data
+    false_positive_notes: Legitimate fees.
+    controls:
+    - id: FR-ADV-001-C1
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-ADV-001-C2
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    - id: FR-ADV-001-C3
+      name: Customer education and awareness
+      type: preventive
+      description: Targeted messaging helps customers recognise the scam script and know how to verify.
+      implementation: training
+      effectiveness: low
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-ADV-002
+    name: Cheque or money-order received from unknown party
+    description: 'Victim-side: overpayment style approach.'
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    data_sources:
+    - customer_reports
+    false_positive_notes: Genuine refunds.
+    controls:
+    - id: FR-ADV-002-C1
+      name: Customer education and awareness
+      type: preventive
+      description: Targeted messaging helps customers recognise the scam script and know how to verify.
+      implementation: training
+      effectiveness: low
+    - id: FR-ADV-002-C2
+      name: Deposit holds and funds-availability policy
+      type: preventive
+      description: Risk-based holds on uncleared deposits limit withdrawal until the item is confirmed
+        good.
+      implementation: policy
+      effectiveness: medium
+    - id: FR-ADV-002-C3
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-ADV-003
+    name: Payments to money transfer services overseas
+    description: Money services used for ad hoc transfers to unknown beneficiaries.
+    category: geographic
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - mvts_data
+    false_positive_notes: Remittances.
+    controls:
+    - id: FR-ADV-003-C1
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-ADV-003-C2
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules on count, value, geography and timing alert analysts to bursts or structured
+        activity.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-ADV-003-C3
+      name: Customer education and awareness
+      type: preventive
+      description: Targeted messaging helps customers recognise the scam script and know how to verify.
+      implementation: training
+      effectiveness: low
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-ADV-004
+    name: Prepaid cards or gift card codes purchased and shared
+    description: 'Victim-side: buying vouchers and reading out codes.'
+    category: product_channel
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - card_data
+    - retail_intel
+    false_positive_notes: Gifts.
+    controls:
+    - id: FR-ADV-004-C1
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    - id: FR-ADV-004-C2
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-ADV-004-C3
+      name: Customer education and awareness
+      type: preventive
+      description: Targeted messaging helps customers recognise the scam script and know how to verify.
+      implementation: training
+      effectiveness: low
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-ADV-005
+    name: Recruited receiving account for reshipping or payment processing
+    description: 'Mule-side: individuals recruited through job adverts receive and forward funds.'
+    category: customer
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - account_data
+    false_positive_notes: Genuine gig workers.
+    controls:
+    - id: FR-ADV-005-C1
+      name: Mule account detection model
+      type: detective
+      description: Detects inbound-funds-then-rapid-outflow and other mule patterns on receiving accounts,
+        enabling holds and exits.
+      implementation: model
+      effectiveness: high
+    - id: FR-ADV-005-C2
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    - id: FR-ADV-005-C3
+      name: Enhanced due diligence and periodic KYC review
+      type: detective
+      description: Targeted review of purpose, source of funds and expected activity when behaviour diverges
+        from the profile.
+      implementation: process
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-ADV-006
+    name: Customer talks of winning lottery or foreign relative
+    description: 'Victim-side: explanations show belief in unsolicited windfall.'
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    - investigator_judgement
+    data_sources:
+    - branch_interaction
+    false_positive_notes: Genuine lottery winners.
+    controls:
+    - id: FR-ADV-006-C1
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    - id: FR-ADV-006-C2
+      name: Trusted-contact and vulnerable-customer process
+      type: preventive
+      description: Customers can nominate a trusted contact; flagged vulnerability triggers tailored handling
+        and permitted escalation.
+      implementation: process
+      effectiveness: medium
+    - id: FR-ADV-006-C3
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-ADV-007
+    name: Repeated payments to same beneficiary with escalating narratives
+    description: 'Victim-side: sunk-cost pattern.'
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payment_data
+    false_positive_notes: Recurring bills.
+    controls:
+    - id: FR-ADV-007-C1
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    - id: FR-ADV-007-C2
+      name: Dynamic payment friction and tailored warnings
+      type: preventive
+      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
+        release, giving the customer a chance to reconsider.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-ADV-007-C3
+      name: Case management and fraud MI governance
+      type: governance
+      description: Outcomes, losses and false positives are tracked and fed back into rule tuning and
+        risk appetite.
+      implementation: process
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-ADV-008
+    name: Scam web domains or phone numbers reported
+    description: External intelligence indicates active campaigns.
+    category: typology_specific
+    severity: medium
+    detection_type:
+    - external_intel
+    data_sources:
+    - threat_intel
+    false_positive_notes: False reports.
+    controls:
+    - id: FR-ADV-008-C1
+      name: Threat intelligence and takedown
+      type: detective
+      description: Monitors for spoofed domains, fake apps, adverts and numbers and arranges their takedown
+        and customer alerts.
+      implementation: technology
+      effectiveness: medium
+    - id: FR-ADV-008-C2
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    - id: FR-ADV-008-C3
+      name: Customer education and awareness
+      type: preventive
+      description: Targeted messaging helps customers recognise the scam script and know how to verify.
+      implementation: training
+      effectiveness: low
+    references:
+    - UK Finance, Annual Fraud Report (published annually)

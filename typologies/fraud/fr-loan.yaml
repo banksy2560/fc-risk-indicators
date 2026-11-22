@@ -1,0 +1,328 @@
+typology:
+  id: FR-LOAN
+  name: Loan and Mortgage Fraud
+  domain: fraud
+  description: Applicants or insiders misstate income, assets, identity or property value to obtain credit,
+    or use straw buyers and inflated appraisals. Mortgage fraud may involve collusion with brokers, valuers
+    or conveyancers.
+  sectors:
+  - banking
+  - fintech
+  - real_estate
+  sources:
+  - FinCEN, advisories on mortgage and real-estate fraud (general)
+  - FATF, guidance on real-estate sector risks (general)
+  - ACFE, Report to the Nations (published biennially)
+  indicators:
+  - id: FR-LOAN-001
+    name: Income or employment documents show signs of alteration
+    description: Payslips, tax forms or bank statements display template reuse or inconsistent fonts.
+    category: document
+    severity: high
+    detection_type:
+    - document_review
+    data_sources:
+    - application_documents
+    false_positive_notes: Scans of low quality.
+    controls:
+    - id: FR-LOAN-001-C1
+      name: Document forensics and source verification
+      type: detective
+      description: Analyses supporting documents for tampering, template reuse and metadata anomalies,
+        and confirms with the issuer.
+      implementation: technology
+      effectiveness: medium
+    - id: FR-LOAN-001-C2
+      name: Income, affordability and bureau verification
+      type: preventive
+      description: Verifies stated income, employment and obligations independently and cross-checks bureau
+        and application data.
+      implementation: process
+      effectiveness: high
+    - id: FR-LOAN-001-C3
+      name: Underwriting verification and data matching
+      type: preventive
+      description: Validates application facts against third-party data and prior-claim or application
+        history.
+      implementation: process
+      effectiveness: medium
+    references:
+    - FinCEN, advisories on mortgage and real-estate fraud (general)
+  - id: FR-LOAN-002
+    name: Property valuation materially above comparable sales
+    description: Valuation inflated relative to recent transactions in the area.
+    category: document
+    severity: high
+    detection_type:
+    - document_review
+    - transaction_monitoring
+    data_sources:
+    - valuation_reports
+    - market_data
+    false_positive_notes: Rapidly rising markets.
+    controls:
+    - id: FR-LOAN-002-C1
+      name: Underwriting verification and data matching
+      type: preventive
+      description: Validates application facts against third-party data and prior-claim or application
+        history.
+      implementation: process
+      effectiveness: medium
+    - id: FR-LOAN-002-C2
+      name: Document forensics and source verification
+      type: detective
+      description: Analyses supporting documents for tampering, template reuse and metadata anomalies,
+        and confirms with the issuer.
+      implementation: technology
+      effectiveness: medium
+    - id: FR-LOAN-002-C3
+      name: Data-analytics audit and exception testing
+      type: detective
+      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
+        ghost records and outliers.
+      implementation: process
+      effectiveness: medium
+    references:
+    - FinCEN, advisories on mortgage and real-estate fraud (general)
+  - id: FR-LOAN-003
+    name: Straw buyer or nominee applicant
+    description: Applicant's profile does not match purchase, with another party funding or controlling.
+    category: customer
+    severity: high
+    detection_type:
+    - kyc_review
+    data_sources:
+    - application_data
+    false_positive_notes: Family support.
+    controls:
+    - id: FR-LOAN-003-C1
+      name: Enhanced due diligence and periodic KYC review
+      type: detective
+      description: Targeted review of purpose, source of funds and expected activity when behaviour diverges
+        from the profile.
+      implementation: process
+      effectiveness: medium
+    - id: FR-LOAN-003-C2
+      name: Income, affordability and bureau verification
+      type: preventive
+      description: Verifies stated income, employment and obligations independently and cross-checks bureau
+        and application data.
+      implementation: process
+      effectiveness: high
+    - id: FR-LOAN-003-C3
+      name: Entity resolution and link analysis
+      type: detective
+      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
+        identities.
+      implementation: model
+      effectiveness: high
+    references:
+    - FinCEN, advisories on mortgage and real-estate fraud (general)
+  - id: FR-LOAN-004
+    name: Undisclosed liabilities or multiple simultaneous applications
+    description: Same borrower applies at several lenders before bureaux update.
+    category: customer
+    severity: medium
+    detection_type:
+    - kyc_review
+    data_sources:
+    - bureau_data
+    false_positive_notes: Rate shopping.
+    controls:
+    - id: FR-LOAN-004-C1
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    - id: FR-LOAN-004-C2
+      name: Income, affordability and bureau verification
+      type: preventive
+      description: Verifies stated income, employment and obligations independently and cross-checks bureau
+        and application data.
+      implementation: process
+      effectiveness: high
+    - id: FR-LOAN-004-C3
+      name: Underwriting verification and data matching
+      type: preventive
+      description: Validates application facts against third-party data and prior-claim or application
+        history.
+      implementation: process
+      effectiveness: medium
+    references:
+    - FinCEN, advisories on mortgage and real-estate fraud (general)
+  - id: FR-LOAN-005
+    name: Broker or intermediary with unusual early default rate
+    description: Applications from one source show disproportionate early payment default or document
+      anomalies.
+    category: counterparty
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - portfolio_data
+    false_positive_notes: Higher-risk niche lenders.
+    controls:
+    - id: FR-LOAN-005-C1
+      name: Data-analytics audit and exception testing
+      type: detective
+      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
+        ghost records and outliers.
+      implementation: process
+      effectiveness: medium
+    - id: FR-LOAN-005-C2
+      name: Claims analytics and link analysis
+      type: detective
+      description: Scores claims and links parties, providers and addresses to uncover organised or repeat
+        fraud.
+      implementation: model
+      effectiveness: medium
+    - id: FR-LOAN-005-C3
+      name: Whistleblowing and conduct monitoring
+      type: detective
+      description: Confidential reporting channel and conduct analytics surface insider misconduct and
+        collusion.
+      implementation: process
+      effectiveness: medium
+    references:
+    - FinCEN, advisories on mortgage and real-estate fraud (general)
+  - id: FR-LOAN-006
+    name: Deposit or equity funded by unexplained third party
+    description: Large deposit credited from unrelated accounts.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - account_data
+    false_positive_notes: Gifts from relatives.
+    controls:
+    - id: FR-LOAN-006-C1
+      name: Enhanced due diligence and periodic KYC review
+      type: detective
+      description: Targeted review of purpose, source of funds and expected activity when behaviour diverges
+        from the profile.
+      implementation: process
+      effectiveness: medium
+    - id: FR-LOAN-006-C2
+      name: Income, affordability and bureau verification
+      type: preventive
+      description: Verifies stated income, employment and obligations independently and cross-checks bureau
+        and application data.
+      implementation: process
+      effectiveness: high
+    - id: FR-LOAN-006-C3
+      name: Underwriting verification and data matching
+      type: preventive
+      description: Validates application facts against third-party data and prior-claim or application
+        history.
+      implementation: process
+      effectiveness: medium
+    references:
+    - FinCEN, advisories on mortgage and real-estate fraud (general)
+  - id: FR-LOAN-007
+    name: Loan proceeds diverted immediately offshore or to unrelated parties
+    description: Funds leave to accounts unrelated to the purpose.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payment_data
+    false_positive_notes: Legitimate property or business payments.
+    controls:
+    - id: FR-LOAN-007-C1
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules on count, value, geography and timing alert analysts to bursts or structured
+        activity.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-LOAN-007-C2
+      name: Rapid recall and fund-freeze procedure
+      type: corrective
+      description: Defined process to notify receiving institutions, freeze onward movement and recover
+        funds quickly.
+      implementation: process
+      effectiveness: medium
+    - id: FR-LOAN-007-C3
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    references:
+    - FinCEN, advisories on mortgage and real-estate fraud (general)
+  - id: FR-LOAN-008
+    name: Insider override of credit policy or unusual speed of approval
+    description: Staff-approved exceptions or rapid decisions with limited verification.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    data_sources:
+    - approval_logs
+    false_positive_notes: Preferred clients.
+    controls:
+    - id: FR-LOAN-008-C1
+      name: Segregation of duties and dual authorisation
+      type: preventive
+      description: No single person can create, approve and release; sensitive changes need an independent
+        second approver.
+      implementation: policy
+      effectiveness: high
+    - id: FR-LOAN-008-C2
+      name: Data-analytics audit and exception testing
+      type: detective
+      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
+        ghost records and outliers.
+      implementation: process
+      effectiveness: medium
+    - id: FR-LOAN-008-C3
+      name: Whistleblowing and conduct monitoring
+      type: detective
+      description: Confidential reporting channel and conduct analytics surface insider misconduct and
+        collusion.
+      implementation: process
+      effectiveness: medium
+    references:
+    - FinCEN, advisories on mortgage and real-estate fraud (general)
+  - id: FR-LOAN-009
+    name: Occupancy or purpose misrepresented
+    description: Owner-occupier application where property is let or used differently.
+    category: document
+    severity: medium
+    detection_type:
+    - document_review
+    - investigator_judgement
+    data_sources:
+    - application_data
+    - tenancy_data
+    false_positive_notes: Changed circumstances.
+    controls:
+    - id: FR-LOAN-009-C1
+      name: Underwriting verification and data matching
+      type: preventive
+      description: Validates application facts against third-party data and prior-claim or application
+        history.
+      implementation: process
+      effectiveness: medium
+    - id: FR-LOAN-009-C2
+      name: Data-analytics audit and exception testing
+      type: detective
+      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
+        ghost records and outliers.
+      implementation: process
+      effectiveness: medium
+    - id: FR-LOAN-009-C3
+      name: Income, affordability and bureau verification
+      type: preventive
+      description: Verifies stated income, employment and obligations independently and cross-checks bureau
+        and application data.
+      implementation: process
+      effectiveness: high
+    references:
+    - FinCEN, advisories on mortgage and real-estate fraud (general)

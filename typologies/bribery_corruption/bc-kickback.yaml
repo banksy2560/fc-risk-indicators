@@ -1,0 +1,218 @@
+typology:
+  id: BC-KICKBACK
+  name: Procurement Kickbacks and Bid Rigging
+  domain: bribery_corruption
+  description: Improper payments or favours linked to public or private procurement, including kickbacks
+    to buyers, inflated contract prices, bid rigging and phantom suppliers. Banks and corporates can detect
+    patterns in supplier payments, related parties and post-award flows.
+  sectors:
+  - banking
+  - corporate_services
+  - payments
+  sources:
+  - OECD, Recommendation of the Council on Public Procurement (2015)
+  - OECD, Preventing Corruption in Public Procurement (2016)
+  - OECD, Guidelines for Fighting Bid Rigging in Public Procurement (2009)
+  - FATF, Laundering the Proceeds of Corruption (2011)
+  indicators:
+  - id: BC-KICKBACK-001
+    name: Contract price well above market or estimate
+    description: Awarded price materially exceeds engineers' estimates or comparable contracts without
+      justification.
+    category: transaction
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    - document_review
+    data_sources:
+    - tender_documents
+    - price_benchmarks
+    false_positive_notes: Complexity, scope change and inflation can legitimately inflate prices.
+    controls:
+    - id: BC-KICKBACK-001-C1
+      name: Price benchmarking
+      type: detective
+      description: Compare awards with estimates and comparable contracts to identify outliers.
+      implementation: process
+      effectiveness: medium
+    - id: BC-KICKBACK-001-C2
+      name: Independent cost review
+      type: preventive
+      description: Obtain independent cost assessments for large contracts.
+      implementation: process
+      effectiveness: medium
+  - id: BC-KICKBACK-002
+    name: Repeated wins by the same supplier with narrow margins
+    description: One supplier repeatedly wins just below competitors or in rotation among a small group.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    - external_intel
+    data_sources:
+    - tender_records
+    false_positive_notes: Niche markets may have few capable bidders.
+    controls:
+    - id: BC-KICKBACK-002-C1
+      name: Bid pattern analytics
+      type: detective
+      description: Analyse bidding for rotation, cover bids and suspicious price spreads.
+      implementation: model
+      effectiveness: medium
+    - id: BC-KICKBACK-002-C2
+      name: Procurement integrity reporting
+      type: governance
+      description: Provide channels to refer suspected collusion to authorities.
+      implementation: process
+      effectiveness: medium
+  - id: BC-KICKBACK-003
+    name: Post-award payments from supplier to buyer-linked accounts
+    description: Winning supplier transfers funds to persons or companies connected to the procuring official
+      shortly after payment.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - payment_records
+    - corporate_registries
+    false_positive_notes: Supplier subcontracting may pay related parties innocently.
+    controls:
+    - id: BC-KICKBACK-003-C1
+      name: Onward flow tracing
+      type: detective
+      description: Trace funds from contract payments to connected beneficiaries.
+      implementation: model
+      effectiveness: medium
+    - id: BC-KICKBACK-003-C2
+      name: Buyer link analysis
+      type: detective
+      description: Map supplier, subcontractor and official relationships using registries and customer
+        data.
+      implementation: process
+      effectiveness: high
+  - id: BC-KICKBACK-004
+    name: Supplier lacks capacity for awarded contract
+    description: Awardee has no relevant staff, assets or experience and subcontracts nearly all work.
+    category: ownership_structure
+    severity: high
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - company_registry
+    - kyc_files
+    false_positive_notes: Project vehicles are often newly formed and sub-contract widely.
+    controls:
+    - id: BC-KICKBACK-004-C1
+      name: Capability and substance checks
+      type: preventive
+      description: Verify capacity, premises and track record before onboarding major suppliers.
+      implementation: process
+      effectiveness: high
+    - id: BC-KICKBACK-004-C2
+      name: Subcontractor transparency clause
+      type: preventive
+      description: Require disclosure and approval of subcontractors with beneficial owner details.
+      implementation: policy
+      effectiveness: medium
+  - id: BC-KICKBACK-005
+    name: Frequent contract variations or change orders
+    description: Scope and price rise significantly through repeated amendments shortly after award.
+    category: document
+    severity: medium
+    detection_type:
+    - document_review
+    - investigator_judgement
+    data_sources:
+    - contract_amendments
+    false_positive_notes: Genuine scope changes are common in construction and IT.
+    controls:
+    - id: BC-KICKBACK-005-C1
+      name: Variation monitoring
+      type: detective
+      description: Alert when cumulative variations exceed a threshold of original value.
+      implementation: rule
+      effectiveness: medium
+    - id: BC-KICKBACK-005-C2
+      name: Variation approval governance
+      type: governance
+      description: Require independent approval for large or repeated variations.
+      implementation: policy
+      effectiveness: medium
+  - id: BC-KICKBACK-006
+    name: Emergency or single-source award with weak justification
+    description: Use of urgency or sole-source exceptions for non-urgent purchases.
+    category: document
+    severity: medium
+    detection_type:
+    - document_review
+    data_sources:
+    - procurement_records
+    false_positive_notes: Real emergencies exist and justify fast awards.
+    controls:
+    - id: BC-KICKBACK-006-C1
+      name: Exception-use reporting
+      type: detective
+      description: Report and review share of non-competitive awards by buyer and agency.
+      implementation: rule
+      effectiveness: medium
+    - id: BC-KICKBACK-006-C2
+      name: Justification quality review
+      type: preventive
+      description: Sample and test documented grounds for exceptions.
+      implementation: process
+      effectiveness: medium
+  - id: BC-KICKBACK-007
+    name: Phantom or fictitious supplier on vendor master
+    description: Vendor with no verifiable address, tax number or deliveries shares details with an employee
+      or another vendor.
+    category: counterparty
+    severity: high
+    detection_type:
+    - kyc_review
+    - transaction_monitoring
+    data_sources:
+    - vendor_master
+    - payment_records
+    false_positive_notes: Data entry errors can create apparent duplicates.
+    controls:
+    - id: BC-KICKBACK-007-C1
+      name: Vendor master data analytics
+      type: detective
+      description: Match vendor addresses, bank accounts and phone numbers against employees and other
+        vendors.
+      implementation: rule
+      effectiveness: high
+    - id: BC-KICKBACK-007-C2
+      name: Vendor onboarding verification
+      type: preventive
+      description: Verify new vendors through registry checks and site or call validation.
+      implementation: process
+      effectiveness: high
+  - id: BC-KICKBACK-008
+    name: Rapid bank account changes or payments to unrelated accounts for suppliers
+    description: Supplier asks to redirect payments to accounts held by third parties, often after award.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - customer_behaviour
+    data_sources:
+    - vendor_master
+    - bank_data
+    false_positive_notes: Suppliers legitimately change banks or factor receivables.
+    controls:
+    - id: BC-KICKBACK-008-C1
+      name: Account change call-back
+      type: preventive
+      description: Call-back and approve changes via independent channel.
+      implementation: process
+      effectiveness: high
+    - id: BC-KICKBACK-008-C2
+      name: Payee mismatch rule
+      type: detective
+      description: Alert when payee account name differs from supplier legal name.
+      implementation: rule
+      effectiveness: medium

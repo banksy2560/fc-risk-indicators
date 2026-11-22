@@ -1,0 +1,291 @@
+typology:
+  id: FR-TAX
+  name: Tax Refund and Identity-Based Benefit Fraud
+  domain: fraud
+  description: Offenders file false returns or benefit claims using stolen or fabricated identities and
+    direct refunds to accounts they control. Banks see inbound refunds to unrelated accounts and mule
+    behaviour.
+  sectors:
+  - banking
+  - payments
+  - fintech
+  sources:
+  - IRS and HMRC public guidance on refund and identity fraud (general)
+  - FinCEN, advisories on tax-refund fraud (general)
+  - UK Finance, Annual Fraud Report (published annually)
+  indicators:
+  - id: FR-TAX-001
+    name: Refund or benefit credited to account of different name
+    description: Payee name does not match the recipient listed.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payment_data
+    false_positive_notes: Joint or agent accounts.
+    controls:
+    - id: FR-TAX-001-C1
+      name: Refund destination and filing validation
+      type: preventive
+      description: Checks refund or benefit destination accounts against claimant identity and prior history
+        before release.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-TAX-001-C2
+      name: Confirmation of payee / name-matching
+      type: preventive
+      description: Checks the payee name against the destination account before release and warns on a
+        no-match or close-match, interrupting misdirected or spoofed payments.
+      implementation: technology
+      effectiveness: high
+    - id: FR-TAX-001-C3
+      name: Mule account detection model
+      type: detective
+      description: Detects inbound-funds-then-rapid-outflow and other mule patterns on receiving accounts,
+        enabling holds and exits.
+      implementation: model
+      effectiveness: high
+    references:
+    - IRS and HMRC public guidance on refund and identity fraud (general)
+  - id: FR-TAX-002
+    name: Multiple refunds into the same account
+    description: Unrelated refunds converge on one account or card.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - account_data
+    false_positive_notes: Tax preparers.
+    controls:
+    - id: FR-TAX-002-C1
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules on count, value, geography and timing alert analysts to bursts or structured
+        activity.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-TAX-002-C2
+      name: Mule account detection model
+      type: detective
+      description: Detects inbound-funds-then-rapid-outflow and other mule patterns on receiving accounts,
+        enabling holds and exits.
+      implementation: model
+      effectiveness: high
+    - id: FR-TAX-002-C3
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    references:
+    - IRS and HMRC public guidance on refund and identity fraud (general)
+  - id: FR-TAX-003
+    name: Account holder surprised by refund or victim reports unexpected claim
+    description: 'Victim-side: customer discovers a fraudulent return in their name.'
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    - external_intel
+    data_sources:
+    - customer_reports
+    false_positive_notes: Forgotten claims.
+    controls:
+    - id: FR-TAX-003-C1
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    - id: FR-TAX-003-C2
+      name: Case management and fraud MI governance
+      type: governance
+      description: Outcomes, losses and false positives are tracked and fed back into rule tuning and
+        risk appetite.
+      implementation: process
+      effectiveness: medium
+    - id: FR-TAX-003-C3
+      name: Customer education and awareness
+      type: preventive
+      description: Targeted messaging helps customers recognise the scam script and know how to verify.
+      implementation: training
+      effectiveness: low
+    references:
+    - IRS and HMRC public guidance on refund and identity fraud (general)
+  - id: FR-TAX-004
+    name: Recently opened account receiving government payments
+    description: New accounts used to receive claims.
+    category: customer
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - account_data
+    false_positive_notes: New customers.
+    controls:
+    - id: FR-TAX-004-C1
+      name: Document and biometric identity verification
+      type: preventive
+      description: Verifies identity documents and liveness at onboarding or high-risk events, with checks
+        against authoritative data sources.
+      implementation: technology
+      effectiveness: high
+    - id: FR-TAX-004-C2
+      name: Refund destination and filing validation
+      type: preventive
+      description: Checks refund or benefit destination accounts against claimant identity and prior history
+        before release.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-TAX-004-C3
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules on count, value, geography and timing alert analysts to bursts or structured
+        activity.
+      implementation: rule
+      effectiveness: medium
+    references:
+    - IRS and HMRC public guidance on refund and identity fraud (general)
+  - id: FR-TAX-005
+    name: Rapid withdrawals or transfers after refund
+    description: Cash-out immediately after credit.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - account_data
+    false_positive_notes: Needs for cash.
+    controls:
+    - id: FR-TAX-005-C1
+      name: Mule account detection model
+      type: detective
+      description: Detects inbound-funds-then-rapid-outflow and other mule patterns on receiving accounts,
+        enabling holds and exits.
+      implementation: model
+      effectiveness: high
+    - id: FR-TAX-005-C2
+      name: Rapid recall and fund-freeze procedure
+      type: corrective
+      description: Defined process to notify receiving institutions, freeze onward movement and recover
+        funds quickly.
+      implementation: process
+      effectiveness: medium
+    - id: FR-TAX-005-C3
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    references:
+    - IRS and HMRC public guidance on refund and identity fraud (general)
+  - id: FR-TAX-006
+    name: Application data shared across many claimants
+    description: Same device, IP or address in many claims.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    data_sources:
+    - device_data
+    - claim_data
+    false_positive_notes: Tax software.
+    controls:
+    - id: FR-TAX-006-C1
+      name: Device and network intelligence
+      type: detective
+      description: Fingerprints devices, IPs and emulators to link applications or sessions and flag anomalous
+        or shared infrastructure.
+      implementation: technology
+      effectiveness: high
+    - id: FR-TAX-006-C2
+      name: Entity resolution and link analysis
+      type: detective
+      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
+        identities.
+      implementation: model
+      effectiveness: high
+    - id: FR-TAX-006-C3
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    references:
+    - IRS and HMRC public guidance on refund and identity fraud (general)
+  - id: FR-TAX-007
+    name: Prepaid cards loaded with refunds
+    description: Refunds sent to prepaid products.
+    category: product_channel
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - card_data
+    false_positive_notes: Unbanked customers.
+    controls:
+    - id: FR-TAX-007-C1
+      name: Refund destination and filing validation
+      type: preventive
+      description: Checks refund or benefit destination accounts against claimant identity and prior history
+        before release.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-TAX-007-C2
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules on count, value, geography and timing alert analysts to bursts or structured
+        activity.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-TAX-007-C3
+      name: Mule account detection model
+      type: detective
+      description: Detects inbound-funds-then-rapid-outflow and other mule patterns on receiving accounts,
+        enabling holds and exits.
+      implementation: model
+      effectiveness: high
+    references:
+    - IRS and HMRC public guidance on refund and identity fraud (general)
+  - id: FR-TAX-008
+    name: Income or dependants inconsistent with profile
+    description: Claim data diverges from account history.
+    category: document
+    severity: medium
+    detection_type:
+    - kyc_review
+    data_sources:
+    - claim_data
+    - account_data
+    false_positive_notes: Life changes.
+    controls:
+    - id: FR-TAX-008-C1
+      name: Enhanced due diligence and periodic KYC review
+      type: detective
+      description: Targeted review of purpose, source of funds and expected activity when behaviour diverges
+        from the profile.
+      implementation: process
+      effectiveness: medium
+    - id: FR-TAX-008-C2
+      name: Income, affordability and bureau verification
+      type: preventive
+      description: Verifies stated income, employment and obligations independently and cross-checks bureau
+        and application data.
+      implementation: process
+      effectiveness: high
+    - id: FR-TAX-008-C3
+      name: Refund destination and filing validation
+      type: preventive
+      description: Checks refund or benefit destination accounts against claimant identity and prior history
+        before release.
+      implementation: rule
+      effectiveness: medium
+    references:
+    - IRS and HMRC public guidance on refund and identity fraud (general)

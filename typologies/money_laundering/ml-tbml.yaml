@@ -1,0 +1,242 @@
+typology:
+  id: ML-TBML
+  name: Trade-Based Money Laundering
+  domain: money_laundering
+  description: Disguising proceeds of crime and moving value through trade transactions by manipulating
+    invoicing, quantity, quality or description of goods and services. Techniques include over- and under-invoicing,
+    multiple invoicing, phantom shipments and use of unrelated third parties.
+  stage:
+  - layering
+  - integration
+  sectors:
+  - banking
+  - trade_finance
+  - corporate_services
+  sources:
+  - FATF, Trade-Based Money Laundering (2006)
+  - 'FATF and Egmont Group, Trade-Based Money Laundering: Trends and Developments (2020)'
+  - Wolfsberg Group, Trade Finance Principles (general)
+  indicators:
+  - id: ML-TBML-001
+    name: Invoice price significantly differs from market value
+    description: Unit prices are well above or below the normal market range for the goods without a commercial
+      rationale.
+    category: transaction
+    severity: high
+    detection_type:
+    - document_review
+    - transaction_monitoring
+    data_sources:
+    - trade_documents
+    - price_databases
+    false_positive_notes: Discounts, grade differences, and volatile commodities can explain variance.
+    controls:
+    - id: ML-TBML-001-C1
+      name: Trade price benchmarking
+      type: detective
+      description: Compare invoice prices to reference price databases with defined tolerances.
+      implementation: technology
+      effectiveness: high
+    - id: ML-TBML-001-C2
+      name: Pricing explanation requirement
+      type: preventive
+      description: Obtain documented rationale for outlier prices before processing.
+      implementation: process
+      effectiveness: medium
+  - id: ML-TBML-002
+    name: Goods description vague or inconsistent across documents
+    description: Bill of lading, invoice and letter of credit describe quantity, goods or parties differently.
+    category: document
+    severity: high
+    detection_type:
+    - document_review
+    data_sources:
+    - trade_documents
+    false_positive_notes: Clerical errors or HS-code variations occur.
+    controls:
+    - id: ML-TBML-002-C1
+      name: Document consistency checking
+      type: detective
+      description: Automated and manual matching of key fields across trade documents.
+      implementation: technology
+      effectiveness: high
+    - id: ML-TBML-002-C2
+      name: Discrepancy escalation policy
+      type: governance
+      description: Define who may waive discrepancies and require reasons.
+      implementation: policy
+      effectiveness: medium
+  - id: ML-TBML-003
+    name: Multiple invoicing for the same shipment
+    description: The same goods are invoiced or financed more than once, or payment references repeat.
+    category: document
+    severity: high
+    detection_type:
+    - document_review
+    - transaction_monitoring
+    data_sources:
+    - trade_documents
+    - invoice_registry
+    false_positive_notes: Partial shipments and amendments may seem like duplicates.
+    controls:
+    - id: ML-TBML-003-C1
+      name: Duplicate document detection
+      type: detective
+      description: Hash/fuzzy match invoice and shipping numbers within and across clients.
+      implementation: technology
+      effectiveness: high
+    - id: ML-TBML-003-C2
+      name: Financing registry check
+      type: preventive
+      description: Query shared registries where available before financing.
+      implementation: process
+      effectiveness: medium
+  - id: ML-TBML-004
+    name: Shipping route illogical or via high-risk transshipment
+    description: Goods travel through jurisdictions with no commercial reason or known risk of trade abuse.
+    category: geographic
+    severity: medium
+    detection_type:
+    - document_review
+    - screening
+    data_sources:
+    - shipping_data
+    - vessel_tracking
+    false_positive_notes: Route changes follow port congestion or carrier network design.
+    controls:
+    - id: ML-TBML-004-C1
+      name: Route plausibility screening
+      type: detective
+      description: Screen routes and ports against risk lists and typical lanes.
+      implementation: technology
+      effectiveness: medium
+    - id: ML-TBML-004-C2
+      name: Free-trade-zone enhanced review
+      type: preventive
+      description: Apply enhanced checks to transactions involving zones.
+      implementation: process
+      effectiveness: medium
+  - id: ML-TBML-005
+    name: Payment from or to unrelated third parties
+    description: Payments for goods come from parties not named in the contract or documentation.
+    category: counterparty
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - document_review
+    data_sources:
+    - payment_data
+    - trade_documents
+    false_positive_notes: Group treasury centres and factoring can legitimately pay.
+    controls:
+    - id: ML-TBML-005-C1
+      name: Third-party payment rule
+      type: detective
+      description: Alert when payer or payee differs from the contracted party.
+      implementation: rule
+      effectiveness: high
+    - id: ML-TBML-005-C2
+      name: Third-party payment justification
+      type: preventive
+      description: Require documented rationale and relationship evidence.
+      implementation: process
+      effectiveness: medium
+  - id: ML-TBML-006
+    name: Shipment volume exceeds the counterparty's capability
+    description: Quantities or values are out of proportion to the size, history or industry of trading
+      parties.
+    category: customer
+    severity: medium
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - corporate_registry
+    - trade_history
+    false_positive_notes: Start-ups may broker large deals.
+    controls:
+    - id: ML-TBML-006-C1
+      name: Counterparty capacity assessment
+      type: preventive
+      description: Test size, history and equipment against shipment scale.
+      implementation: process
+      effectiveness: medium
+    - id: ML-TBML-006-C2
+      name: Trade profile model
+      type: detective
+      description: Model expected trade profile and alert on deviation.
+      implementation: model
+      effectiveness: medium
+  - id: ML-TBML-007
+    name: Dual-use or high-risk goods without supporting licences
+    description: Trade in goods commonly abused for value transfer (used cars, electronics, gold, scrap)
+      lacks usual licences or logistics.
+    category: product_channel
+    severity: medium
+    detection_type:
+    - document_review
+    data_sources:
+    - trade_documents
+    - licence_data
+    false_positive_notes: Licence regimes vary.
+    controls:
+    - id: ML-TBML-007-C1
+      name: Commodity risk tagging
+      type: preventive
+      description: Tag high-risk goods and trigger documentary checks.
+      implementation: policy
+      effectiveness: medium
+    - id: ML-TBML-007-C2
+      name: Licence validation
+      type: detective
+      description: Verify licences with issuing bodies where possible.
+      implementation: process
+      effectiveness: medium
+  - id: ML-TBML-008
+    name: Phantom shipment indicators
+    description: 'No verifiable movement of goods: missing tracking, inspection or insurance evidence.'
+    category: typology_specific
+    severity: high
+    detection_type:
+    - document_review
+    - external_intel
+    data_sources:
+    - shipping_data
+    - inspection_reports
+    false_positive_notes: Smaller shipments may lack tracking.
+    controls:
+    - id: ML-TBML-008-C1
+      name: Shipment tracking verification
+      type: detective
+      description: Verify movement with AIS, container tracking and customs data.
+      implementation: technology
+      effectiveness: high
+    - id: ML-TBML-008-C2
+      name: Independent inspection triggers
+      type: preventive
+      description: Require inspection certificates above value/risk thresholds.
+      implementation: policy
+      effectiveness: medium
+  - id: ML-TBML-009
+    name: Frequent amendments or letter of credit changes
+    description: Repeated changes to beneficiaries, payment terms or amounts shortly before payment.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - document_review
+    data_sources:
+    - lc_amendment_log
+    false_positive_notes: Negotiating changes are common.
+    controls:
+    - id: ML-TBML-009-C1
+      name: Amendment velocity alert
+      type: detective
+      description: Alert on multiple or late amendments.
+      implementation: rule
+      effectiveness: medium
+    - id: ML-TBML-009-C2
+      name: Beneficiary change verification
+      type: preventive
+      description: Re-run due diligence on changed parties.
+      implementation: process
+      effectiveness: high

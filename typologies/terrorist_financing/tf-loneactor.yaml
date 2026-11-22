@@ -1,0 +1,253 @@
+typology:
+  id: TF-LONEACTOR
+  name: Lone Actor and Small-Value Terrorist Funding
+  domain: terrorist_financing
+  description: Individuals or very small cells fund attacks, travel or equipment from personal income,
+    savings, consumer credit or small gifts, producing low-value activity that blends into normal retail
+    banking. Detection relies on combinations of weak signals and on external intelligence rather than
+    any single threshold.
+  sectors:
+  - banking
+  - payments
+  - fintech
+  sources:
+  - FATF, Terrorist Financing Risk Assessment Guidance (2019)
+  - FATF, Ethnically or Racially Motivated Terrorism Financing (2021)
+  indicators:
+  - id: TF-LONEACTOR-001
+    name: Rapid consumer credit drawdown with no stated purpose
+    description: Customer takes several unsecured loans, credit cards or overdraft limits in a short window
+      and withdraws or transfers the proceeds quickly, then ceases repayment.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - loan_data
+    - card_transactions
+    - account_activity
+    false_positive_notes: Common in financial distress, gambling or fraud victimisation; most such patterns
+      are not terrorism related.
+    controls:
+    - id: TF-LONEACTOR-001-C1
+      name: Credit velocity rule
+      type: detective
+      description: Alert on multiple new credit facilities and rapid cash-out within a short period, routed
+        to a combined fraud and financial crime queue.
+      implementation: rule
+      effectiveness: medium
+    - id: TF-LONEACTOR-001-C2
+      name: Cross-product exposure view
+      type: preventive
+      description: Aggregate exposure across loans, cards and overdrafts so analysts can see total unexplained
+        borrowing at review.
+      implementation: technology
+      effectiveness: medium
+  - id: TF-LONEACTOR-002
+    name: Sale of assets and liquidation of savings followed by withdrawal
+    description: Customer liquidates property, vehicle or investments and withdraws cash or moves funds
+      abroad without an evident life event.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - account_activity
+    - asset_records
+    false_positive_notes: Relocation, divorce, bereavement and business downturn are frequent legitimate
+      drivers.
+    controls:
+    - id: TF-LONEACTOR-002-C1
+      name: Large liquidation trigger
+      type: detective
+      description: Flag uncharacteristic liquidation plus onward cash or cross-border movement for analyst
+        review.
+      implementation: rule
+      effectiveness: medium
+    - id: TF-LONEACTOR-002-C2
+      name: Customer outreach on purpose
+      type: preventive
+      description: Contact customer for rationale where activity is out of profile and record the explanation.
+      implementation: process
+      effectiveness: medium
+  - id: TF-LONEACTOR-003
+    name: Purchases consistent with attack preparation reported by authorities
+    description: Spending on items or services that match typologies shared by law enforcement or public-private
+      partnerships, such as particular combinations of retail goods, vehicle hire and reconnaissance-type
+      travel.
+    category: typology_specific
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - external_intel
+    data_sources:
+    - card_transactions
+    - merchant_category_data
+    false_positive_notes: Individual purchases are lawful; only the combination, timing and external intel
+      make it meaningful.
+    controls:
+    - id: TF-LONEACTOR-003-C1
+      name: Typology-informed scenarios
+      type: detective
+      description: Translate sanitised law enforcement indicators into targeted monitoring scenarios and
+        review them periodically.
+      implementation: rule
+      effectiveness: medium
+    - id: TF-LONEACTOR-003-C2
+      name: Public-private information sharing
+      type: governance
+      description: Participate in formal sharing forums so scenarios reflect current threat patterns.
+      implementation: policy
+      effectiveness: high
+  - id: TF-LONEACTOR-004
+    name: Adverse media or open-source concern about extremist engagement
+    description: Customer is named in credible reporting or intelligence-led alerts for extremist advocacy,
+      associations or prior convictions linked to violence.
+    category: customer
+    severity: high
+    detection_type:
+    - screening
+    - kyc_review
+    - external_intel
+    data_sources:
+    - adverse_media
+    - law_enforcement_requests
+    false_positive_notes: Media can be wrong, outdated or about a namesake; association alone is not proof
+      of funding intent.
+    controls:
+    - id: TF-LONEACTOR-004-C1
+      name: Adverse media screening with disambiguation
+      type: preventive
+      description: Screen against curated sources and require identity matching on secondary identifiers
+        before escalation.
+      implementation: technology
+      effectiveness: medium
+    - id: TF-LONEACTOR-004-C2
+      name: Enhanced due diligence and activity review
+      type: detective
+      description: Perform event-driven review of account activity, counterparties and geographies when
+        credible concern arises.
+      implementation: process
+      effectiveness: high
+    - id: TF-LONEACTOR-004-C3
+      name: Escalation to financial intelligence unit decision
+      type: governance
+      description: Define who decides on suspicious activity reporting where concern is credible.
+      implementation: policy
+      effectiveness: high
+  - id: TF-LONEACTOR-005
+    name: Sudden change in financial behaviour and lifestyle
+    description: Customer shifts from stable spending to minimal discretionary spend, repeated cash withdrawals,
+      closing of long-standing products or giving away assets.
+    category: behavioural
+    severity: low
+    detection_type:
+    - transaction_monitoring
+    - customer_behaviour
+    data_sources:
+    - account_activity
+    false_positive_notes: Religious observance, health events, job loss or emigration plans can look identical.
+    controls:
+    - id: TF-LONEACTOR-005-C1
+      name: Behavioural change model
+      type: detective
+      description: Model deviation from established baseline and surface as a contextual signal, never
+        as a standalone alert.
+      implementation: model
+      effectiveness: low
+    - id: TF-LONEACTOR-005-C2
+      name: Analyst training on weak signal combination
+      type: preventive
+      description: Train staff to weigh multiple weak signals together and avoid profiling by protected
+        characteristics.
+      implementation: training
+      effectiveness: medium
+  - id: TF-LONEACTOR-006
+    name: Small transfers to or from a person on a watch or investigative list
+    description: Low-value payments with parties linked to previously reported subjects or to persons
+      arrested in connection with violent extremism.
+    category: counterparty
+    severity: high
+    detection_type:
+    - screening
+    - transaction_monitoring
+    - external_intel
+    data_sources:
+    - transaction_data
+    - internal_sar_history
+    false_positive_notes: Family, employment or community connections to a subject can be innocent.
+    controls:
+    - id: TF-LONEACTOR-006-C1
+      name: Network link analysis on prior reports
+      type: detective
+      description: Use link analysis to identify accounts transacting with previously reported parties.
+      implementation: technology
+      effectiveness: medium
+    - id: TF-LONEACTOR-006-C2
+      name: Counterparty re-screening on list updates
+      type: preventive
+      description: Re-screen counterparties when designation or investigation-derived lists update.
+      implementation: rule
+      effectiveness: high
+    - id: TF-LONEACTOR-006-C3
+      name: Feedback loop from SARs
+      type: governance
+      description: Feed outcomes of previous reports back to monitoring tuning.
+      implementation: policy
+      effectiveness: medium
+  - id: TF-LONEACTOR-007
+    name: Travel and accommodation spending to conflict-adjacent regions
+    description: Spending on flights, border-area hotels or overland transport near conflict zones inconsistent
+      with known occupation or history.
+    category: geographic
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - card_transactions
+    - travel_data
+    false_positive_notes: Tourism, aid work, journalism and family visits explain most such spending.
+    controls:
+    - id: TF-LONEACTOR-007-C1
+      name: Geographic spend rule
+      type: detective
+      description: Detect card and ATM use in or near higher-risk conflict areas and combine with other
+        risk signals.
+      implementation: rule
+      effectiveness: medium
+    - id: TF-LONEACTOR-007-C2
+      name: Travel notification and profile data
+      type: preventive
+      description: Where available, record customer travel purpose to contextualise alerts.
+      implementation: process
+      effectiveness: low
+  - id: TF-LONEACTOR-008
+    name: Use of multiple accounts or prepaid products to stay below thresholds
+    description: Funds spread across several accounts, prepaid cards or wallets at the same or different
+      providers, each carrying small balances before consolidated cash-out.
+    category: product_channel
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - account_activity
+    - prepaid_card_data
+    - device_data
+    false_positive_notes: Students, migrants and unbanked users frequently use multiple small products.
+    controls:
+    - id: TF-LONEACTOR-008-C1
+      name: Aggregation by customer and device
+      type: detective
+      description: Aggregate activity across linked accounts using identity and device attributes.
+      implementation: technology
+      effectiveness: medium
+    - id: TF-LONEACTOR-008-C2
+      name: Prepaid load and cash-out limits
+      type: preventive
+      description: Set risk-based limits on load, withdrawals and reloading velocity.
+      implementation: policy
+      effectiveness: medium

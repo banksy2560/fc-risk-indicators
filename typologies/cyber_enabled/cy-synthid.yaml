@@ -1,0 +1,344 @@
+typology:
+  id: CY-SYNTHID
+  name: Synthetic and AI-Generated Identity and Deepfake Onboarding
+  domain: cyber_enabled
+  description: Fraudsters combine real and fabricated data, or use generative tools to create faces, voices
+    and documents, to pass remote onboarding. The accounts then bear credit abuse, mule activity or laundering.
+    Detection depends on layered identity proofing and behavioural signals across the customer lifecycle.
+  stage:
+  - placement
+  sectors:
+  - banking
+  - fintech
+  - crypto
+  - payments
+  sources:
+  - FinCEN, Alert on Fraud Schemes Involving Deepfake Media Targeting Financial Institutions (FIN-2024-Alert004,
+    2024)
+  - FATF, Guidance on Digital ID (2020)
+  - NIST, Digital Identity Guidelines (SP 800-63)
+  indicators:
+  - id: CY-SYNTHID-001
+    name: Identity with thin or recently created credit and data footprint
+    description: Identifiers appear in few databases, with recent first use and mixed data elements.
+    category: document
+    severity: high
+    detection_type:
+    - kyc_review
+    data_sources:
+    - identity_bureaus
+    false_positive_notes: Young adults and new arrivals.
+    controls:
+    - id: CY-SYNTHID-001-C1
+      name: Document authentication and data verification
+      type: preventive
+      description: Verify ID documents for tampering or forgery and cross-check data against authoritative
+        sources.
+      implementation: technology
+      effectiveness: high
+    - id: CY-SYNTHID-001-C2
+      name: Onboarding data consistency rules
+      type: preventive
+      description: Rules that compare submitted identifiers (email, phone, address, device, bank account)
+        against existing records and known-bad data.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-SYNTHID-001-C3
+      name: Digital identity and entity resolution
+      type: detective
+      description: Resolve multiple accounts to one underlying person or entity using identity, device
+        and behavioural linkage.
+      implementation: model
+      effectiveness: medium
+  - id: CY-SYNTHID-002
+    name: Selfie or video shows signs of synthetic or injected media
+    description: Liveness checks reveal artefacts, virtual cameras or replayed streams.
+    category: document
+    severity: high
+    detection_type:
+    - document_review
+    data_sources:
+    - onboarding_images
+    - session_data
+    false_positive_notes: Poor lighting or low-quality cameras.
+    controls:
+    - id: CY-SYNTHID-002-C1
+      name: Liveness detection and injection-attack defence
+      type: preventive
+      description: Active/passive liveness with detection of virtual cameras, replayed video and synthetic
+        faces at onboarding and high-risk events.
+      implementation: technology
+      effectiveness: high
+    - id: CY-SYNTHID-002-C2
+      name: Document authentication and data verification
+      type: preventive
+      description: Verify ID documents for tampering or forgery and cross-check data against authoritative
+        sources.
+      implementation: technology
+      effectiveness: high
+    - id: CY-SYNTHID-002-C3
+      name: Device intelligence and behavioural biometrics
+      type: detective
+      description: Fingerprint devices and analyse session behaviour (typing, navigation, remote-access
+        tools, emulators) to spot shared, scripted or hijacked sessions.
+      implementation: technology
+      effectiveness: high
+  - id: CY-SYNTHID-003
+    name: Document images share templates, fonts or backgrounds across applicants
+    description: Multiple applications use near-identical layouts or reused photos.
+    category: document
+    severity: high
+    detection_type:
+    - document_review
+    data_sources:
+    - onboarding_images
+    false_positive_notes: Common issuance templates.
+    controls:
+    - id: CY-SYNTHID-003-C1
+      name: Document authentication and data verification
+      type: preventive
+      description: Verify ID documents for tampering or forgery and cross-check data against authoritative
+        sources.
+      implementation: technology
+      effectiveness: high
+    - id: CY-SYNTHID-003-C2
+      name: Graph and network analytics
+      type: detective
+      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
+        and fan-in/fan-out structures.
+      implementation: model
+      effectiveness: high
+    - id: CY-SYNTHID-003-C3
+      name: Onboarding data consistency rules
+      type: preventive
+      description: Rules that compare submitted identifiers (email, phone, address, device, bank account)
+        against existing records and known-bad data.
+      implementation: rule
+      effectiveness: medium
+  - id: CY-SYNTHID-004
+    name: Mismatch between claimed identity and device, IP or voice
+    description: Geolocation, language or voice biometrics inconsistent with the stated identity.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    data_sources:
+    - device_data
+    - ip_logs
+    false_positive_notes: Travel and expatriates.
+    controls:
+    - id: CY-SYNTHID-004-C1
+      name: Device intelligence and behavioural biometrics
+      type: detective
+      description: Fingerprint devices and analyse session behaviour (typing, navigation, remote-access
+        tools, emulators) to spot shared, scripted or hijacked sessions.
+      implementation: technology
+      effectiveness: high
+    - id: CY-SYNTHID-004-C2
+      name: IP, geolocation and anonymisation detection
+      type: detective
+      description: Detect VPN, proxy, Tor and geolocation mismatch against declared residence and sanctioned
+        or high-risk jurisdictions.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-SYNTHID-004-C3
+      name: Liveness detection and injection-attack defence
+      type: preventive
+      description: Active/passive liveness with detection of virtual cameras, replayed video and synthetic
+        faces at onboarding and high-risk events.
+      implementation: technology
+      effectiveness: high
+  - id: CY-SYNTHID-005
+    name: Same contact details used with different identities
+    description: Phone or email repeated under varied names or birthdates.
+    category: customer
+    severity: medium
+    detection_type:
+    - kyc_review
+    data_sources:
+    - customer_records
+    false_positive_notes: Family contact sharing.
+    controls:
+    - id: CY-SYNTHID-005-C1
+      name: Onboarding data consistency rules
+      type: preventive
+      description: Rules that compare submitted identifiers (email, phone, address, device, bank account)
+        against existing records and known-bad data.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-SYNTHID-005-C2
+      name: Digital identity and entity resolution
+      type: detective
+      description: Resolve multiple accounts to one underlying person or entity using identity, device
+        and behavioural linkage.
+      implementation: model
+      effectiveness: medium
+    - id: CY-SYNTHID-005-C3
+      name: Graph and network analytics
+      type: detective
+      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
+        and fan-in/fan-out structures.
+      implementation: model
+      effectiveness: high
+  - id: CY-SYNTHID-006
+    name: Rapid credit build then bust or large cash-out
+    description: Account builds limits quickly then draws maximum funds.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - ledger_data
+    - credit_data
+    false_positive_notes: Genuine growth.
+    controls:
+    - id: CY-SYNTHID-006-C1
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-SYNTHID-006-C2
+      name: Mule account detection model
+      type: detective
+      description: Model that scores inbound-then-outbound pass-through, new payee churn and profile mismatch
+        to flag likely mule accounts.
+      implementation: model
+      effectiveness: high
+    - id: CY-SYNTHID-006-C3
+      name: Account restriction and fund holds
+      type: corrective
+      description: Ability to restrict, hold or recall funds rapidly pending review, with defined legal
+        and operational triggers.
+      implementation: process
+      effectiveness: medium
+  - id: CY-SYNTHID-007
+    name: Voice or video call authentication challenges failed
+    description: Callers using cloned voices or video deepfakes during high-value requests.
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    - investigator_judgement
+    data_sources:
+    - call_logs
+    false_positive_notes: Poor audio.
+    controls:
+    - id: CY-SYNTHID-007-C1
+      name: Step-up authentication on risky events
+      type: preventive
+      description: Trigger strong re-authentication for credential, device or payee changes and large
+        or unusual payments.
+      implementation: technology
+      effectiveness: high
+    - id: CY-SYNTHID-007-C2
+      name: Liveness detection and injection-attack defence
+      type: preventive
+      description: Active/passive liveness with detection of virtual cameras, replayed video and synthetic
+        faces at onboarding and high-risk events.
+      implementation: technology
+      effectiveness: high
+    - id: CY-SYNTHID-007-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+  - id: CY-SYNTHID-008
+    name: Address that is a mail drop, virtual office or reused
+    description: Many identities share one address or commercial drop.
+    category: customer
+    severity: medium
+    detection_type:
+    - kyc_review
+    data_sources:
+    - address_data
+    false_positive_notes: Student halls.
+    controls:
+    - id: CY-SYNTHID-008-C1
+      name: Onboarding data consistency rules
+      type: preventive
+      description: Rules that compare submitted identifiers (email, phone, address, device, bank account)
+        against existing records and known-bad data.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-SYNTHID-008-C2
+      name: Document authentication and data verification
+      type: preventive
+      description: Verify ID documents for tampering or forgery and cross-check data against authoritative
+        sources.
+      implementation: technology
+      effectiveness: high
+    - id: CY-SYNTHID-008-C3
+      name: Enhanced due diligence
+      type: preventive
+      description: Collect additional information on activity purpose, expected volumes and ownership
+        before approval or continued service, with senior sign-off.
+      implementation: process
+      effectiveness: medium
+  - id: CY-SYNTHID-009
+    name: Applications following failed attempts with edited data
+    description: Repeated retries altering one data element until approval.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    data_sources:
+    - application_logs
+    false_positive_notes: Genuine typos.
+    controls:
+    - id: CY-SYNTHID-009-C1
+      name: Onboarding data consistency rules
+      type: preventive
+      description: Rules that compare submitted identifiers (email, phone, address, device, bank account)
+        against existing records and known-bad data.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-SYNTHID-009-C2
+      name: Device intelligence and behavioural biometrics
+      type: detective
+      description: Fingerprint devices and analyse session behaviour (typing, navigation, remote-access
+        tools, emulators) to spot shared, scripted or hijacked sessions.
+      implementation: technology
+      effectiveness: high
+    - id: CY-SYNTHID-009-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+  - id: CY-SYNTHID-010
+    name: Dates of birth, SSN or national ID not matching authoritative records
+    description: Authoritative checks fail or show multiple identities on one number.
+    category: document
+    severity: high
+    detection_type:
+    - kyc_review
+    data_sources:
+    - registry_checks
+    false_positive_notes: Registry delays.
+    controls:
+    - id: CY-SYNTHID-010-C1
+      name: Document authentication and data verification
+      type: preventive
+      description: Verify ID documents for tampering or forgery and cross-check data against authoritative
+        sources.
+      implementation: technology
+      effectiveness: high
+    - id: CY-SYNTHID-010-C2
+      name: Digital identity and entity resolution
+      type: detective
+      description: Resolve multiple accounts to one underlying person or entity using identity, device
+        and behavioural linkage.
+      implementation: model
+      effectiveness: medium
+    - id: CY-SYNTHID-010-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium

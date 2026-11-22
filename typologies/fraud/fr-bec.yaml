@@ -1,0 +1,339 @@
+typology:
+  id: FR-BEC
+  name: Business Email Compromise and Invoice Redirection
+  domain: fraud
+  description: Criminals compromise or spoof email accounts to impersonate executives or suppliers and
+    redirect payments to accounts they control. Typical outcomes are urgent wire requests or changed bank
+    details on genuine invoices.
+  sectors:
+  - banking
+  - payments
+  - corporate_services
+  sources:
+  - FinCEN, Advisory on Email Compromise Fraud Schemes (2019)
+  - FBI IC3, Public service announcements on BEC (published annually)
+  - UK Finance, Annual Fraud Report (published annually)
+  indicators:
+  - id: FR-BEC-001
+    name: Change of beneficiary bank details close to a payment
+    description: 'Victim-side: supplier payment details are altered shortly before an invoice is due,
+      via email or portal.'
+    category: counterparty
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - document_review
+    data_sources:
+    - vendor_master
+    - payment_data
+    false_positive_notes: Real supplier bank migrations.
+    controls:
+    - id: FR-BEC-001-C1
+      name: Vendor master-data change control
+      type: preventive
+      description: Bank-detail changes to payees require independent verification and are reviewed before
+        the next payment run.
+      implementation: process
+      effectiveness: high
+    - id: FR-BEC-001-C2
+      name: Out-of-band callback verification
+      type: preventive
+      description: Instructions or detail changes are verified by calling a number held on file, never
+        one supplied in the request.
+      implementation: process
+      effectiveness: high
+    - id: FR-BEC-001-C3
+      name: Confirmation of payee / name-matching
+      type: preventive
+      description: Checks the payee name against the destination account before release and warns on a
+        no-match or close-match, interrupting misdirected or spoofed payments.
+      implementation: technology
+      effectiveness: high
+    references:
+    - FinCEN, Advisory on Email Compromise Fraud Schemes (2019)
+  - id: FR-BEC-002
+    name: Urgent confidential payment request from a senior executive
+    description: 'Victim-side: finance staff receive a request, often outside normal workflow, to wire
+      funds quickly and not discuss it.'
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    - investigator_judgement
+    data_sources:
+    - emails
+    - payment_requests
+    false_positive_notes: Genuine time-critical deals.
+    controls:
+    - id: FR-BEC-002-C1
+      name: Out-of-band callback verification
+      type: preventive
+      description: Instructions or detail changes are verified by calling a number held on file, never
+        one supplied in the request.
+      implementation: process
+      effectiveness: high
+    - id: FR-BEC-002-C2
+      name: Segregation of duties and dual authorisation
+      type: preventive
+      description: No single person can create, approve and release; sensitive changes need an independent
+        second approver.
+      implementation: policy
+      effectiveness: high
+    - id: FR-BEC-002-C3
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    references:
+    - FinCEN, Advisory on Email Compromise Fraud Schemes (2019)
+  - id: FR-BEC-003
+    name: Lookalike or recently registered sender domain
+    description: Spoofed email domain or reply-to differs subtly from the genuine counterparty.
+    category: document
+    severity: high
+    detection_type:
+    - document_review
+    - external_intel
+    data_sources:
+    - email_headers
+    - domain_intel
+    false_positive_notes: Marketing or third-party senders.
+    controls:
+    - id: FR-BEC-003-C1
+      name: Threat intelligence and takedown
+      type: detective
+      description: Monitors for spoofed domains, fake apps, adverts and numbers and arranges their takedown
+        and customer alerts.
+      implementation: technology
+      effectiveness: medium
+    - id: FR-BEC-003-C2
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    - id: FR-BEC-003-C3
+      name: Out-of-band callback verification
+      type: preventive
+      description: Instructions or detail changes are verified by calling a number held on file, never
+        one supplied in the request.
+      implementation: process
+      effectiveness: high
+    references:
+    - FinCEN, Advisory on Email Compromise Fraud Schemes (2019)
+  - id: FR-BEC-004
+    name: First payment to a new beneficiary in a different jurisdiction
+    description: 'Victim-side: payment to a new account, often foreign, unrelated to the supplier''s usual
+      country.'
+    category: geographic
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payment_data
+    - vendor_master
+    false_positive_notes: New suppliers or overseas expansion.
+    controls:
+    - id: FR-BEC-004-C1
+      name: Confirmation of payee / name-matching
+      type: preventive
+      description: Checks the payee name against the destination account before release and warns on a
+        no-match or close-match, interrupting misdirected or spoofed payments.
+      implementation: technology
+      effectiveness: high
+    - id: FR-BEC-004-C2
+      name: Vendor master-data change control
+      type: preventive
+      description: Bank-detail changes to payees require independent verification and are reviewed before
+        the next payment run.
+      implementation: process
+      effectiveness: high
+    - id: FR-BEC-004-C3
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    references:
+    - FinCEN, Advisory on Email Compromise Fraud Schemes (2019)
+  - id: FR-BEC-005
+    name: Business account receives funds then moves them offshore or to crypto quickly
+    description: 'Mule-side: a recipient account (often newly opened or a shell) forwards BEC proceeds
+      within hours.'
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - account_data
+    false_positive_notes: Trading accounts with legitimate turnover.
+    controls:
+    - id: FR-BEC-005-C1
+      name: Mule account detection model
+      type: detective
+      description: Detects inbound-funds-then-rapid-outflow and other mule patterns on receiving accounts,
+        enabling holds and exits.
+      implementation: model
+      effectiveness: high
+    - id: FR-BEC-005-C2
+      name: Rapid recall and fund-freeze procedure
+      type: corrective
+      description: Defined process to notify receiving institutions, freeze onward movement and recover
+        funds quickly.
+      implementation: process
+      effectiveness: medium
+    - id: FR-BEC-005-C3
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    references:
+    - FinCEN, Advisory on Email Compromise Fraud Schemes (2019)
+  - id: FR-BEC-006
+    name: Invoice amount or format differs from prior invoices
+    description: 'Victim-side: genuine-looking invoice has altered layout, round figures or inconsistent
+      references.'
+    category: document
+    severity: medium
+    detection_type:
+    - document_review
+    data_sources:
+    - invoices
+    false_positive_notes: Billing system changes.
+    controls:
+    - id: FR-BEC-006-C1
+      name: Vendor master-data change control
+      type: preventive
+      description: Bank-detail changes to payees require independent verification and are reviewed before
+        the next payment run.
+      implementation: process
+      effectiveness: high
+    - id: FR-BEC-006-C2
+      name: Document forensics and source verification
+      type: detective
+      description: Analyses supporting documents for tampering, template reuse and metadata anomalies,
+        and confirms with the issuer.
+      implementation: technology
+      effectiveness: medium
+    - id: FR-BEC-006-C3
+      name: Frontline training and conversation scripts
+      type: preventive
+      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
+        and escalate with a defined script and authority to pause.
+      implementation: training
+      effectiveness: medium
+    references:
+    - FinCEN, Advisory on Email Compromise Fraud Schemes (2019)
+  - id: FR-BEC-007
+    name: Payment initiated outside normal approval chain
+    description: 'Victim-side: bypass of the usual purchase order or approval, or approver working remotely
+      at odd hours.'
+    category: behavioural
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - approval_logs
+    false_positive_notes: Emergency payments with proper sign-off.
+    controls:
+    - id: FR-BEC-007-C1
+      name: Segregation of duties and dual authorisation
+      type: preventive
+      description: No single person can create, approve and release; sensitive changes need an independent
+        second approver.
+      implementation: policy
+      effectiveness: high
+    - id: FR-BEC-007-C2
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    - id: FR-BEC-007-C3
+      name: Case management and fraud MI governance
+      type: governance
+      description: Outcomes, losses and false positives are tracked and fed back into rule tuning and
+        risk appetite.
+      implementation: process
+      effectiveness: medium
+    references:
+    - FinCEN, Advisory on Email Compromise Fraud Schemes (2019)
+  - id: FR-BEC-008
+    name: Shell or newly formed company receiving corporate payments
+    description: 'Mule-side: beneficiary has little trading footprint, a virtual office or recent incorporation.'
+    category: ownership_structure
+    severity: medium
+    detection_type:
+    - kyc_review
+    - screening
+    data_sources:
+    - company_registry
+    - kyc_profile
+    false_positive_notes: Start-ups.
+    controls:
+    - id: FR-BEC-008-C1
+      name: Registry and adverse-media checks
+      type: detective
+      description: Validates entity existence, licensing and reputation through registries and media screening.
+      implementation: technology
+      effectiveness: medium
+    - id: FR-BEC-008-C2
+      name: Document and biometric identity verification
+      type: preventive
+      description: Verifies identity documents and liveness at onboarding or high-risk events, with checks
+        against authoritative data sources.
+      implementation: technology
+      effectiveness: high
+    - id: FR-BEC-008-C3
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    references:
+    - FinCEN, Advisory on Email Compromise Fraud Schemes (2019)
+  - id: FR-BEC-009
+    name: Corporate login from unusual location or after mailbox rule change
+    description: 'Compromise indicator: mailbox forwarding rules and unfamiliar logins precede payment
+      fraud.'
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    data_sources:
+    - email_logs
+    - access_logs
+    false_positive_notes: Travel and VPN use.
+    controls:
+    - id: FR-BEC-009-C1
+      name: Strong authentication and step-up
+      type: preventive
+      description: Requires phishing-resistant authentication for logins and sensitive changes, with step-up
+        on risk.
+      implementation: technology
+      effectiveness: high
+    - id: FR-BEC-009-C2
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    - id: FR-BEC-009-C3
+      name: Threat intelligence and takedown
+      type: detective
+      description: Monitors for spoofed domains, fake apps, adverts and numbers and arranges their takedown
+        and customer alerts.
+      implementation: technology
+      effectiveness: medium
+    references:
+    - FinCEN, Advisory on Email Compromise Fraud Schemes (2019)

@@ -1,0 +1,228 @@
+typology:
+  id: BC-FACILIT
+  name: Facilitation Payments and Third-Party Intermediaries
+  domain: bribery_corruption
+  description: Small unofficial payments to speed routine government actions, and wider use of agents,
+    customs brokers, distributors or joint-venture partners who may pass value to officials. These flows
+    are often small, cash-heavy and poorly documented, so detection relies on expense analytics, supplier
+    controls and awareness.
+  sectors:
+  - banking
+  - payments
+  - corporate_services
+  sources:
+  - OECD, Good Practice Guidance on Internal Controls, Ethics, and Compliance (2010)
+  - OECD, UNODC and World Bank, Anti-Corruption Ethics and Compliance Handbook for Business (2013)
+  - Wolfsberg Group, Anti-Bribery and Corruption Compliance Programme Guidance (2017)
+  - US DOJ and SEC, A Resource Guide to the U.S. Foreign Corrupt Practices Act
+  indicators:
+  - id: BC-FACILIT-001
+    name: Recurring small cash payments to border, customs or permit agents
+    description: Repeated low-value cash disbursements or petty cash entries labelled 'expediting', 'facilitation'
+      or 'processing' at ports, borders or ministries.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - document_review
+    data_sources:
+    - petty_cash
+    - expense_reports
+    false_positive_notes: Some official fees are legitimately paid in cash with receipts.
+    controls:
+    - id: BC-FACILIT-001-C1
+      name: Petty cash analytics
+      type: detective
+      description: Analyse cash disbursements by location, payee and wording for repeated small payments.
+      implementation: rule
+      effectiveness: medium
+    - id: BC-FACILIT-001-C2
+      name: Receipt and official-fee verification
+      type: preventive
+      description: Require official receipts and published fee schedules for government-related payments.
+      implementation: process
+      effectiveness: medium
+  - id: BC-FACILIT-002
+    name: Customs broker or freight forwarder with unusually high disbursements
+    description: Broker invoices include large unitemised 'disbursements' or 'duties' that exceed published
+      tariffs.
+    category: counterparty
+    severity: medium
+    detection_type:
+    - document_review
+    - transaction_monitoring
+    data_sources:
+    - invoices
+    - customs_declarations
+    - tariff_data
+    false_positive_notes: Duties vary with classification and valuation disputes.
+    controls:
+    - id: BC-FACILIT-002-C1
+      name: Invoice-to-tariff reconciliation
+      type: detective
+      description: Reconcile broker disbursements to customs declarations and tariff tables.
+      implementation: process
+      effectiveness: medium
+    - id: BC-FACILIT-002-C2
+      name: Broker due diligence
+      type: preventive
+      description: Vet brokers for ownership, licensing, reputation and anti-bribery commitments.
+      implementation: process
+      effectiveness: medium
+  - id: BC-FACILIT-003
+    name: Third party has no anti-bribery policy or refuses audit rights
+    description: Intermediary resists contractual anti-corruption clauses, books-and-records access, or
+      certification.
+    category: counterparty
+    severity: medium
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - contracts
+    - due_diligence_files
+    false_positive_notes: Small suppliers may lack formal policies but cooperate otherwise.
+    controls:
+    - id: BC-FACILIT-003-C1
+      name: Anti-bribery contract clauses
+      type: preventive
+      description: Include representations, audit rights and termination rights for corruption breaches.
+      implementation: policy
+      effectiveness: medium
+    - id: BC-FACILIT-003-C2
+      name: Escalation for refusal
+      type: governance
+      description: Route refusals to compliance committee before proceeding.
+      implementation: process
+      effectiveness: medium
+  - id: BC-FACILIT-004
+    name: Payment requested in cash or to personal account
+    description: Intermediary asks that fees be paid in cash, via third parties, or into a personal rather
+      than corporate account.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - customer_behaviour
+    data_sources:
+    - payment_instructions
+    - bank_data
+    false_positive_notes: Individual consultants sometimes invoice from personal accounts.
+    controls:
+    - id: BC-FACILIT-004-C1
+      name: Payee-name matching
+      type: detective
+      description: Verify account name matches contracted entity before release.
+      implementation: rule
+      effectiveness: medium
+    - id: BC-FACILIT-004-C2
+      name: Bank detail change controls
+      type: preventive
+      description: Use call-back verification and dual approval for new or changed payee details.
+      implementation: process
+      effectiveness: high
+  - id: BC-FACILIT-005
+    name: Intermediary introduced by official or customer insists on use
+    description: A government contact recommends or demands a specific agent, with limited competitive
+      selection.
+    category: counterparty
+    severity: high
+    detection_type:
+    - investigator_judgement
+    - kyc_review
+    data_sources:
+    - due_diligence_files
+    - procurement_records
+    false_positive_notes: Local requirements may legitimately mandate local partners.
+    controls:
+    - id: BC-FACILIT-005-C1
+      name: Selection rationale documentation
+      type: preventive
+      description: Document how the third party was selected and whether alternatives were considered.
+      implementation: process
+      effectiveness: high
+    - id: BC-FACILIT-005-C2
+      name: Independent reference checks
+      type: preventive
+      description: Obtain references and open-source checks independent of the introducer.
+      implementation: process
+      effectiveness: medium
+  - id: BC-FACILIT-006
+    name: Expense claims with unusual gifts or entertainment near licence events
+    description: Employee expenses for gifts, meals or travel for officials around inspections, permits
+      or renewals.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - expense_reports
+    - gift_registers
+    false_positive_notes: Business courtesies are normal within policy limits.
+    controls:
+    - id: BC-FACILIT-006-C1
+      name: Gifts and hospitality register
+      type: preventive
+      description: Mandate logging of gifts and hospitality with thresholds and approvals.
+      implementation: policy
+      effectiveness: medium
+    - id: BC-FACILIT-006-C2
+      name: Expense audit sampling
+      type: detective
+      description: Periodic targeted audit of expenses in high-risk markets.
+      implementation: process
+      effectiveness: medium
+  - id: BC-FACILIT-007
+    name: Fees to distributors well above market margin
+    description: Distributor discounts or rebates are unusually large without commercial rationale, leaving
+      room for onward payments.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - pricing_data
+    - contracts
+    false_positive_notes: Volume discounts and market entry may justify higher margins.
+    controls:
+    - id: BC-FACILIT-007-C1
+      name: Margin benchmarking
+      type: detective
+      description: Compare distributor margins across markets to find outliers.
+      implementation: model
+      effectiveness: medium
+    - id: BC-FACILIT-007-C2
+      name: Rebate approval governance
+      type: governance
+      description: Require senior approval and documented rationale for non-standard rebates.
+      implementation: policy
+      effectiveness: medium
+  - id: BC-FACILIT-008
+    name: Joint-venture partner owned by government-connected persons
+    description: Local partner's owners include officials or relatives without disclosure or fair valuation
+      of their contribution.
+    category: ownership_structure
+    severity: high
+    detection_type:
+    - kyc_review
+    - screening
+    data_sources:
+    - company_registry
+    - pep_lists
+    false_positive_notes: State-linked partners are common in some sectors and not inherently improper.
+    controls:
+    - id: BC-FACILIT-008-C1
+      name: JV partner EDD
+      type: preventive
+      description: Conduct enhanced due diligence with beneficial owner and PEP checks before entering
+        a JV.
+      implementation: process
+      effectiveness: high
+    - id: BC-FACILIT-008-C2
+      name: Ongoing partner monitoring
+      type: detective
+      description: Monitor partners for adverse media and ownership changes.
+      implementation: technology
+      effectiveness: medium

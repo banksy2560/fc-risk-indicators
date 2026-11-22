@@ -1,0 +1,217 @@
+typology:
+  id: ML-CASHBIZ
+  name: Cash-Intensive Businesses
+  domain: money_laundering
+  description: Use of businesses that naturally handle large cash volumes, such as restaurants, car washes,
+    laundromats, vending, convenience stores and nail salons, to blend illicit cash with legitimate takings.
+    Deposits are inflated to fit the business's apparent scale.
+  stage:
+  - placement
+  - layering
+  sectors:
+  - banking
+  - payments
+  - dnfbp
+  sources:
+  - 'FATF, Money Laundering Typologies: cash-intensive business guidance (general)'
+  - FinCEN, SAR Activity Review on cash-intensive businesses (general)
+  - JMLSG Guidance Part II, sector guidance on cash-intensive customers (general)
+  indicators:
+  - id: ML-CASHBIZ-001
+    name: Cash deposits exceed plausible business capacity
+    description: Declared turnover or deposits are higher than the premises size, staffing, opening hours
+      or stock purchases would support.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - transaction_data
+    - kyc_profile
+    - peer_benchmarks
+    false_positive_notes: New or fast-growing businesses can legitimately outperform peers.
+    controls:
+    - id: ML-CASHBIZ-001-C1
+      name: Peer benchmarking model
+      type: detective
+      description: Compare cash deposits to sector and location peers and alert on outliers.
+      implementation: model
+      effectiveness: medium
+    - id: ML-CASHBIZ-001-C2
+      name: Business-model reasonableness review
+      type: preventive
+      description: EDD review testing turnover against capacity and cost of sales.
+      implementation: process
+      effectiveness: high
+  - id: ML-CASHBIZ-002
+    name: Deposits unsupported by supplier or cost-of-sales activity
+    description: Cash takings are high but there are few payments to suppliers, rent, wages or tax authorities.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - transaction_data
+    - accounts_payable_data
+    false_positive_notes: Cash-paid suppliers or off-account costs may exist.
+    controls:
+    - id: ML-CASHBIZ-002-C1
+      name: Cash-in versus cost-out ratio rule
+      type: detective
+      description: Alert when inflows are not matched by plausible outflows for the sector.
+      implementation: rule
+      effectiveness: medium
+    - id: ML-CASHBIZ-002-C2
+      name: Financial statement cross-check
+      type: preventive
+      description: Compare account flows to filed accounts and VAT/sales tax data.
+      implementation: process
+      effectiveness: medium
+  - id: ML-CASHBIZ-003
+    name: Sudden growth in cash volumes
+    description: Step-change in deposit values or frequency without explanation such as new outlets or
+      season.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - transaction_data
+    false_positive_notes: Expansion, promotion or events can explain growth.
+    controls:
+    - id: ML-CASHBIZ-003-C1
+      name: Trend break detection
+      type: detective
+      description: Detect statistical breaks in deposit series against the account's own history.
+      implementation: model
+      effectiveness: medium
+    - id: ML-CASHBIZ-003-C2
+      name: Relationship manager inquiry
+      type: preventive
+      description: Require documented explanation for step changes above a set level.
+      implementation: process
+      effectiveness: medium
+  - id: ML-CASHBIZ-004
+    name: Business type inconsistent with location or customer base
+    description: Cash business operating where demand appears limited, with few visible customers or irregular
+      hours.
+    category: typology_specific
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    - external_intel
+    data_sources:
+    - site_visit_reports
+    - open_source_data
+    false_positive_notes: Online-only operations or early-stage businesses may appear quiet.
+    controls:
+    - id: ML-CASHBIZ-004-C1
+      name: Risk-based site visit
+      type: detective
+      description: Visit or virtually verify premises for higher-risk cash businesses.
+      implementation: process
+      effectiveness: medium
+    - id: ML-CASHBIZ-004-C2
+      name: Open-source footprint check
+      type: preventive
+      description: Check web presence, reviews, licences and delivery platform listings.
+      implementation: process
+      effectiveness: medium
+  - id: ML-CASHBIZ-005
+    name: Cash deposits mixed with unrelated third-party funds
+    description: Deposits include cheques, transfers or cash from persons unconnected to trading, or rotated
+      across several business accounts.
+    category: counterparty
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - transaction_data
+    false_positive_notes: Owners may inject funds legitimately as capital.
+    controls:
+    - id: ML-CASHBIZ-005-C1
+      name: Source-of-deposit tagging
+      type: detective
+      description: Tag deposit sources and alert on non-trade inflows into trading accounts.
+      implementation: rule
+      effectiveness: medium
+    - id: ML-CASHBIZ-005-C2
+      name: Owner funding evidence requirement
+      type: preventive
+      description: Require shareholder loan or capital documentation.
+      implementation: policy
+      effectiveness: medium
+  - id: ML-CASHBIZ-006
+    name: Ownership or management opaque for cash business
+    description: Unclear beneficial owners, nominee directors or frequent ownership change in a cash business.
+    category: ownership_structure
+    severity: high
+    detection_type:
+    - kyc_review
+    data_sources:
+    - corporate_registry
+    - kyc_file
+    false_positive_notes: Family businesses may have informal arrangements.
+    controls:
+    - id: ML-CASHBIZ-006-C1
+      name: Enhanced beneficial ownership verification
+      type: preventive
+      description: Verify UBOs against independent registers and identity documents.
+      implementation: process
+      effectiveness: high
+    - id: ML-CASHBIZ-006-C2
+      name: Registry change monitoring
+      type: detective
+      description: Alert on director/owner changes post-onboarding.
+      implementation: technology
+      effectiveness: medium
+  - id: ML-CASHBIZ-007
+    name: Large cash withdrawals paired with deposits of equivalent value
+    description: Cash is repeatedly withdrawn and redeposited, or round-tripped with associated accounts.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - transaction_data
+    false_positive_notes: Float management for tills may look similar.
+    controls:
+    - id: ML-CASHBIZ-007-C1
+      name: Withdraw-redeposit loop rule
+      type: detective
+      description: Detect matching withdrawals and deposits across linked parties.
+      implementation: rule
+      effectiveness: medium
+    - id: ML-CASHBIZ-007-C2
+      name: Float purpose review
+      type: preventive
+      description: Document legitimate float needs during onboarding.
+      implementation: process
+      effectiveness: low
+  - id: ML-CASHBIZ-008
+    name: Multiple cash businesses controlled by same people
+    description: Common owners or addresses across several cash businesses with cross-funding.
+    category: ownership_structure
+    severity: medium
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - corporate_registry
+    - transaction_data
+    false_positive_notes: Franchise or serial entrepreneurs are common.
+    controls:
+    - id: ML-CASHBIZ-008-C1
+      name: Linked-entity network analysis
+      type: detective
+      description: Link entities by owner, address, phone and device to spot common control.
+      implementation: model
+      effectiveness: medium
+    - id: ML-CASHBIZ-008-C2
+      name: Group-level cash risk assessment
+      type: preventive
+      description: Assess aggregate cash across a connected group.
+      implementation: process
+      effectiveness: medium

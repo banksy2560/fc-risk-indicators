@@ -1,0 +1,337 @@
+typology:
+  id: CY-GIGPLAT
+  name: Online Marketplace and Gig-Economy Platform Misuse
+  domain: cyber_enabled
+  description: Online marketplaces, freelance and ride or delivery platforms offer payments between strangers
+    and large seller or worker populations. Criminals use fake listings, collusive purchases, refund cycling
+    or fake workers to launder funds, receive scam proceeds or rent out accounts. Platforms see anomalies
+    in seller behaviour and payout flows.
+  stage:
+  - layering
+  sectors:
+  - payments
+  - fintech
+  sources:
+  - FATF, Opportunities and Challenges of New Technologies for AML/CFT (2021)
+  - FATF, Illicit Financial Flows from Cyber-Enabled Fraud (2023)
+  indicators:
+  - id: CY-GIGPLAT-001
+    name: Collusive purchases between related buyer and seller accounts
+    description: Accounts sharing devices or funding sources transact with each other to create revenue.
+    category: typology_specific
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - order_data
+    - device_data
+    false_positive_notes: Family businesses.
+    controls:
+    - id: CY-GIGPLAT-001-C1
+      name: Graph and network analytics
+      type: detective
+      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
+        and fan-in/fan-out structures.
+      implementation: model
+      effectiveness: high
+    - id: CY-GIGPLAT-001-C2
+      name: Device intelligence and behavioural biometrics
+      type: detective
+      description: Fingerprint devices and analyse session behaviour (typing, navigation, remote-access
+        tools, emulators) to spot shared, scripted or hijacked sessions.
+      implementation: technology
+      effectiveness: high
+    - id: CY-GIGPLAT-001-C3
+      name: Seller verification and payout controls
+      type: preventive
+      description: Verify sellers or workers and hold or stagger payouts for new or anomalous accounts.
+      implementation: rule
+      effectiveness: medium
+  - id: CY-GIGPLAT-002
+    name: Sales of high-value items with no shipping or delivery evidence
+    description: Orders marked complete without tracking, or delivered to unrelated addresses.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - order_data
+    - logistics_data
+    false_positive_notes: Digital goods.
+    controls:
+    - id: CY-GIGPLAT-002-C1
+      name: Merchant and portfolio transaction monitoring
+      type: detective
+      description: Monitor merchant-level patterns such as ticket size, refund and chargeback rates, descriptor
+        mismatch and cross-merchant flows.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-GIGPLAT-002-C2
+      name: Seller verification and payout controls
+      type: preventive
+      description: Verify sellers or workers and hold or stagger payouts for new or anomalous accounts.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-GIGPLAT-002-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+  - id: CY-GIGPLAT-003
+    name: Refund and chargeback cycling
+    description: Repeated purchase and refund flows to move value between accounts.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payment_data
+    false_positive_notes: Return-heavy categories.
+    controls:
+    - id: CY-GIGPLAT-003-C1
+      name: Merchant and portfolio transaction monitoring
+      type: detective
+      description: Monitor merchant-level patterns such as ticket size, refund and chargeback rates, descriptor
+        mismatch and cross-merchant flows.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-GIGPLAT-003-C2
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-GIGPLAT-003-C3
+      name: Graph and network analytics
+      type: detective
+      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
+        and fan-in/fan-out structures.
+      implementation: model
+      effectiveness: high
+  - id: CY-GIGPLAT-004
+    name: Newly registered seller reaching high sales immediately
+    description: Rapid revenue growth for new accounts with sparse listings or reviews.
+    category: customer
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - seller_records
+    false_positive_notes: Viral products.
+    controls:
+    - id: CY-GIGPLAT-004-C1
+      name: Seller verification and payout controls
+      type: preventive
+      description: Verify sellers or workers and hold or stagger payouts for new or anomalous accounts.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-GIGPLAT-004-C2
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-GIGPLAT-004-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+  - id: CY-GIGPLAT-005
+    name: Gig worker account operated by someone else
+    description: Mismatched face, device or location against the verified worker.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    data_sources:
+    - device_data
+    - selfie_checks
+    false_positive_notes: Legitimate substitutes where permitted.
+    controls:
+    - id: CY-GIGPLAT-005-C1
+      name: Liveness detection and injection-attack defence
+      type: preventive
+      description: Active/passive liveness with detection of virtual cameras, replayed video and synthetic
+        faces at onboarding and high-risk events.
+      implementation: technology
+      effectiveness: high
+    - id: CY-GIGPLAT-005-C2
+      name: Device intelligence and behavioural biometrics
+      type: detective
+      description: Fingerprint devices and analyse session behaviour (typing, navigation, remote-access
+        tools, emulators) to spot shared, scripted or hijacked sessions.
+      implementation: technology
+      effectiveness: high
+    - id: CY-GIGPLAT-005-C3
+      name: Seller verification and payout controls
+      type: preventive
+      description: Verify sellers or workers and hold or stagger payouts for new or anomalous accounts.
+      implementation: rule
+      effectiveness: medium
+  - id: CY-GIGPLAT-006
+    name: Payouts to bank accounts in third-party names
+    description: Seller payout accounts do not match verified identity.
+    category: counterparty
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - payout_data
+    - bank_accounts
+    false_positive_notes: Business accounts under trade names.
+    controls:
+    - id: CY-GIGPLAT-006-C1
+      name: Beneficiary name verification
+      type: preventive
+      description: Check payee name and account details before release to reduce misdirected and fraudulent
+        payments.
+      implementation: technology
+      effectiveness: medium
+    - id: CY-GIGPLAT-006-C2
+      name: Seller verification and payout controls
+      type: preventive
+      description: Verify sellers or workers and hold or stagger payouts for new or anomalous accounts.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-GIGPLAT-006-C3
+      name: Enhanced due diligence
+      type: preventive
+      description: Collect additional information on activity purpose, expected volumes and ownership
+        before approval or continued service, with senior sign-off.
+      implementation: process
+      effectiveness: medium
+  - id: CY-GIGPLAT-007
+    name: Listings for services priced at nonsensical levels
+    description: Listings use extreme or placeholder prices likely used to move amounts.
+    category: product_channel
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - listing_data
+    false_positive_notes: Price errors.
+    controls:
+    - id: CY-GIGPLAT-007-C1
+      name: Merchant and portfolio transaction monitoring
+      type: detective
+      description: Monitor merchant-level patterns such as ticket size, refund and chargeback rates, descriptor
+        mismatch and cross-merchant flows.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-GIGPLAT-007-C2
+      name: Seller verification and payout controls
+      type: preventive
+      description: Verify sellers or workers and hold or stagger payouts for new or anomalous accounts.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-GIGPLAT-007-C3
+      name: Specialist investigation and suspicious activity reporting
+      type: corrective
+      description: Trained analysts investigate alerts using typology playbooks, document rationale and
+        file reports where suspicion is formed.
+      implementation: process
+      effectiveness: medium
+  - id: CY-GIGPLAT-008
+    name: Large volumes of gift cards or vouchers sold or purchased
+    description: Gift-card heavy activity that is cashed out through marketplaces.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - order_data
+    false_positive_notes: Seasonal peaks.
+    controls:
+    - id: CY-GIGPLAT-008-C1
+      name: Merchant and portfolio transaction monitoring
+      type: detective
+      description: Monitor merchant-level patterns such as ticket size, refund and chargeback rates, descriptor
+        mismatch and cross-merchant flows.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-GIGPLAT-008-C2
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules that alert on abnormal count, value or speed of movements over short windows
+        compared with customer profile and peer norms.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-GIGPLAT-008-C3
+      name: External intelligence and consortium feeds
+      type: detective
+      description: Ingest law-enforcement, industry and commercial threat intelligence on indicators,
+        mule accounts and scam infrastructure.
+      implementation: technology
+      effectiveness: medium
+  - id: CY-GIGPLAT-009
+    name: Account rental or resale signals
+    description: Credential changes, new device and region shifts for an established seller.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    data_sources:
+    - device_data
+    - login_logs
+    false_positive_notes: Travel.
+    controls:
+    - id: CY-GIGPLAT-009-C1
+      name: Device intelligence and behavioural biometrics
+      type: detective
+      description: Fingerprint devices and analyse session behaviour (typing, navigation, remote-access
+        tools, emulators) to spot shared, scripted or hijacked sessions.
+      implementation: technology
+      effectiveness: high
+    - id: CY-GIGPLAT-009-C2
+      name: Step-up authentication on risky events
+      type: preventive
+      description: Trigger strong re-authentication for credential, device or payee changes and large
+        or unusual payments.
+      implementation: technology
+      effectiveness: high
+    - id: CY-GIGPLAT-009-C3
+      name: IP, geolocation and anonymisation detection
+      type: detective
+      description: Detect VPN, proxy, Tor and geolocation mismatch against declared residence and sanctioned
+        or high-risk jurisdictions.
+      implementation: rule
+      effectiveness: medium
+  - id: CY-GIGPLAT-010
+    name: Buyers directed off-platform to pay
+    description: Messaging encourages payment via transfer or crypto outside platform protections.
+    category: typology_specific
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    data_sources:
+    - message_logs
+    - complaints
+    false_positive_notes: Local community norms.
+    controls:
+    - id: CY-GIGPLAT-010-C1
+      name: External intelligence and consortium feeds
+      type: detective
+      description: Ingest law-enforcement, industry and commercial threat intelligence on indicators,
+        mule accounts and scam infrastructure.
+      implementation: technology
+      effectiveness: medium
+    - id: CY-GIGPLAT-010-C2
+      name: Seller verification and payout controls
+      type: preventive
+      description: Verify sellers or workers and hold or stagger payouts for new or anomalous accounts.
+      implementation: rule
+      effectiveness: medium
+    - id: CY-GIGPLAT-010-C3
+      name: Customer intervention and scam warnings
+      type: corrective
+      description: Contextual warnings and call-backs when a payment shows scam or coercion indicators.
+      implementation: process
+      effectiveness: medium

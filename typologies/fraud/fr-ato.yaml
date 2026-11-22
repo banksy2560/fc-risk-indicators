@@ -1,0 +1,327 @@
+typology:
+  id: FR-ATO
+  name: Account Takeover
+  domain: fraud
+  description: Criminals gain control of customer accounts through phishing, credential stuffing, SIM
+    swap or malware, then change details and extract funds. Early detection relies on login, device and
+    change-of-details signals.
+  sectors:
+  - banking
+  - payments
+  - crypto
+  - fintech
+  sources:
+  - UK Finance, Annual Fraud Report (published annually)
+  - FinCEN, advisories on cyber-enabled crime (general)
+  - FFIEC, authentication and access guidance (general)
+  indicators:
+  - id: FR-ATO-001
+    name: Login from new device, country or emulator
+    description: Session originates from unfamiliar infrastructure, possibly using an emulator or anonymising
+      proxy.
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    data_sources:
+    - device_data
+    - login_logs
+    false_positive_notes: Travel and new phones.
+    controls:
+    - id: FR-ATO-001-C1
+      name: Device and network intelligence
+      type: detective
+      description: Fingerprints devices, IPs and emulators to link applications or sessions and flag anomalous
+        or shared infrastructure.
+      implementation: technology
+      effectiveness: high
+    - id: FR-ATO-001-C2
+      name: Strong authentication and step-up
+      type: preventive
+      description: Requires phishing-resistant authentication for logins and sensitive changes, with step-up
+        on risk.
+      implementation: technology
+      effectiveness: high
+    - id: FR-ATO-001-C3
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-ATO-002
+    name: Multiple failed logins followed by success
+    description: Credential stuffing or brute force pattern preceding successful access.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    data_sources:
+    - login_logs
+    false_positive_notes: Forgotten passwords.
+    controls:
+    - id: FR-ATO-002-C1
+      name: Strong authentication and step-up
+      type: preventive
+      description: Requires phishing-resistant authentication for logins and sensitive changes, with step-up
+        on risk.
+      implementation: technology
+      effectiveness: high
+    - id: FR-ATO-002-C2
+      name: Device and network intelligence
+      type: detective
+      description: Fingerprints devices, IPs and emulators to link applications or sessions and flag anomalous
+        or shared infrastructure.
+      implementation: technology
+      effectiveness: high
+    - id: FR-ATO-002-C3
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules on count, value, geography and timing alert analysts to bursts or structured
+        activity.
+      implementation: rule
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-ATO-003
+    name: Contact details or phone number changed then high-value payment
+    description: Email, phone or address updated minutes before outbound transactions.
+    category: customer
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - customer_behaviour
+    data_sources:
+    - customer_change_logs
+    - payment_data
+    false_positive_notes: Genuine moves.
+    controls:
+    - id: FR-ATO-003-C1
+      name: Cooling period and notification on detail changes
+      type: preventive
+      description: Contact-detail, device or payee changes trigger notification to the prior channel and
+        restrict high-risk actions for a short period.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-ATO-003-C2
+      name: Strong authentication and step-up
+      type: preventive
+      description: Requires phishing-resistant authentication for logins and sensitive changes, with step-up
+        on risk.
+      implementation: technology
+      effectiveness: high
+    - id: FR-ATO-003-C3
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-ATO-004
+    name: SIM swap or number port detected
+    description: Telecom signals show recent SIM change before OTP-protected actions.
+    category: behavioural
+    severity: high
+    detection_type:
+    - external_intel
+    data_sources:
+    - telco_signals
+    false_positive_notes: Phone upgrades.
+    controls:
+    - id: FR-ATO-004-C1
+      name: Strong authentication and step-up
+      type: preventive
+      description: Requires phishing-resistant authentication for logins and sensitive changes, with step-up
+        on risk.
+      implementation: technology
+      effectiveness: high
+    - id: FR-ATO-004-C2
+      name: Device and network intelligence
+      type: detective
+      description: Fingerprints devices, IPs and emulators to link applications or sessions and flag anomalous
+        or shared infrastructure.
+      implementation: technology
+      effectiveness: high
+    - id: FR-ATO-004-C3
+      name: Cooling period and notification on detail changes
+      type: preventive
+      description: Contact-detail, device or payee changes trigger notification to the prior channel and
+        restrict high-risk actions for a short period.
+      implementation: rule
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-ATO-005
+    name: New payee added and funds drained rapidly
+    description: Attacker adds beneficiaries and transfers most of the balance in one session.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payment_data
+    false_positive_notes: Genuine house or business payments.
+    controls:
+    - id: FR-ATO-005-C1
+      name: Hold or cooling-off on new high-value payees
+      type: preventive
+      description: Delays the first large payment to a new payee or newly changed details so that the
+        victim, or the bank, can verify before funds leave.
+      implementation: policy
+      effectiveness: medium
+    - id: FR-ATO-005-C2
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    - id: FR-ATO-005-C3
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules on count, value, geography and timing alert analysts to bursts or structured
+        activity.
+      implementation: rule
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-ATO-006
+    name: Password reset or credential change from unrecognised channel
+    description: Self-service reset triggered from an unfamiliar environment.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    data_sources:
+    - auth_logs
+    false_positive_notes: Lost devices.
+    controls:
+    - id: FR-ATO-006-C1
+      name: Strong authentication and step-up
+      type: preventive
+      description: Requires phishing-resistant authentication for logins and sensitive changes, with step-up
+        on risk.
+      implementation: technology
+      effectiveness: high
+    - id: FR-ATO-006-C2
+      name: Cooling period and notification on detail changes
+      type: preventive
+      description: Contact-detail, device or payee changes trigger notification to the prior channel and
+        restrict high-risk actions for a short period.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-ATO-006-C3
+      name: Device and network intelligence
+      type: detective
+      description: Fingerprints devices, IPs and emulators to link applications or sessions and flag anomalous
+        or shared infrastructure.
+      implementation: technology
+      effectiveness: high
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-ATO-007
+    name: Card replacement or wallet provisioning to new address
+    description: Attacker requests cards or tokens to alternate addresses.
+    category: product_channel
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - card_data
+    false_positive_notes: Genuine moves.
+    controls:
+    - id: FR-ATO-007-C1
+      name: Cooling period and notification on detail changes
+      type: preventive
+      description: Contact-detail, device or payee changes trigger notification to the prior channel and
+        restrict high-risk actions for a short period.
+      implementation: rule
+      effectiveness: medium
+    - id: FR-ATO-007-C2
+      name: Strong authentication and step-up
+      type: preventive
+      description: Requires phishing-resistant authentication for logins and sensitive changes, with step-up
+        on risk.
+      implementation: technology
+      effectiveness: high
+    - id: FR-ATO-007-C3
+      name: Velocity and threshold rules
+      type: detective
+      description: Rules on count, value, geography and timing alert analysts to bursts or structured
+        activity.
+      implementation: rule
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-ATO-008
+    name: Mule accounts receiving compromised funds
+    description: Receiving accounts show forward-and-cash-out behaviour.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - account_data
+    false_positive_notes: Merchant accounts.
+    controls:
+    - id: FR-ATO-008-C1
+      name: Mule account detection model
+      type: detective
+      description: Detects inbound-funds-then-rapid-outflow and other mule patterns on receiving accounts,
+        enabling holds and exits.
+      implementation: model
+      effectiveness: high
+    - id: FR-ATO-008-C2
+      name: Consortium and shared fraud data
+      type: detective
+      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
+        sharing to catch known bad actors early.
+      implementation: technology
+      effectiveness: high
+    - id: FR-ATO-008-C3
+      name: Rapid recall and fund-freeze procedure
+      type: corrective
+      description: Defined process to notify receiving institutions, freeze onward movement and recover
+        funds quickly.
+      implementation: process
+      effectiveness: medium
+    references:
+    - UK Finance, Annual Fraud Report (published annually)
+  - id: FR-ATO-009
+    name: Session shows automated or scripted interaction
+    description: Non-human timing, headless browser or scripted API calls.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    data_sources:
+    - session_telemetry
+    false_positive_notes: Accessibility tools.
+    controls:
+    - id: FR-ATO-009-C1
+      name: Behavioural and session analytics
+      type: detective
+      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
+        signals, deviation from baseline) to surface coached or controlled activity.
+      implementation: model
+      effectiveness: high
+    - id: FR-ATO-009-C2
+      name: Device and network intelligence
+      type: detective
+      description: Fingerprints devices, IPs and emulators to link applications or sessions and flag anomalous
+        or shared infrastructure.
+      implementation: technology
+      effectiveness: high
+    - id: FR-ATO-009-C3
+      name: Strong authentication and step-up
+      type: preventive
+      description: Requires phishing-resistant authentication for logins and sensitive changes, with step-up
+        on risk.
+      implementation: technology
+      effectiveness: high
+    references:
+    - UK Finance, Annual Fraud Report (published annually)

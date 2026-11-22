@@ -100,7 +100,6 @@ $('#closeb').addEventListener('click',closePane);dback.addEventListener('click',
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('pane')&&!$('dialog.pal').open)closePane()});
 mq.addEventListener('change',()=>{if(!mq.matches){document.body.classList.remove('pane');dback.hidden=true}});
 window.addEventListener('hashchange',()=>{readHash();draw()});
-let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>requestAnimationFrame(lines),60)});
 if('ResizeObserver' in window)new ResizeObserver(()=>requestAnimationFrame(lines)).observe(flow);
 $('#csv').addEventListener('click',async()=>{const r=await FC.recordCsv(S.t);FC.downloadCSV(r.name.replace('fc-typology-','fc-links-'),r.rows)});
 readHash();draw().then(()=>{if(S.sel&&mq.matches)openPane()});

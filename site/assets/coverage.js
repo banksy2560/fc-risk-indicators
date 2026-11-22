@@ -41,10 +41,26 @@ const phone=matchMedia('(max-width:720px)').matches;
  for(const t of ts){if(t.domain!==last){last=t.domain;body+=`<tr class="dom"><th colspan="${FAMS.length+1}" scope="colgroup">${esc(L.domain[t.domain])}</th></tr>`}
   body+=`<tr><th class="row" scope="row"><button type="button" data-typ="${t.id}" aria-pressed="${pressed('t',t.id)}" title="${esc(t.name)}">${esc(t.name)}</button></th>`+FAMS.map(f=>{const n=(cell[t.id][f]||[]).length;return `<td><button type="button" data-c="${t.id}|${f}" data-v="${bucket(n)}" aria-pressed="${pressed('c',t.id+'|'+f)}" aria-label="${esc(t.name)}, ${esc(L.family[f])}: ${plural(n,'linked control','linked controls')}">${n||''}</button></td>`}).join('')+'</tr>'}
  const sc=holder.querySelector('.scroll'),sx=sc?sc.scrollLeft:0,sy=sc?sc.scrollTop:0;
- holder.innerHTML=ts.length?`<div class="scroll" tabindex="0" role="region" aria-label="Typology by control family matrix. Scroll to see more."><table class="mx"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`:'<p class="empty">No typologies match.</p>';
+ holder.innerHTML=ts.length?`<div class="scroll" role="region" aria-label="Typology by control family matrix. Scroll to see more."><table class="mx"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`:'<p class="empty">No typologies match.</p>';
  const s2=holder.querySelector('.scroll');if(s2){s2.scrollLeft=sx;s2.scrollTop=sy}
+ rove();
  $('#mcount').textContent=`${ts.length} typologies x ${FAMS.length} control families`;
 }
+/* Roving tabindex: one tab stop for the whole matrix; arrows, Home and End move between buttons. */
+let rkey=null;const keyOf=b=>b.dataset.c||b.dataset.typ||b.dataset.fam;
+function grid(){const t=holder.querySelector('table.mx');if(!t)return[];
+ const g=[[null,...t.querySelectorAll('thead button')]];t.querySelectorAll('tbody tr:not(.dom)').forEach(r=>g.push([...r.querySelectorAll('button')]));return g}
+function rove(){const g=grid();if(!g.length)return;const all=g.flat().filter(Boolean);
+ const cur=all.find(b=>keyOf(b)===rkey)||(g[1]&&g[1][1])||all[0];rkey=keyOf(cur);all.forEach(b=>b.tabIndex=b===cur?0:-1)}
+holder.addEventListener('focusin',e=>{const b=e.target.closest('button');if(b&&b.closest('table.mx')&&keyOf(b)!==rkey){rkey=keyOf(b);rove()}});
+holder.addEventListener('keydown',e=>{const b=e.target.closest&&e.target.closest('button');if(!b||!b.closest('table.mx')||e.altKey||e.ctrlKey||e.metaKey)return;
+ const k=e.key;if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(k))return;
+ const g=grid();let r=-1,c=-1;g.forEach((row,i)=>{const j=row.indexOf(b);if(j>-1){r=i;c=j}});if(r<0)return;
+ let nb=null;
+ if(k==='ArrowLeft'||k==='ArrowRight'){const d=k==='ArrowLeft'?-1:1;for(let j=c+d;j>=0&&j<g[r].length;j+=d)if(g[r][j]){nb=g[r][j];break}}
+ else if(k==='ArrowUp'||k==='ArrowDown'){const d=k==='ArrowUp'?-1:1;for(let i=r+d;i>=0&&i<g.length;i+=d)if(g[i][c]){nb=g[i][c];break}}
+ else{const row=g[r].filter(Boolean);nb=k==='Home'?row[0]:row[row.length-1]}
+ e.preventDefault();if(nb){rkey=keyOf(nb);rove();nb.focus()}});
 holder.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
  if(b.dataset.c)pick('c',b.dataset.c,b);else if(b.dataset.typ)pick('t',b.dataset.typ,b);else if(b.dataset.fam)pick('f',b.dataset.fam,b)});
 function pick(k,id,btn){sel={k,id};lastBtn=btn.dataset.c?'[data-c="'+btn.dataset.c+'"]':btn.dataset.typ?'[data-typ="'+btn.dataset.typ+'"]':'[data-fam="'+btn.dataset.fam+'"]';renderMatrix();const nb=holder.querySelector('[aria-pressed="true"]');if(nb)nb.focus({preventScroll:true});renderPanel()}

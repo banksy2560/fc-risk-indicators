@@ -72,6 +72,6 @@ if(EX.length){
   if(!motion)return;
   const io=new IntersectionObserver(es=>{if(!es.some(e=>e.isIntersecting))return;io.disconnect();btEl.classList.remove('pre');drawLines(true)},{threshold:.3});
   io.observe(btEl)});
- addEventListener('resize',()=>requestAnimationFrame(()=>drawLines(false)));
+ {let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>drawLines(false),120)})}
 }else $('.bt').hidden=true;
 })();

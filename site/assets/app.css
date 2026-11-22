@@ -170,6 +170,26 @@ table.t td{padding:10px;border-bottom:1px solid var(--rule);vertical-align:top}
 .rank .cnt{font:700 15px var(--mono);text-align:right;white-space:nowrap;color:var(--c)}
 .rank .cnt small{display:block;font:500 11px var(--ui);color:var(--ink-3)}
 @media (max-width:1000px){.hero{grid-template-columns:1fr;padding-top:28px}.s7,.s5,.s4,.s6{grid-column:span 12}.journey{grid-template-columns:1fr 1fr}.journey li{border-top:1px solid var(--rule)}.journey li:nth-child(odd){border-left:0}}
+
+/* home: one typology traced from indicators to controls */
+.bt{padding:22px 24px 26px;margin:8px 0 28px}
+.bt .hd{display:flex;justify-content:space-between;align-items:flex-end;gap:12px 24px;flex-wrap:wrap;margin-bottom:18px}
+.bt h2{font:700 24px/1.15 var(--display);letter-spacing:-.02em;margin:4px 0 0}
+.tryline{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:13.5px}
+.tryline button{padding:3px 11px;border:1px solid var(--rule-strong);border-radius:999px;background:var(--surface)}
+.tryline button:hover{border-color:var(--ink)}
+.tryline button[aria-pressed="true"]{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.bflow{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.8fr) minmax(0,1fr);gap:0 88px;align-items:center}
+.bflow .col>h3{display:flex;align-items:center;gap:8px;font:700 12px var(--ui);letter-spacing:.09em;text-transform:uppercase;color:var(--c);padding-bottom:8px;border-bottom:3px solid var(--c);margin-bottom:12px}
+.bflow .col>h3 .ct{margin-left:auto;font:500 12px var(--mono);color:var(--ink-3)}
+.bflow .typnode{border:2px solid var(--typ);border-radius:14px;background:var(--typ-bg);padding:20px 20px 18px}
+.bflow .typnode .nm{font:700 24px/1.1 var(--display);letter-spacing:-.02em;display:block;margin:8px 0}
+.bflow .typnode p{font-size:14px;color:var(--ink-2)}
+.bflow .typnode .meta{display:flex;gap:6px 14px;flex-wrap:wrap;margin-top:12px;font:600 12.5px var(--mono);color:var(--typ)}
+.bflow .node{text-decoration:none;color:inherit}
+.bflow .node .sub{margin-top:4px}
+.bnote{margin-top:16px;font-size:13px;color:var(--ink-3)}
+@media (max-width:1000px){.bflow{grid-template-columns:1fr;gap:24px}.bflow svg.lines{display:none}}
 @media (max-width:520px){.journey{grid-template-columns:1fr}.journey li{border-left:0}.hb{grid-template-columns:1fr 3.5ch;grid-template-areas:"l v" "t t"}.hb .lbl{grid-area:l}.hb .v{grid-area:v}.hb .tr{grid-area:t}.panel{padding:18px 16px}}
 
 

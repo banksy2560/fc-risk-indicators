@@ -5,6 +5,21 @@ typology:
   description: Borrowers finance the same receivable or goods more than once, forge invoices, or obtain
     advances on fictitious trade. Fraud may involve connected parties and weak verification of underlying
     transactions.
+  exposure:
+    channels:
+    - broker_intermediary
+    - online_banking
+    payment_rails:
+    - trade_instruments
+    - wire_swift
+    customer_segments:
+    - sme
+    - corporate
+    products:
+    - trade_finance
+    - loan_mortgage
+    basis: ai_inferred
+    rationale: Duplicate/fictitious receivable and trade financing.
   sectors:
   - banking
   - corporate_services

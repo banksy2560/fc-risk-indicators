@@ -5,6 +5,23 @@ typology:
   description: Laundering of funds from ransomware, business email compromise, investment and romance
     scams, hacking and account takeover. Money mules, rapid cross-border transfers, crypto conversion
     and cash-out services are typical.
+  exposure:
+    channels:
+    - mobile_app
+    - online_banking
+    payment_rails:
+    - fast_payments
+    - crypto_onramp_offramp
+    - cross_border_remittance
+    customer_segments:
+    - retail
+    - vulnerable_elderly
+    - corporate
+    products:
+    - transaction_account
+    - crypto_custody
+    basis: ai_inferred
+    rationale: Scam, BEC and ransomware proceeds via mules, instant payments and crypto.
   sectors:
   - banking
   - payments

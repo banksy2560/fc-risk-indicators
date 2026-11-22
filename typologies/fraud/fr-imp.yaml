@@ -5,6 +5,24 @@ typology:
   description: Fraudsters pose as banks, police, tax authorities or delivery firms by phone, SMS or email,
     harvesting credentials or inducing customers to move money. The criminal often spoofs numbers and
     uses urgency and fear.
+  exposure:
+    channels:
+    - remote_contact
+    - call_centre
+    - mobile_app
+    - online_banking
+    payment_rails:
+    - fast_payments
+    - card
+    customer_segments:
+    - retail
+    - vulnerable_elderly
+    products:
+    - transaction_account
+    - credit_card
+    basis: ai_inferred
+    rationale: Victims contacted by phone, SMS or email and induced to share codes or move money; card
+      details used at new merchants and wallets.
   sectors:
   - banking
   - payments

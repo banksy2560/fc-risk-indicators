@@ -15,6 +15,10 @@ indicators:
   - adverse_media
   false_positive_notes: Legitimate inheritance, windfalls or undeclared but lawful income may explain
     the gap; verify before escalating.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-002
   name: Account activity inconsistent with declared occupation or income
   description: Turnover or volumes materially exceed what the customer's declared occupation, income,
@@ -32,6 +36,10 @@ indicators:
   - remittance_data
   false_positive_notes: Life events, gifts or a recent change of employment can explain higher activity;
     compare with updated KYC data.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-003
   name: Adverse media on customer or associates
   description: Credible negative news, enforcement notices or investigations link the customer, its owners
@@ -49,6 +57,10 @@ indicators:
   - adverse_media_feeds
   false_positive_notes: Name matches with unrelated individuals and old or unproven allegations are common;
     confirm identity and source credibility.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-004
   name: Prior regulatory, criminal or enforcement history
   description: Customer or principal has previous convictions, enforcement or disciplinary action, or
@@ -65,6 +77,10 @@ indicators:
   - regulator_notices
   false_positive_notes: Spent or minor historic matters may not be relevant to current risk; assess recency
     and relevance.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-005
   name: Missing, misused or unverifiable licence or registration
   description: Customer offering a regulated or permitted activity cannot evidence the required licence
@@ -82,6 +98,10 @@ indicators:
   - permit_registers
   false_positive_notes: Registration data may be out of date or held under a group entity; request documentary
     evidence.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-006
   name: Account collecting funds from many unrelated payers
   description: A single account receives payments from numerous unrelated senders with no evident commercial
@@ -99,6 +119,10 @@ indicators:
   - licence_registers
   false_positive_notes: Legitimate collection accounts such as clubs, landlords or small traders may show
     this pattern; check stated purpose.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-007
   name: Multiple customers sharing contact details or addresses
   description: Unrelated customers or applicants share the same phone, email, address, device or bank
@@ -115,6 +139,10 @@ indicators:
   - kyc_files
   false_positive_notes: Family members, flatmates, student housing and shared workplaces legitimately
     share details.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-008
   name: One person holding multiple identities or accounts
   description: The same individual appears under different names or opens several accounts or wallets,
@@ -132,6 +160,10 @@ indicators:
   - onboarding_data
   false_positive_notes: Customers may legitimately hold several products or use name variants; look for
     deliberate inconsistency.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-009
   name: Inconsistent or synthetic identity data at onboarding
   description: Identity documents, contact details, geolocation or device data do not align, suggesting
@@ -149,6 +181,10 @@ indicators:
   - ip_data
   false_positive_notes: Travel, VPN use and data-entry errors can create benign mismatches; seek corroborating
     documents.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-010
   name: Newly established customer with rapid high-value activity
   description: A recently formed customer with little history or track record quickly records large turnover
@@ -166,6 +202,10 @@ indicators:
   - vat_registration
   false_positive_notes: Genuine start-ups or fast-growing businesses can scale quickly; test against business
     plan and evidence of operations.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-011
   name: No evidence of real operations
   description: Business shows little or no staff, premises, web presence or client base consistent with
@@ -183,6 +223,10 @@ indicators:
   - corporate_data
   false_positive_notes: Small consultancies or home-based businesses may have a light footprint; request
     supporting contracts and invoices.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-012
   name: Business revenue inconsistent with staffing or operating costs
   description: Reported revenue, payroll or resident staff do not match the typical costs and workforce
@@ -200,6 +244,10 @@ indicators:
   - financial_statements
   false_positive_notes: Outsourcing, seasonal staffing and informal-sector norms can explain gaps; benchmark
     against peers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-013
   name: Cash-intensive business
   description: Customer's business relies heavily on cash receipts, making revenue difficult to verify
@@ -216,6 +264,10 @@ indicators:
   - stock_invoices
   false_positive_notes: Many legitimate retail and hospitality businesses are cash-heavy; compare takings
     to sector norms.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-014
   name: Recent change of contact or delivery details
   description: Email, phone, address or statement delivery details are changed, especially shortly before
@@ -230,6 +282,10 @@ indicators:
   - payment_data
   false_positive_notes: Customers move or change providers routinely; assess timing relative to subsequent
     activity.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-015
   name: Accounts held via family members or associates
   description: Funds and assets move through spouses, children, in-laws or business partners who have
@@ -244,6 +300,10 @@ indicators:
   - pep_lists
   - corporate_registries
   false_positive_notes: Families commonly share finances and businesses.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-016
   name: Politically exposed person as customer or controller
   description: The customer, a beneficial owner or a controller is a domestic or foreign PEP, or a family
@@ -258,6 +318,10 @@ indicators:
   - kyc_profile
   false_positive_notes: Many PEPs, particularly domestic or low-level officials, are lawfully wealthy
     and low risk once source of wealth is understood.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-017
   name: Non-resident customer without clear rationale
   description: Customer resides outside the institution's market and cannot explain why they need an account
@@ -271,6 +335,10 @@ indicators:
   - address_data
   false_positive_notes: Expatriates, students, property investors and cross-border workers often have
     legitimate need.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-018
   name: Customer in a high-risk sector
   description: Customer operates in a sector with elevated misuse risk, such as precious metals, gambling,
@@ -282,6 +350,10 @@ indicators:
   data_sources:
   - industry_codes
   false_positive_notes: Most firms in these sectors are regulated and compliant.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-019
   name: Customer claims to be a DeFi developer or protocol team without evidence
   description: Large treasury-type movements from a stated protocol with no verifiable entity, audits
@@ -294,6 +366,10 @@ indicators:
   - customer_profile
   - corporate_records
   false_positive_notes: Pseudonymous but legitimate teams.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-020
   name: Account opened for a young or elderly person but controlled by another
   description: Behaviour and device suggest a controller other than the account holder.
@@ -306,6 +382,10 @@ indicators:
   - device_data
   - customer_records
   false_positive_notes: Guardianship or carer arrangements.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-021
   name: Marketplace sellers with no identity verification receiving large payouts
   description: Pseudonymous sellers withdraw significant proceeds to fiat or exchange wallets.
@@ -318,6 +398,10 @@ indicators:
   - seller_records
   - payout_data
   false_positive_notes: Verified under-threshold sellers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-022
   name: Corporate account pays an unusual crypto purchase after a cyber event
   description: Business customer suddenly funds a crypto purchase beyond normal activity, with mention
@@ -331,6 +415,10 @@ indicators:
   - customer_profile
   - payment_data
   false_positive_notes: Genuine treasury diversification.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-023
   name: Third-party payer funds purchase on behalf of a victim
   description: Incident response firm, broker or insurer funds crypto on behalf of a client, with unclear
@@ -343,6 +431,10 @@ indicators:
   - customer_profile
   - contracts
   false_positive_notes: Legitimate professional ransom-negotiation services, subject to sanctions checks.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-024
   name: P2P advertiser with high volume and many unrelated counterparties
   description: Seller trades large volume with numerous buyers across payment methods and accounts, resembling
@@ -355,6 +447,10 @@ indicators:
   - p2p_records
   - bank_transactions
   false_positive_notes: Registered small traders.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-025
   name: Vessel with history of AIS gaps or name and flag changes
   description: Vessel switches off position tracking, changes names or flags often and is on IUU lists.
@@ -367,6 +463,10 @@ indicators:
   - vessel_databases
   - ais_data
   false_positive_notes: Technical faults and legitimate re-flagging occur.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-026
   name: Front businesses combining legal goods and wildlife products
   description: Import-export firm in furniture, traditional medicine or seafood with unusually high-value
@@ -380,6 +480,10 @@ indicators:
   - trade_documents
   - kyc_files
   false_positive_notes: Product descriptions may be imprecise.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-027
   name: Recruited receiving account for reshipping or payment processing
   description: 'Mule-side: individuals recruited through job adverts receive and forward funds.'
@@ -391,6 +495,10 @@ indicators:
   data_sources:
   - account_data
   false_positive_notes: Genuine gig workers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-028
   name: Receiving account is new or recently dormant with many unrelated senders
   description: 'Mule-side: a recently opened or reactivated account receives payments from many unrelated
@@ -404,6 +512,10 @@ indicators:
   - account_data
   - kyc_profile
   false_positive_notes: Fundraising, club accounts or small traders with genuine many-to-one inflows.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-029
   name: Multiple prior scam alerts or repeat victimisation
   description: 'Victim-side: the customer previously reported or was warned of fraud and is again sending
@@ -417,6 +529,10 @@ indicators:
   - fraud_case_history
   - customer_profile
   false_positive_notes: Customers who have since become aware and are genuinely transacting.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-030
   name: New account with immediate cheque deposits
   description: Account opened and quickly funded by cheques.
@@ -427,6 +543,10 @@ indicators:
   data_sources:
   - account_data
   false_positive_notes: Genuine new customers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-031
   name: Thin or recently created credit file with high requested limits
   description: 'Synthetic: little history yet applications seek large lines or multiple facilities.'
@@ -437,6 +557,10 @@ indicators:
   data_sources:
   - bureau_data
   false_positive_notes: Young adults or new arrivals.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-032
   name: Straw buyer or nominee applicant
   description: Applicant's profile does not match purchase, with another party funding or controlling.
@@ -447,6 +571,10 @@ indicators:
   data_sources:
   - application_data
   false_positive_notes: Family support.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-033
   name: Undisclosed liabilities or multiple simultaneous applications
   description: Same borrower applies at several lenders before bureaux update.
@@ -457,6 +585,10 @@ indicators:
   data_sources:
   - bureau_data
   false_positive_notes: Rate shopping.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-034
   name: Recently opened account receiving government payments
   description: New accounts used to receive claims.
@@ -468,6 +600,10 @@ indicators:
   data_sources:
   - account_data
   false_positive_notes: New customers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-035
   name: New joint account holder or power of attorney added
   description: Access given to a new person shortly before unusual activity.
@@ -479,6 +615,10 @@ indicators:
   - account_data
   - poa_records
   false_positive_notes: Genuine care arrangements.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-036
   name: Frequent cash-in-transit use by a non-retail customer
   description: Cash collected or delivered without commercial need.
@@ -490,6 +630,10 @@ indicators:
   data_sources:
   - cit_records
   false_positive_notes: Genuine retail.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-037
   name: Individual or business holder lacks economic link to deposit areas
   description: Account holder profile shows no business or family ties in places where deposits occur.
@@ -501,6 +645,10 @@ indicators:
   data_sources:
   - kyc_profile
   false_positive_notes: Customers may be mobile or have remote clients.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-038
   name: Account opened with limited documentation or by recruited individuals
   description: Account holders include students, unemployed people or newcomers sharing similar addresses.
@@ -511,6 +659,10 @@ indicators:
   data_sources:
   - kyc_file
   false_positive_notes: Vulnerable groups legitimately bank.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-039
   name: Client unwilling to provide ownership or source of funds
   description: Refuses details of beneficial owner or source.
@@ -521,6 +673,10 @@ indicators:
   data_sources:
   - kyc_file
   false_positive_notes: Privacy.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-040
   name: Newly acquired PEP status not re-assessed
   description: Customer becomes PEP after onboarding without update.
@@ -531,6 +687,10 @@ indicators:
   data_sources:
   - customer_data
   false_positive_notes: Appointments follow election cycles.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-041
   name: Shipment volume exceeds the counterparty's capability
   description: Quantities or values are out of proportion to the size, history or industry of trading
@@ -544,6 +704,10 @@ indicators:
   - corporate_registry
   - trade_history
   false_positive_notes: Start-ups may broker large deals.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-042
   name: Introduced customers with no direct contact
   description: Client business introduced through TCSP with no face-to-face contact and little data.
@@ -554,6 +718,10 @@ indicators:
   data_sources:
   - onboarding_data
   false_positive_notes: Remote introductions are common.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-043
   name: Personal account used for business flows
   description: Business-like volumes in personal account.
@@ -565,6 +733,10 @@ indicators:
   data_sources:
   - transaction_data
   false_positive_notes: Sole traders.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-044
   name: Armed groups or militias as end users linked to customers
   description: Customer's counterparties are tied to armed groups.
@@ -577,6 +749,10 @@ indicators:
   - adverse_media
   - un_reports
   false_positive_notes: Reports may be disputed.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-045
   name: Many small online storefronts with common bank accounts or directors
   description: Network of shops sharing accounts.
@@ -589,6 +765,10 @@ indicators:
   - payment_records
   - device_data
   false_positive_notes: Same owner may run several shops.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-046
   name: Pharmacy, clinic or online pharmacy with abnormal opioid volumes
   description: Dispensing, imports or payments exceeding peers for controlled substances.
@@ -601,6 +781,10 @@ indicators:
   - regulator_data
   - payment_records
   false_positive_notes: Specialist clinics may have high volumes.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-047
   name: Underground casino or card house with cash and chip sales
   description: Cash-heavy venue with transfers by chat apps.
@@ -613,6 +797,10 @@ indicators:
   - cash_data
   - intel
   false_positive_notes: Private games may be legal.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-048
   name: Respondent bank with presence or business in jurisdictions of proliferation concern
   description: Respondent holds accounts or branches in higher-risk countries without strong controls.
@@ -625,6 +813,10 @@ indicators:
   - cbddq
   - regulatory_reports
   false_positive_notes: Global banks operate in many markets.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-049
   name: Customer or counterparty business inconsistent with technical goods traded
   description: Trading or logistics firm with no technical background transacts in items with possible
@@ -639,6 +831,10 @@ indicators:
   - registry_data
   - trade_documents
   false_positive_notes: Distributors do handle technical goods outside their main specialty.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-050
   name: Customer in transit country suddenly trades controlled or high-priority items
   description: A firm with a different history begins importing restricted items for resale.
@@ -651,6 +847,10 @@ indicators:
   - trade_data
   - account_activity
   false_positive_notes: Market expansion and new product lines occur.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-051
   name: Inconsistent tax residency declarations
   description: Customer self-certifies residence in one jurisdiction while mailing address, phone, spending
@@ -665,6 +865,10 @@ indicators:
   - kyc_files
   - card_data
   false_positive_notes: Expatriates and frequent travellers may have complex but genuine residency.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-052
   name: Minors or young adults funded by third parties
   description: Accounts of young customers receive small repeated funds from unrelated adults, followed
@@ -678,6 +882,10 @@ indicators:
   - account_activity
   - customer_age_data
   false_positive_notes: Gifting from relatives and part-time work are normal.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-053
   name: Operator account with transactions inconsistent with a retail remittance profile
   description: Business accounts of an MVTS or agent receive large pooled deposits and send bulk payments
@@ -691,6 +899,10 @@ indicators:
   - account_activity
   - licensing_data
   false_positive_notes: Genuine MVTS legitimately pool funds.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CUS-054
   name: Operating-company profile with scam-infrastructure spending and no business footprint
   description: A corporate customer in recruitment, customer-service outsourcing, gaming, crypto or consultancy,
@@ -708,3 +920,7 @@ indicators:
   - corporate_registry
   false_positive_notes: Legitimate offshore call centres, start-ups, IT outsourcers and marketing firms
     also spend heavily on infrastructure and may have thin early-stage revenue and remote ownership.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed

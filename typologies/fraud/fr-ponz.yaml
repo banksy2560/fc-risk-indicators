@@ -5,6 +5,22 @@ typology:
   description: Operators promise unusually high or guaranteed returns, paying earlier investors from new
     deposits or recruitment fees rather than genuine profits. Collapse leaves many victims and often a
     trail of commingled funds and layered transfers.
+  exposure:
+    channels:
+    - online_banking
+    - mobile_app
+    payment_rails:
+    - fast_payments
+    - crypto_onramp_offramp
+    - wire_swift
+    customer_segments:
+    - retail
+    - vulnerable_elderly
+    products:
+    - transaction_account
+    - investment_securities
+    basis: ai_inferred
+    rationale: Investor deposits to operators; crypto and securities variants.
   sectors:
   - banking
   - securities

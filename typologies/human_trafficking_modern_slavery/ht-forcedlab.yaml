@@ -6,6 +6,26 @@ typology:
     or threats. Businesses and financial institutions encounter risks via labour intermediaries, suppliers
     in high-risk sectors and unusual wage patterns. Controls combine supply-chain due diligence with worker-centred
     escalation.
+  exposure:
+    channels:
+    - branch
+    - agent_network
+    payment_rails:
+    - cash
+    - cross_border_remittance
+    - payroll_expense
+    customer_segments:
+    - retail
+    - sme
+    - professional_intermediary
+    - new_to_bank
+    - corporate
+    products:
+    - transaction_account
+    - trade_finance
+    basis: ai_inferred
+    rationale: Worker accounts controlled by employers, cash payroll, recruitment fees and remittance
+      to a few beneficiaries; labour providers and high-risk suppliers.
   sectors:
   - banking
   - payments

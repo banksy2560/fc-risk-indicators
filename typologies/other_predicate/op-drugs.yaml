@@ -6,6 +6,22 @@ typology:
     of synthetic opioids, generating cash proceeds that are placed and moved through retail accounts,
     trade, couriers and professional money launderers. Chemical and equipment purchases, online sales
     and pill-press activity are additional signals.
+  exposure:
+    channels:
+    - branch
+    - atm
+    payment_rails:
+    - cash
+    - crypto_onramp_offramp
+    - cross_border_remittance
+    - trade_instruments
+    customer_segments:
+    - retail
+    - sme
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Cash deposits from multiple locations, precursor purchases and IVTS/trade.
   sectors:
   - banking
   - payments

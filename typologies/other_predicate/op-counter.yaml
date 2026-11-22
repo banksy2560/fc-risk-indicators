@@ -5,6 +5,23 @@ typology:
   description: Manufacture, import and sale of fake goods such as apparel, pharmaceuticals, electronics
     and auto parts, infringing intellectual property and often endangering consumers. Proceeds pass through
     online marketplaces, small importers and shell traders.
+  exposure:
+    channels:
+    - merchant_acquiring
+    - online_banking
+    payment_rails:
+    - card
+    - wire_swift
+    - trade_instruments
+    customer_segments:
+    - sme
+    - corporate
+    - fintech_psp
+    products:
+    - merchant_services
+    - transaction_account
+    basis: ai_inferred
+    rationale: Online marketplace sellers, small importers and shell traders.
   sectors:
   - banking
   - payments

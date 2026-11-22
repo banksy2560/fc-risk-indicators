@@ -5,6 +5,22 @@ typology:
   description: Criminals gain control of customer accounts through phishing, credential stuffing, SIM
     swap or malware, then change details and extract funds. Early detection relies on login, device and
     change-of-details signals.
+  exposure:
+    channels:
+    - online_banking
+    - mobile_app
+    - call_centre
+    payment_rails:
+    - fast_payments
+    - card
+    customer_segments:
+    - retail
+    products:
+    - transaction_account
+    - credit_card
+    - crypto_custody
+    basis: ai_inferred
+    rationale: Credential/device compromise in digital and call-centre channels.
   sectors:
   - banking
   - payments

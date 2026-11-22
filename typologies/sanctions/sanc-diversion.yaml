@@ -6,6 +6,21 @@ typology:
     whose trade statistics, parties or documents show sudden shifts. Financial institutions can detect
     diversion by comparing customer activity with country-level trade patterns, end-use information and
     common high-priority items.
+  exposure:
+    channels:
+    - broker_intermediary
+    payment_rails:
+    - trade_instruments
+    - wire_swift
+    customer_segments:
+    - corporate
+    - sme
+    - non_resident
+    products:
+    - trade_finance
+    - transaction_account
+    basis: ai_inferred
+    rationale: Third-country transshipment through newly active traders and trade finance.
   sectors:
   - banking
   - trade_finance

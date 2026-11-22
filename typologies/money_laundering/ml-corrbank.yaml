@@ -5,6 +5,19 @@ typology:
   description: Abuse of correspondent banking relationships, including nested or downstream use of a respondent's
     account by other institutions, to move illicit funds across borders with limited visibility of the
     underlying customers and purposes. Payable-through accounts and shell bank links add risk.
+  exposure:
+    channels:
+    - api_open_banking
+    payment_rails:
+    - wire_swift
+    - cross_border_remittance
+    customer_segments:
+    - fintech_psp
+    - corporate
+    products:
+    - correspondent_account
+    basis: ai_inferred
+    rationale: Respondent and nested bank/PSP flows via correspondent accounts over SWIFT.
   stage:
   - layering
   sectors:

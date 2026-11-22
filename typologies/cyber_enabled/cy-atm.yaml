@@ -5,6 +5,19 @@ typology:
   description: Virtual asset kiosks let users convert cash to crypto with light verification, making them
     attractive for scam victims forced to pay and for criminals placing cash. Risk centres on structuring,
     repeated high-value use, third-party direction and destination wallets tied to scams or mixers.
+  exposure:
+    channels:
+    - atm
+    payment_rails:
+    - cash
+    - crypto_onramp_offramp
+    customer_segments:
+    - vulnerable_elderly
+    - retail
+    products:
+    - crypto_custody
+    basis: ai_inferred
+    rationale: Cash-to-crypto kiosks used by scam victims and for placement.
   stage:
   - placement
   sectors:

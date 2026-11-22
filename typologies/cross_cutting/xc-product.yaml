@@ -5,6 +5,24 @@ typology:
   description: Inherent-risk factors relating to the products and services offered. Covers private banking,
     correspondent relationships, trade finance, prepaid instruments, virtual assets, safe deposit boxes
     and cash services.
+  exposure:
+    channels: []
+    payment_rails:
+    - cross_border_remittance
+    - trade_instruments
+    - stored_value_wallet
+    customer_segments:
+    - private_wealth
+    - fintech_psp
+    products:
+    - correspondent_account
+    - trade_finance
+    - prepaid_stored_value
+    - crypto_custody
+    - safe_deposit_custody
+    basis: ai_inferred
+    rationale: 'Generic product-risk list: private banking, correspondent, trade, prepaid, virtual assets,
+      safe deposit.'
   sectors:
   - all
   sources:

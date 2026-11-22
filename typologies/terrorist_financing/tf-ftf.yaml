@@ -6,6 +6,24 @@ typology:
     finance their journeys through personal funds, loans, family transfers and cash. Financial signals
     typically cluster around the preparatory period before travel and continue through remittances to
     the destination region.
+  exposure:
+    channels:
+    - branch
+    - atm
+    - mobile_app
+    payment_rails:
+    - card
+    - cash
+    - cross_border_remittance
+    customer_segments:
+    - retail
+    - student_youth
+    products:
+    - transaction_account
+    - credit_card
+    - loan_mortgage
+    basis: ai_inferred
+    rationale: Pre-travel account emptying, borrowing and ATM use abroad.
   sectors:
   - banking
   - payments

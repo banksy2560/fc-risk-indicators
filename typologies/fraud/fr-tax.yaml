@@ -5,6 +5,21 @@ typology:
   description: Offenders file false returns or benefit claims using stolen or fabricated identities and
     direct refunds to accounts they control. Banks see inbound refunds to unrelated accounts and mule
     behaviour.
+  exposure:
+    channels:
+    - online_banking
+    payment_rails:
+    - fast_payments
+    - cheque
+    - direct_debit_batch
+    customer_segments:
+    - retail
+    - new_to_bank
+    products:
+    - transaction_account
+    - prepaid_stored_value
+    basis: ai_inferred
+    rationale: Refunds/benefit payments landing in mule or prepaid accounts.
   sectors:
   - banking
   - payments

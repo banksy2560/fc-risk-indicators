@@ -5,6 +5,21 @@ typology:
   description: Stolen card details are used online or by phone where the physical card is not checked,
     and some customers or merchants abuse the chargeback system. Fraud rings test cards at low value before
     large purchases.
+  exposure:
+    channels:
+    - online_banking
+    - merchant_acquiring
+    - call_centre
+    payment_rails:
+    - card
+    customer_segments:
+    - retail
+    - sme
+    products:
+    - credit_card
+    - merchant_services
+    basis: ai_inferred
+    rationale: Online/phone card use, card testing, chargeback abuse.
   sectors:
   - payments
   - banking

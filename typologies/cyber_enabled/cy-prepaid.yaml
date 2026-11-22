@@ -6,6 +6,22 @@ typology:
     quickly, sometimes with limited customer identification. Criminals use them to move small amounts
     at scale, convert cash, receive fraud proceeds and fund illicit purchases, often via many cards or
     mule holders.
+  exposure:
+    channels:
+    - branch
+    - agent_network
+    - online_banking
+    payment_rails:
+    - card
+    - cash
+    - stored_value_wallet
+    customer_segments:
+    - retail
+    - new_to_bank
+    products:
+    - prepaid_stored_value
+    basis: ai_inferred
+    rationale: Bulk loads and cash-out of prepaid cards by many holders or mules.
   stage:
   - placement
   - layering

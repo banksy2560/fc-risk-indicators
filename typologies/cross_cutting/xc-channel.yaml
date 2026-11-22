@@ -4,6 +4,19 @@ typology:
   domain: cross_cutting
   description: Inherent-risk factors in how customers are acquired and served. Covers non-face-to-face
     relationships, intermediaries and introducers, remote onboarding and reliance on third parties.
+  exposure:
+    channels:
+    - online_banking
+    - mobile_app
+    - broker_intermediary
+    - api_open_banking
+    payment_rails: []
+    customer_segments:
+    - new_to_bank
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: 'Generic channel risk: non-face-to-face onboarding, introducers and third-party reliance.'
   sectors:
   - all
   sources:

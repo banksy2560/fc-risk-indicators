@@ -5,6 +5,21 @@ typology:
   description: Use of casinos, online gaming and betting to convert illicit cash into seemingly legitimate
     winnings or cheques, to move value between parties, or to obscure its origin through chips, accounts
     and junkets. Minimal play with high buy-ins is a classic sign.
+  exposure:
+    channels:
+    - face_to_face_professional
+    payment_rails:
+    - cash
+    - cheque
+    - wire_swift
+    customer_segments:
+    - retail
+    - private_wealth
+    - non_resident
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Casino chip purchase/cash-out, deposit accounts, junkets; funded by cash and bank sources.
   stage:
   - placement
   - layering

@@ -5,6 +5,22 @@ typology:
   description: Physical movement of banknotes across borders or within a country, by couriers, vehicles,
     freight, mail or hidden in goods, to place proceeds in or move them to jurisdictions with weak controls.
     Flows may reappear as deposits, exchange house transactions or trade.
+  exposure:
+    channels:
+    - branch
+    - atm
+    payment_rails:
+    - cash
+    - cross_border_remittance
+    customer_segments:
+    - sme
+    - non_resident
+    - retail
+    products:
+    - transaction_account
+    - safe_deposit_custody
+    basis: ai_inferred
+    rationale: Physical cash placed via deposits and exchange houses; trade fronts.
   stage:
   - placement
   - layering

@@ -6,6 +6,22 @@ typology:
     value outside the traditional banking system, via exchanges with weak controls, unhosted wallets,
     mixers and cross-chain swaps. Blockchain analytics, geolocation and travel rule data are the core
     detection tools.
+  exposure:
+    channels:
+    - online_banking
+    - mobile_app
+    payment_rails:
+    - crypto_onramp_offramp
+    - fast_payments
+    customer_segments:
+    - retail
+    - fintech_psp
+    - non_resident
+    products:
+    - crypto_custody
+    - transaction_account
+    basis: ai_inferred
+    rationale: Exchanges, unhosted wallets, mixers and stablecoins; VASP exposure.
   sectors:
   - crypto
   - fintech

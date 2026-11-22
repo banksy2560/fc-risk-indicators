@@ -5,6 +5,29 @@ typology:
   description: Operation of unlicensed betting, underground casinos and online gambling, and manipulation
     of sporting events for betting profit. Money is laundered through bets, payment processors and agents,
     with corruption of athletes or officials.
+  exposure:
+    channels:
+    - online_banking
+    - mobile_app
+    - merchant_acquiring
+    payment_rails:
+    - card
+    - fast_payments
+    - crypto_onramp_offramp
+    - cash
+    - stored_value_wallet
+    customer_segments:
+    - retail
+    - sme
+    - fintech_psp
+    products:
+    - transaction_account
+    - merchant_services
+    - prepaid_stored_value
+    - crypto_custody
+    basis: ai_inferred
+    rationale: Betting payments via card/bank to disguised merchants, nested processors, e-wallets and
+      crypto.
   sectors:
   - banking
   - payments

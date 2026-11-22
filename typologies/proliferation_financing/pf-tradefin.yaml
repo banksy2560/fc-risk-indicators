@@ -5,6 +5,21 @@ typology:
   description: Proliferation procurement uses letters of credit, open-account trade and transshipment
     hubs to obscure origin, destination and end use of controlled items. Document inconsistencies and
     unusual routing are the principal observable indicators for trade finance teams.
+  exposure:
+    channels:
+    - broker_intermediary
+    - branch
+    payment_rails:
+    - trade_instruments
+    - wire_swift
+    customer_segments:
+    - corporate
+    - sme
+    products:
+    - trade_finance
+    - correspondent_account
+    basis: ai_inferred
+    rationale: LCs, open-account trade and transshipment documentary inconsistencies.
   sectors:
   - banking
   - trade_finance

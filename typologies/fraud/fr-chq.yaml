@@ -4,6 +4,20 @@ typology:
   domain: fraud
   description: Counterfeit, altered or stolen cheques, and deposits of items later returned, can be used
     to obtain funds before the fraud is discovered. Mule accounts and overpayment scams are common.
+  exposure:
+    channels:
+    - branch
+    - atm
+    - mobile_app
+    payment_rails:
+    - cheque
+    customer_segments:
+    - retail
+    - sme
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Counterfeit/stolen cheques and remote/ATM deposit.
   sectors:
   - banking
   sources:

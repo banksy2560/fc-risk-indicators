@@ -5,6 +5,13 @@ typology:
   description: Indicators that the institution's own control environment may be weakened, increasing residual
     exposure to financial crime. Covers governance, alert backlogs, tuning gaps, insider risk, data quality
     and outsourcing. Intended for the control-effectiveness side of an enterprise-wide risk assessment.
+  exposure:
+    channels: []
+    payment_rails: []
+    customer_segments: []
+    products: []
+    basis: ai_inferred
+    rationale: Institution's own control environment; not an exposure of a channel, rail, segment or product.
   sectors:
   - all
   sources:

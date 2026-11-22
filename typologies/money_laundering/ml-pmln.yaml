@@ -5,6 +5,25 @@ typology:
   description: Specialists who launder criminal proceeds for others as a service, for a fee or commission,
     using networks of couriers, brokers, front companies, accounts and informal value transfer. They run
     structured, repeatable laundering infrastructure serving multiple criminal clients.
+  exposure:
+    channels:
+    - broker_intermediary
+    - online_banking
+    payment_rails:
+    - wire_swift
+    - cross_border_remittance
+    - cash
+    - informal_value_transfer
+    customer_segments:
+    - corporate
+    - sme
+    - professional_intermediary
+    - msb_remitter
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Specialist networks use front-company accounts, MSBs, couriers and informal value transfer
+      with mirror transactions across jurisdictions.
   stage:
   - placement
   - layering

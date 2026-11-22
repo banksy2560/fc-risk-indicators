@@ -5,6 +5,21 @@ typology:
   description: Digital-only providers compete on fast, remote onboarding, which criminals exploit to open
     large numbers of accounts for fraud proceeds, pass-through and layering. Fraud rings use stolen or
     synthetic identities, bulk registration and automation, then operate accounts as mules or shell receptacles.
+  exposure:
+    channels:
+    - mobile_app
+    - online_banking
+    payment_rails:
+    - fast_payments
+    customer_segments:
+    - new_to_bank
+    - student_youth
+    - retail
+    - fintech_psp
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Rapid remote onboarding at digital-only providers used for mule accounts.
   stage:
   - placement
   - layering

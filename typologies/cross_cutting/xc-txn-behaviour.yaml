@@ -5,6 +5,13 @@ typology:
   description: Typology-agnostic transaction red flags applicable across all crime types. Covers rapid
     movement of funds, absent economic rationale, activity out of line with profile, dormant account reactivation,
     round amounts and third-party payments.
+  exposure:
+    channels: []
+    payment_rails: []
+    customer_segments: []
+    products: []
+    basis: ai_inferred
+    rationale: Typology-agnostic transaction red flags; no principal exposure.
   sectors:
   - all
   sources:

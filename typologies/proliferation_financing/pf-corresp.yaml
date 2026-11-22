@@ -5,6 +5,19 @@ typology:
   description: Proliferation-linked entities may reach the international financial system via correspondent
     relationships, nested accounts or joint ventures that mask the involvement of restricted parties.
     Respondent due diligence and payment-message review are the main tools for detecting this exposure.
+  exposure:
+    channels:
+    - api_open_banking
+    payment_rails:
+    - wire_swift
+    - trade_instruments
+    customer_segments:
+    - corporate
+    products:
+    - correspondent_account
+    - trade_finance
+    basis: ai_inferred
+    rationale: Respondent banks, nested accounts and SWIFT message review.
   sectors:
   - banking
   - payments

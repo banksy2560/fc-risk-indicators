@@ -6,6 +6,21 @@ typology:
     goods and services, then move proceeds through intermediaries, mixers and exchanges to reach fiat.
     Customers also fund purchases through regulated platforms. Indicators appear in blockchain exposure,
     funnelling behaviour and cash-out patterns.
+  exposure:
+    channels:
+    - online_platform
+    - digital_onboarding
+    payment_rails:
+    - crypto_onramp_offramp
+    - stored_value_wallet
+    customer_segments:
+    - retail
+    products:
+    - crypto_custody
+    - transaction_account
+    basis: ai_inferred
+    rationale: Darknet vendors and buyers fund and cash out through crypto platforms and P2P sellers,
+      with Tor/burner-based onboarding and gift-card/prepaid cash-out.
   stage:
   - placement
   - layering

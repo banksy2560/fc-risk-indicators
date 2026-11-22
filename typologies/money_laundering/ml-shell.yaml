@@ -5,6 +5,21 @@ typology:
   description: Use of companies with no or minimal real operations to hold, move or obscure criminal funds,
     or of operating businesses used as a front to mix illicit and legitimate income. Complex structures
     and nominee arrangements hide beneficial ownership.
+  exposure:
+    channels:
+    - online_banking
+    - branch
+    payment_rails:
+    - wire_swift
+    - cross_border_remittance
+    customer_segments:
+    - corporate
+    - sme
+    - non_resident
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Shell/front company accounts moving funds without operations.
   stage:
   - layering
   - integration

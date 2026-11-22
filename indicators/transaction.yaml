@@ -17,6 +17,10 @@ indicators:
   - counterparty_data
   false_positive_notes: Legitimate payment intermediaries, treasury sweeps and agents routinely pass funds
     through quickly.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-002
   name: Rapid movement offshore or to crypto after receipt
   description: Incoming funds are quickly sent abroad or converted to virtual assets soon after being
@@ -29,6 +33,10 @@ indicators:
   - account_data
   - transaction_data
   false_positive_notes: Genuine international payments or planned crypto purchases by established customers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-003
   name: Account receiving funds from multiple apparent fraud victims
   description: A new or low-activity account receives payments from several unrelated individuals who
@@ -46,6 +54,10 @@ indicators:
   - atm_data
   false_positive_notes: Legitimate sales, crowdfunding or refunds can look similar; check payment references
     and account history.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-004
   name: Many unrelated senders paying a single account or recipient
   description: Numerous unrelated payers send frequent, often small, payments to one account, wallet or
@@ -69,6 +81,10 @@ indicators:
   - counterparty_data
   false_positive_notes: Legitimate retailers, charities, marketplaces and payroll can show high payer
     counts.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-005
   name: Transfers to many newly created crypto addresses
   description: Repeated small or fixed-amount transfers to many fresh or new crypto addresses.
@@ -82,6 +98,10 @@ indicators:
   - transaction_data
   false_positive_notes: Privacy-conscious users and wallet software that rotates addresses can produce
     this pattern.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-006
   name: Cash deposits just below reporting or identification threshold
   description: Repeated cash deposits kept just under a reporting, identification or monitoring threshold.
@@ -95,6 +115,10 @@ indicators:
   - transaction_data
   - cash_deposit_records
   false_positive_notes: Customers may deposit regular round sums that coincidentally sit below thresholds.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-007
   name: Cash deposits split across branches, ATMs or accounts
   description: Cash is deposited in several locations, channels or accounts on the same day or over a
@@ -111,6 +135,10 @@ indicators:
   - cash_deposits
   - wire_data
   false_positive_notes: Businesses with multiple outlets may deposit locally at different branches.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-008
   name: Non-cash transfers or loads just below identification or reporting thresholds
   description: Repeated transfers, remittances or card/wallet loads kept just below an identification,
@@ -126,6 +154,10 @@ indicators:
   - transaction_data
   false_positive_notes: Customers may use standard amounts or product limits that happen to sit just under
     thresholds.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-009
   name: Payments or claims split to stay below internal approval limits
   description: Payments, claims or contracts are broken into amounts just under internal authorisation
@@ -140,6 +172,10 @@ indicators:
   - expense_data
   - purchasing_data
   false_positive_notes: Routine small recurring purchases and budget-driven phasing can resemble this.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-010
   name: Repeated round-value transactions
   description: Transactions are repeatedly in round or unusually uniform amounts that do not fit the stated
@@ -151,6 +187,10 @@ indicators:
   data_sources:
   - transaction_data
   false_positive_notes: Rents, salaries, loan instalments and fees are commonly round amounts.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-011
   name: Dormant account suddenly reactivated or high-velocity activity
   description: A dormant or low-activity account suddenly shows high-velocity inflows and outflows.
@@ -163,6 +203,10 @@ indicators:
   - transaction_data
   - ledger_data
   false_positive_notes: Seasonal use, life events or a customer returning after absence.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-012
   name: Sudden large increase in transaction volume
   description: Transaction volume or value rises abruptly well beyond historical levels, including through
@@ -175,6 +219,10 @@ indicators:
   - transaction_data
   - account_activity
   false_positive_notes: Business growth, seasonality, acquisitions or one-off events.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-013
   name: Activity inconsistent with customer profile
   description: Transactions or withdrawals are uncharacteristic of, or inconsistent with, the customer's
@@ -191,6 +239,10 @@ indicators:
   - account_data
   - financial_statements
   false_positive_notes: Life events, windfalls or changed circumstances may explain the change.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-014
   name: Volumes exceed documented production or capacity
   description: Exports or output reported exceed documented production, concession or capacity limits.
@@ -206,6 +258,10 @@ indicators:
   - trade_statistics
   - customs_data
   false_positive_notes: Stockpiles, undocumented but legitimate sources or reporting lags.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-015
   name: Circular or round-trip flows among related parties
   description: Funds or goods-linked payments loop back to the originator or between related counterparties,
@@ -222,6 +278,10 @@ indicators:
   - link_analysis
   - registry_data
   false_positive_notes: Group treasury arrangements and legitimate back-to-back trading.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-016
   name: Mirror or offsetting transactions between jurisdictions
   description: Reciprocal or offsetting payments occur between counterparties or operators in different
@@ -236,6 +296,10 @@ indicators:
   - wire_data
   - payment_records
   false_positive_notes: Netting and reciprocal arrangements between related businesses.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-017
   name: Workers paid to third-party or multiple accounts
   description: Wages are paid to accounts not held by the worker or split across several accounts.
@@ -251,6 +315,10 @@ indicators:
   - payment_data
   - wallet_data
   false_positive_notes: Workers may have family accounts or split pay by choice.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-018
   name: Chain-hopping through bridges shortly after receipt
   description: Virtual assets are moved across chains or bridges and converted soon after being received.
@@ -263,6 +331,10 @@ indicators:
   - blockchain_analytics
   - withdrawal_addresses
   false_positive_notes: Legitimate DeFi users bridge assets for fees or liquidity.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-019
   name: Refund and chargeback abuse
   description: Unusual refund or chargeback volumes or cycles relative to sales.
@@ -274,6 +346,10 @@ indicators:
   - payment_data
   - chargeback_data
   false_positive_notes: Seasonal returns, disputes or product quality issues.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-020
   name: Transaction price materially different from market value
   description: Price paid differs sharply from market value, comparable sales or estimates without commercial
@@ -297,6 +373,10 @@ indicators:
   - tender_documents
   - price_benchmarks
   false_positive_notes: Distressed sales, rare items, quality differences or volatile markets.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-021
   name: High-value purchases paid in cash, crypto or non-standard funds
   description: High-value assets are bought with cash, crypto, third-party or otherwise non-standard funding.
@@ -311,6 +391,10 @@ indicators:
   - payment_records
   - payment_data
   false_positive_notes: Some buyers legitimately pay with cash or crypto; verify source of funds.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-022
   name: Cash payments to informal suppliers or ground-level operators
   description: Large or repeated cash payments to informal traders, producers or workers in extraction
@@ -326,6 +410,10 @@ indicators:
   - deposit_records
   - invoices
   false_positive_notes: Informal markets often transact in cash.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-023
   name: Payments from or for third parties unrelated to the underlying trade
   description: Payments are made by parties with no apparent link to the underlying transaction, goods
@@ -340,6 +428,10 @@ indicators:
   - invoices
   - payment_data
   false_positive_notes: Group companies, agents or financiers may pay on behalf of the principal.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-024
   name: Payment directed to personal or third-party account
   description: Payment is requested to, or credited to, a personal, third-party or differently named account
@@ -355,6 +447,10 @@ indicators:
   - vendor_master
   - payment_data
   false_positive_notes: Factoring, assignment, or legitimate account changes.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-025
   name: Sudden liquidation of savings or assets
   description: Savings, investments or assets are sold abruptly, followed by withdrawal or transfer.
@@ -369,6 +465,10 @@ indicators:
   - account_activity
   - asset_records
   false_positive_notes: Planned purchases, retirement or genuine need for funds.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-026
   name: Sudden credit utilisation spike then bust-out
   description: Credit builds up and is then rapidly utilised to limit or cashed out after a period of
@@ -382,6 +482,10 @@ indicators:
   - ledger_data
   - credit_data
   false_positive_notes: Large planned purchases or seasonal spending.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-027
   name: Large buy-in or deposits with little underlying activity
   description: Substantial funds are deposited or bought in with minimal gambling or betting activity
@@ -395,6 +499,10 @@ indicators:
   - casino_floor_records
   - gambling_account_data
   false_positive_notes: Players who deposit but pause play.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-028
   name: Fee or tax payment demanded to release funds
   description: Payments are made as fees or taxes supposedly needed to release a prize, loan, inheritance
@@ -407,6 +515,10 @@ indicators:
   data_sources:
   - payment_data
   false_positive_notes: Genuine release fees exist but are rare and verifiable.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-029
   name: Payment references suggesting scam scripts
   description: Payment narratives or references contain wording linked to scams such as safe accounts
@@ -420,6 +532,10 @@ indicators:
   - narratives
   - payment_references
   false_positive_notes: Innocuous use of similar words.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-030
   name: Rapid onward movement after cash credits
   description: Cash deposited is quickly withdrawn or transferred onward, including to another location
@@ -435,6 +551,10 @@ indicators:
   - payment_records
   - ledger_data
   false_positive_notes: Customers may use cash deposits for immediate bills.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-031
   name: Large credit followed by prompt withdrawals
   description: A cheque deposit or refund is credited and quickly withdrawn or transferred before it clears
@@ -447,6 +567,10 @@ indicators:
   - deposit_data
   - account_data
   false_positive_notes: Customers needing urgent access to funds.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-032
   name: Rapid stored-value or wallet hops then cash-out
   description: Stored value or funds move quickly between wallets or cards and are then cashed out.
@@ -459,6 +583,10 @@ indicators:
   - ledger_data
   - wallet_data
   false_positive_notes: Normal wallet top-ups and withdrawals.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-033
   name: Bulk purchase or sale of cards or vouchers
   description: Large volumes of prepaid cards or gift cards are purchased or sold.
@@ -471,6 +599,10 @@ indicators:
   - payment_data
   - order_data
   false_positive_notes: Corporate gifting or promotions.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-034
   name: Cash or anonymous donations
   description: Donations are made through cash, anonymous collections or structured amounts.
@@ -484,6 +616,10 @@ indicators:
   - cash_deposits
   - collection_logs
   false_positive_notes: Legitimate fundraising events often use cash.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-035
   name: Professional client account used as pass-through
   description: A professional's client account is used to move funds with no underlying legal or advisory
@@ -496,6 +632,10 @@ indicators:
   data_sources:
   - client_account_data
   false_positive_notes: Legitimate client-money handling.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-036
   name: Recurring small cash payments to border, customs or permit agents
   description: Repeated low-value cash disbursements or petty cash entries labelled 'expediting', 'facilitation'
@@ -509,6 +649,10 @@ indicators:
   - petty_cash
   - expense_reports
   false_positive_notes: Some official fees are legitimately paid in cash with receipts.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-037
   name: Fees to distributors well above market margin
   description: Distributor discounts or rebates are unusually large without commercial rationale, leaving
@@ -522,6 +666,10 @@ indicators:
   - pricing_data
   - contracts
   false_positive_notes: Volume discounts and market entry may justify higher margins.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-038
   name: Success fee paid to consultant in a high-corruption market
   description: Large success-based or commission payments to a consultant or agent tied to winning a contract
@@ -537,6 +685,10 @@ indicators:
   - corruption_indices
   false_positive_notes: Genuine commercial agents are commonly paid success fees; rates in some sectors
     are legitimately high.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-039
   name: Gifts, travel or hospitality for officials paid through third parties
   description: Payments for luxury travel, tuition, medical treatment or property for officials or relatives,
@@ -552,6 +704,10 @@ indicators:
   - payments
   false_positive_notes: Official delegations legitimately receive modest hospitality and reasonable travel
     for site visits.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-040
   name: Post-award payments from supplier to buyer-linked accounts
   description: Winning supplier transfers funds to persons or companies connected to the procuring official
@@ -565,6 +721,10 @@ indicators:
   - payment_records
   - corporate_registries
   false_positive_notes: Supplier subcontracting may pay related parties innocently.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-041
   name: Large inflows from state-owned entities or ministries to private accounts
   description: Funds from government bodies or state enterprises arrive at private or personal accounts
@@ -578,6 +738,10 @@ indicators:
   - payment_records
   - sector_intelligence
   false_positive_notes: State suppliers and contractors receive government funds legitimately.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-042
   name: Rapid movement through correspondent or private banking channels
   description: Large sums move quickly through several banks and jurisdictions after arrival, with no
@@ -590,6 +754,10 @@ indicators:
   - payment_records
   - swift_messages
   false_positive_notes: Treasury and liquidity management can cause fast movements.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-043
   name: No apparent economic or lawful rationale
   description: Transactions lack commercial logic given the customer's business or relationship.
@@ -602,6 +770,10 @@ indicators:
   - transaction_data
   - kyc_profile
   false_positive_notes: Atypical but genuine one-off deals occur.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-044
   name: Use of multiple accounts to move funds
   description: Customer spreads activity across many accounts, products or institutions.
@@ -612,6 +784,10 @@ indicators:
   data_sources:
   - account_data
   false_positive_notes: Customers separate budgets legitimately.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-045
   name: Cash from bulk notes in poor condition or unusual denominations
   description: Large volumes of small or bundled notes deposited in sequence.
@@ -622,6 +798,10 @@ indicators:
   data_sources:
   - kiosk_logs
   false_positive_notes: Cash-based businesses.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-046
   name: Frequent small purchases to marketplace-linked addresses
   description: Repeated low-value withdrawals to wallets clustering with market deposit infrastructure,
@@ -634,6 +814,10 @@ indicators:
   - blockchain_analytics
   - withdrawal_addresses
   false_positive_notes: False cluster attribution.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-047
   name: Layered swaps through multiple DEX pools and bridges
   description: On-chain history shows repeated swaps and bridge crossings with no yield or trading logic
@@ -645,6 +829,10 @@ indicators:
   data_sources:
   - blockchain_analytics
   false_positive_notes: Yield farmers and aggregators routing automatically.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-048
   name: Use of freshly created wallets funded from a single source
   description: Chain of new wallets each funded by the previous one before depositing to a regulated service.
@@ -656,6 +844,10 @@ indicators:
   - blockchain_analytics
   - wallet_addresses
   false_positive_notes: Wallet hygiene and per-protocol wallets.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-049
   name: Rapid cash-out after cross-chain arrival
   description: Assets arriving via bridge are sold into fiat or stablecoin and withdrawn within a short
@@ -668,6 +860,10 @@ indicators:
   - ledger_data
   - bridge_logs
   false_positive_notes: Normal arbitrage.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-050
   name: Wrapped or low-liquidity token conversions at poor rates
   description: Customer accepts clearly unfavourable swap prices or uses thin-liquidity tokens, suggesting
@@ -680,6 +876,10 @@ indicators:
   - trade_history
   - market_data
   false_positive_notes: Illiquid-market inexperience.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-051
   name: Sales of high-value items with no shipping or delivery evidence
   description: Orders marked complete without tracking, or delivered to unrelated addresses.
@@ -692,6 +892,10 @@ indicators:
   - order_data
   - logistics_data
   false_positive_notes: Digital goods.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-052
   name: Rapid sequential conversions across many asset types
   description: Funds received are swapped through several tokens or stablecoins in quick succession with
@@ -704,6 +908,10 @@ indicators:
   - trade_history
   - ledger_data
   false_positive_notes: Active traders, arbitrageurs and market makers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-053
   name: Newly minted NFT sold immediately for large sums to unrelated wallet
   description: Creator mints and sells quickly to a single buyer funded by a cluster with no history.
@@ -714,6 +922,10 @@ indicators:
   data_sources:
   - blockchain_analytics
   false_positive_notes: Primary sales by established artists.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-054
   name: Fast conversion of in-game currency to cash or crypto
   description: Large currency amounts earned or received are cashed out through third-party sites within
@@ -726,6 +938,10 @@ indicators:
   - game_logs
   - ledger_data
   false_positive_notes: Professional players and streamers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-055
   name: Customer purchases virtual assets and sends them immediately to a new wallet
   description: A first-time or unsophisticated buyer buys a large amount and withdraws it all to an unfamiliar
@@ -739,6 +955,10 @@ indicators:
   - trade_history
   - withdrawal_addresses
   false_positive_notes: Legitimate first-time investors.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-056
   name: Large transfers to or from unhosted wallets without ownership proof
   description: High-value transfers involve self-hosted addresses where the customer has not demonstrated
@@ -751,6 +971,10 @@ indicators:
   - wallet_addresses
   - transfer_records
   false_positive_notes: Customers who self-custody for security.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-057
   name: P2P payments received from third-party bank accounts
   description: Buyers pay from accounts not in the buyer's name, or sellers receive from unknown payers.
@@ -762,6 +986,10 @@ indicators:
   - bank_transactions
   - p2p_records
   false_positive_notes: Family-funded purchases.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-058
   name: Same credits sold multiple times or retired and resold
   description: Serial numbers appear in more than one transaction or after retirement.
@@ -774,6 +1002,10 @@ indicators:
   - registry_data
   - trade_data
   false_positive_notes: Registry timing issues can show duplicate records.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-059
   name: Payments for at-sea transhipment, fuel and supplies
   description: Payments to reefer ships or bunker suppliers in remote waters.
@@ -786,6 +1018,10 @@ indicators:
   - payment_records
   - invoices
   false_positive_notes: Transhipment is lawful under authorised conditions.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-060
   name: Diamond or gem trade with undervalued or round-trip transactions
   description: Stones traded at prices off market, flowing through several traders and returning to origin.
@@ -798,6 +1034,10 @@ indicators:
   - invoices
   - valuation_data
   false_positive_notes: Valuation of stones is subjective.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-061
   name: Collection firm paid low fees yet reporting large volumes
   description: Waste firm bills clients far below market disposal rates.
@@ -810,6 +1050,10 @@ indicators:
   - invoices
   - tariff_data
   false_positive_notes: Efficiency or subsidies may lower prices.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-062
   name: Repeated payments to same beneficiary with escalating narratives
   description: 'Victim-side: sunk-cost pattern.'
@@ -820,6 +1064,10 @@ indicators:
   data_sources:
   - payment_data
   false_positive_notes: Recurring bills.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-063
   name: Payment to new payee under apparent time pressure
   description: 'Victim-side: a first payment of unusually high value to a newly created payee, made quickly
@@ -833,6 +1081,10 @@ indicators:
   - payment_data
   - payee_history
   false_positive_notes: Genuine house purchases, one-off large bills or planned gifts to new payees.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-064
   name: New payee added and funds drained rapidly
   description: Attacker adds beneficiaries and transfers most of the balance in one session.
@@ -843,6 +1095,10 @@ indicators:
   data_sources:
   - payment_data
   false_positive_notes: Genuine house or business payments.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-065
   name: Cash advances and purchases of resaleable goods
   description: Heavy use of cash advances, gift cards and high-resale items near the credit limit.
@@ -853,6 +1109,10 @@ indicators:
   data_sources:
   - card_data
   false_positive_notes: Genuine purchases.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-066
   name: Rapid payments from third-party or overdrawn accounts to inflate limits
   description: Payments that bounce or are reversed after credit is restored.
@@ -863,6 +1123,10 @@ indicators:
   data_sources:
   - payment_data
   false_positive_notes: Genuine payment errors.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-067
   name: Mobile deposit of same item at multiple institutions
   description: Duplicate presentment.
@@ -874,6 +1138,10 @@ indicators:
   - deposit_data
   - industry_data
   false_positive_notes: Technical retries.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-068
   name: Rapid structured withdrawals below reporting thresholds
   description: Multiple withdrawals after deposit.
@@ -884,6 +1152,10 @@ indicators:
   data_sources:
   - account_data
   false_positive_notes: Cash needs.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-069
   name: Card testing with many small authorisations
   description: Bursts of low-value attempts across cards, many declined, followed by a successful larger
@@ -895,6 +1167,10 @@ indicators:
   data_sources:
   - authorisation_data
   false_positive_notes: Merchant retries.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-070
   name: High-value purchases of resalable goods
   description: Electronics, gift cards or digital goods with quick delivery.
@@ -905,6 +1181,10 @@ indicators:
   data_sources:
   - order_data
   false_positive_notes: Genuine retail demand.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-071
   name: Customer instructed to move money to a 'safe' account
   description: 'Victim-side: pretext of protection leads to transfers to unfamiliar accounts.'
@@ -916,6 +1196,10 @@ indicators:
   data_sources:
   - payment_data
   false_positive_notes: Genuine account moves.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-072
   name: Employee accounts receive unusual payments
   description: Staff accounts credited from customers, vendors or dormant accounts.
@@ -926,6 +1210,10 @@ indicators:
   data_sources:
   - account_data
   false_positive_notes: Salary advances.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-073
   name: Alterations to payroll or master data outside cycle
   description: Changes made around pay run by one user.
@@ -936,6 +1224,10 @@ indicators:
   data_sources:
   - audit_logs
   false_positive_notes: Genuine corrections.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-074
   name: Deposit or equity funded by unexplained third party
   description: Large deposit credited from unrelated accounts.
@@ -946,6 +1238,10 @@ indicators:
   data_sources:
   - account_data
   false_positive_notes: Gifts from relatives.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-075
   name: Loan proceeds diverted immediately offshore or to unrelated parties
   description: Funds leave to accounts unrelated to the purpose.
@@ -956,6 +1252,10 @@ indicators:
   data_sources:
   - payment_data
   false_positive_notes: Legitimate property or business payments.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-076
   name: Outflows paying earlier investors in matching round amounts
   description: 'Operator-side: credits are followed by payments to prior investors in neat sums, plus
@@ -967,6 +1267,10 @@ indicators:
   data_sources:
   - account_data
   false_positive_notes: Legitimate coupon or dividend payments.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-077
   name: Investor funds diverted to personal assets or luxury spending
   description: 'Operator-side: lifestyle spending, property or vehicle purchases funded from investor
@@ -979,6 +1283,10 @@ indicators:
   data_sources:
   - account_data
   false_positive_notes: High-net-worth operators with separate wealth.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-078
   name: Escalating transfers to crypto exchanges by a first-time buyer
   description: 'Victim-side: a customer with no crypto history makes repeated, rising purchases and onward
@@ -992,6 +1300,10 @@ indicators:
   - payment_data
   - exchange_flows
   false_positive_notes: Genuine retail interest in crypto.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-079
   name: Funds routed to multiple small accounts then consolidated
   description: 'Mule-side: scam proceeds are split across many personal and corporate accounts before
@@ -1004,6 +1316,10 @@ indicators:
   - account_data
   - payment_data
   false_positive_notes: Payroll or marketplace payouts with similar structure.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-080
   name: Gift-card or peer-to-peer payments to a single remote contact
   description: 'Victim-side: regular payments or vouchers sent to one beneficiary overseas with emotional
@@ -1015,6 +1331,10 @@ indicators:
   data_sources:
   - payment_data
   false_positive_notes: Family support abroad.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-081
   name: Multiple refunds into the same account
   description: Unrelated refunds converge on one account or card.
@@ -1025,6 +1345,10 @@ indicators:
   data_sources:
   - account_data
   false_positive_notes: Tax preparers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-082
   name: Repayments funded by new financing from same borrower
   description: Revolving structure where old invoices are settled with new drawings.
@@ -1035,6 +1359,10 @@ indicators:
   data_sources:
   - account_data
   false_positive_notes: Working-capital cycles.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-083
   name: Sudden growth in financed volume without business rationale
   description: Facility usage rises faster than turnover.
@@ -1045,6 +1373,10 @@ indicators:
   data_sources:
   - facility_data
   false_positive_notes: Genuine expansion.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-084
   name: Funds diverted to unrelated accounts
   description: Proceeds sent to parties outside the trade.
@@ -1055,6 +1387,10 @@ indicators:
   data_sources:
   - payment_data
   false_positive_notes: Group treasury.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-085
   name: Sudden new spending on unrelated person
   description: Frequent payments or purchases benefiting a carer or acquaintance.
@@ -1065,6 +1401,10 @@ indicators:
   data_sources:
   - payment_data
   false_positive_notes: Genuine family support.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-086
   name: Frequent ATM use by carer or unusual card use
   description: Cards used where customer is unlikely to be present.
@@ -1076,6 +1416,10 @@ indicators:
   - card_data
   - atm_data
   false_positive_notes: Delegated errands.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-087
   name: Property or investment sold under pressure
   description: Large assets liquidated with hurried instructions.
@@ -1087,6 +1431,10 @@ indicators:
   data_sources:
   - transaction_data
   false_positive_notes: Downsizing.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-088
   name: Recruitment fees charged to workers
   description: Payments from workers to recruiters or employers for placement, visas or training, creating
@@ -1100,6 +1448,10 @@ indicators:
   - payment_records
   - supplier_audits
   false_positive_notes: Fees may be legitimately borne by employers in compliant models.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-089
   name: Payment of workers in cash with no payroll records
   description: Large cash payroll withdrawals with no tax or social contributions.
@@ -1112,6 +1464,10 @@ indicators:
   - payment_records
   - tax_filings
   false_positive_notes: Informal economy may lawfully include cash wages.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-090
   name: Seasonal worker mass remittance to few beneficiaries
   description: Many workers all send funds to one recipient in home country.
@@ -1123,6 +1479,10 @@ indicators:
   data_sources:
   - remittance_data
   false_positive_notes: Workers from one village may send to a single trusted agent.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-091
   name: Repeated low-value payments to overseas recipients with live-stream links
   description: Small recurring transfers to individuals in jurisdictions of known high-risk, with references
@@ -1136,6 +1496,10 @@ indicators:
   - remittance_data
   - payment_references
   false_positive_notes: Remittances to family and creator payments are common.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-092
   name: Crypto transfers to addresses linked to abuse marketplaces
   description: Customer sends virtual assets to wallets clustered with abuse-related services.
@@ -1147,6 +1511,10 @@ indicators:
   data_sources:
   - blockchain_analytics
   false_positive_notes: Mixed-use services create indirect exposure.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-093
   name: Family remittances for 'travel arrangements' to unfamiliar counterparties
   description: Repeated transfers from diaspora senders to third-country individuals with messages about
@@ -1160,6 +1528,10 @@ indicators:
   - remittance_data
   - payment_references
   false_positive_notes: Families fund legitimate travel and relocation.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-094
   name: Purchase of vessels, vehicles or boats and cash payments to boat suppliers
   description: Purchases of inflatable boats, engines, vans or lorries paid in cash by individuals with
@@ -1173,6 +1545,10 @@ indicators:
   - card_data
   - merchant_data
   false_positive_notes: Hobbyists and small businesses buy boats and engines.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-095
   name: Hotel, safe house or apartment payments for groups in transit hubs
   description: Short stays booked for many persons, paid by one individual or cash.
@@ -1185,6 +1561,10 @@ indicators:
   - card_data
   - booking_data
   false_positive_notes: Tourism, events and tour operators.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-096
   name: Payments for online adverts and hotels or short-stay lets for multiple rooms
   description: Frequent purchases of escort or commercial sex adverts, bulk hotel bookings and short-term
@@ -1198,6 +1578,10 @@ indicators:
   - card_data
   - merchant_data
   false_positive_notes: Hospitality and legitimate escort or event businesses exist.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-097
   name: Wage or benefit payments immediately withdrawn by another person
   description: Salary, welfare or loan proceeds are withdrawn in full by someone not the account holder
@@ -1212,6 +1596,10 @@ indicators:
   - atm_logs
   - payment_records
   false_positive_notes: Remittance to family is common after payday.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-098
   name: Large undeclared or inconsistent cross-border cash declarations
   description: Discrepancies between declared and found cash or declarations lacking purpose.
@@ -1223,6 +1611,10 @@ indicators:
   data_sources:
   - declaration_records
   false_positive_notes: Honest errors.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-099
   name: Large cash deposits soon after foreign travel
   description: Deposits follow trips to cash-prone jurisdictions.
@@ -1235,6 +1627,10 @@ indicators:
   - transaction_data
   - travel_data
   false_positive_notes: Tourism earnings.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-100
   name: Cash deposits exceed plausible business capacity
   description: Declared turnover or deposits are higher than the premises size, staffing, opening hours
@@ -1249,6 +1645,10 @@ indicators:
   - kyc_profile
   - peer_benchmarks
   false_positive_notes: New or fast-growing businesses can legitimately outperform peers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-101
   name: Deposits unsupported by supplier or cost-of-sales activity
   description: Cash takings are high but there are few payments to suppliers, rent, wages or tax authorities.
@@ -1261,6 +1661,10 @@ indicators:
   - transaction_data
   - accounts_payable_data
   false_positive_notes: Cash-paid suppliers or off-account costs may exist.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-102
   name: Sudden growth in cash volumes
   description: Step-change in deposit values or frequency without explanation such as new outlets or season.
@@ -1271,6 +1675,10 @@ indicators:
   data_sources:
   - transaction_data
   false_positive_notes: Expansion, promotion or events can explain growth.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-103
   name: Large cash withdrawals paired with deposits of equivalent value
   description: Cash is repeatedly withdrawn and redeposited, or round-tripped with associated accounts.
@@ -1281,6 +1689,10 @@ indicators:
   data_sources:
   - transaction_data
   false_positive_notes: Float management for tills may look similar.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-104
   name: Transaction volumes disproportionate to respondent's size
   description: Flows far exceed expected levels for the respondent's balance sheet or footprint.
@@ -1291,6 +1703,10 @@ indicators:
   data_sources:
   - transaction_data
   false_positive_notes: Business growth or new products.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-105
   name: Pooled flows with frequent round-sum payments
   description: Large round-value payments or repeated amounts for multiple unrelated beneficiaries.
@@ -1301,6 +1717,10 @@ indicators:
   data_sources:
   - transaction_data
   false_positive_notes: Settlement batches.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-106
   name: Aborted transactions with funds returned elsewhere
   description: Deals cancelled and money sent to different parties.
@@ -1312,6 +1732,10 @@ indicators:
   data_sources:
   - client_account_data
   false_positive_notes: Deals collapse.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-107
   name: Large cash payments to professional
   description: Fees or deposits in cash.
@@ -1322,6 +1746,10 @@ indicators:
   data_sources:
   - payment_records
   false_positive_notes: Small firms.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-108
   name: Large cash deposits followed by payments to many individuals or businesses
   description: Cash received and paid out to numerous parties abroad or locally.
@@ -1332,6 +1760,10 @@ indicators:
   data_sources:
   - transaction_data
   false_positive_notes: Payroll for distributed workers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-109
   name: Large single premium paid then early surrender
   description: Policy funded with lump sum and cancelled soon after, with refund to third party.
@@ -1343,6 +1775,10 @@ indicators:
   data_sources:
   - policy_data
   false_positive_notes: Policyholder circumstances change.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-110
   name: Overfunded policies and partial withdrawals
   description: Paid in excess of required premium then withdrawn.
@@ -1353,6 +1789,10 @@ indicators:
   data_sources:
   - policy_data
   false_positive_notes: Misestimates happen.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-111
   name: Securities deposited then transferred out without trading
   description: Shares deposited and moved with no market activity.
@@ -1363,6 +1803,10 @@ indicators:
   data_sources:
   - securities_data
   false_positive_notes: Custody moves.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-112
   name: Loan funded by related offshore party and repaid early
   description: Borrower receives loan from an entity linked to themselves and repays rapidly.
@@ -1375,6 +1819,10 @@ indicators:
   - loan_data
   - transaction_data
   false_positive_notes: Group financing.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-113
   name: Loan secured on assets or deposits from third parties of unclear origin
   description: Collateral is cash deposit or asset funded by unknown source.
@@ -1386,6 +1834,10 @@ indicators:
   data_sources:
   - collateral_records
   false_positive_notes: Cash-secured lending is common.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-114
   name: Unusual real-estate or luxury purchases
   description: High-value purchases by PEPs or associates abroad.
@@ -1398,6 +1850,10 @@ indicators:
   - land_registry
   - adverse_media
   false_positive_notes: Wealthy PEPs may buy property.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-115
   name: Funds move in fixed commission-like deductions
   description: Recurring small percentage retained from inbound flows consistent with fee-taking by an
@@ -1410,6 +1866,10 @@ indicators:
   data_sources:
   - transaction_data
   false_positive_notes: Brokers and payment agents charge fees.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-116
   name: Mortgage repaid early or from unusual sources
   description: Loan quickly settled in lump sum or by third parties.
@@ -1420,6 +1880,10 @@ indicators:
   data_sources:
   - loan_data
   false_positive_notes: Windfalls trigger early repayment.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-117
   name: Illicit and legitimate funds mixed in operating account
   description: Business income blended with unexplained inflows.
@@ -1431,6 +1895,10 @@ indicators:
   data_sources:
   - transaction_data
   false_positive_notes: Owner loans.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-118
   name: Frequent payments to the same third-party beneficiary of unclear purpose
   description: Recurring payments to unexplained counterparties.
@@ -1441,6 +1909,10 @@ indicators:
   data_sources:
   - transaction_data
   false_positive_notes: Subscriptions.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-119
   name: Multiple firearm or component purchases by one person for others
   description: Repeated purchases of guns, parts or ammunition inconsistent with sport use, paid by different
@@ -1454,6 +1926,10 @@ indicators:
   - card_data
   - dealer_records
   false_positive_notes: Collectors and ranges buy in volume.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-120
   name: Cash purchases with prompt resale or export
   description: Weapons purchased for cash and quickly moved abroad.
@@ -1465,6 +1941,10 @@ indicators:
   data_sources:
   - cash_data
   false_positive_notes: Collectors may sell.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-121
   name: Payments to manufacturers in known counterfeit production regions with no brand
   description: Payments to factories lacking licences.
@@ -1476,6 +1956,10 @@ indicators:
   data_sources:
   - payment_records
   false_positive_notes: Contract manufacturers exist.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-122
   name: Cash-out through gift cards, prepaid, or money mules in other countries
   description: Funds converted into hard-to-trace instruments.
@@ -1488,6 +1972,10 @@ indicators:
   - card_data
   - payment_records
   false_positive_notes: Gift cards are bought legitimately.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-123
   name: Regular fixed payments from a small business to an individual with no invoices
   description: Payments at regular intervals to a person or company with no service provided.
@@ -1499,6 +1987,10 @@ indicators:
   data_sources:
   - payment_records
   false_positive_notes: Rent and retainers also recur.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-124
   name: High-interest informal loans with repayments to non-lender individuals
   description: Repeated payments with high effective interest rates and rollovers.
@@ -1511,6 +2003,10 @@ indicators:
   - payment_records
   - loan_data
   false_positive_notes: Family loans are legit.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-125
   name: Wholesaler purchases far exceed local market demand
   description: Volumes of cigarettes or alcohol bought by a retailer or distributor exceed plausible consumption.
@@ -1523,6 +2019,10 @@ indicators:
   - invoices
   - sector_data
   false_positive_notes: Border areas and tourism cause higher sales.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-126
   name: Cross-border cash and remittance flows from retailers to overseas suppliers
   description: Regular remittances to suppliers in source countries without invoices.
@@ -1534,6 +2034,10 @@ indicators:
   data_sources:
   - remittance_data
   false_positive_notes: Diaspora shops import goods.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-127
   name: Payments that include references to designated or restricted entities
   description: Payment messages show names, addresses or vessels linked to restricted lists.
@@ -1546,6 +2050,10 @@ indicators:
   - swift_messages
   - sanctions_lists
   false_positive_notes: Partial name matches generate false hits.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-128
   name: Open-account trade with buyers in high-risk jurisdictions lacking track record
   description: New relationships with large unsecured trade flows to or from countries of proliferation
@@ -1558,6 +2066,10 @@ indicators:
   data_sources:
   - account_activity
   false_positive_notes: Genuine market entry occurs.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-129
   name: Large OTC or peer-to-peer purchases paid in cash or non-bank rails
   description: Purchases with limited traceability to source of funds.
@@ -1569,6 +2081,10 @@ indicators:
   data_sources:
   - otc_records
   false_positive_notes: Cash purchase happens in some markets.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-130
   name: Stablecoin use to hold value of designated person's funds
   description: Large stablecoin balances held with limited stated purpose by customers linked to designated
@@ -1581,6 +2097,10 @@ indicators:
   data_sources:
   - wallet_data
   false_positive_notes: Stablecoins are widely used for savings.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-131
   name: Payments from jurisdictions of concern in settlement of third-country sales
   description: Funds arrive from or return to parties in the restricted jurisdiction.
@@ -1592,6 +2112,10 @@ indicators:
   data_sources:
   - payment_messages
   false_positive_notes: Group treasury flows.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-132
   name: Multiple small shipments to avoid scrutiny
   description: Orders split into smaller consignments to stay below review thresholds.
@@ -1603,6 +2127,10 @@ indicators:
   data_sources:
   - order_data
   false_positive_notes: Just-in-time practices are common.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-133
   name: Fee arrangements disproportionate to services or paid by third parties
   description: Unusually high or opaque fees.
@@ -1614,6 +2142,10 @@ indicators:
   data_sources:
   - invoices
   false_positive_notes: Specialist work attracts high fees.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-134
   name: Asset transfers shortly before or after designation
   description: Titles move to relatives, trusts or associates around designation dates.
@@ -1625,6 +2157,10 @@ indicators:
   data_sources:
   - title_records
   false_positive_notes: Estate planning occurs.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-135
   name: Cargo priced near cap with inflated freight, insurance or ancillary charges
   description: Separately invoiced services carry unusually high costs.
@@ -1637,6 +2173,10 @@ indicators:
   - invoices
   - price_data
   false_positive_notes: Market volatility and war-risk premiums raise costs.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-136
   name: Payments in alternative currencies or via smaller banks
   description: Payments denominated or routed to avoid mainstream channels.
@@ -1647,6 +2187,10 @@ indicators:
   data_sources:
   - payment_messages
   false_positive_notes: Currency diversification is common.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-137
   name: Funding of a company by a designated person's connected sources
   description: Capital injections, loans or guarantees come from entities linked to a designated party.
@@ -1659,6 +2203,10 @@ indicators:
   - loan_agreements
   - account_activity
   false_positive_notes: Group financing is common.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-138
   name: Use of cover payments that omit underlying parties
   description: Cover message shows only the banks, with details of ultimate parties absent.
@@ -1670,6 +2218,10 @@ indicators:
   data_sources:
   - mt202cov_data
   false_positive_notes: Cover method is used for ordinary correspondent business.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-139
   name: Funds repatriated via cash, bearer instruments or third-party accounts
   description: Customer deposits foreign-sourced cash or cheques or receives funds from unrelated individuals,
@@ -1683,6 +2235,10 @@ indicators:
   - payment_records
   - cash_reports
   false_positive_notes: Gifts and family support can cause third-party transfers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-140
   name: Cash withdrawals match payroll amounts
   description: Large cash withdrawals shortly after receiving client funds, close to total weekly wages,
@@ -1696,6 +2252,10 @@ indicators:
   - payment_records
   - tax_payments
   false_positive_notes: Genuine cash-in-hand wages exist in some sectors.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-141
   name: Payments to workers just under tax or reporting thresholds
   description: Pay split into amounts staying below withholding or reporting thresholds.
@@ -1706,6 +2266,10 @@ indicators:
   data_sources:
   - payment_records
   false_positive_notes: Part-time work may legitimately fall below thresholds.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-142
   name: Declared turnover lower than card and bank takings imply
   description: Card acquiring volumes or supplier purchases suggest higher sales than the business reports
@@ -1720,6 +2284,10 @@ indicators:
   - tax_filings
   - payment_records
   false_positive_notes: Timing differences, refunds and tips affect reconciliation.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-143
   name: Cash deposits well below expected for business type
   description: A business with high card use but little cash banking, despite sector norms of cash trade.
@@ -1731,6 +2299,10 @@ indicators:
   - cash_deposit_data
   - sector_benchmarks
   false_positive_notes: Cash may be used to pay suppliers legitimately.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-144
   name: Payments in and out the same day with thin margin
   description: Funds received from buyer are paid onward to supplier, often same day, leaving little retained.
@@ -1741,6 +2313,10 @@ indicators:
   data_sources:
   - payment_records
   false_positive_notes: Distributors and agents may operate on thin margins and pass-through.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-145
   name: Many small donations from geographically diverse donors to a single organiser
   description: Large numbers of low-value contributions from many countries into one recipient account
@@ -1753,6 +2329,10 @@ indicators:
   - donation_data
   - payout_data
   false_positive_notes: Viral humanitarian appeals and memorial funds show similar patterns.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-146
   name: Urgent transfers described as emergency family or legal payments
   description: Customer receives or sends sudden large transfers framed as emergencies, to unfamiliar
@@ -1766,6 +2346,10 @@ indicators:
   - account_activity
   - payment_messages
   false_positive_notes: Genuine medical and legal emergencies produce similar urgency.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-147
   name: Cash collected from multiple unrelated individuals then moved abroad
   description: Collection of funds across diaspora members or business owners followed by consolidated
@@ -1779,6 +2363,10 @@ indicators:
   - cash_deposits
   - transfers
   false_positive_notes: Community fundraising for family and festivals is common.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-148
   name: Remittances from family or associates to individuals in border areas
   description: Recurrent small transfers to recipients in or near conflict zones with no clear family
@@ -1791,6 +2379,10 @@ indicators:
   data_sources:
   - remittance_data
   false_positive_notes: Diaspora families routinely support relatives in affected regions.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-149
   name: Loans or credit taken with no repayment intent
   description: Customer obtains borrowing and then leaves the jurisdiction, defaulting.
@@ -1802,6 +2394,10 @@ indicators:
   data_sources:
   - loan_data
   false_positive_notes: Job loss and financial trouble cause defaults.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-150
   name: Travel booked to destination near conflict via indirect route
   description: Itineraries with unusual routing, one-way tickets and short-notice booking inconsistent
@@ -1814,6 +2410,10 @@ indicators:
   data_sources:
   - travel_booking_data
   false_positive_notes: Budget travellers, migrants and workers regularly use multi-leg routes.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-151
   name: Settlement via trade, with mismatched invoices
   description: Offsetting flows are arranged through trade payments unrelated to the underlying goods.
@@ -1826,6 +2426,10 @@ indicators:
   - trade_documents
   - payment_data
   false_positive_notes: Genuine trade can be netted among related firms.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-152
   name: Rapid consumer credit drawdown with no stated purpose
   description: Customer takes several unsecured loans, credit cards or overdraft limits in a short window
@@ -1841,6 +2445,10 @@ indicators:
   - account_activity
   false_positive_notes: Common in financial distress, gambling or fraud victimisation; most such patterns
     are not terrorism related.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-153
   name: Payments to intermediaries in neighbouring transit jurisdictions
   description: Commodity proceeds are settled through agents or companies in jurisdictions adjacent to
@@ -1854,6 +2462,10 @@ indicators:
   - payment_messages
   - counterparty_data
   false_positive_notes: Regional hubs are common commercial centres.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-154
   name: Unusual use of cash or barter in commodity deals
   description: Settlement via cash, barter or netting arrangements without documentation.
@@ -1865,6 +2477,10 @@ indicators:
   data_sources:
   - settlement_records
   false_positive_notes: Barter and cash remain used in some commodity markets.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-155
   name: Rapid conversion of donations to stablecoins then off-ramp through peer-to-peer channels
   description: Funds are converted and cashed out using unregulated peer-to-peer exchanges.
@@ -1877,6 +2493,10 @@ indicators:
   - exchange_data
   - p2p_data
   false_positive_notes: P2P trading is a common legitimate on-ramp in some regions.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-156
   name: Sudden large inflows from newly funded unhosted wallets
   description: Large first deposits from unhosted wallets with no history, followed by immediate transfers
@@ -1888,6 +2508,10 @@ indicators:
   data_sources:
   - blockchain_analytics
   false_positive_notes: Users migrating between platforms behave this way.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-157
   name: Rapid chain of transfers between retirement schemes or providers
   description: A retirement balance moves through several schemes, providers or trustees in a short period
@@ -1902,6 +2526,10 @@ indicators:
   - account_data
   false_positive_notes: Members change providers for fees, consolidation or after job moves, and legitimate
     consolidation can involve several transfers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-158
   name: Settlement or award funded by a party with no link to the dispute
   description: The payment of a settlement or judgment comes from an unrelated third party, a newly created
@@ -1918,6 +2546,10 @@ indicators:
   - kyc_files
   false_positive_notes: Insurers, guarantors, parent companies and liability funds may legitimately pay
     on behalf of a respondent. Obtain the documentary basis for the payer.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-159
   name: Orders placed and cancelled without intent to execute
   description: Large orders are repeatedly entered and withdrawn before execution, or small orders are
@@ -1932,6 +2564,10 @@ indicators:
   - trade_data
   false_positive_notes: Market makers and algorithmic strategies legitimately cancel at high rates. Compare
     to the customer's stated strategy and the benefit on related positions.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-160
   name: Year-end or retrospective price adjustments between related parties
   description: Large true-up, credit-note or compensating payments between group companies at period end
@@ -1947,6 +2583,10 @@ indicators:
   - ledger_data
   false_positive_notes: Legitimate transfer-pricing policies often include year-end adjustments to align
     results with documented arm's-length ranges.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TXN-161
   name: Manual entries through internal or suspense accounts hiding customer flows
   description: Funds move via manual journals, suspense, clearing or staff-controlled internal accounts,
@@ -1962,3 +2602,7 @@ indicators:
   - user_activity_logs
   false_positive_notes: Operational corrections, reconciliations and settlement timing legitimately use
     internal accounts. Review ageing, authorisers and counterparties.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed

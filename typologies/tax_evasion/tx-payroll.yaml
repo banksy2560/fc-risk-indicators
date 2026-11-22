@@ -5,6 +5,23 @@ typology:
   description: Employers or labour providers underreport wages, create phantom workers, or operate short-lived
     'ghost' companies that collect payroll funds and never remit social insurance or withholding tax.
     Common in labour-intensive sectors using subcontracting chains and agency labour.
+  exposure:
+    channels:
+    - online_banking
+    - branch
+    payment_rails:
+    - cash
+    - payroll_expense
+    - fast_payments
+    customer_segments:
+    - sme
+    - professional_intermediary
+    - employee_internal
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Labour providers and ghost employers withdrawing cash payroll, paying workers via shared
+      accounts, and bogus self-employment; employees are the payees.
   sectors:
   - banking
   - payments

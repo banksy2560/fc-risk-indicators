@@ -6,6 +6,23 @@ typology:
     rhino horn, pangolin scales, timber species and live animals. Financial signs include front companies
     mixing legal and illegal trade, payments across source, transit and demand countries, and use of trade
     documents falsified to pass inspection.
+  exposure:
+    channels:
+    - online_platform
+    payment_rails:
+    - wire_swift
+    - cross_border_remittance
+    - trade_instruments
+    - cash
+    customer_segments:
+    - sme
+    - corporate
+    products:
+    - transaction_account
+    - trade_finance
+    basis: ai_inferred
+    rationale: Front import-export businesses, payments to officials and ground-level cash; sales advertised
+      on social media and marketplaces with app/crypto payments.
   sectors:
   - banking
   - payments

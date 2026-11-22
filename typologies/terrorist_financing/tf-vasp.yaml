@@ -5,6 +5,22 @@ typology:
   description: Terrorist supporters may solicit and move small to moderate amounts through virtual assets,
     using self-hosted wallets, privacy-enhanced assets, mixers or decentralised services. Risks are driven
     by pseudonymity and cross-border speed, balanced against traceability on public blockchains.
+  exposure:
+    channels:
+    - mobile_app
+    - online_banking
+    payment_rails:
+    - crypto_onramp_offramp
+    - fast_payments
+    customer_segments:
+    - retail
+    - new_to_bank
+    - fintech_psp
+    products:
+    - crypto_custody
+    - transaction_account
+    basis: ai_inferred
+    rationale: Self-hosted wallets, mixers, P2P exchanges, fiat on and off-ramps.
   sectors:
   - crypto
   - fintech

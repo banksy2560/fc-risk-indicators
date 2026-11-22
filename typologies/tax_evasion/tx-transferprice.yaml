@@ -8,6 +8,21 @@ typology:
     or recipient entities that lack the people or assets to justify the income. Banks, trade-finance providers
     and corporate service providers see the payments, invoices and structures even if they do not see
     the tax returns.
+  exposure:
+    channels:
+    - online_banking
+    payment_rails:
+    - wire_swift
+    - trade_instruments
+    customer_segments:
+    - corporate
+    products:
+    - transaction_account
+    - trade_finance
+    - loan_mortgage
+    basis: ai_inferred
+    rationale: Intra-group charges, royalties and intercompany loans to low-tax affiliates; conduit entities
+      with same-day pass-through.
   sectors:
   - banking
   - trade_finance

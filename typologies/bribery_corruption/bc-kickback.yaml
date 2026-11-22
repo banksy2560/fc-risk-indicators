@@ -5,6 +5,19 @@ typology:
   description: Improper payments or favours linked to public or private procurement, including kickbacks
     to buyers, inflated contract prices, bid rigging and phantom suppliers. Banks and corporates can detect
     patterns in supplier payments, related parties and post-award flows.
+  exposure:
+    channels: []
+    payment_rails:
+    - wire_swift
+    customer_segments:
+    - corporate
+    - sme
+    - pep_related
+    products:
+    - transaction_account
+    - trade_finance
+    basis: ai_inferred
+    rationale: Supplier payments and post-award flows to connected parties in procurement.
   sectors:
   - banking
   - corporate_services

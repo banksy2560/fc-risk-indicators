@@ -13,6 +13,10 @@ indicators:
   - wallet_addresses
   - customer_records
   false_positive_notes: Merchant or charity address.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-002
   name: Destination wallet linked to scam or fraud clusters
   description: Receiving address is attributed to investment, romance or impersonation scams.
@@ -24,6 +28,10 @@ indicators:
   data_sources:
   - blockchain_analytics
   false_positive_notes: Attribution lag.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-003
   name: Operator lacks effective transaction monitoring
   description: Operator fails to monitor wallets, refunds or complaints, allowing patterns to persist.
@@ -35,6 +43,10 @@ indicators:
   - audit_reports
   - complaints
   false_positive_notes: Early-stage operators.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-004
   name: Direct exposure to known darknet market addresses
   description: Customer deposits or withdrawals have direct or near-direct exposure to addresses attributed
@@ -47,6 +59,10 @@ indicators:
   data_sources:
   - blockchain_analytics
   false_positive_notes: Exposure through very diluted chains; researchers and journalists.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-005
   name: Use of mixers, privacy coins or privacy pools around platform activity
   description: Funds pass through mixers, privacy coins or privacy-preserving pools before or after platform
@@ -62,6 +78,10 @@ indicators:
   - trade_history
   - customer_profile
   false_positive_notes: Genuine privacy preference.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-006
   name: Payments for postage, packaging or related services alongside crypto activity
   description: Card and bank transactions to shipping supplies and anonymous mailbox services coincide
@@ -75,6 +95,10 @@ indicators:
   - bank_transactions
   - card_data
   false_positive_notes: Online sellers and small businesses.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-007
   name: Law-enforcement or media notice naming customer or wallet
   description: Third-party intelligence links the customer or addresses to marketplace activity.
@@ -86,6 +110,10 @@ indicators:
   - adverse_media
   - law_enforcement_requests
   false_positive_notes: Reporting errors or name matches.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-008
   name: Inbound funds traced to exploited protocols or hacks
   description: Deposits have provenance in a smart-contract exploit, bridge hack or theft attributed by
@@ -99,6 +127,10 @@ indicators:
   - blockchain_analytics
   - threat_intel
   false_positive_notes: Funds returned under a bounty or recovered legitimately.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-009
   name: Interaction with sanctioned or designated contracts, mixers or addresses
   description: Transfers touch contracts, pools, relayers or addresses designated by authorities or flagged
@@ -112,6 +144,10 @@ indicators:
   - sanctions_lists
   - blockchain_analytics
   false_positive_notes: Indirect exposure via shared liquidity.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-010
   name: Collusive purchases between related buyer and seller accounts
   description: Accounts sharing devices or funding sources transact with each other to create revenue.
@@ -123,6 +159,10 @@ indicators:
   - order_data
   - device_data
   false_positive_notes: Family businesses.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-011
   name: Buyers directed off-platform to pay
   description: Messaging encourages payment via transfer or crypto outside platform protections.
@@ -134,6 +174,10 @@ indicators:
   - message_logs
   - complaints
   false_positive_notes: Local community norms.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-012
   name: Deposits with direct or indirect exposure to mixing services
   description: Incoming virtual asset transfers trace to known mixer or tumbler clusters within a small
@@ -148,6 +192,10 @@ indicators:
   - wallet_addresses
   false_positive_notes: Users of privacy tools for lawful privacy reasons, or exposure via a long, diluted
     transaction chain.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-013
   name: Unlicensed or unregistered operator behaviour
   description: Individuals operate collection points or chat-app based services with no licence.
@@ -160,6 +208,10 @@ indicators:
   - web_intel
   - complaints
   false_positive_notes: Informal community services without profit.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-014
   name: Wash or matched trades between connected parties
   description: Assets or securities are traded repeatedly between linked accounts or wallets at unrealistic
@@ -175,6 +227,10 @@ indicators:
   - marketplace_data
   - trade_data
   false_positive_notes: Collectors moving assets between own wallets.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-015
   name: Accounts bought with stolen cards then items resold
   description: Chargebacks on purchases of currency or items followed by transfer to other accounts.
@@ -186,6 +242,10 @@ indicators:
   - payment_data
   - chargeback_data
   false_positive_notes: Genuine friendly fraud.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-016
   name: Transaction descriptors or products inconsistent with registered business
   description: Card data show goods or services unrelated to the merchant's declared activity or website.
@@ -197,6 +257,10 @@ indicators:
   - transaction_data
   - merchant_profile
   false_positive_notes: Diversified merchants.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-017
   name: Use of multiple shell merchant accounts to spread volume
   description: Volumes distributed across many accounts to stay below monitoring thresholds.
@@ -209,6 +273,10 @@ indicators:
   - merchant_records
   - transaction_data
   false_positive_notes: Business structure choices.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-018
   name: Tops-up with fraudulent funding sources
   description: Loads via cards or accounts reported stolen, followed by cash-out.
@@ -220,6 +288,10 @@ indicators:
   - chargeback_data
   - load_records
   false_positive_notes: Disputed genuine charges.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-019
   name: Wallet attributed to ransomware or theft actors
   description: Source or destination address is attributed to ransomware affiliates, theft or designated
@@ -234,6 +306,10 @@ indicators:
   - sanctions_lists
   - threat_intelligence
   false_positive_notes: Attribution may be outdated.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-020
   name: Unhosted wallet with high-risk counterparties in history
   description: Self-hosted address has prior exposure to illicit services, scams or sanctioned addresses.
@@ -245,6 +321,10 @@ indicators:
   data_sources:
   - blockchain_analytics
   false_positive_notes: Inherited exposure from dusting.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-021
   name: Inflated baseline or additionality claims
   description: Reduction claims implausible versus public data or comparable projects.
@@ -257,6 +337,10 @@ indicators:
   - project_documents
   - scientific_data
   false_positive_notes: Methodologies are technical and contested.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-022
   name: Mercury, cyanide and equipment purchases without mining licence
   description: Purchase of dredges, mercury or bulk chemicals by unlicensed persons.
@@ -269,6 +353,10 @@ indicators:
   - merchant_data
   - import_records
   false_positive_notes: Industrial users buy chemicals.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-023
   name: Scam web domains or phone numbers reported
   description: External intelligence indicates active campaigns.
@@ -279,6 +367,10 @@ indicators:
   data_sources:
   - threat_intel
   false_positive_notes: False reports.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-024
   name: Mass of near-identical SMS or links referencing parcels or fines
   description: Bank brand impersonation campaigns observed in threat feeds and customer reports.
@@ -290,6 +382,10 @@ indicators:
   - threat_intel
   - customer_reports
   false_positive_notes: Legitimate notices.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-025
   name: Claim shortly after policy inception or increase in cover
   description: Loss occurs soon after purchase or upgrade of cover.
@@ -302,6 +398,10 @@ indicators:
   - policy_data
   - claims_data
   false_positive_notes: Genuine early loss.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-026
   name: Staged or contrived accident indicators
   description: Low-impact incidents with multiple occupants, witness and similar circumstances.
@@ -312,6 +412,10 @@ indicators:
   data_sources:
   - claims_data
   false_positive_notes: Genuine busy-road incidents.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-027
   name: Ghost employee or duplicate bank account on payroll
   description: Payroll records show employees without HR evidence or shared bank details.
@@ -323,6 +427,10 @@ indicators:
   - payroll_data
   - hr_data
   false_positive_notes: Shared family accounts.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-028
   name: Promised returns far above market with low stated risk
   description: Operator marketing guarantees consistently high returns, often with testimonials and urgency;
@@ -336,6 +444,10 @@ indicators:
   - marketing_material
   - customer_statements
   false_positive_notes: Genuine high-risk, high-return products clearly disclosed.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-029
   name: Cash concealed in vehicles, shipments or parcels
   description: Cash found hidden in goods, freight or mail.
@@ -347,6 +459,10 @@ indicators:
   data_sources:
   - seizure_reports
   false_positive_notes: Rare.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-030
   name: Business type inconsistent with location or customer base
   description: Cash business operating where demand appears limited, with few visible customers or irregular
@@ -360,6 +476,10 @@ indicators:
   - site_visit_reports
   - open_source_data
   false_positive_notes: Online-only operations or early-stage businesses may appear quiet.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-031
   name: Junket or VIP operators moving funds across borders
   description: Junket arrangements shift large funds without clear play.
@@ -371,6 +491,10 @@ indicators:
   data_sources:
   - junket_records
   false_positive_notes: Genuine VIP markets.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-032
   name: Player collusion or chip-dumping
   description: Players lose deliberately to a counterpart.
@@ -382,6 +506,10 @@ indicators:
   data_sources:
   - game_data
   false_positive_notes: Rare coincidence.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-033
   name: Professional's role unusual for the work
   description: Professional acts as nominee, director, or intermediary beyond normal remit.
@@ -392,6 +520,10 @@ indicators:
   data_sources:
   - engagement_letters
   false_positive_notes: Trust services.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-034
   name: Settlement via trade, invoices or gold
   description: Balancing between brokers is done through goods, invoices or precious metals.
@@ -403,6 +535,10 @@ indicators:
   data_sources:
   - trade_documents
   false_positive_notes: Real trade also exists.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-035
   name: Vehicle purchased for cash and exported quickly
   description: Luxury cars bought and shipped abroad soon after.
@@ -414,6 +550,10 @@ indicators:
   data_sources:
   - export_records
   false_positive_notes: Exporters operate.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-036
   name: Circular trade or invoices among connected entities
   description: Invoices cycled among related firms, returning funds to origin.
@@ -425,6 +565,10 @@ indicators:
   data_sources:
   - transaction_data
   false_positive_notes: Group trading.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-037
   name: Activities do not match stated objects
   description: Spending outside charitable purposes.
@@ -436,6 +580,10 @@ indicators:
   data_sources:
   - financial_statements
   false_positive_notes: Mission drift.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-038
   name: Complex use of multiple services for single flow
   description: One flow touches cash, remitters, trade invoices, crypto and corporate accounts in a short
@@ -449,6 +597,10 @@ indicators:
   - transaction_data
   - cross_channel_logs
   false_positive_notes: Complex corporate treasury flows exist.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-039
   name: Currency denomination or condition anomalies
   description: Cash arrives in unusual bundles, rubber-banded small notes, or mixed denominations inconsistent
@@ -462,6 +614,10 @@ indicators:
   - cash_handling_notes
   - teller_observations
   false_positive_notes: Retail cash is often in small notes; condition varies by source.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-040
   name: Phantom shipment indicators
   description: 'No verifiable movement of goods: missing tracking, inspection or insurance evidence.'
@@ -474,6 +630,10 @@ indicators:
   - shipping_data
   - inspection_reports
   false_positive_notes: Smaller shipments may lack tracking.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-041
   name: Bulk company formation for undisclosed clients
   description: TCSP forms large numbers of entities with little client information.
@@ -485,6 +645,10 @@ indicators:
   data_sources:
   - registry_data
   false_positive_notes: Formation agents serve volume clients.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-042
   name: Counterfeit pharmaceuticals or safety-critical parts
   description: Medicines or auto parts from unlicensed sources.
@@ -496,6 +660,10 @@ indicators:
   data_sources:
   - regulator_alerts
   false_positive_notes: Generics are lawful.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-043
   name: Unusual betting patterns on lower-league or youth matches
   description: Large late stakes on obscure markets.
@@ -507,6 +675,10 @@ indicators:
   data_sources:
   - integrity_alerts
   false_positive_notes: Sharp bettors exist.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-044
   name: Nested relationships with unidentified downstream banks
   description: Respondent processes payments for other banks without disclosure.
@@ -518,6 +690,10 @@ indicators:
   data_sources:
   - respondent_data
   false_positive_notes: Some nested arrangements are legitimate and permitted.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-045
   name: Trade-related payments through correspondent for goods of proliferation concern
   description: Payments relate to goods on control lists or to parties on alerts.
@@ -529,6 +705,10 @@ indicators:
   data_sources:
   - payment_references
   false_positive_notes: Generic words can create false hits.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-046
   name: Orders for items matching procurement watch lists or inquiries
   description: Goods, parties or addresses match published alerts by export-control or enforcement authorities.
@@ -541,6 +721,10 @@ indicators:
   - watchlists
   - government_alerts
   false_positive_notes: List data may be dated or generic.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-047
   name: AIS gaps in sensitive areas
   description: Vessel stops transmitting position data for extended periods near ports or transhipment
@@ -554,6 +738,10 @@ indicators:
   - ais_data
   - vessel_tracking
   false_positive_notes: Poor coverage and equipment faults cause gaps.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-048
   name: Frequent flag changes or flagging in registries with weak oversight
   description: Short intervals between flag changes or use of open registries with poor enforcement.
@@ -565,6 +753,10 @@ indicators:
   data_sources:
   - vessel_registry_data
   false_positive_notes: Sale and commercial reasons motivate flag changes.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-049
   name: Ship-to-ship transfers without clear commercial purpose
   description: Vessel meets others at sea off normal transfer areas, followed by a changed declared destination.
@@ -578,6 +770,10 @@ indicators:
   - satellite_imagery
   - cargo_documents
   false_positive_notes: STS operations are routine in certain trades.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-050
   name: Vessel or aircraft registered under flags of convenience with managers in secrecy locations
   description: Registration choices obscure the true owner.
@@ -590,6 +786,10 @@ indicators:
   - ship_registry
   - aircraft_registry
   false_positive_notes: Flags of convenience are mainstream.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-051
   name: Tanker with older age, unusual classification, or no recognised P&I
   description: Vessels outside mainstream commercial insurance and class regimes carry the cargo.
@@ -602,6 +802,10 @@ indicators:
   - vessel_data
   - insurance_documents
   false_positive_notes: Older vessels trade lawfully.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-052
   name: Screening alerts closed repeatedly for the same pattern with minimal rationale
   description: Internal indicator of weak alert handling that may mask manipulation.
@@ -612,6 +816,10 @@ indicators:
   data_sources:
   - alert_records
   false_positive_notes: Genuine recurrent false positives.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-053
   name: Goods are high-value, low-weight and easily moved
   description: Trade in mobile phones, chips, precious metals, or CO2 allowances with no storage or transport
@@ -625,6 +833,10 @@ indicators:
   - invoices
   - shipping_documents
   false_positive_notes: These goods are legitimate high-volume trade lines.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-054
   name: Campaign narrative linked to extremist content or designated groups
   description: Fundraising page, post or channel references violent groups, glorifies violence or is linked
@@ -639,6 +851,10 @@ indicators:
   - open_source_intel
   false_positive_notes: Political or religious speech, and news reporting, may reference the same topics
     lawfully.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-055
   name: Business pays recurring unexplained amounts to regional intermediaries
   description: Operators in conflict-affected areas make periodic payments to individuals labelled as
@@ -653,6 +869,10 @@ indicators:
   - accounts_payable
   - payment_data
   false_positive_notes: Private security and facilitation fees can be lawful but need documentation.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-056
   name: Purchase of equipment commonly carried by fighters
   description: Retail purchases of outdoor, protective, communication or medical gear in unusual quantity
@@ -665,6 +885,10 @@ indicators:
   data_sources:
   - card_transactions
   false_positive_notes: Hiking, camping and humanitarian volunteering generate the same purchases.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-057
   name: Purchases consistent with attack preparation reported by authorities
   description: Spending on items or services that match typologies shared by law enforcement or public-private
@@ -680,6 +904,10 @@ indicators:
   - merchant_category_data
   false_positive_notes: Individual purchases are lawful; only the combination, timing and external intel
     make it meaningful.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-058
   name: Operations in high-risk areas without credible delivery evidence
   description: Organisation sends funds to areas with active terrorist presence but cannot evidence projects,
@@ -696,6 +924,10 @@ indicators:
   - transaction_data
   false_positive_notes: Humanitarian actors in crisis zones often work through informal channels and face
     real documentation barriers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-059
   name: Funding flows following government transfers to non-state entities
   description: Payments from state or quasi-state entities to private firms or individuals lacking evident
@@ -709,6 +941,10 @@ indicators:
   - payment_data
   - adverse_media
   false_positive_notes: Grants and subsidies to private recipients are common.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-060
   name: Solicitation of donations via social channels using addresses linked to extremist content
   description: Publicly advertised wallet addresses appear in extremist channels or campaigns.
@@ -721,6 +957,10 @@ indicators:
   - open_source_intel
   - blockchain_analytics
   false_positive_notes: Open-source attribution may be unreliable.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-061
   name: Payments by relatives for release or "fees" for a person held abroad
   description: Customers, often family members, send urgent payments abroad described as fees, fines or
@@ -737,6 +977,10 @@ indicators:
   - case_notes
   false_positive_notes: Genuine emergency payments for relatives in legal or medical difficulty abroad,
     or legitimate bail and consular costs, can look similar.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-062
   name: Stored goods change title or are revalued repeatedly with no physical movement
   description: Ownership of goods held in secure storage passes between parties, or declared value changes
@@ -753,6 +997,10 @@ indicators:
   - registry_data
   false_positive_notes: Dealers, collectors and investment funds legitimately trade stored stock without
     moving it. Concern is a chain of related-party sales or valuations that diverge from the market.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-063
   name: Image-rights or endorsement income paid to a third-country entity instead of the athlete
   description: Earnings from endorsement, image or commercial rights are directed to a company or account
@@ -769,6 +1017,10 @@ indicators:
   false_positive_notes: Athletes legitimately use personal service companies and image-rights vehicles,
     often for tax planning. Concern arises when the vehicle's location, ownership or timing has no commercial
     explanation.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-064
   name: Sponsorship or naming-rights spend with no measurable promotional deliverables
   description: A sponsor pays substantial amounts to a sports body, club or event but there is little
@@ -784,6 +1036,10 @@ indicators:
   - payment_records
   false_positive_notes: Philanthropic or owner-affiliated sponsorships and early-stage brand investment
     may have little measurable return.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-065
   name: Trading ahead of material non-public announcements
   description: A customer or linked accounts take unusually large or well-timed positions shortly before
@@ -803,6 +1059,10 @@ indicators:
   false_positive_notes: Skilled analysis of public information, sector-wide positioning, scheduled portfolio
     rebalancing or pre-planned option exercises can look similar. Look for repeat timing and links to
     insiders.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-066
   name: Promotion campaign alongside concentrated selling by connected holders
   description: Coordinated social-media, messaging-group or cold-call promotion of a low-priced instrument
@@ -820,6 +1080,10 @@ indicators:
   - account_holder_links
   false_positive_notes: Genuine news, index inclusion or legitimate investor-relations activity can raise
     interest and volume. Weight the link between promoters and sellers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-067
   name: Token deployer or insider wallets distributing holdings into promoted price rise
   description: Wallets linked to a token's creator, early allocation or liquidity pool move large balances
@@ -835,6 +1099,10 @@ indicators:
   - exchange_deposit_data
   false_positive_notes: Vesting schedules, treasury management and disclosed team allocations can involve
     similar transfers. Check against published token schedules.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-TYP-068
   name: Royalty, licence or intangible-asset payments concentrated in a low-tax affiliate with minimal
     functions
@@ -852,3 +1120,7 @@ indicators:
   - financial_statements
   false_positive_notes: Many groups hold intellectual property in a central entity for legitimate commercial
     reasons, and rates may be supported by a formal transfer-pricing study.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed

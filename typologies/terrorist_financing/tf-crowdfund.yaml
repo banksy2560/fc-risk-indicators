@@ -6,6 +6,26 @@ typology:
     solicit small donations across many jurisdictions for violent groups, often presenting as humanitarian
     or community causes. Detection combines campaign content intelligence with payment patterns across
     payment processors, banks and platforms.
+  exposure:
+    channels:
+    - mobile_app
+    - online_banking
+    - api_open_banking
+    payment_rails:
+    - fast_payments
+    - card
+    - crypto_onramp_offramp
+    - stored_value_wallet
+    customer_segments:
+    - retail
+    - fintech_psp
+    - nonprofit
+    products:
+    - transaction_account
+    - prepaid_stored_value
+    - crypto_custody
+    basis: ai_inferred
+    rationale: Online fundraising with many small donations via platforms and wallets.
   sectors:
   - payments
   - fintech

@@ -6,6 +6,21 @@ typology:
     chains of wallets, mixers, exchanges and over-the-counter brokers. Victims and their facilitators,
     such as incident response firms and insurers, also create exposure. Institutions may detect either
     victim payments or operator cash-out.
+  exposure:
+    channels:
+    - online_banking
+    payment_rails:
+    - crypto_onramp_offramp
+    - wire_swift
+    customer_segments:
+    - corporate
+    - sme
+    - professional_intermediary
+    products:
+    - crypto_custody
+    - insurance_pension
+    basis: ai_inferred
+    rationale: Victim payments via exchanges/OTC and operator cash-out; insurers and IR facilitators.
   stage:
   - layering
   - integration

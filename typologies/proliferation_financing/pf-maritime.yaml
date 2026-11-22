@@ -6,6 +6,24 @@ typology:
     disable or falsify identification signals, and conduct cargo transfers at sea. Maritime due diligence
     uses vessel history, tracking data and ownership analysis to identify these behaviours without relying
     only on documents.
+  exposure:
+    channels:
+    - broker_intermediary
+    payment_rails:
+    - wire_swift
+    - trade_instruments
+    - insurance_premium_claim
+    customer_segments:
+    - corporate
+    - designated_person
+    products:
+    - trade_finance
+    - correspondent_account
+    - insurance_pension
+    - real_assets
+    basis: ai_inferred
+    rationale: Shipowners, managers and charterers using flag hopping, AIS manipulation and STS transfers;
+      vessel is the real asset; insurance and P&I changes.
   sectors:
   - banking
   - trade_finance

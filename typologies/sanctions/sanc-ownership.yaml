@@ -6,6 +6,23 @@ typology:
     thresholds, using nominees, trusts, family members or layered holding companies. Detection depends
     on ownership and control analysis that looks beyond percentage holdings to influence, funding and
     benefit.
+  exposure:
+    channels:
+    - face_to_face_professional
+    - digital_onboarding
+    payment_rails:
+    - wire_swift
+    customer_segments:
+    - designated_person
+    - corporate
+    - private_wealth
+    - professional_intermediary
+    products:
+    - transaction_account
+    - company_formation_services
+    basis: ai_inferred
+    rationale: Designated persons holding control via nominees, relatives and layered holding companies;
+      exposed at onboarding and ownership screening.
   sectors:
   - banking
   - corporate_services

@@ -6,6 +6,22 @@ typology:
     and SIM swaps, or recruit and trick people into acting as money mules, in order to receive and move
     proceeds of cyber-enabled fraud. Networks of mule accounts layer funds quickly to cash-out channels,
     often across institutions.
+  exposure:
+    channels:
+    - online_banking
+    - mobile_app
+    payment_rails:
+    - fast_payments
+    - cash
+    customer_segments:
+    - retail
+    - student_youth
+    - vulnerable_elderly
+    - new_to_bank
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Account takeover and mule accounts moving scam proceeds quickly to cash-out.
   stage:
   - layering
   sectors:

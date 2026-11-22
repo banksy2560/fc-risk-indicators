@@ -6,6 +6,21 @@ typology:
     privacy-enhancing tools and rapid conversions between assets and blockchains. The aim is to break
     the link between illicit source and final cash-out point. Regulated platforms see this as exposure
     to mixers, layered swaps and unusually fast pass-through.
+  exposure:
+    channels:
+    - online_platform
+    - digital_onboarding
+    payment_rails:
+    - crypto_onramp_offramp
+    customer_segments:
+    - retail
+    - fintech_psp
+    products:
+    - crypto_custody
+    - onchain_defi
+    basis: ai_inferred
+    rationale: Mixers, privacy coins and chain-hopping seen at crypto platform deposits and withdrawals;
+      often remote and anonymised access.
   stage:
   - layering
   sectors:

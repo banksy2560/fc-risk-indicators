@@ -7,6 +7,18 @@ typology:
     bypassed. Defensive focus is on spotting the signs at three levels: the individual insider, the institution''s
     own governance and reporting, and counterparty institutions whose behaviour no longer matches their
     size and customer base.'
+  exposure:
+    channels:
+    - branch
+    payment_rails:
+    - wire_swift
+    customer_segments:
+    - fintech_psp
+    products:
+    - correspondent_account
+    basis: ai_inferred
+    rationale: Insider and counterparty-bank complicity; correspondent/respondent relationships and staff
+      override.
   sectors:
   - all
   sources:

@@ -5,6 +5,23 @@ typology:
   description: Offenders use stolen personal data or blend real and fabricated data to open accounts and
     credit. Synthetic identities are nurtured over time before large drawdowns, making them hard to link
     to a real victim.
+  exposure:
+    channels:
+    - online_banking
+    - mobile_app
+    - branch
+    payment_rails:
+    - card
+    customer_segments:
+    - new_to_bank
+    - retail
+    - student_youth
+    products:
+    - credit_card
+    - loan_mortgage
+    - transaction_account
+    basis: ai_inferred
+    rationale: Account and credit opening with stolen/synthetic identities.
   sectors:
   - banking
   - payments

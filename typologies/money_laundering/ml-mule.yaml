@@ -5,6 +5,22 @@ typology:
   description: Individuals, witting or unwitting, whose accounts or identities are used to receive and
     move criminal proceeds on behalf of others, often recruited via fake job offers, romance scams or
     social media. Mule activity is a key layering and cash-out step for fraud and other crime proceeds.
+  exposure:
+    channels:
+    - mobile_app
+    - online_banking
+    payment_rails:
+    - fast_payments
+    - crypto_onramp_offramp
+    - cash
+    customer_segments:
+    - student_youth
+    - new_to_bank
+    - retail
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Mule accounts receive and forward funds rapidly, often young or new customers.
   stage:
   - placement
   - layering

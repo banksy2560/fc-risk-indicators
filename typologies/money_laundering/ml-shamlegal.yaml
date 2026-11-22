@@ -6,6 +6,21 @@ typology:
     to move money and to give it a documented, apparently lawful origin. The parties are typically connected,
     the claim has little commercial substance and the payout follows quickly. Lawyers, escrow and client
     accounts, and receiving banks are the main exposure points.
+  exposure:
+    channels:
+    - face_to_face_professional
+    payment_rails:
+    - wire_swift
+    customer_segments:
+    - professional_intermediary
+    - regulated_nonbank_dnfbp
+    - corporate
+    - private_wealth
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Law-firm client and escrow accounts and receiving banks handle settlement and award payouts
+      between related parties; wire-based.
   stage:
   - layering
   - integration

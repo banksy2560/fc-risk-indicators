@@ -5,6 +5,23 @@ typology:
   description: State-linked actors may raise revenue through cyber-enabled theft of virtual assets and
     funds, and through overseas IT workers who conceal identity and location. This typology is described
     only at indicator level to support detection and screening, without operational detail.
+  exposure:
+    channels:
+    - online_banking
+    payment_rails:
+    - crypto_onramp_offramp
+    - fast_payments
+    - cross_border_remittance
+    customer_segments:
+    - non_resident
+    - fintech_psp
+    - sme
+    products:
+    - crypto_custody
+    - transaction_account
+    basis: ai_inferred
+    rationale: Cyber-theft proceeds via VASPs and OTC desks; IT-worker earnings routed to third-party
+      accounts.
   sectors:
   - banking
   - crypto

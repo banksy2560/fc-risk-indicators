@@ -5,6 +5,20 @@ typology:
   description: Schemes in which criminals lend their own illicit funds to themselves or their entities
     through apparently legitimate loans, or send funds abroad and return them as investment, loans or
     trade receipts. Documentation creates a credible-looking origin for the money.
+  exposure:
+    channels:
+    - branch
+    payment_rails:
+    - wire_swift
+    customer_segments:
+    - corporate
+    - private_wealth
+    - sme
+    products:
+    - loan_mortgage
+    - savings_deposit
+    basis: ai_inferred
+    rationale: Self-funded loans, cash-collateralised lending and offshore round-tripping.
   stage:
   - layering
   - integration

@@ -8,6 +8,24 @@ typology:
     newly listed tokens, linked or nominee accounts and coordinated promotion. The proceeds are quickly
     withdrawn, moved offshore or converted, so surveillance and AML teams need shared visibility of trading
     behaviour and money movement.
+  exposure:
+    channels:
+    - online_banking
+    - api_open_banking
+    payment_rails:
+    - securities_settlement
+    - crypto_onramp_offramp
+    - wire_swift
+    customer_segments:
+    - retail
+    - private_wealth
+    - corporate
+    products:
+    - investment_securities
+    - crypto_custody
+    - transaction_account
+    basis: ai_inferred
+    rationale: Trading accounts and token venues; proceeds moved offshore or into virtual assets.
   stage:
   - placement
   - layering

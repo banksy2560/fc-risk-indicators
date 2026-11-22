@@ -5,6 +5,21 @@ typology:
   description: Illegal collection, export, treatment or dumping of hazardous or regulated waste, often
     disguised as second-hand goods or recyclables and shipped to countries with weak controls. Profits
     come from avoided disposal costs and falsified treatment records.
+  exposure:
+    channels: []
+    payment_rails:
+    - wire_swift
+    - trade_instruments
+    - cash
+    customer_segments:
+    - sme
+    - corporate
+    products:
+    - trade_finance
+    - transaction_account
+    basis: ai_inferred
+    rationale: Waste firms, shippers and brokers disguising waste as used goods; cash to informal tippers
+      and rotating shell operators.
   sectors:
   - banking
   - corporate_services

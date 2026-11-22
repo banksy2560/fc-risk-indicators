@@ -5,6 +5,23 @@ typology:
   description: Fraudulent creation, sale or claiming of carbon credits and emissions allowances, including
     double counting, non-existent projects, inflated baselines, VAT fraud on allowance trading and misleading
     offset claims. Fraud harms climate goals and investors.
+  exposure:
+    channels:
+    - broker_intermediary
+    - online_platform
+    payment_rails:
+    - wire_swift
+    customer_segments:
+    - corporate
+    - sme
+    - retail
+    - professional_intermediary
+    products:
+    - investment_securities
+    - real_assets
+    basis: ai_inferred
+    rationale: Carbon credits and allowances traded via brokers and registries, sold to corporates and
+      retail; credits are an asset outside the bank.
   sectors:
   - banking
   - securities

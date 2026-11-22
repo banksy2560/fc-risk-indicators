@@ -5,6 +5,20 @@ typology:
   description: Breaking up cash or other value into amounts kept below reporting, identification or internal
     review thresholds, often using many deposits, branches, accounts or individuals. It is mainly a placement
     technique and is commonly paired with rapid onward movement of funds.
+  exposure:
+    channels:
+    - branch
+    - atm
+    - agent_network
+    payment_rails:
+    - cash
+    customer_segments:
+    - retail
+    - sme
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Sub-threshold cash deposits across branches, ATMs and agents.
   stage:
   - placement
   sectors:

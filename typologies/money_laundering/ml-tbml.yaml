@@ -5,6 +5,19 @@ typology:
   description: Disguising proceeds of crime and moving value through trade transactions by manipulating
     invoicing, quantity, quality or description of goods and services. Techniques include over- and under-invoicing,
     multiple invoicing, phantom shipments and use of unrelated third parties.
+  exposure:
+    channels:
+    - branch
+    payment_rails:
+    - trade_instruments
+    - wire_swift
+    customer_segments:
+    - corporate
+    - sme
+    products:
+    - trade_finance
+    basis: ai_inferred
+    rationale: Invoice manipulation and LC/bill of lading discrepancies in trade finance.
   stage:
   - layering
   - integration

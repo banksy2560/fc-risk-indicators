@@ -5,6 +5,20 @@ typology:
   description: Criminals compromise or spoof email accounts to impersonate executives or suppliers and
     redirect payments to accounts they control. Typical outcomes are urgent wire requests or changed bank
     details on genuine invoices.
+  exposure:
+    channels:
+    - online_banking
+    - api_open_banking
+    payment_rails:
+    - wire_swift
+    - fast_payments
+    customer_segments:
+    - sme
+    - corporate
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Business payment redirection via email compromise, mostly wires.
   sectors:
   - banking
   - payments

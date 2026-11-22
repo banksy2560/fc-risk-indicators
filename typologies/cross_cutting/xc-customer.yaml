@@ -6,6 +6,18 @@ typology:
     Covers politically exposed persons, non-residents, cash-intensive businesses, complex structures,
     reluctance to provide information and negative news. Used as the customer-risk dimension of an enterprise-wide
     or customer risk assessment.
+  exposure:
+    channels: []
+    payment_rails: []
+    customer_segments:
+    - pep_related
+    - non_resident
+    - sme
+    - corporate
+    products: []
+    basis: ai_inferred
+    rationale: 'Generic customer-type risk: PEPs, non-residents, cash-intensive and complex-structure
+      customers.'
   sectors:
   - all
   sources:

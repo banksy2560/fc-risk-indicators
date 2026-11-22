@@ -4,6 +4,21 @@ typology:
   domain: fraud
   description: Victims are lured by promises of prizes, inheritances, jobs or loans and asked to pay fees
     in advance. Scam networks operate across borders using mass communications and mule accounts.
+  exposure:
+    channels:
+    - online_banking
+    - mobile_app
+    payment_rails:
+    - fast_payments
+    - cross_border_remittance
+    - cheque
+    customer_segments:
+    - retail
+    - vulnerable_elderly
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Victims pay fees; overpayment cheque variants; mule receiving accounts.
   sectors:
   - banking
   - payments

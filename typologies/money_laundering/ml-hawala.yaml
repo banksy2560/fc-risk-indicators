@@ -5,6 +5,24 @@ typology:
   description: Informal value transfer systems that move value without or alongside formal banking, settling
     through netting, trade or cash, with limited records. They serve legitimate remittance needs but are
     also abused for laundering and for evasion of controls.
+  exposure:
+    channels:
+    - agent_network
+    - branch
+    payment_rails:
+    - informal_value_transfer
+    - cross_border_remittance
+    - cash
+    customer_segments:
+    - msb_remitter
+    - retail
+    - sme
+    - non_resident
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Informal operators settling by netting, trade or cash, using pooled bank accounts as collection
+      points.
   stage:
   - layering
   sectors:

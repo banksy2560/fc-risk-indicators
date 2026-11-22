@@ -5,6 +5,24 @@ typology:
   description: Smuggling, counterfeit and illegal manufacture of tobacco and other excise goods to avoid
     duty, including diversion from duty suspension, undeclared transit and sale through informal retail.
     Cash proceeds are layered via small shops, wholesalers and cross-border transfers.
+  exposure:
+    channels:
+    - branch
+    - merchant_acquiring
+    payment_rails:
+    - cash
+    - cross_border_remittance
+    - wire_swift
+    - trade_instruments
+    customer_segments:
+    - sme
+    - corporate
+    products:
+    - transaction_account
+    - merchant_services
+    - trade_finance
+    basis: ai_inferred
+    rationale: Cash-heavy retailers and wholesalers, cash deposits and supplier remittances.
   sectors:
   - banking
   - payments

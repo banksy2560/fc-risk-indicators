@@ -5,6 +5,23 @@ typology:
   description: Fishing in breach of licence, quota or location rules, often with transhipment at sea,
     vessel identity changes and forced labour on board. The catch is mixed into legal supply and sold
     via processors, traders and retailers.
+  exposure:
+    channels: []
+    payment_rails:
+    - wire_swift
+    - trade_instruments
+    - payroll_expense
+    customer_segments:
+    - corporate
+    - sme
+    - professional_intermediary
+    products:
+    - trade_finance
+    - transaction_account
+    - insurance_pension
+    basis: ai_inferred
+    rationale: Vessel owners, traders and processors with seafood trade finance, vessel insurance and
+      crew payments through agencies.
   sectors:
   - banking
   - corporate_services

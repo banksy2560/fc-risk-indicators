@@ -6,6 +6,26 @@ typology:
     entities, nominee arrangements and cash or asset movements that avoid automatic information exchange.
     Financial institutions see inconsistent tax residency claims, structures with no clear purpose and
     attempts to evade reporting regimes.
+  exposure:
+    channels:
+    - branch
+    - face_to_face_professional
+    - broker_intermediary
+    payment_rails:
+    - wire_swift
+    - cheque
+    - cash
+    customer_segments:
+    - private_wealth
+    - non_resident
+    - professional_intermediary
+    products:
+    - savings_deposit
+    - investment_securities
+    - loan_mortgage
+    - transaction_account
+    basis: ai_inferred
+    rationale: Undeclared foreign accounts, nominee entities and tax residency inconsistencies.
   sectors:
   - banking
   - securities

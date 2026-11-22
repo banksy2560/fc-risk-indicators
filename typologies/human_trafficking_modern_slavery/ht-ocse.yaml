@@ -6,6 +6,23 @@ typology:
     and related exploitation. Indicators are limited to payment patterns and account behaviour so that
     institutions can file reports promptly; staff must never access, view or retain the material and should
     escalate to specialist teams and law enforcement.
+  exposure:
+    channels:
+    - online_banking
+    - mobile_app
+    payment_rails:
+    - cross_border_remittance
+    - crypto_onramp_offramp
+    - card
+    - stored_value_wallet
+    customer_segments:
+    - retail
+    products:
+    - transaction_account
+    - crypto_custody
+    - prepaid_stored_value
+    basis: ai_inferred
+    rationale: Small recurring payments to individuals or sites; wallets, crypto, remittance.
   sectors:
   - banking
   - payments

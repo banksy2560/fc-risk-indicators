@@ -66,9 +66,29 @@ typology:
 - No real persons, institutions or case details. Cite published sources only; do not fabricate citations. Original wording only.
 - Orphans (unlinked controls or indicators) and near-duplicate names produce warnings; `--strict` fails on warnings.
 
-## Planned (not yet populated)
-Typology `exposure` block (channels, payment_rails, customer_segments, products) and per-indicator `evidence_basis`, `confidence`, `last_reviewed`, `status`, `provenance`. See DESIGN.md.
-`severity` means indicative signal strength only.
+## Exposure (typology level) and provenance (indicator level)
+```yaml
+typology:
+  exposure:
+    channels: [mobile_app, online_banking]          # values from vocab.yaml
+    payment_rails: [fast_payments]
+    customer_segments: [retail, student_youth]
+    products: [transaction_account]
+    basis: ai_inferred                              # AI-inferred; not reviewed
+    rationale: one line on why
+```
+Exposure describes where a typology typically shows up. It is NOT an institution's assessed exposure. Empty lists are valid (cross-cutting typologies apply across all).
+Indicators inherit exposure from the typologies that link them (derived, not stored).
+
+Indicator provenance (all currently `draft` / `ai_drafted`):
+```yaml
+    status: draft                 # draft | sme_reviewed | validated
+    provenance: ai_drafted        # ai_drafted | human_authored | mixed
+    evidence_basis: ai_draft_unreviewed   # published_guidance | regulator_typology | case_study | practitioner_judgement | ai_draft_unreviewed
+    confidence: unassessed        # low | medium | high | unassessed
+    last_reviewed: 2026-11-22     # add when a human reviews it
+```
+Controlled vocabularies live in `vocab.yaml`; extend there. `severity` means indicative signal strength only.
 
 ## Generated views
 `python3 tools/build_index.py .` writes `build/`: flat typology-indicator-control CSV, control and indicator usage, typology x control matrix, and `REVERSE_INDEX.md` (most reused controls and indicators).

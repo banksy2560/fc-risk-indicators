@@ -4,6 +4,22 @@ typology:
   domain: fraud
   description: Fraud against public bodies and large buyers includes bid rigging, inflated invoices, fictitious
     suppliers and false benefit claims. Collusion between suppliers and officials is a recurring pattern.
+  exposure:
+    channels:
+    - online_banking
+    payment_rails:
+    - wire_swift
+    - payroll_expense
+    customer_segments:
+    - public_sector
+    - corporate
+    - sme
+    - pep_related
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Fraud against public bodies and large buyers via bid rigging, fictitious suppliers and
+      false benefit claims; officials collude with suppliers; payments flow through procurement/purchasing.
   sectors:
   - all
   sources:

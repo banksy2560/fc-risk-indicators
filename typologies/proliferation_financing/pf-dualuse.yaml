@@ -5,6 +5,22 @@ typology:
   description: Proliferation networks seek controlled or dual-use items through front companies, brokers
     and intermediaries that disguise the true end user. Financial institutions mainly see this through
     payments and trade documents, so detection depends on matching customer profile, goods and destination.
+  exposure:
+    channels:
+    - branch
+    - broker_intermediary
+    payment_rails:
+    - wire_swift
+    - trade_instruments
+    customer_segments:
+    - sme
+    - corporate
+    - non_resident
+    products:
+    - trade_finance
+    - transaction_account
+    basis: ai_inferred
+    rationale: Front companies paying for controlled goods; trade and payment review.
   sectors:
   - banking
   - trade_finance

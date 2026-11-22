@@ -1,0 +1,67 @@
+# Controlled vocabularies for typology exposure tags (schema v0.2).
+# Exposure describes where a typology typically shows up. It is NOT an institution's assessed exposure.
+# Extend by adding values here (validator and site read this file).
+channels:
+  - mobile_app
+  - online_banking
+  - branch
+  - atm
+  - call_centre
+  - broker_intermediary
+  - api_open_banking
+  - agent_network
+  - merchant_acquiring
+  - face_to_face_professional
+  - digital_onboarding        # non-face-to-face / remote onboarding
+  - online_platform           # marketplace, gig, gaming or social platform
+  - remote_contact            # email, phone or SMS contact with victim or customer
+payment_rails:
+  - fast_payments
+  - card
+  - cash
+  - wire_swift
+  - cheque
+  - direct_debit_batch
+  - crypto_onramp_offramp
+  - cross_border_remittance
+  - trade_instruments
+  - stored_value_wallet
+  - securities_settlement
+  - insurance_premium_claim
+  - informal_value_transfer   # hawala and similar
+  - payroll_expense           # payroll, petty cash, procurement and expense flows
+customer_segments:
+  - retail
+  - student_youth
+  - new_to_bank
+  - vulnerable_elderly
+  - sme
+  - corporate
+  - private_wealth
+  - non_resident
+  - pep_related
+  - nonprofit
+  - professional_intermediary
+  - fintech_psp
+  - cash_intensive_business
+  - regulated_nonbank_dnfbp   # casinos, real estate, dealers in high-value goods, TCSPs
+  - msb_remitter
+  - public_sector
+  - employee_internal
+  - designated_person         # sanctioned, designated or associated persons
+products:
+  - transaction_account
+  - savings_deposit
+  - credit_card
+  - loan_mortgage
+  - trade_finance
+  - investment_securities
+  - insurance_pension
+  - prepaid_stored_value
+  - safe_deposit_custody
+  - correspondent_account
+  - crypto_custody
+  - merchant_services
+  - onchain_defi
+  - real_assets               # property, art, vessels, commodities held outside the bank
+  - company_formation_services

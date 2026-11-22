@@ -6,6 +6,21 @@ typology:
     customs brokers, distributors or joint-venture partners who may pass value to officials. These flows
     are often small, cash-heavy and poorly documented, so detection relies on expense analytics, supplier
     controls and awareness.
+  exposure:
+    channels: []
+    payment_rails:
+    - cash
+    - wire_swift
+    - trade_instruments
+    customer_segments:
+    - corporate
+    - professional_intermediary
+    products:
+    - transaction_account
+    - trade_finance
+    basis: ai_inferred
+    rationale: Petty cash and intermediary/broker fees paid by corporates, often to personal accounts
+      or in cash; customs broker trade flows.
   sectors:
   - banking
   - payments

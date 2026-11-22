@@ -6,6 +6,26 @@ typology:
     including sexual exploitation, labour exploitation and domestic servitude. Financial footprints include
     accounts controlled by third parties, payments for advertising, accommodation and travel, and cash
     proceeds moved through money mules. Indicators are signals for victim-centred escalation, not proof.
+  exposure:
+    channels:
+    - branch
+    - online_banking
+    - mobile_app
+    payment_rails:
+    - cash
+    - card
+    - cross_border_remittance
+    customer_segments:
+    - retail
+    - new_to_bank
+    - student_youth
+    - sme
+    products:
+    - transaction_account
+    - prepaid_stored_value
+    basis: ai_inferred
+    rationale: Controlled accounts, cash deposits, adverts and short-stay bookings; front businesses (e.g.
+      massage, car-wash, restaurant) with poor payroll evidence.
   sectors:
   - banking
   - payments

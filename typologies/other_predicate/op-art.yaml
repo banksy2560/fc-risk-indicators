@@ -5,6 +5,24 @@ typology:
   description: Looting, theft, forgery and illicit trade of cultural property, and use of art as a store
     of value to launder funds. Opaque transactions, free ports, falsified provenance and anonymous buyers
     are common features.
+  exposure:
+    channels:
+    - face_to_face_professional
+    - broker_intermediary
+    payment_rails:
+    - wire_swift
+    - cash
+    customer_segments:
+    - regulated_nonbank_dnfbp
+    - private_wealth
+    - pep_related
+    - non_resident
+    products:
+    - real_assets
+    - safe_deposit_custody
+    basis: ai_inferred
+    rationale: Art and antiquities dealers, auction houses and agents settle by wire or cash; artworks
+      are stored in free ports or custody and sometimes used as loan collateral.
   sectors:
   - art_luxury
   - banking

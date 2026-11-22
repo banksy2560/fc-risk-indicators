@@ -5,6 +5,24 @@ typology:
   description: Non-fungible tokens and in-game currencies can be bought, sold or transferred with subjective
     or opaque values, enabling wash trading, self-dealing and conversion of illicit funds into items that
     are later resold. Gaming platforms also host cross-border micro-transfers that hide value movement.
+  exposure:
+    channels:
+    - online_platform
+    payment_rails:
+    - crypto_onramp_offramp
+    - stored_value_wallet
+    - card
+    customer_segments:
+    - retail
+    - student_youth
+    - fintech_psp
+    products:
+    - crypto_custody
+    - prepaid_stored_value
+    - onchain_defi
+    basis: ai_inferred
+    rationale: NFT marketplaces and game economies; wash trading between wallets, in-game currency cash-out
+      and stolen-card funding.
   stage:
   - placement
   - layering

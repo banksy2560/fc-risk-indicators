@@ -6,6 +6,20 @@ typology:
     an improper advantage, typically disguised as consultancy, marketing, or commission payments routed
     through third parties or offshore entities. Financial institutions see the flows as unusual payments
     to or from intermediaries, officials' relatives, or shell companies.
+  exposure:
+    channels: []
+    payment_rails:
+    - wire_swift
+    customer_segments:
+    - corporate
+    - pep_related
+    - professional_intermediary
+    products:
+    - transaction_account
+    - correspondent_account
+    basis: ai_inferred
+    rationale: Commission/consultancy payments to agents or shells for foreign official benefit via international
+      wires.
   sectors:
   - banking
   - corporate_services

@@ -5,6 +5,21 @@ typology:
   description: Accounts that collect deposits from many locations, often in different geographic areas,
     and funnel the money onward, frequently to another jurisdiction, so as to avoid direct links with
     the criminal source. They are commonly used in drug trafficking and fraud cash networks.
+  exposure:
+    channels:
+    - branch
+    - atm
+    payment_rails:
+    - cash
+    - cross_border_remittance
+    customer_segments:
+    - retail
+    - student_youth
+    - new_to_bank
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Multi-location cash deposits and rapid ATM withdrawals elsewhere on retail accounts.
   stage:
   - placement
   - layering

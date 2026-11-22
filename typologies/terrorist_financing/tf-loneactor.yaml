@@ -6,6 +6,24 @@ typology:
     savings, consumer credit or small gifts, producing low-value activity that blends into normal retail
     banking. Detection relies on combinations of weak signals and on external intelligence rather than
     any single threshold.
+  exposure:
+    channels:
+    - branch
+    - mobile_app
+    - online_banking
+    payment_rails:
+    - card
+    - cash
+    customer_segments:
+    - retail
+    - student_youth
+    products:
+    - transaction_account
+    - credit_card
+    - loan_mortgage
+    - prepaid_stored_value
+    basis: ai_inferred
+    rationale: 'Low-value retail activity: credit, asset liquidation and cash.'
   sectors:
   - banking
   - payments

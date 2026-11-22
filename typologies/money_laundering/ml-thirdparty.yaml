@@ -5,6 +5,20 @@ typology:
   description: Use of third parties to make or receive payments, and the mixing of illicit funds with
     legitimate funds in business, personal or client accounts, to obscure source and ownership. Includes
     accounts used by someone other than the holder.
+  exposure:
+    channels:
+    - online_banking
+    payment_rails:
+    - fast_payments
+    - wire_swift
+    - cash
+    customer_segments:
+    - retail
+    - sme
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Unrelated third-party payers/payees and commingling in personal/business accounts.
   stage:
   - layering
   sectors:

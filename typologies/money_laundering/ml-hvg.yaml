@@ -4,6 +4,22 @@ typology:
   domain: money_laundering
   description: Purchase, trade and storage of portable, high-value assets, often with cash, to convert
     and store proceeds. Price subjectivity and confidentiality make valuation and origin hard to verify.
+  exposure:
+    channels:
+    - face_to_face_professional
+    payment_rails:
+    - cash
+    - wire_swift
+    customer_segments:
+    - regulated_nonbank_dnfbp
+    - private_wealth
+    - pep_related
+    products:
+    - real_assets
+    - transaction_account
+    basis: ai_inferred
+    rationale: Dealers in art, jewellery, metals and luxury vehicles (DNFBPs) receive cash or wires from
+      wealthy buyers; the goods are real assets held outside the bank.
   stage:
   - placement
   - layering

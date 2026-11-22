@@ -5,6 +5,24 @@ typology:
   description: Designated persons may convert financial assets into yachts, aircraft, art, jewellery,
     property or collectibles held through intermediaries to avoid freezing. Detection is relevant to banks,
     art and luxury dealers, brokers, registries and corporate service providers.
+  exposure:
+    channels:
+    - face_to_face_professional
+    - broker_intermediary
+    payment_rails:
+    - wire_swift
+    customer_segments:
+    - designated_person
+    - private_wealth
+    - pep_related
+    - regulated_nonbank_dnfbp
+    products:
+    - real_assets
+    - transaction_account
+    - loan_mortgage
+    basis: ai_inferred
+    rationale: Yachts, aircraft, art and property held via intermediaries and shell companies; dealers
+      and brokers involved.
   sectors:
   - art_luxury
   - real_estate

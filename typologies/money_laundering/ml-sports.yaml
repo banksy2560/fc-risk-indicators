@@ -8,6 +8,24 @@ typology:
     subjective and hard to benchmark, and ownership is often held through offshore vehicles, which gives
     illicit value a plausible commercial label. Betting-linked payments to players or officials add a
     match-fixing dimension.
+  exposure:
+    channels:
+    - face_to_face_professional
+    - broker_intermediary
+    payment_rails:
+    - wire_swift
+    customer_segments:
+    - corporate
+    - private_wealth
+    - pep_related
+    - professional_intermediary
+    products:
+    - transaction_account
+    - real_assets
+    basis: ai_inferred
+    rationale: Club/franchise acquisition, sponsorship and transfer-fee payments are large cross-border
+      wires between corporates and wealthy owners, with agents as intermediaries; the club or rights are
+      the asset held outside the bank.
   sectors:
   - all
   sources:

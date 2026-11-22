@@ -6,6 +6,24 @@ typology:
     may knowingly or unknowingly structure transactions, set up entities or move funds to help designated
     persons avoid sanctions. Indicators focus on unusual service patterns, pass-through behaviour and
     the enabler's own risk profile.
+  exposure:
+    channels:
+    - face_to_face_professional
+    payment_rails:
+    - wire_swift
+    - informal_value_transfer
+    customer_segments:
+    - professional_intermediary
+    - regulated_nonbank_dnfbp
+    - designated_person
+    - corporate
+    products:
+    - transaction_account
+    - company_formation_services
+    - correspondent_account
+    basis: ai_inferred
+    rationale: Lawyers, TCSPs and brokers structuring and moving funds for designated persons; informal
+      netting and barter also seen.
   sectors:
   - corporate_services
   - dnfbp

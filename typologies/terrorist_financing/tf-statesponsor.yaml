@@ -6,6 +6,25 @@ typology:
     and trading commodities such as oil, minerals, antiquities and agricultural goods. Trade finance,
     front companies and commodity brokers can be used to convert resources into funds and move them to
     the group.
+  exposure:
+    channels:
+    - broker_intermediary
+    payment_rails:
+    - trade_instruments
+    - wire_swift
+    - cash
+    customer_segments:
+    - corporate
+    - designated_person
+    - public_sector
+    products:
+    - trade_finance
+    - transaction_account
+    - correspondent_account
+    - real_assets
+    basis: ai_inferred
+    rationale: Commodity trades (oil, minerals, antiquities) via brokers and front companies; state or
+      quasi-state transfers to non-state actors; barter and cash settlement.
   sectors:
   - banking
   - trade_finance

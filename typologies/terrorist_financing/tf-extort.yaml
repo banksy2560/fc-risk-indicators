@@ -5,6 +5,24 @@ typology:
   description: Terrorist and insurgent groups raise funds through ransom, extortion of businesses and
     diaspora communities, and illicit taxation in areas they control. Payments often appear as unexplained
     transfers, cash movements by third parties or emergency borrowing.
+  exposure:
+    channels:
+    - branch
+    - agent_network
+    payment_rails:
+    - cash
+    - cross_border_remittance
+    - wire_swift
+    - insurance_premium_claim
+    customer_segments:
+    - retail
+    - sme
+    - nonprofit
+    products:
+    - transaction_account
+    - insurance_pension
+    basis: ai_inferred
+    rationale: Ransom and levy payments, diaspora collections, cash couriers and kidnap cover.
   sectors:
   - banking
   - mvts

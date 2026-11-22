@@ -9,6 +9,27 @@ typology:
     sustain the operation. Defensive framing: this entry lists observable financial signals for institutions,
     not operating methods. See FR-ROM (victim journey) and HT-FORCEDLAB (labour exploitation) for context
     only.'
+  exposure:
+    channels:
+    - online_platform
+    - remote_contact
+    - online_banking
+    - mobile_app
+    payment_rails:
+    - fast_payments
+    - crypto_onramp_offramp
+    - wire_swift
+    - cross_border_remittance
+    customer_segments:
+    - retail
+    - sme
+    - fintech_psp
+    products:
+    - transaction_account
+    - crypto_custody
+    basis: ai_inferred
+    rationale: Victims approached via social and messaging platforms; mule accounts collect and consolidate,
+      then crypto off-ramps or wires abroad.
   sectors:
   - banking
   - payments

@@ -7,6 +7,24 @@ typology:
     recall and freezing requests lag behind the funds. Each hop can look unremarkable alone; the signal
     lies in speed, chain length, data gaps in payment messages and repeated fraud-related recalls. Complements
     ML-MULE and FR-APP, which focus on single-account and victim-side views.
+  exposure:
+    channels:
+    - online_banking
+    - api_open_banking
+    payment_rails:
+    - wire_swift
+    - fast_payments
+    - crypto_onramp_offramp
+    - cross_border_remittance
+    customer_segments:
+    - retail
+    - fintech_psp
+    products:
+    - transaction_account
+    - correspondent_account
+    - crypto_custody
+    basis: ai_inferred
+    rationale: Multi-hop mule chain via PSPs, correspondents and off-ramps.
   sectors:
   - banking
   - payments

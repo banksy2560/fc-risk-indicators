@@ -6,6 +6,22 @@ typology:
     by diverting funds, using them as cover for transfers to conflict areas, or infiltrating their governance.
     Most non-profits are low risk, so controls must be proportionate and avoid de-risking legitimate humanitarian
     work.
+  exposure:
+    channels:
+    - branch
+    - online_banking
+    - agent_network
+    payment_rails:
+    - cash
+    - cross_border_remittance
+    - wire_swift
+    customer_segments:
+    - nonprofit
+    products:
+    - transaction_account
+    - savings_deposit
+    basis: ai_inferred
+    rationale: Charities collecting cash and sending funds to conflict areas.
   sectors:
   - banking
   - mvts

@@ -5,6 +5,22 @@ typology:
   description: Cash-intensive businesses underreport takings through suppressed sales records, electronic
     sales suppression tools or diverting cash from the till. The unreported cash is spent outside the
     banking system, deposited in structured amounts or moved offshore.
+  exposure:
+    channels:
+    - branch
+    - atm
+    - merchant_acquiring
+    payment_rails:
+    - cash
+    - card
+    - cross_border_remittance
+    customer_segments:
+    - sme
+    products:
+    - transaction_account
+    - merchant_services
+    basis: ai_inferred
+    rationale: Cash-intensive business sales suppression, structured deposits.
   sectors:
   - banking
   - payments

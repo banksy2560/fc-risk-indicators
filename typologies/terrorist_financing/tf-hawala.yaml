@@ -6,6 +6,25 @@ typology:
     across borders using settlement by trade, netting or cash, leaving limited records. They are important
     to many legitimate communities but can be abused to transfer money to terrorist actors in regions
     with limited banking access.
+  exposure:
+    channels:
+    - agent_network
+    - branch
+    payment_rails:
+    - informal_value_transfer
+    - cross_border_remittance
+    - cash
+    - trade_instruments
+    customer_segments:
+    - msb_remitter
+    - sme
+    - retail
+    - fintech_psp
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Informal and poorly supervised MVTS operators with pooled accounts, structured cash and
+      trade-based settlement to conflict areas.
   sectors:
   - mvts
   - banking

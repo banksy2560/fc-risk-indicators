@@ -4,6 +4,21 @@ typology:
   domain: fraud
   description: Fraud may be opportunistic (inflated claims) or organised (staged accidents, ghost brokers,
     fake policies). Insurers and banks may see related payments, claimants and repairers.
+  exposure:
+    channels:
+    - broker_intermediary
+    - remote_contact
+    payment_rails:
+    - insurance_premium_claim
+    customer_segments:
+    - retail
+    - sme
+    - professional_intermediary
+    products:
+    - insurance_pension
+    basis: ai_inferred
+    rationale: Claims and policy fraud through brokers (ghost broking), repairers and medical providers;
+      claimants often contact insurers remotely.
   sectors:
   - insurance
   - banking

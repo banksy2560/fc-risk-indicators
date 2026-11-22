@@ -5,6 +5,19 @@ typology:
   description: Inherent-risk factors seen during onboarding and refresh that suggest false, altered or
     reused identity information. Covers document fraud, inconsistent details, fictitious addresses and
     identifiers shared across unrelated customers.
+  exposure:
+    channels:
+    - online_banking
+    - mobile_app
+    - branch
+    payment_rails: []
+    customer_segments:
+    - new_to_bank
+    - retail
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Identity document fraud seen at onboarding, remote and in-person.
   sectors:
   - all
   sources:

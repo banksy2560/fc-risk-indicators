@@ -5,6 +5,24 @@ typology:
   description: Illicit supply and diversion of firearms, ammunition and components, including straw purchases,
     illegal manufacturing, end-user certificate fraud and brokering outside licence. Financial indicators
     arise in dealer payments, shipping, brokers and cash purchases.
+  exposure:
+    channels:
+    - face_to_face_professional
+    - broker_intermediary
+    payment_rails:
+    - wire_swift
+    - cash
+    - trade_instruments
+    customer_segments:
+    - corporate
+    - retail
+    - regulated_nonbank_dnfbp
+    products:
+    - trade_finance
+    - transaction_account
+    basis: ai_inferred
+    rationale: Dealer and broker payments, trade documentation and shipping for transfers, plus cash and
+      straw purchases by individuals; arms dealers are regulated non-bank businesses.
   sectors:
   - banking
   - payments

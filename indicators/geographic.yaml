@@ -10,6 +10,10 @@ indicators:
   - card_transactions
   - atm_logs
   false_positive_notes: Travellers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-002
   name: Funds routed to project developers in high-risk jurisdictions with no activity
   description: Payments to developers in remote regions without site evidence.
@@ -22,6 +26,10 @@ indicators:
   - payment_records
   - satellite_data
   false_positive_notes: Rural projects have limited footprint.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-003
   name: Port calls in ports of low inspection standards
   description: Frequent landings at ports with weak controls or non-parties to port state measures.
@@ -33,6 +41,10 @@ indicators:
   data_sources:
   - port_data
   false_positive_notes: Ports may be the only option for some fleets.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-004
   name: Origin country is a transit-only processor with no forests
   description: Exports declared from a country with little domestic timber supply, indicating laundering
@@ -45,6 +57,10 @@ indicators:
   data_sources:
   - trade_data
   false_positive_notes: Processing hubs import and re-export timber lawfully.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-005
   name: Operation in or adjacent to protected areas or indigenous lands
   description: Customer's supply is sourced from areas with legal restrictions or conflicts reported.
@@ -57,6 +73,10 @@ indicators:
   - satellite_data
   - ngo_reports
   false_positive_notes: Boundaries can be disputed.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-006
   name: Armed-group territory or sanctioned parties in conflict areas
   description: Trade, production or payments involve territories controlled by armed groups or parties
@@ -71,6 +91,10 @@ indicators:
   - shipping_records
   - external_intelligence
   false_positive_notes: Legitimate suppliers and humanitarian actors operate in affected regions.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-007
   name: Shipments to countries with weak controls and few recycling facilities
   description: Exports to destinations known as dumping sites.
@@ -83,6 +107,10 @@ indicators:
   - customs_data
   - ngo_reports
   false_positive_notes: Some destinations have lawful recyclers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-008
   name: Wildlife-related payments between source, transit and consumer countries
   description: Flows between countries known as supply, transit and demand points linked to a small business.
@@ -95,6 +123,10 @@ indicators:
   - swift_messages
   - payment_records
   false_positive_notes: Legitimate trade also uses these corridors.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-009
   name: Payments to money transfer services overseas
   description: Money services used for ad hoc transfers to unknown beneficiaries.
@@ -105,6 +137,10 @@ indicators:
   data_sources:
   - mvts_data
   false_positive_notes: Remittances.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-010
   name: First payment to a new beneficiary in a different jurisdiction
   description: 'Victim-side: payment to a new account, often foreign, unrelated to the supplier''s usual
@@ -117,6 +153,10 @@ indicators:
   - payment_data
   - vendor_master
   false_positive_notes: New suppliers or overseas expansion.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-011
   name: Address is mail-drop, virtual or shared by many applicants
   description: Multiple unrelated applicants share an address with no occupancy history.
@@ -127,6 +167,10 @@ indicators:
   data_sources:
   - address_data
   false_positive_notes: Student halls, care homes.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-012
   name: Suppliers in sectors or regions with high forced-labour risk
   description: Sourcing from sectors such as agriculture, fishing, garments or mining in regions flagged
@@ -140,6 +184,10 @@ indicators:
   - supplier_lists
   - risk_indexes
   false_positive_notes: Most suppliers in these areas comply.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-013
   name: Accounts or flows in border regions with cross-border movement
   description: Accounts in border or transit areas show frequent deposits with matching cross-border transfers
@@ -152,6 +200,10 @@ indicators:
   - transaction_records
   - branch_location_data
   false_positive_notes: Border communities have genuine cross-border trade and family flows.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-014
   name: Cash deposits from many states or regions
   description: Account receives cash deposits across geographically distant locations from the account
@@ -164,6 +216,10 @@ indicators:
   - transaction_data
   - branch_atm_locations
   false_positive_notes: Travelling customers and national businesses.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-015
   name: Funds sent offshore soon after collection
   description: Aggregated funds are wired or sent through remittance to foreign jurisdictions.
@@ -176,6 +232,10 @@ indicators:
   - transaction_data
   - wire_data
   false_positive_notes: International students and migrants send funds abroad.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-016
   name: Customer geography far from the professional's practice
   description: No reason to use this adviser.
@@ -186,6 +246,10 @@ indicators:
   data_sources:
   - client_data
   false_positive_notes: Specialist advice.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-017
   name: Funds return from offshore as foreign investment
   description: Money sent abroad reappears as shareholder investment or loan.
@@ -197,6 +261,10 @@ indicators:
   data_sources:
   - wire_data
   false_positive_notes: Real diaspora investment.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-018
   name: Counterparty or flows in higher-risk jurisdictions with weak AML controls
   description: Funds, counterparties or institutions are located in jurisdictions with weak AML supervision,
@@ -213,6 +281,10 @@ indicators:
   - customer_profile
   false_positive_notes: Customers with genuine ties to such jurisdictions, such as diaspora remittances
     or aid delivery, produce many alerts.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-019
   name: Payments or activity in jurisdictions unrelated to the customer's business or goods
   description: Payments, counterparties or sales originate in or go to countries with no link to the customer,
@@ -228,6 +300,10 @@ indicators:
   - trade_documents
   false_positive_notes: Customers with growing international business or diaspora links may produce this
     pattern legitimately.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-020
   name: Shipping through high-risk transit hubs with changed destinations
   description: Arms shipments change consignee or route.
@@ -240,6 +316,10 @@ indicators:
   - bills_of_lading
   - tracking_data
   false_positive_notes: Re-routing occurs for lawful cargo.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-021
   name: Objects from conflict zones or countries with looting
   description: Antiquities exported from affected regions with new papers.
@@ -252,6 +332,10 @@ indicators:
   - export_docs
   - ngo_reports
   false_positive_notes: Legal exports exist.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-022
   name: Shipments transiting free zones and repackaged
   description: Goods relabelled in transit hubs.
@@ -263,6 +347,10 @@ indicators:
   data_sources:
   - customs_data
   false_positive_notes: Transit hubs are legitimate.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-023
   name: Businesses closing or reporting threats alongside payment spikes
   description: Sector-wide complaints in area linked to payments.
@@ -274,6 +362,10 @@ indicators:
   data_sources:
   - community_intel
   false_positive_notes: Economic downturns also close firms.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-024
   name: Payments to or from free-trade zones and tax-free ports
   description: Transfers linked to zones known for tobacco diversion.
@@ -285,6 +377,10 @@ indicators:
   data_sources:
   - swift_messages
   false_positive_notes: Zones host legitimate trade.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-025
   name: Port calls at locations of concern followed by false next port
   description: Vessel declares destinations inconsistent with subsequent movements.
@@ -296,6 +392,10 @@ indicators:
   data_sources:
   - voyage_data
   false_positive_notes: Cargo routing changes frequently.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-026
   name: Access from sanctioned jurisdictions via VPN or proxy
   description: Technical indicators suggest the user is located in a comprehensively sanctioned area.
@@ -308,6 +408,10 @@ indicators:
   - ip_data
   - device_data
   false_positive_notes: Privacy tools are widely used.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-027
   name: Delivery to forwarder, mailbox or address unrelated to buyer
   description: Goods or cards are shipped to freight forwarders, reshippers, mail drops or addresses with
@@ -323,6 +427,10 @@ indicators:
   - shipping_addresses
   - fraud_data
   false_positive_notes: Expatriates and online shoppers legitimately use forwarding services.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-028
   name: Sharp rise in exports to specific transit countries of restricted items
   description: Aggregate trade data shows spikes in categories of concern to particular countries.
@@ -334,6 +442,10 @@ indicators:
   data_sources:
   - trade_statistics
   false_positive_notes: Demand shifts are normal.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-029
   name: Provider acts for many clients from the same higher-risk jurisdiction
   description: Concentration of high-risk clients.
@@ -344,6 +456,10 @@ indicators:
   data_sources:
   - client_lists
   false_positive_notes: Specialist niche providers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-030
   name: Payments routed through banks in jurisdictions with weak controls for no clear reason
   description: Routing does not follow normal correspondent paths.
@@ -354,6 +470,10 @@ indicators:
   data_sources:
   - payment_routing
   false_positive_notes: Routes vary.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-031
   name: Cash or card use in border and transit areas near conflict zones
   description: Cash withdrawals, ATM or card use occur at transit points or border regions near conflict
@@ -367,6 +487,10 @@ indicators:
   - atm_data
   - geolocation_data
   false_positive_notes: Residents, workers and travellers legitimately use these locations.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-032
   name: Transfers following threat or abduction reports from region
   description: Payments from relatives or employers rise coincident with publicly reported kidnappings
@@ -380,6 +504,10 @@ indicators:
   - news_feeds
   - transfers
   false_positive_notes: Remittance spikes occur around disasters and conflicts for many reasons.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-033
   name: Travel and accommodation spending to conflict-adjacent regions
   description: Spending on flights, border-area hotels or overland transport near conflict zones inconsistent
@@ -393,6 +521,10 @@ indicators:
   - card_transactions
   - travel_data
   false_positive_notes: Tourism, aid work, journalism and family visits explain most such spending.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-034
   name: Customer location inconsistent with declared residence
   description: IP or device signals suggest access from conflict-adjacent regions while KYC indicates
@@ -406,6 +538,10 @@ indicators:
   - ip_data
   - device_data
   false_positive_notes: Travel, expatriates and VPNs cause mismatches.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-035
   name: Transfers to jurisdictions with weak transparency soon after reporting changes
   description: Funds shifted to non-participating or low-transparency jurisdictions around the introduction
@@ -419,6 +555,10 @@ indicators:
   - payment_records
   - jurisdiction_lists
   false_positive_notes: Business or investment reasons may exist for moves.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-036
   name: Nexus to FATF black-listed jurisdiction
   description: Customer, owner or counterparty is connected to a jurisdiction subject to a FATF call for
@@ -432,6 +572,10 @@ indicators:
   - fatf_lists
   - country_data
   false_positive_notes: Humanitarian, diaspora and long-standing commercial links exist.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-037
   name: Nexus to FATF grey-listed jurisdiction
   description: Connection to a jurisdiction under increased monitoring for strategic deficiencies.
@@ -444,6 +588,10 @@ indicators:
   - fatf_lists
   - country_data
   false_positive_notes: Listed jurisdictions change and many controls are improving.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-038
   name: Secrecy or low-transparency jurisdiction nexus
   description: Entities, accounts or assets are booked in jurisdictions offering strong secrecy or limited
@@ -459,6 +607,10 @@ indicators:
   - jurisdiction_risk_ratings
   false_positive_notes: Legitimate holding structures and funds use such jurisdictions for tax neutrality
     or legal reasons.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-039
   name: Conflict zone or fragile state exposure
   description: Activity involves regions with armed conflict, weak governance or active terrorist groups.
@@ -471,6 +623,10 @@ indicators:
   - country_data
   - payment_messages
   false_positive_notes: Aid agencies, journalists and remittance senders operate there lawfully.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-040
   name: High-corruption jurisdiction nexus
   description: Funds or wealth are linked to or transferred to and from jurisdictions with high perceived
@@ -485,6 +641,10 @@ indicators:
   - corruption_indices
   - source_of_wealth_records
   false_positive_notes: Many customers have legitimate commercial ties to such jurisdictions.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-041
   name: Routing through trade-diversion or transshipment hubs
   description: Goods or payments route through third-country hubs or ports with no commercial rationale,
@@ -499,6 +659,10 @@ indicators:
   - trade_finance_records
   - port_data
   false_positive_notes: Major hubs are used legitimately for logistics efficiency.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-042
   name: Sanctioned country proximity
   description: Customer or flows are located in or adjacent to comprehensively sanctioned areas.
@@ -511,6 +675,10 @@ indicators:
   - sanctions_lists
   - ip_data
   false_positive_notes: Border communities lawfully trade.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-043
   name: Offshore financial centre use for non-resident clients
   description: Funds booked or routed via offshore centres with minimal client ties.
@@ -522,6 +690,10 @@ indicators:
   - country_data
   - kyc_profile
   false_positive_notes: Offshore centres serve legitimate wealth planning.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-GEO-044
   name: Cross-border corridor with known abuse typologies
   description: Payments use corridors identified in typology reports as high risk, including regions where
@@ -535,3 +707,7 @@ indicators:
   - transaction_records
   - typology_reports
   false_positive_notes: Corridors are used mainly by legitimate remittance senders.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed

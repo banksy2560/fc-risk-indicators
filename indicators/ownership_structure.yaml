@@ -16,6 +16,10 @@ indicators:
   - company_registry
   false_positive_notes: Professional and family nominees are lawful in some jurisdictions; the concern
     is non-disclosure of the principal.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-002
   name: Complex layered structure without commercial rationale
   description: Multiple tiers of entities, trusts or foundations, often across secrecy or low-transparency
@@ -33,6 +37,10 @@ indicators:
   - trust_deeds
   false_positive_notes: Legitimate groups, estate planning and fund structures can be complex; request
     an explanation and structure chart.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-003
   name: High-value asset held through opaque vehicle
   description: Property, art, vessels or other valuables are acquired or held via a company, trust or
@@ -49,6 +57,10 @@ indicators:
   - purchase_agreements
   false_positive_notes: Privacy-motivated and estate-planning holdings can be lawful; verify beneficial
     ownership.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-004
   name: Passive offshore vehicle or foundation holding personal assets
   description: A foundation, shell or similar vehicle in a low-transparency jurisdiction holds an individual's
@@ -64,6 +76,10 @@ indicators:
   - ownership_charts
   false_positive_notes: Wealth-planning vehicles are common among legitimate high-net-worth clients; confirm
     purpose and ownership.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-005
   name: Beneficial owner or controller cannot be identified
   description: Ownership or governance is opaque and no natural person who owns or controls the entity
@@ -79,6 +95,10 @@ indicators:
   - charity_register
   - kyc_file
   false_positive_notes: Complex but legitimate ownership may need extra time or documents to resolve.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-006
   name: Shell entity with no operating footprint
   description: Entity has no staff, premises, website or trading history consistent with its stated activity,
@@ -96,6 +116,10 @@ indicators:
   - kyc_files
   false_positive_notes: Start-ups, holding companies and special-purpose vehicles may legitimately lack
     a footprint.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-007
   name: Newly formed entity with vague purpose and large flows
   description: Recently incorporated entity or group of entities with generic business descriptions shows
@@ -113,6 +137,10 @@ indicators:
   - websites
   false_positive_notes: New businesses may legitimately ramp up quickly; test against business plan and
     sector.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-008
   name: Registered address shared by many entities
   description: Customer shares a registered address, mailbox, agent or phone with numerous unrelated companies,
@@ -126,6 +154,10 @@ indicators:
   - corporate_registry
   - address_data
   false_positive_notes: Company-service providers and serviced offices legitimately host many entities.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-009
   name: Short-lived or rotating entities with common controllers
   description: Entities are repeatedly formed, abandoned or replaced by successors sharing directors,
@@ -143,6 +175,10 @@ indicators:
   - ship_registry
   false_positive_notes: Legitimate restructurings and failed businesses occur; look for repeat patterns
     and unpaid liabilities.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-010
   name: Multiple entities under common control
   description: Several apparently separate businesses or sub-accounts share owners, signatories, addresses,
@@ -160,6 +196,10 @@ indicators:
   - bank_accounts
   false_positive_notes: Genuine corporate groups share ownership; the concern is undisclosed linkage or
     cross-funding.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-011
   name: Ownership or controllers linked to designated or previously reported parties
   description: Owners, officers or associates match sanctions or designation lists, prior suspicious reports
@@ -177,6 +217,10 @@ indicators:
   - adverse_media
   false_positive_notes: Name similarities produce false matches; verify identifiers such as date of birth
     and address.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-012
   name: Joint-venture partner owned by government-connected persons
   description: Local partner's owners include officials or relatives without disclosure or fair valuation
@@ -190,6 +234,10 @@ indicators:
   - company_registry
   - pep_lists
   false_positive_notes: State-linked partners are common in some sectors and not inherently improper.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-013
   name: Supplier lacks capacity for awarded contract
   description: Awardee has no relevant staff, assets or experience and subcontracts nearly all work.
@@ -202,6 +250,10 @@ indicators:
   - company_registry
   - kyc_files
   false_positive_notes: Project vehicles are often newly formed and sub-contract widely.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-014
   name: Bearer shares or bearer instruments
   description: Entity has issued, or may issue, bearer shares or warrants transferable without registration.
@@ -213,6 +265,10 @@ indicators:
   data_sources:
   - corporate_documents
   false_positive_notes: Legacy bearer shares may be immobilised or custodied under regulation.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-015
   name: Declared and discovered ownership mismatch
   description: Registry, media or documents show owners different from those declared by the customer.
@@ -225,6 +281,10 @@ indicators:
   - corporate_registry
   - adverse_media_feeds
   false_positive_notes: Registries lag and may be outdated.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-016
   name: Trust or foundation with undisclosed parties
   description: Trust, foundation or similar arrangement where settlor, protector or beneficiaries are
@@ -236,6 +296,10 @@ indicators:
   data_sources:
   - trust_deeds
   false_positive_notes: Discretionary trusts may have class-defined beneficiaries.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-017
   name: Control exercised through informal arrangements
   description: Powers of attorney, side letters or signatories give control to persons not in the ownership
@@ -249,6 +313,10 @@ indicators:
   - signatory_records
   - poa_documents
   false_positive_notes: Family, lawyers and fiduciaries often hold legitimate powers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-018
   name: Payment facilitator onboarding lacks beneficial-owner data
   description: Sub-merchants onboarded without full ownership or identity checks.
@@ -259,6 +327,10 @@ indicators:
   data_sources:
   - onboarding_files
   false_positive_notes: Low-risk micro-merchants under threshold.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-019
   name: Operator accounts opened in many names or institutions
   description: Accounts are repeatedly opened and closed under front companies to receive deposits.
@@ -271,6 +343,10 @@ indicators:
   - kyc_profile
   - account_data
   false_positive_notes: Group structures with real subsidiaries.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-020
   name: Labour provider with no registration or opaque ownership
   description: Unlicensed gangmaster supplying workers, with nominee owners and frequent name changes.
@@ -283,6 +359,10 @@ indicators:
   - registry_data
   - licence_data
   false_positive_notes: Small agencies may be informal.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-021
   name: Links to shell banks or unlicensed entities
   description: Respondent has relationships with shell or unlicensed institutions.
@@ -294,6 +374,10 @@ indicators:
   data_sources:
   - regulatory_registers
   false_positive_notes: Naming confusion.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-022
   name: Use of omnibus or nominee accounts
   description: Positions hidden via omnibus or nominee structure.
@@ -304,6 +388,10 @@ indicators:
   data_sources:
   - account_data
   false_positive_notes: Custodians.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-023
   name: Use of relatives or close associates as account holders
   description: Accounts or assets held by family or associates who have limited own means.
@@ -315,6 +403,10 @@ indicators:
   data_sources:
   - kyc_file
   false_positive_notes: Families pool wealth legitimately.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-024
   name: Multiple properties bought by same person or nominees
   description: Portfolio built through different names or relatives.
@@ -325,6 +417,10 @@ indicators:
   data_sources:
   - land_registry
   false_positive_notes: Landlords build portfolios.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-025
   name: Company with owners or staff linked to the restricted jurisdiction
   description: Directors or addresses link to the restricted country while located elsewhere.
@@ -336,6 +432,10 @@ indicators:
   data_sources:
   - registry_data
   false_positive_notes: Diaspora businesses are common.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-026
   name: Recent ownership reductions by a designated person around designation date
   description: Shareholdings are transferred or diluted shortly before or after a designation, often to
@@ -350,6 +450,10 @@ indicators:
   - registry_filings
   - share_registers
   false_positive_notes: Genuine succession planning or restructuring can coincide.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-027
   name: Aggregate designated-party ownership just below the threshold
   description: Several designated parties each hold stakes that together reach but are individually below
@@ -362,6 +466,10 @@ indicators:
   data_sources:
   - ownership_data
   false_positive_notes: Minority stakes are routine in investments.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-028
   name: Shared addresses, phone numbers or advisers with designated entities
   description: Entities share contact details, advisers or bank accounts with designated persons.
@@ -374,6 +482,10 @@ indicators:
   - registry_data
   - contact_data
   false_positive_notes: Registered-agent addresses are widely shared.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-OWN-029
   name: Institution ownership or control passes to opaque parties followed by a volume surge
   description: A bank, payment firm or other regulated entity changes owners, directors or key managers
@@ -392,3 +504,7 @@ indicators:
   - transaction_data
   false_positive_notes: Genuine acquisitions, recapitalisations and expansion strategies change ownership
     and volumes together. Verify the new owners' source of wealth and business plan.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed

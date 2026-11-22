@@ -6,6 +6,25 @@ typology:
     and large seller or worker populations. Criminals use fake listings, collusive purchases, refund cycling
     or fake workers to launder funds, receive scam proceeds or rent out accounts. Platforms see anomalies
     in seller behaviour and payout flows.
+  exposure:
+    channels:
+    - online_platform
+    - mobile_app
+    - api_open_banking
+    payment_rails:
+    - fast_payments
+    - stored_value_wallet
+    - card
+    customer_segments:
+    - retail
+    - sme
+    - fintech_psp
+    products:
+    - merchant_services
+    - prepaid_stored_value
+    basis: ai_inferred
+    rationale: Marketplace and gig platforms with seller payouts, refund and chargeback cycling, vouchers
+      and account rental; platforms act as PSPs/merchants.
   stage:
   - layering
   sectors:

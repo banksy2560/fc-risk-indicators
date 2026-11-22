@@ -5,6 +5,20 @@ typology:
   description: Inherent-risk factors linked to the countries and regions connected to a customer, product
     or transaction. Covers FATF-listed jurisdictions, secrecy havens, conflict areas, high-corruption
     environments and trade-diversion hubs.
+  exposure:
+    channels: []
+    payment_rails:
+    - wire_swift
+    - cross_border_remittance
+    - trade_instruments
+    customer_segments:
+    - non_resident
+    - corporate
+    products:
+    - correspondent_account
+    - trade_finance
+    basis: ai_inferred
+    rationale: 'Geography-linked flows: cross-border wires, remittance and trade via high-risk jurisdictions/hubs.'
   sectors:
   - all
   sources:

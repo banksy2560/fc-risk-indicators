@@ -5,6 +5,21 @@ typology:
   description: Coercive collection of 'protection' money or repayments on high-interest illegal loans
     by organised crime groups, usually from small businesses and vulnerable individuals. Victims often
     show regular payments that do not match any invoice or service, sometimes via third parties or cash.
+  exposure:
+    channels:
+    - branch
+    - online_banking
+    payment_rails:
+    - cash
+    - fast_payments
+    customer_segments:
+    - sme
+    - vulnerable_elderly
+    - retail
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Regular unexplained payments and cash withdrawals by small businesses/vulnerable victims.
   sectors:
   - banking
   - payments

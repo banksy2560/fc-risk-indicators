@@ -11,6 +11,13 @@ CATS = {"customer","transaction","geographic","product_channel","behavioural","o
 SEV = {"low","medium","high"}
 CTYPE = {"preventive","detective","corrective","governance"}
 IMPL = {"rule","model","process","policy","training","technology"}
+PROV = {"ai_drafted","human_authored","mixed"}
+STATUS = {"draft","sme_reviewed","validated"}
+EVID = {"published_guidance","regulator_typology","case_study","practitioner_judgement","ai_draft_unreviewed"}
+CONF = {"low","medium","high","unassessed"}
+def vocab(root):
+    p = pathlib.Path(root) / "vocab.yaml"
+    return yaml.safe_load(p.read_text()) if p.exists() else {}
 tok = lambda s: set(re.sub(r"\W+", " ", s.lower()).split())
 
 def load(root, pattern, key):
@@ -41,6 +48,9 @@ def main(root, strict):
         if i.get("category") not in CATS: errs.append(f"{iid} bad category")
         if i.get("severity") not in SEV: errs.append(f"{iid} bad severity")
         if not i.get("false_positive_notes"): errs.append(f"{iid} missing false_positive_notes")
+        for fld, allowed in (("status", STATUS), ("provenance", PROV), ("evidence_basis", EVID), ("confidence", CONF)):
+            if fld in i and i[fld] not in allowed: errs.append(f"{iid} bad {fld} {i[fld]}")
+        if "status" not in i: warns.append(f"{iid} missing status/provenance fields")
     used_i, used_c, tids, legacy = set(), set(), set(), set()
     n_typ = n_link = 0
     for f in sorted(pathlib.Path(root).glob("typologies/**/*.yaml")):
@@ -51,6 +61,11 @@ def main(root, strict):
         if t.get("domain") not in DOMAINS: errs.append(f"{f.name}: bad domain")
         if t["id"] in tids: errs.append(f"duplicate typology id {t['id']}")
         tids.add(t["id"])
+        voc = vocab(root); ex = t.get("exposure")
+        if voc and ex is None: warns.append(f"{t['id']}: no exposure block")
+        for dim in ("channels","payment_rails","customer_segments","products"):
+            for v in (ex or {}).get(dim, []) or []:
+                if v not in voc.get(dim, []): errs.append(f"{t['id']}: exposure {dim} value '{v}' not in vocab.yaml")
         seen = set()
         for l in t["indicators"]:
             n_link += 1

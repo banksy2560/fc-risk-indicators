@@ -6,6 +6,21 @@ typology:
     without a central intermediary performing customer checks. Criminals including hackers exploit these
     to swap, pool and hop assets before reaching a regulated off-ramp. Obligated entities usually observe
     this only at on- and off-ramps through exposure analysis and behaviour.
+  exposure:
+    channels:
+    - online_platform
+    - api_open_banking
+    payment_rails:
+    - crypto_onramp_offramp
+    customer_segments:
+    - retail
+    - fintech_psp
+    products:
+    - onchain_defi
+    - crypto_custody
+    basis: ai_inferred
+    rationale: DeFi protocols and bridges operate on-chain; regulated entities see exposure only at VASP
+      on/off-ramps.
   stage:
   - layering
   sectors:

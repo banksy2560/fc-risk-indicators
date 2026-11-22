@@ -5,6 +5,21 @@ typology:
   description: Employees or contractors abuse access to divert funds, create ghost employees, falsify
     expenses or collude with outsiders. Weak segregation of duties and unchecked privileged access raise
     risk.
+  exposure:
+    channels:
+    - online_banking
+    payment_rails:
+    - payroll_expense
+    - direct_debit_batch
+    customer_segments:
+    - employee_internal
+    - corporate
+    - sme
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Ghost employees, expense and vendor fraud within payroll and procurement flows, committed
+      by staff; also bank staff abusing privileged access.
   sectors:
   - all
   sources:

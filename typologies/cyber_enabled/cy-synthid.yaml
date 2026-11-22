@@ -5,6 +5,21 @@ typology:
   description: Fraudsters combine real and fabricated data, or use generative tools to create faces, voices
     and documents, to pass remote onboarding. The accounts then bear credit abuse, mule activity or laundering.
     Detection depends on layered identity proofing and behavioural signals across the customer lifecycle.
+  exposure:
+    channels:
+    - online_banking
+    - mobile_app
+    payment_rails: []
+    customer_segments:
+    - new_to_bank
+    - retail
+    products:
+    - transaction_account
+    - credit_card
+    - loan_mortgage
+    basis: ai_inferred
+    rationale: Synthetic/deepfake identities in remote onboarding leading to credit bust-out and mule
+      use.
   stage:
   - placement
   sectors:

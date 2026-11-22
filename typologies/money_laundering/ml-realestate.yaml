@@ -5,6 +5,24 @@ typology:
   description: Purchase, sale, development or financing of property to integrate illicit funds, taking
     advantage of high values, price opacity and the involvement of intermediaries. Techniques include
     buying with cash or via complex structures, rapid flipping, and mortgage fraud.
+  exposure:
+    channels:
+    - face_to_face_professional
+    - broker_intermediary
+    payment_rails:
+    - wire_swift
+    - cash
+    customer_segments:
+    - private_wealth
+    - non_resident
+    - corporate
+    - regulated_nonbank_dnfbp
+    products:
+    - loan_mortgage
+    - real_assets
+    basis: ai_inferred
+    rationale: Property purchases through agents, conveyancers and offshore vehicles, with mortgage financing
+      and early repayment.
   stage:
   - layering
   - integration

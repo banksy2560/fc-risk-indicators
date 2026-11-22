@@ -5,6 +5,22 @@ typology:
   description: Harvesting, transport or trade of timber in breach of national law or concession rules,
     including logging in protected areas and mislabelled species or origin. Proceeds often pass through
     timber traders, export companies and shipping firms, with laundered volumes blended into legal supply.
+  exposure:
+    channels: []
+    payment_rails:
+    - wire_swift
+    - trade_instruments
+    - cash
+    customer_segments:
+    - corporate
+    - sme
+    - pep_related
+    products:
+    - trade_finance
+    - transaction_account
+    basis: ai_inferred
+    rationale: Timber exporters and traders; cash to informal suppliers, trade documents and payments
+      to officials for permits.
   sectors:
   - banking
   - corporate_services

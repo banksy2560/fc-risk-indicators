@@ -5,6 +5,20 @@ typology:
   description: Use of charities and NPOs, or their accounts and fundraising channels, to hold, mix or
     move illicit funds that appear as donations, grants or program spending. This typology covers the
     money laundering angle only.
+  exposure:
+    channels:
+    - branch
+    - online_banking
+    payment_rails:
+    - cash
+    - wire_swift
+    - cross_border_remittance
+    customer_segments:
+    - nonprofit
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Charity accounts and donation channels used for mixing and moving funds.
   stage:
   - placement
   - layering

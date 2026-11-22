@@ -6,6 +6,21 @@ typology:
     them may involve inflated or opaque attestations, intermediary traders, undisclosed ship-to-ship transfers
     and ageing or unusual tankers. Detection draws on trade documents, pricing, vessel data and the quality
     of attestations from counterparties.
+  exposure:
+    channels:
+    - broker_intermediary
+    payment_rails:
+    - trade_instruments
+    - wire_swift
+    - insurance_premium_claim
+    customer_segments:
+    - corporate
+    products:
+    - trade_finance
+    - correspondent_account
+    - insurance_pension
+    basis: ai_inferred
+    rationale: Commodity traders, attestations, tanker insurance and ship-to-ship transfers.
   sectors:
   - banking
   - trade_finance

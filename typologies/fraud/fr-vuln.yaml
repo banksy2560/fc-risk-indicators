@@ -5,6 +5,22 @@ typology:
   description: Older or vulnerable people are exploited by relatives, carers, scammers or persons holding
     power of attorney. Warning signs include sudden changes in banking behaviour and the presence of third
     parties directing transactions.
+  exposure:
+    channels:
+    - branch
+    - call_centre
+    - face_to_face_professional
+    payment_rails:
+    - cash
+    - fast_payments
+    customer_segments:
+    - vulnerable_elderly
+    products:
+    - transaction_account
+    - savings_deposit
+    - investment_securities
+    basis: ai_inferred
+    rationale: Third-party directed withdrawals and transfers; branch intervention.
   sectors:
   - banking
   - securities

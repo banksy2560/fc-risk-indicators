@@ -5,6 +5,25 @@ typology:
   description: Extraction of gold, diamonds, coltan and other minerals without licence or in breach of
     law, and the laundering of resulting metals through scrap dealers, refiners, jewellers and traders.
     Linkages to armed groups, environmental damage and forced labour raise the stakes.
+  exposure:
+    channels:
+    - face_to_face_professional
+    payment_rails:
+    - cash
+    - wire_swift
+    - trade_instruments
+    customer_segments:
+    - sme
+    - corporate
+    - regulated_nonbank_dnfbp
+    - professional_intermediary
+    products:
+    - trade_finance
+    - transaction_account
+    - real_assets
+    basis: ai_inferred
+    rationale: Gold and gem dealers, refiners and scrap buyers pay cash to informal miners, then deposit
+      and export; metals are real assets.
   sectors:
   - banking
   - dnfbp

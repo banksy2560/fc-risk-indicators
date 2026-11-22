@@ -6,6 +6,22 @@ typology:
     often to cash-based endpoints. Offenders use them to send scam proceeds, structure payments through
     many senders and receivers, and operate unlicensed or complicit agents. Cyber-enabled aspects include
     compromised wallets, SIM swaps and automated account farms.
+  exposure:
+    channels:
+    - agent_network
+    - mobile_app
+    payment_rails:
+    - cross_border_remittance
+    - stored_value_wallet
+    - cash
+    customer_segments:
+    - retail
+    - new_to_bank
+    - fintech_psp
+    products:
+    - prepaid_stored_value
+    basis: ai_inferred
+    rationale: Mobile money and remittance with agent cash endpoints and SIM-swap abuse.
   stage:
   - layering
   sectors:

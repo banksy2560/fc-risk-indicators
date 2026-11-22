@@ -6,6 +6,21 @@ typology:
     by creating chains of invoices and trades where the VAT collected is never remitted. Common goods
     include electronics, metals, and emissions allowances; flows are fast, circular and between thinly
     capitalised companies.
+  exposure:
+    channels:
+    - online_banking
+    payment_rails:
+    - wire_swift
+    - fast_payments
+    customer_segments:
+    - sme
+    - corporate
+    products:
+    - transaction_account
+    - trade_finance
+    basis: ai_inferred
+    rationale: Missing-trader chains between thin companies with same-day circular flows of VAT-bearing
+      payments.
   sectors:
   - banking
   - payments

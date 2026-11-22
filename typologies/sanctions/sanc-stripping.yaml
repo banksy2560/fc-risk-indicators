@@ -5,6 +5,18 @@ typology:
   description: Payment messages can be altered or structured so that names, addresses or purpose fields
     that would trigger sanctions screening are omitted, truncated or replaced. Controls focus on message
     integrity, intermediary practices and unusual patterns in message content.
+  exposure:
+    channels:
+    - api_open_banking
+    payment_rails:
+    - wire_swift
+    customer_segments:
+    - corporate
+    products:
+    - correspondent_account
+    - transaction_account
+    basis: ai_inferred
+    rationale: Payment-message manipulation in SWIFT and correspondent routing.
   sectors:
   - banking
   - payments

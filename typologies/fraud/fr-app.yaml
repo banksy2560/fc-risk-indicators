@@ -6,6 +6,23 @@ typology:
     a criminal, often under a false pretext such as a safe-account request, a fake invoice or an invented
     purchase. Because the customer authorises the payment, controls rely on spotting behavioural change
     and mule receiving accounts.
+  exposure:
+    channels:
+    - online_banking
+    - mobile_app
+    - call_centre
+    payment_rails:
+    - fast_payments
+    customer_segments:
+    - retail
+    - vulnerable_elderly
+    - sme
+    products:
+    - transaction_account
+    - savings_deposit
+    basis: ai_inferred
+    rationale: Customer-authorised push payments in digital channels with live-call and remote-access
+      signals.
   sectors:
   - banking
   - payments

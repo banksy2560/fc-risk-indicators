@@ -5,6 +5,24 @@ typology:
   description: Misuse of trust and company service providers, including formation agents and nominee or
     registered-office services, to create, administer or obscure companies and trusts used for laundering.
     TCSPs may be witting, negligent or exploited.
+  exposure:
+    channels:
+    - face_to_face_professional
+    - broker_intermediary
+    - digital_onboarding
+    payment_rails:
+    - wire_swift
+    customer_segments:
+    - professional_intermediary
+    - regulated_nonbank_dnfbp
+    - corporate
+    - non_resident
+    products:
+    - company_formation_services
+    - transaction_account
+    basis: ai_inferred
+    rationale: Formation agents and nominee/registered-office providers introduce non-face-to-face clients
+      and sometimes operate client bank accounts.
   stage:
   - layering
   - integration

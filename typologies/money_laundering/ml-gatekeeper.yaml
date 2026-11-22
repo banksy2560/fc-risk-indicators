@@ -5,6 +5,23 @@ typology:
   description: Misuse of lawyers, notaries, accountants and similar professionals, witting or unwitting,
     to create structures, hold or move client funds, buy assets or lend credibility to transactions. Client
     accounts and professional privilege are used to distance funds from their source.
+  exposure:
+    channels:
+    - face_to_face_professional
+    payment_rails:
+    - wire_swift
+    - cash
+    customer_segments:
+    - regulated_nonbank_dnfbp
+    - professional_intermediary
+    - corporate
+    - private_wealth
+    products:
+    - transaction_account
+    - company_formation_services
+    basis: ai_inferred
+    rationale: Lawyers, notaries and accountants run client accounts, form structures and buy assets for
+      clients; fees or deposits sometimes in cash.
   stage:
   - layering
   - integration

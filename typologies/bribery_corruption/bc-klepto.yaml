@@ -6,6 +6,23 @@ typology:
     often through complex corporate structures, family members, luxury assets and international banking.
     Detection depends on PEP risk management, source-of-wealth understanding and scrutiny of unexplained
     wealth relative to official income.
+  exposure:
+    channels:
+    - face_to_face_professional
+    payment_rails:
+    - wire_swift
+    customer_segments:
+    - pep_related
+    - private_wealth
+    - non_resident
+    products:
+    - transaction_account
+    - investment_securities
+    - correspondent_account
+    - loan_mortgage
+    basis: ai_inferred
+    rationale: PEP-network proceeds via offshore structures, private banking, cross-border wires and property
+      purchases.
   sectors:
   - banking
   - securities

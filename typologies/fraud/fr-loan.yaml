@@ -5,6 +5,21 @@ typology:
   description: Applicants or insiders misstate income, assets, identity or property value to obtain credit,
     or use straw buyers and inflated appraisals. Mortgage fraud may involve collusion with brokers, valuers
     or conveyancers.
+  exposure:
+    channels:
+    - broker_intermediary
+    - branch
+    - digital_onboarding
+    payment_rails: []
+    customer_segments:
+    - retail
+    - sme
+    - professional_intermediary
+    products:
+    - loan_mortgage
+    basis: ai_inferred
+    rationale: Mortgage and loan applications via brokers, valuers and conveyancers, including remote
+      applications; proceeds diversion is secondary so no single rail tagged.
   sectors:
   - banking
   - fintech

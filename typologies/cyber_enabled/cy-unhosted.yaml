@@ -6,6 +6,19 @@ typology:
     intermediaries, limiting identity information and supervision. Offenders use these channels to receive,
     hold and exchange illicit funds. Regulated platforms see the risk at the edges: transfers to or from
     unhosted wallets and P2P advertisers.'
+  exposure:
+    channels:
+    - online_banking
+    - mobile_app
+    payment_rails:
+    - crypto_onramp_offramp
+    - fast_payments
+    customer_segments:
+    - retail
+    products:
+    - crypto_custody
+    basis: ai_inferred
+    rationale: Transfers to unhosted wallets and P2P exchange at fiat on/off-ramps.
   stage:
   - placement
   - layering

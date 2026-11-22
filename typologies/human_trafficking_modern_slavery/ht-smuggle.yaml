@@ -6,6 +6,24 @@ typology:
     collect fees from migrants or their families, often through informal value transfer, and spend on
     transport, documents and accommodation. Unlike trafficking, consent is initial, but exploitation and
     abuse are common risks.
+  exposure:
+    channels:
+    - agent_network
+    - branch
+    - online_platform
+    payment_rails:
+    - cross_border_remittance
+    - cash
+    - informal_value_transfer
+    customer_segments:
+    - retail
+    - new_to_bank
+    - msb_remitter
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Fees collected from migrants and families via remittance, hawala-type guarantees and cash;
+      recruitment advertised on social platforms.
   sectors:
   - banking
   - mvts

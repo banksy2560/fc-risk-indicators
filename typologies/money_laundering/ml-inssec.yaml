@@ -5,6 +5,20 @@ typology:
   description: Use of insurance products and securities markets to place and layer funds, for example
     single-premium policies cancelled early, or trading, wash trades and account transfers that obscure
     source and ownership.
+  exposure:
+    channels:
+    - broker_intermediary
+    payment_rails:
+    - insurance_premium_claim
+    - securities_settlement
+    customer_segments:
+    - private_wealth
+    - corporate
+    products:
+    - insurance_pension
+    - investment_securities
+    basis: ai_inferred
+    rationale: Single-premium policy cancellation and securities trading layering through brokers.
   stage:
   - placement
   - layering

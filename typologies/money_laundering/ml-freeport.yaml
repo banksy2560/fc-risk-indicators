@@ -7,6 +7,23 @@ typology:
     or other bearer instruments. Title can change hands without goods moving or any bank payment, so owners
     are obscured and value can be transferred or revalued on paper. Cash used to buy bearer instruments
     or fill boxes breaks the link to the original source.'
+  exposure:
+    channels:
+    - branch
+    - face_to_face_professional
+    payment_rails:
+    - cash
+    - trade_instruments
+    customer_segments:
+    - private_wealth
+    - corporate
+    - non_resident
+    products:
+    - safe_deposit_custody
+    - real_assets
+    basis: ai_inferred
+    rationale: Safe deposit boxes at branches and goods in free ports or bonded storage, with bearer instruments
+      bought for cash; title and value shift without bank payments.
   sectors:
   - art_luxury
   - banking

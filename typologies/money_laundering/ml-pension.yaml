@@ -6,6 +6,19 @@ typology:
     schemes, to give them a long-term savings label. They may later be withdrawn early, transferred overseas
     or invested in related assets. Sham employers and fraudulent pension-transfer or early-access schemes
     can also be used to launder funds or to steal retirement savings from victims.
+  exposure:
+    channels:
+    - broker_intermediary
+    payment_rails:
+    - insurance_premium_claim
+    customer_segments:
+    - retail
+    - private_wealth
+    - non_resident
+    products:
+    - insurance_pension
+    basis: ai_inferred
+    rationale: Lump-sum contributions, transfers and early withdrawals in pension/super accounts.
   sectors:
   - insurance
   - securities

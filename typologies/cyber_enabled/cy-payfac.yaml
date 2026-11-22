@@ -6,6 +6,20 @@ typology:
     account (transaction laundering) or use payment facilitators with weak sub-merchant oversight. This
     disguises illegal or high-risk goods and moves funds from fraud, gambling or illicit trade into the
     legitimate system.
+  exposure:
+    channels:
+    - api_open_banking
+    - merchant_acquiring
+    - online_banking
+    payment_rails:
+    - card
+    customer_segments:
+    - sme
+    - fintech_psp
+    products:
+    - merchant_services
+    basis: ai_inferred
+    rationale: Transaction laundering through sub-merchants of facilitators and acquirers.
   stage:
   - layering
   - integration

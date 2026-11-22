@@ -13,6 +13,10 @@ indicators:
   - customs_declarations
   - tariff_data
   false_positive_notes: Duties vary with classification and valuation disputes.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-002
   name: Third party has no anti-bribery policy or refuses audit rights
   description: Intermediary resists contractual anti-corruption clauses, books-and-records access, or
@@ -26,6 +30,10 @@ indicators:
   - contracts
   - due_diligence_files
   false_positive_notes: Small suppliers may lack formal policies but cooperate otherwise.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-003
   name: Intermediary introduced by official or customer insists on use
   description: A government contact recommends or demands a specific agent, with limited competitive selection.
@@ -38,6 +46,10 @@ indicators:
   - due_diligence_files
   - procurement_records
   false_positive_notes: Local requirements may legitimately mandate local partners.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-004
   name: Intermediary linked to a public official or relative
   description: Agent or its owners are relatives, associates or former colleagues of an official with
@@ -53,6 +65,10 @@ indicators:
   - kyc_files
   false_positive_notes: Small markets mean many people have family ties to government; links alone are
     not wrongdoing.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-005
   name: Vendor linked to employee or without verifiable existence
   description: Vendor has no verifiable address, tax number or deliveries, or shares address or bank details
@@ -69,6 +85,10 @@ indicators:
   - procurement_records
   false_positive_notes: New or very small vendors and sole traders may use home addresses, and employees
     may legitimately be related to vendors with disclosure.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-006
   name: Payments to crypto exchanges or cash-out channels soon after receipt
   description: Funds sent to exchanges, gift-card merchants or remittance providers immediately.
@@ -79,6 +99,10 @@ indicators:
   data_sources:
   - payee_data
   false_positive_notes: Active traders.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-007
   name: Same beneficiary reached by many mule accounts
   description: Graph shows many accounts paying the same ultimate beneficiary.
@@ -90,6 +114,10 @@ indicators:
   - payee_data
   - graph_data
   false_positive_notes: Landlord or merchant.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-008
   name: Cash-out through multiple accounts of same user group
   description: Proceeds are routed to several accounts sharing devices or beneficiaries and cashed out
@@ -103,6 +131,10 @@ indicators:
   - device_data
   - bank_accounts
   false_positive_notes: Family members sharing devices.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-009
   name: Counterparty is a non-compliant cross-chain service
   description: Flows route through aggregators or bridges without KYC and with no governance accountability.
@@ -115,6 +147,10 @@ indicators:
   - blockchain_analytics
   - service_attribution
   false_positive_notes: Many such services are used by mainstream traders.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-010
   name: Payout to account not matching verified identity or declared beneficiary
   description: Payouts or disbursements are directed to bank accounts, cards or wallets that do not match
@@ -130,6 +166,10 @@ indicators:
   - account_ownership_data
   false_positive_notes: Customers may legitimately use a joint, family or business account, or a new account
     after a bank change.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-011
   name: Funds sent to unlicensed or weakly regulated exchanges
   description: Withdrawals or flows go to exchanges or VASPs that lack licensing or effective AML and
@@ -145,6 +185,10 @@ indicators:
   - transaction_records
   false_positive_notes: Some legitimate smaller platforms are not yet registered or are licensed in other
     regimes.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-012
   name: Agent with unusual cash volumes or splitting behaviour
   description: Agent location processes volumes far above peers, with suspicious customer splitting.
@@ -157,6 +201,10 @@ indicators:
   - agent_data
   - transaction_data
   false_positive_notes: High-footfall locations.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-013
   name: Rapid cash-out of settlements to third-party accounts
   description: Settlement funds are sent immediately to unrelated accounts, often offshore.
@@ -167,6 +215,10 @@ indicators:
   data_sources:
   - settlement_data
   false_positive_notes: Group treasury.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-014
   name: Card used to pay high-risk online merchants
   description: Spend concentrates at gambling, darknet-adjacent or unlicensed merchants.
@@ -178,6 +230,10 @@ indicators:
   - merchant_codes
   - card_transactions
   false_positive_notes: Legal entertainment spend.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-015
   name: Use of OTC desks or brokers with minimal due diligence for conversion to fiat
   description: Large over-the-counter trades or fiat off-ramps via brokers that avoid identity verification,
@@ -192,6 +248,10 @@ indicators:
   - transaction_records
   - counterparty_data
   false_positive_notes: Institutional and high-net-worth customers legitimately use OTC desks.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-016
   name: Intermediary or broker with no track record and aggressive marketing
   description: New broker promises guaranteed returns or urgent allocation.
@@ -204,6 +264,10 @@ indicators:
   - company_registry
   - adverse_media
   false_positive_notes: Start-ups can be genuine.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-017
   name: Seafood sales through traders with no traceability
   description: Processors or exporters cannot show the vessel or catch origin.
@@ -216,6 +280,10 @@ indicators:
   - supplier_files
   - certificates
   false_positive_notes: Smaller traders may lack digital records.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-018
   name: Payments to public officials to obtain permits or bypass controls
   description: Payments are made to officials, rangers or couriers around licences, inspections, reserves,
@@ -230,6 +298,10 @@ indicators:
   - expense_reports
   - permit_records
   false_positive_notes: Official fees and per diems can be legitimate and documented.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-019
   name: Beneficiary account name mismatch or no-match result
   description: 'Victim-side: confirmation-of-payee check returns no match or close match and the customer
@@ -243,6 +315,10 @@ indicators:
   - payee_check_results
   - payment_data
   false_positive_notes: Typos, trading names or joint accounts producing benign mismatches.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-020
   name: Change of beneficiary bank details close to a payment
   description: 'Victim-side: supplier payment details are altered shortly before an invoice is due, via
@@ -256,6 +332,10 @@ indicators:
   - vendor_master
   - payment_data
   false_positive_notes: Real supplier bank migrations.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-021
   name: Merchant chargeback ratio above scheme thresholds
   description: 'Merchant-side: high disputes and refunds.'
@@ -266,6 +346,10 @@ indicators:
   data_sources:
   - merchant_data
   false_positive_notes: Seasonal peaks.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-022
   name: Transaction laundering through front merchants
   description: A merchant processes sales for undisclosed businesses, or customers use merchants whose
@@ -279,6 +363,10 @@ indicators:
   - card_transaction_data
   - merchant_profile
   false_positive_notes: Marketplaces and aggregators legitimately process sub-merchant sales.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-023
   name: Repeated claims across insurers by linked parties
   description: Same people, vehicles or addresses appear in multiple claims.
@@ -290,6 +378,10 @@ indicators:
   - claims_data
   - industry_data
   false_positive_notes: Coincidental similarity.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-024
   name: Repair or medical invoices inflated or from linked providers
   description: Providers submit pattern-bearing invoices with unusual pricing.
@@ -301,6 +393,10 @@ indicators:
   data_sources:
   - invoices
   false_positive_notes: Legitimate specialist providers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-025
   name: Broker or intermediary with unusual early default rate
   description: Applications from one source show disproportionate early payment default or document anomalies.
@@ -312,6 +408,10 @@ indicators:
   data_sources:
   - portfolio_data
   false_positive_notes: Higher-risk niche lenders.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-026
   name: Unlicensed or cloned operator receiving payments
   description: Payments go to operators, platforms or merchants that are absent from regulatory registers,
@@ -327,6 +427,10 @@ indicators:
   - merchant_data
   - transaction_records
   false_positive_notes: Registers may lag, and licences may be held by a related group entity.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-027
   name: Rotation of winning bidders
   description: Contracts win in turn across a small group.
@@ -337,6 +441,10 @@ indicators:
   data_sources:
   - award_data
   false_positive_notes: Small specialist market.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-028
   name: Official has undisclosed relationship with supplier
   description: Conflict of interest appears from registry or declarations.
@@ -349,6 +457,10 @@ indicators:
   - declarations
   - registry_data
   false_positive_notes: Common surnames.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-029
   name: Invoices from related parties with round values
   description: Counterparties share ownership and amounts look artificial.
@@ -361,6 +473,10 @@ indicators:
   - invoice_data
   - company_registry
   false_positive_notes: Group trading.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-030
   name: Debtor denies or cannot confirm the invoice
   description: Obligor verification fails.
@@ -371,6 +487,10 @@ indicators:
   data_sources:
   - debtor_confirmation
   false_positive_notes: Admin lag.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-031
   name: Payments to platforms flagged for illegal content
   description: Payments to websites, hosting or payment accounts identified in intelligence as selling
@@ -384,6 +504,10 @@ indicators:
   - merchant_data
   - law_enforcement_intel
   false_positive_notes: Domain intelligence can include false matches.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-032
   name: Document fraud service payments
   description: Payments to document brokers, translators and forged document suppliers.
@@ -396,6 +520,10 @@ indicators:
   - adverse_media
   - payment_records
   false_positive_notes: Legitimate translation and visa agencies exist.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-033
   name: Travel and visa fee payments for groups from the same recruiter
   description: Bulk payments for flights, visas and recruitment fees to a labour recruiter, sometimes
@@ -409,6 +537,10 @@ indicators:
   - payment_records
   - sponsor_data
   false_positive_notes: Genuine recruitment agencies charge fees in some corridors.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-034
   name: Respondent serves undisclosed downstream institutions
   description: Respondent provides access to its account for other banks or payment firms (nesting) without
@@ -422,6 +554,10 @@ indicators:
   - due_diligence_files
   - payment_messages
   false_positive_notes: Group and agency arrangements are disclosed normally.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-035
   name: Many unrelated depositors paying into one account
   description: Numerous unconnected individuals make deposits into the same account, often in similar
@@ -436,6 +572,10 @@ indicators:
   - branch_data
   false_positive_notes: Collections for clubs, charities, landlords or crowdfunding can legitimately attract
     many depositors.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-036
   name: Auction or intermediary used to obscure parties
   description: Agents or anonymous bidding.
@@ -446,6 +586,10 @@ indicators:
   data_sources:
   - auction_records
   false_positive_notes: Privacy requests.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-037
   name: Shared devices, IP addresses or contact details across accounts
   description: Multiple unrelated accounts share devices, phone numbers, email or addresses.
@@ -458,6 +602,10 @@ indicators:
   - device_data
   - kyc_file
   false_positive_notes: Households and shared workplaces share details.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-038
   name: Large payments from state entities or contractors
   description: Receipts from government bodies, state-owned firms or contractors linked to PEP's remit.
@@ -469,6 +617,10 @@ indicators:
   data_sources:
   - transaction_data
   false_positive_notes: Legitimate fees from state-owned firms.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-039
   name: Use of intermediaries and agents to handle funds
   description: Lawyers, brokers or fixers move funds on behalf of PEP.
@@ -479,6 +631,10 @@ indicators:
   data_sources:
   - transaction_data
   false_positive_notes: Professionals commonly act for wealthy clients.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-040
   name: Bank accounts opened or operated by TCSP staff
   description: TCSP is signatory or conduit for client funds.
@@ -490,6 +646,10 @@ indicators:
   data_sources:
   - account_mandates
   false_positive_notes: Administration services.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-041
   name: Transfers pass through accounts of relatives or employees
   description: Staff or family accounts used for business flows.
@@ -500,6 +660,10 @@ indicators:
   data_sources:
   - transaction_data
   false_positive_notes: Family businesses.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-042
   name: Brokers or dealers lacking licences or end-user certificates
   description: Intermediary arranges transfers without export licences.
@@ -512,6 +676,10 @@ indicators:
   - licence_registers
   - trade_documents
   false_positive_notes: Licensing differs by country.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-043
   name: Payments from or to sanctioned or embargoed parties
   description: Counterparties on arms embargo or sanctions lists.
@@ -522,6 +690,10 @@ indicators:
   data_sources:
   - sanctions_lists
   false_positive_notes: Name matches are common.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-044
   name: Seller is dealer new to market or with sanctions or adverse media
   description: Unknown or suspect dealer.
@@ -533,6 +705,10 @@ indicators:
   data_sources:
   - adverse_media
   false_positive_notes: New dealers exist.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-045
   name: Importer of brand-name goods with no distribution authorisation
   description: No authorisation or licence from brand owner.
@@ -545,6 +721,10 @@ indicators:
   - kyc_files
   - brand_data
   false_positive_notes: Parallel imports are lawful in places.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-046
   name: Import-export firms trading chemicals with unusual consignees
   description: Importers deal with unfamiliar overseas parties in high-risk corridors for precursor sources.
@@ -557,6 +737,10 @@ indicators:
   - trade_documents
   - customs_data
   false_positive_notes: Chemical trade is large and lawful.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-047
   name: Players or officials receive payments from betting-linked parties
   description: Payments to athletes, referees from unrelated parties.
@@ -569,6 +753,10 @@ indicators:
   - payment_records
   - sports_data
   false_positive_notes: Sponsorships and fees exist.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-048
   name: Illegal factory equipment or leaf purchases
   description: Orders for tobacco-making machinery, paper, filters.
@@ -581,6 +769,10 @@ indicators:
   - invoices
   - merchant_data
   false_positive_notes: Roll-your-own firms are lawful.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-049
   name: Respondent processing for front companies of concern in prior reports
   description: Respondent's customers appear in prior internal or external reports.
@@ -592,6 +784,10 @@ indicators:
   data_sources:
   - internal_sar_history
   false_positive_notes: Coincidental overlap.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-050
   name: Exposure to wallets attributed to designated, stolen-fund or illicit actors
   description: Customer transacts directly or near-directly with blockchain addresses attributed by sanctions
@@ -608,6 +804,10 @@ indicators:
   - transaction_records
   false_positive_notes: Indirect exposure through large services or mixed-source addresses can generate
     low-quality hits; assess hop distance and attribution confidence.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-051
   name: Adviser or agent acting for multiple linked clients
   description: A single provider, broker, lawyer or agent sets up entities or handles transactions for
@@ -622,6 +822,10 @@ indicators:
   - corporate_registry
   - entity_formation_data
   false_positive_notes: Professional advisers legitimately serve many clients, including related ones.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-052
   name: Family members or close associates acquiring assets and positions
   description: Relatives or known associates assume ownership or management of designated person's holdings.
@@ -634,6 +838,10 @@ indicators:
   - adverse_media
   - registry_data
   false_positive_notes: Family businesses commonly pass to relatives.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-053
   name: Sender or intermediary with history of message-quality deficiencies
   description: Peer institution frequently sends payments with data gaps.
@@ -644,6 +852,10 @@ indicators:
   data_sources:
   - history_logs
   false_positive_notes: Technical problems may be systemic.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-054
   name: Crisis consultancy or ransom-response payments without documentation
   description: Payments to intermediaries described as negotiators or consultants with limited contracts
@@ -657,6 +869,10 @@ indicators:
   - invoices
   - contracts
   false_positive_notes: Professional crisis response firms exist and are lawful.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-055
   name: Dealings with known facilitators or persons on investigative watch lists
   description: Customer transacts, including in small amounts, with persons identified in public or law-enforcement
@@ -672,6 +888,10 @@ indicators:
   - prior_reports
   - transaction_records
   false_positive_notes: Low-value contact may be innocent, such as family or community links or name matches.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-056
   name: Transactions involving entities tied to state support for designated groups
   description: Counterparties publicly linked, by credible reports, to government support for terrorist
@@ -685,6 +905,10 @@ indicators:
   - sanctions_lists
   - adverse_media
   false_positive_notes: Government-owned entities are widely used in legitimate trade.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-057
   name: Use of intermediaries who market secrecy
   description: Customer introduced by advisers or promoters advertising confidentiality or tax-free outcomes.
@@ -697,6 +921,10 @@ indicators:
   - kyc_files
   - adverse_media
   false_positive_notes: Wealth advisers legitimately offer privacy and tax planning within the law.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-058
   name: Payments from or to unrelated third parties
   description: Funds are paid or received, or instructions are given to pay, through parties with no evident
@@ -713,6 +941,10 @@ indicators:
   - contract_documents
   false_positive_notes: Legitimate third-party payers exist, such as family members, parents, guarantors,
     payment agents or corporate treasury entities, and are usually explainable with documentation.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-059
   name: Adverse media or intelligence linking counterparties to criminal activity
   description: Counterparties, suppliers, respondents or controllers appear in adverse media, law-enforcement
@@ -730,6 +962,10 @@ indicators:
   - counterparty_data
   false_positive_notes: Adverse media can be inaccurate, dated or relate to a namesake; verify identity
     and credibility before acting.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-060
   name: Repeated fraud recalls or return requests against the same receiving account or originating institution
   description: A receiving account, or flows from a given originating institution, attract multiple recall,
@@ -746,6 +982,10 @@ indicators:
   - transaction_data
   false_positive_notes: Operational errors, duplicate payments, disputed commercial transactions and a
     single large fraud event hitting one account can generate several recalls without mule activity.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-061
   name: Counterparty institution slow or unresponsive to fraud recall and information requests
   description: A correspondent, payment institution or exchange repeatedly fails to act on freeze, recall
@@ -761,6 +1001,10 @@ indicators:
   - payment_messages
   false_positive_notes: Time-zone differences, legal process requirements in the counterparty's jurisdiction
     and capacity limits can delay legitimate responses.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed
 - id: IND-CPT-062
   name: Dispute or award between related parties resolved quickly without contest
   description: A claim, arbitration or judgment is brought between parties that are linked by ownership,
@@ -781,3 +1025,7 @@ indicators:
   false_positive_notes: Group companies, family firms and joint ventures genuinely settle intra-group
     disputes, and early settlement is common. Check for a real commercial history and whether other group
     entities are also paid.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: ai_draft_unreviewed
+  confidence: unassessed

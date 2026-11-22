@@ -5,6 +5,20 @@ typology:
   description: Laundering of proceeds of corruption or other crimes by or on behalf of politically exposed
     persons, relatives, close associates and other high-risk individuals, often through intermediaries,
     companies and foreign accounts. Such flows may be integrated through property, luxury assets and investments.
+  exposure:
+    channels:
+    - face_to_face_professional
+    payment_rails:
+    - wire_swift
+    customer_segments:
+    - pep_related
+    - private_wealth
+    - non_resident
+    products:
+    - transaction_account
+    - investment_securities
+    basis: ai_inferred
+    rationale: PEP/associate flows via foreign accounts, companies and assets.
   stage:
   - layering
   - integration

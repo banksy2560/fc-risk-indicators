@@ -5,6 +5,22 @@ typology:
   description: Offenders build online trust over weeks or months, then steer the victim into sending money
     for an emergency or into a fake investment platform that shows fabricated gains. Funds typically flow
     through exchanges, mule accounts and offshore networks.
+  exposure:
+    channels:
+    - online_banking
+    - mobile_app
+    payment_rails:
+    - fast_payments
+    - crypto_onramp_offramp
+    - cross_border_remittance
+    customer_segments:
+    - retail
+    - vulnerable_elderly
+    products:
+    - transaction_account
+    - crypto_custody
+    basis: ai_inferred
+    rationale: Victim payments to exchanges and offshore accounts.
   sectors:
   - banking
   - payments

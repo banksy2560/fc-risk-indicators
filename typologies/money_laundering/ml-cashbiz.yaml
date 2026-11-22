@@ -5,6 +5,22 @@ typology:
   description: Use of businesses that naturally handle large cash volumes, such as restaurants, car washes,
     laundromats, vending, convenience stores and nail salons, to blend illicit cash with legitimate takings.
     Deposits are inflated to fit the business's apparent scale.
+  exposure:
+    channels:
+    - branch
+    - atm
+    payment_rails:
+    - cash
+    - cheque
+    customer_segments:
+    - cash_intensive_business
+    - sme
+    products:
+    - transaction_account
+    - merchant_services
+    basis: ai_inferred
+    rationale: Restaurants, car washes, laundromats and similar cash-heavy businesses deposit inflated
+      takings at branches and ATMs; card acquiring also relevant.
   stage:
   - placement
   - layering

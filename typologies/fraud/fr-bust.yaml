@@ -5,6 +5,21 @@ typology:
   description: Customers or organised groups obtain credit with no intent to repay, or build up credit
     lines and then max them out and vanish. First-party fraud may also include exaggerated hardship or
     false disputes.
+  exposure:
+    channels:
+    - online_banking
+    - mobile_app
+    payment_rails:
+    - card
+    - cash
+    customer_segments:
+    - retail
+    - new_to_bank
+    products:
+    - credit_card
+    - loan_mortgage
+    basis: ai_inferred
+    rationale: Credit lines maxed out with cash advances and gift cards.
   sectors:
   - banking
   - payments

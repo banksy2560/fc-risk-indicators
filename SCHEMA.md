@@ -9,7 +9,7 @@ typology:
   domain: money_laundering          # money_laundering | terrorist_financing | proliferation_financing | sanctions | fraud | bribery_corruption | tax_evasion | human_trafficking_modern_slavery | environmental_crime | cyber_enabled | other_predicate | cross_cutting
   description: >                    # 2-4 sentences, plain language
   stage: [placement, layering]      # ML only; optional otherwise
-  sectors: [banking, trade_finance] # banking | payments | crypto | insurance | securities | casino_gaming | dnfbp | real_estate | mvts | fintech | corporate_services | art_luxury | all
+  sectors: [banking, trade_finance] # banking | payments | crypto | insurance | securities | casino_gaming | dnfbp | real_estate | mvts | fintech | trade_finance | corporate_services | art_luxury | all
   sources:                          # real, citable references (FATF reports, FinCEN advisories, Egmont, Wolfsberg, JMLSG, AUSTRAC, FCA, etc.)
     - "FATF, Trade-Based Money Laundering: Trends and Developments (2020)"
   indicators:

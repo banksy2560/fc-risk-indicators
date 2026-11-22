@@ -1,0 +1,214 @@
+typology:
+  id: SANC-ENABLERS
+  name: Sanctions Facilitators and Professional Enablers
+  domain: sanctions
+  description: Lawyers, accountants, trust and company service providers, brokers and other professionals
+    may knowingly or unknowingly structure transactions, set up entities or move funds to help designated
+    persons avoid sanctions. Indicators focus on unusual service patterns, pass-through behaviour and
+    the enabler's own risk profile.
+  sectors:
+  - corporate_services
+  - dnfbp
+  - banking
+  sources:
+  - FATF, Guidance on Beneficial Ownership of Legal Persons (2023)
+  - FATF, Professional Money Laundering (2018)
+  - OFAC and UK government advisories on sanctions evasion enablers (general reference)
+  indicators:
+  - id: SANC-ENABLERS-001
+    name: Service provider incorporates many entities for related clients with shared structures
+    description: Same provider sets up numerous similar entities for linked beneficial owners.
+    category: counterparty
+    severity: high
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - corporate_registry
+    false_positive_notes: TCSPs create many entities legitimately.
+    controls:
+    - id: SANC-ENABLERS-001-C1
+      name: Provider concentration analysis
+      type: detective
+      description: Analyse entities by provider.
+      implementation: technology
+      effectiveness: medium
+    - id: SANC-ENABLERS-001-C2
+      name: TCSP due diligence
+      type: preventive
+      description: Assess controls and client acceptance.
+      implementation: process
+      effectiveness: high
+    - id: SANC-ENABLERS-001-C3
+      name: Provider risk rating
+      type: governance
+      description: Rate service providers by risk.
+      implementation: policy
+      effectiveness: medium
+  - id: SANC-ENABLERS-002
+    name: Professional's client account used as pass-through
+    description: Funds enter and leave client accounts of an adviser with no related service.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - client_account_data
+    false_positive_notes: Client accounts are used for legitimate settlements.
+    controls:
+    - id: SANC-ENABLERS-002-C1
+      name: Pass-through detection
+      type: detective
+      description: Detect rapid in-out.
+      implementation: rule
+      effectiveness: medium
+    - id: SANC-ENABLERS-002-C2
+      name: Purpose evidence requirement
+      type: preventive
+      description: Require documentation.
+      implementation: process
+      effectiveness: medium
+  - id: SANC-ENABLERS-003
+    name: Advisers instructed to use complex structures after a customer's designation risk emerges
+    description: Request for restructuring after adverse news or risk of designation.
+    category: behavioural
+    severity: high
+    detection_type:
+    - investigator_judgement
+    - external_intel
+    data_sources:
+    - engagement_records
+    false_positive_notes: Restructuring has many reasons.
+    controls:
+    - id: SANC-ENABLERS-003-C1
+      name: Risk-triggered review
+      type: detective
+      description: Review structure changes after adverse events.
+      implementation: process
+      effectiveness: medium
+    - id: SANC-ENABLERS-003-C2
+      name: Reporting procedure
+      type: governance
+      description: Define reporting steps.
+      implementation: policy
+      effectiveness: high
+  - id: SANC-ENABLERS-004
+    name: Facilitator relying on informal channels, cash or trade offsets for clients
+    description: Payments for clients via netting, barter or unrecorded transfers.
+    category: product_channel
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - account_data
+    false_positive_notes: Informal systems are used in some communities.
+    controls:
+    - id: SANC-ENABLERS-004-C1
+      name: Netting indicators rule
+      type: detective
+      description: Flag reciprocal flows.
+      implementation: rule
+      effectiveness: medium
+    - id: SANC-ENABLERS-004-C2
+      name: Channel policy
+      type: governance
+      description: Restrict informal channels.
+      implementation: policy
+      effectiveness: medium
+  - id: SANC-ENABLERS-005
+    name: Provider with disciplinary history or enforcement exposure
+    description: Adverse regulatory or enforcement actions concerning sanctions handling.
+    category: customer
+    severity: medium
+    detection_type:
+    - external_intel
+    - screening
+    data_sources:
+    - regulator_notices
+    false_positive_notes: Past findings may be remediated.
+    controls:
+    - id: SANC-ENABLERS-005-C1
+      name: Adverse regulatory screening
+      type: preventive
+      description: Screen service providers.
+      implementation: technology
+      effectiveness: medium
+    - id: SANC-ENABLERS-005-C2
+      name: Remediation assessment
+      type: detective
+      description: Check remediation.
+      implementation: process
+      effectiveness: medium
+  - id: SANC-ENABLERS-006
+    name: Provider acts for many clients from the same higher-risk jurisdiction
+    description: Concentration of high-risk clients.
+    category: geographic
+    severity: medium
+    detection_type:
+    - kyc_review
+    data_sources:
+    - client_lists
+    false_positive_notes: Specialist niche providers.
+    controls:
+    - id: SANC-ENABLERS-006-C1
+      name: Client mix analysis
+      type: detective
+      description: Analyse portfolio.
+      implementation: technology
+      effectiveness: medium
+    - id: SANC-ENABLERS-006-C2
+      name: Enhanced monitoring
+      type: preventive
+      description: Apply tailored monitoring.
+      implementation: process
+      effectiveness: medium
+  - id: SANC-ENABLERS-007
+    name: Fee arrangements disproportionate to services or paid by third parties
+    description: Unusually high or opaque fees.
+    category: transaction
+    severity: medium
+    detection_type:
+    - document_review
+    - transaction_monitoring
+    data_sources:
+    - invoices
+    false_positive_notes: Specialist work attracts high fees.
+    controls:
+    - id: SANC-ENABLERS-007-C1
+      name: Fee reasonableness check
+      type: detective
+      description: Benchmark fees.
+      implementation: process
+      effectiveness: medium
+    - id: SANC-ENABLERS-007-C2
+      name: Payer identification
+      type: preventive
+      description: Identify fee payers.
+      implementation: process
+      effectiveness: medium
+  - id: SANC-ENABLERS-008
+    name: Document or sanction-licence irregularities
+    description: Applications or licence reliance appear inconsistent or altered.
+    category: document
+    severity: high
+    detection_type:
+    - document_review
+    - investigator_judgement
+    data_sources:
+    - licence_documents
+    false_positive_notes: Administrative errors occur.
+    controls:
+    - id: SANC-ENABLERS-008-C1
+      name: Licence verification
+      type: preventive
+      description: Verify with issuing authority.
+      implementation: process
+      effectiveness: high
+    - id: SANC-ENABLERS-008-C2
+      name: Document integrity checks
+      type: detective
+      description: Test for alteration.
+      implementation: technology
+      effectiveness: medium

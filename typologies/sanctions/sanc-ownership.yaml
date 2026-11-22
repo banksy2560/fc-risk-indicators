@@ -1,0 +1,228 @@
+typology:
+  id: SANC-OWNERSHIP
+  name: Sanctions Evasion via Shell and Ownership Layering (50% Rule Circumvention)
+  domain: sanctions
+  description: Designated persons may retain control of assets by reducing recorded ownership below aggregation
+    thresholds, using nominees, trusts, family members or layered holding companies. Detection depends
+    on ownership and control analysis that looks beyond percentage holdings to influence, funding and
+    benefit.
+  sectors:
+  - banking
+  - corporate_services
+  - securities
+  - all
+  sources:
+  - OFAC, Guidance on Entities Owned by Persons Whose Property and Interests in Property Are Blocked (50
+    Percent Rule) (2014)
+  - 'OFSI, Financial Sanctions Guidance: ownership and control'
+  - FATF, Guidance on Beneficial Ownership of Legal Persons (2023)
+  indicators:
+  - id: SANC-OWNERSHIP-001
+    name: Recent ownership reductions by a designated person around designation date
+    description: Shareholdings are transferred or diluted shortly before or after a designation, often
+      to relatives or associates.
+    category: ownership_structure
+    severity: high
+    detection_type:
+    - kyc_review
+    - screening
+    - investigator_judgement
+    data_sources:
+    - registry_filings
+    - share_registers
+    false_positive_notes: Genuine succession planning or restructuring can coincide.
+    controls:
+    - id: SANC-OWNERSHIP-001-C1
+      name: Ownership history review
+      type: detective
+      description: Review historic filings for changes near designation dates.
+      implementation: process
+      effectiveness: high
+    - id: SANC-OWNERSHIP-001-C2
+      name: Control-based assessment
+      type: preventive
+      description: Assess whether the designated person retains control or benefit despite formal shares.
+      implementation: process
+      effectiveness: high
+    - id: SANC-OWNERSHIP-001-C3
+      name: Re-screening on list update
+      type: preventive
+      description: Re-screen the customer base and linked parties on designation.
+      implementation: rule
+      effectiveness: medium
+  - id: SANC-OWNERSHIP-002
+    name: Aggregate designated-party ownership just below the threshold
+    description: Several designated parties each hold stakes that together reach but are individually
+      below the threshold, or holdings sit at just under the limit.
+    category: ownership_structure
+    severity: high
+    detection_type:
+    - kyc_review
+    - screening
+    data_sources:
+    - ownership_data
+    false_positive_notes: Minority stakes are routine in investments.
+    controls:
+    - id: SANC-OWNERSHIP-002-C1
+      name: Aggregation logic
+      type: preventive
+      description: Aggregate holdings of all designated parties in ownership analysis.
+      implementation: technology
+      effectiveness: high
+    - id: SANC-OWNERSHIP-002-C2
+      name: Threshold-proximity alerts
+      type: detective
+      description: Alert when holdings are near limits.
+      implementation: rule
+      effectiveness: medium
+  - id: SANC-OWNERSHIP-003
+    name: Nominee shareholders, directors or trustees with limited independent role
+    description: Registered officers appear to act on instruction, serve many entities or have no business
+      connection.
+    category: ownership_structure
+    severity: medium
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - corporate_registry
+    - officer_data
+    false_positive_notes: Professional nominees are lawful in many jurisdictions.
+    controls:
+    - id: SANC-OWNERSHIP-003-C1
+      name: Nominee disclosure
+      type: preventive
+      description: Require nominee status and principals to be disclosed.
+      implementation: process
+      effectiveness: medium
+    - id: SANC-OWNERSHIP-003-C2
+      name: Officer concentration analytics
+      type: detective
+      description: Flag individuals who serve as officers for many unrelated entities.
+      implementation: technology
+      effectiveness: medium
+  - id: SANC-OWNERSHIP-004
+    name: Family members or close associates acquiring assets and positions
+    description: Relatives or known associates assume ownership or management of designated person's holdings.
+    category: counterparty
+    severity: medium
+    detection_type:
+    - screening
+    - external_intel
+    data_sources:
+    - adverse_media
+    - registry_data
+    false_positive_notes: Family businesses commonly pass to relatives.
+    controls:
+    - id: SANC-OWNERSHIP-004-C1
+      name: Associate and family screening
+      type: preventive
+      description: Screen known relatives and associates under risk-based approach.
+      implementation: rule
+      effectiveness: medium
+    - id: SANC-OWNERSHIP-004-C2
+      name: Source-of-wealth validation
+      type: detective
+      description: Check whether new owners have independent means.
+      implementation: process
+      effectiveness: medium
+  - id: SANC-OWNERSHIP-005
+    name: Complex multi-jurisdiction holding chain without economic rationale
+    description: Layers across secrecy-prone jurisdictions with trusts or foundations and no clear commercial
+      purpose.
+    category: ownership_structure
+    severity: medium
+    detection_type:
+    - kyc_review
+    - document_review
+    data_sources:
+    - structure_charts
+    - trust_deeds
+    false_positive_notes: Tax and legal planning can be legitimate.
+    controls:
+    - id: SANC-OWNERSHIP-005-C1
+      name: Structure rationale requirement
+      type: preventive
+      description: Document commercial or legal reasons for each layer.
+      implementation: process
+      effectiveness: medium
+    - id: SANC-OWNERSHIP-005-C2
+      name: Look-through to natural persons
+      type: preventive
+      description: Identify ultimate controllers regardless of layers.
+      implementation: process
+      effectiveness: high
+  - id: SANC-OWNERSHIP-006
+    name: Funding of a company by a designated person's connected sources
+    description: Capital injections, loans or guarantees come from entities linked to a designated party.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - loan_agreements
+    - account_activity
+    false_positive_notes: Group financing is common.
+    controls:
+    - id: SANC-OWNERSHIP-006-C1
+      name: Funding source tracing
+      type: detective
+      description: Trace capital and loans to origin.
+      implementation: process
+      effectiveness: medium
+    - id: SANC-OWNERSHIP-006-C2
+      name: Payment counterparty screening
+      type: preventive
+      description: Screen payers and guarantors.
+      implementation: rule
+      effectiveness: medium
+  - id: SANC-OWNERSHIP-007
+    name: Customer unwilling or unable to explain ownership or control
+    description: Evasive, delayed or inconsistent explanations about owners, controllers or purpose.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    - kyc_review
+    data_sources:
+    - onboarding_records
+    false_positive_notes: Complex family businesses can take time to document.
+    controls:
+    - id: SANC-OWNERSHIP-007-C1
+      name: Information hold standards
+      type: governance
+      description: Define consequences where ownership is unclear.
+      implementation: policy
+      effectiveness: medium
+    - id: SANC-OWNERSHIP-007-C2
+      name: Escalation to sanctions team
+      type: preventive
+      description: Escalate unexplained structures.
+      implementation: process
+      effectiveness: medium
+  - id: SANC-OWNERSHIP-008
+    name: Shared addresses, phone numbers or advisers with designated entities
+    description: Entities share contact details, advisers or bank accounts with designated persons.
+    category: ownership_structure
+    severity: medium
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - registry_data
+    - contact_data
+    false_positive_notes: Registered-agent addresses are widely shared.
+    controls:
+    - id: SANC-OWNERSHIP-008-C1
+      name: Link analysis
+      type: detective
+      description: Link entities by shared identifiers.
+      implementation: technology
+      effectiveness: medium
+    - id: SANC-OWNERSHIP-008-C2
+      name: Adviser risk awareness
+      type: preventive
+      description: Train staff on professional enabler patterns.
+      implementation: training
+      effectiveness: low

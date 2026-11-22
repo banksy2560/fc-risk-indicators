@@ -1,0 +1,213 @@
+typology:
+  id: SANC-STRIPPING
+  name: Wire Stripping and Payment-Message Manipulation
+  domain: sanctions
+  description: Payment messages can be altered or structured so that names, addresses or purpose fields
+    that would trigger sanctions screening are omitted, truncated or replaced. Controls focus on message
+    integrity, intermediary practices and unusual patterns in message content.
+  sectors:
+  - banking
+  - payments
+  sources:
+  - Basel Committee on Banking Supervision, Due diligence and transparency regarding cover payment messages
+    related to cross-border wire transfers (2009)
+  - FATF Recommendation 16 and Interpretive Note on wire transfers
+  - OFAC, Enforcement Release guidance on payment processing (general reference)
+  indicators:
+  - id: SANC-STRIPPING-001
+    name: Originator or beneficiary fields missing, generic or truncated
+    description: Payments carry placeholders such as 'customer' or incomplete addresses for parties in
+      higher-risk jurisdictions.
+    category: document
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - document_review
+    data_sources:
+    - swift_messages
+    false_positive_notes: Legacy systems truncate data.
+    controls:
+    - id: SANC-STRIPPING-001-C1
+      name: Message completeness validation
+      type: preventive
+      description: Reject or hold payments with incomplete party data.
+      implementation: rule
+      effectiveness: high
+    - id: SANC-STRIPPING-001-C2
+      name: Hit-rate monitoring on blanks
+      type: detective
+      description: Track rates of missing fields by sender.
+      implementation: rule
+      effectiveness: medium
+    - id: SANC-STRIPPING-001-C3
+      name: Sender feedback loop
+      type: corrective
+      description: Return deficient messages and track repeated senders.
+      implementation: process
+      effectiveness: medium
+  - id: SANC-STRIPPING-002
+    name: Use of cover payments that omit underlying parties
+    description: Cover message shows only the banks, with details of ultimate parties absent.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - mt202cov_data
+    false_positive_notes: Cover method is used for ordinary correspondent business.
+    controls:
+    - id: SANC-STRIPPING-002-C1
+      name: Cover payment transparency checks
+      type: preventive
+      description: Compare serial and cover messages.
+      implementation: process
+      effectiveness: medium
+    - id: SANC-STRIPPING-002-C2
+      name: Request for information
+      type: corrective
+      description: Ask the originating bank for missing details.
+      implementation: process
+      effectiveness: medium
+  - id: SANC-STRIPPING-003
+    name: Free-text fields containing instructions to avoid mention of certain parties
+    description: Messages instruct downstream banks not to reference parties or contain unusual remarks.
+    category: document
+    severity: high
+    detection_type:
+    - screening
+    - transaction_monitoring
+    data_sources:
+    - payment_messages
+    false_positive_notes: Poor wording may be innocent.
+    controls:
+    - id: SANC-STRIPPING-003-C1
+      name: Free-text screening
+      type: preventive
+      description: Screen narrative for keywords suggesting concealment.
+      implementation: rule
+      effectiveness: high
+    - id: SANC-STRIPPING-003-C2
+      name: Escalation and reporting
+      type: governance
+      description: Escalate to sanctions and compliance.
+      implementation: policy
+      effectiveness: medium
+  - id: SANC-STRIPPING-004
+    name: Frequent changes of intermediary banks or repeated reformatting of payments
+    description: Rejected payments are resubmitted with altered details.
+    category: behavioural
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - rejected_payments
+    false_positive_notes: Repair of ordinary errors happens.
+    controls:
+    - id: SANC-STRIPPING-004-C1
+      name: Rejected payment resubmission detection
+      type: detective
+      description: Detect repeated attempts with altered fields.
+      implementation: rule
+      effectiveness: high
+    - id: SANC-STRIPPING-004-C2
+      name: Case linkage
+      type: detective
+      description: Link rejected and later versions.
+      implementation: process
+      effectiveness: medium
+  - id: SANC-STRIPPING-005
+    name: Payments routed through banks in jurisdictions with weak controls for no clear reason
+    description: Routing does not follow normal correspondent paths.
+    category: geographic
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payment_routing
+    false_positive_notes: Routes vary.
+    controls:
+    - id: SANC-STRIPPING-005-C1
+      name: Routing plausibility rule
+      type: detective
+      description: Compare routes with norms.
+      implementation: rule
+      effectiveness: medium
+    - id: SANC-STRIPPING-005-C2
+      name: Counterparty bank restrictions
+      type: preventive
+      description: Restrict routing via higher-risk banks.
+      implementation: policy
+      effectiveness: medium
+  - id: SANC-STRIPPING-006
+    name: Different party name between message and underlying invoice
+    description: Payment shows one remitter while documents show another.
+    category: document
+    severity: medium
+    detection_type:
+    - document_review
+    - transaction_monitoring
+    data_sources:
+    - invoices
+    - messages
+    false_positive_notes: Third-party payers exist.
+    controls:
+    - id: SANC-STRIPPING-006-C1
+      name: Payer-document reconciliation
+      type: preventive
+      description: Compare message parties with documents.
+      implementation: process
+      effectiveness: medium
+    - id: SANC-STRIPPING-006-C2
+      name: Exceptions log
+      type: governance
+      description: Record deviations.
+      implementation: process
+      effectiveness: low
+  - id: SANC-STRIPPING-007
+    name: Sender or intermediary with history of message-quality deficiencies
+    description: Peer institution frequently sends payments with data gaps.
+    category: counterparty
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - history_logs
+    false_positive_notes: Technical problems may be systemic.
+    controls:
+    - id: SANC-STRIPPING-007-C1
+      name: Counterparty quality scorecard
+      type: detective
+      description: Scorecard of message quality.
+      implementation: technology
+      effectiveness: medium
+    - id: SANC-STRIPPING-007-C2
+      name: Escalation
+      type: governance
+      description: Escalate chronic issues.
+      implementation: policy
+      effectiveness: medium
+  - id: SANC-STRIPPING-008
+    name: Screening alerts closed repeatedly for the same pattern with minimal rationale
+    description: Internal indicator of weak alert handling that may mask manipulation.
+    category: typology_specific
+    severity: low
+    detection_type:
+    - investigator_judgement
+    data_sources:
+    - alert_records
+    false_positive_notes: Genuine recurrent false positives.
+    controls:
+    - id: SANC-STRIPPING-008-C1
+      name: QA on alert decisions
+      type: detective
+      description: Sample closed alerts.
+      implementation: process
+      effectiveness: medium
+    - id: SANC-STRIPPING-008-C2
+      name: Tuning governance
+      type: governance
+      description: Review tuning with documented rationale.
+      implementation: policy
+      effectiveness: medium

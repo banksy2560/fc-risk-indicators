@@ -1,0 +1,218 @@
+typology:
+  id: SANC-LUXURY
+  name: Luxury Goods and Real-Asset Hiding by Designated Persons
+  domain: sanctions
+  description: Designated persons may convert financial assets into yachts, aircraft, art, jewellery,
+    property or collectibles held through intermediaries to avoid freezing. Detection is relevant to banks,
+    art and luxury dealers, brokers, registries and corporate service providers.
+  sectors:
+  - art_luxury
+  - real_estate
+  - dnfbp
+  - banking
+  sources:
+  - OFAC, FinCEN, Alert on potential sanctions evasion via luxury and high-value assets (general reference)
+  - FATF, Money Laundering and Terrorist Financing in the Art and Antiquities Market (2023)
+  - OFSI, guidance on asset freezing (general reference)
+  indicators:
+  - id: SANC-LUXURY-001
+    name: Purchase of high-value assets by newly formed entities with opaque owners
+    description: Yacht, aircraft, art or property is bought through a company with unclear beneficial
+      owners.
+    category: ownership_structure
+    severity: high
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - registry_data
+    - purchase_agreements
+    false_positive_notes: Privacy-driven structures are common among wealthy buyers.
+    controls:
+    - id: SANC-LUXURY-001-C1
+      name: Beneficial ownership verification
+      type: preventive
+      description: Verify owners and source of funds.
+      implementation: process
+      effectiveness: high
+    - id: SANC-LUXURY-001-C2
+      name: Asset registry cross-check
+      type: detective
+      description: Cross-check with registries.
+      implementation: technology
+      effectiveness: medium
+    - id: SANC-LUXURY-001-C3
+      name: Sector escalation
+      type: governance
+      description: Set risk acceptance limits.
+      implementation: policy
+      effectiveness: medium
+  - id: SANC-LUXURY-002
+    name: Asset transfers shortly before or after designation
+    description: Titles move to relatives, trusts or associates around designation dates.
+    category: transaction
+    severity: high
+    detection_type:
+    - external_intel
+    - investigator_judgement
+    data_sources:
+    - title_records
+    false_positive_notes: Estate planning occurs.
+    controls:
+    - id: SANC-LUXURY-002-C1
+      name: Title history review
+      type: detective
+      description: Review ownership history.
+      implementation: process
+      effectiveness: high
+    - id: SANC-LUXURY-002-C2
+      name: Re-screening on designation
+      type: preventive
+      description: Rescreen asset owners and counterparties.
+      implementation: rule
+      effectiveness: medium
+  - id: SANC-LUXURY-003
+    name: Maintenance, crew or insurance costs paid by third parties
+    description: Running costs of an asset are paid by persons unconnected to the registered owner.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - document_review
+    data_sources:
+    - payment_data
+    false_positive_notes: Managers pay on behalf of owners.
+    controls:
+    - id: SANC-LUXURY-003-C1
+      name: Payer relationship check
+      type: preventive
+      description: Confirm basis for third-party payment.
+      implementation: process
+      effectiveness: medium
+    - id: SANC-LUXURY-003-C2
+      name: Asset manager due diligence
+      type: preventive
+      description: Assess managers.
+      implementation: process
+      effectiveness: medium
+  - id: SANC-LUXURY-004
+    name: Art or collectibles purchased with no evidence of buyer interest and stored in free ports
+    description: Works are acquired and stored without display or documented purpose.
+    category: product_channel
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    - document_review
+    data_sources:
+    - sale_records
+    - storage_records
+    false_positive_notes: Storage is common for collectors.
+    controls:
+    - id: SANC-LUXURY-004-C1
+      name: Provenance and buyer checks
+      type: preventive
+      description: Verify provenance and buyer.
+      implementation: process
+      effectiveness: medium
+    - id: SANC-LUXURY-004-C2
+      name: Free-port facility due diligence
+      type: preventive
+      description: Assess storage operators.
+      implementation: process
+      effectiveness: medium
+  - id: SANC-LUXURY-005
+    name: Cash or quick settlement of purchases with source of funds unclear
+    description: Large purchase settled via irregular channels.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - payment_data
+    false_positive_notes: Large purchases may use intermediaries.
+    controls:
+    - id: SANC-LUXURY-005-C1
+      name: Source of funds review
+      type: preventive
+      description: Verify the origin of funds.
+      implementation: process
+      effectiveness: high
+    - id: SANC-LUXURY-005-C2
+      name: Transaction thresholds
+      type: preventive
+      description: Apply thresholds for dealers.
+      implementation: rule
+      effectiveness: medium
+  - id: SANC-LUXURY-006
+    name: Property held through nominees or privacy-heavy structures
+    description: Real estate held by shell companies with nominee directors.
+    category: ownership_structure
+    severity: medium
+    detection_type:
+    - kyc_review
+    data_sources:
+    - land_registry
+    false_positive_notes: Privacy legislation applies.
+    controls:
+    - id: SANC-LUXURY-006-C1
+      name: Registry look-through
+      type: preventive
+      description: Use beneficial ownership registers.
+      implementation: technology
+      effectiveness: medium
+    - id: SANC-LUXURY-006-C2
+      name: Property risk assessment
+      type: governance
+      description: Include property in sanctions risk assessments.
+      implementation: process
+      effectiveness: medium
+  - id: SANC-LUXURY-007
+    name: Vessel or aircraft registered under flags of convenience with managers in secrecy locations
+    description: Registration choices obscure the true owner.
+    category: typology_specific
+    severity: medium
+    detection_type:
+    - external_intel
+    - kyc_review
+    data_sources:
+    - ship_registry
+    - aircraft_registry
+    false_positive_notes: Flags of convenience are mainstream.
+    controls:
+    - id: SANC-LUXURY-007-C1
+      name: Registry history checks
+      type: detective
+      description: Review registration changes.
+      implementation: technology
+      effectiveness: medium
+    - id: SANC-LUXURY-007-C2
+      name: Owner-operator comparison
+      type: detective
+      description: Compare owner and operator.
+      implementation: process
+      effectiveness: medium
+  - id: SANC-LUXURY-008
+    name: Advisers or agents who act for multiple designated-linked clients
+    description: Single broker or lawyer appears across several linked purchases.
+    category: counterparty
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    - external_intel
+    data_sources:
+    - adviser_data
+    false_positive_notes: Advisers have many clients.
+    controls:
+    - id: SANC-LUXURY-008-C1
+      name: Adviser risk assessment
+      type: preventive
+      description: Assess intermediaries.
+      implementation: process
+      effectiveness: medium
+    - id: SANC-LUXURY-008-C2
+      name: Network analysis
+      type: detective
+      description: Link intermediaries.
+      implementation: technology
+      effectiveness: medium

@@ -15,6 +15,16 @@ $('#tq').oninput=e=>{tq=e.target.value.toLowerCase().trim();renderMatrix()};
 const pressed=(k,id)=>!!sel&&sel.k===k&&sel.id===id;
 function renderMatrix(){
  const ts=d.typologies.filter(t=>(!dom||t.domain===dom)&&(!tq||(t.name+' '+t.id).toLowerCase().includes(tq)));
+const phone=matchMedia('(max-width:720px)').matches;
+ if(phone){
+  let mx=1;ts.forEach(t=>FAMS.forEach(f=>{mx=Math.max(mx,(cell[t.id][f]||[]).length)}));
+  let h='',lastd='';
+  for(const t of ts){if(t.domain!==lastd){lastd=t.domain;h+=`<h3 class="mdom">${esc(L.domain[t.domain])}</h3>`}
+   const rows=FAMS.map(f=>[f,(cell[t.id][f]||[]).length]).filter(r=>r[1]>0).sort((a,b)=>b[1]-a[1]);
+   h+=`<article class="mcard"><button type="button" class="mname" data-typ="${t.id}" aria-pressed="${pressed('t',t.id)}">${esc(t.name)}</button>`+(rows.length?`<ul>${rows.map(([f,n])=>`<li><button type="button" class="mrow" data-c="${t.id}|${f}" aria-pressed="${pressed('c',t.id+'|'+f)}" aria-label="${esc(t.name)}, ${esc(L.family[f])}: ${plural(n,'linked control','linked controls')}"><span>${esc(L.family[f])}</span><span class="bar" role="presentation"><i style="width:${n/mx*100}%"></i></span><b>${n}</b></button></li>`).join('')}</ul>`:'<p class="none">No linked controls.</p>')+'</article>'}
+  holder.innerHTML=ts.length?`<div class="mxlist">${h}</div>`:'<p class="empty">No typologies match.</p>';
+  $('#mcount').textContent=`${ts.length} typologies, linked controls by family`;
+  return}
  const head=`<th class="corner" scope="col">Typology (${ts.length})</th>`+FAMS.map(f=>`<th scope="col"><button type="button" data-fam="${f}" aria-pressed="${pressed('f',f)}" title="${esc(L.family[f])}: all controls in this family">${esc(L.family[f])}</button></th>`).join('');
  let body='',last='';
  for(const t of ts){if(t.domain!==last){last=t.domain;body+=`<tr class="dom"><th colspan="${FAMS.length+1}" scope="colgroup">${esc(L.domain[t.domain])}</th></tr>`}
@@ -55,5 +65,6 @@ function wirePanel(){
 function closePanel(){sel=null;renderPanel();renderMatrix();const b=lastBtn&&holder.querySelector(lastBtn);if(b)b.focus({preventScroll:true})}
 dback.addEventListener('click',closePanel);
 addEventListener('keydown',e=>{if(e.key==='Escape'&&sel&&!$('dialog.pal').open)closePanel()});
+matchMedia('(max-width:720px)').addEventListener('change',()=>renderMatrix());
 renderMatrix();
 })();

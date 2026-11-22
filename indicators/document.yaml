@@ -796,3 +796,33 @@ indicators:
   - invoices
   - payment_references
   false_positive_notes: Poor translation and informal local terminology may be misleading.
+- id: IND-DOC-068
+  name: Early-access or hardship claim without supporting evidence
+  description: Request to release retirement funds before the normal age on grounds such as ill health,
+    hardship or emigration where the supporting evidence is thin, inconsistent or unverifiable.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  - customer_behaviour
+  data_sources:
+  - claims_data
+  - kyc_file
+  - case_notes
+  false_positive_notes: Genuine early-release grounds exist and members may struggle to supply full documentation.
+- id: IND-DOC-069
+  name: Claim with no commercial basis or prior trading history
+  description: The legal claim rests on a contract, service or loss that lacks supporting commercial evidence,
+    a trading history between the parties, or a plausible amount in relation to the stated losses.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - pleadings_and_claim_documents
+  - contracts
+  - invoices
+  - correspondence
+  false_positive_notes: Early-stage claims may be thinly evidenced and some disputes are about informal
+    deals. Corroborate with counterparties or independent records.

@@ -1,0 +1,83 @@
+typology:
+  id: ML-SHAMLEGAL
+  name: Sham litigation, arbitration and legal settlements used to launder or justify funds
+  domain: money_laundering
+  description: Criminals use real or invented legal disputes, arbitration awards, court judgments or settlements
+    to move money and to give it a documented, apparently lawful origin. The parties are typically connected,
+    the claim has little commercial substance and the payout follows quickly. Lawyers, escrow and client
+    accounts, and receiving banks are the main exposure points.
+  stage:
+  - layering
+  - integration
+  sectors:
+  - dnfbp
+  - banking
+  sources:
+  - FATF, Money Laundering and Terrorist Financing Vulnerabilities of Legal Professionals, 2013 [unverified]
+  - FATF, Professional Money Laundering, 2018 [unverified]
+  indicators:
+  - ref: IND-CPT-013
+    context: Award or settlement money is sent on straight away to third-party or offshore accounts rather
+      than kept by the claimant.
+    controls:
+    - CTL-040
+    - CTL-045
+    - CTL-046
+  - ref: IND-TXN-035
+    context: A law firm's client account receives and then pays out settlement funds with little genuine
+      legal work behind the flow.
+    controls:
+    - CTL-119
+    - CTL-042
+    - CTL-117
+  - ref: IND-PRD-051
+    context: Client or escrow accounts hold and release dispute funds as if they were a bank account for
+      the parties.
+    controls:
+    - CTL-119
+    - CTL-150
+    - CTL-040
+  - ref: IND-TXN-133
+    context: Legal or arbitration fees that are very high, success-based without any contest, or paid
+      by a party outside the matter.
+    controls:
+    - CTL-042
+    - CTL-124
+  - ref: IND-TYP-033
+    context: A lawyer or intermediary acts as paying agent, escrow or nominee in a way that goes beyond
+      the stated dispute.
+    controls:
+    - CTL-117
+    - CTL-112
+  - ref: IND-CPT-036
+    context: Court-ordered or contrived forced-sale and auction processes with agents or anonymous bidders
+      hide who actually acquires the asset.
+    controls:
+    - CTL-142
+    - CTL-141
+    - CTL-112
+  - ref: IND-DOC-043
+    context: The contract, loan or invoice underlying the claim is backdated, inconsistent or appears
+      prepared after the dispute arose.
+    controls:
+    - CTL-123
+    - CTL-086
+  - ref: IND-CPT-062
+    context: Strongest sign that the legal process is a vehicle rather than a real dispute.
+    controls:
+    - CTL-048
+    - CTL-049
+    - CTL-086
+  - ref: IND-TXN-158
+    context: Source-of-funds red flag on the receiving side, as the payer's identity does not match the
+      legal record.
+    controls:
+    - CTL-046
+    - CTL-012
+    - CTL-030
+  - ref: IND-DOC-069
+    context: Helps separate a genuine though weak dispute from a fabricated one.
+    controls:
+    - CTL-086
+    - CTL-123
+    - CTL-011

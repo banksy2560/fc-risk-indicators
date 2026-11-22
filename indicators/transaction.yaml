@@ -1888,3 +1888,77 @@ indicators:
   data_sources:
   - blockchain_analytics
   false_positive_notes: Users migrating between platforms behave this way.
+- id: IND-TXN-157
+  name: Rapid chain of transfers between retirement schemes or providers
+  description: A retirement balance moves through several schemes, providers or trustees in a short period
+    without a stated reason, often ending in an account or product with weaker oversight.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - transaction_data
+  - account_data
+  false_positive_notes: Members change providers for fees, consolidation or after job moves, and legitimate
+    consolidation can involve several transfers.
+- id: IND-TXN-158
+  name: Settlement or award funded by a party with no link to the dispute
+  description: The payment of a settlement or judgment comes from an unrelated third party, a newly created
+    entity or an offshore account instead of the named respondent.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - kyc_review
+  data_sources:
+  - payment_messages
+  - client_account_data
+  - court_records
+  - kyc_files
+  false_positive_notes: Insurers, guarantors, parent companies and liability funds may legitimately pay
+    on behalf of a respondent. Obtain the documentary basis for the payer.
+- id: IND-TXN-159
+  name: Orders placed and cancelled without intent to execute
+  description: Large orders are repeatedly entered and withdrawn before execution, or small orders are
+    layered, in a way that moves the visible price or depth in favour of positions held elsewhere.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - order_book_data
+  - order_cancellation_logs
+  - trade_data
+  false_positive_notes: Market makers and algorithmic strategies legitimately cancel at high rates. Compare
+    to the customer's stated strategy and the benefit on related positions.
+- id: IND-TXN-160
+  name: Year-end or retrospective price adjustments between related parties
+  description: Large true-up, credit-note or compensating payments between group companies at period end
+    that bring profit into line with a target outcome rather than with underlying activity.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - document_review
+  data_sources:
+  - payment_records
+  - invoices
+  - ledger_data
+  false_positive_notes: Legitimate transfer-pricing policies often include year-end adjustments to align
+    results with documented arm's-length ranges.
+- id: IND-TXN-161
+  name: Manual entries through internal or suspense accounts hiding customer flows
+  description: Funds move via manual journals, suspense, clearing or staff-controlled internal accounts,
+    so customer-level records do not show the real origin, destination or beneficial party.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - general_ledger
+  - internal_account_postings
+  - user_activity_logs
+  false_positive_notes: Operational corrections, reconciliations and settlement timing legitimately use
+    internal accounts. Review ageing, authorisers and counterparties.

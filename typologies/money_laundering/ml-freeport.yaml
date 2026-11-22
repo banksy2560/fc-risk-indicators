@@ -1,0 +1,79 @@
+typology:
+  id: ML-FREEPORT
+  name: Freeports, safe deposit boxes and bearer instruments
+  domain: money_laundering
+  description: 'Value is parked and moved in forms that hide ownership and leave thin transaction trails:
+    high-value goods in free ports or bonded storage, contents of safe deposit boxes, and bearer shares
+    or other bearer instruments. Title can change hands without goods moving or any bank payment, so owners
+    are obscured and value can be transferred or revalued on paper. Cash used to buy bearer instruments
+    or fill boxes breaks the link to the original source.'
+  sectors:
+  - art_luxury
+  - banking
+  - dnfbp
+  sources:
+  - FATF, Money Laundering and Terrorist Financing in the Art and Antiquities Market, 2023 [unverified]
+  - FATF, Money Laundering Vulnerabilities of Free Trade Zones, 2010 [unverified]
+  - FATF, Concealment of Beneficial Ownership, 2018 [unverified]
+  - 'OECD, Trade-based money laundering: free trade zones and illicit trade, 2018 [unverified]'
+  indicators:
+  - ref: IND-PRD-053
+    context: Art, wine, precious metals or collectibles remain in a free-port or bonded warehouse for
+      long periods with no display, sale or loan.
+    controls:
+    - CTL-127
+    - CTL-141
+  - ref: IND-PRD-015
+    context: Customer rents a large or multiple safe deposit boxes with no clear need, or in a branch
+      far from home or work.
+    controls:
+    - CTL-150
+    - CTL-023
+  - ref: IND-OWN-014
+    context: Bearer shares or bearer negotiable instruments hold the stored goods, or transfer in place
+      of registered title.
+    controls:
+    - CTL-007
+    - CTL-005
+  - ref: IND-OWN-003
+    context: Stored high-value goods are owned by a company, trust or foundation whose controller is not
+      apparent to the storage operator or bank.
+    controls:
+    - CTL-005
+    - CTL-127
+  - ref: IND-GEO-024
+    context: Payments for goods or storage involve free-trade zones or tax-free ports with no link to
+      the buyer, seller or goods origin.
+    controls:
+    - CTL-127
+    - CTL-045
+  - ref: IND-DOC-049
+    context: Provenance papers for stored objects have gaps, conflict with each other or with the object's
+      recorded history.
+    controls:
+    - CTL-135
+    - CTL-141
+  - ref: IND-TXN-021
+    context: Goods placed in storage were bought with cash, virtual assets or funds from an unrelated
+      third party.
+    controls:
+    - CTL-012
+    - CTL-043
+  - ref: IND-PRD-049
+    context: Many small purchases of money orders, bearer bonds or similar instruments, often with cash,
+      to stay under identification limits.
+    controls:
+    - CTL-038
+    - CTL-063
+  - ref: IND-TYP-062
+    context: A chain of related-party sales of a painting or bullion in a free port that drives up recorded
+      value without cash movement.
+    controls:
+    - CTL-141
+    - CTL-142
+    - CTL-127
+  - ref: IND-PRD-069
+    context: Repeated box access shortly before or after large cash transactions or foreign currency exchange.
+    controls:
+    - CTL-150
+    - CTL-039

@@ -1,0 +1,88 @@
+typology:
+  id: FR-SCOMP
+  name: Scam compounds and end-to-end scam-proceeds flows
+  domain: fraud
+  description: 'Industrialised online-fraud operations (investment, romance and impersonation scams, including
+    pig-butchering) run from compound-style premises, often staffed by people recruited under false pretences
+    and held in forced labour. The financial footprint spans victim payments, recruited receiving accounts,
+    consolidation, crypto conversion and cash-out, plus corporate fronts and infrastructure spending that
+    sustain the operation. Defensive framing: this entry lists observable financial signals for institutions,
+    not operating methods. See FR-ROM (victim journey) and HT-FORCEDLAB (labour exploitation) for context
+    only.'
+  sectors:
+  - banking
+  - payments
+  - crypto
+  - fintech
+  - mvts
+  sources:
+  - FATF, INTERPOL and Egmont Group, Illicit Financial Flows from Cyber-enabled Fraud (2023) [unverified]
+  - FinCEN, Alert on Prevalent Virtual Currency Investment Scam Commonly Known as Pig Butchering (2023)
+    [unverified]
+  - UNODC, Transnational Organized Crime and the Convergence of Cyber-Enabled Fraud, Underground Banking
+    and Technological Innovation in Southeast Asia (2024) [unverified]
+  indicators:
+  - ref: IND-BEH-079
+    context: Recruited or complicit account holders receive victim funds and quickly convert to stablecoins
+      or wire abroad, the core mule step in the compound payment chain.
+    controls:
+    - CTL-051
+    - CTL-095
+    - CTL-103
+  - ref: IND-TXN-003
+    context: A low-activity account receives payments from several apparent investment or romance scam
+      victims, sometimes with narratives referencing a "platform" or "trading".
+    controls:
+    - CTL-051
+    - CTL-041
+    - CTL-054
+  - ref: IND-CUS-028
+    context: New or reactivated receiving accounts collect payments from unrelated individuals, matching
+      the collection tier that feeds a compound's consolidation accounts.
+    controls:
+    - CTL-054
+    - CTL-051
+  - ref: IND-TXN-079
+    context: Victim payments are split across many personal and corporate accounts then consolidated to
+      a small number of accounts or exchange deposits.
+    controls:
+    - CTL-041
+    - CTL-048
+  - ref: IND-TYP-002
+    context: Victim deposits or onward transfers reach wallet addresses attributed by analytics providers
+      to fake investment platforms or scam clusters.
+    controls:
+    - CTL-145
+    - CTL-149
+  - ref: IND-CPT-037
+    context: Dozens of apparently unrelated receiving or onboarding accounts share devices, IP ranges,
+      phone numbers or documents, indicating one operating group behind many accounts.
+    controls:
+    - CTL-049
+    - CTL-090
+  - ref: IND-TXN-002
+    context: Scam proceeds leave rapidly to offshore accounts or are converted to virtual assets within
+      hours of credit, the cash-out end of the chain.
+    controls:
+    - CTL-040
+    - CTL-145
+  - ref: IND-CPT-011
+    context: Consolidated proceeds are sent to exchanges, OTC desks or platforms with weak licensing or
+      AML controls, enabling off-ramp into fiat or further layering.
+    controls:
+    - CTL-149
+    - CTL-147
+  - ref: IND-CUS-054
+    context: Front or service companies that fund the physical and technical operation of a compound appear
+      as customers whose spending profile fits infrastructure rather than their declared business.
+    controls:
+    - CTL-042
+    - CTL-053
+    - CTL-010
+  - ref: IND-TYP-061
+    context: Families of people held in forced labour at a compound may pay demanded sums; the customer
+      can be a victim of coercion and needs a referral path rather than an exit.
+    controls:
+    - CTL-100
+    - CTL-170
+    - CTL-052

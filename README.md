@@ -14,8 +14,8 @@ An open-source catalogue of financial crime **risk indicators (red flags)** orga
 ## Layout
 ```
 controls/<family>.yaml        # 177 canonical controls, each defined once
-indicators/<category>.yaml    # 654 canonical indicators, each defined once
-typologies/<domain>/*.yaml    # 106 typologies linking to indicators + controls
+indicators/<category>.yaml    # 676 canonical indicators, each defined once
+typologies/<domain>/*.yaml    # 115 typologies linking to indicators + controls
 build/                        # generated reverse views (control -> typologies etc.)
 tools/validate.py             # integrity + duplicate checks (needs pyyaml)
 tools/build_index.py          # regenerates build/

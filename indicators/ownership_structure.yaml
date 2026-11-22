@@ -374,3 +374,21 @@ indicators:
   - registry_data
   - contact_data
   false_positive_notes: Registered-agent addresses are widely shared.
+- id: IND-OWN-029
+  name: Institution ownership or control passes to opaque parties followed by a volume surge
+  description: A bank, payment firm or other regulated entity changes owners, directors or key managers
+    to parties whose backing is unclear, and soon afterwards shows sharply higher volumes, new customer
+    types or new corridors.
+  category: ownership_structure
+  severity: high
+  detection_type:
+  - kyc_review
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - regulatory_registers
+  - company_registry
+  - respondent_due_diligence_files
+  - transaction_data
+  false_positive_notes: Genuine acquisitions, recapitalisations and expansion strategies change ownership
+    and volumes together. Verify the new owners' source of wealth and business plan.

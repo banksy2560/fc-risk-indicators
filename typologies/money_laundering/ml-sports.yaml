@@ -1,0 +1,79 @@
+typology:
+  id: ML-SPORTS
+  name: Sports, sponsorship and club or athlete-transfer laundering
+  domain: money_laundering
+  description: Criminal funds are placed or integrated through professional sport by acquiring clubs,
+    overpaying for sponsorship, naming rights or image rights, inflating player transfer fees, or paying
+    agents and intermediaries commissions that have little to do with services. Valuations in sport are
+    subjective and hard to benchmark, and ownership is often held through offshore vehicles, which gives
+    illicit value a plausible commercial label. Betting-linked payments to players or officials add a
+    match-fixing dimension.
+  sectors:
+  - all
+  sources:
+  - FATF, Money Laundering through the Football Sector, 2009 [unverified]
+  - FATF, Concealment of Beneficial Ownership, 2018 [unverified]
+  - Council of Europe, Convention on the Manipulation of Sports Competitions (Macolin Convention), 2014
+    [unverified]
+  - Europol, Money laundering in the sports sector (public threat material), various years [unverified]
+  indicators:
+  - ref: IND-OWN-003
+    context: Club, stadium or franchise equity held through an offshore or opaque holding vehicle whose
+      controller is not the stated investor.
+    controls:
+    - CTL-005
+    - CTL-008
+  - ref: IND-OWN-005
+    context: The person who really funds or controls the club or sponsoring company cannot be established
+      after repeated enquiries, often after a quick succession of ownership changes.
+    controls:
+    - CTL-005
+    - CTL-006
+  - ref: IND-TXN-020
+    context: Transfer fees, sponsorship deals or image-rights payments are well above or below what comparable
+      players, clubs or audiences would command.
+    controls:
+    - CTL-124
+    - CTL-141
+  - ref: IND-TXN-133
+    context: Agent or intermediary commissions on transfers are large relative to the service, split across
+      several parties, or paid by someone other than the club or player.
+    controls:
+    - CTL-060
+    - CTL-112
+  - ref: IND-TXN-015
+    context: Sponsor money goes to a club, then returns to the sponsor's group through transfer fees,
+      loans or related-party service contracts.
+    controls:
+    - CTL-047
+    - CTL-048
+  - ref: IND-CPT-047
+    context: Players, coaches or match officials receive payments from betting operators, bookmakers or
+      associates of them.
+    controls:
+    - CTL-032
+    - CTL-112
+  - ref: IND-TYP-043
+    context: Abnormal wagering on youth, lower-league or friendly fixtures linked to accounts connected
+      to club insiders or investors.
+    controls:
+    - CTL-153
+    - CTL-150
+  - ref: IND-GEO-038
+    context: Funding for the club, sponsor or transfer comes from a secrecy jurisdiction with no link
+      to the club, league or sponsor's business.
+    controls:
+    - CTL-027
+    - CTL-154
+  - ref: IND-TYP-063
+    context: Image-rights fees for a player are paid to an offshore company owned by a nominee or an agent,
+      not the player.
+    controls:
+    - CTL-112
+    - CTL-086
+  - ref: IND-TYP-064
+    context: A newly formed company with no marketing history pays an unusually high sponsorship fee that
+      cannot be tied to audience or exposure.
+    controls:
+    - CTL-086
+    - CTL-124

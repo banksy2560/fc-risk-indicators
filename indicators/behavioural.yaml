@@ -1688,3 +1688,18 @@ indicators:
   - case_notes
   false_positive_notes: May have innocent explanations; assess in context of customer profile and other
     indicators.
+- id: IND-BEH-120
+  name: Internal reporting on specific customers blocked, withdrawn or never raised
+  description: Staff or managers discourage unusual-activity reports on a customer, reverse escalations,
+    or reports for a particular relationship repeatedly fail to arrive at the compliance function.
+  category: behavioural
+  severity: high
+  detection_type:
+  - investigator_judgement
+  - customer_behaviour
+  data_sources:
+  - internal_report_logs
+  - case_management_records
+  - whistleblowing_records
+  false_positive_notes: Reports may be legitimately closed after review or consolidated into one case.
+    Look for patterns tied to one manager or portfolio.

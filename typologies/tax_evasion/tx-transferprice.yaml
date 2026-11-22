@@ -1,0 +1,80 @@
+typology:
+  id: TX-TRANSFERPRICE
+  name: Transfer pricing and intra-group profit shifting abuse
+  domain: tax_evasion
+  description: Related companies set prices, fees, royalties or interest on goods, services, intellectual
+    property and loans between themselves in ways that move taxable profit to low-tax or secrecy jurisdictions.
+    Abuse is typically visible as charges that exceed arm's-length norms, services with no deliverable,
+    or recipient entities that lack the people or assets to justify the income. Banks, trade-finance providers
+    and corporate service providers see the payments, invoices and structures even if they do not see
+    the tax returns.
+  sectors:
+  - banking
+  - trade_finance
+  - corporate_services
+  sources:
+  - OECD, Transfer Pricing Guidelines for Multinational Enterprises and Tax Administrations, 2022 [unverified]
+  - 'OECD, BEPS Actions 8-10: Aligning Transfer Pricing Outcomes with Value Creation, 2015 [unverified]'
+  - 'OECD, Illicit Financial Flows from Developing Countries: Measuring OECD Responses, 2014 [unverified]'
+  - FATF, Trade-Based Money Laundering, 2006 [unverified]
+  indicators:
+  - ref: IND-TXN-020
+    context: Goods sold or bought between group companies at prices well above or below independent benchmarks.
+    controls:
+    - CTL-124
+    - CTL-141
+  - ref: IND-TXN-133
+    context: Management, consulting or service fees paid to an affiliate are out of proportion to the
+      services or to the payer's size.
+    controls:
+    - CTL-124
+    - CTL-086
+  - ref: IND-DOC-001
+    context: Intra-group invoices describe services only in general terms, with no deliverables, hours
+      or output.
+    controls:
+    - CTL-086
+    - CTL-123
+  - ref: IND-DOC-042
+    context: Intercompany loans have no commercial purpose, unusually high interest, or no repayment pattern,
+      shifting profit by interest.
+    controls:
+    - CTL-086
+    - CTL-065
+  - ref: IND-OWN-002
+    context: Group structure inserts intermediate entities in several jurisdictions between operating
+      companies and the ultimate parent with no operational reason.
+    controls:
+    - CTL-008
+    - CTL-023
+  - ref: IND-CUS-011
+    context: Affiliate receiving the fees or royalties has no staff, premises or evidence of performing
+      the functions it charges for.
+    controls:
+    - CTL-010
+    - CTL-065
+  - ref: IND-GEO-038
+    context: Recurring payments flow from operating companies to affiliates in low-tax or secrecy jurisdictions
+      with no operations.
+    controls:
+    - CTL-027
+    - CTL-154
+  - ref: IND-TXN-144
+    context: A group trading or principal entity receives and re-pays amounts the same day with a thin
+      margin, acting as a conduit for profit.
+    controls:
+    - CTL-040
+    - CTL-065
+  - ref: IND-TYP-068
+    context: Operating companies pay a percentage of revenue as royalties to a group entity in a low-tax
+      jurisdiction that holds the asset but has no development team.
+    controls:
+    - CTL-124
+    - CTL-010
+    - CTL-065
+  - ref: IND-TXN-160
+    context: Material balancing payments between affiliates shortly before the financial year ends, with
+      no matching change in volumes.
+    controls:
+    - CTL-065
+    - CTL-086

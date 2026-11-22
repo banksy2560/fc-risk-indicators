@@ -730,3 +730,54 @@ indicators:
   - counterparty_data
   false_positive_notes: Adverse media can be inaccurate, dated or relate to a namesake; verify identity
     and credibility before acting.
+- id: IND-CPT-060
+  name: Repeated fraud recalls or return requests against the same receiving account or originating institution
+  description: A receiving account, or flows from a given originating institution, attract multiple recall,
+    return or fraud-notification requests in a short period, often followed by funds already having left.
+  category: counterparty
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  - external_intel
+  data_sources:
+  - payment_messages
+  - case_notes
+  - transaction_data
+  false_positive_notes: Operational errors, duplicate payments, disputed commercial transactions and a
+    single large fraud event hitting one account can generate several recalls without mule activity.
+- id: IND-CPT-061
+  name: Counterparty institution slow or unresponsive to fraud recall and information requests
+  description: A correspondent, payment institution or exchange repeatedly fails to act on freeze, recall
+    or request-for-information messages in time, or the same beneficiary institution appears in many fraud
+    cases.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  - external_intel
+  data_sources:
+  - case_notes
+  - payment_messages
+  false_positive_notes: Time-zone differences, legal process requirements in the counterparty's jurisdiction
+    and capacity limits can delay legitimate responses.
+- id: IND-CPT-062
+  name: Dispute or award between related parties resolved quickly without contest
+  description: A claim, arbitration or judgment is brought between parties that are linked by ownership,
+    control, address or advisers, and it ends in a consent order, uncontested default or quick award with
+    immediate payment.
+  category: counterparty
+  severity: high
+  detection_type:
+  - kyc_review
+  - investigator_judgement
+  - transaction_monitoring
+  data_sources:
+  - court_records
+  - arbitration_awards
+  - company_registry
+  - kyc_files
+  - transaction_data
+  false_positive_notes: Group companies, family firms and joint ventures genuinely settle intra-group
+    disputes, and early settlement is common. Check for a real commercial history and whether other group
+    entities are also paid.

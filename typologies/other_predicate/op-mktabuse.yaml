@@ -1,0 +1,88 @@
+typology:
+  id: OP-MKTABUSE
+  name: Market abuse (insider dealing, wash trading, pump-and-dump) as a predicate and laundering vehicle
+  domain: other_predicate
+  description: Securities and token markets are manipulated or exploited with inside information to generate
+    illicit profit, and the same trading channels are then used to disguise the source of other criminal
+    funds by manufacturing apparent trading gains or losses. Typical vehicles are thinly traded issuers,
+    newly listed tokens, linked or nominee accounts and coordinated promotion. The proceeds are quickly
+    withdrawn, moved offshore or converted, so surveillance and AML teams need shared visibility of trading
+    behaviour and money movement.
+  stage:
+  - placement
+  - layering
+  sectors:
+  - securities
+  - crypto
+  sources:
+  - FATF, Money Laundering and Terrorist Financing in the Securities Sector, 2009 [unverified]
+  - European Union, Regulation (EU) No 596/2014 on market abuse (Market Abuse Regulation), 2014 [unverified]
+  - 'FATF, Virtual Assets: Red Flag Indicators of Money Laundering and Terrorist Financing, 2020 [unverified]'
+  indicators:
+  - ref: IND-TYP-014
+    context: Repeated buying and selling of the same instrument or token between connected accounts at
+      no real change of beneficial ownership, creating false volume or a price trail that justifies deposits
+      and withdrawals.
+    controls:
+    - CTL-150
+    - CTL-048
+    - CTL-047
+  - ref: IND-PRD-047
+    context: Concentrated dealing in thinly traded or micro-cap issuers where a few accounts can set the
+      price and counterparties appear to be pre-arranged.
+    controls:
+    - CTL-150
+    - CTL-042
+  - ref: IND-CUS-010
+    context: Accounts opened and funded shortly before a promoted issuer or token moves, then used almost
+      entirely to accumulate that one holding.
+    controls:
+    - CTL-054
+    - CTL-150
+    - CTL-048
+  - ref: IND-TYP-010
+    context: Related buyer and seller accounts on a trading venue, NFT marketplace or token exchange,
+      linked by device, funding source or wallet, trade with each other to fabricate demand.
+    controls:
+    - CTL-048
+    - CTL-049
+    - CTL-145
+  - ref: IND-TXN-002
+    context: Sale proceeds from a spike in price are moved offshore or into virtual assets within days,
+      before the price retraces or a regulator or venue intervenes.
+    controls:
+    - CTL-040
+    - CTL-045
+    - CTL-037
+  - ref: IND-OWN-006
+    context: The issuer or promoted company has no real operations, staff or revenue, so its securities
+      have little value beyond the promotional narrative.
+    controls:
+    - CTL-010
+    - CTL-032
+  - ref: IND-TYP-065
+    context: Core insider-dealing signal, and a route for turning inside information into spendable proceeds
+      that are then banked or moved.
+    controls:
+    - CTL-150
+    - CTL-052
+    - CTL-164
+  - ref: IND-TYP-066
+    context: Defines the pump-and-dump pattern and links the promoters to the beneficiaries of the exit
+      trades.
+    controls:
+    - CTL-150
+    - CTL-048
+    - CTL-032
+  - ref: IND-TXN-159
+    context: Manipulative price-formation behaviour that precedes a profitable trade and is only visible
+      in order-level data.
+    controls:
+    - CTL-150
+    - CTL-052
+  - ref: IND-TYP-067
+    context: Crypto equivalent of insiders selling into a pump, including rug-pull style exits.
+    controls:
+    - CTL-145
+    - CTL-147
+    - CTL-149

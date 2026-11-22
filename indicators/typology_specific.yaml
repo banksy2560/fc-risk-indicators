@@ -721,3 +721,134 @@ indicators:
   - open_source_intel
   - blockchain_analytics
   false_positive_notes: Open-source attribution may be unreliable.
+- id: IND-TYP-061
+  name: Payments by relatives for release or "fees" for a person held abroad
+  description: Customers, often family members, send urgent payments abroad described as fees, fines or
+    bail to secure the release of a relative who travelled for work, sometimes to many different recipient
+    accounts or wallets.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  - external_intel
+  data_sources:
+  - transaction_data
+  - case_notes
+  false_positive_notes: Genuine emergency payments for relatives in legal or medical difficulty abroad,
+    or legitimate bail and consular costs, can look similar.
+- id: IND-TYP-062
+  name: Stored goods change title or are revalued repeatedly with no physical movement
+  description: Ownership of goods held in secure storage passes between parties, or declared value changes
+    sharply on entry, exit or transfer, while the items stay in place.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - investigator_judgement
+  - document_review
+  - external_intel
+  data_sources:
+  - trade_documents
+  - contracts
+  - registry_data
+  false_positive_notes: Dealers, collectors and investment funds legitimately trade stored stock without
+    moving it. Concern is a chain of related-party sales or valuations that diverge from the market.
+- id: IND-TYP-063
+  name: Image-rights or endorsement income paid to a third-country entity instead of the athlete
+  description: Earnings from endorsement, image or commercial rights are directed to a company or account
+    in a jurisdiction unconnected to the athlete or the paying party, with no clear contractual basis.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - document_review
+  data_sources:
+  - payment_records
+  - contracts
+  - kyc_file
+  false_positive_notes: Athletes legitimately use personal service companies and image-rights vehicles,
+    often for tax planning. Concern arises when the vehicle's location, ownership or timing has no commercial
+    explanation.
+- id: IND-TYP-064
+  name: Sponsorship or naming-rights spend with no measurable promotional deliverables
+  description: A sponsor pays substantial amounts to a sports body, club or event but there is little
+    evidence of advertising, activation or audience reach, or the sponsor has no relevant business.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - contracts
+  - invoices
+  - payment_records
+  false_positive_notes: Philanthropic or owner-affiliated sponsorships and early-stage brand investment
+    may have little measurable return.
+- id: IND-TYP-065
+  name: Trading ahead of material non-public announcements
+  description: A customer or linked accounts take unusually large or well-timed positions shortly before
+    a price-sensitive event such as a takeover, results release or listing decision, then close out soon
+    after the news.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  - external_intel
+  data_sources:
+  - trade_data
+  - order_data
+  - corporate_events_calendar
+  - employee_and_insider_lists
+  false_positive_notes: Skilled analysis of public information, sector-wide positioning, scheduled portfolio
+    rebalancing or pre-planned option exercises can look similar. Look for repeat timing and links to
+    insiders.
+- id: IND-TYP-066
+  name: Promotion campaign alongside concentrated selling by connected holders
+  description: Coordinated social-media, messaging-group or cold-call promotion of a low-priced instrument
+    coincides with unusual buying volume while a small group of connected holders sells into the rise.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  - investigator_judgement
+  data_sources:
+  - trade_data
+  - social_media_monitoring
+  - market_surveillance_alerts
+  - account_holder_links
+  false_positive_notes: Genuine news, index inclusion or legitimate investor-relations activity can raise
+    interest and volume. Weight the link between promoters and sellers.
+- id: IND-TYP-067
+  name: Token deployer or insider wallets distributing holdings into promoted price rise
+  description: Wallets linked to a token's creator, early allocation or liquidity pool move large balances
+    to exchanges or fresh wallets as promotion drives the price up, often followed by liquidity removal.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - blockchain_analytics
+  - token_holder_distribution
+  - exchange_deposit_data
+  false_positive_notes: Vesting schedules, treasury management and disclosed team allocations can involve
+    similar transfers. Check against published token schedules.
+- id: IND-TYP-068
+  name: Royalty, licence or intangible-asset payments concentrated in a low-tax affiliate with minimal
+    functions
+  description: Recurring payments for brands, software or intellectual property go to a related entity
+    in a low-tax jurisdiction that has little staff, development activity or control over the asset.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - document_review
+  - kyc_review
+  data_sources:
+  - payment_records
+  - contracts
+  - financial_statements
+  false_positive_notes: Many groups hold intellectual property in a central entity for legitimate commercial
+    reasons, and rates may be supported by a formal transfer-pricing study.

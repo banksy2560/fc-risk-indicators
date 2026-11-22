@@ -20,6 +20,18 @@ Borderline merges made by AI clustering. Each typology link keeps its `legacy_id
 - IND-BEH-030 (alert backlog): no alert-queue ageing and capacity-forecasting control.
 - Institutional-governance indicators lean on CTL-175 (sampling QA) as the only detective option.
 
+- No control for order-book / spoofing surveillance (OP-MKTABUSE).
+- No control for licensing or change-in-control fit-and-proper review (XC-COMPLICITFI).
+- No control for court-record and legal-dispute verification (ML-SHAMLEGAL).
+- No control for safe-deposit-box access logging (ML-FREEPORT) or transfer-pricing / arm's-length benchmarking (TX-TRANSFERPRICE).
+- No control for cross-border real-time freeze or recall coordination between institutions (FR-XBMULE); closest are CTL-103 and CTL-107.
+- No control for scam-compound infrastructure or telecoms-spend monitoring (FR-SCOMP); closest are CTL-042 and CTL-053.
+- No control for unified fraud and AML risk view across silos (themes from FATF fraud-priority commentary, unconfirmed).
+- Controls linked as "closest fit" for the above are approximate; refine when new controls are added.
+
+## Added in this release (AI-drafted, unreviewed, sources unverified)
+FR-SCOMP, FR-XBMULE, OP-MKTABUSE, XC-COMPLICITFI, ML-SHAMLEGAL, ML-SPORTS, ML-FREEPORT, ML-PENSION, TX-TRANSFERPRICE. Source: coverage gaps from the reference review and approved by the maintainer.
+
 ## Data quality
 - Singleton indicators kept original wording and some generic default `detection_type` / `data_sources` / `false_positive_notes`.
 - All citations are unverified (see README).

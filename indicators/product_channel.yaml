@@ -780,3 +780,18 @@ indicators:
   - provenance_documents
   - sale_records
   false_positive_notes: Older collections may have incomplete but benign provenance.
+- id: IND-PRD-069
+  name: Safe deposit box access clustered around cash deposits or withdrawals
+  description: Box visits coincide in time with large cash deposits, cash withdrawals, or purchases of
+    cash-like instruments at the same institution.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - account_transactions
+  - box_access_logs
+  - cash_data
+  false_positive_notes: Customers sometimes keep cash savings or valuables in boxes for ordinary reasons,
+    and visits may coincide with legitimate banking.

@@ -1,0 +1,82 @@
+typology:
+  id: FR-XBMULE
+  name: Cross-border mule and payment-chain laundering of fraud proceeds
+  domain: fraud
+  description: Proceeds of authorised-push and online fraud are moved rapidly across several mule accounts,
+    payment institutions, correspondent chains and crypto off-ramps in different jurisdictions, so that
+    recall and freezing requests lag behind the funds. Each hop can look unremarkable alone; the signal
+    lies in speed, chain length, data gaps in payment messages and repeated fraud-related recalls. Complements
+    ML-MULE and FR-APP, which focus on single-account and victim-side views.
+  sectors:
+  - banking
+  - payments
+  - mvts
+  - crypto
+  - fintech
+  sources:
+  - FATF, INTERPOL and Egmont Group, Illicit Financial Flows from Cyber-enabled Fraud (2023) [unverified]
+  - FATF, Recommendation 16 (payment transparency) revisions and Interpretive Note (2025) [unverified]
+  - FATF, Guidance on Correspondent Banking Services (2016) [unverified]
+  indicators:
+  - ref: IND-TXN-001
+    context: Cross-border fraud proceeds are forwarded onward within minutes or hours in near-equal amounts,
+      leaving minimal balance at each mule hop.
+    controls:
+    - CTL-040
+    - CTL-051
+  - ref: IND-TXN-042
+    context: Large sums transit several banks and jurisdictions after arrival, outpacing recall and freeze
+      requests.
+    controls:
+    - CTL-040
+    - CTL-045
+  - ref: IND-DOC-015
+    context: Incoming or outgoing payment messages carry placeholder, truncated or missing originator
+      and beneficiary data, hindering alignment checks and tracing along the chain.
+    controls:
+    - CTL-110
+    - CTL-111
+  - ref: IND-CPT-053
+    context: A particular peer institution or payment provider repeatedly forwards fraud-linked payments
+      with data gaps.
+    controls:
+    - CTL-110
+    - CTL-106
+  - ref: IND-TXN-044
+    context: Funds are spread across many accounts, wallets and institutions per customer or linked group
+      to fragment the trail and stay under monitoring limits.
+    controls:
+    - CTL-039
+    - CTL-048
+  - ref: IND-TXN-052
+    context: At the crypto off-ramp, proceeds are swapped through multiple assets or stablecoins in quick
+      succession before withdrawal to a new platform or wallet.
+    controls:
+    - CTL-145
+    - CTL-147
+  - ref: IND-TXN-049
+    context: Assets arriving by cross-chain bridge are sold into fiat or stablecoin and withdrawn quickly,
+      completing the hop from fraud proceeds to cash-out.
+    controls:
+    - CTL-145
+    - CTL-149
+  - ref: IND-GEO-044
+    context: Chains repeatedly use corridors and intermediary jurisdictions named in fraud typology reports
+      as common cash-out routes.
+    controls:
+    - CTL-045
+    - CTL-154
+  - ref: IND-CPT-060
+    context: Several recalls arriving from different foreign institutions against one account is a strong
+      indicator of a cross-border mule hop and justifies immediate restriction and reporting.
+    controls:
+    - CTL-051
+    - CTL-103
+    - CTL-101
+  - ref: IND-CPT-061
+    context: Weak responsiveness at downstream hops lets proceeds disperse; it informs counterparty risk
+      rating and routing decisions.
+    controls:
+    - CTL-104
+    - CTL-106
+    - CTL-107

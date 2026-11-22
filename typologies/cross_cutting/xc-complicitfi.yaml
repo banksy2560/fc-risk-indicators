@@ -1,0 +1,84 @@
+typology:
+  id: XC-COMPLICITFI
+  name: Complicit or infiltrated financial institutions and insiders
+  domain: cross_cutting
+  description: 'Criminals gain access to the financial system by corrupting or recruiting staff, acquiring
+    control of an institution, or using a counterparty institution whose own controls are weak or deliberately
+    bypassed. Defensive focus is on spotting the signs at three levels: the individual insider, the institution''s
+    own governance and reporting, and counterparty institutions whose behaviour no longer matches their
+    size and customer base.'
+  sectors:
+  - all
+  sources:
+  - FATF, Professional Money Laundering, 2018 [unverified]
+  - FATF, Guidance on Correspondent Banking Services, 2016 [unverified]
+  - Basel Committee on Banking Supervision, Sound management of risks related to money laundering and
+    financing of terrorism, 2014 (revised 2020) [unverified]
+  indicators:
+  - ref: IND-BEH-019
+    context: Staff bypass or override screening, monitoring or approval steps, or access records of customers
+      outside their duties, for a particular set of customers.
+    controls:
+    - CTL-177
+    - CTL-077
+    - CTL-163
+  - ref: IND-BEH-075
+    context: Credit, onboarding or exception approvals are pushed through unusually fast by the same employee,
+      with thin verification, for connected customers.
+    controls:
+    - CTL-077
+    - CTL-175
+    - CTL-151
+  - ref: IND-TXN-072
+    context: Employee or relative accounts receive payments from customers or vendors, a sign of bribes
+      or commissions for favourable treatment.
+    controls:
+    - CTL-177
+    - CTL-042
+    - CTL-164
+  - ref: IND-TYP-052
+    context: Alerts on the same customers or pattern are closed repeatedly with minimal rationale, which
+      may reflect an insider shielding activity.
+    controls:
+    - CTL-033
+    - CTL-175
+  - ref: IND-CPT-034
+    context: A correspondent or respondent institution is found to be offering access to undisclosed downstream
+      banks or payment firms.
+    controls:
+    - CTL-105
+    - CTL-106
+  - ref: IND-TXN-104
+    context: A counterparty bank's flows are far beyond what its balance sheet and customer base can explain,
+      suggesting it is being used as a conduit.
+    controls:
+    - CTL-106
+    - CTL-037
+    - CTL-053
+  - ref: IND-OWN-021
+    context: A counterparty institution is found to deal with shell banks or unlicensed entities, or to
+      be controlled by one.
+    controls:
+    - CTL-108
+    - CTL-116
+    - CTL-104
+  - ref: IND-OWN-029
+    context: Marks the point at which a previously sound institution may have been taken over to serve
+      criminal flows.
+    controls:
+    - CTL-106
+    - CTL-005
+    - CTL-023
+  - ref: IND-BEH-120
+    context: Core complicity sign, as the human reporting chain is the control being neutralised.
+    controls:
+    - CTL-098
+    - CTL-099
+    - CTL-163
+  - ref: IND-TXN-161
+    context: Lets an insider move or conceal funds outside normal monitoring, and is usually found by
+      audit or ledger analytics.
+    controls:
+    - CTL-177
+    - CTL-175
+    - CTL-077

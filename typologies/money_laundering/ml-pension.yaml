@@ -1,0 +1,78 @@
+typology:
+  id: ML-PENSION
+  name: Pension, superannuation and retirement-account misuse
+  domain: money_laundering
+  description: Illicit funds are paid into pension, superannuation or retirement accounts, or into self-managed
+    schemes, to give them a long-term savings label. They may later be withdrawn early, transferred overseas
+    or invested in related assets. Sham employers and fraudulent pension-transfer or early-access schemes
+    can also be used to launder funds or to steal retirement savings from victims.
+  sectors:
+  - insurance
+  - securities
+  sources:
+  - FATF, Money Laundering and Terrorist Financing Vulnerabilities of Legal Professionals, 2013 (general
+    reference on layering through long-term products) [unverified]
+  - OECD, Pension Markets in Focus, various years [unverified]
+  - OECD, Guidelines on Pension Fund Asset Management, 2017 [unverified]
+  - IOPS (International Organisation of Pension Supervisors), Toolkit for Risk-Based Pensions Supervision,
+    2010 [unverified]
+  indicators:
+  - ref: IND-CUS-001
+    context: Large lump-sum contributions that exceed what the member's declared income and savings could
+      fund.
+    controls:
+    - CTL-013
+    - CTL-042
+  - ref: IND-TXN-074
+    context: Contributions or rollovers into the account come from a third party with no relationship
+      to the member or employer.
+    controls:
+    - CTL-046
+    - CTL-012
+  - ref: IND-TXN-109
+    context: Large contribution or transfer-in followed soon by withdrawal, surrender or transfer out,
+      despite penalties or tax cost.
+    controls:
+    - CTL-012
+    - CTL-150
+  - ref: IND-GEO-015
+    context: Benefits are moved to an overseas scheme or account soon after contributions are received.
+    controls:
+    - CTL-045
+    - CTL-040
+  - ref: IND-CUS-011
+    context: Employer making contributions has no evidence of real operations, staff or revenue to support
+      the payments.
+    controls:
+    - CTL-010
+    - CTL-065
+  - ref: IND-PRD-047
+    context: A self-managed or small scheme invests in thinly traded or unlisted assets with unrelated
+      or related parties at unclear valuations.
+    controls:
+    - CTL-150
+    - CTL-052
+  - ref: IND-BEH-084
+    context: Member is persuaded by a cold caller or adviser to move retirement savings into an unregulated
+      product or overseas scheme.
+    controls:
+    - CTL-074
+    - CTL-075
+  - ref: IND-CPT-016
+    context: Adviser or promoter with no track record markets early access or high-return transfers of
+      retirement balances.
+    controls:
+    - CTL-112
+    - CTL-116
+  - ref: IND-TXN-157
+    context: Several transfers in or out of a scheme within weeks, ending in a scheme or trustee that
+      is newly set up or overseas.
+    controls:
+    - CTL-040
+    - CTL-150
+  - ref: IND-DOC-068
+    context: Early release claim based on medical or residency grounds with documents that cannot be verified,
+      then paid to a third-party account.
+    controls:
+    - CTL-086
+    - CTL-085

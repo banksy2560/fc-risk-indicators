@@ -4,10 +4,11 @@ description: Matrix of every typology against the control families, showing coun
 nav: coverage
 script: <script src="assets/coverage.js"></script>
 -->
-<div class="xhead"><div><p class="eyebrow">Coverage</p><h1 class="display" id="h1">Typology by control family</h1></div></div>
+<div class="xhead"><div><h1 class="display" id="h1">Typology by control family</h1></div></div>
 <p class="lede" style="max-width:70ch">Every typology against the {{N_FAM}} control families. Each cell counts the distinct controls from that family linked to the typology. Select a cell, a typology name or a family heading to see the controls behind the number.</p>
 <div class="notice" role="note"><strong>Read this first.</strong> Counts show <strong>linkage, NOT effectiveness or risk</strong>. A darker cell means more controls are linked in the library. It does not mean the typology is well controlled, adequately covered or low risk, and an empty cell is not necessarily a gap. This is v0.1 draft content that has not been reviewed.
  <div class="legend" aria-label="Legend. Linked controls per cell">Linked controls per cell: <span><i style="background:var(--h0)"></i>0</span><span><i style="background:var(--h1)"></i>1</span><span><i style="background:var(--h2)"></i>2</span><span><i style="background:var(--h3)"></i>3-4</span><span><i style="background:var(--h4)"></i>5-7</span><span><i style="background:var(--h5)"></i>8+</span></div></div>
 <div class="covtools"><label>Domain <select id="dom" class="btn"></select></label><label>Typology <input type="search" id="tq" class="btn" placeholder="Filter typologies" autocomplete="off"></label><span class="cnt" id="mcount" role="status" aria-live="polite"></span></div>
 <div class="mxwrap" id="mxwrap"><div id="mxholder" style="min-width:0"></div><aside class="mpanel card" id="mpanel" aria-label="Detail" aria-live="polite" hidden></aside></div>
+<section class="gaps" aria-labelledby="gh"><h2 id="gh">Where the library is thin</h2><div class="ins" id="insights"></div></section>
 <div class="backdrop" id="dback" hidden></div>

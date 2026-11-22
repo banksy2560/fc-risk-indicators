@@ -1,10 +1,21 @@
 /* Coverage matrix: typology x control family, counts of linked controls only (linkage, not effectiveness). */
 (async function(){
 'use strict';
-const {$,esc,MARK,sig}=FC;
+const {$,esc,MARK,sig,aiTag}=FC;
 let x;try{x=await FC.load()}catch(e){return}
 const {d,L,T,C}=x,FAMS=x.fams,lab=FC.lab;
 const cell={};d.typologies.forEach(t=>{cell[t.id]={};t.ctls.forEach(c=>{const f=C[c].family;(cell[t.id][f]=cell[t.id][f]||[]).push(c)})});
+{const N=d.counts,single=d.indicators.filter(i=>i.used===1).length,
+ noPrev=d.indicators.filter(i=>!i.ctls.some(c=>C[c].type==='preventive')).length,
+ noDet=d.indicators.filter(i=>!i.ctls.some(c=>C[c].type==='detective')).length,
+ tagged=d.typologies.filter(t=>FC.DIMS.some(s=>t.exp[s].length)).length,
+ partial=d.typologies.filter(t=>FC.DIMS.some(s=>!t.exp[s].length)),partialXC=partial.filter(t=>t.domain==='cross_cutting').length,
+ fewest=[...d.typologies].sort((a,b)=>a.nCtl-b.nCtl||a.name.localeCompare(b.name)).slice(0,5);
+ $('#insights').innerHTML=`
+<div class="i"><span class="big">${Math.round(single/N.indicators*100)}%</span><p><strong>${single} of ${N.indicators} indicators</strong> appear in only one typology. The other ${N.indicators-single} are shared, so one review improves several typologies at once.</p></div>
+<div class="i"><span class="big">${noPrev}</span><p>indicators have <strong>no preventive control</strong> linked in any typology; <strong>${noDet}</strong> have no detective control. Candidate gaps in the library, not in any institution.</p></div>
+<div class="i"><span class="big">${tagged}</span><p>of ${N.typologies} typologies carry <strong>AI-inferred exposure tags</strong>; <strong>0</strong> are human-reviewed. ${partial.length} leave at least one dimension empty (${partialXC} of them cross-cutting, where empty means applies across all). ${aiTag}</p></div>
+<div class="i few"><p><strong>Fewest linked controls</strong></p><ul>${fewest.map(f=>`<li><a href="relationships#t=${f.id}">${esc(f.name)}</a> <span>${f.nCtl}</span></li>`).join('')}</ul></div>`}
 const bucket=n=>n===0?0:n===1?1:n===2?2:n<=4?3:n<=7?4:5;
 const plural=(n,a,b)=>n+' '+(n===1?a:b);
 let dom='',tq='',sel=null,lastBtn=null;

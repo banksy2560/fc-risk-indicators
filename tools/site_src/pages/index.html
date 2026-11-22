@@ -5,28 +5,21 @@ nav: home
 script: <script src="assets/home.js"></script>
 -->
 <section class="hero" aria-labelledby="h1">
- <div><p class="eyebrow">Financial crime intelligence library</p><h1 id="h1" class="display">From typology to evidence, without losing the thread.</h1>
- <p class="lede">Every typology links to the indicators that reveal it, the controls that address it and the sources behind them. Start anywhere; each step is one click.</p>
- <button type="button" class="bigsearch" data-open-search aria-label="Search the library"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search a typology, indicator or control</span><kbd data-kbd>Ctrl K</kbd></button>
- <div class="quick" id="quick"></div></div>
- <div class="stats" id="stats" aria-label="Library size"></div>
+ <h1 id="h1" class="display">Look up a financial crime typology, its red flags and the controls that address it.</h1>
+ <p class="lede" id="stats"></p>
+ <button type="button" class="bigsearch" data-open-search aria-label="Search the library"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search typologies, indicators and controls</span><kbd data-kbd>Ctrl K</kbd></button>
 </section>
-<section class="card bt" aria-labelledby="bth"><div class="hd"><div><p class="eyebrow">How the library connects</p><h2 id="bth">One typology, traced from signal to control</h2></div><div class="tryline" id="btpick" role="group" aria-label="Example typology"><span class="eyebrow">Example</span></div></div>
-<div class="bflow" id="bt"></div>
-<p class="bnote" id="btnote"></p></section>
-<ol class="journey" aria-label="How the library connects">
- <li><b style="color:var(--typ)"><svg class="mk" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5 22.5 12 12 22.5 1.5 12z" fill="currentColor"/></svg>1 Typology</b><span>How the crime works</span></li>
- <li><b style="color:var(--ind)"><svg class="mk" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="2.4"/></svg>2 Indicator</b><span>What you can observe, with signal strength</span></li>
- <li><b>3 Exposure</b><span>Product, channel, rail, segment (AI-inferred)</span></li>
- <li><b style="color:var(--ctl)"><svg class="mk" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8 20.5 5v6.3c0 5.2-3.6 9.3-8.5 11-4.9-1.7-8.5-5.8-8.5-11V5z" fill="currentColor"/></svg>4 Control</b><span>What prevents or detects it</span></li>
- <li><b>5 Evidence</b><span>Sources, provenance, review status</span></li>
-</ol>
+<section class="bt" aria-labelledby="bth">
+ <h2 id="bth">How a typology connects</h2>
+ <div class="tabs-ix" id="btpick" role="group" aria-label="Choose an example typology"></div>
+ <div class="bt-sheet"><div class="bflow" id="bt"></div>
+ <p class="bnote" id="btnote"></p></div>
+</section>
 <div class="grid">
- <section class="card panel s7" aria-labelledby="dh"><p class="eyebrow">Domain breakdown</p><h2 id="dh">Typologies by domain</h2><ul class="bars" id="domains"></ul></section>
- <section class="card panel s5" aria-labelledby="ih"><p class="eyebrow">Coverage insights</p><h2 id="ih">Where the library is thin</h2><div class="ins" id="insights"></div></section>
- <section class="card panel s4" aria-labelledby="th"><p class="eyebrow">Most reused</p><h2 id="th">Indicators</h2><ol class="rank" id="topI"></ol></section>
- <section class="card panel s4" aria-labelledby="ch"><p class="eyebrow">Most reused</p><h2 id="ch">Controls</h2><ol class="rank" id="topC"></ol></section>
- <section class="card panel s4" id="recentcard" aria-labelledby="rh" hidden><p class="eyebrow">Recently added</p><h2 id="rh">Latest typologies</h2><ol class="rank" id="recent"></ol><p class="note" id="recentnote"></p></section>
- <section class="card panel s12" aria-labelledby="gh"><p class="eyebrow">Indicator mix</p><h2 id="gh">Indicators by category</h2><ul class="bars two" id="cat"></ul></section>
+ <section class="panel s6" aria-labelledby="dh"><h2 id="dh">Browse by domain</h2><ul class="blist" id="domains"></ul></section>
+ <section class="panel s6" aria-labelledby="gh"><h2 id="gh">Browse indicators by category</h2><ul class="blist" id="cat"></ul></section>
+ <section class="panel s4" aria-labelledby="th"><h2 id="th">Most reused indicators</h2><ol class="rank" id="topI"></ol></section>
+ <section class="panel s4" aria-labelledby="ch"><h2 id="ch">Most reused controls</h2><ol class="rank" id="topC"></ol></section>
+ <section class="panel s4" id="recentcard" aria-labelledby="rh" hidden><h2 id="rh">Latest typologies</h2><ol class="rank" id="recent"></ol><p class="note" id="recentnote"></p></section>
 </div>
-<p class="foot-note">Counts on this page are computed from the full v0.1 library at build time. Everything is AI-drafted and unreviewed; "reused" counts links, not quality or importance.</p>
+<p class="foot-note">Counts come from the full v0.1 library at build time. "Reused" counts links, not quality or importance. Gaps in the library are on the <a href="coverage">Coverage</a> page.</p>

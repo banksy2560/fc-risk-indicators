@@ -683,3 +683,46 @@ svg.lines circle.pulse{fill:var(--tape);stroke:var(--surface);stroke-width:1.5}
 .flow svg.lines circle.pulse{fill:var(--tape)}
 .bt .bflow.hov svg.lines path{opacity:.12}
 .bt .bflow.hov svg.lines path.on{opacity:1;stroke-width:3}
+/* audit fixes */
+::placeholder{color:var(--ink-3);opacity:1}
+::selection{background:var(--tape-bg);color:var(--ink)}
+.mono{font-size:max(.86em,11.5px)}
+h1,h2,h3{text-wrap:balance}
+p,li,dd{text-wrap:pretty}
+.site-footer p,.foot-note{max-width:60ch}
+.lede{max-width:64ch}
+.prose{max-width:64ch}
+.fg label.zero{opacity:1;color:var(--ink-3)}
+.fg label.zero .n{color:var(--ink-3)}
+/* kind colour on a full border, not a side bar */
+.node{border:1px solid color-mix(in srgb,var(--c) 40%,var(--rule-strong))}
+.node:hover{border-color:var(--c)}
+.row{border-left-width:1px;padding-left:11px}
+.row[aria-current="true"]{border-color:color-mix(in srgb,var(--c) 45%,transparent)}
+.notice{border:1px solid var(--rule-strong);background:var(--surface-2)}
+.diagram .dn{border:1px solid color-mix(in srgb,var(--c) 45%,var(--rule-strong))}
+.bflow .typnode{border:1px solid color-mix(in srgb,var(--tape) 55%,var(--rule-strong));border-radius:6px}
+@media (min-width:1101px){.detail{border-radius:0}}
+/* phone: the filter bar scrolls with the list instead of hiding under the two-row header */
+@media (max-width:720px){.tools,.listcol .tools{position:static}}
+/* touch targets */
+@media (hover:none){
+ select,.pick select{min-height:44px;padding-block:10px}
+ .tools .btn,#fbtn,.fbtn{min-height:44px}
+ .chip{padding:6px 10px}
+ .also summary,details.more>summary{padding-block:12px}
+ .brand{padding-block:11px}
+ .kbd-hint{display:none}}
+/* sticky offsets follow the real header height (--hdr is set from core.js) */
+.tools{top:var(--hdr,68px)}
+@media (min-width:1101px){.detail{top:calc(var(--hdr,68px) + 8px);max-height:calc(100vh - var(--hdr,68px) - 16px)}}
+/* search dialog close */
+.pal-head{display:flex;justify-content:flex-end;padding:8px 10px 0}
+.pal-head .btn{min-height:36px}
+@media (hover:none){.pal-head .btn{min-height:44px}}
+.src .t{font-size:12px}
+.prov{border:0}
+/* touch: iOS only honours select height without its native chrome, so draw the arrow */
+@media (hover:none){
+ select{border:1px solid var(--rule-strong);border-radius:8px;color:var(--ink);font:inherit;font-size:16px}
+ select,.pick select{-webkit-appearance:none;appearance:none;padding-left:12px;padding-right:34px;background-color:var(--surface);background-image:linear-gradient(45deg,transparent 50%,var(--ink-2) 50%),linear-gradient(135deg,var(--ink-2) 50%,transparent 50%);background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat}}

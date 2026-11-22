@@ -24,9 +24,9 @@ function getJSON(p){
  if(!cache[p])cache[p]=fetch(p).then(r=>{if(!r.ok)throw new Error(p+' '+r.status);return r.json()}).catch(e=>{const n=$('#nofetch');if(n)n.hidden=false;throw e});
  return cache[p];
 }
-let X=null;
+let X=null,S=null;
 function load(){
- if(!X)X=getJSON('data/index.json').then(derive);
+ if(!X)X=getJSON('data/index.json').then(derive).then(x=>{S=x;X.__L=x.L;return x});
  return X;
 }
 function derive(d){
@@ -50,9 +50,7 @@ function derive(d){
  return {d,L,T,I,C,fams,domLabel:id=>L.domain[id]||id};
 }
 function lab(g,k){const L=X&&X.__L;return (L&&L[g]&&L[g][k])||String(k==null?'':k).replace(/_/g,' ').replace(/^./,c=>c.toUpperCase())}
-// X is a promise; keep a synchronous handle for renderers once loaded
-let S=null;
-load().then(x=>{S=x;X.__L=x.L}).catch(()=>{});
+// X is a promise; S is a synchronous handle for renderers, set when load() resolves (lazy: pages that never call load() never fetch)
 const sig=(s,txt)=>`<span class="sig" data-s="${esc(s)}"><i aria-hidden="true"><b></b><b></b><b></b></i><span>${esc(txt||('Signal: '+lab('sev',s)))}</span></span>`;
 const href=(k,id)=>(FC.NAVHREF?FC.NAVHREF(k,id):`${KIND[k].page}#${encodeURIComponent(id)}`);
 const link=(k,id,inner,cls)=>`<a class="${cls||''}" data-k="${k}" data-id="${esc(id)}" href="${esc(href(k,id))}">${inner}</a>`;
@@ -198,7 +196,7 @@ document.addEventListener('click',async e=>{
 
 /* ---------- command palette */
 const pal=document.createElement('dialog');pal.className='pal';pal.setAttribute('aria-label','Search the library');
-pal.innerHTML='<input type="text" role="combobox" aria-expanded="true" aria-controls="pal-list" aria-autocomplete="list" aria-label="Search" placeholder="Search typologies, indicators, controls" autocomplete="off" spellcheck="false"><ul id="pal-list" role="listbox" aria-label="Results"></ul><div class="foot">Up/Down to move, Enter to open, Esc to close.</div>';
+pal.innerHTML='<div class="pal-head"><button type="button" class="btn pal-close">Close</button></div><input type="text" role="combobox" aria-expanded="true" aria-controls="pal-list" aria-autocomplete="list" aria-label="Search" placeholder="Search typologies, indicators, controls" autocomplete="off" spellcheck="false"><ul id="pal-list" role="listbox" aria-label="Results"></ul><div class="foot"><span class="kbd-hint">Up/Down to move, Enter to open, Esc to close.</span></div>';
 document.body.appendChild(pal);
 const pin=$('input',pal),pul=$('ul',pal);let pitems=[],psel=0,corpus=null,lastFocus=null;
 const QUICK=['ML-MULE','FR-APP','CY-MIXER','ML-TBML','SANC-CRYPTO'];
@@ -224,7 +222,7 @@ function go(c){pal.close();if(FC.onGo)FC.onGo(c.k,c.id);else location.href=KIND[
 pin.addEventListener('input',drawPal);
 pin.addEventListener('keydown',e=>{if(e.key==='ArrowDown'){e.preventDefault();mv(psel+1)}else if(e.key==='ArrowUp'){e.preventDefault();mv(psel-1)}else if(e.key==='Enter'&&pitems[psel]){e.preventDefault();go(pitems[psel])}});
 pul.addEventListener('click',e=>{const b=e.target.closest('button');if(b)go(pitems[+b.dataset.n])});
-pal.addEventListener('click',e=>{if(e.target===pal)pal.close()});
+pal.addEventListener('click',e=>{if(e.target===pal||e.target.closest('.pal-close'))pal.close()});
 pal.addEventListener('close',()=>{lastFocus&&lastFocus.focus&&lastFocus.focus()});
 async function openPal(pre){
  lastFocus=document.activeElement;pin.value=pre||'';pal.showModal();pin.focus();
@@ -235,6 +233,7 @@ document.addEventListener('keydown',e=>{const tg=e.target;const typing=tg&&(tg.t
  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();pal.open?pal.close():openPal()}
  else if(e.key==='/'&&!typing&&!pal.open&&!e.metaKey&&!e.ctrlKey&&!e.altKey){e.preventDefault();openPal()}});
 $$('[data-open-search]').forEach(b=>b.addEventListener('click',()=>openPal()));
+{const h=$('.top');if(h){const sh=()=>document.documentElement.style.setProperty('--hdr',Math.ceil(h.getBoundingClientRect().height)+'px');sh();if('ResizeObserver' in window)new ResizeObserver(sh).observe(h);else addEventListener('resize',sh)}}
 $$('[data-kbd]').forEach(k=>k.textContent=/Mac|iPhone|iPad/.test(navigator.platform)?'⌘K':'Ctrl K');
 
 /* Linkage motion: draw each thread, then send a pulse along it. Off under reduced motion. */

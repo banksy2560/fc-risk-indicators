@@ -11,23 +11,22 @@
 <meta property="og:title" content="About | FC Risk Indicators">
 <meta property="og:description" content="Status of the FC Risk Indicators library (v0.1 draft, AI-drafted, unreviewed), how typologies, indicators and controls are linked, design principles, citation tags, glossary, contribution and licences.">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.5 22.5 12 12 22.5 1.5 12z' fill='%234338A5'/%3E%3Ccircle cx='12' cy='12' r='4.4' fill='white'/%3E%3Ccircle cx='12' cy='12' r='2.2' fill='%237E5200'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.5 22.5 12 12 22.5 1.5 12z' fill='%233F3D99'/%3E%3Ccircle cx='12' cy='12' r='4.4' fill='white'/%3E%3Ccircle cx='12' cy='12' r='2.2' fill='%23B3262E'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/app.css">
 </head>
 <body class="" data-page="about" data-mode="">
 <a class="skip" href="#main">Skip to content</a>
-<div class="banner" role="region" aria-label="Content status"><div class="wrap"><strong>v0.1 DRAFT</strong><span>AI-drafted and unreviewed: no human subject-matter expert has reviewed any of this content.</span><span class="long">Signal strength is indicative, not a risk score. Exposure tags are AI-inferred descriptors of where a typology typically shows up, not any institution's assessed exposure.</span></div></div>
+<div class="banner" role="region" aria-label="Content status"><div class="wrap"><strong>Draft v0.1</strong><span>AI-drafted and not yet reviewed by subject-matter experts. <a href="about#status">What this means</a></span></div></div>
 <header class="top"><div class="wrap">
-<a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5 22.5 12 12 22.5 1.5 12z" fill="var(--typ)"/><circle cx="12" cy="12" r="4.4" fill="var(--bg)"/><circle cx="12" cy="12" r="2.2" fill="var(--ind)"/></svg>FC Risk Indicators <small>Intelligence library</small></a>
+<a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5 22.5 12 12 22.5 1.5 12z" fill="var(--typ)"/><circle cx="12" cy="12" r="4.4" fill="var(--bg)"/><circle cx="12" cy="12" r="2.2" fill="var(--tape)"/></svg>FC Risk Indicators</a>
 <nav aria-label="Primary"><a href="./">Home</a><a href="explorer">Explorer</a><a href="relationships">Relationships</a><a href="coverage">Coverage</a><a href="about" aria-current="page">About</a></nav>
 <button type="button" class="cmdk" data-open-search aria-label="Search the library" aria-keyshortcuts="Meta+K Control+K"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="lbl">Search typologies, indicators, controls</span><kbd data-kbd>Ctrl K</kbd></button>
 </div></header>
 <div id="nofetch" class="wrap" hidden><div class="notice" role="alert"><strong>Data could not be loaded.</strong> This site loads its data with <code>fetch()</code>, which browsers block when a page is opened from disk (file://). Serve the <code>site/</code> folder over HTTP, for example <code>python3 tools/serve_site.py</code>, or use the deployed site.</div></div>
 <main id="main" class="wrap" tabindex="-1">
 <div class="prose">
- <p class="eyebrow">About</p>
  <h1 class="display">About FC Risk Indicators</h1>
  <p class="lede">An open catalogue of financial crime <strong>risk indicators (red flags)</strong> organised by <strong>typology</strong>, each paired with candidate <strong>controls</strong>. It covers money laundering, terrorist and proliferation financing, sanctions evasion, fraud, bribery and corruption, tax evasion, human trafficking, environmental crime, cyber-enabled crime and cross-cutting factors.</p>
  <ul class="toc" aria-label="On this page">
@@ -156,7 +155,7 @@
 
 </main>
 <footer class="site-footer"><div class="wrap">
-<p><strong>FC Risk Indicators v0.1 draft.</strong> AI-drafted, not reviewed by subject-matter experts; citations are unverified or agent-checked only. Indicators are red flags, not proof of crime. Nothing here is legal or compliance advice.</p>
+<p><strong>FC Risk Indicators v0.1 draft.</strong> AI-drafted, not reviewed by subject-matter experts; citations are unverified or agent-checked only. Indicators are red flags, not proof of crime. Nothing here is legal or compliance advice. Signal strength is indicative, not a risk score. Exposure tags are AI-inferred descriptors of where a typology typically shows up, not any institution's assessed exposure.</p>
 <p>Code: <a href="https://github.com/banksy2560/fc-risk-indicators/blob/main/LICENSE">Apache-2.0</a>. Content: <a href="https://github.com/banksy2560/fc-risk-indicators/blob/main/LICENSE-CONTENT">CC-BY-4.0</a>. <a href="https://github.com/banksy2560/fc-risk-indicators">Source on GitHub</a> | <a href="about#contribute">Contribute or review</a></p>
 </div></footer>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>

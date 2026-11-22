@@ -25,7 +25,7 @@ function related(){
  const is=det.indicators.filter(i=>i.controls.includes(S.sel)).map(i=>i.ref);return is.length?{i:new Set(is),c:new Set([S.sel])}:null;
 }
 async function draw(){
- const my=++tok,t=T[S.t];pick.value=S.t;
+ animNext='base';const my=++tok,t=T[S.t];pick.value=S.t;
  flow.innerHTML='<p class="loading" style="grid-column:1/-1">Loading...</p>';
  try{const dd=await FC.getJSON(`data/typologies/${S.t}.json`);if(my!==tok)return;det=dd}catch(e){return}
  if(S.sel&&!related()){ // selected item is not part of this typology
@@ -58,6 +58,7 @@ async function drawPanel(){
  try{const h=await FC.renderRecord(id);if(my===ptok)$('#pbody').innerHTML=h}catch(e){}
 }
 const pt=(e,side,box)=>{const r=e.getBoundingClientRect();return {x:(side==='r'?r.right:r.left)-box.left,y:r.top+r.height/2-box.top}};
+let animNext=null,animAt=0;
 function lines(){
  const svg=$('#lines');if(!svg||getComputedStyle(svg).display==='none'||!det)return;
  const box=flow.getBoundingClientRect();svg.setAttribute('viewBox',`0 0 ${box.width} ${box.height}`);
@@ -66,11 +67,18 @@ function lines(){
  let h='';const a=pt(tn,'r',box);
  Object.values(im).forEach(n=>h+=curve(a,pt(n,'l',box),'base'));
  if(rel)det.indicators.forEach(i=>i.controls.forEach(c=>{if(rel.i.has(i.ref)&&rel.c.has(c)&&im[i.ref]&&cm[c])h+=curve(pt(im[i.ref],'r',box),pt(cm[c],'l',box),kindOf(S.sel)==='i'?'hl':'hl2')}));
- svg.innerHTML=h;
+ // a resize or layout settle right after an animation keeps the running one
+ if(!animNext&&svg._h===h)return;
+ if(!animNext&&Date.now()-animAt<1400&&svg._h&&Math.abs(svg._h.length-h.length)<40)return;
+ svg.innerHTML=h;svg._h=h;
+ if(animNext){const mode=animNext;animNext=null;animAt=Date.now();
+  if(mode==='base')FC.drawThreads(svg,[...svg.querySelectorAll('path.base')],{stagger:35,dur:420,pulse:false});
+  else{const ps=[...svg.querySelectorAll('path.hl,path.hl2')];FC.drawThreads(svg,ps,{stagger:60,dur:460});
+   FC.riseIn([...flow.querySelectorAll('.node.rel')],{start:120,stagger:40,dur:240})}}
 }
 function openPane(){if(mq.matches){document.body.classList.add('pane');dback.hidden=false;$('#closeb').focus()}}
 function closePane(){document.body.classList.remove('pane');dback.hidden=true;const b=$(`.node[aria-pressed="true"]`,flow);b&&b.focus()}
-function setSel(id){S.sel=id;paint();openPane()}
+function setSel(id){S.sel=id;animNext='sel';paint();openPane()}
 function setT(id){S.t=id;S.sel=null;draw()}
 function goRecord(k,id){ // from panel, table, palette
  if(k==='t'){setT(id);return}

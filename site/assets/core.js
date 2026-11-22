@@ -237,6 +237,23 @@ document.addEventListener('keydown',e=>{const tg=e.target;const typing=tg&&(tg.t
 $$('[data-open-search]').forEach(b=>b.addEventListener('click',()=>openPal()));
 $$('[data-kbd]').forEach(k=>k.textContent=/Mac|iPhone|iPad/.test(navigator.platform)?'⌘K':'Ctrl K');
 
-const FC=window.FC={$,$$,esc,uniq,MARK,KIND,tag,kindOf,DIMS,DIM_NOUN,DIM_TITLE,SEVRANK,AI_NOTE,aiTag,load,getJSON,lab,sig,href,link,flowHref,toast,copy,citeUrl,csvText,downloadCSV,expCell,renderRecord,recordCsv,openPal,ctlGroups,
+/* Linkage motion: draw each thread, then send a pulse along it. Off under reduced motion. */
+const calm=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+const SVGNS='http://www.w3.org/2000/svg',EASE='cubic-bezier(.45,0,.2,1)';
+function drawThreads(svg,paths,{start=0,stagger=60,dur=480,pulse=true}={}){
+ if(calm()||!svg||!paths.length)return start;let end=start;
+ paths.forEach((p,i)=>{let L;try{L=p.getTotalLength()}catch(e){return}if(!L)return;const delay=start+i*stagger;
+  p.style.strokeDasharray=L;p.style.strokeDashoffset=L;
+  p.animate([{strokeDashoffset:L},{strokeDashoffset:0}],{duration:dur,delay,easing:EASE,fill:'both'}).finished
+   .then(()=>{p.style.strokeDasharray='';p.style.strokeDashoffset=''}).catch(()=>{});
+  if(pulse){const c=document.createElementNS(SVGNS,'circle');c.setAttribute('r','3.5');c.setAttribute('class','pulse');svg.appendChild(c);
+   const kf=[];for(let k=0;k<=20;k++){const q=p.getPointAtLength(L*k/20);kf.push({transform:`translate(${q.x}px,${q.y}px)`,opacity:k===0||k===20?0:1})}
+   c.animate(kf,{duration:dur+160,delay:delay+dur*.55,easing:'ease-in-out',fill:'both'}).finished.then(()=>c.remove()).catch(()=>c.remove())}
+  end=Math.max(end,delay+dur)});
+ return end}
+function riseIn(els,{start=0,stagger=50,dur=280}={}){
+ if(calm())return;els.forEach((e,i)=>e.animate([{opacity:0,transform:'translateY(6px)'},{opacity:1,transform:'none'}],{duration:dur,delay:start+i*stagger,easing:EASE,fill:'both'}))}
+
+const FC=window.FC={drawThreads,riseIn,calm,$,$$,esc,uniq,MARK,KIND,tag,kindOf,DIMS,DIM_NOUN,DIM_TITLE,SEVRANK,AI_NOTE,aiTag,load,getJSON,lab,sig,href,link,flowHref,toast,copy,citeUrl,csvText,downloadCSV,expCell,renderRecord,recordCsv,openPal,ctlGroups,
  get S(){return S},onGo:null,NAVHREF:null};
 })();

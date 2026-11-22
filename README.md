@@ -40,7 +40,7 @@ Each typology `sources` entry carries a tag. **No citation has been confirmed by
 ## Known limitations
 - Controls and indicators were de-duplicated by AI clustering; borderline merges are listed in [REVIEW_QUEUE.md](REVIEW_QUEUE.md) for human review. Singleton indicators still carry some typology-flavoured wording.
 - A few typologies have thin control coverage (e.g. institutional governance); gaps are noted in the review queue.
-- Exposure tags, provenance and review fields (schema v0.2) are not yet populated.
+- Exposure tags (`exposure` in each typology) and indicator provenance fields are AI-inferred and unreviewed; they describe where a typology typically shows up, not any institution's assessed exposure.
 - Detection bias: do not calibrate indicator weighting solely against your own SAR or loss data.
 
 ## Contributing

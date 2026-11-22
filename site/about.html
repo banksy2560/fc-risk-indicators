@@ -2,51 +2,40 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About: status, how linking works, glossary and licences | FC Risk Indicators</title>
-<meta name="description" content="Status of the FC Risk Indicators library (v0.1 draft, AI-drafted, unreviewed), how typologies, indicators and controls are linked, design principles, citation tags, glossary, contribution and licences.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light dark">
+<title>About | FC Risk Indicators</title>
+<meta name="description" content="Status of the FC Risk Indicators library (v0.1 draft, AI-drafted, unreviewed), how typologies, indicators and controls are linked, design principles, citation tags, glossary, contribution and licences.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="FC Risk Indicators">
-<meta property="og:title" content="About: status, how linking works, glossary and licences | FC Risk Indicators">
+<meta property="og:title" content="About | FC Risk Indicators">
 <meta property="og:description" content="Status of the FC Risk Indicators library (v0.1 draft, AI-drafted, unreviewed), how typologies, indicators and controls are linked, design principles, citation tags, glossary, contribution and licences.">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232a4fc4'/%3E%3Cpath d='M8 22V10m8 12V14m8 8V8' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
-<script>try{var t=localStorage.getItem('fcri-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.5 22.5 12 12 22.5 1.5 12z' fill='%234338A5'/%3E%3Ccircle cx='12' cy='12' r='4.4' fill='white'/%3E%3Ccircle cx='12' cy='12' r='2.2' fill='%237E5200'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/app.css">
 </head>
-<body class="" data-page="about">
+<body class="" data-page="about" data-mode="">
 <a class="skip" href="#main">Skip to content</a>
-<div class="top" id="top">
-<div class="status" role="note"><strong>v0.1 draft:</strong> AI-drafted, not reviewed. Not a risk rating or compliance advice.</div>
-<header class="site-header">
- <div class="wrap hdr">
-  <a class="brand" href="./">FC Risk Indicators</a>
-  <nav aria-label="Main" class="nav">
-   <a href="./" data-nav="search">Search</a>
-   <a href="typologies" data-nav="typologies">Typologies</a>
-   <a href="coverage" data-nav="coverage">Coverage</a>
-   <a href="about" data-nav="about">About</a>
-  </nav>
-  <button type="button" class="btn theme" id="theme" aria-label="Switch colour theme" title="Switch colour theme"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="5.2"/><path d="M8 2.8v10.4" /><path d="M8 2.8a5.2 5.2 0 0 1 0 10.4z" fill="currentColor"/></svg><span class="theme-l">Theme</span></button>
- </div>
-</header>
-</div>
-<div id="nofetch" class="wrap" hidden><div class="callout warn" role="alert"><strong>Data could not be loaded.</strong> This site loads its data with <code>fetch()</code>, which browsers block when a page is opened directly from disk (file://). Serve the <code>site/</code> folder over HTTP, for example <code>python3 tools/serve_site.py</code>, or view the deployed site.</div></div>
-<main id="main" tabindex="-1">
-<div class="wrap">
+<div class="banner" role="region" aria-label="Content status"><div class="wrap"><strong>v0.1 DRAFT</strong><span>AI-drafted and unreviewed: no human subject-matter expert has reviewed any of this content.</span><span class="long">Signal strength is indicative, not a risk score. Exposure tags are AI-inferred descriptors of where a typology typically shows up, not any institution's assessed exposure.</span></div></div>
+<header class="top"><div class="wrap">
+<a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5 22.5 12 12 22.5 1.5 12z" fill="var(--typ)"/><circle cx="12" cy="12" r="4.4" fill="var(--bg)"/><circle cx="12" cy="12" r="2.2" fill="var(--ind)"/></svg>FC Risk Indicators <small>Intelligence library</small></a>
+<nav aria-label="Primary"><a href="./">Home</a><a href="explorer">Explorer</a><a href="relationships">Relationships</a><a href="coverage">Coverage</a><a href="about" aria-current="page">About</a></nav>
+<button type="button" class="cmdk" data-open-search aria-label="Search the library" aria-keyshortcuts="Meta+K Control+K"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="lbl">Search typologies, indicators, controls</span><kbd data-kbd>Ctrl K</kbd></button>
+</div></header>
+<div id="nofetch" class="wrap" hidden><div class="notice" role="alert"><strong>Data could not be loaded.</strong> This site loads its data with <code>fetch()</code>, which browsers block when a page is opened from disk (file://). Serve the <code>site/</code> folder over HTTP, for example <code>python3 tools/serve_site.py</code>, or use the deployed site.</div></div>
+<main id="main" class="wrap" tabindex="-1">
 <div class="prose">
- <h1>About FC Risk Indicators</h1>
- <p class="lead">An open catalogue of financial crime <strong>risk indicators (red flags)</strong> organised by <strong>typology</strong>, each paired with candidate <strong>controls</strong>. It covers money laundering, terrorist and proliferation financing, sanctions evasion, fraud, bribery and corruption, tax evasion, human trafficking, environmental crime, cyber-enabled crime and cross-cutting factors.</p>
+ <p class="eyebrow">About</p>
+ <h1 class="display">About FC Risk Indicators</h1>
+ <p class="lede">An open catalogue of financial crime <strong>risk indicators (red flags)</strong> organised by <strong>typology</strong>, each paired with candidate <strong>controls</strong>. It covers money laundering, terrorist and proliferation financing, sanctions evasion, fraud, bribery and corruption, tax evasion, human trafficking, environmental crime, cyber-enabled crime and cross-cutting factors.</p>
  <ul class="toc" aria-label="On this page">
-  <li><a href="#status">Status</a></li><li><a href="#linking">How linking works</a></li><li><a href="#principles">Design principles</a></li><li><a href="#citations">Citation tags</a></li><li><a href="#glossary">Glossary</a></li><li><a href="#contribute">Contribute</a></li><li><a href="#licences">Licences</a></li><li><a href="#gaps">Known gaps</a></li>
+  <li><a href="#status">Status</a></li><li><a href="#linking">How linking works</a></li><li><a href="#exposure">Exposure and provenance</a></li><li><a href="#principles">Design principles</a></li><li><a href="#citations">Citation tags</a></li><li><a href="#glossary">Glossary</a></li><li><a href="#contribute">Contribute</a></li><li><a href="#licences">Licences</a></li><li><a href="#gaps">Known gaps</a></li>
  </ul>
 
  <h2 id="status">Status</h2>
- <div class="callout warn"><strong>v0.1 draft. AI-drafted. Not reviewed. Citations unverified.</strong></div>
+ <div class="notice"><strong>v0.1 draft. AI-drafted. Not reviewed. Citations unverified.</strong> Nothing in this library has been confirmed by a human; every record is labelled <em>Draft - unreviewed</em>.</div>
  <ul>
   <li>Content was drafted with AI assistance and has <strong>not</strong> been validated by subject-matter experts.</li>
   <li>Source citations were written from model knowledge. <strong>No citation has been confirmed by a human</strong>: check any citation before relying on it.</li>
@@ -57,22 +46,40 @@
  <h2 id="linking">How linking works</h2>
  <p>Every indicator and every control is <strong>defined once</strong> and <strong>linked many times</strong>. Nothing is copied between typologies.</p>
  <div class="diagram" role="img" aria-label="A typology links to indicators; each link names the controls used; controls and indicators are shared across typologies">
-  <div class="node"><b class="k-typology">Typology</b>The unit of analysis. Owns a description, sectors and sources.</div><span class="arrow" aria-hidden="true">links to</span>
-  <div class="node"><b class="k-indicator">Indicator</b>An observable red flag, defined once. Context and false-positive notes can be typology-specific.</div><span class="arrow" aria-hidden="true">mitigated by</span>
-  <div class="node"><b class="k-control">Control</b>A candidate control, defined once, reused across many indicators and typologies.</div>
+  <div class="dn c-t"><b><svg class="mk" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5 22.5 12 12 22.5 1.5 12z" fill="currentColor"/></svg>Typology (diamond)</b>The unit of analysis. Owns a description, sectors, exposure tags and sources.</div><span class="arrow" aria-hidden="true">links to</span>
+  <div class="dn c-i"><b><svg class="mk" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="2.4"/></svg>Indicator (ringed dot)</b>An observable red flag, defined once. Context and false-positive notes can be typology-specific.</div><span class="arrow" aria-hidden="true">mitigated by</span>
+  <div class="dn c-c"><b><svg class="mk" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8 20.5 5v6.3c0 5.2-3.6 9.3-8.5 11-4.9-1.7-8.5-5.8-8.5-11V5z" fill="currentColor"/></svg>Control (shield)</b>A candidate control, defined once, reused across many indicators and typologies.</div>
  </div>
  <ul>
   <li>A typology links to canonical indicators. Each link states how the indicator shows up in <em>that</em> typology and names the controls used there.</li>
   <li>A control page lists every indicator and typology that uses it; an indicator page lists its typologies and controls. "Used in N typologies" simply counts these links.</li>
   <li>Adding something that already exists in spirit means linking the existing item, not creating a near-duplicate.</li>
-  <li><a href="./">Search</a> finds any item; <a href="typologies">Typologies</a> gives a citable page for each; <a href="coverage">Coverage</a> shows link counts per control family.</li>
+  <li><a href="./">Search</a> (press <kbd>/</kbd> or <kbd>Ctrl/Cmd K</kbd> on any page) finds any item; the <a href="explorer">Explorer</a> filters and compares records, and each record has a citable address such as <code>/typologies#ML-MULE</code>, <code>/indicators#IND-TXN-017</code> or <code>/controls#CTL-037</code>; <a href="relationships">Relationships</a> shows the typology to indicators to controls flow for any typology; <a href="coverage">Coverage</a> shows link counts per control family.</li>
+ </ul>
+
+ <h2 id="exposure">Exposure tags and provenance</h2>
+ <p>Two kinds of metadata sit alongside the content. Both are <strong>AI-generated and unreviewed</strong>.</p>
+ <h3>Exposure tags: where a typology typically shows up</h3>
+ <ul>
+  <li>Each typology carries an <code>exposure</code> block with four dimensions: <strong>channels</strong>, <strong>payment rails</strong>, <strong>customer segments</strong> and <strong>products</strong>, drawn from controlled lists in <code>vocab.yaml</code>, plus a one-line rationale. The basis is recorded as <code>ai_inferred</code>.</li>
+  <li><strong>These are AI-inferred descriptions of where a typology typically shows up. They are not an institution's assessed exposure</strong> and say nothing about any firm's actual products, customers or volumes.</li>
+  <li><strong>Indicators inherit exposure.</strong> An indicator's exposure is not stored; it is derived as the union of the exposure of every typology that links it, and the record also shows each typology's own tags so you can see where a tag came from.</li>
+  <li><strong>Cross-cutting typologies.</strong> A cross-cutting typology (for example delivery channel, or institutional governance) may leave a dimension empty because it applies across all of it. The site says "applies across all channels", "all products" and so on instead of "none", and such a typology (and indicators linked to it) match any value of that dimension in exposure filters rather than being dropped. An empty dimension on any other typology is shown as "no tags" and does not match exposure filters.</li>
+ </ul>
+ <h3>Provenance: how reliable is this record?</h3>
+ <ul>
+  <li>Each canonical indicator carries <code>status</code> (draft, SME reviewed, validated), <code>provenance</code> (AI-drafted, human-authored, mixed), <code>evidence_basis</code>, <code>confidence</code> and, once a human has reviewed it, <code>last_reviewed</code>.</li>
+  <li>Right now every indicator is <strong>draft, AI-drafted, evidence basis "AI draft, unreviewed" and confidence "unassessed"</strong>. The Review status filter in the <a href="explorer">Explorer</a> therefore shows zero reviewed records, which is correct, not a bug.</li>
+  <li>Typologies and controls do not yet carry their own status field; the site shows them as draft, consistent with the status of the whole library.</li>
+  <li>Source evidence on an indicator is taken from the citations of the typologies that link it, with the citation tags described below. The <em>Source evidence</em> filter is a proxy, not a measure of quality.</li>
+  <li>"Recently added" on the home page uses the date of the git commit that first added each typology file. Indicators and controls live in shared files, so they have no such date.</li>
  </ul>
 
  <h2 id="principles">Design principles</h2>
  <p>This library is deliberately <strong>not</strong> a risk register, an RCSA or a competing risk-assessment methodology. It is a reusable <em>input</em> that an institution's own ML/TF/fraud risk assessment consumes.</p>
  <div class="principles">
   <div class="card"><h3>Typology is the unit</h3><p>Products, channels, payment rails and customer segments are exposure dimensions, not separate registers. A typology is owned once, not duplicated across product views.</p></div>
-  <div class="card"><h3>No scoring</h3><p>The library prescribes no residual-risk calculation and no worst-of aggregation. Signal (high, medium, low) is indicative strength of an indicator, never a risk rating and never rolled up.</p></div>
+  <div class="card"><h3>No scoring</h3><p>The library prescribes no residual-risk calculation and no worst-of aggregation. <strong>Signal strength</strong> (three neutral bars and a word: low, medium, high) is the indicative strength of an indicator, never a risk rating, never coloured as one and never added up or rolled up.</p></div>
   <div class="card"><h3>Input, not methodology</h3><p>It supplies what is often missing: a shared, citable catalogue of observable indicators and candidate controls. Scoring and prioritisation stay with the adopting institution.</p></div>
   <div class="card"><h3>No institution data</h3><p>It contains candidate controls and no assessments of any institution. Gap assessments belong in the adopter's own environment and governance.</p></div>
   <div class="card"><h3>Human review before trust</h3><p>Every item is draft until a named, independent subject-matter expert reviews it. AI-drafted content is labelled as such.</p></div>
@@ -82,13 +89,13 @@
 
  <h2 id="citations">Citation status tags</h2>
  <p>Each typology source carries a tag. <strong>No citation has been confirmed by a human.</strong></p>
- <ul>
-  <li><span class="cite">agent-reviewed</span> an AI agent searched for it and found a matching real document (a listed URL may not have been fetched). Still verify before relying on it.</li>
-  <li><span class="cite">corrected, agent-reviewed</span> the original title, year or publisher was wrong and was corrected by the same process.</li>
-  <li><span class="cite warn">unverified</span> and <span class="cite warn">corrected, unverified</span> not confirmed by search; from model knowledge.</li>
-  <li><span class="cite warn">too vague, unverified</span> names a body or topic but not a specific document.</li>
-  <li><span class="cite warn">replacement suggested, unverified</span> the original could not be found; a nearest real document is suggested.</li>
-  <li><span class="cite">corrected, checked</span> corrected and checked by search; still not human-confirmed.</li>
+ <p>Source entries across the 115 typologies: 368 in total. Counts in brackets are the number of source entries carrying each tag.</p>
+ <ul class="legendlist">
+  <li><span class="cite">agent-reviewed</span> (75) an AI agent searched for it and found a matching real document (a listed URL may not have been fetched). Still verify before relying on it.</li>
+  <li><span class="cite">corrected, agent-reviewed</span> (58) the original title, year or publisher was wrong and was corrected by the same process.</li>
+  <li><span class="cite warn">unverified</span> (124) and <span class="cite warn">corrected, unverified</span> (25) not confirmed by search; from model knowledge.</li>
+  <li><span class="cite warn">too vague, unverified</span> (49) names a body or topic but not a specific document.</li>
+  <li><span class="cite warn">replacement suggested, unverified</span> (37) the original could not be found; a nearest real document is suggested.</li>
  </ul>
 
  <h2 id="glossary">Glossary</h2>
@@ -102,7 +109,9 @@
   <dt>Indicator (red flag)</dt><dd>An observable pattern or characteristic that may point to a typology. It is not proof of crime and often has legitimate explanations.</dd>
   <dt>Control</dt><dd>A measure that prevents, detects, corrects or governs a risk, such as a monitoring rule, a verification step or a training programme. Here, controls are candidates, not assessments of what any institution has.</dd>
   <dt>Control family</dt><dd>A grouping of controls by purpose, such as customer due diligence or transaction monitoring.</dd>
-  <dt>Signal</dt><dd>The indicative strength of an indicator (high, medium, low). Not a risk rating and never aggregated into a score.</dd>
+  <dt>Signal strength</dt><dd>The indicative strength of an indicator as evidence (low, medium, high), shown as three neutral bars and a word. Not a risk rating and never aggregated into a score.</dd>
+  <dt>Exposure</dt><dd>Where a typology typically shows up: channels, payment rails, customer segments and products. AI-inferred, not any institution's assessed exposure.</dd>
+  <dt>Provenance</dt><dd>Who or what produced a record and how far it has been reviewed: status, provenance, evidence basis, confidence and review date.</dd>
   <dt>Typical effectiveness</dt><dd>An indicative, drafted label on a control. It is not a measurement and not an assessment of any institution.</dd>
   <dt>CDD / KYC</dt><dd>Customer due diligence and know your customer: identifying and verifying customers and understanding their activity.</dd>
   <dt>EDD</dt><dd>Enhanced due diligence: additional scrutiny applied to higher-risk customers or situations.</dd>
@@ -140,20 +149,18 @@
   <li><strong>Missing controls.</strong> No suitable catalogue control yet for: independent AML programme-effectiveness testing; alert-queue ageing and capacity forecasting; order-book and spoofing surveillance; licensing and change-in-control fit-and-proper review; court-record verification; safe-deposit-box access logging; transfer-pricing benchmarking; cross-border real-time freeze or recall coordination; scam-compound infrastructure or telecoms-spend monitoring; a unified fraud and AML view across silos. Links to the "closest fit" are approximate.</li>
   <li><strong>Thin governance coverage.</strong> Institutional-governance indicators lean on one sampling-QA control as the only detective option. The family <em>corrective response</em> has a single control.</li>
   <li><strong>Data quality.</strong> Some singleton indicators keep original typology-flavoured wording and generic default detection types, data sources and false-positive notes.</li>
-  <li><strong>Not yet populated.</strong> Exposure tags (channels, payment rails, customer segments, products), evidence basis, confidence, provenance and review fields.</li>
+  <li><strong>Populated but unreviewed.</strong> Exposure tags, evidence basis, confidence and provenance fields are filled in for every record, but all are AI-generated: exposure is AI-inferred and every indicator has confidence "unassessed". No record has been reviewed by a human, so <code>last_reviewed</code> is empty throughout.</li>
   <li><strong>Citations.</strong> All unverified or agent-checked only, as described above.</li>
  </ul>
 </div>
-</div>
 
 </main>
-<footer class="site-footer">
- <div class="wrap">
-  <p><strong>FC Risk Indicators</strong> v0.1 draft. AI-drafted, not reviewed by subject-matter experts; citations unverified. Indicators are red flags, not proof of crime. Nothing here is legal or compliance advice.</p>
-  <p>Code: <a href="https://github.com/banksy2560/fc-risk-indicators/blob/main/LICENSE">Apache-2.0</a>. Content: <a href="https://github.com/banksy2560/fc-risk-indicators/blob/main/LICENSE-CONTENT">CC-BY-4.0</a>. <a href="https://github.com/banksy2560/fc-risk-indicators">Source on GitHub</a> | <a href="about#contribute">Contribute or review</a></p>
- </div>
-</footer>
-<script src="assets/app.js"></script>
+<footer class="site-footer"><div class="wrap">
+<p><strong>FC Risk Indicators v0.1 draft.</strong> AI-drafted, not reviewed by subject-matter experts; citations are unverified or agent-checked only. Indicators are red flags, not proof of crime. Nothing here is legal or compliance advice.</p>
+<p>Code: <a href="https://github.com/banksy2560/fc-risk-indicators/blob/main/LICENSE">Apache-2.0</a>. Content: <a href="https://github.com/banksy2560/fc-risk-indicators/blob/main/LICENSE-CONTENT">CC-BY-4.0</a>. <a href="https://github.com/banksy2560/fc-risk-indicators">Source on GitHub</a> | <a href="about#contribute">Contribute or review</a></p>
+</div></footer>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="assets/core.js"></script>
 
 </body>
 </html>

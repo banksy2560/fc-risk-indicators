@@ -12,9 +12,9 @@ typology:
   - payments
   sources:
   - FATF, The Role of Hawala and Other Similar Service Providers in Money Laundering and Terrorist Financing
-    (2013)
-  - FATF, Money or Value Transfer Services Guidance for a Risk-Based Approach (2016)
-  - FATF Recommendation 14
+    (2013) [unverified]
+  - 'FATF, Guidance for a Risk-Based Approach: Money or Value Transfer Services (2016) [corrected, unverified]'
+  - FATF Recommendation 14 [unverified]
   indicators:
   - ref: IND-CUS-053
     legacy_id: TF-HAWALA-001

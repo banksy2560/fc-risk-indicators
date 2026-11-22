@@ -13,9 +13,12 @@ typology:
   - trade_finance
   - corporate_services
   sources:
-  - FATF, Trade-Based Money Laundering (2006)
-  - 'FATF and Egmont Group, Trade-Based Money Laundering: Trends and Developments (2020)'
-  - Wolfsberg Group, Trade Finance Principles (general)
+  - FATF, Trade-Based Money Laundering (2006) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/Trade-basedmoneylaundering.html>
+    [agent-reviewed]
+  - 'FATF and Egmont Group, Trade-Based Money Laundering: Trends and Developments (2020) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/Trade-based-money-laundering-trends-and-developments.html>
+    [agent-reviewed]'
+  - ICC, BAFT and Wolfsberg Group, Trade Finance Principles (2019 update) <https://wolfsberg-group.org/>
+    [corrected, agent-reviewed]
   indicators:
   - ref: IND-TXN-020
     legacy_id: ML-TBML-001

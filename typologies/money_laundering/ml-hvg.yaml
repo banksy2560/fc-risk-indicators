@@ -12,9 +12,12 @@ typology:
   - dnfbp
   - art_luxury
   sources:
-  - FATF, Money Laundering and Terrorist Financing in the Art and Antiquities Market (2023)
+  - FATF, Money Laundering and Terrorist Financing in the Art and Antiquities Market (2023) [unverified]
   - FATF, Money Laundering and Terrorist Financing Risks and Vulnerabilities Associated with Gold (2015)
-  - FATF, Guidance on the Risk-Based Approach for Dealers in Precious Metals and Stones (2008)
+    <https://www.fatf-gafi.org/en/publications/Methodsandtrends/ml-tf-risks-vulnerabilities-gold.html>
+    [agent-reviewed]
+  - FATF, Guidance on the Risk-Based Approach for Dealers in Precious Metals and Stones (2008) <https://www.fatf-gafi.org/>
+    [agent-reviewed]
   indicators:
   - ref: IND-TXN-021
     legacy_id: ML-HVG-001

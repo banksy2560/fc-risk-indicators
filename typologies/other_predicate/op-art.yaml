@@ -10,11 +10,11 @@ typology:
   - banking
   - dnfbp
   sources:
-  - FATF, Money Laundering and Terrorist Financing in the Art and Antiquities Market (2023)
+  - FATF, Money Laundering and Terrorist Financing in the Art and Antiquities Market (2023) [unverified]
   - UNESCO, Convention on the Means of Prohibiting and Preventing the Illicit Import, Export and Transfer
-    of Ownership of Cultural Property (1970)
-  - UNIDROIT, Convention on Stolen or Illegally Exported Cultural Objects (1995)
-  - Interpol, public databases on stolen works of art
+    of Ownership of Cultural Property (1970) [unverified]
+  - UNIDROIT, Convention on Stolen or Illegally Exported Cultural Objects (1995) [unverified]
+  - INTERPOL, Stolen Works of Art Database [replacement suggested, unverified]
   indicators:
   - ref: IND-DOC-049
     legacy_id: OP-ART-001

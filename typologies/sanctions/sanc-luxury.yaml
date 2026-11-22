@@ -11,9 +11,10 @@ typology:
   - dnfbp
   - banking
   sources:
-  - OFAC, FinCEN, Alert on potential sanctions evasion via luxury and high-value assets (general reference)
-  - FATF, Money Laundering and Terrorist Financing in the Art and Antiquities Market (2023)
-  - OFSI, guidance on asset freezing (general reference)
+  - FinCEN, FinCEN Advises Increased Vigilance for Potential Russian Sanctions Evasion Attempts (FIN-2022-Alert001,
+    March 2022) [replacement suggested, unverified]
+  - FATF, Money Laundering and Terrorist Financing in the Art and Antiquities Market (2023) [unverified]
+  - OFSI, UK Financial Sanctions General Guidance [replacement suggested, unverified]
   indicators:
   - ref: IND-OWN-003
     legacy_id: SANC-LUXURY-001+SANC-LUXURY-006

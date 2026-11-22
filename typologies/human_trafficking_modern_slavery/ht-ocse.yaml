@@ -12,10 +12,12 @@ typology:
   - crypto
   - fintech
   sources:
-  - Egmont Group and FIU public bulletins on online child sexual exploitation
-  - FATF and APG, Financial Flows from Human Trafficking (2018)
-  - WeProtect Global Alliance, Global Threat Assessment
-  - UNODC and ECPAT public material on online child sexual exploitation
+  - Egmont Group and FIU public bulletins on online child sexual exploitation [too vague, unverified]
+  - FATF and APG, Financial Flows from Human Trafficking (2018) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/Human-trafficking.html>
+    [agent-reviewed]
+  - WeProtect Global Alliance, Global Threat Assessment (2023 edition; earlier 2019, 2021) <https://www.weprotect.org/global-threat-assessment-23/>
+    [corrected, agent-reviewed]
+  - UNODC and ECPAT public material on online child sexual exploitation [too vague, unverified]
   indicators:
   - ref: IND-TXN-091
     legacy_id: HT-OCSE-001

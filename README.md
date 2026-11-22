@@ -29,6 +29,14 @@ python3 tools/validate.py .      # add --strict to fail on warnings
 python3 tools/build_index.py .   # regenerate build/
 ```
 
+## Citation status tags
+Each typology `sources` entry carries a tag. **No citation has been confirmed by a human.**
+- `[agent-reviewed]` an AI agent searched for it and found a matching real document (a listed URL may not have been fetched). Still verify before relying on it.
+- `[corrected, agent-reviewed]` the original title/year/publisher was wrong and was corrected by the same process.
+- `[unverified]`, `[corrected, unverified]`: not confirmed by search; from model knowledge.
+- `[too vague, unverified]`: names a body or topic but not a specific document.
+- `[replacement suggested, unverified]`: the original could not be found; a nearest real document is suggested.
+
 ## Known limitations
 - Controls and indicators were de-duplicated by AI clustering; borderline merges are listed in [REVIEW_QUEUE.md](REVIEW_QUEUE.md) for human review. Singleton indicators still carry some typology-flavoured wording.
 - A few typologies have thin control coverage (e.g. institutional governance); gaps are noted in the review queue.

@@ -8,10 +8,13 @@ typology:
   sectors:
   - all
   sources:
-  - FATF, Guidance for a Risk-Based Approach (sector-specific guidance series, general principles)
+  - FATF, Guidance for a Risk-Based Approach (sector-specific guidance series, general principles) [too
+    vague, unverified]
   - FATF Recommendations, Recommendation 1 and Interpretive Note (assessing risks and applying a risk-based
-    approach)
-  - Wolfsberg Group, Guidance on a Risk Based Approach for Managing Money Laundering Risks
+    approach) <https://www.fatf-gafi.org/en/publications/Fatfrecommendations/Fatf-recommendations.html>
+    [agent-reviewed]
+  - Wolfsberg Group, Guidance on a Risk Based Approach for Managing Money Laundering Risks (2006) <https://wolfsberg-group.org/resources/rba>
+    [corrected, agent-reviewed]
   indicators:
   - ref: IND-GEO-036
     legacy_id: XC-GEOGRAPHY-001

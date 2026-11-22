@@ -15,10 +15,11 @@ typology:
   - fintech
   - insurance
   sources:
-  - FATF, Countering Ransomware Financing (2023)
+  - FATF, Countering Ransomware Financing (2023) [unverified]
   - FinCEN, Advisory on Ransomware and the Use of the Financial System to Facilitate Ransom Payments (FIN-2021-A004,
-    2021)
-  - 'FATF, Virtual Assets: Red Flag Indicators of Money Laundering and Terrorist Financing (2020)'
+    2021) [unverified]
+  - 'FATF, Virtual Assets: Red Flag Indicators of Money Laundering and Terrorist Financing (2020) <https://www.fatf-gafi.org/content/fatf-gafi/en/publications/Methodsandtrends/Virtual-assets-red-flag-indicators.html>
+    [agent-reviewed]'
   indicators:
   - ref: IND-TXN-055
     legacy_id: CY-RANSOM-001

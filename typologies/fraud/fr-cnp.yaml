@@ -10,9 +10,10 @@ typology:
   - banking
   - fintech
   sources:
-  - UK Finance, Annual Fraud Report (published annually)
-  - EMVCo and card scheme guidance on 3-D Secure and chargebacks (general)
-  - FinCEN, advisories on cyber-enabled fraud (general)
+  - UK Finance, Annual Fraud Report (specify year, e.g. 2025) <https://www.ukfinance.org.uk/> [corrected,
+    checked]
+  - EMVCo and card scheme guidance on 3-D Secure and chargebacks (general) [too vague, unverified]
+  - FinCEN, advisories on cyber-enabled fraud (general) [too vague, unverified]
   indicators:
   - ref: IND-TXN-069
     legacy_id: FR-CNP-001

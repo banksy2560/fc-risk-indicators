@@ -10,9 +10,10 @@ typology:
   - payments
   - fintech
   sources:
-  - UK Finance, Annual Fraud Report (published annually)
-  - FinCEN, advisories on loan and credit fraud (general)
-  - FATF, guidance on proceeds of fraud (general)
+  - UK Finance, Annual Fraud Report (specify year, e.g. 2025) <https://www.ukfinance.org.uk/> [corrected,
+    checked]
+  - FinCEN, advisories on loan and credit fraud (general) [too vague, unverified]
+  - FATF, guidance on proceeds of fraud (general) [too vague, unverified]
   indicators:
   - ref: IND-TXN-026
     legacy_id: FR-BUST-001

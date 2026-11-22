@@ -13,11 +13,13 @@ typology:
   - corporate_services
   - art_luxury
   sources:
-  - FATF, Laundering the Proceeds of Corruption (2011)
-  - FATF, Guidance on Politically Exposed Persons (Recommendations 12 and 22) (2013)
+  - FATF, Laundering the Proceeds of Corruption (2011) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/Laundering-the-proceeds-of-corruption.html>
+    [agent-reviewed]
+  - FATF, Guidance on Politically Exposed Persons (Recommendations 12 and 22) (2013) <https://www.fatf-gafi.org/en/publications/Fatfrecommendations/Peps-r12-r22.html>
+    [agent-reviewed]
   - 'World Bank StAR and UNODC, Politically Exposed Persons: Preventive Measures for the Banking Sector
-    (2010)'
-  - World Bank StAR, The Puppet Masters (2011)
+    (2010) [unverified]'
+  - World Bank StAR, The Puppet Masters (2011) [unverified]
   indicators:
   - ref: IND-CUS-001
     legacy_id: BC-KLEPTO-001

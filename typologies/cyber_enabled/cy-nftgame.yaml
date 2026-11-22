@@ -13,10 +13,11 @@ typology:
   - payments
   - fintech
   sources:
-  - US Department of the Treasury, Illicit Finance Risk Assessment of Non-Fungible Tokens (2024)
+  - US Department of the Treasury, Illicit Finance Risk Assessment of Non-Fungible Tokens (2024) <https://home.treasury.gov/system/files/136/Illicit-Finance-Risk-Assessment-of-Non-Fungible-Tokens.pdf>
+    [agent-reviewed]
   - FATF, Updated Guidance for a Risk-Based Approach to Virtual Assets and Virtual Asset Service Providers
-    (2021)
-  - FATF, Money Laundering and Terrorist Financing in the Art and Antiquities Market (2023)
+    (2021) [unverified]
+  - FATF, Money Laundering and Terrorist Financing in the Art and Antiquities Market (2023) [unverified]
   indicators:
   - ref: IND-TYP-014
     legacy_id: CY-NFTGAME-001

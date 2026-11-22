@@ -13,9 +13,9 @@ typology:
   - payments
   - dnfbp
   sources:
-  - 'FATF, Money Laundering Typologies: cash-intensive business guidance (general)'
-  - FinCEN, SAR Activity Review on cash-intensive businesses (general)
-  - JMLSG Guidance Part II, sector guidance on cash-intensive customers (general)
+  - 'FATF, Money Laundering Typologies: cash-intensive business guidance (general) [too vague, unverified]'
+  - FinCEN, SAR Activity Review on cash-intensive businesses (general) [too vague, unverified]
+  - JMLSG Guidance Part II, sector guidance on cash-intensive customers (general) [too vague, unverified]
   indicators:
   - ref: IND-TXN-100
     legacy_id: ML-CASHBIZ-001

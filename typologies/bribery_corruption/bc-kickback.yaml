@@ -10,10 +10,11 @@ typology:
   - corporate_services
   - payments
   sources:
-  - OECD, Recommendation of the Council on Public Procurement (2015)
-  - OECD, Preventing Corruption in Public Procurement (2016)
-  - OECD, Guidelines for Fighting Bid Rigging in Public Procurement (2009)
-  - FATF, Laundering the Proceeds of Corruption (2011)
+  - OECD, Recommendation of the Council on Public Procurement (2015) [unverified]
+  - OECD, Preventing Corruption in Public Procurement (2016) [unverified]
+  - OECD, Guidelines for Fighting Bid Rigging in Public Procurement (2009) [unverified]
+  - FATF, Laundering the Proceeds of Corruption (2011) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/Laundering-the-proceeds-of-corruption.html>
+    [agent-reviewed]
   indicators:
   - ref: IND-TXN-020
     legacy_id: BC-KICKBACK-001

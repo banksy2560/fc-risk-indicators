@@ -12,9 +12,12 @@ typology:
   - insurance
   - securities
   sources:
-  - 'FATF, Guidance for a Risk-Based Approach: Life Insurance Sector (2018)'
-  - FATF, Money Laundering and Terrorist Financing in the Securities Sector (2009)
-  - IAIS, Application Paper on combating ML/TF (general)
+  - 'FATF, Guidance for a Risk-Based Approach: Life Insurance Sector (2018) <https://www.fatf-gafi.org/en/publications/Fatfrecommendations/Rba-life-insurance.html>
+    [agent-reviewed]'
+  - FATF, Money Laundering and Terrorist Financing in the Securities Sector (2009) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/Moneylaunderingandterroristfinancinginthesecuritiessector.html>
+    [agent-reviewed]
+  - IAIS, Application Paper on Combating Money Laundering and Terrorist Financing (2013; revised 2021)
+    <https://www.iaisweb.org/> [corrected, agent-reviewed]
   indicators:
   - ref: IND-TXN-109
     legacy_id: ML-INSSEC-001

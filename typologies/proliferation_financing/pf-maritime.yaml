@@ -11,9 +11,11 @@ typology:
   - trade_finance
   - insurance
   sources:
-  - FATF, Guidance on Counter Proliferation Financing (2018)
-  - US Department of State, Treasury and Coast Guard, Global Maritime Advisory on sanctions evasion (2020)
-  - Reports of the UN Panel of Experts on the DPRK (issuing body general reference)
+  - FATF, Guidance on Counter Proliferation Financing (2018) [unverified]
+  - US Department of State, Department of the Treasury (OFAC) and US Coast Guard, Guidance to Address
+    Illicit Shipping and Sanctions Evasion Practices (2020) [corrected, unverified]
+  - UN Security Council 1718 Committee Panel of Experts, Final Report (specify year; mandate ended April
+    2024) [replacement suggested, unverified]
   indicators:
   - ref: IND-TYP-047
     legacy_id: PF-MARITIME-001

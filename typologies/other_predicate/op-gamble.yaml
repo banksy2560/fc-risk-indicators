@@ -12,10 +12,11 @@ typology:
   - crypto
   - fintech
   sources:
-  - FATF and APG, Vulnerabilities of Casinos and Gaming Sector (2009)
-  - FATF and Egmont, Money Laundering through the Football Sector (2009)
-  - Council of Europe, Convention on the Manipulation of Sports Competitions (2014)
-  - FATF, Money Laundering through Online Gambling (published typologies)
+  - FATF and APG, Vulnerabilities of Casinos and Gaming Sector (2009) [unverified]
+  - FATF, Money Laundering through the Football Sector (2009) [corrected, unverified]
+  - Council of Europe, Convention on the Manipulation of Sports Competitions (2014) [unverified]
+  - 'Closest: FATF/APG, Vulnerabilities of Casinos and Gaming Sector (2009); FATF, Risks of Gaming and
+    Gambling (2026) [replacement suggested, unverified]'
   indicators:
   - ref: IND-CPT-026
     legacy_id: OP-GAMBLE-001

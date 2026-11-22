@@ -12,10 +12,13 @@ typology:
   - mvts
   - corporate_services
   sources:
-  - FATF, Money Laundering and the Illegal Wildlife Trade (2020)
-  - FATF, Money Laundering from Environmental Crime (2021)
-  - UNODC, World Wildlife Crime Report
-  - CITES, Convention on International Trade in Endangered Species of Wild Fauna and Flora
+  - FATF, Money Laundering and the Illegal Wildlife Trade (2020) [unverified]
+  - FATF, Money Laundering from Environmental Crime (2021) <https://www.fatf-gafi.org/content/fatf-gafi/en/publications/Environmentalcrime/Money-laundering-from-environmental-crime.html>
+    [agent-reviewed]
+  - 'UNODC, World Wildlife Crime Report: Trafficking in Protected Species (2016, 2020 and 2024 editions)
+    [replacement suggested, unverified]'
+  - CITES, Convention on International Trade in Endangered Species of Wild Fauna and Flora <https://cites.org>
+    [agent-reviewed]
   indicators:
   - ref: IND-DOC-023
     legacy_id: EC-WILDLIFE-001

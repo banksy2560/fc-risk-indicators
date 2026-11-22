@@ -11,8 +11,8 @@ typology:
   - insurance
   - corporate_services
   sources:
-  - FATF, Organised Maritime Piracy and Related Kidnapping for Ransom (2011)
-  - UN Security Council Resolution 2133 (2014) on kidnapping for ransom by terrorist groups
+  - FATF, Organised Maritime Piracy and Related Kidnapping for Ransom (2011) [unverified]
+  - UN Security Council Resolution 2133 (2014) on kidnapping for ransom by terrorist groups [unverified]
   indicators:
   - ref: IND-TXN-146
     legacy_id: TF-EXTORT-001

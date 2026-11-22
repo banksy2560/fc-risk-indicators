@@ -12,10 +12,14 @@ typology:
   - payments
   - fintech
   sources:
-  - FATF, Money Laundering Risks from Migrant Smuggling (2022)
-  - UNODC, Global Study on Smuggling of Migrants
+  - FATF, Money Laundering and Terrorist Financing Risks Arising from Migrant Smuggling (2022) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/Migrant-smuggling.html>
+    [corrected, agent-reviewed]
+  - UNODC, Global Study on Smuggling of Migrants (2018) <https://www.unodc.org/unodc/en/human-trafficking/smuggling-of-migrants/glosom.html>
+    [corrected, agent-reviewed]
   - FATF, Money Laundering Risks Arising from Trafficking in Human Beings and Smuggling of Migrants (2011)
-  - Europol and Interpol, public material on migrant smuggling networks
+    <https://www.fatf-gafi.org/en/publications/Methodsandtrends/Trafficking-human-beings-smuggling-migrants.html>
+    [agent-reviewed]
+  - Europol and Interpol, public material on migrant smuggling networks [too vague, unverified]
   indicators:
   - ref: IND-TXN-093
     legacy_id: HT-SMUGGLE-001

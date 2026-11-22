@@ -10,9 +10,10 @@ typology:
   - payments
   - fintech
   sources:
-  - UK Finance, Annual Fraud Report (published annually)
-  - FCA, consumer warnings on impersonation fraud (general)
-  - FinCEN, advisories on cyber-enabled fraud (general)
+  - UK Finance, Annual Fraud Report (specify year, e.g. 2025) <https://www.ukfinance.org.uk/> [corrected,
+    checked]
+  - FCA, consumer warnings on impersonation fraud (general) [too vague, unverified]
+  - FinCEN, advisories on cyber-enabled fraud (general) [too vague, unverified]
   indicators:
   - ref: IND-BEH-069
     legacy_id: FR-IMP-001

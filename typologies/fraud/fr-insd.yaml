@@ -8,9 +8,10 @@ typology:
   sectors:
   - all
   sources:
-  - ACFE, Report to the Nations (published biennially)
-  - Fraud Advisory Panel (UK), guidance on internal fraud (general)
-  - COSO, fraud risk management guidance (general)
+  - 'ACFE, Occupational Fraud 2024: A Report to the Nations (2024) <https://www.acfe.com/report-to-the-nations/2024>
+    [corrected, agent-reviewed]'
+  - Fraud Advisory Panel (UK), guidance on internal fraud (general) [too vague, unverified]
+  - COSO and ACFE, Fraud Risk Management Guide (2016) <https://www.coso.org/> [corrected, agent-reviewed]
   indicators:
   - ref: IND-TYP-027
     legacy_id: FR-INSD-001

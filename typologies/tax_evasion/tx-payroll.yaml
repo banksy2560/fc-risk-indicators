@@ -10,10 +10,12 @@ typology:
   - payments
   - corporate_services
   sources:
-  - 'OECD, Shining Light on the Shadow Economy: Opportunities and Threats (2017)'
-  - FATF, Money Laundering from Tax Crimes (2021)
-  - ILO and tax authority guidance on undeclared work and bogus self-employment
-  - FATF and OECD, Money Laundering Awareness Handbook for Tax Examiners and Tax Auditors (2012)
+  - 'OECD, Shining Light on the Shadow Economy: Opportunities and Threats (2017) [unverified]'
+  - FATF/OECD, Money Laundering Awareness Handbook for Tax Examiners and Tax Auditors (2012) [replacement
+    suggested, unverified]
+  - ILO and tax authority guidance on undeclared work and bogus self-employment [replacement suggested,
+    unverified]
+  - FATF and OECD, Money Laundering Awareness Handbook for Tax Examiners and Tax Auditors (2012) [unverified]
   indicators:
   - ref: IND-TXN-140
     legacy_id: TX-PAYROLL-001

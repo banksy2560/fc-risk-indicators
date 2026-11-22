@@ -9,9 +9,9 @@ typology:
   - banking
   - trade_finance
   sources:
-  - FATF, Guidance on Counter Proliferation Financing (2018)
-  - FATF, Guidance on Proliferation Financing Risk Assessment and Mitigation (2021)
-  - 'FATF/Egmont, Trade-Based Money Laundering: Trends and Developments (2020)'
+  - FATF, Guidance on Counter Proliferation Financing (2018) [unverified]
+  - FATF, Guidance on Proliferation Financing Risk Assessment and Mitigation (2021) [unverified]
+  - 'FATF/Egmont, Trade-Based Money Laundering: Trends and Developments (2020) [unverified]'
   indicators:
   - ref: IND-GEO-041
     legacy_id: PF-TRADEFIN-001

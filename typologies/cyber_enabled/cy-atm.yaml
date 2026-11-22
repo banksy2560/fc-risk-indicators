@@ -11,10 +11,12 @@ typology:
   - crypto
   - mvts
   sources:
-  - FinCEN, Notice on Scams Involving Convertible Virtual Currency Kiosks (2025)
-  - 'FATF, Virtual Assets: Red Flag Indicators of Money Laundering and Terrorist Financing (2020)'
+  - FinCEN, Notice on Scams Involving Convertible Virtual Currency Kiosks (2025) <https://www.fincen.gov/sites/default/files/shared/FinCEN-Notice-CVCKIOSK.pdf>
+    [agent-reviewed]
+  - 'FATF, Virtual Assets: Red Flag Indicators of Money Laundering and Terrorist Financing (2020) <https://www.fatf-gafi.org/content/fatf-gafi/en/publications/Methodsandtrends/Virtual-assets-red-flag-indicators.html>
+    [agent-reviewed]'
   - FATF, Updated Guidance for a Risk-Based Approach to Virtual Assets and Virtual Asset Service Providers
-    (2021)
+    (2021) [unverified]
   indicators:
   - ref: IND-TXN-006
     legacy_id: CY-ATM-001

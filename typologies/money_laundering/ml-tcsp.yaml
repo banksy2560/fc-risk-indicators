@@ -12,9 +12,10 @@ typology:
   - corporate_services
   - dnfbp
   sources:
-  - FATF, Concealment of Beneficial Ownership (2018)
-  - FATF, Guidance for a Risk-Based Approach for Trust and Company Service Providers (2019)
-  - FATF, Money Laundering Using Trust and Company Service Providers (2010)
+  - FATF and Egmont Group, Concealment of Beneficial Ownership (2018) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/FATF-Egmont-Concealment-beneficial-ownership.html>
+    [corrected, agent-reviewed]
+  - FATF, Guidance for a Risk-Based Approach for Trust and Company Service Providers (2019) [unverified]
+  - FATF, Money Laundering Using Trust and Company Service Providers (2010) [unverified]
   indicators:
   - ref: IND-TYP-041
     legacy_id: ML-TCSP-001

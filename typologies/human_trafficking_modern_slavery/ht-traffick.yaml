@@ -12,10 +12,14 @@ typology:
   - mvts
   - fintech
   sources:
-  - FATF and APG, Financial Flows from Human Trafficking (2018)
+  - FATF and APG, Financial Flows from Human Trafficking (2018) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/Human-trafficking.html>
+    [agent-reviewed]
   - FATF, Money Laundering Risks Arising from Trafficking in Human Beings and Smuggling of Migrants (2011)
-  - UNODC, Global Report on Trafficking in Persons
-  - Egmont Group, public material on financial intelligence and human trafficking
+    <https://www.fatf-gafi.org/en/publications/Methodsandtrends/Trafficking-human-beings-smuggling-migrants.html>
+    [agent-reviewed]
+  - UNODC, Global Report on Trafficking in Persons (biennial; specify edition e.g. 2024) <https://www.unodc.org/unodc/en/data-and-analysis/glotip.html>
+    [corrected, agent-reviewed]
+  - Egmont Group, public material on financial intelligence and human trafficking [too vague, unverified]
   indicators:
   - ref: IND-BEH-005
     legacy_id: HT-TRAFFICK-001

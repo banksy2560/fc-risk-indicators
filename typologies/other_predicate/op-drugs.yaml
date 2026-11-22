@@ -13,11 +13,13 @@ typology:
   - crypto
   - fintech
   sources:
-  - FATF, Professional Money Laundering (2018)
-  - UNODC, World Drug Report
+  - FATF, Professional Money Laundering (2018) [unverified]
+  - UNODC, World Drug Report (annual; specify year) [corrected, unverified]
   - INCB, Precursors and Chemicals Frequently Used in the Illicit Manufacture of Narcotic Drugs and Psychotropic
-    Substances
-  - FinCEN, advisories on illicit opioid-related financial activity
+    Substances (annual report; specify year) [corrected, unverified]
+  - FinCEN, Advisory to Financial Institutions on Illicit Financial Schemes and Methods Related to the
+    Trafficking of Fentanyl and Other Synthetic Opioids (FIN-2019-A006, 2019) [replacement suggested,
+    unverified]
   indicators:
   - ref: IND-TXN-007
     legacy_id: OP-DRUGS-001

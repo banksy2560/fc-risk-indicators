@@ -12,10 +12,11 @@ typology:
   - crypto
   - fintech
   sources:
-  - 'FATF, Virtual Assets: Red Flag Indicators of Money Laundering and Terrorist Financing (2020)'
+  - 'FATF, Virtual Assets: Red Flag Indicators of Money Laundering and Terrorist Financing (2020) <https://www.fatf-gafi.org/content/fatf-gafi/en/publications/Methodsandtrends/Virtual-assets-red-flag-indicators.html>
+    [agent-reviewed]'
   - FATF, Updated Guidance for a Risk-Based Approach to Virtual Assets and Virtual Asset Service Providers
-    (2021)
-  - US Department of the Treasury, Illicit Finance Risk Assessment of Decentralized Finance (2023)
+    (2021) [unverified]
+  - US Department of the Treasury, Illicit Finance Risk Assessment of Decentralized Finance (2023) [unverified]
   indicators:
   - ref: IND-TYP-008
     legacy_id: CY-DEFI-001

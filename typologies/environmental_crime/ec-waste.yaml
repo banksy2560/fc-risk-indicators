@@ -10,10 +10,13 @@ typology:
   - corporate_services
   - payments
   sources:
-  - FATF, Money Laundering from Environmental Crime (2021)
+  - FATF, Money Laundering from Environmental Crime (2021) <https://www.fatf-gafi.org/content/fatf-gafi/en/publications/Environmentalcrime/Money-laundering-from-environmental-crime.html>
+    [agent-reviewed]
   - Basel Convention on the Control of Transboundary Movements of Hazardous Wastes and their Disposal
-  - Interpol and UNEP, The Rise of Environmental Crime (2016)
-  - Europol, public material on environmental crime and waste trafficking
+    <https://www.basel.int> [agent-reviewed]
+  - 'UNEP and INTERPOL, The Rise of Environmental Crime: A Growing Threat to Natural Resources, Peace,
+    Development and Security (2016) <https://wedocs.unep.org/20.500.11822/7662> [corrected, agent-reviewed]'
+  - Europol, public material on environmental crime and waste trafficking [too vague, unverified]
   indicators:
   - ref: IND-DOC-022
     legacy_id: EC-WASTE-001

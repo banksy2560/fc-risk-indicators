@@ -11,9 +11,10 @@ typology:
   - dnfbp
   - banking
   sources:
-  - FATF, Guidance on Beneficial Ownership of Legal Persons (2023)
-  - FATF, Professional Money Laundering (2018)
-  - OFAC and UK government advisories on sanctions evasion enablers (general reference)
+  - FATF, Guidance on Beneficial Ownership of Legal Persons (2023) [unverified]
+  - FATF, Professional Money Laundering (2018) [unverified]
+  - OFAC and UK government advisories on sanctions evasion enablers (general reference) [replacement suggested,
+    unverified]
   indicators:
   - ref: IND-CPT-051
     legacy_id: SANC-ENABLERS-001

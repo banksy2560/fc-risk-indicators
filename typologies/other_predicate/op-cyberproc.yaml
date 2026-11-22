@@ -12,10 +12,11 @@ typology:
   - fintech
   - mvts
   sources:
-  - FATF, Illicit Financial Flows from Cyber-Enabled Fraud (2023)
-  - FATF, Countering Ransomware Financing (2023)
-  - FATF, Updated Guidance for a Risk-Based Approach to Virtual Assets and VASPs
-  - Europol, Internet Organised Crime Threat Assessment
+  - FATF, Illicit Financial Flows from Cyber-Enabled Fraud (2023) [unverified]
+  - FATF, Countering Ransomware Financing (2023) [unverified]
+  - FATF, Updated Guidance for a Risk-Based Approach to Virtual Assets and Virtual Asset Service Providers
+    (2021) [corrected, unverified]
+  - Europol, Internet Organised Crime Threat Assessment (IOCTA) (annual; specify year) [corrected, unverified]
   indicators:
   - ref: IND-TXN-003
     legacy_id: OP-CYBERPROC-001

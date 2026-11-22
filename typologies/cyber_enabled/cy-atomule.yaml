@@ -14,9 +14,10 @@ typology:
   - fintech
   sources:
   - FinCEN, Advisory to Financial Institutions on Cyber-Events and Cyber-Enabled Crime (FIN-2016-A005,
-    2016)
-  - FATF, Illicit Financial Flows from Cyber-Enabled Fraud (2023)
-  - Europol, European Money Mule Action (EMMA) public reporting
+    2016) [unverified]
+  - FATF, Illicit Financial Flows from Cyber-Enabled Fraud (2023) [unverified]
+  - Europol, European Money Mule Action (EMMA) press releases (annual editions, e.g. EMMA 9, 2023) [replacement
+    suggested, unverified]
   indicators:
   - ref: IND-BEH-011
     legacy_id: CY-ATOMULE-001

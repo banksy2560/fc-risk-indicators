@@ -13,9 +13,12 @@ typology:
   - banking
   - dnfbp
   sources:
-  - FATF, Money Laundering and Terrorist Financing in the Real Estate Sector (2007)
-  - FATF and Egmont Group, Concealment of Beneficial Ownership (2018)
-  - 'FATF, Guidance for a Risk-Based Approach: Real Estate Sector (2022)'
+  - FATF, Money Laundering and Terrorist Financing Through the Real Estate Sector (2007) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/Moneylaunderingandterroristfinancingthroughtherealestatesector.html>
+    [corrected, agent-reviewed]
+  - FATF and Egmont Group, Concealment of Beneficial Ownership (2018) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/FATF-Egmont-Concealment-beneficial-ownership.html>
+    [agent-reviewed]
+  - 'FATF, Guidance for a Risk-Based Approach: Real Estate Sector (2022) <https://www.fatf-gafi.org/en/publications/Fatfrecommendations/Guidance-rba-real-estate-sector.html>
+    [agent-reviewed]'
   indicators:
   - ref: IND-CUS-001
     legacy_id: ML-REALESTATE-001

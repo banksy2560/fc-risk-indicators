@@ -13,10 +13,11 @@ typology:
   - payments
   - fintech
   sources:
-  - FATF, Guidance for a Risk-Based Approach to Money or Value Transfer Services (2016)
+  - FATF, Guidance for a Risk-Based Approach to Money or Value Transfer Services (2016) [unverified]
   - FATF, Guidance for a Risk-Based Approach to Prepaid Cards, Mobile Payments and Internet-Based Payment
-    Services (2013)
-  - FATF, Recommendation 16 and Interpretive Note on payment transparency
+    Services (2013) <https://www.fatf-gafi.org/content/fatf-gafi/en/publications/Fatfrecommendations/Rba-npps-2013.html>
+    [agent-reviewed]
+  - FATF, Recommendation 16 and Interpretive Note on payment transparency [unverified]
   indicators:
   - ref: IND-TXN-004
     legacy_id: CY-MVTS-001

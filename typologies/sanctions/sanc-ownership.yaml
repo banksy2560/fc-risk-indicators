@@ -13,9 +13,10 @@ typology:
   - all
   sources:
   - OFAC, Guidance on Entities Owned by Persons Whose Property and Interests in Property Are Blocked (50
-    Percent Rule) (2014)
-  - 'OFSI, Financial Sanctions Guidance: ownership and control'
-  - FATF, Guidance on Beneficial Ownership of Legal Persons (2023)
+    Percent Rule) (2014) [unverified]
+  - OFSI, UK Financial Sanctions General Guidance (ownership and control section) [replacement suggested,
+    unverified]
+  - FATF, Guidance on Beneficial Ownership of Legal Persons (2023) [unverified]
   indicators:
   - ref: IND-OWN-026
     legacy_id: SANC-OWNERSHIP-001

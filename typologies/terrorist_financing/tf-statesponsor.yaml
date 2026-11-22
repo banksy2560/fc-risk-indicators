@@ -11,9 +11,10 @@ typology:
   - trade_finance
   - corporate_services
   sources:
-  - FATF, Financing of the Terrorist Organisation ISIL (2015)
-  - FATF, Financing of Recruitment for Terrorist Purposes (2018)
-  - FATF, Terrorist Financing Risk Assessment Guidance (2019)
+  - FATF, Financing of the Terrorist Organisation Islamic State in Iraq and the Levant (ISIL) (2015) [corrected,
+    unverified]
+  - FATF, Financing of Recruitment for Terrorist Purposes (2018) [unverified]
+  - FATF, Terrorist Financing Risk Assessment Guidance (2019) [unverified]
   indicators:
   - ref: IND-GEO-006
     legacy_id: TF-STATESPONSOR-001

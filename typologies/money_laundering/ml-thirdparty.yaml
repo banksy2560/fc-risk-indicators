@@ -12,9 +12,10 @@ typology:
   - payments
   - corporate_services
   sources:
-  - FATF, Guidance on Risk-Based Approach for banking sector (general)
-  - FATF, Professional Money Laundering (2018)
-  - Wolfsberg Group, guidance on customer due diligence (general)
+  - 'FATF, Guidance for a Risk-Based Approach: The Banking Sector (2014) [corrected, unverified]'
+  - FATF, Professional Money Laundering (2018) [unverified]
+  - Wolfsberg Group, Wolfsberg AML Principles / Wolfsberg Guidance on Customer Due Diligence [replacement
+    suggested, unverified]
   indicators:
   - ref: IND-CPT-058
     legacy_id: ML-THIRDPARTY-001

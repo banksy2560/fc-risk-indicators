@@ -11,10 +11,11 @@ typology:
   - mvts
   - casino_gaming
   sources:
-  - 'OECD, Electronic Sales Suppression: A Threat to Tax Revenues (2013)'
-  - OECD, Shining Light on the Shadow Economy (2017)
-  - FATF, Money Laundering from Tax Crimes (2021)
-  - FATF and OECD, Money Laundering Awareness Handbook for Tax Examiners and Tax Auditors (2012)
+  - 'OECD, Electronic Sales Suppression: A Threat to Tax Revenues (2013) [unverified]'
+  - 'OECD, Shining Light on the Shadow Economy: Opportunities and Threats (2017) [corrected, unverified]'
+  - FATF/OECD, Money Laundering Awareness Handbook for Tax Examiners and Tax Auditors (2012) [replacement
+    suggested, unverified]
+  - FATF and OECD, Money Laundering Awareness Handbook for Tax Examiners and Tax Auditors (2012) [unverified]
   indicators:
   - ref: IND-TXN-142
     legacy_id: TX-SKIM-001

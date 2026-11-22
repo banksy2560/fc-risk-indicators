@@ -9,9 +9,11 @@ typology:
   - banking
   - corporate_services
   sources:
-  - 'FATF and Egmont Group, Trade-Based Money Laundering: Trends and Developments (2020)'
-  - ICC, trade finance fraud and BAFT guidance (general)
-  - ACFE, Report to the Nations (published biennially)
+  - 'FATF and Egmont Group, Trade-Based Money Laundering: Trends and Developments (2020) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/Trade-based-money-laundering-trends-and-developments.html>
+    [agent-reviewed]'
+  - ICC, trade finance fraud and BAFT guidance (general) [too vague, unverified]
+  - 'ACFE, Occupational Fraud 2024: A Report to the Nations (2024) <https://www.acfe.com/report-to-the-nations/2024>
+    [corrected, agent-reviewed]'
   indicators:
   - ref: IND-DOC-038
     legacy_id: FR-TFIN-001

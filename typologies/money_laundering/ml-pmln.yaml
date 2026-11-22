@@ -15,9 +15,12 @@ typology:
   - corporate_services
   - dnfbp
   sources:
-  - FATF, Professional Money Laundering (2018)
-  - FATF and Egmont Group, Professional Money Laundering Networks reports (general)
-  - Europol, Serious and Organised Crime Threat Assessment (general)
+  - FATF, Professional Money Laundering (2018) [unverified]
+  - FATF, Professional Money Laundering (2018); FATF and Egmont, Concealment of Beneficial Ownership (2018)
+    <https://www.fatf-gafi.org/en/publications/Methodsandtrends/Professional-money-laundering.html> [corrected,
+    checked]
+  - Europol, European Union Serious and Organised Crime Threat Assessment (EU SOCTA) (specify 2021 or
+    2025) <https://www.europol.europa.eu/> [corrected, agent-reviewed]
   indicators:
   - ref: IND-OWN-010
     legacy_id: ML-PMLN-001

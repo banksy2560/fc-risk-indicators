@@ -11,9 +11,10 @@ typology:
   - payments
   - crypto
   sources:
-  - FATF, guidance on risk-based approach and proceeds of fraud (general)
-  - IOSCO, investor alerts on unregistered investment offerings (general)
-  - ACFE, Report to the Nations (published biennially)
+  - FATF, guidance on risk-based approach and proceeds of fraud (general) [too vague, unverified]
+  - IOSCO, investor alerts on unregistered investment offerings (general) [too vague, unverified]
+  - 'ACFE, Occupational Fraud 2024: A Report to the Nations (2024) <https://www.acfe.com/report-to-the-nations/2024>
+    [corrected, agent-reviewed]'
   indicators:
   - ref: IND-TYP-028
     legacy_id: FR-PONZ-001

@@ -11,10 +11,11 @@ typology:
   - fintech
   - banking
   sources:
-  - OFAC, Updated Guidance for the Virtual Currency Industry (Sanctions Compliance Guidance for the Virtual
-    Currency Industry, 2021)
-  - 'FATF, Virtual Assets: Targeted Updates (annual)'
-  - OFSI, Cryptoasset guidance (general reference)
+  - OFAC, Sanctions Compliance Guidance for the Virtual Currency Industry (2021) [corrected, unverified]
+  - FATF, Targeted Update on Implementation of the FATF Standards on Virtual Assets and VASPs (annual,
+    2019 onward) [corrected, unverified]
+  - OFSI, Cryptoassets Threat Assessment (July 2025); OFSI/FCA/BoE, Joint statement on sanctions and the
+    cryptoasset sector (March 2022) [replacement suggested, unverified]
   indicators:
   - ref: IND-CPT-050
     legacy_id: SANC-CRYPTO-001

@@ -11,11 +11,14 @@ typology:
   - art_luxury
   - payments
   sources:
-  - FATF, Money Laundering from Environmental Crime (2021)
-  - OECD, Due Diligence Guidance for Responsible Supply Chains of Minerals from Conflict-Affected and
-    High-Risk Areas
-  - FATF, Money Laundering/Terrorist Financing Risks and Vulnerabilities Associated with Gold (2015)
-  - UN Security Council expert panel reports on illicit mineral trade
+  - FATF, Money Laundering from Environmental Crime (2021) <https://www.fatf-gafi.org/content/fatf-gafi/en/publications/Environmentalcrime/Money-laundering-from-environmental-crime.html>
+    [agent-reviewed]
+  - OECD, OECD Due Diligence Guidance for Responsible Supply Chains of Minerals from Conflict-Affected
+    and High-Risk Areas, Third Edition (2016) [corrected, unverified]
+  - FATF and APG, Money Laundering and Terrorist Financing Risks and Vulnerabilities Associated with Gold
+    (2015) <https://www.fatf-gafi.org/content/fatf-gafi/en/publications/Methodsandtrends/Ml-tf-risks-and-vulnerabilities-gold.html>
+    [corrected, agent-reviewed]
+  - UN Security Council expert panel reports on illicit mineral trade [too vague, unverified]
   indicators:
   - ref: IND-DOC-021
     legacy_id: EC-MINING-001

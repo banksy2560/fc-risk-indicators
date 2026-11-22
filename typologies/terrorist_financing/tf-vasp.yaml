@@ -10,10 +10,11 @@ typology:
   - fintech
   - banking
   sources:
-  - 'FATF, Virtual Assets: Targeted Update on Implementation of the FATF Standards (annual, 2019 onward)'
+  - FATF, Targeted Update on Implementation of the FATF Standards on Virtual Assets and VASPs (annual
+    since 2019) [corrected, unverified]
   - FATF, Updated Guidance for a Risk-Based Approach to Virtual Assets and Virtual Asset Service Providers
-    (2021)
-  - FATF, Emerging Terrorist Financing Risks (2015)
+    (2021) [unverified]
+  - FATF, Emerging Terrorist Financing Risks (2015) [unverified]
   indicators:
   - ref: IND-CPT-050
     legacy_id: TF-VASP-001

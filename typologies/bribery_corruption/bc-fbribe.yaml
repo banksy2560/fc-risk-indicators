@@ -11,11 +11,14 @@ typology:
   - corporate_services
   - payments
   sources:
-  - FATF, Specific Risk Factors in Laundering the Proceeds of Corruption (2012)
+  - 'FATF, Specific Risk Factors in the Laundering of Proceeds of Corruption: Assistance to Reporting
+    Institutions (2012) <https://www.fatf-gafi.org/content/fatf-gafi/en/publications/Methodsandtrends/Specificriskfactorsinthelaunderingofproceedsofcorruption-assistancetoreportinginstitutions.html>
+    [corrected, agent-reviewed]'
   - OECD, Convention on Combating Bribery of Foreign Public Officials in International Business Transactions
-    and related guidance
-  - OECD, UNODC and World Bank, Anti-Corruption Ethics and Compliance Handbook for Business (2013)
-  - Wolfsberg Group, Anti-Bribery and Corruption Compliance Programme Guidance (2017)
+    and related guidance [unverified]
+  - OECD, UNODC and World Bank, Anti-Corruption Ethics and Compliance Handbook for Business (2013) [unverified]
+  - Wolfsberg Group, Anti-Bribery and Corruption Compliance Programme Guidance (2017) <https://wolfsberg-group.org/resources>
+    [agent-reviewed]
   indicators:
   - ref: IND-TXN-038
     legacy_id: BC-FBRIBE-001

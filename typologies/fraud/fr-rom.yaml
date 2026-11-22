@@ -12,8 +12,11 @@ typology:
   - fintech
   sources:
   - FinCEN, Alert on prevalent virtual currency investment scam commonly known as pig butchering (2023)
-  - FATF, report on illicit financial flows from cyber-enabled fraud (2023)
-  - UK Finance, Annual Fraud Report (published annually)
+    <https://www.fincen.gov/resources/advisoriesbulletinsfact-sheets/advisories> [agent-reviewed]
+  - FATF, Interpol and Egmont Group, Illicit Financial Flows from Cyber-enabled Fraud (2023) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/illicit-financial-flows-cyber-enabled-fraud.html>
+    [corrected, agent-reviewed]
+  - UK Finance, Annual Fraud Report (specify year, e.g. 2025) <https://www.ukfinance.org.uk/> [corrected,
+    checked]
   indicators:
   - ref: IND-TXN-078
     legacy_id: FR-ROM-001

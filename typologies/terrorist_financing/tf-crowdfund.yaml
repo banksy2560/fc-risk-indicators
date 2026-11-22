@@ -12,9 +12,9 @@ typology:
   - crypto
   - banking
   sources:
-  - FATF, Crowdfunding for Terrorism Financing (2023)
-  - FATF, Emerging Terrorist Financing Risks (2015)
-  - FATF, Terrorist Financing Risk Assessment Guidance (2019)
+  - FATF, Crowdfunding for Terrorism Financing (2023) [corrected, unverified]
+  - FATF, Emerging Terrorist Financing Risks (2015) [unverified]
+  - FATF, Terrorist Financing Risk Assessment Guidance (2019) [unverified]
   indicators:
   - ref: IND-TYP-054
     legacy_id: TF-CROWDFUND-001

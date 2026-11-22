@@ -12,9 +12,12 @@ typology:
   - insurance
   - securities
   sources:
-  - OFAC, FinCEN and BIS, Joint Alert on Potential Russian Export Control Evasion (2022)
-  - Price Cap Coalition, Advisory for the Maritime Oil Industry and Related Sectors (2023)
-  - OFSI, guidance on maritime services and price cap (general reference)
+  - 'FinCEN and BIS, Joint Alert: FinCEN and the US Department of Commerce''s BIS Urge Increased Vigilance
+    for Potential Russian and Belarusian Export Control Evasion Attempts (FIN-2022-Alert003, June 2022)
+    [corrected, unverified]'
+  - Price Cap Coalition, Advisory for the Maritime Oil Industry and Related Sectors (2023) [unverified]
+  - OFSI/HM Government, UK Maritime Services Ban and Oil Price Cap Industry Guidance [replacement suggested,
+    unverified]
   indicators:
   - ref: IND-DOC-062
     legacy_id: SANC-OILCAP-001

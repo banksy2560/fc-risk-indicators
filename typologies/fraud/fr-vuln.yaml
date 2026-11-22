@@ -10,9 +10,12 @@ typology:
   - securities
   - insurance
   sources:
-  - FinCEN, Advisory on Elder Financial Exploitation (2022)
-  - UK Finance, Annual Fraud Report (published annually)
-  - FCA, guidance on the fair treatment of vulnerable customers (2021)
+  - FinCEN, Advisory on Elder Financial Exploitation (2022) <https://www.fincen.gov/resources/advisoriesbulletinsfact-sheets/advisories>
+    [agent-reviewed]
+  - UK Finance, Annual Fraud Report (specify year, e.g. 2025) <https://www.ukfinance.org.uk/> [corrected,
+    checked]
+  - FCA, Guidance for firms on the fair treatment of vulnerable customers (FG21/1, 2021) <https://www.fca.org.uk/publications/finalised-guidance/guidance-firms-fair-treatment-vulnerable-customers>
+    [corrected, agent-reviewed]
   indicators:
   - ref: IND-TXN-013
     legacy_id: FR-VULN-001

@@ -10,9 +10,10 @@ typology:
   - payments
   sources:
   - Basel Committee on Banking Supervision, Due diligence and transparency regarding cover payment messages
-    related to cross-border wire transfers (2009)
-  - FATF Recommendation 16 and Interpretive Note on wire transfers
-  - OFAC, Enforcement Release guidance on payment processing (general reference)
+    related to cross-border wire transfers (2009) [unverified]
+  - FATF Recommendation 16 and Interpretive Note on wire transfers [unverified]
+  - OFAC, Enforcement Release guidance on payment processing (general reference) [replacement suggested,
+    unverified]
   indicators:
   - ref: IND-DOC-015
     legacy_id: SANC-STRIPPING-001

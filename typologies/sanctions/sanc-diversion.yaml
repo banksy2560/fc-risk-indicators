@@ -11,9 +11,12 @@ typology:
   - trade_finance
   - all
   sources:
-  - OFAC, FinCEN and BIS, Joint Alert on Potential Russian Export Control Evasion (2022)
+  - 'FinCEN and BIS, Joint Alert: FinCEN and the US Department of Commerce''s BIS Urge Increased Vigilance
+    for Potential Russian and Belarusian Export Control Evasion Attempts (FIN-2022-Alert003, June 2022)
+    [corrected, unverified]'
   - BIS and FinCEN, Joint Alert on Newly Identified Efforts by Russia to Evade Export Controls (2023)
-  - FATF, Trade-Based Money Laundering (2020)
+    [unverified]
+  - 'FATF/Egmont Group, Trade-Based Money Laundering: Trends and Developments (2020) [corrected, unverified]'
   indicators:
   - ref: IND-CUS-050
     legacy_id: SANC-DIVERSION-001

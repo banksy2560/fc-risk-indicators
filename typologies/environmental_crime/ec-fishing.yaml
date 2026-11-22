@@ -11,10 +11,13 @@ typology:
   - payments
   - insurance
   sources:
-  - UNODC, Transnational Organized Crime in the Fishing Industry (2011)
-  - FATF, Money Laundering from Environmental Crime (2021)
-  - FAO, Port State Measures Agreement and related guidance on IUU fishing
-  - Interpol, public material on fisheries crime
+  - UNODC, Transnational Organized Crime in the Fishing Industry (2011) <https://www.unodc.org/unodc/en/human-trafficking/2011/issue-paper-transnational-organized-crime-in-the-fishing-industry.html>
+    [agent-reviewed]
+  - FATF, Money Laundering from Environmental Crime (2021) <https://www.fatf-gafi.org/content/fatf-gafi/en/publications/Environmentalcrime/Money-laundering-from-environmental-crime.html>
+    [agent-reviewed]
+  - FAO, Agreement on Port State Measures to Prevent, Deter and Eliminate Illegal, Unreported and Unregulated
+    Fishing (2009, in force 2016) [replacement suggested, unverified]
+  - Interpol, public material on fisheries crime [too vague, unverified]
   indicators:
   - ref: IND-CUS-025
     legacy_id: EC-FISHING-001

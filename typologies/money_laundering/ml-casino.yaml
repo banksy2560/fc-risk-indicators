@@ -12,8 +12,9 @@ typology:
   - casino_gaming
   - dnfbp
   sources:
-  - FATF, Vulnerabilities of Casinos and Gaming Sector (2009)
-  - FATF, Guidance on the Risk-Based Approach for Casinos (2008)
+  - FATF, Vulnerabilities of Casinos and Gaming Sector (2009) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/Vulnerabilitiesofcasinosandgamingsector.html>
+    [agent-reviewed]
+  - FATF, Guidance on the Risk-Based Approach for Casinos (2008) <https://www.fatf-gafi.org/> [agent-reviewed]
   indicators:
   - ref: IND-TXN-027
     legacy_id: ML-CASINO-001

@@ -13,9 +13,10 @@ typology:
   - corporate_services
   - dnfbp
   sources:
-  - FATF, Concealment of Beneficial Ownership (2018)
-  - FATF, Guidance on Transparency and Beneficial Ownership (2014)
-  - Egmont Group, Concealment of Beneficial Ownership (2018)
+  - FATF and Egmont Group, Concealment of Beneficial Ownership (2018) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/FATF-Egmont-Concealment-beneficial-ownership.html>
+    [corrected, agent-reviewed]
+  - FATF, Guidance on Transparency and Beneficial Ownership (2014) <https://www.fatf-gafi.org/en/publications/Fatfrecommendations/Guidance-transparency-beneficial-ownership.html>
+    [agent-reviewed]
   indicators:
   - ref: IND-CUS-011
     legacy_id: ML-SHELL-001

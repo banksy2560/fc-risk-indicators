@@ -11,8 +11,8 @@ typology:
   - payments
   - fintech
   sources:
-  - FATF, Terrorist Financing Risk Assessment Guidance (2019)
-  - FATF, Ethnically or Racially Motivated Terrorism Financing (2021)
+  - FATF, Terrorist Financing Risk Assessment Guidance (2019) [unverified]
+  - FATF, Ethnically or Racially Motivated Terrorism Financing (2021) [unverified]
   indicators:
   - ref: IND-TXN-152
     legacy_id: TF-LONEACTOR-001

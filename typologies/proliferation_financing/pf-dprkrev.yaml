@@ -11,10 +11,12 @@ typology:
   - fintech
   - payments
   sources:
-  - FATF, Guidance on Counter Proliferation Financing (2018)
-  - 'FATF, Virtual Assets: Targeted Updates (annual)'
-  - Joint government advisories on DPRK IT workers and cyber activity (issuing governments' public advisories,
-    general reference)
+  - FATF, Guidance on Counter Proliferation Financing (2018) [unverified]
+  - FATF, Targeted Update on Implementation of the FATF Standards on Virtual Assets and VASPs (annual,
+    2019 onward) [corrected, unverified]
+  - US State/Treasury/FBI, Guidance on the Democratic People's Republic of Korea Information Technology
+    Workers (May 2022); US Government, Guidance on the North Korean Cyber Threat (April 2020) [replacement
+    suggested, unverified]
   indicators:
   - ref: IND-CUS-009
     legacy_id: PF-DPRKREV-001

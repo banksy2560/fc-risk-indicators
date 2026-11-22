@@ -12,10 +12,13 @@ typology:
   - corporate_services
   - payments
   sources:
-  - FATF, Money Laundering from Environmental Crime (2021)
-  - Integrity Council for the Voluntary Carbon Market, Core Carbon Principles (2023)
-  - Europol, public material on emissions trading fraud
-  - 'IOSCO, Voluntary Carbon Markets: Final Report (2024)'
+  - FATF, Money Laundering from Environmental Crime (2021) <https://www.fatf-gafi.org/content/fatf-gafi/en/publications/Environmentalcrime/Money-laundering-from-environmental-crime.html>
+    [agent-reviewed]
+  - Integrity Council for the Voluntary Carbon Market, Core Carbon Principles (2023) <https://icvcm.org/the-core-carbon-principles/>
+    [agent-reviewed]
+  - Europol, public material on emissions trading fraud [too vague, unverified]
+  - 'IOSCO, Voluntary Carbon Markets: Final Report (2024) <https://www.iosco.org/library/pubdocs/pdf/IOSCOPD774.pdf>
+    [agent-reviewed]'
   indicators:
   - ref: IND-DOC-018
     legacy_id: EC-CARBON-001

@@ -13,11 +13,13 @@ typology:
   - corporate_services
   - dnfbp
   sources:
-  - FATF, Money Laundering from Tax Crimes (2021)
-  - 'OECD, Standard for Automatic Exchange of Financial Account Information: Common Reporting Standard'
+  - FATF/OECD, Money Laundering Awareness Handbook for Tax Examiners and Tax Auditors (2012) [replacement
+    suggested, unverified]
+  - OECD, Standard for Automatic Exchange of Financial Account Information in Tax Matters (2014; 2nd ed.
+    2017) [corrected, unverified]
   - OECD, Model Mandatory Disclosure Rules for CRS Avoidance Arrangements and Opaque Offshore Structures
-    (2018)
-  - FATF and OECD, Money Laundering Awareness Handbook for Tax Examiners and Tax Auditors (2012)
+    (2018) [unverified]
+  - FATF and OECD, Money Laundering Awareness Handbook for Tax Examiners and Tax Auditors (2012) [unverified]
   indicators:
   - ref: IND-CUS-051
     legacy_id: TX-OFFSHORE-001

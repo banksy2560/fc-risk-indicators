@@ -13,9 +13,12 @@ typology:
   - mvts
   - dnfbp
   sources:
-  - FATF, Money Laundering through the Physical Transportation of Cash (2015)
-  - FATF, Best Practices on Cross-Border Declaration and Disclosure (general)
-  - 'FATF, Cash Couriers: Interpretive Note to Recommendation 32 (general)'
+  - FATF, Money Laundering through the Physical Transportation of Cash (2015) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/money-laundering-through-physical-transportation-of-cash.html>
+    [agent-reviewed]
+  - 'FATF, International Best Practices: Detecting and Preventing the Illicit Cross-Border Transportation
+    of Cash and Bearer Negotiable Instruments (2010) <https://www.fatf-gafi.org/> [corrected, agent-reviewed]'
+  - FATF, Interpretive Note to Recommendation 32 (Cash Couriers), in The FATF Recommendations (2012, as
+    amended) <https://www.fatf-gafi.org/en/topics/fatf-recommendations.html> [corrected, agent-reviewed]
   indicators:
   - ref: IND-TXN-098
     legacy_id: ML-BULKCASH-001

@@ -12,9 +12,12 @@ typology:
   - dnfbp
   - banking
   sources:
-  - FATF, Money Laundering and Terrorist Financing Vulnerabilities of Legal Professionals (2013)
-  - FATF, Guidance for a Risk-Based Approach for Legal Professionals (2019)
-  - FATF, Guidance for a Risk-Based Approach for the Accounting Profession (2019)
+  - FATF, Money Laundering and Terrorist Financing Vulnerabilities of Legal Professionals (2013) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/ML-and-TF-vulnerabilities-legal-professionals.html>
+    [agent-reviewed]
+  - FATF, Guidance for a Risk-Based Approach for Legal Professionals (2019) <https://www.fatf-gafi.org/en/publications/Fatfrecommendations/Risk-based-approach-legal-professionals.html>
+    [agent-reviewed]
+  - FATF, Guidance for a Risk-Based Approach for the Accounting Profession (2019) <https://www.fatf-gafi.org/en/publications/Fatfrecommendations/Risk-based-approach-accounting-profession.html>
+    [agent-reviewed]
   indicators:
   - ref: IND-TXN-035
     legacy_id: ML-GATEKEEPER-001

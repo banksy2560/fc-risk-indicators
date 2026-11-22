@@ -11,10 +11,14 @@ typology:
   - payments
   - corporate_services
   sources:
-  - 'ILO, Profits and Poverty: The Economics of Forced Labour (2014)'
-  - ILO, Indicators of Forced Labour (2012)
-  - OECD, Due Diligence Guidance for Responsible Business Conduct (2018)
-  - FATF and APG, Financial Flows from Human Trafficking (2018)
+  - 'ILO, Profits and Poverty: The Economics of Forced Labour (2014) <https://www.ilo.org/publications/profits-and-poverty-economics-forced-labour>
+    [agent-reviewed]'
+  - ILO, Indicators of Forced Labour (2012) <https://www.ilo.org/publications/ilo-indicators-forced-labour>
+    [agent-reviewed]
+  - OECD, Due Diligence Guidance for Responsible Business Conduct (2018) <https://www.oecd.org/en/publications/oecd-due-diligence-guidance-for-responsible-business-conduct_15f5f4b3-en.html>
+    [agent-reviewed]
+  - FATF and APG, Financial Flows from Human Trafficking (2018) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/Human-trafficking.html>
+    [agent-reviewed]
   indicators:
   - ref: IND-TXN-088
     legacy_id: HT-FORCEDLAB-001

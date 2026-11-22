@@ -12,8 +12,9 @@ typology:
   - payments
   - fintech
   sources:
-  - FATF, Opportunities and Challenges of New Technologies for AML/CFT (2021)
-  - FATF, Illicit Financial Flows from Cyber-Enabled Fraud (2023)
+  - FATF, Opportunities and Challenges of New Technologies for AML/CFT (2021) <https://www.fatf-gafi.org/content/fatf-gafi/en/publications/Digitaltransformation/Opportunities-challenges-new-technologies-for-aml-cft.html>
+    [agent-reviewed]
+  - FATF, Illicit Financial Flows from Cyber-Enabled Fraud (2023) [unverified]
   indicators:
   - ref: IND-TYP-010
     legacy_id: CY-GIGPLAT-001

@@ -11,10 +11,10 @@ typology:
   - mvts
   - corporate_services
   sources:
-  - FATF, Illicit Tobacco Trade (2012)
-  - WHO, Protocol to Eliminate Illicit Trade in Tobacco Products
-  - OECD and EUIPO, public material on illicit trade
-  - World Customs Organization, public material on tobacco smuggling
+  - FATF, Illicit Tobacco Trade (2012) [unverified]
+  - WHO FCTC, Protocol to Eliminate Illicit Trade in Tobacco Products (2012) [corrected, unverified]
+  - OECD and EUIPO, public material on illicit trade [replacement suggested, unverified]
+  - World Customs Organization, public material on tobacco smuggling [replacement suggested, unverified]
   indicators:
   - ref: IND-TXN-125
     legacy_id: OP-TOBACCO-001

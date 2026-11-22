@@ -8,9 +8,10 @@ typology:
   - insurance
   - banking
   sources:
-  - Insurance Fraud Bureau (UK), published guidance on fraud trends (general)
-  - Association of British Insurers, annual detected fraud statistics (general)
-  - ACFE, Report to the Nations (published biennially)
+  - Insurance Fraud Bureau (UK), published guidance on fraud trends (general) [too vague, unverified]
+  - Association of British Insurers, annual detected fraud statistics (general) [too vague, unverified]
+  - 'ACFE, Occupational Fraud 2024: A Report to the Nations (2024) <https://www.acfe.com/report-to-the-nations/2024>
+    [corrected, agent-reviewed]'
   indicators:
   - ref: IND-TYP-025
     legacy_id: FR-INS-001

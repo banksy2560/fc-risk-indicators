@@ -11,9 +11,9 @@ typology:
   - payments
   - mvts
   sources:
-  - FATF, Financing of the Terrorist Organisation Islamic State in Iraq and the Levant (ISIL) (2015)
-  - FATF, Emerging Terrorist Financing Risks (2015)
-  - UN Security Council Resolution 2178 (2014) on foreign terrorist fighters
+  - FATF, Financing of the Terrorist Organisation Islamic State in Iraq and the Levant (ISIL) (2015) [unverified]
+  - FATF, Emerging Terrorist Financing Risks (2015) [unverified]
+  - UN Security Council Resolution 2178 (2014) on foreign terrorist fighters [unverified]
   indicators:
   - ref: IND-BEH-116
     legacy_id: TF-FTF-001

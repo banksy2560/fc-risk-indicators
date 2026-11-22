@@ -12,9 +12,12 @@ typology:
   - banking
   - payments
   sources:
-  - FATF, The Role of Hawala and Other Similar Service Providers in ML/TF (2013)
-  - FATF, Guidance on Money or Value Transfer Services (2016)
-  - FATF, Money Laundering Through Money Remittance and Currency Exchange Providers (2010)
+  - FATF, The Role of Hawala and Other Similar Service Providers in ML/TF (2013) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/Role-hawalas-in-ml-tf.html>
+    [agent-reviewed]
+  - FATF, Guidance for a Risk-Based Approach for Money or Value Transfer Services (2016) <https://www.fatf-gafi.org/en/publications/Fatfrecommendations/Rba-money-or-value-transfer.html>
+    [corrected, agent-reviewed]
+  - FATF, Money Laundering Through Money Remittance and Currency Exchange Providers (2010) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/Moneylaunderingthroughmoneyremittanceandcurrencyexchangeproviders.html>
+    [agent-reviewed]
   indicators:
   - ref: IND-CUS-006
     legacy_id: ML-HAWALA-001

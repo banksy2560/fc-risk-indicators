@@ -11,10 +11,10 @@ typology:
   - fintech
   - corporate_services
   sources:
-  - OECD and EUIPO, Trends in Trade in Counterfeit and Pirated Goods (2019)
-  - 'OECD, Illicit Trade: Converging Criminal Networks (2016)'
-  - World Customs Organization, public material on IP enforcement
-  - FATF, Money Laundering Vulnerabilities of Free Trade Zones (2010)
+  - OECD and EUIPO, Trends in Trade in Counterfeit and Pirated Goods (2019) [unverified]
+  - 'OECD, Illicit Trade: Converging Criminal Networks (2016) [unverified]'
+  - World Customs Organization, public material on IP enforcement [replacement suggested, unverified]
+  - FATF, Money Laundering Vulnerabilities of Free Trade Zones (2010) [unverified]
   indicators:
   - ref: IND-PRD-055
     legacy_id: OP-COUNTER-001

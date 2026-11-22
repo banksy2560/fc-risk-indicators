@@ -10,9 +10,9 @@ typology:
   - trade_finance
   - corporate_services
   sources:
-  - FATF, Guidance on Counter Proliferation Financing (2018)
-  - FATF, Guidance on Proliferation Financing Risk Assessment and Mitigation (2021)
-  - UN Security Council Resolution 1540 (2004)
+  - FATF, Guidance on Counter Proliferation Financing (2018) [unverified]
+  - FATF, Guidance on Proliferation Financing Risk Assessment and Mitigation (2021) [unverified]
+  - UN Security Council Resolution 1540 (2004) [unverified]
   indicators:
   - ref: IND-CUS-049
     legacy_id: PF-DUALUSE-001

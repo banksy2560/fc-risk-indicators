@@ -14,9 +14,9 @@ typology:
   - fintech
   - crypto
   sources:
-  - Europol, EU Money Mule Action (EMMA) public materials (general)
-  - FATF, Money Laundering from Fraud typology guidance (general)
-  - FinCEN, advisories on money mule activity (general)
+  - Europol, EU Money Mule Action (EMMA) campaign press releases [replacement suggested, unverified]
+  - FATF, Money Laundering from Fraud typology guidance (general) [too vague, unverified]
+  - FinCEN, advisories on money mule activity (general) [too vague, unverified]
   indicators:
   - ref: IND-TXN-001
     legacy_id: ML-MULE-001

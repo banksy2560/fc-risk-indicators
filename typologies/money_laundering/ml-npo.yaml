@@ -13,9 +13,12 @@ typology:
   - payments
   - dnfbp
   sources:
-  - FATF, Best Practices on Combating the Abuse of Non-Profit Organisations (2015, general)
-  - FATF, Risk of Terrorist Abuse in Non-Profit Organisations (2014) and related guidance (general)
-  - Charity regulators' published guidance on financial crime (general)
+  - 'FATF, Best Practices: Combating the Abuse of Non-Profit Organisations (Recommendation 8) (2015; updated
+    2023) <https://www.fatf-gafi.org/en/publications/Financialinclusionandnpoissues/Bpp-combating-abuse-npo.html>
+    [corrected, agent-reviewed]'
+  - FATF, Risk of Terrorist Abuse in Non-Profit Organisations (2014) and related guidance (general) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/Risk-terrorist-abuse-non-profits.html>
+    [agent-reviewed]
+  - Charity regulators' published guidance on financial crime (general) [too vague, unverified]
   indicators:
   - ref: IND-TXN-013
     legacy_id: ML-NPO-001

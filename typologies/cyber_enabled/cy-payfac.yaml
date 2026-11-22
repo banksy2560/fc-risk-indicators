@@ -15,8 +15,9 @@ typology:
   - banking
   sources:
   - FATF, Guidance for a Risk-Based Approach to Prepaid Cards, Mobile Payments and Internet-Based Payment
-    Services (2013)
-  - Card scheme rules on merchant and payment facilitator monitoring (general reference)
+    Services (2013) <https://www.fatf-gafi.org/content/fatf-gafi/en/publications/Fatfrecommendations/Rba-npps-2013.html>
+    [agent-reviewed]
+  - Card scheme rules on merchant and payment facilitator monitoring (general reference) [too vague, unverified]
   indicators:
   - ref: IND-TYP-016
     legacy_id: CY-PAYFAC-001

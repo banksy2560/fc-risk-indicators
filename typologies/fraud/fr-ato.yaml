@@ -11,9 +11,12 @@ typology:
   - crypto
   - fintech
   sources:
-  - UK Finance, Annual Fraud Report (published annually)
-  - FinCEN, advisories on cyber-enabled crime (general)
-  - FFIEC, authentication and access guidance (general)
+  - UK Finance, Annual Fraud Report (specify year, e.g. 2025) <https://www.ukfinance.org.uk/> [corrected,
+    checked]
+  - FinCEN, Advisory to Financial Institutions on Cyber-Events and Cyber-Enabled Crime (FIN-2016-A005,
+    2016) [replacement suggested, unverified]
+  - FFIEC, Authentication and Access to Financial Institution Services and Systems (2021) [replacement
+    suggested, unverified]
   indicators:
   - ref: IND-BEH-008
     legacy_id: FR-ATO-001

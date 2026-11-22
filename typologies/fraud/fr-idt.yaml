@@ -10,9 +10,11 @@ typology:
   - payments
   - fintech
   sources:
-  - FATF, Guidance on Digital Identity (2020)
-  - UK Finance, Annual Fraud Report (published annually)
-  - FinCEN, advisories on identity-related fraud (general)
+  - FATF, Guidance on Digital Identity (2020) <https://www.fatf-gafi.org/en/publications/Fatfrecommendations/Guidance-digital-identity.html>
+    [agent-reviewed]
+  - UK Finance, Annual Fraud Report (specify year, e.g. 2025) <https://www.ukfinance.org.uk/> [corrected,
+    checked]
+  - FinCEN, advisories on identity-related fraud (general) [too vague, unverified]
   indicators:
   - ref: IND-DOC-006
     legacy_id: FR-IDT-001

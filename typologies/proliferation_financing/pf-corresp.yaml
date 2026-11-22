@@ -9,9 +9,9 @@ typology:
   - banking
   - payments
   sources:
-  - FATF, Guidance on Counter Proliferation Financing (2018)
-  - Wolfsberg Group, Correspondent Banking Due Diligence Questionnaire (CBDDQ)
-  - FATF, Guidance on Correspondent Banking Services (2016)
+  - FATF, Guidance on Counter Proliferation Financing (2018) [unverified]
+  - Wolfsberg Group, Correspondent Banking Due Diligence Questionnaire (CBDDQ) [unverified]
+  - FATF, Guidance on Correspondent Banking Services (2016) [unverified]
   indicators:
   - ref: IND-CUS-048
     legacy_id: PF-CORRESP-001

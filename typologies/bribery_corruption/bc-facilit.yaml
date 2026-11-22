@@ -11,10 +11,12 @@ typology:
   - payments
   - corporate_services
   sources:
-  - OECD, Good Practice Guidance on Internal Controls, Ethics, and Compliance (2010)
-  - OECD, UNODC and World Bank, Anti-Corruption Ethics and Compliance Handbook for Business (2013)
-  - Wolfsberg Group, Anti-Bribery and Corruption Compliance Programme Guidance (2017)
-  - US DOJ and SEC, A Resource Guide to the U.S. Foreign Corrupt Practices Act
+  - OECD, Good Practice Guidance on Internal Controls, Ethics, and Compliance (2010) [unverified]
+  - OECD, UNODC and World Bank, Anti-Corruption Ethics and Compliance Handbook for Business (2013) [unverified]
+  - Wolfsberg Group, Anti-Bribery and Corruption Compliance Programme Guidance (2017) <https://wolfsberg-group.org/resources>
+    [agent-reviewed]
+  - US DOJ and SEC, A Resource Guide to the U.S. Foreign Corrupt Practices Act, Second Edition (2020)
+    [corrected, unverified]
   indicators:
   - ref: IND-TXN-036
     legacy_id: BC-FACILIT-001

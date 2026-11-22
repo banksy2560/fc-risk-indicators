@@ -12,9 +12,10 @@ typology:
   - banking
   - corporate_services
   sources:
-  - 'FATF, Money Laundering Typologies: loan-back schemes (general)'
-  - FATF, Concealment of Beneficial Ownership (2018)
-  - JMLSG Guidance, lending and sector guidance (general)
+  - 'FATF, Money Laundering Typologies: loan-back schemes (general) [too vague, unverified]'
+  - FATF and Egmont Group, Concealment of Beneficial Ownership (2018) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/FATF-Egmont-Concealment-beneficial-ownership.html>
+    [corrected, agent-reviewed]
+  - JMLSG Guidance, lending and sector guidance (general) [too vague, unverified]
   indicators:
   - ref: IND-TXN-112
     legacy_id: ML-LOANBACK-001

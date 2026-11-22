@@ -10,9 +10,12 @@ typology:
   sectors:
   - banking
   sources:
-  - FATF, Guidance on Correspondent Banking Services (2016)
-  - Wolfsberg Group, Correspondent Banking Due Diligence Questionnaire and Principles (general)
-  - Basel Committee on Banking Supervision, Sound management of risks related to ML and FT (general)
+  - FATF, Guidance on Correspondent Banking Services (2016) [unverified]
+  - Wolfsberg Group, Correspondent Banking Due Diligence Questionnaire (CBDDQ) (current version, specify
+    year) <https://wolfsberg-group.org/> [corrected, agent-reviewed]
+  - 'Basel Committee on Banking Supervision, Guidelines: Sound management of risks related to money laundering
+    and financing of terrorism (2014, rev. 2020) <https://www.bis.org/bcbs/publ/d505.htm> [corrected,
+    checked]'
   indicators:
   - ref: IND-CPT-034
     legacy_id: ML-CORRBANK-001

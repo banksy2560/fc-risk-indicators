@@ -14,11 +14,14 @@ typology:
   - fintech
   - payments
   sources:
-  - 'FATF, Virtual Assets: Red Flag Indicators of Money Laundering and Terrorist Financing (2020)'
+  - 'FATF, Virtual Assets: Red Flag Indicators of Money Laundering and Terrorist Financing (2020) <https://www.fatf-gafi.org/content/fatf-gafi/en/publications/Methodsandtrends/Virtual-assets-red-flag-indicators.html>
+    [agent-reviewed]'
   - FATF, Updated Guidance for a Risk-Based Approach to Virtual Assets and Virtual Asset Service Providers
-    (2021)
+    (2021) [unverified]
   - FinCEN, Advisory on Illicit Activity Involving Convertible Virtual Currency (FIN-2019-A003, 2019)
-  - Europol, Internet Organised Crime Threat Assessment (IOCTA), darknet chapters
+    [unverified]
+  - Europol, Internet Organised Crime Threat Assessment (IOCTA) (annual; specify edition year) [replacement
+    suggested, unverified]
   indicators:
   - ref: IND-TYP-004
     legacy_id: CY-DARKNET-001

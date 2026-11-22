@@ -11,10 +11,10 @@ typology:
   - mvts
   - payments
   sources:
-  - FATF, Risk of Terrorist Abuse in Non-Profit Organisations (2014)
-  - FATF, Best Practices on Combating the Terrorist Financing Abuse of Non-Profit Organisations (Recommendation
-    8)
-  - FATF Recommendation 8 and its Interpretive Note
+  - FATF, Risk of Terrorist Abuse in Non-Profit Organisations (2014) [unverified]
+  - FATF, Best Practices on Combating the Abuse of Non-Profit Organisations (Recommendation 8) (2015;
+    revised Nov 2023) [corrected, unverified]
+  - FATF Recommendation 8 and its Interpretive Note [unverified]
   indicators:
   - ref: IND-TYP-058
     legacy_id: TF-NPO-001

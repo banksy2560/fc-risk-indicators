@@ -10,9 +10,13 @@ typology:
   - payments
   - corporate_services
   sources:
-  - FinCEN, Advisory on Email Compromise Fraud Schemes (2019)
-  - FBI IC3, Public service announcements on BEC (published annually)
-  - UK Finance, Annual Fraud Report (published annually)
+  - FinCEN, Updated Advisory on Email Compromise Fraud Schemes Targeting Vulnerable Business Processes,
+    FIN-2019-A005 (2019) <https://www.fincen.gov/resources/advisories/fincen-advisory-fin-2019-a005> [corrected,
+    checked]
+  - 'FBI IC3, Business E-Mail Compromise: The $55 Billion Scam (PSA I-091124-PSA, 2024) [replacement suggested,
+    unverified]'
+  - UK Finance, Annual Fraud Report (specify year, e.g. 2025) <https://www.ukfinance.org.uk/> [corrected,
+    checked]
   indicators:
   - ref: IND-CPT-020
     legacy_id: FR-BEC-001

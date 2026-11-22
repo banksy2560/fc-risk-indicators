@@ -10,10 +10,11 @@ typology:
   - payments
   - mvts
   sources:
-  - FATF, Professional Money Laundering (2018)
-  - UN Convention against Transnational Organized Crime (2000)
-  - UNODC, public material on organised crime and extortion
-  - Europol, Serious and Organised Crime Threat Assessment
+  - FATF, Professional Money Laundering (2018) [unverified]
+  - UN Convention against Transnational Organized Crime (2000) [unverified]
+  - UNODC, public material on organised crime and extortion [replacement suggested, unverified]
+  - Europol, European Union Serious and Organised Crime Threat Assessment (EU SOCTA) (specify year, e.g.
+    2021 or 2025) [corrected, unverified]
   indicators:
   - ref: IND-TXN-123
     legacy_id: OP-EXTORT-001

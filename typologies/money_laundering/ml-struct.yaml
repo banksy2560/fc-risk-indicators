@@ -13,9 +13,10 @@ typology:
   - mvts
   - casino_gaming
   sources:
-  - FATF, Money Laundering Typologies and Methods (general placement guidance)
-  - FinCEN, Guidance on structuring and Suspicious Activity Report (SAR) reporting (general)
-  - AUSTRAC, Guidance on structuring and threshold transaction reports (general)
+  - FATF, Money Laundering Typologies and Methods (general placement guidance) [too vague, unverified]
+  - FinCEN, Guidance on structuring and Suspicious Activity Report (SAR) reporting (general) [too vague,
+    unverified]
+  - AUSTRAC, Guidance on structuring and threshold transaction reports (general) [too vague, unverified]
   indicators:
   - ref: IND-TXN-006
     legacy_id: ML-STRUCT-001

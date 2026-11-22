@@ -39,4 +39,31 @@ if(withDates.length===d.typologies.length){
  $('#recentnote').innerHTML=`Dates are when each typology file was first committed to the repository (git), not a review or publication date. Latest commit <span class="mono">${esc(rec[0].ac)}</span> added ${batch} typologies: ${esc(cm.subject)}.`;
  $('#recentcard').hidden=false;
 }
+// one typology traced from indicators to controls
+const rankSev={high:0,medium:1,low:2},EX=['ML-MULE','FR-APP','ML-TBML'].filter(id=>T[id]),btEl=$('#bt');
+function trace(id){
+ const t=T[id],inds=d.indicators.filter(i=>i.typs.includes(id)).sort((a,b)=>rankSev[a.sev]-rankSev[b.sev]||a.name.localeCompare(b.name)).slice(0,4),ct=t.ctls.map(c=>C[c]).filter(Boolean).slice(0,4);
+ const node=(k,o,sub)=>`<a class="node ${KIND[k].cls}" href="${KIND[k].page}#${o.id}"><span class="h">${MARK[k]}<span class="nm">${esc(o.name)}</span></span><span class="sub"><span class="mono">${o.id}</span>${sub}</span></a>`;
+ btEl.innerHTML=`<svg class="lines" id="blines" aria-hidden="true"></svg>
+<div class="col c-i"><h3>${MARK.i} Indicators <span class="ct">${inds.length} of ${t.nInd}</span></h3><div class="nodes">${inds.map(o=>node('i',o,' '+sig(o.sev))).join('')}</div></div>
+<div class="col c-t"><div class="typnode" id="tn">${tag('t')}<span class="nm">${esc(t.name)}</span><p>${esc(t.desc.split('. ')[0].replace(/\.$/,''))}.</p><div class="meta"><span>${t.nInd} indicators</span><span>${t.nCtl} controls</span><span>${t.nSrc} sources</span></div></div></div>
+<div class="col c-c"><h3>${MARK.c} Controls <span class="ct">${ct.length} of ${t.nCtl}</span></h3><div class="nodes">${ct.map(o=>node('c',o,' &middot; '+lab('ctype',o.type))).join('')}</div></div>`;
+ $('#btnote').innerHTML=`Showing the four highest-signal indicators and the first four controls linked to this typology. <a href="relationships#t=${id}">Open it in Relationships</a> to see all of them, plus exposure and evidence.`;
+ document.querySelectorAll('#btpick button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.id===id)));
+ requestAnimationFrame(drawLines);
+}
+function drawLines(){
+ const svg=$('#blines'),tn=$('#tn');if(!svg||!tn||getComputedStyle(svg).display==='none')return;
+ const fr=btEl.getBoundingClientRect(),tr=tn.getBoundingClientRect(),P=(r,s)=>({x:(s==='r'?r.right:r.left)-fr.left,y:r.top+r.height/2-fr.top});
+ const cv=(a,b,c)=>{const dx=(b.x-a.x)/2;return `<path class="${c}" d="M${a.x},${a.y} C${a.x+dx},${a.y} ${b.x-dx},${b.y} ${b.x},${b.y}"/>`};
+ let h='';btEl.querySelectorAll('.col.c-i .node').forEach(n=>{h+=cv(P(n.getBoundingClientRect(),'r'),P(tr,'l'),'hl')});
+ btEl.querySelectorAll('.col.c-c .node').forEach(n=>{h+=cv(P(tr,'r'),P(n.getBoundingClientRect(),'l'),'hl2')});svg.innerHTML=h;
+}
+if(EX.length){
+ $('#btpick').insertAdjacentHTML('beforeend',EX.map(id=>`<button type="button" data-id="${id}" aria-pressed="false">${esc(T[id].name)}</button>`).join(''));
+ $('#btpick').addEventListener('click',e=>{const b=e.target.closest('button[data-id]');if(b)trace(b.dataset.id)});
+ trace(EX[0]);
+ addEventListener('resize',()=>requestAnimationFrame(drawLines));
+ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>requestAnimationFrame(drawLines));
+}else $('.bt').hidden=true;
 })();

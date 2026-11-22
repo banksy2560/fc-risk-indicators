@@ -189,7 +189,12 @@ table.t td{padding:10px;border-bottom:1px solid var(--rule);vertical-align:top}
 .bflow .node{text-decoration:none;color:inherit}
 .bflow .node .sub{margin-top:4px}
 .bnote{margin-top:16px;font-size:13px;color:var(--ink-3)}
-@media (max-width:1000px){.bflow{grid-template-columns:1fr;gap:24px}.bflow svg.lines{display:none}}
+@media (max-width:1000px){.bflow{grid-template-columns:1fr;gap:36px}.bflow svg.lines{display:none}
+.bflow .col.c-t{position:relative}
+.bflow .col.c-t::before,.bflow .col.c-t::after{content:"";position:absolute;left:50%;width:2px;height:36px;margin-left:-1px}
+.bflow .col.c-t::before{top:-36px;background:var(--ind)}
+.bflow .col.c-t::after{bottom:-36px;background:var(--ctl)}}
+@media (max-width:720px){.top nav{overflow-x:auto;scrollbar-width:none}.top nav a{white-space:nowrap;overflow-wrap:normal}}
 @media (max-width:520px){.journey{grid-template-columns:1fr}.journey li{border-left:0}.hb{grid-template-columns:1fr 3.5ch;grid-template-areas:"l v" "t t"}.hb .lbl{grid-area:l}.hb .v{grid-area:v}.hb .tr{grid-area:t}.panel{padding:18px 16px}}
 
 

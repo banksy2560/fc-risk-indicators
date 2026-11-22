@@ -1,0 +1,213 @@
+typology:
+  id: OP-ART
+  name: Art and Antiquities Trafficking
+  domain: other_predicate
+  description: Looting, theft, forgery and illicit trade of cultural property, and use of art as a store
+    of value to launder funds. Opaque transactions, free ports, falsified provenance and anonymous buyers
+    are common features.
+  sectors:
+  - art_luxury
+  - banking
+  - dnfbp
+  sources:
+  - FATF, Money Laundering and Terrorist Financing in the Art and Antiquities Market (2023)
+  - UNESCO, Convention on the Means of Prohibiting and Preventing the Illicit Import, Export and Transfer
+    of Ownership of Cultural Property (1970)
+  - UNIDROIT, Convention on Stolen or Illegally Exported Cultural Objects (1995)
+  - Interpol, public databases on stolen works of art
+  indicators:
+  - id: OP-ART-001
+    name: Provenance gaps or documents inconsistent with object history
+    description: Missing ownership chain, 1970-era gap or fake certificates.
+    category: document
+    severity: high
+    detection_type:
+    - document_review
+    - investigator_judgement
+    data_sources:
+    - provenance_docs
+    - databases
+    false_positive_notes: Old works often have gaps.
+    controls:
+    - id: OP-ART-001-C1
+      name: Provenance checks and database screening
+      type: preventive
+      description: Screen objects against stolen-art databases.
+      implementation: process
+      effectiveness: high
+    - id: OP-ART-001-C2
+      name: Expert authentication
+      type: preventive
+      description: Use independent experts.
+      implementation: process
+      effectiveness: medium
+  - id: OP-ART-002
+    name: Price inconsistent with market or sudden value jumps
+    description: Sales at far off valuations or back-to-back trades.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - sale_records
+    - valuation_data
+    false_positive_notes: Valuation of art is subjective.
+    controls:
+    - id: OP-ART-002-C1
+      name: Valuation benchmarking
+      type: detective
+      description: Compare to comparable sales.
+      implementation: process
+      effectiveness: medium
+    - id: OP-ART-002-C2
+      name: Round-trip detection
+      type: detective
+      description: Detect repeated trades.
+      implementation: model
+      effectiveness: medium
+  - id: OP-ART-003
+    name: Anonymous buyers through intermediaries, trusts or shell companies
+    description: Buyer identity concealed by agents.
+    category: ownership_structure
+    severity: high
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - kyc_files
+    false_positive_notes: Privacy is normal in collecting.
+    controls:
+    - id: OP-ART-003-C1
+      name: Beneficial owner verification
+      type: preventive
+      description: Identify true buyers.
+      implementation: process
+      effectiveness: high
+    - id: OP-ART-003-C2
+      name: Intermediary due diligence
+      type: preventive
+      description: Vet agents.
+      implementation: process
+      effectiveness: medium
+  - id: OP-ART-004
+    name: Storage in free ports without display or trade
+    description: Artworks stored for long without movement.
+    category: product_channel
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    - kyc_review
+    data_sources:
+    - storage_records
+    false_positive_notes: Storage is normal.
+    controls:
+    - id: OP-ART-004-C1
+      name: Storage rationale review
+      type: detective
+      description: Assess reasons.
+      implementation: process
+      effectiveness: medium
+    - id: OP-ART-004-C2
+      name: Free port due diligence
+      type: preventive
+      description: Verify operator controls.
+      implementation: process
+      effectiveness: medium
+  - id: OP-ART-005
+    name: Cash or crypto payment for high-value works
+    description: Large unusual settlement.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - customer_behaviour
+    data_sources:
+    - payment_records
+    false_positive_notes: Some buyers like crypto.
+    controls:
+    - id: OP-ART-005-C1
+      name: Payment method thresholds
+      type: preventive
+      description: Limit cash.
+      implementation: policy
+      effectiveness: high
+    - id: OP-ART-005-C2
+      name: Cash and crypto alerts
+      type: detective
+      description: Alert on such payments.
+      implementation: rule
+      effectiveness: medium
+  - id: OP-ART-006
+    name: Objects from conflict zones or countries with looting
+    description: Antiquities exported from affected regions with new papers.
+    category: geographic
+    severity: high
+    detection_type:
+    - external_intel
+    - screening
+    data_sources:
+    - export_docs
+    - ngo_reports
+    false_positive_notes: Legal exports exist.
+    controls:
+    - id: OP-ART-006-C1
+      name: Conflict origin screening
+      type: preventive
+      description: Screen origin.
+      implementation: technology
+      effectiveness: high
+    - id: OP-ART-006-C2
+      name: Export licence verification
+      type: preventive
+      description: Verify licences.
+      implementation: process
+      effectiveness: high
+  - id: OP-ART-007
+    name: Seller is dealer new to market or with sanctions or adverse media
+    description: Unknown or suspect dealer.
+    category: counterparty
+    severity: medium
+    detection_type:
+    - screening
+    - kyc_review
+    data_sources:
+    - adverse_media
+    false_positive_notes: New dealers exist.
+    controls:
+    - id: OP-ART-007-C1
+      name: Dealer screening
+      type: detective
+      description: Screen dealers.
+      implementation: technology
+      effectiveness: medium
+    - id: OP-ART-007-C2
+      name: Dealer onboarding
+      type: preventive
+      description: Perform onboarding.
+      implementation: process
+      effectiveness: medium
+  - id: OP-ART-008
+    name: Use of art as collateral or for loan with unclear valuations
+    description: Loans secured on art with inflated valuations.
+    category: product_channel
+    severity: medium
+    detection_type:
+    - document_review
+    - investigator_judgement
+    data_sources:
+    - loan_files
+    false_positive_notes: Art-secured lending is lawful.
+    controls:
+    - id: OP-ART-008-C1
+      name: Collateral valuation review
+      type: detective
+      description: Test valuations.
+      implementation: process
+      effectiveness: medium
+    - id: OP-ART-008-C2
+      name: Lender training
+      type: preventive
+      description: Train staff.
+      implementation: training
+      effectiveness: low

@@ -1,0 +1,214 @@
+typology:
+  id: OP-CYBERPROC
+  name: Cybercrime Proceeds
+  domain: other_predicate
+  description: Laundering of funds from ransomware, business email compromise, investment and romance
+    scams, hacking and account takeover. Money mules, rapid cross-border transfers, crypto conversion
+    and cash-out services are typical.
+  sectors:
+  - banking
+  - payments
+  - crypto
+  - fintech
+  - mvts
+  sources:
+  - FATF, Illicit Financial Flows from Cyber-Enabled Fraud (2023)
+  - FATF, Countering Ransomware Financing (2023)
+  - FATF, Updated Guidance for a Risk-Based Approach to Virtual Assets and VASPs
+  - Europol, Internet Organised Crime Threat Assessment
+  indicators:
+  - id: OP-CYBERPROC-001
+    name: New account receives funds from many victims then moves them out
+    description: Incoming payments from unrelated individuals followed by transfers abroad or to crypto.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payment_records
+    false_positive_notes: Marketplace sellers receive many payments.
+    controls:
+    - id: OP-CYBERPROC-001-C1
+      name: Mule account detection model
+      type: detective
+      description: Detect mule patterns.
+      implementation: model
+      effectiveness: high
+    - id: OP-CYBERPROC-001-C2
+      name: Real-time inbound payment holds
+      type: preventive
+      description: Hold unusual inbound funds.
+      implementation: rule
+      effectiveness: high
+  - id: OP-CYBERPROC-002
+    name: Payment-instruction changes and urgent transfers to new beneficiaries
+    description: Business email compromise signals.
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    - transaction_monitoring
+    data_sources:
+    - payment_instructions
+    false_positive_notes: Suppliers change banks.
+    controls:
+    - id: OP-CYBERPROC-002-C1
+      name: Call-back verification
+      type: preventive
+      description: Verify changes.
+      implementation: process
+      effectiveness: high
+    - id: OP-CYBERPROC-002-C2
+      name: New-payee anomaly rule
+      type: detective
+      description: Detect first-time large payments.
+      implementation: rule
+      effectiveness: medium
+  - id: OP-CYBERPROC-003
+    name: Customers sending funds to crypto exchanges after being contacted by 'advisers'
+    description: Scam victims transferring under pressure.
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    - transaction_monitoring
+    data_sources:
+    - payment_records
+    - call_notes
+    false_positive_notes: People invest in crypto.
+    controls:
+    - id: OP-CYBERPROC-003-C1
+      name: Scam intervention scripts
+      type: preventive
+      description: Train staff to intervene.
+      implementation: training
+      effectiveness: high
+    - id: OP-CYBERPROC-003-C2
+      name: Crypto transfer friction
+      type: preventive
+      description: Add warnings for new crypto payees.
+      implementation: rule
+      effectiveness: medium
+  - id: OP-CYBERPROC-004
+    name: Ransomware-linked wallet exposure
+    description: Payments to wallets attributed to ransomware.
+    category: counterparty
+    severity: high
+    detection_type:
+    - screening
+    - external_intel
+    data_sources:
+    - blockchain_analytics
+    false_positive_notes: Attribution can be wrong.
+    controls:
+    - id: OP-CYBERPROC-004-C1
+      name: Wallet screening
+      type: preventive
+      description: Screen wallets.
+      implementation: technology
+      effectiveness: high
+    - id: OP-CYBERPROC-004-C2
+      name: Ransom payment reporting
+      type: governance
+      description: Follow reporting rules.
+      implementation: process
+      effectiveness: medium
+  - id: OP-CYBERPROC-005
+    name: Account takeover indicators with immediate credential change and large outflows
+    description: Login anomaly then transfers.
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    - transaction_monitoring
+    data_sources:
+    - device_data
+    - login_logs
+    false_positive_notes: Travel changes logins.
+    controls:
+    - id: OP-CYBERPROC-005-C1
+      name: Behavioural biometrics
+      type: detective
+      description: Detect anomalies.
+      implementation: model
+      effectiveness: medium
+    - id: OP-CYBERPROC-005-C2
+      name: Step-up authentication
+      type: preventive
+      description: Add checks.
+      implementation: rule
+      effectiveness: high
+  - id: OP-CYBERPROC-006
+    name: Rapid chain-hopping, mixers and privacy coin conversion
+    description: Funds move across tokens and chains.
+    category: product_channel
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - external_intel
+    data_sources:
+    - blockchain_analytics
+    false_positive_notes: Privacy can be lawful.
+    controls:
+    - id: OP-CYBERPROC-006-C1
+      name: Chain-hopping analytics
+      type: detective
+      description: Detect hopping.
+      implementation: model
+      effectiveness: medium
+    - id: OP-CYBERPROC-006-C2
+      name: VASP risk assessment
+      type: preventive
+      description: Assess counterparty VASPs.
+      implementation: process
+      effectiveness: medium
+  - id: OP-CYBERPROC-007
+    name: Accounts opened with synthetic or stolen identities
+    description: Onboarding with mismatched data.
+    category: customer
+    severity: high
+    detection_type:
+    - kyc_review
+    - screening
+    data_sources:
+    - onboarding_data
+    - device_data
+    false_positive_notes: Data errors occur.
+    controls:
+    - id: OP-CYBERPROC-007-C1
+      name: Identity verification
+      type: preventive
+      description: Verify identity.
+      implementation: technology
+      effectiveness: high
+    - id: OP-CYBERPROC-007-C2
+      name: Shared device clustering
+      type: detective
+      description: Cluster accounts.
+      implementation: model
+      effectiveness: medium
+  - id: OP-CYBERPROC-008
+    name: Cash-out through gift cards, prepaid, or money mules in other countries
+    description: Funds converted into hard-to-trace instruments.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - card_data
+    - payment_records
+    false_positive_notes: Gift cards are bought legitimately.
+    controls:
+    - id: OP-CYBERPROC-008-C1
+      name: Gift card purchase rules
+      type: detective
+      description: Flag bulk gift card purchases.
+      implementation: rule
+      effectiveness: medium
+    - id: OP-CYBERPROC-008-C2
+      name: Mule recruitment awareness
+      type: preventive
+      description: Educate customers about mule recruitment.
+      implementation: training
+      effectiveness: medium

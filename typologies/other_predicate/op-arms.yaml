@@ -1,0 +1,215 @@
+typology:
+  id: OP-ARMS
+  name: Arms Trafficking and Illicit Firearms
+  domain: other_predicate
+  description: Illicit supply and diversion of firearms, ammunition and components, including straw purchases,
+    illegal manufacturing, end-user certificate fraud and brokering outside licence. Financial indicators
+    arise in dealer payments, shipping, brokers and cash purchases.
+  sectors:
+  - banking
+  - payments
+  - corporate_services
+  - mvts
+  sources:
+  - UN Arms Trade Treaty (2013)
+  - UN Protocol against the Illicit Manufacturing of and Trafficking in Firearms (2001)
+  - UNODC, Global Study on Firearms Trafficking
+  - SIPRI, public material on arms transfers
+  indicators:
+  - id: OP-ARMS-001
+    name: Multiple firearm or component purchases by one person for others
+    description: Repeated purchases of guns, parts or ammunition inconsistent with sport use, paid by
+      different people.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - card_data
+    - dealer_records
+    false_positive_notes: Collectors and ranges buy in volume.
+    controls:
+    - id: OP-ARMS-001-C1
+      name: Dealer straw-purchase alerts
+      type: detective
+      description: Flag repeated purchases and third-party payers.
+      implementation: rule
+      effectiveness: medium
+    - id: OP-ARMS-001-C2
+      name: Firearms dealer cooperation
+      type: governance
+      description: Share indicators with licensed dealers.
+      implementation: process
+      effectiveness: medium
+  - id: OP-ARMS-002
+    name: Brokers or dealers lacking licences or end-user certificates
+    description: Intermediary arranges transfers without export licences.
+    category: counterparty
+    severity: high
+    detection_type:
+    - kyc_review
+    - document_review
+    data_sources:
+    - licence_registers
+    - trade_documents
+    false_positive_notes: Licensing differs by country.
+    controls:
+    - id: OP-ARMS-002-C1
+      name: Licence verification
+      type: preventive
+      description: Verify licences with authorities.
+      implementation: process
+      effectiveness: high
+    - id: OP-ARMS-002-C2
+      name: End-user certificate authentication
+      type: preventive
+      description: Authenticate certificates.
+      implementation: process
+      effectiveness: high
+  - id: OP-ARMS-003
+    name: Shipping through high-risk transit hubs with changed destinations
+    description: Arms shipments change consignee or route.
+    category: geographic
+    severity: high
+    detection_type:
+    - document_review
+    - external_intel
+    data_sources:
+    - bills_of_lading
+    - tracking_data
+    false_positive_notes: Re-routing occurs for lawful cargo.
+    controls:
+    - id: OP-ARMS-003-C1
+      name: Routing anomaly checks
+      type: detective
+      description: Compare route to declared.
+      implementation: rule
+      effectiveness: medium
+    - id: OP-ARMS-003-C2
+      name: Conflict-zone exposure screening
+      type: preventive
+      description: Screen routes against sanctions and embargoes.
+      implementation: technology
+      effectiveness: high
+  - id: OP-ARMS-004
+    name: Purchase of 3D-printing, CNC machines and parts for gun manufacture
+    description: Orders for firearm blueprint files, receivers, jigs.
+    category: product_channel
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    - external_intel
+    data_sources:
+    - merchant_data
+    false_positive_notes: Hobbyists and makers exist.
+    controls:
+    - id: OP-ARMS-004-C1
+      name: Merchant category monitoring
+      type: detective
+      description: Monitor sales of firearm components.
+      implementation: rule
+      effectiveness: low
+    - id: OP-ARMS-004-C2
+      name: Online marketplace cooperation
+      type: governance
+      description: Share findings with platforms.
+      implementation: process
+      effectiveness: medium
+  - id: OP-ARMS-005
+    name: Payments from or to sanctioned or embargoed parties
+    description: Counterparties on arms embargo or sanctions lists.
+    category: counterparty
+    severity: high
+    detection_type:
+    - screening
+    data_sources:
+    - sanctions_lists
+    false_positive_notes: Name matches are common.
+    controls:
+    - id: OP-ARMS-005-C1
+      name: Sanctions screening
+      type: preventive
+      description: Screen all parties and vessels.
+      implementation: technology
+      effectiveness: high
+    - id: OP-ARMS-005-C2
+      name: Embargo country controls
+      type: preventive
+      description: Block or review transfers to embargoed destinations.
+      implementation: rule
+      effectiveness: high
+  - id: OP-ARMS-006
+    name: Cash purchases with prompt resale or export
+    description: Weapons purchased for cash and quickly moved abroad.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - cash_data
+    false_positive_notes: Collectors may sell.
+    controls:
+    - id: OP-ARMS-006-C1
+      name: Cash and export correlation
+      type: detective
+      description: Correlate cash buys with exports.
+      implementation: model
+      effectiveness: medium
+    - id: OP-ARMS-006-C2
+      name: Dealer EDD
+      type: preventive
+      description: Apply EDD to arms dealers.
+      implementation: process
+      effectiveness: medium
+  - id: OP-ARMS-007
+    name: Armed groups or militias as end users linked to customers
+    description: Customer's counterparties are tied to armed groups.
+    category: customer
+    severity: high
+    detection_type:
+    - external_intel
+    - screening
+    data_sources:
+    - adverse_media
+    - un_reports
+    false_positive_notes: Reports may be disputed.
+    controls:
+    - id: OP-ARMS-007-C1
+      name: Adverse media screening
+      type: detective
+      description: Screen for arms trafficking.
+      implementation: technology
+      effectiveness: medium
+    - id: OP-ARMS-007-C2
+      name: Escalation to sanctions team
+      type: governance
+      description: Coordinate with sanctions.
+      implementation: process
+      effectiveness: high
+  - id: OP-ARMS-008
+    name: Fake commercial front using civilian goods descriptions
+    description: Containers described as machinery or toys with weights conflicting with documents.
+    category: document
+    severity: medium
+    detection_type:
+    - document_review
+    - investigator_judgement
+    data_sources:
+    - trade_documents
+    - customs_data
+    false_positive_notes: Weights vary.
+    controls:
+    - id: OP-ARMS-008-C1
+      name: Document weight and value checks
+      type: detective
+      description: Compare weights and values.
+      implementation: rule
+      effectiveness: medium
+    - id: OP-ARMS-008-C2
+      name: Trade finance training
+      type: preventive
+      description: Train trade staff.
+      implementation: training
+      effectiveness: medium

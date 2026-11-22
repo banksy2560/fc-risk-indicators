@@ -1,0 +1,212 @@
+typology:
+  id: OP-EXTORT
+  name: Organised Crime Extortion and Loan-Sharking
+  domain: other_predicate
+  description: Coercive collection of 'protection' money or repayments on high-interest illegal loans
+    by organised crime groups, usually from small businesses and vulnerable individuals. Victims often
+    show regular payments that do not match any invoice or service, sometimes via third parties or cash.
+  sectors:
+  - banking
+  - payments
+  - mvts
+  sources:
+  - FATF, Professional Money Laundering (2018)
+  - UN Convention against Transnational Organized Crime (2000)
+  - UNODC, public material on organised crime and extortion
+  - Europol, Serious and Organised Crime Threat Assessment
+  indicators:
+  - id: OP-EXTORT-001
+    name: Regular fixed payments from a small business to an individual with no invoices
+    description: Payments at regular intervals to a person or company with no service provided.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - payment_records
+    false_positive_notes: Rent and retainers also recur.
+    controls:
+    - id: OP-EXTORT-001-C1
+      name: Recurring payee analytics
+      type: detective
+      description: Detect recurring payments without business justification.
+      implementation: rule
+      effectiveness: medium
+    - id: OP-EXTORT-001-C2
+      name: Victim-centred outreach
+      type: preventive
+      description: Offer safe conversation and referral to support.
+      implementation: process
+      effectiveness: high
+  - id: OP-EXTORT-002
+    name: Sudden cash withdrawals followed by pay-outs under apparent pressure
+    description: Customer withdraws cash and appears distressed or accompanied.
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    - investigator_judgement
+    data_sources:
+    - branch_observations
+    false_positive_notes: Cash needs are varied.
+    controls:
+    - id: OP-EXTORT-002-C1
+      name: Branch awareness training
+      type: preventive
+      description: Train staff to recognise coercion.
+      implementation: training
+      effectiveness: high
+    - id: OP-EXTORT-002-C2
+      name: Safe-referral protocol
+      type: governance
+      description: Provide discreet escalation and police contact.
+      implementation: process
+      effectiveness: high
+  - id: OP-EXTORT-003
+    name: High-interest informal loans with repayments to non-lender individuals
+    description: Repeated payments with high effective interest rates and rollovers.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - payment_records
+    - loan_data
+    false_positive_notes: Family loans are legit.
+    controls:
+    - id: OP-EXTORT-003-C1
+      name: Loan repayment pattern rule
+      type: detective
+      description: Flag repayments to individuals with growing amounts.
+      implementation: rule
+      effectiveness: medium
+    - id: OP-EXTORT-003-C2
+      name: Financial hardship support
+      type: corrective
+      description: Offer hardship support and legal loan alternatives.
+      implementation: process
+      effectiveness: medium
+  - id: OP-EXTORT-004
+    name: Collector accounts receiving many payments from unrelated small payers
+    description: Single account collects from many businesses in a locality.
+    category: customer
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - payment_records
+    - kyc_files
+    false_positive_notes: Landlords and associations collect.
+    controls:
+    - id: OP-EXTORT-004-C1
+      name: Many-to-one payer rule
+      type: detective
+      description: Detect collectors across local sectors.
+      implementation: rule
+      effectiveness: medium
+    - id: OP-EXTORT-004-C2
+      name: Collector account review
+      type: detective
+      description: Review account purpose and links.
+      implementation: process
+      effectiveness: high
+  - id: OP-EXTORT-005
+    name: Businesses closing or reporting threats alongside payment spikes
+    description: Sector-wide complaints in area linked to payments.
+    category: geographic
+    severity: medium
+    detection_type:
+    - external_intel
+    - investigator_judgement
+    data_sources:
+    - community_intel
+    false_positive_notes: Economic downturns also close firms.
+    controls:
+    - id: OP-EXTORT-005-C1
+      name: Local intelligence integration
+      type: governance
+      description: Use police and community intelligence.
+      implementation: process
+      effectiveness: medium
+    - id: OP-EXTORT-005-C2
+      name: Hotspot alert tuning
+      type: detective
+      description: Tune alerts for hotspots.
+      implementation: model
+      effectiveness: medium
+  - id: OP-EXTORT-006
+    name: Use of third-party couriers or intermediaries to collect cash
+    description: Cash picked up by runners; multiple deposits by apparent intermediaries.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    - transaction_monitoring
+    data_sources:
+    - cash_data
+    false_positive_notes: Cash-in-transit firms exist.
+    controls:
+    - id: OP-EXTORT-006-C1
+      name: Cash courier checks
+      type: detective
+      description: Verify couriers.
+      implementation: process
+      effectiveness: medium
+    - id: OP-EXTORT-006-C2
+      name: Deposit pattern analytics
+      type: detective
+      description: Detect runner patterns.
+      implementation: rule
+      effectiveness: medium
+  - id: OP-EXTORT-007
+    name: Associates linked to known organised crime groups
+    description: Counterparties in adverse media or law enforcement intelligence.
+    category: counterparty
+    severity: high
+    detection_type:
+    - screening
+    - external_intel
+    data_sources:
+    - adverse_media
+    - law_enforcement_requests
+    false_positive_notes: Namesakes occur.
+    controls:
+    - id: OP-EXTORT-007-C1
+      name: OCG screening
+      type: detective
+      description: Screen against OCG intelligence.
+      implementation: technology
+      effectiveness: high
+    - id: OP-EXTORT-007-C2
+      name: Intelligence-led account review
+      type: detective
+      description: Review linked accounts.
+      implementation: process
+      effectiveness: medium
+  - id: OP-EXTORT-008
+    name: Forced purchase of services, supplies or cars at inflated prices
+    description: Businesses pay inflated invoices to specific suppliers.
+    category: document
+    severity: medium
+    detection_type:
+    - document_review
+    - investigator_judgement
+    data_sources:
+    - invoices
+    false_positive_notes: Preferred suppliers exist.
+    controls:
+    - id: OP-EXTORT-008-C1
+      name: Supplier price benchmark
+      type: detective
+      description: Compare prices.
+      implementation: model
+      effectiveness: medium
+    - id: OP-EXTORT-008-C2
+      name: Supplier ownership checks
+      type: preventive
+      description: Check owners.
+      implementation: process
+      effectiveness: medium

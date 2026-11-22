@@ -15,212 +15,68 @@ typology:
     (2021)
   - FATF, Emerging Terrorist Financing Risks (2015)
   indicators:
-  - id: TF-VASP-001
-    name: Deposits from or withdrawals to wallets attributed to terrorist fundraising
-    description: On-chain analytics link counterparty addresses to published designations or documented
-      fundraising campaigns.
-    category: counterparty
-    severity: high
-    detection_type:
-    - screening
-    - external_intel
-    - transaction_monitoring
-    data_sources:
-    - blockchain_analytics
-    - designation_lists
-    false_positive_notes: Attribution can be incorrect or outdated; shared services create indirect exposure.
+  - ref: IND-CPT-050
+    legacy_id: TF-VASP-001
+    context: On-chain analytics link counterparty addresses to published designations or documented fundraising
+      campaigns.
+    name_in_typology: Deposits from or withdrawals to wallets attributed to terrorist fundraising
+    false_positive_context: Attribution can be incorrect or outdated; shared services create indirect
+      exposure.
     controls:
-    - id: TF-VASP-001-C1
-      name: Blockchain address screening
-      type: preventive
-      description: Screen deposit and withdrawal addresses against attribution and designation data in
-        near real time.
-      implementation: technology
-      effectiveness: high
-    - id: TF-VASP-001-C2
-      name: Exposure-tiered response
-      type: detective
-      description: Apply direct versus indirect exposure thresholds to escalation.
-      implementation: process
-      effectiveness: medium
-    - id: TF-VASP-001-C3
-      name: Wallet freeze and reporting playbook
-      type: corrective
-      description: Define holds and reporting steps on confirmed exposure.
-      implementation: process
-      effectiveness: medium
-  - id: TF-VASP-002
-    name: Retail users with repeated small transfers to many new addresses
-    description: Frequent low-value outbound transfers to different external wallets after small incoming
+    - CTL-145
+    - CTL-147
+    - CTL-103
+  - ref: IND-TXN-005
+    legacy_id: TF-VASP-002
+    context: Frequent low-value outbound transfers to different external wallets after small incoming
       crowd-sourced payments.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    false_positive_notes: Tipping, gaming and DeFi use produce similar patterns.
+    name_in_typology: Retail users with repeated small transfers to many new addresses
+    false_positive_context: Tipping, gaming and DeFi use produce similar patterns.
     controls:
-    - id: TF-VASP-002-C1
-      name: Fan-out behavioural rule
-      type: detective
-      description: Detect many small outflows to previously unseen addresses.
-      implementation: rule
-      effectiveness: medium
-    - id: TF-VASP-002-C2
-      name: Travel rule data checks
-      type: preventive
-      description: Obtain and validate originator and beneficiary information where required.
-      implementation: technology
-      effectiveness: medium
-  - id: TF-VASP-003
-    name: Use of privacy coins or mixing services with higher-risk geographies
-    description: Conversion to privacy-enhanced assets or routing through mixers, paired with geographic
-      indicators.
-    category: product_channel
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - external_intel
-    data_sources:
-    - blockchain_analytics
-    - ip_data
-    false_positive_notes: Privacy preference is lawful for many users.
+    - CTL-041
+    - CTL-146
+  - ref: IND-PRD-056
+    legacy_id: TF-VASP-003
+    context: Conversion to privacy-enhanced assets or routing through mixers, paired with geographic indicators.
+    name_in_typology: Use of privacy coins or mixing services with higher-risk geographies
+    false_positive_context: Privacy preference is lawful for many users.
     controls:
-    - id: TF-VASP-003-C1
-      name: Mixer and privacy-asset exposure rules
-      type: detective
-      description: Flag material exposure and apply enhanced review.
-      implementation: rule
-      effectiveness: medium
-    - id: TF-VASP-003-C2
-      name: Product policy on privacy-enhanced assets
-      type: governance
-      description: Define permitted assets and limits by risk appetite.
-      implementation: policy
-      effectiveness: medium
-  - id: TF-VASP-004
-    name: Customer location inconsistent with declared residence
-    description: IP or device signals suggest access from conflict-adjacent regions while KYC indicates
-      elsewhere.
-    category: geographic
-    severity: medium
-    detection_type:
-    - kyc_review
-    - transaction_monitoring
-    data_sources:
-    - ip_data
-    - device_data
-    false_positive_notes: Travel, expatriates and VPNs cause mismatches.
+    - CTL-147
+    - CTL-162
+  - ref: IND-GEO-034
+    legacy_id: TF-VASP-004
+    context: IP or device signals suggest access from conflict-adjacent regions while KYC indicates elsewhere.
+    false_positive_context: Travel, expatriates and VPNs cause mismatches.
     controls:
-    - id: TF-VASP-004-C1
-      name: Geolocation consistency check
-      type: detective
-      description: Compare access geolocation with declared residence.
-      implementation: technology
-      effectiveness: medium
-    - id: TF-VASP-004-C2
-      name: Step-up verification
-      type: preventive
-      description: Trigger re-verification when unexplained location shifts occur.
-      implementation: process
-      effectiveness: medium
-  - id: TF-VASP-005
-    name: Solicitation of donations via social channels using addresses linked to extremist content
-    description: Publicly advertised wallet addresses appear in extremist channels or campaigns.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - external_intel
-    - screening
-    data_sources:
-    - open_source_intel
-    - blockchain_analytics
-    false_positive_notes: Open-source attribution may be unreliable.
+    - CTL-092
+    - CTL-073
+  - ref: IND-TYP-060
+    legacy_id: TF-VASP-005
+    context: Publicly advertised wallet addresses appear in extremist channels or campaigns.
+    false_positive_context: Open-source attribution may be unreliable.
     controls:
-    - id: TF-VASP-005-C1
-      name: Open-source address feeds
-      type: detective
-      description: Ingest vetted threat-intel feeds of advertised addresses.
-      implementation: technology
-      effectiveness: medium
-    - id: TF-VASP-005-C2
-      name: Information sharing with authorities
-      type: governance
-      description: Participate in public-private partnerships for address intelligence.
-      implementation: policy
-      effectiveness: medium
-  - id: TF-VASP-006
-    name: Rapid conversion of donations to stablecoins then off-ramp through peer-to-peer channels
-    description: Funds are converted and cashed out using unregulated peer-to-peer exchanges.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - exchange_data
-    - p2p_data
-    false_positive_notes: P2P trading is a common legitimate on-ramp in some regions.
+    - CTL-145
+    - CTL-097
+  - ref: IND-TXN-155
+    legacy_id: TF-VASP-006
+    context: Funds are converted and cashed out using unregulated peer-to-peer exchanges.
+    false_positive_context: P2P trading is a common legitimate on-ramp in some regions.
     controls:
-    - id: TF-VASP-006-C1
-      name: Off-ramp pattern monitoring
-      type: detective
-      description: Monitor quick conversion and cash-out patterns.
-      implementation: rule
-      effectiveness: medium
-    - id: TF-VASP-006-C2
-      name: P2P risk controls
-      type: preventive
-      description: Impose limits and monitoring on P2P activity.
-      implementation: policy
-      effectiveness: medium
-  - id: TF-VASP-007
-    name: Onboarding with weak identity evidence and shared devices
-    description: Multiple accounts opened with synthetic or inconsistent identity data from common devices.
-    category: customer
-    severity: medium
-    detection_type:
-    - kyc_review
-    - customer_behaviour
-    data_sources:
-    - identity_data
-    - device_data
-    false_positive_notes: Households and shared devices are common.
+    - CTL-040
+    - CTL-072
+  - ref: IND-CUS-009
+    legacy_id: TF-VASP-007
+    context: Multiple accounts opened with synthetic or inconsistent identity data from common devices.
+    name_in_typology: Onboarding with weak identity evidence and shared devices
+    false_positive_context: Households and shared devices are common.
     controls:
-    - id: TF-VASP-007-C1
-      name: Device and identity linkage
-      type: detective
-      description: Link accounts by device and contact data.
-      implementation: technology
-      effectiveness: medium
-    - id: TF-VASP-007-C2
-      name: Strengthened onboarding for higher-risk jurisdictions
-      type: preventive
-      description: Apply stricter verification.
-      implementation: process
-      effectiveness: medium
-  - id: TF-VASP-008
-    name: Sudden large inflows from newly funded unhosted wallets
-    description: Large first deposits from unhosted wallets with no history, followed by immediate transfers
+    - CTL-090
+    - CTL-027
+  - ref: IND-TXN-156
+    legacy_id: TF-VASP-008
+    context: Large first deposits from unhosted wallets with no history, followed by immediate transfers
       out.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - blockchain_analytics
-    false_positive_notes: Users migrating between platforms behave this way.
+    false_positive_context: Users migrating between platforms behave this way.
     controls:
-    - id: TF-VASP-008-C1
-      name: Unhosted wallet ownership proof
-      type: preventive
-      description: Require proof of control for large unhosted wallet transfers.
-      implementation: process
-      effectiveness: medium
-    - id: TF-VASP-008-C2
-      name: Fresh-wallet velocity rule
-      type: detective
-      description: Flag newly created wallets with immediate pass-through.
-      implementation: rule
-      effectiveness: medium
+    - CTL-148
+    - CTL-040

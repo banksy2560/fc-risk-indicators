@@ -1,0 +1,195 @@
+controls:
+- id: CTL-154
+  name: Country, corridor and port risk rating framework
+  family: governance_policy
+  type: governance
+  implementation: model
+  effectiveness: medium
+  description: Maintains documented risk ratings of countries, corridors, ports and booking centres drawn
+    from transparency, corruption and mutual-evaluation sources, updated on a schedule and after relevant
+    events. The ratings feed due diligence, monitoring and limits.
+  also_known_as:
+  - Corridor risk scoring
+  - Country-risk table with scheduled updates
+  - Transparency-based country scoring
+  - Corruption index in country risk model
+  - Booking-centre risk tiering
+  - Flag state risk scoring
+  - Port risk rating
+  - Transit hub exposure scoring
+- id: CTL-155
+  name: Three lines of defence accountability
+  family: governance_policy
+  type: governance
+  implementation: policy
+  effectiveness: medium
+  description: Documents roles, ownership and escalation for first-line, compliance and independent assurance
+    responsibilities for financial crime controls. Clear accountability reduces gaps and duplication.
+  also_known_as:
+  - Defined three-lines accountability
+- id: CTL-156
+  name: Management information and board challenge
+  family: governance_policy
+  type: governance
+  implementation: process
+  effectiveness: medium
+  description: Reports control performance indicators, backlogs and issues to senior management and the
+    board on a regular cycle for challenge and decision. It keeps risk acceptance and resourcing visible.
+  also_known_as:
+  - Regular board MI and challenge
+- id: CTL-157
+  name: Enterprise and product risk assessment
+  family: governance_policy
+  type: governance
+  implementation: process
+  effectiveness: medium
+  description: Performs and refreshes a documented assessment of inherent risk, controls and residual
+    risk across customers, products, channels, geographies and sectors, and links risks to specific controls
+    and gaps. It directs resources and shapes policy.
+  also_known_as:
+  - Annual risk assessment refresh
+  - Linkage to control framework
+  - Conflict-affected area risk assessment
+  - Sector risk alert
+  - Property risk assessment
+- id: CTL-158
+  name: New product and change approval
+  family: governance_policy
+  type: governance
+  implementation: process
+  effectiveness: medium
+  description: Requires financial crime risk assessment and compliance approval before launching or materially
+    changing products and features, with a post-launch review after a set period. It builds controls in
+    before exposure arises.
+  also_known_as:
+  - New product approval process
+  - Post-launch review
+  - Feature risk review
+- id: CTL-159
+  name: Scenario tuning and independent model validation
+  family: governance_policy
+  type: governance
+  implementation: process
+  effectiveness: medium
+  description: Periodically tests thresholds, coverage and segmentation, including above and below the
+    line, and independently validates scenarios and models with documented rationale for changes. It keeps
+    detection effective and defensible.
+  also_known_as:
+  - Periodic tuning and above/below-the-line testing
+  - Independent model validation
+  - Threshold review
+  - Tuning governance
+- id: CTL-160
+  name: Backlog management and surge resourcing
+  family: governance_policy
+  type: corrective
+  implementation: process
+  effectiveness: medium
+  description: Tracks alert, review and case ageing against service levels, triages by risk and adds capacity
+    or remediation programmes to clear backlogs. It prevents delay from eroding control effectiveness.
+  also_known_as:
+  - Backlog ageing reporting
+  - Surge resourcing and prioritisation
+  - Resourcing and remediation programme
+- id: CTL-161
+  name: Issue management and remediation validation
+  family: governance_policy
+  type: governance
+  implementation: process
+  effectiveness: medium
+  description: Records control issues with owners and deadlines, escalates overdue items and independently
+    confirms that remediation has worked before closure. It ensures weaknesses are fixed rather than merely
+    logged.
+  also_known_as:
+  - Issue tracking with ownership
+  - Validation of closure
+  - Remediation assessment
+- id: CTL-162
+  name: Risk appetite and product policy statements
+  family: governance_policy
+  type: governance
+  implementation: policy
+  effectiveness: medium
+  description: Documents the institution's appetite and permitted or prohibited products, assets and activities
+    for a given risk area, with limits and review cadence. It gives staff and systems a clear boundary
+    for acceptance.
+  also_known_as:
+  - Risk appetite and product risk assessment
+  - Product policy on privacy-enhanced assets
+- id: CTL-163
+  name: Whistleblowing and speak-up channels
+  family: governance_policy
+  type: governance
+  implementation: policy
+  effectiveness: medium
+  description: Provides protected, confidential channels for staff, workers and suppliers to report misconduct
+    or concerns, together with conduct monitoring to surface insider collusion. It brings internal and
+    supply-chain issues to light.
+  also_known_as:
+  - Whistleblowing and conduct monitoring
+  - Whistleblowing and conflicts framework
+  - Worker-voice escalation channel
+  - Supplier red-flag reporting
+- id: CTL-164
+  name: Conflict-of-interest declaration and management
+  family: governance_policy
+  type: governance
+  implementation: policy
+  effectiveness: medium
+  description: Requires declarations of conflicts from staff and third parties with annual refresh, rotation
+    of relationship managers and challenge of exceptions. It reduces the chance that decisions are shaped
+    by personal interest.
+  also_known_as:
+  - Conflict-of-interest declarations
+  - Relationship manager conflict-of-interest controls
+- id: CTL-165
+  name: Fair-treatment and de-risking safeguards
+  family: governance_policy
+  type: governance
+  implementation: policy
+  effectiveness: medium
+  description: Documents that profile attributes alone are never grounds for adverse action and provides
+    guidance supporting legitimate activity, such as humanitarian flows, instead of blanket exits. It
+    limits unfair outcomes and bias in control design.
+  also_known_as:
+  - Fair-treatment safeguards
+  - Humanitarian carve-out guidance
+- id: CTL-166
+  name: Regulatory and typology intelligence updates
+  family: governance_policy
+  type: governance
+  implementation: process
+  effectiveness: medium
+  description: Tracks changes to regulation, disclosure regimes and national threat assessments and updates
+    rules, location lists and procedures accordingly. It keeps controls aligned with the current threat.
+  also_known_as:
+  - Regulatory intelligence updates
+  - Intelligence-informed route updates
+- id: CTL-167
+  name: Sector and commodity risk policy
+  family: governance_policy
+  type: governance
+  implementation: policy
+  effectiveness: medium
+  description: Sets internal risk guidance, acceptance limits and approval levels for sectors, commodities
+    and fundraising channels exposed to elevated risk. It gives consistent decisions on how far to engage.
+  also_known_as:
+  - Greenwashing risk governance
+  - Sector escalation
+  - Policy limiting unverified solicitation
+  - Sector risk policy
+  - Commodity sourcing policy
+- id: CTL-168
+  name: Gifts, hospitality and expense controls
+  family: governance_policy
+  type: preventive
+  implementation: policy
+  effectiveness: medium
+  description: Requires logging, limits and pre-approval for gifts, hospitality and anything of value
+    given to officials, with targeted audit of expenses and petty cash. It reduces improper inducements.
+  also_known_as:
+  - Petty cash analytics
+  - Gifts and hospitality register
+  - Expense audit sampling
+  - Hospitality thresholds and logging
+  - Expense policy

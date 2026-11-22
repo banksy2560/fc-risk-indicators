@@ -16,210 +16,68 @@ typology:
   - Joint government advisories on DPRK IT workers and cyber activity (issuing governments' public advisories,
     general reference)
   indicators:
-  - id: PF-DPRKREV-001
-    name: Freelancer or contractor accounts with identity and location inconsistencies
-    description: Remote worker profile shows mismatched documents, geolocation and payment details.
-    category: customer
-    severity: medium
-    detection_type:
-    - kyc_review
-    - customer_behaviour
-    data_sources:
-    - identity_data
-    - ip_data
-    false_positive_notes: Remote workers legitimately use VPNs and travel.
+  - ref: IND-CUS-009
+    legacy_id: PF-DPRKREV-001
+    context: Remote worker profile shows mismatched documents, geolocation and payment details.
+    name_in_typology: Freelancer or contractor accounts with identity and location inconsistencies
+    false_positive_context: Remote workers legitimately use VPNs and travel.
     controls:
-    - id: PF-DPRKREV-001-C1
-      name: Stronger identity verification for remote workers
-      type: preventive
-      description: Apply document and liveness verification and review of payment details.
-      implementation: process
-      effectiveness: medium
-    - id: PF-DPRKREV-001-C2
-      name: Geolocation and device consistency checks
-      type: detective
-      description: Compare access data with declared location.
-      implementation: technology
-      effectiveness: medium
-  - id: PF-DPRKREV-002
-    name: Payments to accounts held by third parties on behalf of workers
-    description: Earnings are routed to accounts of unrelated people or to multiple wallets, then consolidated.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - kyc_review
-    data_sources:
-    - payment_data
-    - wallet_data
-    false_positive_notes: Agencies and family members sometimes receive payments.
+    - CTL-001
+    - CTL-092
+  - ref: IND-TXN-017
+    legacy_id: PF-DPRKREV-002
+    context: Earnings are routed to accounts of unrelated people or to multiple wallets, then consolidated.
+    name_in_typology: Payments to accounts held by third parties on behalf of workers
+    false_positive_context: Agencies and family members sometimes receive payments.
     controls:
-    - id: PF-DPRKREV-002-C1
-      name: Payee relationship validation
-      type: preventive
-      description: Require evidence of the relationship between worker and account holder.
-      implementation: process
-      effectiveness: medium
-    - id: PF-DPRKREV-002-C2
-      name: Consolidation pattern rule
-      type: detective
-      description: Flag many small inflows followed by consolidation and onward transfer.
-      implementation: rule
-      effectiveness: medium
-    - id: PF-DPRKREV-002-C3
-      name: Employer-side hiring controls guidance
-      type: governance
-      description: Provide guidance to client firms on verifying contractors.
-      implementation: policy
-      effectiveness: medium
-  - id: PF-DPRKREV-003
-    name: Inflows of stolen virtual assets traced by analytics
-    description: Deposits with direct or near-direct exposure to addresses attributed to major thefts.
-    category: counterparty
-    severity: high
-    detection_type:
-    - external_intel
-    - screening
-    data_sources:
-    - blockchain_analytics
-    false_positive_notes: Exposure may be indirect and unknowing.
+    - CTL-046
+    - CTL-040
+    - CTL-173
+  - ref: IND-CPT-050
+    legacy_id: PF-DPRKREV-003
+    context: Deposits with direct or near-direct exposure to addresses attributed to major thefts.
+    name_in_typology: Inflows of stolen virtual assets traced by analytics
+    false_positive_context: Exposure may be indirect and unknowing.
     controls:
-    - id: PF-DPRKREV-003-C1
-      name: Attribution-based screening
-      type: preventive
-      description: Screen deposit addresses against theft attributions.
-      implementation: technology
-      effectiveness: high
-    - id: PF-DPRKREV-003-C2
-      name: Hold and review procedure
-      type: corrective
-      description: Hold funds pending review on credible exposure.
-      implementation: process
-      effectiveness: medium
-    - id: PF-DPRKREV-003-C3
-      name: Information sharing
-      type: governance
-      description: Share indicators with industry and authorities.
-      implementation: policy
-      effectiveness: medium
-  - id: PF-DPRKREV-004
-    name: Rapid chain-hopping and conversion following inbound funds
-    description: Assets are swapped across chains and tokens in quick succession before off-ramp.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - external_intel
-    data_sources:
-    - blockchain_analytics
-    false_positive_notes: DeFi users also swap frequently.
+    - CTL-145
+    - CTL-103
+    - CTL-097
+  - ref: IND-TXN-018
+    legacy_id: PF-DPRKREV-004
+    context: Assets are swapped across chains and tokens in quick succession before off-ramp.
+    name_in_typology: Rapid chain-hopping and conversion following inbound funds
+    false_positive_context: DeFi users also swap frequently.
     controls:
-    - id: PF-DPRKREV-004-C1
-      name: Chain-hopping analytics
-      type: detective
-      description: Track funds across chains.
-      implementation: technology
-      effectiveness: medium
-    - id: PF-DPRKREV-004-C2
-      name: Velocity limits for new accounts
-      type: preventive
-      description: Limit withdrawals soon after large inflows.
-      implementation: rule
-      effectiveness: medium
-  - id: PF-DPRKREV-005
-    name: Off-ramp via over-the-counter brokers in higher-risk jurisdictions
-    description: Large conversions to fiat at OTC desks outside strong supervision.
-    category: counterparty
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - kyc_review
-    data_sources:
-    - otc_records
-    false_positive_notes: OTC desks serve legitimate clients.
+    - CTL-145
+    - CTL-072
+  - ref: IND-CPT-015
+    legacy_id: PF-DPRKREV-005
+    context: Large conversions to fiat at OTC desks outside strong supervision.
+    name_in_typology: Off-ramp via over-the-counter brokers in higher-risk jurisdictions
+    false_positive_context: OTC desks serve legitimate clients.
     controls:
-    - id: PF-DPRKREV-005-C1
-      name: OTC counterparty due diligence
-      type: preventive
-      description: Assess controls of OTC partners.
-      implementation: process
-      effectiveness: medium
-    - id: PF-DPRKREV-005-C2
-      name: Large-value conversion review
-      type: detective
-      description: Review large conversions for source evidence.
-      implementation: rule
-      effectiveness: medium
-  - id: PF-DPRKREV-006
-    name: Entities and individuals linked to sanctioned networks
-    description: Customer matches or is linked to designated persons or front entities in public lists.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - screening
-    - external_intel
-    data_sources:
-    - sanctions_lists
-    false_positive_notes: Name matching produces false positives.
+    - CTL-149
+    - CTL-012
+  - ref: IND-OWN-011
+    legacy_id: PF-DPRKREV-006
+    context: Customer matches or is linked to designated persons or front entities in public lists.
+    name_in_typology: Entities and individuals linked to sanctioned networks
+    false_positive_context: Name matching produces false positives.
     controls:
-    - id: PF-DPRKREV-006-C1
-      name: Sanctions list screening
-      type: preventive
-      description: Screen customers and counterparties with fuzzy matching and secondary identifiers.
-      implementation: rule
-      effectiveness: high
-    - id: PF-DPRKREV-006-C2
-      name: Control-link analysis
-      type: detective
-      description: Analyse relationship links to designated parties.
-      implementation: process
-      effectiveness: medium
-  - id: PF-DPRKREV-007
-    name: Bank accounts opened for IT-services companies with minimal footprint
-    description: Foreign IT-services firm has limited verifiable clients and unclear service delivery.
-    category: customer
-    severity: medium
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - corporate_data
-    - contracts
-    false_positive_notes: New IT consultancies exist.
+    - CTL-029
+    - CTL-034
+  - ref: IND-CUS-011
+    legacy_id: PF-DPRKREV-007
+    context: Foreign IT-services firm has limited verifiable clients and unclear service delivery.
+    name_in_typology: Bank accounts opened for IT-services companies with minimal footprint
+    severity_in_typology: medium
+    false_positive_context: New IT consultancies exist.
     controls:
-    - id: PF-DPRKREV-007-C1
-      name: Commercial substance review
-      type: preventive
-      description: Verify clients, contracts and delivery.
-      implementation: process
-      effectiveness: medium
-    - id: PF-DPRKREV-007-C2
-      name: Sector risk alert
-      type: governance
-      description: Issue internal alerts on IT-services risk.
-      implementation: policy
-      effectiveness: low
-  - id: PF-DPRKREV-008
-    name: Use of multiple identities or fabricated credentials in onboarding
-    description: Documents, employment history or references show signs of fabrication.
-    category: document
-    severity: medium
-    detection_type:
-    - document_review
-    - kyc_review
-    data_sources:
-    - identity_documents
-    false_positive_notes: Document quality varies.
+    - CTL-010
+    - CTL-157
+  - ref: IND-DOC-053
+    legacy_id: PF-DPRKREV-008
+    context: Documents, employment history or references show signs of fabrication.
+    false_positive_context: Document quality varies.
     controls:
-    - id: PF-DPRKREV-008-C1
-      name: Document authenticity tools
-      type: preventive
-      description: Use authenticity checking technology.
-      implementation: technology
-      effectiveness: medium
-    - id: PF-DPRKREV-008-C2
-      name: Reference verification
-      type: detective
-      description: Verify references independently.
-      implementation: process
-      effectiveness: medium
+    - CTL-002

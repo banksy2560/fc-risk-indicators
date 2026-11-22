@@ -18,338 +18,94 @@ typology:
     (2021)
   - FATF, Money Laundering and Terrorist Financing in the Art and Antiquities Market (2023)
   indicators:
-  - id: CY-NFTGAME-001
-    name: Wash trading between wallets controlled by the same party
-    description: NFTs are sold repeatedly between linked wallets at rising prices without genuine third-party
+  - ref: IND-TYP-014
+    legacy_id: CY-NFTGAME-001
+    context: NFTs are sold repeatedly between linked wallets at rising prices without genuine third-party
       demand.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - external_intel
-    data_sources:
-    - blockchain_analytics
-    - marketplace_data
-    false_positive_notes: Collectors moving assets between own wallets.
+    name_in_typology: Wash trading between wallets controlled by the same party
+    false_positive_context: Collectors moving assets between own wallets.
     controls:
-    - id: CY-NFTGAME-001-C1
-      name: Blockchain analytics and wallet attribution
-      type: detective
-      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
-        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
-      implementation: technology
-      effectiveness: high
-    - id: CY-NFTGAME-001-C2
-      name: Graph and network analytics
-      type: detective
-      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
-        and fan-in/fan-out structures.
-      implementation: model
-      effectiveness: high
-    - id: CY-NFTGAME-001-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-NFTGAME-002
-    name: Purchase price far above comparable floor or last sale
-    description: A buyer pays a large premium for an item without supporting valuation.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - marketplace_data
-    - price_history
-    false_positive_notes: Rare or celebrity items.
+    - CTL-145
+    - CTL-048
+    - CTL-093
+  - ref: IND-TXN-020
+    legacy_id: CY-NFTGAME-002
+    context: A buyer pays a large premium for an item without supporting valuation.
+    name_in_typology: Purchase price far above comparable floor or last sale
+    false_positive_context: Rare or celebrity items.
     controls:
-    - id: CY-NFTGAME-002-C1
-      name: Blockchain analytics and wallet attribution
-      type: detective
-      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
-        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
-      implementation: technology
-      effectiveness: high
-    - id: CY-NFTGAME-002-C2
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-NFTGAME-002-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-NFTGAME-003
-    name: Newly minted NFT sold immediately for large sums to unrelated wallet
-    description: Creator mints and sells quickly to a single buyer funded by a cluster with no history.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - blockchain_analytics
-    false_positive_notes: Primary sales by established artists.
+    - CTL-145
+    - CTL-037
+    - CTL-093
+  - ref: IND-TXN-053
+    legacy_id: CY-NFTGAME-003
+    context: Creator mints and sells quickly to a single buyer funded by a cluster with no history.
+    false_positive_context: Primary sales by established artists.
     controls:
-    - id: CY-NFTGAME-003-C1
-      name: Blockchain analytics and wallet attribution
-      type: detective
-      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
-        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
-      implementation: technology
-      effectiveness: high
-    - id: CY-NFTGAME-003-C2
-      name: Graph and network analytics
-      type: detective
-      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
-        and fan-in/fan-out structures.
-      implementation: model
-      effectiveness: high
-    - id: CY-NFTGAME-003-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-NFTGAME-004
-    name: Fast conversion of in-game currency to cash or crypto
-    description: Large currency amounts earned or received are cashed out through third-party sites within
+    - CTL-145
+    - CTL-048
+    - CTL-093
+  - ref: IND-TXN-054
+    legacy_id: CY-NFTGAME-004
+    context: Large currency amounts earned or received are cashed out through third-party sites within
       a short period.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - game_logs
-    - ledger_data
-    false_positive_notes: Professional players and streamers.
+    false_positive_context: Professional players and streamers.
     controls:
-    - id: CY-NFTGAME-004-C1
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-NFTGAME-004-C2
-      name: Risk-based limits and cooling-off periods
-      type: preventive
-      description: Cap transaction size and frequency for new or higher-risk users and delay release of
-        funds for added review.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-NFTGAME-004-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-NFTGAME-005
-    name: Many low-value in-game transfers from unrelated accounts to one account
-    description: Fan-in of small gifts or trades into a single collector, then withdrawal.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - game_logs
-    - account_records
-    false_positive_notes: Gifting in communities.
+    - CTL-037
+    - CTL-072
+    - CTL-093
+  - ref: IND-TXN-004
+    legacy_id: CY-NFTGAME-005
+    context: Fan-in of small gifts or trades into a single collector, then withdrawal.
+    name_in_typology: Many low-value in-game transfers from unrelated accounts to one account
+    severity_in_typology: medium
+    false_positive_context: Gifting in communities.
     controls:
-    - id: CY-NFTGAME-005-C1
-      name: Graph and network analytics
-      type: detective
-      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
-        and fan-in/fan-out structures.
-      implementation: model
-      effectiveness: high
-    - id: CY-NFTGAME-005-C2
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-NFTGAME-005-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-NFTGAME-006
-    name: Accounts bought with stolen cards then items resold
-    description: Chargebacks on purchases of currency or items followed by transfer to other accounts.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - payment_data
-    - chargeback_data
-    false_positive_notes: Genuine friendly fraud.
+    - CTL-048
+    - CTL-037
+    - CTL-093
+  - ref: IND-TYP-015
+    legacy_id: CY-NFTGAME-006
+    context: Chargebacks on purchases of currency or items followed by transfer to other accounts.
+    false_positive_context: Genuine friendly fraud.
     controls:
-    - id: CY-NFTGAME-006-C1
-      name: Merchant and portfolio transaction monitoring
-      type: detective
-      description: Monitor merchant-level patterns such as ticket size, refund and chargeback rates, descriptor
-        mismatch and cross-merchant flows.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-NFTGAME-006-C2
-      name: Graph and network analytics
-      type: detective
-      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
-        and fan-in/fan-out structures.
-      implementation: model
-      effectiveness: high
-    - id: CY-NFTGAME-006-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-NFTGAME-007
-    name: Marketplace sellers with no identity verification receiving large payouts
-    description: Pseudonymous sellers withdraw significant proceeds to fiat or exchange wallets.
-    category: customer
-    severity: medium
-    detection_type:
-    - kyc_review
-    - transaction_monitoring
-    data_sources:
-    - seller_records
-    - payout_data
-    false_positive_notes: Verified under-threshold sellers.
+    - CTL-057
+    - CTL-048
+    - CTL-093
+  - ref: IND-CUS-021
+    legacy_id: CY-NFTGAME-007
+    context: Pseudonymous sellers withdraw significant proceeds to fiat or exchange wallets.
+    false_positive_context: Verified under-threshold sellers.
     controls:
-    - id: CY-NFTGAME-007-C1
-      name: Seller verification and payout controls
-      type: preventive
-      description: Verify sellers or workers and hold or stagger payouts for new or anomalous accounts.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-NFTGAME-007-C2
-      name: Source of funds and wealth verification
-      type: preventive
-      description: Obtain and corroborate evidence of where funds originate when activity exceeds thresholds
-        or profile.
-      implementation: process
-      effectiveness: medium
-    - id: CY-NFTGAME-007-C3
-      name: Enhanced due diligence
-      type: preventive
-      description: Collect additional information on activity purpose, expected volumes and ownership
-        before approval or continued service, with senior sign-off.
-      implementation: process
-      effectiveness: medium
-  - id: CY-NFTGAME-008
-    name: Use of mixers or privacy tools before purchasing NFTs
-    description: Purchase funding traces through obfuscation services.
-    category: typology_specific
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - external_intel
-    data_sources:
-    - blockchain_analytics
-    false_positive_notes: Privacy-minded buyers.
+    - CTL-076
+    - CTL-012
+    - CTL-023
+  - ref: IND-TYP-005
+    legacy_id: CY-NFTGAME-008
+    context: Purchase funding traces through obfuscation services.
+    name_in_typology: Use of mixers or privacy tools before purchasing NFTs
+    severity_in_typology: medium
+    false_positive_context: Privacy-minded buyers.
     controls:
-    - id: CY-NFTGAME-008-C1
-      name: Blockchain analytics and wallet attribution
-      type: detective
-      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
-        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
-      implementation: technology
-      effectiveness: high
-    - id: CY-NFTGAME-008-C2
-      name: Sanctions and watchlist screening including wallet addresses
-      type: preventive
-      description: Screen customers, counterparties and wallet addresses against sanctions lists and designated-address
-        data in real time.
-      implementation: technology
-      effectiveness: high
-    - id: CY-NFTGAME-008-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-NFTGAME-009
-    name: Sanctioned or high-risk jurisdiction counterparties in game economies
-    description: Transfers or sales involve users in sanctioned regions, detected via geolocation or wallet
+    - CTL-145
+    - CTL-029
+    - CTL-093
+  - ref: IND-GEO-018
+    legacy_id: CY-NFTGAME-009
+    context: Transfers or sales involve users in sanctioned regions, detected via geolocation or wallet
       data.
-    category: geographic
-    severity: medium
-    detection_type:
-    - screening
-    - transaction_monitoring
-    data_sources:
-    - ip_logs
-    - sanctions_lists
-    false_positive_notes: VPN or travelling users.
+    name_in_typology: Sanctioned or high-risk jurisdiction counterparties in game economies
+    false_positive_context: VPN or travelling users.
     controls:
-    - id: CY-NFTGAME-009-C1
-      name: Sanctions and watchlist screening including wallet addresses
-      type: preventive
-      description: Screen customers, counterparties and wallet addresses against sanctions lists and designated-address
-        data in real time.
-      implementation: technology
-      effectiveness: high
-    - id: CY-NFTGAME-009-C2
-      name: IP, geolocation and anonymisation detection
-      type: detective
-      description: Detect VPN, proxy, Tor and geolocation mismatch against declared residence and sanctioned
-        or high-risk jurisdictions.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-NFTGAME-009-C3
-      name: Account restriction and fund holds
-      type: corrective
-      description: Ability to restrict, hold or recall funds rapidly pending review, with defined legal
-        and operational triggers.
-      implementation: process
-      effectiveness: medium
-  - id: CY-NFTGAME-010
-    name: Marketplace or game operator lacks AML controls
-    description: Operator permits unlimited withdrawal and trade, ignores abuse reports and does not verify
+    - CTL-029
+    - CTL-092
+    - CTL-103
+  - ref: IND-PRD-024
+    legacy_id: CY-NFTGAME-010
+    context: Operator permits unlimited withdrawal and trade, ignores abuse reports and does not verify
       high-value users.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - investigator_judgement
-    data_sources:
-    - audit_reports
-    - policy_documents
-    false_positive_notes: Small operators.
+    false_positive_context: Small operators.
     controls:
-    - id: CY-NFTGAME-010-C1
-      name: Risk appetite and product risk assessment
-      type: governance
-      description: Documented appetite, product-level risk assessment and approval gate covering this
-        activity, reviewed on a set cadence.
-      implementation: policy
-      effectiveness: medium
-    - id: CY-NFTGAME-010-C2
-      name: Seller verification and payout controls
-      type: preventive
-      description: Verify sellers or workers and hold or stagger payouts for new or anomalous accounts.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-NFTGAME-010-C3
-      name: External intelligence and consortium feeds
-      type: detective
-      description: Ingest law-enforcement, industry and commercial threat intelligence on indicators,
-        mule accounts and scam infrastructure.
-      implementation: technology
-      effectiveness: medium
+    - CTL-162
+    - CTL-076
+    - CTL-083

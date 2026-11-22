@@ -1,0 +1,68 @@
+controls:
+- id: CTL-145
+  name: Blockchain analytics and wallet attribution
+  family: virtual_assets
+  type: detective
+  implementation: technology
+  effectiveness: high
+  description: Traces exposure of deposit and withdrawal addresses to illicit clusters and screens wallets
+    with risk-scored alerts. It reveals on-chain exposure.
+  also_known_as:
+  - Blockchain analytics screening
+  - Blockchain analytics and off-ramp monitoring
+  - Chain-hopping analytics
+  - Blockchain address screening
+  - Crypto address screening
+  - Wallet screening
+  - Darknet exposure screening
+  - Crypto exposure screening
+- id: CTL-146
+  name: Travel rule data exchange
+  family: virtual_assets
+  type: preventive
+  implementation: technology
+  effectiveness: high
+  description: Collects, validates and transmits required originator and beneficiary information with
+    virtual asset transfers and holds or blocks transfers where counterparty data is missing or unreliable.
+    It brings wire-like transparency to virtual asset payments.
+  also_known_as:
+  - Travel rule data exchange and counterparty checks
+  - Travel-rule compliance
+  - Travel rule data checks
+- id: CTL-147
+  name: Obfuscation exposure and thresholds
+  family: virtual_assets
+  type: detective
+  implementation: rule
+  effectiveness: medium
+  description: Flags direct and indirect exposure to mixers, privacy services and obfuscation tools against
+    defined thresholds and applies enhanced review. It manages the traceability loss these tools create.
+  also_known_as:
+  - Exposure thresholds
+  - Obfuscation exposure rule
+  - Exposure-tiered response
+  - Mixer and privacy-asset exposure rules
+- id: CTL-148
+  name: Unhosted wallet ownership proof
+  family: virtual_assets
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Requires proof of control, such as a signed message or small test transfer, before large
+    transfers to or from privately held wallets are accepted. It confirms the customer owns the wallet
+    and prevents use of third-party or hostile-controlled addresses.
+  also_known_as: []
+- id: CTL-149
+  name: Counterparty VASP and platform due diligence
+  family: virtual_assets
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Assesses the licensing, AML controls, jurisdiction and reputation of counterparty exchanges,
+    over-the-counter desks and other virtual asset service providers before enabling flows, and reviews
+    them periodically. It limits exposure through weak or complicit counterparties.
+  also_known_as:
+  - Counterparty provider due diligence
+  - VASP risk assessment
+  - OTC counterparty due diligence
+  - VASP due diligence

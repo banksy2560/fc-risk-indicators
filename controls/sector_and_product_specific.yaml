@@ -1,0 +1,69 @@
+controls:
+- id: CTL-150
+  name: Product-specific misuse surveillance
+  family: sector_and_product_specific
+  type: detective
+  implementation: rule
+  effectiveness: medium
+  description: Monitors specialised products such as insurance, securities, safe deposit and prepaid instruments
+    for surrender, free delivery, overpayment, assignment, matched trades and unusual access. It catches
+    product-specific abuse.
+  also_known_as:
+  - Access log monitoring
+  - Prepaid and anonymous instrument monitoring
+  - Return and resale monitoring
+  - Early surrender rule
+  - Assignment review
+  - Beneficiary-change alert
+  - Overpayment rule
+  - Cross-account trade surveillance
+- id: CTL-151
+  name: Lending and collateral integrity checks
+  family: sector_and_product_specific
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Verifies lender ownership, loan terms and rationale, collateral origin and repayment sources,
+    and alerts on early or third-party repayment. It prevents loans being used to place or layer funds.
+  also_known_as:
+  - Related-party lending review
+  - Early repayment alert
+  - Foreign investor due diligence
+  - Loan terms reasonableness check
+  - Documentation standard
+  - Early repayment rule
+  - Agreement requirement
+  - Director loan documentation rule
+- id: CTL-152
+  name: Gaming cash-out and win-document controls
+  family: sector_and_product_specific
+  type: preventive
+  implementation: policy
+  effectiveness: medium
+  description: Restricts cash-out and cheque issue to evidenced winnings, prohibits redemption to third
+    parties and issues win certificates only on verified records, with periodic audit. It prevents gaming
+    proceeds being used as a conduit for illicit funds.
+  also_known_as:
+  - Cash-out to cheque restrictions
+  - Third-party redemption prohibition
+  - Win certificate controls
+  - Audit of win documents
+  - Withdrawal controls
+- id: CTL-153
+  name: Gaming and betting play surveillance
+  family: sector_and_product_specific
+  type: detective
+  implementation: model
+  effectiveness: medium
+  description: Surveils chip transfers, buy-in versus play, low-risk or hedged betting, unusual stakes
+    and collusive play between accounts or players. It detects use of gaming or betting products to launder
+    or manipulate outcomes.
+  also_known_as:
+  - Buy-in versus play ratio rule
+  - Chip transfer surveillance
+  - Front-money account monitoring
+  - Player identity matching
+  - Junket reconciliations
+  - Instrument diversity rule
+  - Bonus abuse and play analytics
+  - Collusion detection analytics

@@ -17,197 +17,64 @@ typology:
   - Council of Europe, Convention on the Manipulation of Sports Competitions (2014)
   - FATF, Money Laundering through Online Gambling (published typologies)
   indicators:
-  - id: OP-GAMBLE-001
-    name: Payments to unlicensed gambling operators or via nested processors
-    description: Card or bank payments to merchants disguised under other categories.
-    category: counterparty
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - external_intel
-    data_sources:
-    - merchant_data
-    - regulator_lists
-    false_positive_notes: Offshore operators can look similar.
+  - ref: IND-CPT-026
+    legacy_id: OP-GAMBLE-001
+    context: Card or bank payments to merchants disguised under other categories.
+    name_in_typology: Payments to unlicensed gambling operators or via nested processors
+    false_positive_context: Offshore operators can look similar.
     controls:
-    - id: OP-GAMBLE-001-C1
-      name: Gambling MCC masking detection
-      type: detective
-      description: Detect merchants disguised.
-      implementation: model
-      effectiveness: medium
-    - id: OP-GAMBLE-001-C2
-      name: Regulator blacklist screening
-      type: preventive
-      description: Screen against licence lists.
-      implementation: technology
-      effectiveness: high
-  - id: OP-GAMBLE-002
-    name: Many accounts funding a few betting accounts or agents
-    description: Pooling of funds to bookmakers or agents.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - payment_records
-    false_positive_notes: Agents for horse racing exist.
+    - CTL-057
+    - CTL-029
+  - ref: IND-TXN-004
+    legacy_id: OP-GAMBLE-002
+    context: Pooling of funds to bookmakers or agents.
+    name_in_typology: Many accounts funding a few betting accounts or agents
+    false_positive_context: Agents for horse racing exist.
     controls:
-    - id: OP-GAMBLE-002-C1
-      name: Agent pooling rule
-      type: detective
-      description: Detect pooling to individual.
-      implementation: rule
-      effectiveness: medium
-    - id: OP-GAMBLE-002-C2
-      name: Agent due diligence
-      type: preventive
-      description: Verify agents.
-      implementation: process
-      effectiveness: high
-  - id: OP-GAMBLE-003
-    name: Bets with minimal risk, such as opposing outcomes at different books
-    description: Low-risk betting and quick withdrawals to launder.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - betting_data
-    false_positive_notes: Arbitrage bettors exist.
+    - CTL-021
+    - CTL-153
+    - CTL-041
+  - ref: IND-BEH-104
+    legacy_id: OP-GAMBLE-003
+    context: Low-risk betting and quick withdrawals to launder.
+    false_positive_context: Arbitrage bettors exist.
     controls:
-    - id: OP-GAMBLE-003-C1
-      name: Low-risk betting analytics
-      type: detective
-      description: Detect hedged betting.
-      implementation: model
-      effectiveness: medium
-    - id: OP-GAMBLE-003-C2
-      name: Operator reporting
-      type: governance
-      description: Share data with regulators.
-      implementation: process
-      effectiveness: medium
-  - id: OP-GAMBLE-004
-    name: Unusual betting patterns on lower-league or youth matches
-    description: Large late stakes on obscure markets.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - external_intel
-    - investigator_judgement
-    data_sources:
-    - integrity_alerts
-    false_positive_notes: Sharp bettors exist.
+    - CTL-153
+    - CTL-097
+  - ref: IND-TYP-043
+    legacy_id: OP-GAMBLE-004
+    context: Large late stakes on obscure markets.
+    false_positive_context: Sharp bettors exist.
     controls:
-    - id: OP-GAMBLE-004-C1
-      name: Integrity alert cooperation
-      type: governance
-      description: Cooperate with integrity units.
-      implementation: process
-      effectiveness: high
-    - id: OP-GAMBLE-004-C2
-      name: Unusual stake monitoring
-      type: detective
-      description: Monitor stake anomalies.
-      implementation: rule
-      effectiveness: medium
-  - id: OP-GAMBLE-005
-    name: Players or officials receive payments from betting-linked parties
-    description: Payments to athletes, referees from unrelated parties.
-    category: counterparty
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - screening
-    data_sources:
-    - payment_records
-    - sports_data
-    false_positive_notes: Sponsorships and fees exist.
+    - CTL-097
+    - CTL-153
+  - ref: IND-CPT-047
+    legacy_id: OP-GAMBLE-005
+    context: Payments to athletes, referees from unrelated parties.
+    false_positive_context: Sponsorships and fees exist.
     controls:
-    - id: OP-GAMBLE-005-C1
-      name: Sports sector EDD
-      type: preventive
-      description: Apply EDD to sports accounts.
-      implementation: process
-      effectiveness: high
-    - id: OP-GAMBLE-005-C2
-      name: Athlete-related alerts
-      type: detective
-      description: Flag unusual payments.
-      implementation: rule
-      effectiveness: medium
-  - id: OP-GAMBLE-006
-    name: Deposits and withdrawals with little betting activity
-    description: Account used as e-wallet with minimal play.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - gambling_account_data
-    false_positive_notes: Players may deposit and cash out.
+    - CTL-024
+    - CTL-153
+  - ref: IND-TXN-027
+    legacy_id: OP-GAMBLE-006
+    context: Account used as e-wallet with minimal play.
+    name_in_typology: Deposits and withdrawals with little betting activity
+    severity_in_typology: medium
+    false_positive_context: Players may deposit and cash out.
     controls:
-    - id: OP-GAMBLE-006-C1
-      name: Turnover ratio rules
-      type: detective
-      description: Compare bets to deposits.
-      implementation: rule
-      effectiveness: medium
-    - id: OP-GAMBLE-006-C2
-      name: Withdrawal controls
-      type: preventive
-      description: Limit withdrawals without wagering.
-      implementation: rule
-      effectiveness: medium
-  - id: OP-GAMBLE-007
-    name: Underground casino or card house with cash and chip sales
-    description: Cash-heavy venue with transfers by chat apps.
-    category: customer
-    severity: medium
-    detection_type:
-    - investigator_judgement
-    - external_intel
-    data_sources:
-    - cash_data
-    - intel
-    false_positive_notes: Private games may be legal.
+    - CTL-153
+    - CTL-152
+  - ref: IND-CUS-047
+    legacy_id: OP-GAMBLE-007
+    context: Cash-heavy venue with transfers by chat apps.
+    false_positive_context: Private games may be legal.
     controls:
-    - id: OP-GAMBLE-007-C1
-      name: Venue risk review
-      type: detective
-      description: Review venues.
-      implementation: process
-      effectiveness: medium
-    - id: OP-GAMBLE-007-C2
-      name: Cash source verification
-      type: preventive
-      description: Obtain evidence.
-      implementation: process
-      effectiveness: medium
-  - id: OP-GAMBLE-008
-    name: Use of crypto and prepaid cards for gambling top-ups
-    description: Layering via crypto into betting accounts.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - external_intel
-    data_sources:
-    - blockchain_analytics
-    false_positive_notes: Crypto betting is legal in places.
+    - CTL-153
+    - CTL-012
+  - ref: IND-PRD-058
+    legacy_id: OP-GAMBLE-008
+    context: Layering via crypto into betting accounts.
+    false_positive_context: Crypto betting is legal in places.
     controls:
-    - id: OP-GAMBLE-008-C1
-      name: Crypto exposure screening
-      type: preventive
-      description: Screen funding wallets.
-      implementation: technology
-      effectiveness: medium
-    - id: OP-GAMBLE-008-C2
-      name: Source-of-funds checks
-      type: preventive
-      description: Ask for funds sources.
-      implementation: process
-      effectiveness: medium
+    - CTL-145
+    - CTL-012

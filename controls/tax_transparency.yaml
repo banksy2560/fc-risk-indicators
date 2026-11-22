@@ -1,0 +1,29 @@
+controls:
+- id: CTL-065
+  name: Financial statement and tax reconciliation
+  family: tax_transparency
+  type: detective
+  implementation: process
+  effectiveness: medium
+  description: Compares account flows with filed accounts, VAT or sales tax data and tax remittances,
+    and links to VAT-fraud controls. It spots under-declared revenue and tax fraud proceeds.
+  also_known_as:
+  - VAT risk review
+  - Financial statement cross-check
+  - Financial statement reconciliation
+  - Tax remittance reconciliation
+  - Financial statement review
+- id: CTL-066
+  name: Tax residency self-certification testing
+  family: tax_transparency
+  type: preventive
+  implementation: rule
+  effectiveness: medium
+  description: Tests customer tax self-certifications against indicia such as addresses and standing instructions,
+    enforces collection of tax identification numbers and looks through passive entities to controlling
+    persons. It limits misreporting under tax transparency regimes.
+  also_known_as:
+  - Tax-compliance assurance
+  - Self-certification reasonableness test
+  - TIN collection enforcement
+  - Controlling person look-through

@@ -17,212 +17,72 @@ typology:
   - FinCEN, Guidance on structuring and Suspicious Activity Report (SAR) reporting (general)
   - AUSTRAC, Guidance on structuring and threshold transaction reports (general)
   indicators:
-  - id: ML-STRUCT-001
-    name: Repeated cash deposits just below reporting threshold
-    description: Multiple cash deposits or exchanges sized just under a regulatory reporting or internal
-      review threshold over a short period.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    - cash_deposit_records
-    false_positive_notes: Customers with stable habits (e.g. fixed daily takings or standard float sizes)
+  - ref: IND-TXN-006
+    legacy_id: ML-STRUCT-001
+    context: Multiple cash deposits or exchanges sized just under a regulatory reporting or internal review
+      threshold over a short period.
+    name_in_typology: Repeated cash deposits just below reporting threshold
+    false_positive_context: Customers with stable habits (e.g. fixed daily takings or standard float sizes)
       can legitimately generate similar amounts.
     controls:
-    - id: ML-STRUCT-001-C1
-      name: Near-threshold cash rule
-      type: detective
-      description: Alert when several cash transactions fall in a band just under the threshold within
-        a rolling window; tune band and window per segment.
-      implementation: rule
-      effectiveness: high
-    - id: ML-STRUCT-001-C2
-      name: Aggregated cash cumulative-value rule
-      type: detective
-      description: Aggregate cash across accounts, branches and days per customer and related parties
-        so splitting does not evade review.
-      implementation: rule
-      effectiveness: medium
-  - id: ML-STRUCT-002
-    name: Same-day deposits across multiple branches or ATMs
-    description: Cash is paid in at several branches, ATMs or agents within hours, with total value well
-      above the amount at any one location.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    - channel_logs
-    false_positive_notes: Travelling workers or customers with several workplaces may use many locations.
+    - CTL-038
+    - CTL-039
+  - ref: IND-TXN-007
+    legacy_id: ML-STRUCT-002
+    context: Cash is paid in at several branches, ATMs or agents within hours, with total value well above
+      the amount at any one location.
+    name_in_typology: Same-day deposits across multiple branches or ATMs
+    false_positive_context: Travelling workers or customers with several workplaces may use many locations.
     controls:
-    - id: ML-STRUCT-002-C1
-      name: Cross-channel cash aggregation
-      type: detective
-      description: Combine branch, ATM and agent cash by customer and day, flagging multiple-location
-        patterns.
-      implementation: rule
-      effectiveness: high
-    - id: ML-STRUCT-002-C2
-      name: Geo-velocity analytics
-      type: detective
-      description: Flag physically implausible location sequences or unusual dispersion of deposit points.
-      implementation: model
-      effectiveness: medium
-  - id: ML-STRUCT-003
-    name: Multiple depositors paying into one account
-    description: Several unrelated individuals make cash deposits into the same account, often in similar
+    - CTL-039
+    - CTL-045
+  - ref: IND-CPT-035
+    legacy_id: ML-STRUCT-003
+    context: Several unrelated individuals make cash deposits into the same account, often in similar
       amounts and at similar times.
-    category: counterparty
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - transaction_data
-    - teller_records
-    false_positive_notes: Collections for clubs, rent, fundraising or family contributions may fit.
+    name_in_typology: Multiple depositors paying into one account
+    false_positive_context: Collections for clubs, rent, fundraising or family contributions may fit.
     controls:
-    - id: ML-STRUCT-003-C1
-      name: Many-to-one deposit link analysis
-      type: detective
-      description: Detect accounts receiving cash from many distinct depositors and review for plausible
-        commercial or social rationale.
-      implementation: model
-      effectiveness: medium
-    - id: ML-STRUCT-003-C2
-      name: Third-party depositor ID capture
-      type: preventive
-      description: Require identity capture and purpose for third-party cash deposits above a low value.
-      implementation: process
-      effectiveness: medium
-  - id: ML-STRUCT-004
-    name: Rapid onward movement after cash credits
-    description: Funds credited in cash are quickly transferred out, withdrawn elsewhere or used for purchases
+    - CTL-041
+    - CTL-046
+  - ref: IND-TXN-030
+    legacy_id: ML-STRUCT-004
+    context: Funds credited in cash are quickly transferred out, withdrawn elsewhere or used for purchases
       leaving a low balance.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    false_positive_notes: Customers paying bills or suppliers on receipt of cash may do the same.
+    false_positive_context: Customers paying bills or suppliers on receipt of cash may do the same.
     controls:
-    - id: ML-STRUCT-004-C1
-      name: Cash-in/fast-out rule
-      type: detective
-      description: Alert when a high share of cash credits leaves within a short period, especially by
-        wire or to new beneficiaries.
-      implementation: rule
-      effectiveness: high
-    - id: ML-STRUCT-004-C2
-      name: Case review prompts
-      type: detective
-      description: Analyst checklist comparing flow pattern against stated business or occupation.
-      implementation: process
-      effectiveness: medium
-  - id: ML-STRUCT-005
-    name: Customer reacts to reporting or ID requirements
-    description: Customer reduces a transaction, splits it, or leaves when asked for ID, source of funds
-      or told a report may be filed.
-    category: behavioural
-    severity: high
-    detection_type:
-    - customer_behaviour
-    - investigator_judgement
-    data_sources:
-    - branch_notes
-    - teller_observations
-    false_positive_notes: Privacy concerns or lack of documents with the customer may explain some cases.
+    - CTL-040
+    - CTL-093
+  - ref: IND-BEH-096
+    legacy_id: ML-STRUCT-005
+    context: Customer reduces a transaction, splits it, or leaves when asked for ID, source of funds or
+      told a report may be filed.
+    false_positive_context: Privacy concerns or lack of documents with the customer may explain some cases.
     controls:
-    - id: ML-STRUCT-005-C1
-      name: Frontline escalation training
-      type: preventive
-      description: Train tellers to recognise and escalate threshold-avoidance behaviour without tipping
-        off.
-      implementation: training
-      effectiveness: medium
-    - id: ML-STRUCT-005-C2
-      name: Unusual activity reporting channel
-      type: governance
-      description: Provide simple internal reporting form and QA feedback loop for frontline observations.
-      implementation: policy
-      effectiveness: medium
-  - id: ML-STRUCT-006
-    name: Deposit volumes inconsistent with customer profile
-    description: Cash volumes far exceed expected activity for the customer's declared occupation, income
+    - CTL-170
+    - CTL-098
+  - ref: IND-CUS-002
+    legacy_id: ML-STRUCT-006
+    context: Cash volumes far exceed expected activity for the customer's declared occupation, income
       or business.
-    category: customer
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - kyc_review
-    data_sources:
-    - kyc_profile
-    - transaction_data
-    false_positive_notes: Windfalls, asset sales or seasonal income may be genuine.
+    name_in_typology: Deposit volumes inconsistent with customer profile
+    false_positive_context: Windfalls, asset sales or seasonal income may be genuine.
     controls:
-    - id: ML-STRUCT-006-C1
-      name: Profile-based expected activity thresholds
-      type: detective
-      description: Set expected cash bands at onboarding and alert on sustained deviation.
-      implementation: rule
-      effectiveness: medium
-    - id: ML-STRUCT-006-C2
-      name: Periodic source-of-funds refresh
-      type: preventive
-      description: Request evidence for sustained cash above profile before limits are lifted.
-      implementation: process
-      effectiveness: medium
-  - id: ML-STRUCT-007
-    name: Frequent purchase of monetary instruments in small amounts
-    description: Multiple money orders, drafts, prepaid cards or cheques purchased with cash in sub-threshold
+    - CTL-042
+    - CTL-012
+  - ref: IND-PRD-049
+    legacy_id: ML-STRUCT-007
+    context: Multiple money orders, drafts, prepaid cards or cheques purchased with cash in sub-threshold
       amounts.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - instrument_sales_logs
-    false_positive_notes: Some customers lack bank accounts and use instruments for rent or bills.
+    false_positive_context: Some customers lack bank accounts and use instruments for rent or bills.
     controls:
-    - id: ML-STRUCT-007-C1
-      name: Instrument purchase aggregation
-      type: detective
-      description: Aggregate instrument sales by purchaser over a window and alert on repeats.
-      implementation: rule
-      effectiveness: medium
-    - id: ML-STRUCT-007-C2
-      name: Sequential-number review
-      type: detective
-      description: Review consecutive serial numbers or batches issued the same day.
-      implementation: process
-      effectiveness: low
-  - id: ML-STRUCT-008
-    name: Currency denomination or condition anomalies
-    description: Cash arrives in unusual bundles, rubber-banded small notes, or mixed denominations inconsistent
+    - CTL-039
+    - CTL-038
+  - ref: IND-TYP-039
+    legacy_id: ML-STRUCT-008
+    context: Cash arrives in unusual bundles, rubber-banded small notes, or mixed denominations inconsistent
       with the stated source.
-    category: typology_specific
-    severity: low
-    detection_type:
-    - customer_behaviour
-    - investigator_judgement
-    data_sources:
-    - cash_handling_notes
-    - teller_observations
-    false_positive_notes: Retail cash is often in small notes; condition varies by source.
+    false_positive_context: Retail cash is often in small notes; condition varies by source.
     controls:
-    - id: ML-STRUCT-008-C1
-      name: Cash handling observation log
-      type: detective
-      description: Record anomalies at cash counters and feed them into case review.
-      implementation: process
-      effectiveness: low
-    - id: ML-STRUCT-008-C2
-      name: Teller training on cash indicators
-      type: preventive
-      description: Cover denomination and condition indicators in onboarding training.
-      implementation: training
-      effectiveness: low
+    - CTL-098
+    - CTL-170

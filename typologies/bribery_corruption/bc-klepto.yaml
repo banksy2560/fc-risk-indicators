@@ -19,220 +19,71 @@ typology:
     (2010)'
   - World Bank StAR, The Puppet Masters (2011)
   indicators:
-  - id: BC-KLEPTO-001
-    name: Wealth disproportionate to official income
-    description: A PEP or close associate holds assets, accounts or lifestyle spending far exceeding legitimate
+  - ref: IND-CUS-001
+    legacy_id: BC-KLEPTO-001
+    context: A PEP or close associate holds assets, accounts or lifestyle spending far exceeding legitimate
       known earnings.
-    category: customer
-    severity: high
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - kyc_files
-    - asset_registers
-    - adverse_media
-    false_positive_notes: Wealth can come from inheritance, prior private career or family business.
+    name_in_typology: Wealth disproportionate to official income
+    false_positive_context: Wealth can come from inheritance, prior private career or family business.
     controls:
-    - id: BC-KLEPTO-001-C1
-      name: Source of wealth corroboration
-      type: preventive
-      description: Obtain and independently corroborate source of wealth for PEPs rather than relying
-        on self-declaration.
-      implementation: process
-      effectiveness: high
-    - id: BC-KLEPTO-001-C2
-      name: Senior management PEP approval
-      type: preventive
-      description: Require senior sign-off for onboarding and annual review of higher-risk PEPs.
-      implementation: policy
-      effectiveness: high
-  - id: BC-KLEPTO-002
-    name: Accounts held via family members or associates
-    description: Funds and assets move through spouses, children, in-laws or business partners who have
-      no obvious independent source of wealth.
-    category: customer
-    severity: high
-    detection_type:
-    - kyc_review
-    - screening
-    data_sources:
-    - kyc_files
-    - pep_lists
-    - corporate_registries
-    false_positive_notes: Families commonly share finances and businesses.
+    - CTL-013
+    - CTL-025
+  - ref: IND-CUS-015
+    legacy_id: BC-KLEPTO-002
+    context: Funds and assets move through spouses, children, in-laws or business partners who have no
+      obvious independent source of wealth.
+    false_positive_context: Families commonly share finances and businesses.
     controls:
-    - id: BC-KLEPTO-002-C1
-      name: Relatives and close associate screening
-      type: preventive
-      description: Extend PEP screening to relatives and close associates and link them in the customer
-        graph.
-      implementation: technology
-      effectiveness: high
-    - id: BC-KLEPTO-002-C2
-      name: Relationship network analysis
-      type: detective
-      description: Use link analysis to find accounts connected to a PEP through shared addresses, directors
-        or transfers.
-      implementation: model
-      effectiveness: medium
-  - id: BC-KLEPTO-003
-    name: Layered offshore entities and trusts
-    description: PEP-linked funds sit in multi-jurisdiction companies, foundations or trusts with nominee
+    - CTL-028
+    - CTL-048
+  - ref: IND-OWN-002
+    legacy_id: BC-KLEPTO-003
+    context: PEP-linked funds sit in multi-jurisdiction companies, foundations or trusts with nominee
       directors and no clear business purpose.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - corporate_registries
-    - leaks_data
-    - kyc_files
-    false_positive_notes: Wealth planning and estate structures are often legitimately multi-layered.
+    name_in_typology: Layered offshore entities and trusts
+    false_positive_context: Wealth planning and estate structures are often legitimately multi-layered.
     controls:
-    - id: BC-KLEPTO-003-C1
-      name: Structure rationale assessment
-      type: preventive
-      description: Require documented commercial or legal rationale for each layer and look-through to
-        beneficial owners.
-      implementation: process
-      effectiveness: high
-    - id: BC-KLEPTO-003-C2
-      name: Offshore leaks cross-check
-      type: detective
-      description: Screen entities and individuals against published leaks datasets and investigative
-        reporting.
-      implementation: technology
-      effectiveness: medium
-  - id: BC-KLEPTO-004
-    name: Large inflows from state-owned entities or ministries to private accounts
-    description: Funds from government bodies or state enterprises arrive at private or personal accounts
+    - CTL-008
+    - CTL-032
+  - ref: IND-TXN-041
+    legacy_id: BC-KLEPTO-004
+    context: Funds from government bodies or state enterprises arrive at private or personal accounts
       with no apparent contractual basis.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - payment_records
-    - sector_intelligence
-    false_positive_notes: State suppliers and contractors receive government funds legitimately.
+    false_positive_context: State suppliers and contractors receive government funds legitimately.
     controls:
-    - id: BC-KLEPTO-004-C1
-      name: Government-origin payment alerts
-      type: detective
-      description: Flag credits originating from public bodies to personal or newly opened accounts.
-      implementation: rule
-      effectiveness: medium
-    - id: BC-KLEPTO-004-C2
-      name: Contract basis verification
-      type: preventive
-      description: Request contracts and tender evidence supporting payments from state entities.
-      implementation: process
-      effectiveness: high
-  - id: BC-KLEPTO-005
-    name: Prime real estate purchases in foreign cities
-    description: Acquisition of high-value property abroad through companies or relatives, inconsistent
-      with declared means.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - kyc_review
-    - transaction_monitoring
-    data_sources:
-    - property_records
-    - payment_records
-    false_positive_notes: Wealthy individuals legitimately invest in overseas property.
+    - CTL-058
+    - CTL-026
+    - CTL-042
+  - ref: IND-PRD-001
+    legacy_id: BC-KLEPTO-005
+    context: Acquisition of high-value property abroad through companies or relatives, inconsistent with
+      declared means.
+    false_positive_context: Wealthy individuals legitimately invest in overseas property.
     controls:
-    - id: BC-KLEPTO-005-C1
-      name: Property purchase EDD trigger
-      type: preventive
-      description: Trigger enhanced review for large property payments by PEP-linked customers.
-      implementation: rule
-      effectiveness: medium
-    - id: BC-KLEPTO-005-C2
-      name: Registry and company links check
-      type: detective
-      description: Check ownership chains of property-holding companies against PEP lists.
-      implementation: process
-      effectiveness: medium
-  - id: BC-KLEPTO-006
-    name: Adverse media on embezzlement or procurement fraud
-    description: Credible reporting or enforcement action links the customer or associates to misappropriation
+    - CTL-026
+    - CTL-005
+  - ref: IND-CUS-003
+    legacy_id: BC-KLEPTO-006
+    context: Credible reporting or enforcement action links the customer or associates to misappropriation
       of state funds.
-    category: customer
-    severity: high
-    detection_type:
-    - screening
-    - external_intel
-    data_sources:
-    - adverse_media
-    - enforcement_notices
-    false_positive_notes: Media can be politically motivated or inaccurate, especially in repressive jurisdictions.
+    name_in_typology: Adverse media on embezzlement or procurement fraud
+    false_positive_context: Media can be politically motivated or inaccurate, especially in repressive
+      jurisdictions.
     controls:
-    - id: BC-KLEPTO-006-C1
-      name: Adverse media screening
-      type: detective
-      description: Run continuous multi-language adverse media screening with reliability grading.
-      implementation: technology
-      effectiveness: medium
-    - id: BC-KLEPTO-006-C2
-      name: Source credibility assessment
-      type: preventive
-      description: Document analyst assessment of source reliability and possible political persecution
-        before decisions.
-      implementation: process
-      effectiveness: medium
-  - id: BC-KLEPTO-007
-    name: Rapid movement through correspondent or private banking channels
-    description: Large sums move quickly through several banks and jurisdictions after arrival, with no
-      hold period.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - payment_records
-    - swift_messages
-    false_positive_notes: Treasury and liquidity management can cause fast movements.
+    - CTL-032
+    - CTL-033
+  - ref: IND-TXN-042
+    legacy_id: BC-KLEPTO-007
+    context: Large sums move quickly through several banks and jurisdictions after arrival, with no hold
+      period.
+    false_positive_context: Treasury and liquidity management can cause fast movements.
     controls:
-    - id: BC-KLEPTO-007-C1
-      name: Pass-through velocity rule
-      type: detective
-      description: Alert when inflows are largely moved out within short windows to different jurisdictions.
-      implementation: rule
-      effectiveness: medium
-    - id: BC-KLEPTO-007-C2
-      name: Correspondent flow review
-      type: detective
-      description: Review nested or high-risk correspondent flows linked to PEP clients.
-      implementation: process
-      effectiveness: medium
-  - id: BC-KLEPTO-008
-    name: Luxury asset spending inconsistent with profile
-    description: High-value purchases of yachts, jets, art, jewellery or education by a PEP-linked customer
+    - CTL-040
+    - CTL-105
+  - ref: IND-BEH-026
+    legacy_id: BC-KLEPTO-008
+    context: High-value purchases of yachts, jets, art, jewellery or education by a PEP-linked customer
       not explained by known income.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - kyc_review
-    data_sources:
-    - card_data
-    - payment_records
-    - asset_registers
-    false_positive_notes: Some customers have undeclared legitimate wealth sources not yet documented.
+    false_positive_context: Some customers have undeclared legitimate wealth sources not yet documented.
     controls:
-    - id: BC-KLEPTO-008-C1
-      name: Lifestyle-profile consistency review
-      type: detective
-      description: Compare observed spending with documented income and wealth during periodic reviews.
-      implementation: process
-      effectiveness: medium
-    - id: BC-KLEPTO-008-C2
-      name: Luxury merchant alerts
-      type: detective
-      description: Flag high-value purchases at luxury dealers by PEP-linked customers.
-      implementation: rule
-      effectiveness: low
+    - CTL-043

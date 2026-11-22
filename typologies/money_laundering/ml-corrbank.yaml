@@ -14,219 +14,77 @@ typology:
   - Wolfsberg Group, Correspondent Banking Due Diligence Questionnaire and Principles (general)
   - Basel Committee on Banking Supervision, Sound management of risks related to ML and FT (general)
   indicators:
-  - id: ML-CORRBANK-001
-    name: Respondent serves undisclosed downstream institutions
-    description: Respondent provides access to its account for other banks or payment firms (nesting)
-      without disclosure.
-    category: counterparty
-    severity: high
-    detection_type:
-    - kyc_review
-    - transaction_monitoring
-    data_sources:
-    - due_diligence_files
-    - payment_messages
-    false_positive_notes: Group and agency arrangements are disclosed normally.
+  - ref: IND-CPT-034
+    legacy_id: ML-CORRBANK-001
+    context: Respondent provides access to its account for other banks or payment firms (nesting) without
+      disclosure.
+    false_positive_context: Group and agency arrangements are disclosed normally.
     controls:
-    - id: ML-CORRBANK-001-C1
-      name: Nested relationship disclosure requirement
-      type: preventive
-      description: Contractual duty to disclose and obtain approval for nested use.
-      implementation: policy
-      effectiveness: high
-    - id: ML-CORRBANK-001-C2
-      name: Payment message originator analysis
-      type: detective
-      description: Analyse originator and beneficiary data for undisclosed downstream parties.
-      implementation: technology
-      effectiveness: medium
-  - id: ML-CORRBANK-002
-    name: Respondent based in high-risk jurisdiction with weak AML supervision
-    description: Respondent operates where regulation or supervision is weak.
-    category: geographic
-    severity: high
-    detection_type:
-    - kyc_review
-    - screening
-    data_sources:
-    - country_risk_data
-    - due_diligence_files
-    false_positive_notes: Large regional banks in higher-risk countries serve real trade.
+    - CTL-105
+    - CTL-104
+    - CTL-106
+  - ref: IND-GEO-018
+    legacy_id: ML-CORRBANK-002
+    context: Respondent operates where regulation or supervision is weak.
+    name_in_typology: Respondent based in high-risk jurisdiction with weak AML supervision
+    severity_in_typology: high
+    false_positive_context: Large regional banks in higher-risk countries serve real trade.
     controls:
-    - id: ML-CORRBANK-002-C1
-      name: Respondent risk rating and EDD
-      type: preventive
-      description: Risk-rate by country, ownership, products and controls; apply enhanced review.
-      implementation: process
-      effectiveness: high
-    - id: ML-CORRBANK-002-C2
-      name: Senior approval and annual review
-      type: governance
-      description: Senior approval to open and refresh.
-      implementation: policy
-      effectiveness: medium
-  - id: ML-CORRBANK-003
-    name: Transaction volumes disproportionate to respondent's size
-    description: Flows far exceed expected levels for the respondent's balance sheet or footprint.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    false_positive_notes: Business growth or new products.
+    - CTL-104
+    - CTL-025
+  - ref: IND-TXN-104
+    legacy_id: ML-CORRBANK-003
+    context: Flows far exceed expected levels for the respondent's balance sheet or footprint.
+    false_positive_context: Business growth or new products.
     controls:
-    - id: ML-CORRBANK-003-C1
-      name: Respondent profile monitoring
-      type: detective
-      description: Compare actual versus expected volumes.
-      implementation: rule
-      effectiveness: medium
-    - id: ML-CORRBANK-003-C2
-      name: Periodic relationship review
-      type: preventive
-      description: Update expected activity.
-      implementation: process
-      effectiveness: medium
-  - id: ML-CORRBANK-004
-    name: Missing or poor-quality payment message information
-    description: Messages lack originator or beneficiary data or use unclear references.
-    category: document
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - document_review
-    data_sources:
-    - swift_messages
-    false_positive_notes: Legacy systems and truncation.
+    - CTL-106
+  - ref: IND-DOC-015
+    legacy_id: ML-CORRBANK-004
+    context: Messages lack originator or beneficiary data or use unclear references.
+    name_in_typology: Missing or poor-quality payment message information
+    false_positive_context: Legacy systems and truncation.
     controls:
-    - id: ML-CORRBANK-004-C1
-      name: Message quality screening
-      type: detective
-      description: Detect missing or meaningless fields.
-      implementation: rule
-      effectiveness: high
-    - id: ML-CORRBANK-004-C2
-      name: Request-for-information process
-      type: corrective
-      description: RFI to respondent with deadlines and escalation.
-      implementation: process
-      effectiveness: medium
-  - id: ML-CORRBANK-005
-    name: Pooled flows with frequent round-sum payments
-    description: Large round-value payments or repeated amounts for multiple unrelated beneficiaries.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    false_positive_notes: Settlement batches.
+    - CTL-110
+    - CTL-107
+  - ref: IND-TXN-105
+    legacy_id: ML-CORRBANK-005
+    context: Large round-value payments or repeated amounts for multiple unrelated beneficiaries.
+    false_positive_context: Settlement batches.
     controls:
-    - id: ML-CORRBANK-005-C1
-      name: Round-value pattern rule
-      type: detective
-      description: Alert on patterns of round or repetitive amounts.
-      implementation: rule
-      effectiveness: medium
-    - id: ML-CORRBANK-005-C2
-      name: Sampling review
-      type: detective
-      description: Periodic sampling of underlying transactions.
-      implementation: process
-      effectiveness: medium
-  - id: ML-CORRBANK-006
-    name: Respondent refuses or delays information requests
-    description: Slow, evasive or incomplete responses to RFIs.
-    category: behavioural
-    severity: high
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - rfi_logs
-    false_positive_notes: Time-zone and legal confidentiality limits.
+    - CTL-044
+    - CTL-175
+  - ref: IND-BEH-002
+    legacy_id: ML-CORRBANK-006
+    context: Slow, evasive or incomplete responses to RFIs.
+    name_in_typology: Respondent refuses or delays information requests
+    false_positive_context: Time-zone and legal confidentiality limits.
     controls:
-    - id: ML-CORRBANK-006-C1
-      name: RFI response tracking
-      type: detective
-      description: Track response times and quality.
-      implementation: technology
-      effectiveness: medium
-    - id: ML-CORRBANK-006-C2
-      name: Restriction or exit policy
-      type: corrective
-      description: Restrict or terminate on unresolved non-cooperation.
-      implementation: policy
-      effectiveness: high
-  - id: ML-CORRBANK-007
-    name: Links to shell banks or unlicensed entities
-    description: Respondent has relationships with shell or unlicensed institutions.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    - screening
-    data_sources:
-    - regulatory_registers
-    false_positive_notes: Naming confusion.
+    - CTL-107
+    - CTL-016
+    - CTL-023
+    - CTL-106
+  - ref: IND-OWN-021
+    legacy_id: ML-CORRBANK-007
+    context: Respondent has relationships with shell or unlicensed institutions.
+    false_positive_context: Naming confusion.
     controls:
-    - id: ML-CORRBANK-007-C1
-      name: Shell bank prohibition attestation
-      type: preventive
-      description: Obtain and verify attestation and check registers.
-      implementation: policy
-      effectiveness: high
-    - id: ML-CORRBANK-007-C2
-      name: Licence verification
-      type: preventive
-      description: Check regulator registers.
-      implementation: process
-      effectiveness: high
-  - id: ML-CORRBANK-008
-    name: Payable-through account use by respondent's customers
-    description: Respondent's customers transact directly through the account.
-    category: product_channel
-    severity: high
-    detection_type:
-    - kyc_review
-    data_sources:
-    - product_data
-    false_positive_notes: Intended features of some products.
+    - CTL-108
+    - CTL-116
+  - ref: IND-PRD-017
+    legacy_id: ML-CORRBANK-008
+    context: Respondent's customers transact directly through the account.
+    name_in_typology: Payable-through account use by respondent's customers
+    false_positive_context: Intended features of some products.
     controls:
-    - id: ML-CORRBANK-008-C1
-      name: Payable-through account controls
-      type: preventive
-      description: Restrict or require CDD on sub-account holders.
-      implementation: policy
-      effectiveness: high
-    - id: ML-CORRBANK-008-C2
-      name: Sub-account monitoring
-      type: detective
-      description: Monitor sub-account level activity.
-      implementation: rule
-      effectiveness: medium
-  - id: ML-CORRBANK-009
-    name: Adverse media or enforcement on respondent
-    description: Respondent has regulatory action, sanctions or ML scandals.
-    category: counterparty
-    severity: medium
-    detection_type:
-    - screening
-    - external_intel
-    data_sources:
-    - adverse_media
-    false_positive_notes: Past issues may be remediated.
+    - CTL-109
+    - CTL-104
+    - CTL-106
+  - ref: IND-CPT-059
+    legacy_id: ML-CORRBANK-009
+    context: Respondent has regulatory action, sanctions or ML scandals.
+    name_in_typology: Adverse media or enforcement on respondent
+    severity_in_typology: medium
+    false_positive_context: Past issues may be remediated.
     controls:
-    - id: ML-CORRBANK-009-C1
-      name: Adverse news and enforcement screening
-      type: detective
-      description: Continuous screening.
-      implementation: technology
-      effectiveness: medium
-    - id: ML-CORRBANK-009-C2
-      name: Remediation evidence review
-      type: preventive
-      description: Review remedial actions.
-      implementation: process
-      effectiveness: medium
+    - CTL-032
+    - CTL-106

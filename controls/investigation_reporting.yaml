@@ -1,0 +1,149 @@
+controls:
+- id: CTL-093
+  name: Specialist investigation and suspicious activity reporting
+  family: investigation_reporting
+  type: corrective
+  implementation: process
+  effectiveness: high
+  description: Trained analysts investigate alerts with typology playbooks, document rationale and file
+    reports where suspicion is formed, with prompt reporting to the competent authority. It converts alerts
+    into actionable intelligence.
+  also_known_as:
+  - Analyst review with documented rationale test
+  - Specialist team escalation
+  - Immediate review and reporting
+  - Recipient profile review
+  - Case review prompts
+- id: CTL-094
+  name: Case management and cross-team escalation
+  family: investigation_reporting
+  type: governance
+  implementation: process
+  effectiveness: medium
+  description: Tracks cases, outcomes, losses and false positives, routes concerns across fraud, sanctions
+    and anti-corruption teams and feeds outcomes into tuning and appetite. It supports consistent handling.
+  also_known_as:
+  - Case management and fraud MI governance
+  - Corruption-linked escalation
+  - Health-and-safety escalation
+- id: CTL-095
+  name: Network case investigation
+  family: investigation_reporting
+  type: corrective
+  implementation: process
+  effectiveness: medium
+  description: Investigates linked clusters and networks of accounts as one case, including broker networks
+    and accounts connected to seizures or requests, rather than reviewing accounts individually. It disrupts
+    organised activity that single-account review would miss.
+  also_known_as:
+  - Network investigation
+  - Case investigation playbook
+  - Network review
+  - Intelligence-led account review
+  - Network investigation referral
+- id: CTL-096
+  name: Law enforcement request handling and liaison
+  family: investigation_reporting
+  type: governance
+  implementation: process
+  effectiveness: medium
+  description: Handles law-enforcement, tax-authority and customs requests promptly, reviews related accounts
+    and maintains rapid contact points. It supports investigations and asset recovery while keeping responses
+    consistent.
+  also_known_as:
+  - Law enforcement liaison
+  - Law enforcement request handling
+  - Authority information request handling
+- id: CTL-097
+  name: Information sharing and public-private partnership
+  family: investigation_reporting
+  type: governance
+  implementation: policy
+  effectiveness: medium
+  description: Participates in sector, regulator and public-private forums and platform cooperation to
+    receive and share typologies and indicators where lawful. It keeps scenarios current.
+  also_known_as:
+  - Information sharing with authorities
+  - Procurement integrity reporting
+  - Insurer and lender information sharing
+  - Anti-bribery integration
+  - Marketplace cooperation
+  - Public-private partnership alerts
+  - Information sharing partnerships
+  - Information sharing with FIU
+- id: CTL-098
+  name: Internal unusual-activity reporting channel
+  family: investigation_reporting
+  type: governance
+  implementation: policy
+  effectiveness: medium
+  description: Provides a simple internal reporting channel and feedback loop so front-line staff can
+    escalate observations, pressure and cash-handling anomalies. It turns staff observations into cases
+    for review.
+  also_known_as:
+  - Reporting guidance
+  - Frontline escalation
+  - Pressure escalation process
+  - Unusual activity reporting channel
+  - Cash handling observation log
+- id: CTL-099
+  name: Suspicious reporting timeliness and quality assurance
+  family: investigation_reporting
+  type: detective
+  implementation: process
+  effectiveness: medium
+  description: Measures how quickly suspicious activity reports are filed after suspicion forms and subjects
+    narratives to peer or second-line review for completeness and usefulness. Weak or late reports are
+    corrected and root causes fed back to analysts, so intelligence reaches authorities on time and in
+    a usable form.
+  also_known_as:
+  - SAR timeliness and quality metrics
+  - Filing quality review
+- id: CTL-100
+  name: Safeguarding and victim-centred referral protocol
+  family: investigation_reporting
+  type: corrective
+  implementation: process
+  effectiveness: medium
+  description: Provides discreet escalation routes and private conversation procedures so staff can refer
+    suspected victims of exploitation, coercion or trafficking to specialists, police and support organisations.
+    It prioritises victim safety.
+  also_known_as:
+  - Forced labour referral
+  - Victim-centred escalation
+  - Safeguarding and referral protocol
+  - Victim-centred escalation protocol
+  - Welfare and credit abuse referral
+  - Safe-contact response procedure
+  - Safeguarding escalation
+  - Customer conversation and referral process
+- id: CTL-101
+  name: Prior-report cross-reference and feedback loop
+  family: investigation_reporting
+  type: detective
+  implementation: technology
+  effectiveness: medium
+  description: Checks parties against previously filed internal reports, links to reported accounts and
+    feeds report outcomes back into tuning. It spots repeat subjects and sharpens detection.
+  also_known_as:
+  - Cross-referencing prior cases
+  - Counterparty network analysis
+  - Historical SAR cross-reference
+  - Network link analysis on prior reports
+  - Feedback loop from SARs
+- id: CTL-102
+  name: Suspicion escalation and reporting decision protocol
+  family: investigation_reporting
+  type: governance
+  implementation: policy
+  effectiveness: medium
+  description: Defines timelines, owners and criteria for escalating concerns and deciding whether to
+    report, and for documents implying payments to proscribed groups. It ensures timely, accountable decisions.
+  also_known_as:
+  - Prompt reporting protocol
+  - Reporting procedure
+  - Escalation and reporting
+  - Escalation
+  - Escalation protocol
+  - Prompt SAR decision process
+  - Escalation to financial intelligence unit decision

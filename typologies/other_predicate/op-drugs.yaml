@@ -19,230 +19,73 @@ typology:
     Substances
   - FinCEN, advisories on illicit opioid-related financial activity
   indicators:
-  - id: OP-DRUGS-001
-    name: Structured cash deposits across many branches by multiple people
-    description: Many low-value cash deposits into one account from different locations, often followed
-      by wires out.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - cash_deposit_data
-    - atm_data
-    false_positive_notes: Retail businesses deposit cash daily.
+  - ref: IND-TXN-007
+    legacy_id: OP-DRUGS-001
+    context: Many low-value cash deposits into one account from different locations, often followed by
+      wires out.
+    name_in_typology: Structured cash deposits across many branches by multiple people
+    false_positive_context: Retail businesses deposit cash daily.
     controls:
-    - id: OP-DRUGS-001-C1
-      name: Funnel account rule
-      type: detective
-      description: Detect many-to-one cash with rapid onward movement.
-      implementation: rule
-      effectiveness: high
-    - id: OP-DRUGS-001-C2
-      name: Cash-intensive customer EDD
-      type: preventive
-      description: Verify cash profiles at onboarding and review.
-      implementation: process
-      effectiveness: medium
-  - id: OP-DRUGS-002
-    name: Bulk purchases of precursor chemicals or lab equipment
-    description: Customer buys large chemical quantities, pill presses or glassware inconsistent with
-      stated business.
-    category: product_channel
-    severity: high
-    detection_type:
-    - kyc_review
-    - transaction_monitoring
-    data_sources:
-    - invoices
-    - merchant_data
-    false_positive_notes: Industrial and academic buyers legitimately purchase chemicals.
+    - CTL-041
+    - CTL-024
+  - ref: IND-PRD-057
+    legacy_id: OP-DRUGS-002
+    context: Customer buys large chemical quantities, pill presses or glassware inconsistent with stated
+      business.
+    false_positive_context: Industrial and academic buyers legitimately purchase chemicals.
     controls:
-    - id: OP-DRUGS-002-C1
-      name: Chemical end-user verification
-      type: preventive
-      description: Verify end use and licences for controlled chemical purchases.
-      implementation: process
-      effectiveness: high
-    - id: OP-DRUGS-002-C2
-      name: Chemical supplier screening
-      type: detective
-      description: Screen chemical firms against enforcement lists.
-      implementation: technology
-      effectiveness: medium
-  - id: OP-DRUGS-003
-    name: Import-export firms trading chemicals with unusual consignees
-    description: Importers deal with unfamiliar overseas parties in high-risk corridors for precursor
-      sources.
-    category: counterparty
-    severity: high
-    detection_type:
-    - document_review
-    - investigator_judgement
-    data_sources:
-    - trade_documents
-    - customs_data
-    false_positive_notes: Chemical trade is large and lawful.
+    - CTL-128
+    - CTL-029
+  - ref: IND-CPT-046
+    legacy_id: OP-DRUGS-003
+    context: Importers deal with unfamiliar overseas parties in high-risk corridors for precursor sources.
+    false_positive_context: Chemical trade is large and lawful.
     controls:
-    - id: OP-DRUGS-003-C1
-      name: Trade finance precursor screening
-      type: preventive
-      description: Screen goods and parties against precursor lists.
-      implementation: process
-      effectiveness: high
-    - id: OP-DRUGS-003-C2
-      name: Corridor monitoring
-      type: detective
-      description: Monitor chemical trade flows.
-      implementation: model
-      effectiveness: medium
-  - id: OP-DRUGS-004
-    name: Cash couriering or bulk cash seizures linked to customer
-    description: Customer or associates tied to seized cash or declarations.
-    category: behavioural
-    severity: high
-    detection_type:
-    - external_intel
-    - screening
-    data_sources:
-    - law_enforcement_requests
-    - adverse_media
-    false_positive_notes: Cash is legal to carry within limits.
+    - CTL-130
+    - CTL-045
+  - ref: IND-BEH-100
+    legacy_id: OP-DRUGS-004
+    context: Customer or associates tied to seized cash or declarations.
+    false_positive_context: Cash is legal to carry within limits.
     controls:
-    - id: OP-DRUGS-004-C1
-      name: Law enforcement request handling
-      type: governance
-      description: Process requests quickly and review related accounts.
-      implementation: process
-      effectiveness: high
-    - id: OP-DRUGS-004-C2
-      name: Network review
-      type: detective
-      description: Review linked accounts after seizures.
-      implementation: process
-      effectiveness: medium
-  - id: OP-DRUGS-005
-    name: Chinese-underground-banking or mirror-transaction style offsets
-    description: Payments settled by matching transactions in different countries without cross-border
-      transfers.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - payment_records
-    false_positive_notes: Peer-to-peer exchanges may match.
+    - CTL-096
+    - CTL-095
+    - CTL-063
+    - CTL-062
+  - ref: IND-TXN-016
+    legacy_id: OP-DRUGS-005
+    context: Payments settled by matching transactions in different countries without cross-border transfers.
+    name_in_typology: Chinese-underground-banking or mirror-transaction style offsets
+    false_positive_context: Peer-to-peer exchanges may match.
     controls:
-    - id: OP-DRUGS-005-C1
-      name: Mirror-transaction analytics
-      type: detective
-      description: Detect matched flows across accounts.
-      implementation: model
-      effectiveness: medium
-    - id: OP-DRUGS-005-C2
-      name: Professional launderer typology training
-      type: preventive
-      description: Train analysts on network settlement.
-      implementation: training
-      effectiveness: medium
-  - id: OP-DRUGS-006
-    name: Proceeds spent on assets, vehicles or in casinos and then converted
-    description: Lifestyle spending and asset purchases funded by cash.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - kyc_review
-    data_sources:
-    - card_data
-    - asset_data
-    false_positive_notes: Lifestyle may come from legitimate income.
+    - CTL-047
+    - CTL-171
+  - ref: IND-BEH-101
+    legacy_id: OP-DRUGS-006
+    context: Lifestyle spending and asset purchases funded by cash.
+    false_positive_context: Lifestyle may come from legitimate income.
     controls:
-    - id: OP-DRUGS-006-C1
-      name: Lifestyle consistency review
-      type: detective
-      description: Compare spending to income.
-      implementation: process
-      effectiveness: medium
-    - id: OP-DRUGS-006-C2
-      name: High-value asset alerts
-      type: detective
-      description: Flag cash purchases of luxury goods.
-      implementation: rule
-      effectiveness: medium
-  - id: OP-DRUGS-007
-    name: Dark-web or social media sales with crypto or payment app proceeds
-    description: Receipt of numerous small payments from unrelated persons and crypto conversions to cash.
-    category: product_channel
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - external_intel
-    data_sources:
-    - blockchain_analytics
-    - payment_records
-    false_positive_notes: Peer-to-peer marketplaces are common.
+    - CTL-043
+  - ref: IND-PRD-027
+    legacy_id: OP-DRUGS-007
+    context: Receipt of numerous small payments from unrelated persons and crypto conversions to cash.
+    name_in_typology: Dark-web or social media sales with crypto or payment app proceeds
+    false_positive_context: Peer-to-peer marketplaces are common.
     controls:
-    - id: OP-DRUGS-007-C1
-      name: Darknet exposure screening
-      type: preventive
-      description: Screen wallets for darknet exposure.
-      implementation: technology
-      effectiveness: high
-    - id: OP-DRUGS-007-C2
-      name: Mule account detection
-      type: detective
-      description: Detect accounts receiving many small unrelated payments.
-      implementation: model
-      effectiveness: medium
-  - id: OP-DRUGS-008
-    name: Pharmacy, clinic or online pharmacy with abnormal opioid volumes
-    description: Dispensing, imports or payments exceeding peers for controlled substances.
-    category: customer
-    severity: medium
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - regulator_data
-    - payment_records
-    false_positive_notes: Specialist clinics may have high volumes.
+    - CTL-145
+    - CTL-051
+  - ref: IND-CUS-046
+    legacy_id: OP-DRUGS-008
+    context: Dispensing, imports or payments exceeding peers for controlled substances.
+    false_positive_context: Specialist clinics may have high volumes.
     controls:
-    - id: OP-DRUGS-008-C1
-      name: Regulator data comparison
-      type: detective
-      description: Compare volumes to regulator thresholds.
-      implementation: technology
-      effectiveness: medium
-    - id: OP-DRUGS-008-C2
-      name: Controlled-substance client EDD
-      type: preventive
-      description: Apply EDD for pharma clients.
-      implementation: process
-      effectiveness: medium
-  - id: OP-DRUGS-009
-    name: Shell companies buying pill presses or tableting equipment
-    description: New firm purchases machines and packaging with no production site.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - company_registry
-    - invoices
-    false_positive_notes: Start-ups source equipment.
+    - CTL-042
+    - CTL-024
+  - ref: IND-OWN-007
+    legacy_id: OP-DRUGS-009
+    context: New firm purchases machines and packaging with no production site.
+    name_in_typology: Shell companies buying pill presses or tableting equipment
+    false_positive_context: Start-ups source equipment.
     controls:
-    - id: OP-DRUGS-009-C1
-      name: Equipment buyer verification
-      type: preventive
-      description: Verify premises and licences.
-      implementation: process
-      effectiveness: high
-    - id: OP-DRUGS-009-C2
-      name: Merchant alerts for equipment sales
-      type: detective
-      description: Flag sales of tableting machines.
-      implementation: rule
-      effectiveness: medium
+    - CTL-128
+    - CTL-057

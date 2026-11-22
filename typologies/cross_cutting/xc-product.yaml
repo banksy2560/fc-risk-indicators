@@ -13,267 +13,88 @@ typology:
     approach)
   - Wolfsberg Group, Guidance on a Risk Based Approach for Managing Money Laundering Risks
   indicators:
-  - id: XC-PRODUCT-001
-    name: Private banking and wealth management
-    description: High-net-worth relationships with bespoke structures, discretion expectations and large
-      flows.
-    category: product_channel
-    severity: high
-    detection_type:
-    - kyc_review
-    data_sources:
-    - product_data
-    - kyc_profile
-    false_positive_notes: Most wealth clients are wholly legitimate.
+  - ref: IND-PRD-010
+    legacy_id: XC-PRODUCT-001
+    context: High-net-worth relationships with bespoke structures, discretion expectations and large flows.
+    false_positive_context: Most wealth clients are wholly legitimate.
     controls:
-    - id: XC-PRODUCT-001-C1
-      name: Enhanced due diligence by tier
-      type: preventive
-      description: Apply senior approval and source-of-wealth corroboration.
-      implementation: process
-      effectiveness: high
-    - id: XC-PRODUCT-001-C2
-      name: Relationship manager conflict-of-interest controls
-      type: governance
-      description: Rotate and oversee RMs and challenge exceptions.
-      implementation: policy
-      effectiveness: medium
-  - id: XC-PRODUCT-002
-    name: Correspondent banking relationship
-    description: Provision of accounts or payment services to other financial institutions that process
-      on behalf of unknown customers.
-    category: product_channel
-    severity: high
-    detection_type:
-    - kyc_review
-    - transaction_monitoring
-    data_sources:
-    - respondent_files
-    - payment_messages
-    false_positive_notes: Correspondents are essential infrastructure.
+    - CTL-023
+    - CTL-164
+  - ref: IND-PRD-011
+    legacy_id: XC-PRODUCT-002
+    context: Provision of accounts or payment services to other financial institutions that process on
+      behalf of unknown customers.
+    false_positive_context: Correspondents are essential infrastructure.
     controls:
-    - id: XC-PRODUCT-002-C1
-      name: Respondent due diligence questionnaire
-      type: preventive
-      description: Assess AML controls, ownership and regulation of each respondent.
-      implementation: process
-      effectiveness: high
-    - id: XC-PRODUCT-002-C2
-      name: Nested-activity monitoring
-      type: detective
-      description: Identify downstream respondents using the relationship.
-      implementation: rule
-      effectiveness: medium
-  - id: XC-PRODUCT-003
-    name: Trade finance and documentary credits
-    description: Products reliant on documentation that can be manipulated, with pricing and goods difficult
+    - CTL-104
+    - CTL-105
+  - ref: IND-PRD-012
+    legacy_id: XC-PRODUCT-003
+    context: Products reliant on documentation that can be manipulated, with pricing and goods difficult
       to verify.
-    category: product_channel
-    severity: high
-    detection_type:
-    - kyc_review
-    - document_review
-    data_sources:
-    - trade_documents
-    false_positive_notes: Documents vary legitimately by sector.
+    false_positive_context: Documents vary legitimately by sector.
     controls:
-    - id: XC-PRODUCT-003-C1
-      name: Trade document review by trained staff
-      type: preventive
-      description: Check goods, prices, parties, routes and dual-use risk.
-      implementation: process
-      effectiveness: high
-    - id: XC-PRODUCT-003-C2
-      name: Price benchmarking tools
-      type: detective
-      description: Compare unit prices with market data.
-      implementation: technology
-      effectiveness: medium
-  - id: XC-PRODUCT-004
-    name: Prepaid and stored-value instruments
-    description: Anonymous or lightly verified instruments with high load limits or cross-border use.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - kyc_review
-    data_sources:
-    - card_data
-    false_positive_notes: Prepaid cards serve the unbanked.
+    - CTL-123
+    - CTL-124
+  - ref: IND-PRD-013
+    legacy_id: XC-PRODUCT-004
+    context: Anonymous or lightly verified instruments with high load limits or cross-border use.
+    name_in_typology: Prepaid and stored-value instruments
+    severity_in_typology: medium
+    false_positive_context: Prepaid cards serve the unbanked.
     controls:
-    - id: XC-PRODUCT-004-C1
-      name: Load and spend limits
-      type: preventive
-      description: Set limits aligned to risk and customer verification level.
-      implementation: technology
-      effectiveness: high
-    - id: XC-PRODUCT-004-C2
-      name: Velocity monitoring
-      type: detective
-      description: Alert on rapid loading and cash-out.
-      implementation: rule
-      effectiveness: medium
-  - id: XC-PRODUCT-005
-    name: Virtual asset services
-    description: Provision of services enabling conversion, custody or transfer of virtual assets.
-    category: product_channel
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - wallet_data
-    - blockchain_analytics
-    false_positive_notes: Adoption of virtual assets for legitimate investment is widespread.
+    - CTL-072
+    - CTL-037
+  - ref: IND-PRD-014
+    legacy_id: XC-PRODUCT-005
+    context: Provision of services enabling conversion, custody or transfer of virtual assets.
+    false_positive_context: Adoption of virtual assets for legitimate investment is widespread.
     controls:
-    - id: XC-PRODUCT-005-C1
-      name: Blockchain analytics screening
-      type: detective
-      description: Screen counterparties and wallets for illicit exposure.
-      implementation: technology
-      effectiveness: high
-    - id: XC-PRODUCT-005-C2
-      name: Travel-rule compliance
-      type: preventive
-      description: Exchange required originator and beneficiary information.
-      implementation: technology
-      effectiveness: medium
-  - id: XC-PRODUCT-006
-    name: Safe deposit boxes
-    description: Physical storage of unknown assets with limited visibility.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - investigator_judgement
-    data_sources:
-    - access_logs
-    false_positive_notes: Customers store documents and heirlooms.
+    - CTL-145
+    - CTL-146
+  - ref: IND-PRD-015
+    legacy_id: XC-PRODUCT-006
+    context: Physical storage of unknown assets with limited visibility.
+    false_positive_context: Customers store documents and heirlooms.
     controls:
-    - id: XC-PRODUCT-006-C1
-      name: Access log monitoring
-      type: detective
-      description: Review frequency and patterns of box access.
-      implementation: process
-      effectiveness: medium
-    - id: XC-PRODUCT-006-C2
-      name: Box holder due diligence
-      type: preventive
-      description: Verify holders and restrict to existing customers.
-      implementation: process
-      effectiveness: medium
-  - id: XC-PRODUCT-007
-    name: Cash services and high-limit cash handling
-    description: Services involving large cash deposits, withdrawals, currency exchange or cash-in-transit.
-    category: product_channel
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - cash_transaction_data
-    false_positive_notes: Cash remains legitimate for many.
+    - CTL-150
+    - CTL-024
+  - ref: IND-PRD-016
+    legacy_id: XC-PRODUCT-007
+    context: Services involving large cash deposits, withdrawals, currency exchange or cash-in-transit.
+    false_positive_context: Cash remains legitimate for many.
     controls:
-    - id: XC-PRODUCT-007-C1
-      name: Cash threshold reporting and monitoring
-      type: detective
-      description: Monitor and report as required.
-      implementation: rule
-      effectiveness: high
-    - id: XC-PRODUCT-007-C2
-      name: Source-of-cash enquiries
-      type: preventive
-      description: Obtain explanations for large or unusual cash.
-      implementation: process
-      effectiveness: medium
-  - id: XC-PRODUCT-008
-    name: Product enabling third-party payments
-    description: Services such as payable-through accounts, pooled accounts or payment agent facilities.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - account_data
-    false_positive_notes: Pooled accounts are standard for professionals.
+    - CTL-039
+    - CTL-012
+  - ref: IND-PRD-017
+    legacy_id: XC-PRODUCT-008
+    context: Services such as payable-through accounts, pooled accounts or payment agent facilities.
+    name_in_typology: Product enabling third-party payments
+    severity_in_typology: medium
+    false_positive_context: Pooled accounts are standard for professionals.
     controls:
-    - id: XC-PRODUCT-008-C1
-      name: Pooled account sub-ledger transparency
-      type: preventive
-      description: Require underlying client information on request.
-      implementation: process
-      effectiveness: medium
-    - id: XC-PRODUCT-008-C2
-      name: Purpose-restricted account terms
-      type: preventive
-      description: Limit use to stated activities.
-      implementation: policy
-      effectiveness: medium
-  - id: XC-PRODUCT-009
-    name: New or innovative product without risk assessment
-    description: Product launched without documented ML/TF risk assessment or controls.
-    category: product_channel
-    severity: high
-    detection_type:
-    - investigator_judgement
-    data_sources:
-    - product_approval_records
-    false_positive_notes: Minor variants may be assessed under existing products.
+    - CTL-118
+    - CTL-011
+  - ref: IND-PRD-018
+    legacy_id: XC-PRODUCT-009
+    context: Product launched without documented ML/TF risk assessment or controls.
+    false_positive_context: Minor variants may be assessed under existing products.
     controls:
-    - id: XC-PRODUCT-009-C1
-      name: New product approval process
-      type: governance
-      description: Require compliance risk assessment before launch.
-      implementation: process
-      effectiveness: high
-    - id: XC-PRODUCT-009-C2
-      name: Post-launch review
-      type: detective
-      description: Revisit risk after six to twelve months.
-      implementation: process
-      effectiveness: medium
-  - id: XC-PRODUCT-010
-    name: Cross-border payment and remittance services
-    description: Services moving value across borders quickly through multiple intermediaries.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - payment_messages
-    false_positive_notes: Remittances support families.
+    - CTL-158
+    - CTL-150
+    - CTL-072
+  - ref: IND-PRD-019
+    legacy_id: XC-PRODUCT-010
+    context: Services moving value across borders quickly through multiple intermediaries.
+    false_positive_context: Remittances support families.
     controls:
-    - id: XC-PRODUCT-010-C1
-      name: Payment screening and message-quality checks
-      type: preventive
-      description: Screen and validate originator and beneficiary data.
-      implementation: technology
-      effectiveness: high
-    - id: XC-PRODUCT-010-C2
-      name: Corridor monitoring
-      type: detective
-      description: Tune scenarios per corridor and customer type.
-      implementation: rule
-      effectiveness: medium
-  - id: XC-PRODUCT-011
-    name: Anonymity-enhancing features
-    description: Products permitting use without full identification, such as mixers, bearer-like instruments
+    - CTL-030
+    - CTL-045
+  - ref: IND-PRD-020
+    legacy_id: XC-PRODUCT-011
+    context: Products permitting use without full identification, such as mixers, bearer-like instruments
       or unverified top-ups.
-    category: product_channel
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - kyc_review
-    data_sources:
-    - product_data
-    false_positive_notes: Privacy features can be sought for lawful reasons.
+    false_positive_context: Privacy features can be sought for lawful reasons.
     controls:
-    - id: XC-PRODUCT-011-C1
-      name: Identification thresholds
-      type: preventive
-      description: Require full verification above set values.
-      implementation: policy
-      effectiveness: high
-    - id: XC-PRODUCT-011-C2
-      name: Feature risk review
-      type: governance
-      description: Review privacy features through product governance.
-      implementation: process
-      effectiveness: medium
+    - CTL-072
+    - CTL-158

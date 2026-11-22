@@ -17,253 +17,88 @@ typology:
     approach)
   - Wolfsberg Group, Guidance on a Risk Based Approach for Managing Money Laundering Risks
   indicators:
-  - id: XC-OWNERSHIP-001
-    name: Beneficial owner cannot be identified
-    description: Ownership chain ends in an entity, trust or foundation with no natural person identified
+  - ref: IND-OWN-005
+    legacy_id: XC-OWNERSHIP-001
+    context: Ownership chain ends in an entity, trust or foundation with no natural person identified
       after reasonable effort.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    data_sources:
-    - corporate_registry
-    - kyc_profile
-    false_positive_notes: Some widely held or publicly listed entities have no controlling individual.
+    name_in_typology: Beneficial owner cannot be identified
+    false_positive_context: Some widely held or publicly listed entities have no controlling individual.
     controls:
-    - id: XC-OWNERSHIP-001-C1
-      name: Look-through to natural persons
-      type: preventive
-      description: Require tracing to natural persons or documented senior-manager fallback with rationale.
-      implementation: process
-      effectiveness: high
-    - id: XC-OWNERSHIP-001-C2
-      name: Onboarding block on unresolved ownership
-      type: preventive
-      description: Prohibit account opening until ownership is resolved or formally risk-accepted.
-      implementation: policy
-      effectiveness: high
-  - id: XC-OWNERSHIP-002
-    name: Nominee shareholders or directors
-    description: Registered shareholders or directors act on behalf of undisclosed principals.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    - document_review
-    data_sources:
-    - corporate_registry
-    - nominee_declarations
-    false_positive_notes: Professional nominees are lawful when disclosed and regulated.
+    - CTL-005
+    - CTL-006
+  - ref: IND-OWN-001
+    legacy_id: XC-OWNERSHIP-002
+    context: Registered shareholders or directors act on behalf of undisclosed principals.
+    name_in_typology: Nominee shareholders or directors
+    false_positive_context: Professional nominees are lawful when disclosed and regulated.
     controls:
-    - id: XC-OWNERSHIP-002-C1
-      name: Nominee disclosure requirement
-      type: preventive
-      description: Require nominee status and the nominator identity to be declared and evidenced.
-      implementation: process
-      effectiveness: high
-    - id: XC-OWNERSHIP-002-C2
-      name: Registry cross-check for nominee patterns
-      type: detective
-      description: Detect individuals holding unusually many directorships or shareholdings.
-      implementation: technology
-      effectiveness: medium
-  - id: XC-OWNERSHIP-003
-    name: Bearer shares or bearer instruments
-    description: Entity has issued, or may issue, bearer shares or warrants transferable without registration.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    - document_review
-    data_sources:
-    - corporate_documents
-    false_positive_notes: Legacy bearer shares may be immobilised or custodied under regulation.
+    - CTL-007
+    - CTL-005
+    - CTL-006
+  - ref: IND-OWN-014
+    legacy_id: XC-OWNERSHIP-003
+    context: Entity has issued, or may issue, bearer shares or warrants transferable without registration.
+    false_positive_context: Legacy bearer shares may be immobilised or custodied under regulation.
     controls:
-    - id: XC-OWNERSHIP-003-C1
-      name: Bearer share prohibition or immobilisation
-      type: preventive
-      description: Decline or require custody and immobilisation of bearer instruments.
-      implementation: policy
-      effectiveness: high
-    - id: XC-OWNERSHIP-003-C2
-      name: Certification of holder at each event
-      type: preventive
-      description: Obtain certification of holder identity at each material event.
-      implementation: process
-      effectiveness: medium
-  - id: XC-OWNERSHIP-004
-    name: Layered offshore holding structure
-    description: Several tiers of entities across secrecy or low-tax jurisdictions sit between the customer
+    - CTL-007
+    - CTL-005
+    - CTL-006
+  - ref: IND-OWN-002
+    legacy_id: XC-OWNERSHIP-004
+    context: Several tiers of entities across secrecy or low-tax jurisdictions sit between the customer
       and its owners.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - structure_charts
-    - corporate_registry
-    false_positive_notes: Multinational groups and fund structures can be layered for tax neutrality.
+    name_in_typology: Layered offshore holding structure
+    false_positive_context: Multinational groups and fund structures can be layered for tax neutrality.
     controls:
-    - id: XC-OWNERSHIP-004-C1
-      name: Jurisdiction-count and layer scoring
-      type: preventive
-      description: Score structures by tiers and jurisdictions to prompt EDD.
-      implementation: model
-      effectiveness: medium
-    - id: XC-OWNERSHIP-004-C2
-      name: Commercial rationale sign-off
-      type: governance
-      description: Require business-purpose documentation approved by compliance.
-      implementation: process
-      effectiveness: high
-  - id: XC-OWNERSHIP-005
-    name: Declared and discovered ownership mismatch
-    description: Registry, media or documents show owners different from those declared by the customer.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    - external_intel
-    data_sources:
-    - corporate_registry
-    - adverse_media_feeds
-    false_positive_notes: Registries lag and may be outdated.
+    - CTL-008
+    - CTL-005
+    - CTL-023
+  - ref: IND-OWN-015
+    legacy_id: XC-OWNERSHIP-005
+    context: Registry, media or documents show owners different from those declared by the customer.
+    false_positive_context: Registries lag and may be outdated.
     controls:
-    - id: XC-OWNERSHIP-005-C1
-      name: Independent registry verification
-      type: detective
-      description: Compare declared owners with independent registries and data providers.
-      implementation: process
-      effectiveness: high
-    - id: XC-OWNERSHIP-005-C2
-      name: Ongoing ownership change alerts
-      type: detective
-      description: Subscribe to ownership change feeds for higher-risk entities.
-      implementation: technology
-      effectiveness: medium
-  - id: XC-OWNERSHIP-006
-    name: Trust or foundation with undisclosed parties
-    description: Trust, foundation or similar arrangement where settlor, protector or beneficiaries are
-      not disclosed.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    data_sources:
-    - trust_deeds
-    false_positive_notes: Discretionary trusts may have class-defined beneficiaries.
+    - CTL-005
+    - CTL-014
+  - ref: IND-OWN-016
+    legacy_id: XC-OWNERSHIP-006
+    context: Trust, foundation or similar arrangement where settlor, protector or beneficiaries are not
+      disclosed.
+    false_positive_context: Discretionary trusts may have class-defined beneficiaries.
     controls:
-    - id: XC-OWNERSHIP-006-C1
-      name: Full trust party identification
-      type: preventive
-      description: Identify settlor, trustees, protector and beneficiaries or classes.
-      implementation: process
-      effectiveness: high
-    - id: XC-OWNERSHIP-006-C2
-      name: Trust deed review
-      type: preventive
-      description: Review deeds for control powers and unusual reserved powers.
-      implementation: process
-      effectiveness: medium
-  - id: XC-OWNERSHIP-007
-    name: Shell or no-substance entity
-    description: Entity has no staff, premises, operations or revenue consistent with its stated activities.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    - transaction_monitoring
-    data_sources:
-    - corporate_registry
-    - financial_statements
-    false_positive_notes: Start-ups, SPVs and holding companies lawfully have few operations.
+    - CTL-009
+    - CTL-005
+    - CTL-023
+  - ref: IND-OWN-006
+    legacy_id: XC-OWNERSHIP-007
+    context: Entity has no staff, premises, operations or revenue consistent with its stated activities.
+    name_in_typology: Shell or no-substance entity
+    false_positive_context: Start-ups, SPVs and holding companies lawfully have few operations.
     controls:
-    - id: XC-OWNERSHIP-007-C1
-      name: Substance assessment
-      type: preventive
-      description: Assess evidence of real operations, premises and staff.
-      implementation: process
-      effectiveness: medium
-    - id: XC-OWNERSHIP-007-C2
-      name: Pass-through activity monitoring
-      type: detective
-      description: Alert where inflows are rapidly forwarded with little retained balance.
-      implementation: rule
-      effectiveness: medium
-  - id: XC-OWNERSHIP-008
-    name: Common address or agent for many entities
-    description: Customer shares registered address, agent or phone with numerous unrelated companies.
-    category: ownership_structure
-    severity: medium
-    detection_type:
-    - kyc_review
-    data_sources:
-    - corporate_registry
-    - address_data
-    false_positive_notes: Registered agent and virtual office addresses are very common.
+    - CTL-010
+    - CTL-040
+  - ref: IND-OWN-008
+    legacy_id: XC-OWNERSHIP-008
+    context: Customer shares registered address, agent or phone with numerous unrelated companies.
+    name_in_typology: Common address or agent for many entities
+    false_positive_context: Registered agent and virtual office addresses are very common.
     controls:
-    - id: XC-OWNERSHIP-008-C1
-      name: Registered-address clustering analysis
-      type: detective
-      description: Group customers by shared addresses and agents to find hidden linkages.
-      implementation: technology
-      effectiveness: medium
-    - id: XC-OWNERSHIP-008-C2
-      name: Virtual-office flagging
-      type: preventive
-      description: Flag known virtual-office and mass-registration addresses.
-      implementation: process
-      effectiveness: low
-  - id: XC-OWNERSHIP-009
-    name: Control exercised through informal arrangements
-    description: Powers of attorney, side letters or signatories give control to persons not in the ownership
+    - CTL-049
+    - CTL-003
+  - ref: IND-OWN-017
+    legacy_id: XC-OWNERSHIP-009
+    context: Powers of attorney, side letters or signatories give control to persons not in the ownership
       chain.
-    category: ownership_structure
-    severity: medium
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - signatory_records
-    - poa_documents
-    false_positive_notes: Family, lawyers and fiduciaries often hold legitimate powers.
+    false_positive_context: Family, lawyers and fiduciaries often hold legitimate powers.
     controls:
-    - id: XC-OWNERSHIP-009-C1
-      name: Controller identification beyond ownership
-      type: preventive
-      description: Identify and verify all persons with signing or control rights.
-      implementation: process
-      effectiveness: medium
-    - id: XC-OWNERSHIP-009-C2
-      name: Third-party mandate review
-      type: detective
-      description: Periodically review active powers of attorney.
-      implementation: process
-      effectiveness: medium
-  - id: XC-OWNERSHIP-010
-    name: Recently incorporated entity with large flows
-    description: New company shows significant turnover or funding soon after formation with no track
-      record.
-    category: ownership_structure
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - kyc_review
-    data_sources:
-    - corporate_registry
-    - transaction_data
-    false_positive_notes: Genuine start-ups may scale quickly.
+    - CTL-005
+    - CTL-018
+  - ref: IND-OWN-007
+    legacy_id: XC-OWNERSHIP-010
+    context: New company shows significant turnover or funding soon after formation with no track record.
+    name_in_typology: Recently incorporated entity with large flows
+    severity_in_typology: medium
+    false_positive_context: Genuine start-ups may scale quickly.
     controls:
-    - id: XC-OWNERSHIP-010-C1
-      name: Early-life activity monitoring
-      type: detective
-      description: Apply tightened thresholds in the first months.
-      implementation: rule
-      effectiveness: medium
-    - id: XC-OWNERSHIP-010-C2
-      name: Funding source verification
-      type: preventive
-      description: Verify origin of initial capital.
-      implementation: process
-      effectiveness: medium
+    - CTL-054
+    - CTL-012

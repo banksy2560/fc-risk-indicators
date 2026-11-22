@@ -17,215 +17,71 @@ typology:
   - FATF, Risk of Terrorist Abuse in Non-Profit Organisations (2014) and related guidance (general)
   - Charity regulators' published guidance on financial crime (general)
   indicators:
-  - id: ML-NPO-001
-    name: Donations inconsistent with fundraising profile
-    description: Receipts out of line with size, reach or history of the NPO.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - kyc_review
-    data_sources:
-    - transaction_data
-    - financial_statements
-    false_positive_notes: Appeals and bequests.
+  - ref: IND-TXN-013
+    legacy_id: ML-NPO-001
+    context: Receipts out of line with size, reach or history of the NPO.
+    name_in_typology: Donations inconsistent with fundraising profile
+    false_positive_context: Appeals and bequests.
     controls:
-    - id: ML-NPO-001-C1
-      name: Peer and history benchmarking
-      type: detective
-      description: Compare income to peers and trend.
-      implementation: model
-      effectiveness: medium
-    - id: ML-NPO-001-C2
-      name: Donor source review
-      type: preventive
-      description: Check large donor sources.
-      implementation: process
-      effectiveness: high
-  - id: ML-NPO-002
-    name: Large anonymous or cash donations
-    description: Substantial cash donations without donor identity.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - donation_records
-    false_positive_notes: Collections.
+    - CTL-042
+    - CTL-012
+  - ref: IND-TXN-034
+    legacy_id: ML-NPO-002
+    context: Substantial cash donations without donor identity.
+    name_in_typology: Large anonymous or cash donations
+    false_positive_context: Collections.
     controls:
-    - id: ML-NPO-002-C1
-      name: Cash donation limits
-      type: preventive
-      description: Limit anonymous cash.
-      implementation: policy
-      effectiveness: medium
-    - id: ML-NPO-002-C2
-      name: Donation logging
-      type: detective
-      description: Record and aggregate donations.
-      implementation: process
-      effectiveness: medium
-  - id: ML-NPO-003
-    name: Funds quickly moved to unrelated parties or abroad
-    description: Money leaves without program activity.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    false_positive_notes: Overseas projects.
+    - CTL-062
+    - CTL-039
+  - ref: IND-TXN-001
+    legacy_id: ML-NPO-003
+    context: Money leaves without program activity.
+    name_in_typology: Funds quickly moved to unrelated parties or abroad
+    false_positive_context: Overseas projects.
     controls:
-    - id: ML-NPO-003-C1
-      name: Outflow purpose review
-      type: preventive
-      description: Verify beneficiaries and purpose.
-      implementation: process
-      effectiveness: high
-    - id: ML-NPO-003-C2
-      name: Pass-through monitoring
-      type: detective
-      description: Alert on quick outflow.
-      implementation: rule
-      effectiveness: medium
-  - id: ML-NPO-004
-    name: Opaque governance or controllers
-    description: Unclear trustees, control or beneficial owners.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    data_sources:
-    - charity_register
-    false_positive_notes: Volunteer boards.
+    - CTL-022
+    - CTL-040
+  - ref: IND-OWN-005
+    legacy_id: ML-NPO-004
+    context: Unclear trustees, control or beneficial owners.
+    name_in_typology: Opaque governance or controllers
+    false_positive_context: Volunteer boards.
     controls:
-    - id: ML-NPO-004-C1
-      name: Trustee verification
-      type: preventive
-      description: Verify controllers.
-      implementation: process
-      effectiveness: high
-    - id: ML-NPO-004-C2
-      name: Register check
-      type: detective
-      description: Check regulator registers.
-      implementation: technology
-      effectiveness: medium
-  - id: ML-NPO-005
-    name: Activities do not match stated objects
-    description: Spending outside charitable purposes.
-    category: typology_specific
-    severity: medium
-    detection_type:
-    - investigator_judgement
-    - kyc_review
-    data_sources:
-    - financial_statements
-    false_positive_notes: Mission drift.
+    - CTL-009
+    - CTL-116
+  - ref: IND-TYP-037
+    legacy_id: ML-NPO-005
+    context: Spending outside charitable purposes.
+    false_positive_context: Mission drift.
     controls:
-    - id: ML-NPO-005-C1
-      name: Objects versus spend review
-      type: preventive
-      description: Compare to objects.
-      implementation: process
-      effectiveness: medium
-    - id: ML-NPO-005-C2
-      name: Annual review
-      type: detective
-      description: Review accounts.
-      implementation: process
-      effectiveness: medium
-  - id: ML-NPO-006
-    name: Unregistered or unlicensed fundraising
-    description: Raising funds without registration or authority.
-    category: document
-    severity: medium
-    detection_type:
-    - kyc_review
-    - external_intel
-    data_sources:
-    - regulator_data
-    false_positive_notes: Small groups.
+    - CTL-042
+    - CTL-014
+  - ref: IND-DOC-044
+    legacy_id: ML-NPO-006
+    context: Raising funds without registration or authority.
+    false_positive_context: Small groups.
     controls:
-    - id: ML-NPO-006-C1
-      name: Registration verification
-      type: preventive
-      description: Verify registration.
-      implementation: process
-      effectiveness: medium
-    - id: ML-NPO-006-C2
-      name: Adverse media check
-      type: detective
-      description: Screen.
-      implementation: technology
-      effectiveness: medium
-  - id: ML-NPO-007
-    name: Personal use of NPO accounts
-    description: Transactions of a private nature.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    false_positive_notes: Expenses.
+    - CTL-116
+    - CTL-032
+  - ref: IND-BEH-093
+    legacy_id: ML-NPO-007
+    context: Transactions of a private nature.
+    false_positive_context: Expenses.
     controls:
-    - id: ML-NPO-007-C1
-      name: Private-spend rule
-      type: detective
-      description: Flag personal-type spend.
-      implementation: rule
-      effectiveness: medium
-    - id: ML-NPO-007-C2
-      name: Expense policy
-      type: governance
-      description: Require controls.
-      implementation: policy
-      effectiveness: medium
-  - id: ML-NPO-008
-    name: Connections to high-risk jurisdictions
-    description: Programs in high-risk areas without controls.
-    category: geographic
-    severity: medium
-    detection_type:
-    - screening
-    - kyc_review
-    data_sources:
-    - country_risk_data
-    false_positive_notes: Humanitarian work.
+    - CTL-043
+    - CTL-168
+  - ref: IND-GEO-018
+    legacy_id: ML-NPO-008
+    context: Programs in high-risk areas without controls.
+    name_in_typology: Connections to high-risk jurisdictions
+    false_positive_context: Humanitarian work.
     controls:
-    - id: ML-NPO-008-C1
-      name: Risk-based EDD
-      type: preventive
-      description: Apply proportionate EDD.
-      implementation: process
-      effectiveness: medium
-    - id: ML-NPO-008-C2
-      name: Delivery partner checks
-      type: preventive
-      description: Vet partners.
-      implementation: process
-      effectiveness: medium
-  - id: ML-NPO-009
-    name: Fake or inflated beneficiaries and invoices
-    description: Payments to suppliers with weak evidence.
-    category: document
-    severity: medium
-    detection_type:
-    - document_review
-    data_sources:
-    - invoices
-    false_positive_notes: Small suppliers.
+    - CTL-023
+    - CTL-112
+  - ref: IND-DOC-045
+    legacy_id: ML-NPO-009
+    context: Payments to suppliers with weak evidence.
+    false_positive_context: Small suppliers.
     controls:
-    - id: ML-NPO-009-C1
-      name: Supplier verification
-      type: preventive
-      description: Verify suppliers.
-      implementation: process
-      effectiveness: medium
-    - id: ML-NPO-009-C2
-      name: Sample testing
-      type: detective
-      description: Test invoices.
-      implementation: process
-      effectiveness: medium
+    - CTL-113
+    - CTL-175

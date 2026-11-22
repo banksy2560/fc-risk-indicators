@@ -17,202 +17,67 @@ typology:
   - WeProtect Global Alliance, Global Threat Assessment
   - UNODC and ECPAT public material on online child sexual exploitation
   indicators:
-  - id: HT-OCSE-001
-    name: Repeated low-value payments to overseas recipients with live-stream links
-    description: Small recurring transfers to individuals in jurisdictions of known high-risk, with references
+  - ref: IND-TXN-091
+    legacy_id: HT-OCSE-001
+    context: Small recurring transfers to individuals in jurisdictions of known high-risk, with references
       to live shows or streaming.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - remittance_data
-    - payment_references
-    false_positive_notes: Remittances to family and creator payments are common.
+    false_positive_context: Remittances to family and creator payments are common.
     controls:
-    - id: HT-OCSE-001-C1
-      name: Payment reference analytics
-      type: detective
-      description: Use keyword and pattern analytics on payment references with rigorous review.
-      implementation: model
-      effectiveness: medium
-    - id: HT-OCSE-001-C2
-      name: Specialist team escalation
-      type: governance
-      description: Route alerts to trained investigators who liaise with law enforcement.
-      implementation: process
-      effectiveness: high
-  - id: HT-OCSE-002
-    name: Payments to platforms flagged for illegal content
-    description: Payments to websites, hosting or payment accounts identified in intelligence as selling
-      abuse material.
-    category: counterparty
-    severity: high
-    detection_type:
-    - screening
-    - external_intel
-    data_sources:
-    - merchant_data
-    - law_enforcement_intel
-    false_positive_notes: Domain intelligence can include false matches.
+    - CTL-030
+    - CTL-093
+  - ref: IND-CPT-031
+    legacy_id: HT-OCSE-002
+    context: Payments to websites, hosting or payment accounts identified in intelligence as selling abuse
+      material.
+    false_positive_context: Domain intelligence can include false matches.
     controls:
-    - id: HT-OCSE-002-C1
-      name: Merchant blocklist screening
-      type: preventive
-      description: Screen merchants and wallet addresses against authoritative intelligence and block.
-      implementation: technology
-      effectiveness: high
-    - id: HT-OCSE-002-C2
-      name: Acquirer merchant monitoring
-      type: detective
-      description: Monitor merchants for patterns consistent with illegal content.
-      implementation: process
-      effectiveness: high
-  - id: HT-OCSE-003
-    name: Crypto transfers to addresses linked to abuse marketplaces
-    description: Customer sends virtual assets to wallets clustered with abuse-related services.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - external_intel
-    data_sources:
-    - blockchain_analytics
-    false_positive_notes: Mixed-use services create indirect exposure.
+    - CTL-029
+    - CTL-057
+  - ref: IND-TXN-092
+    legacy_id: HT-OCSE-003
+    context: Customer sends virtual assets to wallets clustered with abuse-related services.
+    false_positive_context: Mixed-use services create indirect exposure.
     controls:
-    - id: HT-OCSE-003-C1
-      name: Blockchain analytics screening
-      type: preventive
-      description: Apply exposure analytics with high-confidence cluster attribution.
-      implementation: technology
-      effectiveness: high
-    - id: HT-OCSE-003-C2
-      name: Immediate review and reporting
-      type: corrective
-      description: Report confirmed exposure promptly to the national authority.
-      implementation: process
-      effectiveness: high
-  - id: HT-OCSE-004
-    name: Pattern of many small payments from many accounts to one recipient
-    description: Facilitator receives many micro-payments from unrelated senders.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - payment_records
-    false_positive_notes: Content creators receive many small tips.
+    - CTL-145
+    - CTL-093
+  - ref: IND-TXN-004
+    legacy_id: HT-OCSE-004
+    context: Facilitator receives many micro-payments from unrelated senders.
+    name_in_typology: Pattern of many small payments from many accounts to one recipient
+    severity_in_typology: medium
+    false_positive_context: Content creators receive many small tips.
     controls:
-    - id: HT-OCSE-004-C1
-      name: Many-to-one micro-payment rule
-      type: detective
-      description: Detect high sender counts with micro-values inconsistent with profile.
-      implementation: rule
-      effectiveness: medium
-    - id: HT-OCSE-004-C2
-      name: Recipient profile review
-      type: detective
-      description: Review recipient purpose and platforms.
-      implementation: process
-      effectiveness: medium
-  - id: HT-OCSE-005
-    name: Customer receiving payments for access to minors
-    description: Account shows payments in return for introductions or access, plus use of prepaid cards
-      and anonymous payment methods.
-    category: behavioural
-    severity: high
-    detection_type:
-    - investigator_judgement
-    - transaction_monitoring
-    data_sources:
-    - payment_records
-    - adverse_media
-    false_positive_notes: Unrelated legitimate activity can resemble these flows.
+    - CTL-041
+    - CTL-093
+  - ref: IND-BEH-086
+    legacy_id: HT-OCSE-005
+    context: Account shows payments in return for introductions or access, plus use of prepaid cards and
+      anonymous payment methods.
+    false_positive_context: Unrelated legitimate activity can resemble these flows.
     controls:
-    - id: HT-OCSE-005-C1
-      name: Prepaid and anonymous instrument monitoring
-      type: detective
-      description: Monitor use of prepaid cards for patterns in OCSE typologies.
-      implementation: rule
-      effectiveness: medium
-    - id: HT-OCSE-005-C2
-      name: Victim-centred escalation
-      type: governance
-      description: Escalate with priority to child protection partners.
-      implementation: process
-      effectiveness: high
-  - id: HT-OCSE-006
-    name: Use of multiple payment apps and e-wallets with different names
-    description: Same user holds several e-wallets under various identities, funded with cash vouchers.
-    category: customer
-    severity: medium
-    detection_type:
-    - kyc_review
-    - transaction_monitoring
-    data_sources:
-    - kyc_files
-    - wallet_data
-    false_positive_notes: Privacy-conscious users may split wallets.
+    - CTL-150
+    - CTL-100
+  - ref: IND-CUS-008
+    legacy_id: HT-OCSE-006
+    context: Same user holds several e-wallets under various identities, funded with cash vouchers.
+    name_in_typology: Use of multiple payment apps and e-wallets with different names
+    false_positive_context: Privacy-conscious users may split wallets.
     controls:
-    - id: HT-OCSE-006-C1
-      name: Identity linkage analytics
-      type: detective
-      description: Link wallets via devices, IP and funding sources.
-      implementation: model
-      effectiveness: medium
-    - id: HT-OCSE-006-C2
-      name: Wallet onboarding KYC
-      type: preventive
-      description: Require robust identity verification.
-      implementation: process
-      effectiveness: medium
-  - id: HT-OCSE-007
-    name: Requests for payments to be hidden or descriptions disguised
-    description: Customer uses deceptive references or asks to avoid records on payments.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - customer_behaviour
-    - investigator_judgement
-    data_sources:
-    - call_notes
-    false_positive_notes: Privacy reasons are common.
+    - CTL-049
+    - CTL-001
+  - ref: IND-BEH-087
+    legacy_id: HT-OCSE-007
+    context: Customer uses deceptive references or asks to avoid records on payments.
+    false_positive_context: Privacy reasons are common.
     controls:
-    - id: HT-OCSE-007-C1
-      name: Staff awareness
-      type: preventive
-      description: Train staff on secrecy red flags.
-      implementation: training
-      effectiveness: medium
-    - id: HT-OCSE-007-C2
-      name: Reporting guidance
-      type: governance
-      description: Provide clear internal reporting without exposing material.
-      implementation: policy
-      effectiveness: medium
-  - id: HT-OCSE-008
-    name: Payments from or to persons with prior convictions or adverse media relating to child exploitation
-    description: Customer appears in credible reports or sanctions of offences against children.
-    category: customer
-    severity: high
-    detection_type:
-    - screening
-    - kyc_review
-    data_sources:
-    - adverse_media
-    - law_enforcement_requests
-    false_positive_notes: Records may be old or mismatched.
+    - CTL-170
+    - CTL-098
+  - ref: IND-CUS-003
+    legacy_id: HT-OCSE-008
+    context: Customer appears in credible reports or sanctions of offences against children.
+    name_in_typology: Payments from or to persons with prior convictions or adverse media relating to
+      child exploitation
+    false_positive_context: Records may be old or mismatched.
     controls:
-    - id: HT-OCSE-008-C1
-      name: Screening and review
-      type: detective
-      description: Screen against adverse media and law-enforcement requests.
-      implementation: technology
-      effectiveness: medium
-    - id: HT-OCSE-008-C2
-      name: Account restriction procedures
-      type: corrective
-      description: Define conditions to restrict or exit accounts with legal advice.
-      implementation: process
-      effectiveness: medium
+    - CTL-032
+    - CTL-103

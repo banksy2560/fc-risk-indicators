@@ -17,231 +17,74 @@ typology:
   - FATF, Money Laundering Risks Arising from Trafficking in Human Beings and Smuggling of Migrants (2011)
   - Europol and Interpol, public material on migrant smuggling networks
   indicators:
-  - id: HT-SMUGGLE-001
-    name: Family remittances for 'travel arrangements' to unfamiliar counterparties
-    description: Repeated transfers from diaspora senders to third-country individuals with messages about
+  - ref: IND-TXN-093
+    legacy_id: HT-SMUGGLE-001
+    context: Repeated transfers from diaspora senders to third-country individuals with messages about
       journeys or guarantees.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - remittance_data
-    - payment_references
-    false_positive_notes: Families fund legitimate travel and relocation.
+    false_positive_context: Families fund legitimate travel and relocation.
     controls:
-    - id: HT-SMUGGLE-001-C1
-      name: Reference text analytics
-      type: detective
-      description: Analyse payment references for smuggling-related language.
-      implementation: model
-      effectiveness: low
-    - id: HT-SMUGGLE-001-C2
-      name: Corridor and recipient clustering
-      type: detective
-      description: Cluster recipients receiving funds from many unrelated senders in transit routes.
-      implementation: rule
-      effectiveness: medium
-  - id: HT-SMUGGLE-002
-    name: Guarantee or escrow payments through informal value transfer
-    description: Funds held by an agent and released only upon arrival, sometimes via hawala-type providers.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - external_intel
-    data_sources:
-    - mvts_data
-    - intelligence_reports
-    false_positive_notes: Informal remittance is used widely for legitimate reasons.
+    - CTL-030
+    - CTL-041
+  - ref: IND-PRD-040
+    legacy_id: HT-SMUGGLE-002
+    context: Funds held by an agent and released only upon arrival, sometimes via hawala-type providers.
+    false_positive_context: Informal remittance is used widely for legitimate reasons.
     controls:
-    - id: HT-SMUGGLE-002-C1
-      name: MVTS agent due diligence
-      type: preventive
-      description: Screen and monitor agents and informal providers for risk.
-      implementation: process
-      effectiveness: medium
-    - id: HT-SMUGGLE-002-C2
-      name: Informal transfer typology updates
-      type: governance
-      description: Incorporate typology reports into monitoring.
-      implementation: process
-      effectiveness: medium
-  - id: HT-SMUGGLE-003
-    name: Purchase of vessels, vehicles or boats and cash payments to boat suppliers
-    description: Purchases of inflatable boats, engines, vans or lorries paid in cash by individuals with
+    - CTL-021
+    - CTL-052
+  - ref: IND-TXN-094
+    legacy_id: HT-SMUGGLE-003
+    context: Purchases of inflatable boats, engines, vans or lorries paid in cash by individuals with
       no business purpose.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - card_data
-    - merchant_data
-    false_positive_notes: Hobbyists and small businesses buy boats and engines.
+    false_positive_context: Hobbyists and small businesses buy boats and engines.
     controls:
-    - id: HT-SMUGGLE-003-C1
-      name: Merchant red-flag reporting
-      type: preventive
-      description: Encourage retailers to report bulk purchases consistent with smuggling.
-      implementation: process
-      effectiveness: medium
-    - id: HT-SMUGGLE-003-C2
-      name: Purchase pattern rules
-      type: detective
-      description: Flag grouped purchases of marine equipment by unrelated customers.
-      implementation: rule
-      effectiveness: medium
-  - id: HT-SMUGGLE-004
-    name: Accounts receiving numerous small deposits then immediate withdrawals near borders
-    description: Account in border or transit area receives funds from multiple foreign senders and cash
-      is withdrawn within hours.
-    category: geographic
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - atm_data
-    - payment_records
-    false_positive_notes: Cross-border traders and workers may cluster.
+    - CTL-173
+    - CTL-052
+  - ref: IND-GEO-013
+    legacy_id: HT-SMUGGLE-004
+    context: Account in border or transit area receives funds from multiple foreign senders and cash is
+      withdrawn within hours.
+    name_in_typology: Accounts receiving numerous small deposits then immediate withdrawals near borders
+    false_positive_context: Cross-border traders and workers may cluster.
     controls:
-    - id: HT-SMUGGLE-004-C1
-      name: Border region transaction scenarios
-      type: detective
-      description: Tune scenarios by geography and sender-recipient diversity.
-      implementation: rule
-      effectiveness: medium
-    - id: HT-SMUGGLE-004-C2
-      name: Cash withdrawal profiling
-      type: detective
-      description: Profile ATM withdrawals in border towns.
-      implementation: model
-      effectiveness: medium
-  - id: HT-SMUGGLE-005
-    name: Hotel, safe house or apartment payments for groups in transit hubs
-    description: Short stays booked for many persons, paid by one individual or cash.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - card_data
-    - booking_data
-    false_positive_notes: Tourism, events and tour operators.
+    - CTL-045
+    - CTL-064
+  - ref: IND-TXN-095
+    legacy_id: HT-SMUGGLE-005
+    context: Short stays booked for many persons, paid by one individual or cash.
+    false_positive_context: Tourism, events and tour operators.
     controls:
-    - id: HT-SMUGGLE-005-C1
-      name: Accommodation payment monitoring
-      type: detective
-      description: Flag repeated group accommodation by unrelated payers.
-      implementation: rule
-      effectiveness: low
-    - id: HT-SMUGGLE-005-C2
-      name: Hospitality sector awareness
-      type: preventive
-      description: Train sector partners to share indicators.
-      implementation: training
-      effectiveness: medium
-  - id: HT-SMUGGLE-006
-    name: Document fraud service payments
-    description: Payments to document brokers, translators and forged document suppliers.
-    category: counterparty
-    severity: high
-    detection_type:
-    - investigator_judgement
-    - external_intel
-    data_sources:
-    - adverse_media
-    - payment_records
-    false_positive_notes: Legitimate translation and visa agencies exist.
+    - CTL-052
+    - CTL-173
+  - ref: IND-CPT-032
+    legacy_id: HT-SMUGGLE-006
+    context: Payments to document brokers, translators and forged document suppliers.
+    false_positive_context: Legitimate translation and visa agencies exist.
     controls:
-    - id: HT-SMUGGLE-006-C1
-      name: Visa agent licensing checks
-      type: preventive
-      description: Verify immigration advice providers are licensed.
-      implementation: process
-      effectiveness: medium
-    - id: HT-SMUGGLE-006-C2
-      name: Law enforcement liaison
-      type: governance
-      description: Establish rapid contact for suspected document fraud networks.
-      implementation: process
-      effectiveness: high
-  - id: HT-SMUGGLE-007
-    name: Individuals receiving funds from many senders without family relation
-    description: A single recipient collects funds from many unrelated senders in different countries.
-    category: customer
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - kyc_review
-    data_sources:
-    - payment_records
-    - kyc_files
-    false_positive_notes: Community leaders and aid groups may collect donations.
+    - CTL-116
+    - CTL-096
+  - ref: IND-CUS-006
+    legacy_id: HT-SMUGGLE-007
+    context: A single recipient collects funds from many unrelated senders in different countries.
+    name_in_typology: Individuals receiving funds from many senders without family relation
+    severity_in_typology: medium
+    false_positive_context: Community leaders and aid groups may collect donations.
     controls:
-    - id: HT-SMUGGLE-007-C1
-      name: Many-to-one recipient rule
-      type: detective
-      description: Detect recipients with high sender diversity inconsistent with profile.
-      implementation: rule
-      effectiveness: medium
-    - id: HT-SMUGGLE-007-C2
-      name: Recipient purpose enquiry
-      type: preventive
-      description: Ask recipients about source and purpose with careful, non-discriminatory process.
-      implementation: process
-      effectiveness: medium
-  - id: HT-SMUGGLE-008
-    name: Social-media-advertised travel services using payment apps
-    description: Informal operators promote crossing services and collect fees through payment apps or
-      crypto.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - external_intel
-    - transaction_monitoring
-    data_sources:
-    - open_source
-    - crypto_data
-    false_positive_notes: Genuine travel agents use social platforms.
+    - CTL-041
+    - CTL-022
+  - ref: IND-PRD-027
+    legacy_id: HT-SMUGGLE-008
+    context: Informal operators promote crossing services and collect fees through payment apps or crypto.
+    name_in_typology: Social-media-advertised travel services using payment apps
+    severity_in_typology: medium
+    false_positive_context: Genuine travel agents use social platforms.
     controls:
-    - id: HT-SMUGGLE-008-C1
-      name: Open-source monitoring
-      type: detective
-      description: Monitor platforms for smuggling advertisements linked to payment identifiers.
-      implementation: technology
-      effectiveness: medium
-    - id: HT-SMUGGLE-008-C2
-      name: Crypto address screening
-      type: detective
-      description: Screen addresses against shared intelligence.
-      implementation: technology
-      effectiveness: medium
-  - id: HT-SMUGGLE-009
-    name: Exit fees or debt bondage reports from customer
-    description: Customer reveals owing large sums to a facilitator, or being pressured to repay.
-    category: behavioural
-    severity: high
-    detection_type:
-    - customer_behaviour
-    - investigator_judgement
-    data_sources:
-    - branch_observations
-    - call_notes
-    false_positive_notes: Customers may be owing legitimate loans.
+    - CTL-032
+    - CTL-145
+  - ref: IND-BEH-088
+    legacy_id: HT-SMUGGLE-009
+    context: Customer reveals owing large sums to a facilitator, or being pressured to repay.
+    false_positive_context: Customers may be owing legitimate loans.
     controls:
-    - id: HT-SMUGGLE-009-C1
-      name: Safeguarding and referral protocol
-      type: governance
-      description: Provide staff with referral routes to victim support and law enforcement.
-      implementation: process
-      effectiveness: high
-    - id: HT-SMUGGLE-009-C2
-      name: Staff awareness training
-      type: preventive
-      description: Train staff on bondage and smuggling-debt signals.
-      implementation: training
-      effectiveness: medium
+    - CTL-100
+    - CTL-170

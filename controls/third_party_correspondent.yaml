@@ -1,0 +1,261 @@
+controls:
+- id: CTL-104
+  name: Correspondent respondent due diligence and risk rating
+  family: third_party_correspondent
+  type: preventive
+  implementation: process
+  effectiveness: high
+  description: Assesses respondent banks' jurisdiction, ownership, regulation, products and AML controls
+    at onboarding using questionnaires and risk rating, including counterparty bank review. It sets the
+    basis for correspondent relationships.
+  also_known_as:
+  - Respondent due diligence questionnaire
+  - Respondent risk rating and EDD
+  - Respondent risk assessment
+  - Counterparty bank review
+- id: CTL-105
+  name: Nested activity disclosure and detection
+  family: third_party_correspondent
+  type: preventive
+  implementation: policy
+  effectiveness: medium
+  description: Requires respondents to disclose and approve downstream institutions and detects payment
+    patterns that imply undeclared nested use. It limits exposure to unknown third-tier clients.
+  also_known_as:
+  - Correspondent flow review
+  - Nested-activity monitoring
+  - Nested relationship disclosure requirement
+  - Payment message originator analysis
+  - Nested activity disclosure requirement
+  - Nested pattern analytics
+- id: CTL-106
+  name: Periodic respondent review and volume monitoring
+  family: third_party_correspondent
+  type: detective
+  implementation: process
+  effectiveness: medium
+  description: Reviews respondent activity against expected volumes, updates expected activity and restricts
+    routing via higher-risk banks. It keeps correspondent risk assessments current after onboarding.
+  also_known_as:
+  - Respondent profile monitoring
+  - Periodic relationship review
+  - Remediation evidence review
+  - Periodic respondent review
+  - Respondent volume baselines
+  - Counterparty bank restrictions
+- id: CTL-107
+  name: Request-for-information process
+  family: third_party_correspondent
+  type: corrective
+  implementation: process
+  effectiveness: medium
+  description: Sends requests for information to respondents or senders with deadlines, tracking of response
+    quality and escalation of repeated deficiencies. It resolves unexplained activity and pressures partners
+    to improve.
+  also_known_as:
+  - RFI response tracking
+  - Respondent feedback
+  - Sender feedback loop
+  - Request for information
+  - Repeat-offender follow-up
+- id: CTL-108
+  name: Shell bank prohibition
+  family: third_party_correspondent
+  type: preventive
+  implementation: policy
+  effectiveness: high
+  description: Obtains and verifies attestations and checks registers to confirm counterparties are not
+    shell banks lacking physical presence and supervision. It bars a high-risk category of relationship
+    outright.
+  also_known_as:
+  - Shell bank prohibition attestation
+- id: CTL-109
+  name: Payable-through and sub-account controls
+  family: third_party_correspondent
+  type: preventive
+  implementation: policy
+  effectiveness: medium
+  description: Restricts payable-through access or requires customer due diligence and monitoring at the
+    sub-account holder level. It ensures third parties using a correspondent account are known and supervised.
+  also_known_as:
+  - Payable-through account controls
+  - Sub-account monitoring
+- id: CTL-110
+  name: Payment message completeness and quality controls
+  family: third_party_correspondent
+  type: preventive
+  implementation: rule
+  effectiveness: medium
+  description: Rejects or queries payments with missing or meaningless party data, tracks deficiency rates
+    and resubmissions and scorecards senders. It improves transparency of payment chains.
+  also_known_as:
+  - Message quality screening
+  - Message quality controls
+  - Message completeness validation
+  - Hit-rate monitoring on blanks
+  - Rejected payment resubmission detection
+  - Case linkage
+  - Counterparty quality scorecard
+  - Payment message completeness checks
+- id: CTL-111
+  name: Cover payment transparency checks
+  family: third_party_correspondent
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Compares the serial payment message with the accompanying cover message so that originator,
+    beneficiary and intermediary details can be checked for consistency. It stops parties being hidden
+    by splitting a payment chain across messages.
+  also_known_as: []
+- id: CTL-112
+  name: Third-party and intermediary due diligence
+  family: third_party_correspondent
+  type: preventive
+  implementation: process
+  effectiveness: high
+  description: Risk-based vetting of intermediaries, brokers, partners and suppliers covering ownership,
+    experience, references, public-official links and selection rationale. It limits exposure through
+    proxies.
+  also_known_as:
+  - Intermediary due diligence
+  - Broker due diligence
+  - Selection rationale documentation
+  - Independent reference checks
+  - JV partner EDD
+  - Third-party due diligence
+  - Intermediary risk assessment
+  - Freight partner due diligence
+- id: CTL-113
+  name: Vendor onboarding verification
+  family: third_party_correspondent
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Verifies new vendors and suppliers before first payment through registry checks, site or
+    call validation and review against the existing vendor base. It prevents fictitious or controlled
+    vendors being set up to extract funds.
+  also_known_as:
+  - Supplier verification
+- id: CTL-114
+  name: Ongoing third-party monitoring
+  family: third_party_correspondent
+  type: detective
+  implementation: technology
+  effectiveness: medium
+  description: Monitors business partners after onboarding for adverse media, ownership change, enforcement
+    action and conduct concerns. It keeps third-party risk assessments current between formal reviews.
+  also_known_as:
+  - Ongoing partner monitoring
+- id: CTL-115
+  name: Outsourcing and vendor oversight
+  family: third_party_correspondent
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Contracts service levels, quality standards and audit rights with vendors performing control
+    activities, and samples their outputs for accuracy. It keeps outsourced screening, monitoring or onboarding
+    to the institution's own standard.
+  also_known_as:
+  - Vendor due diligence and SLAs
+  - Outsourced quality assurance sampling
+- id: CTL-116
+  name: Licence and regulatory status verification
+  family: third_party_correspondent
+  type: preventive
+  implementation: process
+  effectiveness: high
+  description: Verifies licences, registrations and supervisory status of customers, agents and counterparties
+    against regulator registers before onboarding and periodically. It confirms legal authority to operate
+    and detects unlicensed activity.
+  also_known_as:
+  - Licence verification
+  - Visa agent licensing checks
+  - Register check
+  - Registration verification
+  - Licensing and registration verification
+  - Regulator register checks
+  - Registration verification at onboarding
+- id: CTL-117
+  name: Gatekeeper and company service provider due diligence
+  family: third_party_correspondent
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Assesses licensing, CDD standards and client mix of formation agents, lawyers and similar
+    professionals and monitors formation volumes and concentration. It targets professional enablers.
+  also_known_as:
+  - TCSP due diligence
+  - CDD standard
+  - Engagement scope review
+  - Formation volume monitoring
+  - Provider concentration analysis
+  - Provider risk rating
+  - Client mix analysis
+  - Adviser risk assessment
+- id: CTL-118
+  name: Omnibus and pooled account transparency
+  family: third_party_correspondent
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Secures contractual rights to underlying client information for intermediated or pooled
+    accounts, requires look-through on request and monitors pooled flows against expected activity. It
+    gives visibility of who is really transacting behind an aggregate account.
+  also_known_as:
+  - Underlying client information access
+  - Pooled account sub-ledger transparency
+  - Omnibus due diligence
+  - Look-through requirement
+  - Pooled account monitoring
+- id: CTL-119
+  name: Client money account verification and rules
+  family: third_party_correspondent
+  type: preventive
+  implementation: policy
+  effectiveness: medium
+  description: Confirms legitimate client-account status and licensing and applies professional client-money
+    rules, alerting on flows lacking a matter reference. It prevents professional accounts being used
+    to move funds without underlying services.
+  also_known_as:
+  - Client account transaction rules
+  - Professional body rules on client money
+  - Client money account verification
+- id: CTL-120
+  name: Contractual compliance clauses
+  family: third_party_correspondent
+  type: preventive
+  implementation: policy
+  effectiveness: medium
+  description: Writes compliance obligations into contracts, including representations, audit rights,
+    termination rights for breach and minimum standards such as wage or disclosure terms. It gives the
+    institution an enforceable lever over counterparties.
+  also_known_as:
+  - Anti-bribery contract clauses
+  - Contractual wage standards
+- id: CTL-121
+  name: Subcontractor transparency
+  family: third_party_correspondent
+  type: preventive
+  implementation: policy
+  effectiveness: medium
+  description: Obliges counterparties to disclose and obtain approval for subcontractors, together with
+    beneficial ownership details. It prevents work or funds being passed to undisclosed parties who would
+    not pass due diligence.
+  also_known_as:
+  - Subcontractor transparency clause
+- id: CTL-122
+  name: Labour provider and recruiter due diligence
+  family: third_party_correspondent
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Verifies licences, ownership, registration, tax compliance and wage-payment evidence of
+    labour providers and recruiters at onboarding and review, and checks recruitment practices. It reduces
+    exposure to exploitative labour supply and undeclared work.
+  also_known_as:
+  - Crew welfare due diligence
+  - Employer-pays policy verification
+  - Labour provider licensing checks
+  - Recruiter due diligence
+  - Enhanced due diligence for labour suppliers
+  - Client-side labour supplier checks

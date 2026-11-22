@@ -1,0 +1,358 @@
+controls:
+- id: CTL-001
+  name: Electronic identity verification with liveness
+  family: customer_due_diligence
+  type: preventive
+  implementation: technology
+  effectiveness: high
+  description: Remote verification of a person's identity using document capture, biometric matching and
+    liveness or anti-spoofing checks, or a trusted digital identity. It reduces impersonation, synthetic
+    identities and account opening with stolen or fabricated credentials.
+  also_known_as:
+  - Document and biometric identity verification
+  - Liveness detection and injection-attack defence
+  - Electronic identity verification
+  - Liveness and tamper detection
+  - Wallet onboarding KYC
+  - Remote buyer verification
+  - Identity verification
+  - Stronger identity verification for remote workers
+- id: CTL-002
+  name: Identity and supporting document authentication
+  family: customer_due_diligence
+  type: preventive
+  implementation: technology
+  effectiveness: high
+  description: Checks identity and supporting documents for tampering, forgery, template reuse and internal
+    inconsistency, and corroborates their data against authoritative or reliable independent sources.
+    It exposes altered or counterfeit credentials that pass a visual check.
+  also_known_as:
+  - Document authentication and data verification
+  - Document forensics and source verification
+  - Database corroboration
+  - Automated document authentication
+  - Trained manual review for refers
+  - Cross-field consistency rules
+  - Explanation and evidence capture
+  - Image hash matching
+- id: CTL-003
+  name: Address and registered-office verification
+  family: customer_due_diligence
+  type: preventive
+  implementation: technology
+  effectiveness: medium
+  description: Validates a stated address against postal or reference data, requires recent independent
+    proof of residence or premises, and flags known mass-registration or virtual-office addresses. It
+    supports identity assurance and helps reveal fictitious or shared addresses.
+  also_known_as:
+  - Address verification service
+  - Proof-of-address requirement
+  - Virtual-office flagging
+  - Address density screening
+  - Address verification
+- id: CTL-004
+  name: Duplicate and synthetic identity checks at onboarding
+  family: customer_due_diligence
+  type: preventive
+  implementation: rule
+  effectiveness: high
+  description: Compares new applicant identifiers such as name, email, phone, address, device and bank
+    account with existing customers, previously declined or exited applicants and known-bad data. Matches
+    are blocked or referred, limiting repeat applicants, synthetic identities and mule recruitment.
+  also_known_as:
+  - Onboarding data consistency rules
+  - Digital identity and entity resolution
+  - Internal exit and watchlist check
+  - Duplicate-identity checks at onboarding
+  - Identity-footprint scoring
+  - Rejected-application history check
+  - Entity resolution at onboarding
+  - Repeat-organiser flagging
+- id: CTL-005
+  name: Beneficial ownership identification and verification
+  family: customer_due_diligence
+  type: preventive
+  implementation: process
+  effectiveness: high
+  description: Identifies the natural persons who ultimately own or control a legal entity or arrangement
+    and verifies them using independent registers and documents, looking through intermediate layers.
+    It is the core defence against anonymity achieved through layered or opaque structures.
+  also_known_as:
+  - Beneficial ownership verification
+  - Look-through to natural persons
+  - Beneficial owner verification
+  - Registry and company links check
+  - Independent registry verification
+  - Controller identification beyond ownership
+  - Beneficial owner identification
+  - Beneficial ownership review
+- id: CTL-006
+  name: Beneficial ownership information gate
+  family: customer_due_diligence
+  type: preventive
+  implementation: policy
+  effectiveness: high
+  description: Prevents account opening or activity until ownership and control information is provided
+    and verified, with refusals escalated to compliance and unresolved cases handled under a defined policy.
+    It stops relationships starting on withheld or unresolved ownership.
+  also_known_as:
+  - Mandatory beneficial ownership declaration
+  - Onboarding block on unresolved ownership
+  - Information hold standards
+- id: CTL-007
+  name: Nominee and bearer instrument controls
+  family: customer_due_diligence
+  type: preventive
+  implementation: policy
+  effectiveness: medium
+  description: Requires nominee shareholders, directors and signatories to declare their status and name
+    the person they act for, and declines or immobilises bearer instruments. It limits the use of nominees
+    and bearer forms to conceal the real controller.
+  also_known_as:
+  - Nominee disclosure requirement
+  - Registry cross-check for nominee patterns
+  - Bearer share prohibition or immobilisation
+  - Certification of holder at each event
+  - Nominee role restrictions
+  - Nominee declaration requirement
+  - Nominee register verification
+  - Nominee disclosure
+- id: CTL-008
+  name: Complex structure rationale and approval
+  family: customer_due_diligence
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Requires a documented commercial or legal reason for each layer of a multi-tier or cross-border
+    structure, with specialist review and sign-off before approval. Unexplained complexity is treated
+    as a risk driver and can lead to decline.
+  also_known_as:
+  - Structure rationale review
+  - Structure rationale assessment
+  - Structure chart and rationale requirement
+  - Escalation to specialist review
+  - Jurisdiction-count and layer scoring
+  - Commercial rationale sign-off
+  - Structure justification
+  - EDD on serial-entity customers
+- id: CTL-009
+  name: Trust and legal arrangement due diligence
+  family: customer_due_diligence
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Identifies all parties to a trust or similar arrangement, including settlor, trustees,
+    protector and beneficiaries, and reviews the governing document for unusual control or reserved powers.
+    It makes the controlling persons behind such vehicles visible.
+  also_known_as:
+  - Full trust party identification
+  - Trust deed review
+  - Trustee verification
+- id: CTL-010
+  name: Substance and physical presence verification
+  family: customer_due_diligence
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Tests whether an entity has real operations such as premises, staff, stock and contracts
+    through documents, site or virtual visits, open-source footprint and shell-risk indicators. It helps
+    identify shell and front companies with no genuine activity.
+  also_known_as:
+  - Substance assessment
+  - Capability and substance checks
+  - On-site verification
+  - Business-model verification
+  - Risk-based site visit
+  - Open-source footprint check
+  - Shell indicator scoring
+  - Physical presence verification
+- id: CTL-011
+  name: Purpose and intended nature of relationship
+  family: customer_due_diligence
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Captures and challenges the stated purpose of the account, expected activity, volumes and
+    geographies at onboarding, creating a baseline against which later behaviour is judged. Vague or implausible
+    answers prompt further enquiry or decline.
+  also_known_as:
+  - Purpose-of-relationship questionnaire
+  - Expected-geography profile
+  - Purpose-restricted account terms
+  - Customer corridor profiling
+  - Sector-aware KYC prompts
+  - Float purpose review
+  - Account purpose confirmation
+  - Reason-for-choice question
+- id: CTL-012
+  name: Source of funds verification
+  family: customer_due_diligence
+  type: preventive
+  implementation: process
+  effectiveness: high
+  description: Obtains and tests documentary evidence of where the money for a transaction, deposit or
+    capital injection comes from, particularly when value exceeds thresholds or the customer profile.
+    It reduces the chance that illicit proceeds are accepted without explanation.
+  also_known_as:
+  - Source of funds and wealth verification
+  - Source-of-funds checks
+  - Funding source verification
+  - Source-of-cash enquiries
+  - Source-of-cash review
+  - Source-of-funds inquiry
+  - Owner funding evidence requirement
+  - Source of funds for deposits
+- id: CTL-013
+  name: Source of wealth corroboration
+  family: customer_due_diligence
+  type: preventive
+  implementation: process
+  effectiveness: high
+  description: Establishes how a customer accumulated their overall wealth and corroborates it with independent
+    evidence rather than relying on self-declaration. It is central to managing high-net-worth, politically
+    exposed and high-value-purchase relationships.
+  also_known_as:
+  - Source-of-wealth enhanced checks
+  - Source-of-wealth verification
+  - Net-worth source evidence
+- id: CTL-014
+  name: Periodic and event-driven KYC refresh
+  family: customer_due_diligence
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Reviews and updates customer information on a risk-based cycle and when triggers occur,
+    such as ownership change, key attribute change, adverse information or out-of-profile activity. Fresh
+    data keeps risk ratings and expected-activity baselines current.
+  also_known_as:
+  - Enhanced due diligence and periodic KYC review
+  - Outstanding-request tracking
+  - Verification on high-risk changes
+  - Review calendar with ageing MI
+  - Ongoing ownership change alerts
+  - Periodic KYC profile refresh
+  - Registry change monitoring
+  - Annual review
+- id: CTL-015
+  name: Customer risk rating and classification
+  family: customer_due_diligence
+  type: preventive
+  implementation: model
+  effectiveness: high
+  description: Assigns each customer a risk tier from factors such as customer type, sector, geography,
+    products and channel, which then drives the depth of due diligence and monitoring. Consistent scoring
+    focuses resources on higher-risk relationships.
+  also_known_as:
+  - Non-resident risk-scoring factor
+  - Industry-based risk classification
+  - Sector risk matrix
+  - Sector risk scoring
+- id: CTL-016
+  name: Account restriction, decline and exit policy
+  family: customer_due_diligence
+  type: corrective
+  implementation: policy
+  effectiveness: medium
+  description: Defines when a relationship or supplier must be declined, restricted or terminated, for
+    example for unresolved due diligence, non-cooperation or unmanageable risk, with timelines and approvers.
+    It prevents indefinite continuation of relationships that cannot be controlled.
+  also_known_as:
+  - Escalation for refusal
+  - KYC refresh exit and restriction policy
+  - Account review and exit procedures
+  - Supplier suspension criteria
+  - Restriction or exit policy
+  - Decline-or-exit policy
+  - Relationship exit criteria
+  - Consequence policy
+- id: CTL-017
+  name: Dormant account reactivation controls
+  family: customer_due_diligence
+  type: preventive
+  implementation: rule
+  effectiveness: medium
+  description: Alerts when an inactive account abruptly resumes activity and requires identity re-verification
+    and updated due diligence before reactivation. Dormant accounts are attractive for takeover and for
+    passing illicit funds.
+  also_known_as:
+  - Dormant reactivation alert
+  - Re-verification before reactivation
+  - Dormant-to-active monitoring
+  - Dormancy-after-spike alert
+- id: CTL-018
+  name: Signatory and mandate review
+  family: customer_due_diligence
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Identifies and verifies everyone holding signing, control or power-of-attorney rights over
+    an account, and periodically reviews whether those powers remain justified. It reveals third parties
+    who control accounts on behalf of others.
+  also_known_as:
+  - Authority verification
+  - Third-party mandate review
+  - Signatory review
+  - Power-of-attorney and mandate review
+- id: CTL-019
+  name: Introducer and reliance due diligence
+  family: customer_due_diligence
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Assesses introducers and third parties on whom customer due diligence is relied, covering
+    regulation, data access and file quality, backed by written agreements, per-introducer quality reporting
+    and sample testing. It keeps outsourced onboarding to the institution's own standard.
+  also_known_as:
+  - Introducer due diligence and agreements
+  - Introducer-level quality monitoring
+  - Reliance eligibility assessment
+  - Sample testing of relied-upon files
+  - Reliance due diligence
+  - Introducer due diligence
+- id: CTL-020
+  name: Additional checks for remote and higher-risk onboarding
+  family: customer_due_diligence
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Applies supplementary evidence, confirmation calls or direct contact when a customer is
+    onboarded or instructed without meeting in person or presents other higher-risk characteristics. It
+    compensates for the weaker assurance of remote channels.
+  also_known_as:
+  - Additional checks for remote high-risk customers
+- id: CTL-021
+  name: Agent and distribution network due diligence
+  family: customer_due_diligence
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Vets, trains, caps and monitors agents, sub-agents and distributors who onboard customers
+    or move funds on the institution's behalf, including quality visits, outlier analysis and disclosure
+    of principals. It limits control failures at the edge of a distribution network.
+  also_known_as:
+  - Agent onboarding and monitoring programme
+  - Quality assurance visits
+  - MVTS agent due diligence
+  - Agent principal disclosure
+  - Agent CDD obligations
+  - Agent pooling rule
+  - Agent due diligence
+  - Agent due diligence and caps
+- id: CTL-022
+  name: Customer enquiry on unusual activity
+  family: customer_due_diligence
+  type: corrective
+  implementation: process
+  effectiveness: medium
+  description: Contacts the customer, or the relationship manager does so, to obtain and record an explanation
+    of unusual transactions, relationships or recipients, and to test it against evidence. The answer
+    informs whether activity is legitimate or should be escalated.
+  also_known_as:
+  - Customer outreach
+  - Customer enquiry process
+  - Recipient purpose enquiry
+  - Relationship manager inquiry
+  - Purpose-of-payment review
+  - Outflow purpose review
+  - Rationale review
+  - Relationship manager enquiry

@@ -14,294 +14,102 @@ typology:
     approach)
   - Wolfsberg Group, Guidance on a Risk Based Approach for Managing Money Laundering Risks
   indicators:
-  - id: XC-CUSTOMER-001
-    name: Politically exposed person as customer or controller
-    description: The customer, a beneficial owner or a controller is a domestic or foreign PEP, or a family
+  - ref: IND-CUS-016
+    legacy_id: XC-CUSTOMER-001
+    context: The customer, a beneficial owner or a controller is a domestic or foreign PEP, or a family
       member or close associate of one.
-    category: customer
-    severity: high
-    detection_type:
-    - screening
-    - kyc_review
-    data_sources:
-    - pep_lists
-    - kyc_profile
-    false_positive_notes: Many PEPs, particularly domestic or low-level officials, are lawfully wealthy
+    false_positive_context: Many PEPs, particularly domestic or low-level officials, are lawfully wealthy
       and low risk once source of wealth is understood.
     controls:
-    - id: XC-CUSTOMER-001-C1
-      name: PEP screening at onboarding and ongoing
-      type: preventive
-      description: Screen customers, owners and controllers against PEP data at onboarding and periodically,
-        with RCA coverage.
-      implementation: technology
-      effectiveness: high
-    - id: XC-CUSTOMER-001-C2
-      name: Senior management approval and enhanced due diligence
-      type: preventive
-      description: Require senior sign-off, source-of-wealth corroboration and enhanced monitoring before
-        relationship start or continuation.
-      implementation: process
-      effectiveness: high
-  - id: XC-CUSTOMER-002
-    name: Non-resident customer without clear rationale
-    description: Customer resides outside the institution's market and cannot explain why they need an
-      account or service here.
-    category: customer
-    severity: medium
-    detection_type:
-    - kyc_review
-    data_sources:
-    - kyc_profile
-    - address_data
-    false_positive_notes: Expatriates, students, property investors and cross-border workers often have
+    - CTL-028
+    - CTL-026
+  - ref: IND-CUS-017
+    legacy_id: XC-CUSTOMER-002
+    context: Customer resides outside the institution's market and cannot explain why they need an account
+      or service here.
+    false_positive_context: Expatriates, students, property investors and cross-border workers often have
       legitimate need.
     controls:
-    - id: XC-CUSTOMER-002-C1
-      name: Purpose-of-relationship questionnaire
-      type: preventive
-      description: Capture and challenge the stated reason for choosing the institution and location.
-      implementation: process
-      effectiveness: medium
-    - id: XC-CUSTOMER-002-C2
-      name: Non-resident risk-scoring factor
-      type: preventive
-      description: Raise inherent risk score where residence is distant and rationale is weak, triggering
-        review.
-      implementation: model
-      effectiveness: medium
-  - id: XC-CUSTOMER-003
-    name: Cash-intensive business
-    description: Customer's business model relies heavily on cash receipts (e.g. retail, restaurants,
-      car washes, vending), making revenue hard to verify.
-    category: customer
-    severity: medium
-    detection_type:
-    - kyc_review
-    - transaction_monitoring
-    data_sources:
-    - kyc_profile
-    - cash_transaction_data
-    false_positive_notes: Cash-heavy trades are common and legitimate; indicator only grows with volume
+    - CTL-011
+    - CTL-015
+  - ref: IND-CUS-013
+    legacy_id: XC-CUSTOMER-003
+    context: Customer's business model relies heavily on cash receipts (e.g. retail, restaurants, car
+      washes, vending), making revenue hard to verify.
+    false_positive_context: Cash-heavy trades are common and legitimate; indicator only grows with volume
       out of line with peers.
     controls:
-    - id: XC-CUSTOMER-003-C1
-      name: Peer-benchmarked cash deposit monitoring
-      type: detective
-      description: Compare cash deposits against sector peers and declared turnover.
-      implementation: rule
-      effectiveness: medium
-    - id: XC-CUSTOMER-003-C2
-      name: Industry-based risk classification
-      type: preventive
-      description: Classify cash-intensive sectors as elevated risk driving due diligence depth.
-      implementation: policy
-      effectiveness: medium
-  - id: XC-CUSTOMER-004
-    name: Complex or unnecessarily layered structure
-    description: Customer is part of a multi-layer or multi-jurisdiction structure without an evident
-      commercial purpose.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - corporate_registry
-    - structure_charts
-    false_positive_notes: Large groups, funds and tax-efficient structures can be complex for lawful reasons.
+    - CTL-064
+    - CTL-015
+  - ref: IND-OWN-002
+    legacy_id: XC-CUSTOMER-004
+    context: Customer is part of a multi-layer or multi-jurisdiction structure without an evident commercial
+      purpose.
+    name_in_typology: Complex or unnecessarily layered structure
+    false_positive_context: Large groups, funds and tax-efficient structures can be complex for lawful
+      reasons.
     controls:
-    - id: XC-CUSTOMER-004-C1
-      name: Structure chart and rationale requirement
-      type: preventive
-      description: Obtain a signed structure chart and documented business rationale for each layer.
-      implementation: process
-      effectiveness: high
-    - id: XC-CUSTOMER-004-C2
-      name: Escalation to specialist review
-      type: governance
-      description: Route complex structures to a specialist EDD team before approval.
-      implementation: process
-      effectiveness: medium
-  - id: XC-CUSTOMER-005
-    name: Unwillingness or inability to provide information
-    description: Customer delays, refuses or gives evasive answers to KYC or refresh requests, or withdraws
+    - CTL-008
+    - CTL-005
+    - CTL-023
+  - ref: IND-BEH-002
+    legacy_id: XC-CUSTOMER-005
+    context: Customer delays, refuses or gives evasive answers to KYC or refresh requests, or withdraws
       when questioned.
-    category: behavioural
-    severity: high
-    detection_type:
-    - customer_behaviour
-    - kyc_review
-    data_sources:
-    - kyc_requests_log
-    - case_notes
-    false_positive_notes: Customers may be privacy-conscious, unfamiliar with requirements or have genuinely
+    name_in_typology: Unwillingness or inability to provide information
+    false_positive_context: Customers may be privacy-conscious, unfamiliar with requirements or have genuinely
       lost documents.
     controls:
-    - id: XC-CUSTOMER-005-C1
-      name: KYC refresh exit and restriction policy
-      type: corrective
-      description: Define timelines after which accounts are restricted or exited when information is
-        not provided.
-      implementation: policy
-      effectiveness: high
-    - id: XC-CUSTOMER-005-C2
-      name: Outstanding-request tracking
-      type: detective
-      description: Report overdue KYC requests by customer risk tier to management.
-      implementation: technology
-      effectiveness: medium
-  - id: XC-CUSTOMER-006
-    name: Adverse media on customer or associates
-    description: Credible negative news links the customer or associated parties to financial crime, corruption
+    - CTL-016
+    - CTL-014
+  - ref: IND-CUS-003
+    legacy_id: XC-CUSTOMER-006
+    context: Credible negative news links the customer or associated parties to financial crime, corruption
       or regulatory action.
-    category: customer
-    severity: medium
-    detection_type:
-    - screening
-    - external_intel
-    data_sources:
-    - adverse_media_feeds
-    false_positive_notes: Name matches, old or unproven allegations and unrelated namesakes are common.
+    severity_in_typology: medium
+    false_positive_context: Name matches, old or unproven allegations and unrelated namesakes are common.
     controls:
-    - id: XC-CUSTOMER-006-C1
-      name: Adverse media screening
-      type: detective
-      description: Run risk-classified negative news screening at onboarding and on an ongoing basis.
-      implementation: technology
-      effectiveness: medium
-    - id: XC-CUSTOMER-006-C2
-      name: Analyst adjudication standards
-      type: governance
-      description: Document criteria for relevance, reliability and severity so decisions are consistent.
-      implementation: process
-      effectiveness: medium
-  - id: XC-CUSTOMER-007
-    name: Customer reluctant to disclose beneficial owner or purpose
-    description: Customer is vague about who ultimately benefits from the account or the intended use
-      of funds.
-    category: behavioural
-    severity: high
-    detection_type:
-    - customer_behaviour
-    - kyc_review
-    data_sources:
-    - kyc_profile
-    - onboarding_notes
-    false_positive_notes: Trustees, professionals and privacy-sensitive clients may need time to supply
+    - CTL-032
+    - CTL-033
+  - ref: IND-BEH-001
+    legacy_id: XC-CUSTOMER-007
+    context: Customer is vague about who ultimately benefits from the account or the intended use of funds.
+    name_in_typology: Customer reluctant to disclose beneficial owner or purpose
+    false_positive_context: Trustees, professionals and privacy-sensitive clients may need time to supply
       details.
     controls:
-    - id: XC-CUSTOMER-007-C1
-      name: Mandatory beneficial ownership declaration
-      type: preventive
-      description: Do not activate accounts until ownership and control are declared and verified.
-      implementation: process
-      effectiveness: high
-    - id: XC-CUSTOMER-007-C2
-      name: Front-line coaching on probing questions
-      type: preventive
-      description: Train staff to recognise and record evasive responses.
-      implementation: training
-      effectiveness: medium
-  - id: XC-CUSTOMER-008
-    name: Customer with prior regulatory, criminal or sanctions history
-    description: Customer or principal has previous convictions, enforcement action, or has been exited
-      by another institution.
-    category: customer
-    severity: high
-    detection_type:
-    - screening
-    - external_intel
-    - kyc_review
-    data_sources:
-    - adverse_media_feeds
-    - internal_exit_list
-    false_positive_notes: Spent or unrelated histories may not indicate current risk.
+    - CTL-006
+    - CTL-170
+  - ref: IND-CUS-004
+    legacy_id: XC-CUSTOMER-008
+    context: Customer or principal has previous convictions, enforcement action, or has been exited by
+      another institution.
+    name_in_typology: Customer with prior regulatory, criminal or sanctions history
+    false_positive_context: Spent or unrelated histories may not indicate current risk.
     controls:
-    - id: XC-CUSTOMER-008-C1
-      name: Internal exit and watchlist check
-      type: preventive
-      description: Check prospects against internally exited-customer records.
-      implementation: technology
-      effectiveness: medium
-    - id: XC-CUSTOMER-008-C2
-      name: Risk acceptance committee review
-      type: governance
-      description: Require documented risk acceptance and mitigations for known-history customers.
-      implementation: process
-      effectiveness: high
-  - id: XC-CUSTOMER-009
-    name: Occupation or business inconsistent with wealth
-    description: Declared occupation, age or business does not plausibly explain the scale of assets or
-      funds.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - kyc_profile
-    - transaction_data
-    false_positive_notes: Inheritance, windfalls or undeclared secondary income can explain gaps.
+    - CTL-004
+    - CTL-025
+  - ref: IND-BEH-028
+    legacy_id: XC-CUSTOMER-009
+    context: Declared occupation, age or business does not plausibly explain the scale of assets or funds.
+    false_positive_context: Inheritance, windfalls or undeclared secondary income can explain gaps.
     controls:
-    - id: XC-CUSTOMER-009-C1
-      name: Source-of-wealth corroboration
-      type: preventive
-      description: Corroborate declared wealth with independent evidence proportionate to risk.
-      implementation: process
-      effectiveness: high
-    - id: XC-CUSTOMER-009-C2
-      name: Profile-versus-activity review
-      type: detective
-      description: Flag accounts whose turnover materially exceeds the declared profile.
-      implementation: rule
-      effectiveness: medium
-  - id: XC-CUSTOMER-010
-    name: Customer in a high-risk sector
-    description: Customer operates in a sector with elevated misuse risk, such as precious metals, gambling,
+    - CTL-013
+    - CTL-042
+  - ref: IND-CUS-018
+    legacy_id: XC-CUSTOMER-010
+    context: Customer operates in a sector with elevated misuse risk, such as precious metals, gambling,
       crypto, arms, or money transfer.
-    category: customer
-    severity: medium
-    detection_type:
-    - kyc_review
-    data_sources:
-    - industry_codes
-    false_positive_notes: Most firms in these sectors are regulated and compliant.
+    false_positive_context: Most firms in these sectors are regulated and compliant.
     controls:
-    - id: XC-CUSTOMER-010-C1
-      name: Sector risk matrix
-      type: governance
-      description: Maintain a sector risk matrix and apply tailored due diligence by tier.
-      implementation: policy
-      effectiveness: medium
-    - id: XC-CUSTOMER-010-C2
-      name: Licence and regulatory status verification
-      type: preventive
-      description: Verify licences and supervisory registration before onboarding.
-      implementation: process
-      effectiveness: medium
-  - id: XC-CUSTOMER-011
-    name: Customer frequently changes details
-    description: Customer repeatedly changes name, address, contact, signatories or ownership shortly
-      after onboarding.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - customer_behaviour
-    - kyc_review
-    data_sources:
-    - customer_master_changes
-    false_positive_notes: Life events, relocations and restructures legitimately change details.
+    - CTL-015
+    - CTL-116
+  - ref: IND-BEH-016
+    legacy_id: XC-CUSTOMER-011
+    context: Customer repeatedly changes name, address, contact, signatories or ownership shortly after
+      onboarding.
+    name_in_typology: Customer frequently changes details
+    false_positive_context: Life events, relocations and restructures legitimately change details.
     controls:
-    - id: XC-CUSTOMER-011-C1
-      name: Change-event monitoring
-      type: detective
-      description: Alert on clusters of static data changes within short periods.
-      implementation: rule
-      effectiveness: medium
-    - id: XC-CUSTOMER-011-C2
-      name: Verification on high-risk changes
-      type: preventive
-      description: Re-verify identity and ownership when key attributes change.
-      implementation: process
-      effectiveness: medium
+    - CTL-088
+    - CTL-014

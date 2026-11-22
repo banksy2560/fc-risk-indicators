@@ -13,265 +13,93 @@ typology:
     approach)
   - Wolfsberg Group, Guidance on a Risk Based Approach for Managing Money Laundering Risks
   indicators:
-  - id: XC-TXN-BEHAVIOUR-001
-    name: Rapid in-and-out movement of funds
-    description: Funds are received and moved on within a short period, leaving little residual balance.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    false_positive_notes: Payment processors, escrow and pass-through business accounts behave this way
-      legitimately.
+  - ref: IND-TXN-001
+    legacy_id: XC-TXN-BEHAVIOUR-001
+    context: Funds are received and moved on within a short period, leaving little residual balance.
+    name_in_typology: Rapid in-and-out movement of funds
+    false_positive_context: Payment processors, escrow and pass-through business accounts behave this
+      way legitimately.
     controls:
-    - id: XC-TXN-BEHAVIOUR-001-C1
-      name: Pass-through velocity scenario
-      type: detective
-      description: Alert on high ratio of outflows to inflows within a short window.
-      implementation: rule
-      effectiveness: high
-    - id: XC-TXN-BEHAVIOUR-001-C2
-      name: Expected activity profile comparison
-      type: detective
-      description: Compare against declared account purpose.
-      implementation: model
-      effectiveness: medium
-  - id: XC-TXN-BEHAVIOUR-002
-    name: No apparent economic or lawful rationale
-    description: Transactions lack commercial logic given the customer's business or relationship.
-    category: transaction
-    severity: high
-    detection_type:
-    - investigator_judgement
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    - kyc_profile
-    false_positive_notes: Atypical but genuine one-off deals occur.
+    - CTL-040
+    - CTL-042
+  - ref: IND-TXN-043
+    legacy_id: XC-TXN-BEHAVIOUR-002
+    context: Transactions lack commercial logic given the customer's business or relationship.
+    false_positive_context: Atypical but genuine one-off deals occur.
     controls:
-    - id: XC-TXN-BEHAVIOUR-002-C1
-      name: Analyst review with documented rationale test
-      type: detective
-      description: Require explanation and supporting evidence.
-      implementation: process
-      effectiveness: high
-    - id: XC-TXN-BEHAVIOUR-002-C2
-      name: Customer enquiry process
-      type: corrective
-      description: Contact customers to understand purpose.
-      implementation: process
-      effectiveness: medium
-  - id: XC-TXN-BEHAVIOUR-003
-    name: Activity inconsistent with customer profile
-    description: Turnover, counterparties or products exceed or depart from expected behaviour.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    - kyc_profile
-    false_positive_notes: Life events and growth change behaviour.
+    - CTL-093
+    - CTL-022
+    - CTL-011
+    - CTL-042
+  - ref: IND-TXN-013
+    legacy_id: XC-TXN-BEHAVIOUR-003
+    context: Turnover, counterparties or products exceed or depart from expected behaviour.
+    severity_in_typology: medium
+    false_positive_context: Life events and growth change behaviour.
     controls:
-    - id: XC-TXN-BEHAVIOUR-003-C1
-      name: Profile-deviation monitoring
-      type: detective
-      description: Alert on material deviation from profile or peers.
-      implementation: model
-      effectiveness: medium
-    - id: XC-TXN-BEHAVIOUR-003-C2
-      name: Periodic KYC profile refresh
-      type: preventive
-      description: Update expectations.
-      implementation: process
-      effectiveness: medium
-  - id: XC-TXN-BEHAVIOUR-004
-    name: Dormant account suddenly reactivated
-    description: Long-inactive account receives sudden large or high-velocity activity.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - account_status
-    - transaction_data
-    false_positive_notes: Seasonal use and inheritance can reactivate accounts.
+    - CTL-042
+    - CTL-014
+  - ref: IND-TXN-011
+    legacy_id: XC-TXN-BEHAVIOUR-004
+    context: Long-inactive account receives sudden large or high-velocity activity.
+    name_in_typology: Dormant account suddenly reactivated
+    severity_in_typology: medium
+    false_positive_context: Seasonal use and inheritance can reactivate accounts.
     controls:
-    - id: XC-TXN-BEHAVIOUR-004-C1
-      name: Dormant reactivation alert
-      type: detective
-      description: Alert on activity after dormancy period.
-      implementation: rule
-      effectiveness: medium
-    - id: XC-TXN-BEHAVIOUR-004-C2
-      name: Re-verification before reactivation
-      type: preventive
-      description: Verify identity and update CDD.
-      implementation: process
-      effectiveness: medium
-  - id: XC-TXN-BEHAVIOUR-005
-    name: Repeated round-value transactions
-    description: Frequent round-sum amounts without related invoices or obligations.
-    category: transaction
-    severity: low
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    false_positive_notes: Rent, salaries and gifts often use round numbers.
+    - CTL-017
+  - ref: IND-TXN-010
+    legacy_id: XC-TXN-BEHAVIOUR-005
+    context: Frequent round-sum amounts without related invoices or obligations.
+    severity_in_typology: low
+    false_positive_context: Rent, salaries and gifts often use round numbers.
     controls:
-    - id: XC-TXN-BEHAVIOUR-005-C1
-      name: Round-amount pattern scenario
-      type: detective
-      description: Alert on repeated round values by counterparty.
-      implementation: rule
-      effectiveness: low
-    - id: XC-TXN-BEHAVIOUR-005-C2
-      name: Combined-factor scoring
-      type: detective
-      description: Use as a supporting factor, not a standalone alert.
-      implementation: model
-      effectiveness: medium
-  - id: XC-TXN-BEHAVIOUR-006
-    name: Frequent third-party payments
-    description: Funds regularly sent or received from parties with no clear link to the customer.
-    category: counterparty
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    false_positive_notes: Family support, agents and platforms use third parties.
+    - CTL-044
+    - CTL-042
+  - ref: IND-CPT-058
+    legacy_id: XC-TXN-BEHAVIOUR-006
+    context: Funds regularly sent or received from parties with no clear link to the customer.
+    name_in_typology: Frequent third-party payments
+    severity_in_typology: high
+    false_positive_context: Family support, agents and platforms use third parties.
     controls:
-    - id: XC-TXN-BEHAVIOUR-006-C1
-      name: Counterparty relationship profiling
-      type: detective
-      description: Identify unexplained counterparties.
-      implementation: model
-      effectiveness: medium
-    - id: XC-TXN-BEHAVIOUR-006-C2
-      name: Third-party payment policy
-      type: preventive
-      description: Restrict or condition third-party deposits.
-      implementation: policy
-      effectiveness: medium
-  - id: XC-TXN-BEHAVIOUR-007
-    name: Structuring below reporting or monitoring thresholds
-    description: Series of transactions sized to remain just below limits.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    false_positive_notes: Habitual amounts may coincide with limits.
+    - CTL-053
+    - CTL-046
+  - ref: IND-TXN-006
+    legacy_id: XC-TXN-BEHAVIOUR-007
+    context: Series of transactions sized to remain just below limits.
+    name_in_typology: Structuring below reporting or monitoring thresholds
+    false_positive_context: Habitual amounts may coincide with limits.
     controls:
-    - id: XC-TXN-BEHAVIOUR-007-C1
-      name: Threshold-proximity scenario
-      type: detective
-      description: Alert on clusters just below thresholds.
-      implementation: rule
-      effectiveness: high
-    - id: XC-TXN-BEHAVIOUR-007-C2
-      name: Aggregation across accounts and channels
-      type: detective
-      description: Combine related activity.
-      implementation: technology
-      effectiveness: medium
-  - id: XC-TXN-BEHAVIOUR-008
-    name: Sudden large increase in transaction volume
-    description: Abrupt step change in value or count without explanation.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    false_positive_notes: Business seasonality and one-off sales.
+    - CTL-038
+    - CTL-039
+  - ref: IND-TXN-012
+    legacy_id: XC-TXN-BEHAVIOUR-008
+    context: Abrupt step change in value or count without explanation.
+    false_positive_context: Business seasonality and one-off sales.
     controls:
-    - id: XC-TXN-BEHAVIOUR-008-C1
-      name: Trend-break monitoring
-      type: detective
-      description: Detect statistical deviations from history.
-      implementation: model
-      effectiveness: medium
-    - id: XC-TXN-BEHAVIOUR-008-C2
-      name: Customer outreach
-      type: corrective
-      description: Seek explanation.
-      implementation: process
-      effectiveness: medium
-  - id: XC-TXN-BEHAVIOUR-009
-    name: Circular or back-to-back flows
-    description: Funds return to origin or pass through linked parties in loops.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - transaction_data
-    - network_data
-    false_positive_notes: Refunds and intercompany settlements.
+    - CTL-042
+    - CTL-022
+  - ref: IND-TXN-015
+    legacy_id: XC-TXN-BEHAVIOUR-009
+    context: Funds return to origin or pass through linked parties in loops.
+    name_in_typology: Circular or back-to-back flows
+    false_positive_context: Refunds and intercompany settlements.
     controls:
-    - id: XC-TXN-BEHAVIOUR-009-C1
-      name: Network analysis
-      type: detective
-      description: Detect cycles and linked-party flows.
-      implementation: technology
-      effectiveness: high
-    - id: XC-TXN-BEHAVIOUR-009-C2
-      name: Investigator escalation
-      type: corrective
-      description: Review loops for purpose.
-      implementation: process
-      effectiveness: medium
-  - id: XC-TXN-BEHAVIOUR-010
-    name: Use of multiple accounts to move funds
-    description: Customer spreads activity across many accounts, products or institutions.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - account_data
-    false_positive_notes: Customers separate budgets legitimately.
+    - CTL-047
+    - CTL-048
+    - CTL-049
+  - ref: IND-TXN-044
+    legacy_id: XC-TXN-BEHAVIOUR-010
+    context: Customer spreads activity across many accounts, products or institutions.
+    false_positive_context: Customers separate budgets legitimately.
     controls:
-    - id: XC-TXN-BEHAVIOUR-010-C1
-      name: Customer-level aggregation
-      type: detective
-      description: Monitor holistically across accounts.
-      implementation: technology
-      effectiveness: medium
-    - id: XC-TXN-BEHAVIOUR-010-C2
-      name: Linked-account detection
-      type: detective
-      description: Group accounts with common controllers.
-      implementation: model
-      effectiveness: medium
-  - id: XC-TXN-BEHAVIOUR-011
-    name: Transactions with high-risk counterparties
-    description: Payments to or from parties linked to adverse media, sanctions or higher-risk sectors.
-    category: counterparty
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - screening
-    data_sources:
-    - transaction_data
-    - screening_results
-    false_positive_notes: Counterparty names can be ambiguous.
+    - CTL-039
+    - CTL-049
+  - ref: IND-CPT-059
+    legacy_id: XC-TXN-BEHAVIOUR-011
+    context: Payments to or from parties linked to adverse media, sanctions or higher-risk sectors.
+    name_in_typology: Transactions with high-risk counterparties
+    false_positive_context: Counterparty names can be ambiguous.
     controls:
-    - id: XC-TXN-BEHAVIOUR-011-C1
-      name: Counterparty screening
-      type: preventive
-      description: Screen counterparties in payments.
-      implementation: technology
-      effectiveness: high
-    - id: XC-TXN-BEHAVIOUR-011-C2
-      name: Risk-weighted counterparty monitoring
-      type: detective
-      description: Weight alerts by counterparty risk.
-      implementation: rule
-      effectiveness: medium
+    - CTL-029
+    - CTL-053

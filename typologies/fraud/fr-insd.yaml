@@ -12,312 +12,96 @@ typology:
   - Fraud Advisory Panel (UK), guidance on internal fraud (general)
   - COSO, fraud risk management guidance (general)
   indicators:
-  - id: FR-INSD-001
-    name: Ghost employee or duplicate bank account on payroll
-    description: Payroll records show employees without HR evidence or shared bank details.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - payroll_data
-    - hr_data
-    false_positive_notes: Shared family accounts.
+  - ref: IND-TYP-027
+    legacy_id: FR-INSD-001
+    context: Payroll records show employees without HR evidence or shared bank details.
+    false_positive_context: Shared family accounts.
     controls:
-    - id: FR-INSD-001-C1
-      name: Data-analytics audit and exception testing
-      type: detective
-      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
-        ghost records and outliers.
-      implementation: process
-      effectiveness: medium
-    - id: FR-INSD-001-C2
-      name: Segregation of duties and dual authorisation
-      type: preventive
-      description: No single person can create, approve and release; sensitive changes need an independent
-        second approver.
-      implementation: policy
-      effectiveness: high
-    - id: FR-INSD-001-C3
-      name: Consortium and shared fraud data
-      type: detective
-      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
-        sharing to catch known bad actors early.
-      implementation: technology
-      effectiveness: high
+    - CTL-175
+    - CTL-077
+    - CTL-083
     references:
     - ACFE, Report to the Nations (published biennially)
-  - id: FR-INSD-002
-    name: Expense claims just below approval limits
-    description: Pattern of claims under thresholds or with duplicate receipts.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - expense_data
-    false_positive_notes: Genuine low-value costs.
+  - ref: IND-TXN-009
+    legacy_id: FR-INSD-002
+    context: Pattern of claims under thresholds or with duplicate receipts.
+    name_in_typology: Expense claims just below approval limits
+    false_positive_context: Genuine low-value costs.
     controls:
-    - id: FR-INSD-002-C1
-      name: Data-analytics audit and exception testing
-      type: detective
-      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
-        ghost records and outliers.
-      implementation: process
-      effectiveness: medium
-    - id: FR-INSD-002-C2
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules on count, value, geography and timing alert analysts to bursts or structured
-        activity.
-      implementation: rule
-      effectiveness: medium
-    - id: FR-INSD-002-C3
-      name: Whistleblowing and conduct monitoring
-      type: detective
-      description: Confidential reporting channel and conduct analytics surface insider misconduct and
-        collusion.
-      implementation: process
-      effectiveness: medium
+    - CTL-175
+    - CTL-037
+    - CTL-163
     references:
     - ACFE, Report to the Nations (published biennially)
-  - id: FR-INSD-003
-    name: Employee never takes leave or resists rotation
-    description: Behavioural red flag for concealment.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - investigator_judgement
-    data_sources:
-    - hr_data
-    false_positive_notes: Personal preference.
+  - ref: IND-BEH-072
+    legacy_id: FR-INSD-003
+    context: Behavioural red flag for concealment.
+    false_positive_context: Personal preference.
     controls:
-    - id: FR-INSD-003-C1
-      name: Segregation of duties and dual authorisation
-      type: preventive
-      description: No single person can create, approve and release; sensitive changes need an independent
-        second approver.
-      implementation: policy
-      effectiveness: high
-    - id: FR-INSD-003-C2
-      name: Whistleblowing and conduct monitoring
-      type: detective
-      description: Confidential reporting channel and conduct analytics surface insider misconduct and
-        collusion.
-      implementation: process
-      effectiveness: medium
-    - id: FR-INSD-003-C3
-      name: Case management and fraud MI governance
-      type: governance
-      description: Outcomes, losses and false positives are tracked and fed back into rule tuning and
-        risk appetite.
-      implementation: process
-      effectiveness: medium
+    - CTL-077
+    - CTL-163
+    - CTL-094
     references:
     - ACFE, Report to the Nations (published biennially)
-  - id: FR-INSD-004
-    name: Staff lifestyle inconsistent with pay
-    description: Visible spending beyond known income.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - investigator_judgement
-    data_sources:
-    - hr_reports
-    false_positive_notes: Inheritance.
+  - ref: IND-BEH-073
+    legacy_id: FR-INSD-004
+    context: Visible spending beyond known income.
+    false_positive_context: Inheritance.
     controls:
-    - id: FR-INSD-004-C1
-      name: Whistleblowing and conduct monitoring
-      type: detective
-      description: Confidential reporting channel and conduct analytics surface insider misconduct and
-        collusion.
-      implementation: process
-      effectiveness: medium
-    - id: FR-INSD-004-C2
-      name: Enhanced due diligence and periodic KYC review
-      type: detective
-      description: Targeted review of purpose, source of funds and expected activity when behaviour diverges
-        from the profile.
-      implementation: process
-      effectiveness: medium
-    - id: FR-INSD-004-C3
-      name: Case management and fraud MI governance
-      type: governance
-      description: Outcomes, losses and false positives are tracked and fed back into rule tuning and
-        risk appetite.
-      implementation: process
-      effectiveness: medium
+    - CTL-163
+    - CTL-014
+    - CTL-094
     references:
     - ACFE, Report to the Nations (published biennially)
-  - id: FR-INSD-005
-    name: Excessive access or override of controls
-    description: Privileged users bypass approvals or alter records.
-    category: behavioural
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - access_logs
-    false_positive_notes: Administrators.
+  - ref: IND-BEH-019
+    legacy_id: FR-INSD-005
+    context: Privileged users bypass approvals or alter records.
+    name_in_typology: Excessive access or override of controls
+    false_positive_context: Administrators.
     controls:
-    - id: FR-INSD-005-C1
-      name: Segregation of duties and dual authorisation
-      type: preventive
-      description: No single person can create, approve and release; sensitive changes need an independent
-        second approver.
-      implementation: policy
-      effectiveness: high
-    - id: FR-INSD-005-C2
-      name: Data-analytics audit and exception testing
-      type: detective
-      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
-        ghost records and outliers.
-      implementation: process
-      effectiveness: medium
-    - id: FR-INSD-005-C3
-      name: Behavioural and session analytics
-      type: detective
-      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
-        signals, deviation from baseline) to surface coached or controlled activity.
-      implementation: model
-      effectiveness: high
+    - CTL-077
+    - CTL-175
+    - CTL-091
     references:
     - ACFE, Report to the Nations (published biennially)
-  - id: FR-INSD-006
-    name: Employee accounts receive unusual payments
-    description: Staff accounts credited from customers, vendors or dormant accounts.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - account_data
-    false_positive_notes: Salary advances.
+  - ref: IND-TXN-072
+    legacy_id: FR-INSD-006
+    context: Staff accounts credited from customers, vendors or dormant accounts.
+    false_positive_context: Salary advances.
     controls:
-    - id: FR-INSD-006-C1
-      name: Behavioural and session analytics
-      type: detective
-      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
-        signals, deviation from baseline) to surface coached or controlled activity.
-      implementation: model
-      effectiveness: high
-    - id: FR-INSD-006-C2
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules on count, value, geography and timing alert analysts to bursts or structured
-        activity.
-      implementation: rule
-      effectiveness: medium
-    - id: FR-INSD-006-C3
-      name: Whistleblowing and conduct monitoring
-      type: detective
-      description: Confidential reporting channel and conduct analytics surface insider misconduct and
-        collusion.
-      implementation: process
-      effectiveness: medium
+    - CTL-091
+    - CTL-037
+    - CTL-163
     references:
     - ACFE, Report to the Nations (published biennially)
-  - id: FR-INSD-007
-    name: Vendor with staff-linked address or bank details
-    description: Procurement or payment to entity linked to an employee.
-    category: counterparty
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - vendor_master
-    - hr_data
-    false_positive_notes: Coincidence.
+  - ref: IND-CPT-005
+    legacy_id: FR-INSD-007
+    context: Procurement or payment to entity linked to an employee.
+    name_in_typology: Vendor with staff-linked address or bank details
+    false_positive_context: Coincidence.
     controls:
-    - id: FR-INSD-007-C1
-      name: Vendor master-data change control
-      type: preventive
-      description: Bank-detail changes to payees require independent verification and are reviewed before
-        the next payment run.
-      implementation: process
-      effectiveness: high
-    - id: FR-INSD-007-C2
-      name: Data-analytics audit and exception testing
-      type: detective
-      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
-        ghost records and outliers.
-      implementation: process
-      effectiveness: medium
-    - id: FR-INSD-007-C3
-      name: Procurement red-flag analytics
-      type: detective
-      description: Tests bidding and award data for rotation, price clustering, splitting and conflicts
-        of interest.
-      implementation: rule
-      effectiveness: medium
+    - CTL-078
+    - CTL-175
+    - CTL-059
     references:
     - ACFE, Report to the Nations (published biennially)
-  - id: FR-INSD-008
-    name: Customer complaints about staff handling
-    description: Repeated complaints or unauthorised changes by one employee.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - investigator_judgement
-    data_sources:
-    - complaints
-    false_positive_notes: Difficult customers.
+  - ref: IND-BEH-074
+    legacy_id: FR-INSD-008
+    context: Repeated complaints or unauthorised changes by one employee.
+    false_positive_context: Difficult customers.
     controls:
-    - id: FR-INSD-008-C1
-      name: Whistleblowing and conduct monitoring
-      type: detective
-      description: Confidential reporting channel and conduct analytics surface insider misconduct and
-        collusion.
-      implementation: process
-      effectiveness: medium
-    - id: FR-INSD-008-C2
-      name: Case management and fraud MI governance
-      type: governance
-      description: Outcomes, losses and false positives are tracked and fed back into rule tuning and
-        risk appetite.
-      implementation: process
-      effectiveness: medium
-    - id: FR-INSD-008-C3
-      name: Frontline training and conversation scripts
-      type: preventive
-      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
-        and escalate with a defined script and authority to pause.
-      implementation: training
-      effectiveness: medium
+    - CTL-163
+    - CTL-094
+    - CTL-170
     references:
     - ACFE, Report to the Nations (published biennially)
-  - id: FR-INSD-009
-    name: Alterations to payroll or master data outside cycle
-    description: Changes made around pay run by one user.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - audit_logs
-    false_positive_notes: Genuine corrections.
+  - ref: IND-TXN-073
+    legacy_id: FR-INSD-009
+    context: Changes made around pay run by one user.
+    false_positive_context: Genuine corrections.
     controls:
-    - id: FR-INSD-009-C1
-      name: Segregation of duties and dual authorisation
-      type: preventive
-      description: No single person can create, approve and release; sensitive changes need an independent
-        second approver.
-      implementation: policy
-      effectiveness: high
-    - id: FR-INSD-009-C2
-      name: Vendor master-data change control
-      type: preventive
-      description: Bank-detail changes to payees require independent verification and are reviewed before
-        the next payment run.
-      implementation: process
-      effectiveness: high
-    - id: FR-INSD-009-C3
-      name: Data-analytics audit and exception testing
-      type: detective
-      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
-        ghost records and outliers.
-      implementation: process
-      effectiveness: medium
+    - CTL-077
+    - CTL-078
+    - CTL-175
     references:
     - ACFE, Report to the Nations (published biennially)

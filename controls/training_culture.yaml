@@ -1,0 +1,78 @@
+controls:
+- id: CTL-169
+  name: Role-based financial crime training
+  family: training_culture
+  type: preventive
+  implementation: training
+  effectiveness: medium
+  description: Tailors training content and frequency to role and risk for finance, relationship, underwriting
+    and compliance staff, with feedback of quality assurance findings. It builds baseline competence.
+  also_known_as:
+  - Anti-bribery training for finance teams
+  - Role-based training
+  - Staff training
+  - Adviser training
+  - Underwriter training
+  - Trade finance training
+  - Lender training
+  - Training for relationship managers
+- id: CTL-170
+  name: Front-line recognition and conversation training
+  family: training_culture
+  type: preventive
+  implementation: training
+  effectiveness: medium
+  description: Trains branch, contact-centre and relationship staff to ask open questions, recognise coaching,
+    coercion, pressure and evasion and escalate with authority to pause. It strengthens the human control
+    at the point of contact.
+  also_known_as:
+  - Frontline training and conversation scripts
+  - Staff awareness training
+  - Front-line coaching on probing questions
+  - Staff training on pressure tactics
+  - Staff awareness
+  - Frontline victim-awareness training
+  - Frontline mule awareness training
+  - Relationship manager training
+- id: CTL-171
+  name: Typology-focused staff training
+  family: training_culture
+  type: preventive
+  implementation: training
+  effectiveness: medium
+  description: Briefs front-line, onboarding and investigation staff on current red flags, typologies
+    and escalation routes, including sector-specific patterns and professional-enabler behaviours. It
+    improves recognition of suspicious activity that rules alone cannot see.
+  also_known_as:
+  - Professional launderer typology training
+  - Adviser risk awareness
+  - Sector-specific red-flag training
+- id: CTL-172
+  name: Analyst training on weak-signal combination
+  family: training_culture
+  type: preventive
+  implementation: training
+  effectiveness: medium
+  description: Teaches analysts to weigh several weak signals together, understand network and settlement
+    structures, and avoid profiling on protected characteristics. It raises investigative quality and
+    reduces both missed risk and unfair outcomes.
+  also_known_as:
+  - Corridor knowledge training
+  - Typology training
+  - Analyst training on weak signal combination
+- id: CTL-173
+  name: Sector and partner awareness outreach
+  family: training_culture
+  type: preventive
+  implementation: training
+  effectiveness: low
+  description: Educates retailers, suppliers, hospitality providers and other partners to recognise and
+    report suspicious patterns, and invites reporting channels. It extends detection to people who see
+    activity before the institution does.
+  also_known_as:
+  - Chemical supplier awareness
+  - Local supplier awareness
+  - Merchant red-flag reporting
+  - Hospitality sector awareness
+  - Retailer awareness
+  - Employer-side hiring controls guidance

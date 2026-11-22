@@ -15,204 +15,65 @@ typology:
   - Interpol and UNEP, The Rise of Environmental Crime (2016)
   - Europol, public material on environmental crime and waste trafficking
   indicators:
-  - id: EC-WASTE-001
-    name: Waste shipped as used goods or recyclables
-    description: Containers described as used electronics, vehicles, plastics or metal scrap with signs
-      of unsorted waste.
-    category: document
-    severity: high
-    detection_type:
-    - document_review
-    - investigator_judgement
-    data_sources:
-    - bills_of_lading
-    - customs_data
-    false_positive_notes: Second-hand trade is huge and legitimate.
+  - ref: IND-DOC-022
+    legacy_id: EC-WASTE-001
+    context: Containers described as used electronics, vehicles, plastics or metal scrap with signs of
+      unsorted waste.
+    false_positive_context: Second-hand trade is huge and legitimate.
     controls:
-    - id: EC-WASTE-001-C1
-      name: Commodity-description risk screening
-      type: detective
-      description: Flag descriptions common to disguised waste.
-      implementation: rule
-      effectiveness: medium
-    - id: EC-WASTE-001-C2
-      name: Trade finance waste checks
-      type: preventive
-      description: Add waste-trafficking prompts to trade finance review.
-      implementation: process
-      effectiveness: high
-  - id: EC-WASTE-002
-    name: Collection firm paid low fees yet reporting large volumes
-    description: Waste firm bills clients far below market disposal rates.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - invoices
-    - tariff_data
-    false_positive_notes: Efficiency or subsidies may lower prices.
+    - CTL-131
+    - CTL-123
+  - ref: IND-TXN-061
+    legacy_id: EC-WASTE-002
+    context: Waste firm bills clients far below market disposal rates.
+    false_positive_context: Efficiency or subsidies may lower prices.
     controls:
-    - id: EC-WASTE-002-C1
-      name: Price benchmarking
-      type: detective
-      description: Compare fees to market disposal costs.
-      implementation: rule
-      effectiveness: medium
-    - id: EC-WASTE-002-C2
-      name: Client contract due diligence
-      type: preventive
-      description: Verify treatment sites and licences.
-      implementation: process
-      effectiveness: high
-  - id: EC-WASTE-003
-    name: Licence or permit lacking or misused
-    description: Operator lacks the permit or uses another firm's permit for different waste.
-    category: customer
-    severity: high
-    detection_type:
-    - kyc_review
-    - document_review
-    data_sources:
-    - permit_registers
-    - kyc_files
-    false_positive_notes: Permits may be pending renewal.
+    - CTL-124
+    - CTL-134
+  - ref: IND-CUS-005
+    legacy_id: EC-WASTE-003
+    context: Operator lacks the permit or uses another firm's permit for different waste.
+    name_in_typology: Licence or permit lacking or misused
+    false_positive_context: Permits may be pending renewal.
     controls:
-    - id: EC-WASTE-003-C1
-      name: Permit verification
-      type: preventive
-      description: Verify with environmental authority.
-      implementation: process
-      effectiveness: high
-    - id: EC-WASTE-003-C2
-      name: Permit usage monitoring
-      type: detective
-      description: Compare permit scope to activity.
-      implementation: rule
-      effectiveness: medium
-  - id: EC-WASTE-004
-    name: Shipments to countries with weak controls and few recycling facilities
-    description: Exports to destinations known as dumping sites.
-    category: geographic
-    severity: medium
-    detection_type:
-    - external_intel
-    - transaction_monitoring
-    data_sources:
-    - customs_data
-    - ngo_reports
-    false_positive_notes: Some destinations have lawful recyclers.
+    - CTL-134
+    - CTL-116
+    - CTL-136
+  - ref: IND-GEO-007
+    legacy_id: EC-WASTE-004
+    context: Exports to destinations known as dumping sites.
+    false_positive_context: Some destinations have lawful recyclers.
     controls:
-    - id: EC-WASTE-004-C1
-      name: Destination risk scoring
-      type: preventive
-      description: Score destinations for waste dumping risk.
-      implementation: model
-      effectiveness: medium
-    - id: EC-WASTE-004-C2
-      name: Consignee verification
-      type: preventive
-      description: Verify consignee and treatment capacity.
-      implementation: process
-      effectiveness: medium
-  - id: EC-WASTE-005
-    name: Cash payments to landowners or drivers for dumping
-    description: Payments to farmers, quarry owners or drivers for tipping.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - cash_data
-    - payment_records
-    false_positive_notes: Land-fill fees exist.
+    - CTL-154
+    - CTL-133
+  - ref: IND-TXN-022
+    legacy_id: EC-WASTE-005
+    context: Payments to farmers, quarry owners or drivers for tipping.
+    name_in_typology: Cash payments to landowners or drivers for dumping
+    false_positive_context: Land-fill fees exist.
     controls:
-    - id: EC-WASTE-005-C1
-      name: Cash payment pattern review
-      type: detective
-      description: Review cash payouts by waste firms.
-      implementation: rule
-      effectiveness: medium
-    - id: EC-WASTE-005-C2
-      name: Local supplier awareness
-      type: preventive
-      description: Train staff on local dumping patterns.
-      implementation: training
-      effectiveness: low
-  - id: EC-WASTE-006
-    name: Short-lived waste companies with common directors
-    description: Companies appear, accumulate waste and vanish leaving liabilities.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - company_registry
-    - insolvency_records
-    false_positive_notes: Contractors may fail for commercial reasons.
+    - CTL-064
+    - CTL-173
+  - ref: IND-OWN-009
+    legacy_id: EC-WASTE-006
+    context: Companies appear, accumulate waste and vanish leaving liabilities.
+    name_in_typology: Short-lived waste companies with common directors
+    false_positive_context: Contractors may fail for commercial reasons.
     controls:
-    - id: EC-WASTE-006-C1
-      name: Phoenix company analytics
-      type: detective
-      description: Link successor entities.
-      implementation: model
-      effectiveness: medium
-    - id: EC-WASTE-006-C2
-      name: Director history screening
-      type: preventive
-      description: Screen for prior waste offences.
-      implementation: technology
-      effectiveness: medium
-  - id: EC-WASTE-007
-    name: Mixed legal and illegal operations blending flows
-    description: Legitimate recycler also receives mislabelled loads and commingled revenue.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - investigator_judgement
-    - transaction_monitoring
-    data_sources:
-    - payment_records
-    - weighbridge_data
-    false_positive_notes: Mixed streams happen in recycling.
+    - CTL-050
+    - CTL-032
+  - ref: IND-BEH-057
+    legacy_id: EC-WASTE-007
+    context: Legitimate recycler also receives mislabelled loads and commingled revenue.
+    false_positive_context: Mixed streams happen in recycling.
     controls:
-    - id: EC-WASTE-007-C1
-      name: Mass-balance reconciliation
-      type: detective
-      description: Compare inputs and outputs.
-      implementation: process
-      effectiveness: medium
-    - id: EC-WASTE-007-C2
-      name: On-site verification
-      type: detective
-      description: Visit facility for sample checks.
-      implementation: process
-      effectiveness: medium
-  - id: EC-WASTE-008
-    name: Adverse media or enforcement action over waste crime
-    description: Fines, seizures, or investigations tied to firm or owners.
-    category: customer
-    severity: high
-    detection_type:
-    - screening
-    - external_intel
-    data_sources:
-    - adverse_media
-    - enforcement_notices
-    false_positive_notes: Cases may be disputed.
+    - CTL-139
+    - CTL-010
+  - ref: IND-CUS-003
+    legacy_id: EC-WASTE-008
+    context: Fines, seizures, or investigations tied to firm or owners.
+    name_in_typology: Adverse media or enforcement action over waste crime
+    false_positive_context: Cases may be disputed.
     controls:
-    - id: EC-WASTE-008-C1
-      name: Adverse media screening
-      type: detective
-      description: Screen for waste-crime keywords.
-      implementation: technology
-      effectiveness: medium
-    - id: EC-WASTE-008-C2
-      name: Enhanced due diligence on waste clients
-      type: preventive
-      description: Apply EDD to higher-risk waste handlers.
-      implementation: process
-      effectiveness: high
+    - CTL-032
+    - CTL-024

@@ -16,216 +16,76 @@ typology:
   - FATF, Money Laundering and Terrorist Financing Risks and Vulnerabilities Associated with Gold (2015)
   - FATF, Guidance on the Risk-Based Approach for Dealers in Precious Metals and Stones (2008)
   indicators:
-  - id: ML-HVG-001
-    name: Cash or third-party payments for high-value items
-    description: Payments in cash, or from unrelated parties.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - document_review
-    data_sources:
-    - payment_records
-    false_positive_notes: Cash sales are legal in some places.
+  - ref: IND-TXN-021
+    legacy_id: ML-HVG-001
+    context: Payments in cash, or from unrelated parties.
+    name_in_typology: Cash or third-party payments for high-value items
+    false_positive_context: Cash sales are legal in some places.
     controls:
-    - id: ML-HVG-001-C1
-      name: Cash acceptance limit
-      type: preventive
-      description: Limit cash by policy and regulation.
-      implementation: policy
-      effectiveness: high
-    - id: ML-HVG-001-C2
-      name: Payer identity checks
-      type: preventive
-      description: Verify payer equals buyer.
-      implementation: process
-      effectiveness: medium
-  - id: ML-HVG-002
-    name: Price disproportionate to value
-    description: Price above or below a credible valuation.
-    category: transaction
-    severity: high
-    detection_type:
-    - document_review
-    - investigator_judgement
-    data_sources:
-    - valuation_reports
-    false_positive_notes: Subjective art value.
+    - CTL-062
+    - CTL-046
+  - ref: IND-TXN-020
+    legacy_id: ML-HVG-002
+    context: Price above or below a credible valuation.
+    name_in_typology: Price disproportionate to value
+    false_positive_context: Subjective art value.
     controls:
-    - id: ML-HVG-002-C1
-      name: Independent appraisal
-      type: preventive
-      description: Independent valuation for high-value items.
-      implementation: process
-      effectiveness: high
-    - id: ML-HVG-002-C2
-      name: Price variance escalation
-      type: governance
-      description: Escalate large variance.
-      implementation: policy
-      effectiveness: medium
-  - id: ML-HVG-003
-    name: Buyer indifferent to quality, authenticity or price
-    description: Little interest in provenance or negotiation.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - customer_behaviour
-    - investigator_judgement
-    data_sources:
-    - sales_notes
-    false_positive_notes: Collectors vary.
+    - CTL-141
+    - CTL-124
+    - CTL-123
+  - ref: IND-BEH-015
+    legacy_id: ML-HVG-003
+    context: Little interest in provenance or negotiation.
+    name_in_typology: Buyer indifferent to quality, authenticity or price
+    false_positive_context: Collectors vary.
     controls:
-    - id: ML-HVG-003-C1
-      name: Staff awareness training
-      type: preventive
-      description: Train on behaviours.
-      implementation: training
-      effectiveness: low
-    - id: ML-HVG-003-C2
-      name: Provenance documentation requirement
-      type: preventive
-      description: Obtain provenance records.
-      implementation: process
-      effectiveness: medium
-  - id: ML-HVG-004
-    name: Rapid resale or return for refund by cheque
-    description: Item bought then resold or returned for different payment form.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - investigator_judgement
-    - transaction_monitoring
-    data_sources:
-    - sales_data
-    false_positive_notes: Genuine returns.
+    - CTL-170
+    - CTL-135
+  - ref: IND-BEH-014
+    legacy_id: ML-HVG-004
+    context: Item bought then resold or returned for different payment form.
+    name_in_typology: Rapid resale or return for refund by cheque
+    false_positive_context: Genuine returns.
     controls:
-    - id: ML-HVG-004-C1
-      name: Return and resale monitoring
-      type: detective
-      description: Flag quick reversals.
-      implementation: rule
-      effectiveness: medium
-    - id: ML-HVG-004-C2
-      name: Refund method policy
-      type: preventive
-      description: Refund to original method only.
-      implementation: policy
-      effectiveness: medium
-  - id: ML-HVG-005
-    name: Use of freeports or offshore storage and shell owners
-    description: Items held through opaque vehicles or storage.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    data_sources:
-    - ownership_documents
-    false_positive_notes: Tax-neutral storage used by collectors.
+    - CTL-150
+    - CTL-089
+  - ref: IND-OWN-003
+    legacy_id: ML-HVG-005
+    context: Items held through opaque vehicles or storage.
+    name_in_typology: Use of freeports or offshore storage and shell owners
+    false_positive_context: Tax-neutral storage used by collectors.
     controls:
-    - id: ML-HVG-005-C1
-      name: Ownership verification
-      type: preventive
-      description: Verify UBO for storage and purchase.
-      implementation: process
-      effectiveness: high
-    - id: ML-HVG-005-C2
-      name: Freeport counterparty due diligence
-      type: preventive
-      description: Review storage provider.
-      implementation: process
-      effectiveness: medium
-  - id: ML-HVG-006
-    name: Unclear provenance or sourcing of metals and stones
-    description: Gold or stones from unverified origin or recycled scrap.
-    category: document
-    severity: high
-    detection_type:
-    - document_review
-    - external_intel
-    data_sources:
-    - provenance_docs
-    false_positive_notes: Informal supply chains.
+    - CTL-005
+    - CTL-127
+  - ref: IND-DOC-021
+    legacy_id: ML-HVG-006
+    context: Gold or stones from unverified origin or recycled scrap.
+    name_in_typology: Unclear provenance or sourcing of metals and stones
+    false_positive_context: Informal supply chains.
     controls:
-    - id: ML-HVG-006-C1
-      name: Sourcing due diligence
-      type: preventive
-      description: Chain-of-custody checks.
-      implementation: process
-      effectiveness: high
-    - id: ML-HVG-006-C2
-      name: Hallmark and assay verification
-      type: detective
-      description: Verify content.
-      implementation: technology
-      effectiveness: medium
-  - id: ML-HVG-007
-    name: Vehicle purchased for cash and exported quickly
-    description: Luxury cars bought and shipped abroad soon after.
-    category: typology_specific
-    severity: medium
-    detection_type:
-    - investigator_judgement
-    - document_review
-    data_sources:
-    - export_records
-    false_positive_notes: Exporters operate.
+    - CTL-135
+    - CTL-136
+    - CTL-131
+  - ref: IND-TYP-035
+    legacy_id: ML-HVG-007
+    context: Luxury cars bought and shipped abroad soon after.
+    false_positive_context: Exporters operate.
     controls:
-    - id: ML-HVG-007-C1
-      name: Export documentation check
-      type: detective
-      description: Verify export and registration.
-      implementation: process
-      effectiveness: medium
-    - id: ML-HVG-007-C2
-      name: Dealer controls
-      type: preventive
-      description: Dealer CDD.
-      implementation: policy
-      effectiveness: medium
-  - id: ML-HVG-008
-    name: Purchases inconsistent with customer profile
-    description: Spend exceeds known means.
-    category: customer
-    severity: medium
-    detection_type:
-    - kyc_review
-    data_sources:
-    - kyc_profile
-    false_positive_notes: Wealth events.
+    - CTL-134
+    - CTL-024
+  - ref: IND-CUS-001
+    legacy_id: ML-HVG-008
+    context: Spend exceeds known means.
+    name_in_typology: Purchases inconsistent with customer profile
+    severity_in_typology: medium
+    false_positive_context: Wealth events.
     controls:
-    - id: ML-HVG-008-C1
-      name: Source-of-funds check
-      type: preventive
-      description: Verify for large purchases.
-      implementation: process
-      effectiveness: medium
-    - id: ML-HVG-008-C2
-      name: Profile comparison
-      type: detective
-      description: Compare spending to profile.
-      implementation: rule
-      effectiveness: medium
-  - id: ML-HVG-009
-    name: Auction or intermediary used to obscure parties
-    description: Agents or anonymous bidding.
-    category: counterparty
-    severity: medium
-    detection_type:
-    - kyc_review
-    data_sources:
-    - auction_records
-    false_positive_notes: Privacy requests.
+    - CTL-012
+    - CTL-043
+  - ref: IND-CPT-036
+    legacy_id: ML-HVG-009
+    context: Agents or anonymous bidding.
+    false_positive_context: Privacy requests.
     controls:
-    - id: ML-HVG-009-C1
-      name: Agent principal disclosure
-      type: preventive
-      description: Require principal identity.
-      implementation: policy
-      effectiveness: high
-    - id: ML-HVG-009-C2
-      name: Auction CDD
-      type: preventive
-      description: CDD by auction house.
-      implementation: process
-      effectiveness: medium
+    - CTL-021
+    - CTL-024

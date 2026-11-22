@@ -15,196 +15,64 @@ typology:
   - FATF, Money Laundering through the Physical Transportation of Cash (2015)
   - FinCEN and FFIEC, BSA/AML Examination Manual, general guidance on funnel account activity
   indicators:
-  - id: ML-FUNNEL-001
-    name: Cash deposits from many states or regions
-    description: Account receives cash deposits across geographically distant locations from the account
-      holder's home area.
-    category: geographic
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    - branch_atm_locations
-    false_positive_notes: Travelling customers and national businesses.
+  - ref: IND-GEO-014
+    legacy_id: ML-FUNNEL-001
+    context: Account receives cash deposits across geographically distant locations from the account holder's
+      home area.
+    false_positive_context: Travelling customers and national businesses.
     controls:
-    - id: ML-FUNNEL-001-C1
-      name: Out-of-area deposit rule
-      type: detective
-      description: Alert on deposits at distant locations without a customer link.
-      implementation: rule
-      effectiveness: high
-    - id: ML-FUNNEL-001-C2
-      name: Geographic dispersion scoring
-      type: detective
-      description: Score deposit location entropy over time.
-      implementation: model
-      effectiveness: medium
-  - id: ML-FUNNEL-002
-    name: Rapid withdrawals following deposits in different location
-    description: Funds credited in one area are withdrawn quickly elsewhere, often by ATM.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    - atm_logs
-    false_positive_notes: Remote workers or family support.
+    - CTL-045
+    - CTL-064
+    - CTL-041
+  - ref: IND-TXN-030
+    legacy_id: ML-FUNNEL-002
+    context: Funds credited in one area are withdrawn quickly elsewhere, often by ATM.
+    name_in_typology: Rapid withdrawals following deposits in different location
+    severity_in_typology: high
+    false_positive_context: Remote workers or family support.
     controls:
-    - id: ML-FUNNEL-002-C1
-      name: Deposit/withdrawal geo-pair rule
-      type: detective
-      description: Detect fast deposit-withdrawal at distant sites.
-      implementation: rule
-      effectiveness: high
-    - id: ML-FUNNEL-002-C2
-      name: Temporary account hold review
-      type: corrective
-      description: Allow compliance to hold and review rapid cross-region flows.
-      implementation: process
-      effectiveness: medium
-  - id: ML-FUNNEL-003
-    name: Account with little other activity
-    description: No salary, bills, or everyday spending, only deposits and withdrawals.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - kyc_review
-    data_sources:
-    - transaction_data
-    false_positive_notes: New or secondary accounts have limited use.
+    - CTL-045
+    - CTL-103
+  - ref: IND-BEH-090
+    legacy_id: ML-FUNNEL-003
+    context: No salary, bills, or everyday spending, only deposits and withdrawals.
+    false_positive_context: New or secondary accounts have limited use.
     controls:
-    - id: ML-FUNNEL-003-C1
-      name: Single-purpose account detection
-      type: detective
-      description: Flag accounts with only in/out transfers.
-      implementation: model
-      effectiveness: medium
-    - id: ML-FUNNEL-003-C2
-      name: Account purpose confirmation
-      type: preventive
-      description: Obtain purpose and evidence at onboarding.
-      implementation: process
-      effectiveness: medium
-  - id: ML-FUNNEL-004
-    name: Individual or business holder lacks economic link to deposit areas
-    description: Account holder profile shows no business or family ties in places where deposits occur.
-    category: customer
-    severity: medium
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - kyc_profile
-    false_positive_notes: Customers may be mobile or have remote clients.
+    - CTL-051
+    - CTL-011
+  - ref: IND-CUS-037
+    legacy_id: ML-FUNNEL-004
+    context: Account holder profile shows no business or family ties in places where deposits occur.
+    false_positive_context: Customers may be mobile or have remote clients.
     controls:
-    - id: ML-FUNNEL-004-C1
-      name: Profile-to-activity comparison
-      type: detective
-      description: Compare location and activity with KYC data.
-      implementation: rule
-      effectiveness: medium
-    - id: ML-FUNNEL-004-C2
-      name: Customer outreach
-      type: preventive
-      description: Contact customer for explanation.
-      implementation: process
-      effectiveness: medium
-  - id: ML-FUNNEL-005
-    name: Multiple unrelated depositors to same account
-    description: Numerous third parties deposit into one account, sometimes with slips or reference.
-    category: counterparty
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    false_positive_notes: Collections and community groups.
+    - CTL-042
+    - CTL-022
+  - ref: IND-CPT-035
+    legacy_id: ML-FUNNEL-005
+    context: Numerous third parties deposit into one account, sometimes with slips or reference.
+    name_in_typology: Multiple unrelated depositors to same account
+    false_positive_context: Collections and community groups.
     controls:
-    - id: ML-FUNNEL-005-C1
-      name: Depositor diversity rule
-      type: detective
-      description: Count unique depositors per account.
-      implementation: rule
-      effectiveness: high
-    - id: ML-FUNNEL-005-C2
-      name: Third-party deposit restrictions
-      type: preventive
-      description: Restrict third-party cash deposits.
-      implementation: policy
-      effectiveness: medium
-  - id: ML-FUNNEL-006
-    name: Funds sent offshore soon after collection
-    description: Aggregated funds are wired or sent through remittance to foreign jurisdictions.
-    category: geographic
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - screening
-    data_sources:
-    - transaction_data
-    - wire_data
-    false_positive_notes: International students and migrants send funds abroad.
+    - CTL-041
+    - CTL-046
+  - ref: IND-GEO-015
+    legacy_id: ML-FUNNEL-006
+    context: Aggregated funds are wired or sent through remittance to foreign jurisdictions.
+    false_positive_context: International students and migrants send funds abroad.
     controls:
-    - id: ML-FUNNEL-006-C1
-      name: Aggregated outbound wire rule
-      type: detective
-      description: Alert on large outbound transfers following multi-source deposits.
-      implementation: rule
-      effectiveness: high
-    - id: ML-FUNNEL-006-C2
-      name: Outbound transfer EDD
-      type: preventive
-      description: Verify purpose and beneficiary before release.
-      implementation: process
-      effectiveness: medium
-  - id: ML-FUNNEL-007
-    name: Account opened with limited documentation or by recruited individuals
-    description: Account holders include students, unemployed people or newcomers sharing similar addresses.
-    category: customer
-    severity: medium
-    detection_type:
-    - kyc_review
-    data_sources:
-    - kyc_file
-    false_positive_notes: Vulnerable groups legitimately bank.
+    - CTL-040
+    - CTL-023
+  - ref: IND-CUS-038
+    legacy_id: ML-FUNNEL-007
+    context: Account holders include students, unemployed people or newcomers sharing similar addresses.
+    false_positive_context: Vulnerable groups legitimately bank.
     controls:
-    - id: ML-FUNNEL-007-C1
-      name: Onboarding red-flag checks
-      type: preventive
-      description: Detect shared addresses, phones and devices across accounts.
-      implementation: technology
-      effectiveness: medium
-    - id: ML-FUNNEL-007-C2
-      name: Network linking analytics
-      type: detective
-      description: Link accounts by shared identifiers.
-      implementation: model
-      effectiveness: medium
-  - id: ML-FUNNEL-008
-    name: Use of cash deposit machines and cards across multiple accounts
-    description: Debit cards or deposit tokens shared or sent to others to deposit.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - card_data
-    - atm_logs
-    false_positive_notes: Family members share cards sometimes.
+    - CTL-049
+    - CTL-048
+  - ref: IND-PRD-045
+    legacy_id: ML-FUNNEL-008
+    context: Debit cards or deposit tokens shared or sent to others to deposit.
+    false_positive_context: Family members share cards sometimes.
     controls:
-    - id: ML-FUNNEL-008-C1
-      name: Card usage geolocation checks
-      type: detective
-      description: Compare card use with holder location.
-      implementation: rule
-      effectiveness: medium
-    - id: ML-FUNNEL-008-C2
-      name: Deposit limits on new accounts
-      type: preventive
-      description: Apply deposit limits at first.
-      implementation: policy
-      effectiveness: medium
+    - CTL-045
+    - CTL-072

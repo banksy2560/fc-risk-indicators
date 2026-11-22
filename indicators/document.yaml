@@ -1,0 +1,798 @@
+indicators:
+- id: IND-DOC-001
+  name: Vague invoices for unspecified services
+  description: Invoices describe 'consulting', 'marketing support' or 'liaison services' without deliverables,
+    timesheets or reports.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - invoices
+  - contracts
+  false_positive_notes: Early-stage or informal advisers may keep thin paperwork.
+- id: IND-DOC-002
+  name: Frequent contract variations or change orders
+  description: Scope and price rise significantly through repeated amendments shortly after award.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - contract_amendments
+  false_positive_notes: Genuine scope changes are common in construction and IT.
+- id: IND-DOC-003
+  name: Emergency or single-source award with weak justification
+  description: Use of urgency or sole-source exceptions for non-urgent purchases.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  data_sources:
+  - procurement_records
+  false_positive_notes: Real emergencies exist and justify fast awards.
+- id: IND-DOC-004
+  name: Remote onboarding with weak verification
+  description: Onboarding relies on a single image or unverified selfie, with no database check.
+  category: document
+  severity: high
+  detection_type:
+  - kyc_review
+  data_sources:
+  - onboarding_logs
+  false_positive_notes: Quality devices vary.
+- id: IND-DOC-005
+  name: Identity document tampering or forensic failure
+  description: Identity document or selfie shows alteration, font or layout anomalies, or fails security-feature
+    or forensic checks (including deepfake or injection artefacts).
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  data_sources:
+  - id_documents
+  - id_images
+  false_positive_notes: Worn or poorly scanned genuine documents can fail checks.
+- id: IND-DOC-006
+  name: Inconsistent personal details across documents or sources
+  description: Names, dates of birth, addresses or national ID numbers differ between documents, bureaux
+    or the application.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - kyc_review
+  data_sources:
+  - id_documents
+  - application_data
+  - bureau_data
+  false_positive_notes: Transliteration, marriage name changes and typos are common.
+- id: IND-DOC-007
+  name: Fictitious or unverifiable address
+  description: Address does not exist, is a mail drop, or fails verification against authoritative data.
+  category: document
+  severity: medium
+  detection_type:
+  - kyc_review
+  data_sources:
+  - address_data
+  false_positive_notes: New builds and rural addresses may not be in databases.
+- id: IND-DOC-008
+  name: Shared identifiers across unrelated customers
+  description: Same phone, email, address, device or ID number appears across multiple unrelated customers
+    or users.
+  category: document
+  severity: high
+  detection_type:
+  - kyc_review
+  - transaction_monitoring
+  data_sources:
+  - customer_master
+  - device_data
+  - kiosk_logs
+  - id_documents
+  false_positive_notes: Families and shared households legitimately share details.
+- id: IND-DOC-009
+  name: Synthetic identity with thin or newly created footprint
+  description: Thin or recently created credit and digital footprint, with mixed attributes suggesting
+    a fabricated identity.
+  category: document
+  severity: high
+  detection_type:
+  - kyc_review
+  data_sources:
+  - bureau_data
+  - digital_footprint
+  - identity_bureaus
+  false_positive_notes: Young or recently arrived people have thin files.
+- id: IND-DOC-010
+  name: Documents or images reused or templated across applicants
+  description: Same document image, selfie, template, font or background appears across different applicants
+    or after rejection.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  data_sources:
+  - document_images
+  - onboarding_images
+  false_positive_notes: Resubmission after a poor-quality upload is legitimate.
+- id: IND-DOC-011
+  name: Expired, unusual or low-assurance documents
+  description: Applicant offers documents of limited reliability or unusual types without explanation.
+  category: document
+  severity: low
+  detection_type:
+  - document_review
+  data_sources:
+  - id_documents
+  false_positive_notes: Some populations lack standard documents.
+- id: IND-DOC-012
+  name: Applicant details match watchlist or fraud record
+  description: Application data matches known fraud, mule or exited-customer records.
+  category: document
+  severity: high
+  detection_type:
+  - screening
+  - kyc_review
+  data_sources:
+  - internal_watchlists
+  - fraud_consortium
+  false_positive_notes: Common names cause false matches.
+- id: IND-DOC-013
+  name: Signature or contact details differ on later instructions
+  description: Later instructions carry signatures or contact details that depart from onboarding records.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  - transaction_monitoring
+  data_sources:
+  - signature_records
+  false_positive_notes: Signatures naturally vary.
+- id: IND-DOC-014
+  name: Payee name verification fails or mismatches
+  description: Names mismatch or accounts recently created for the payee.
+  category: document
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payee_data
+  false_positive_notes: Trading names.
+- id: IND-DOC-015
+  name: Missing, incomplete or placeholder originator and beneficiary information
+  description: Payment messages omit, truncate or use generic placeholder data for originator or beneficiary
+    details.
+  category: document
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - document_review
+  data_sources:
+  - payment_messages
+  - swift_messages
+  false_positive_notes: Poor data from correspondent partners.
+- id: IND-DOC-016
+  name: Selfie or video shows signs of synthetic or injected media
+  description: Liveness checks reveal artefacts, virtual cameras or replayed streams.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  data_sources:
+  - onboarding_images
+  - session_data
+  false_positive_notes: Poor lighting or low-quality cameras.
+- id: IND-DOC-017
+  name: Dates of birth, SSN or national ID not matching authoritative records
+  description: Authoritative checks fail or show multiple identities on one number.
+  category: document
+  severity: high
+  detection_type:
+  - kyc_review
+  data_sources:
+  - registry_checks
+  false_positive_notes: Registry delays.
+- id: IND-DOC-018
+  name: Project lacking verifiable registry entry or independent verification
+  description: Credits sold from a project with no registry listing, uncertified verifier or conflicting
+    documents.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - registry_data
+  - verification_reports
+  false_positive_notes: New projects may still be in registration.
+- id: IND-DOC-019
+  name: Catch documentation inconsistent with vessel capacity or licence
+  description: Landing volumes or species exceed capacity, quota or fishing area.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - catch_certificates
+  - licences
+  false_positive_notes: Reporting varies by flag.
+- id: IND-DOC-020
+  name: Trade documents inconsistent with each other
+  description: Bill of lading, invoice, customs, letter of credit or payment details disagree on goods,
+    quantity, price, origin, parties or route.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - trade_documents
+  - customs_data
+  - shipping_docs
+  - invoices
+  - bills_of_lading
+  false_positive_notes: Clerical errors or HS-code variations occur.
+- id: IND-DOC-021
+  name: Unclear provenance of gold, metals or stones
+  description: Gold, metals or stones lack licence, assay or chain-of-custody evidence of origin, or are
+    claimed as recycled scrap.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - investigator_judgement
+  - external_intel
+  data_sources:
+  - assay_records
+  - export_permits
+  - provenance_docs
+  false_positive_notes: Artisanal miners often lack formal paperwork.
+- id: IND-DOC-022
+  name: Waste shipped as used goods or recyclables
+  description: Containers described as used electronics, vehicles, plastics or metal scrap with signs
+    of unsorted waste.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - bills_of_lading
+  - customs_data
+  false_positive_notes: Second-hand trade is huge and legitimate.
+- id: IND-DOC-023
+  name: Trade in CITES-listed species with irregular permits
+  description: Customer exports or imports listed species with permits that do not verify, repeat or conflict
+    with quantities.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - cites_permits
+  - trade_documents
+  false_positive_notes: Licensed breeders and traders deal in listed species.
+- id: IND-DOC-024
+  name: Transit via logistics hubs with changed consignee or false declarations
+  description: Reconsignment or splits in transit with different declared contents.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - bills_of_lading
+  - customs_data
+  false_positive_notes: Transhipment is routine for logistics.
+- id: IND-DOC-025
+  name: Lookalike or recently registered sender domain
+  description: Spoofed email domain or reply-to differs subtly from the genuine counterparty.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - external_intel
+  data_sources:
+  - email_headers
+  - domain_intel
+  false_positive_notes: Marketing or third-party senders.
+- id: IND-DOC-026
+  name: Invoice amount or format differs from prior invoices
+  description: 'Victim-side: genuine-looking invoice has altered layout, round figures or inconsistent
+    references.'
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  data_sources:
+  - invoices
+  false_positive_notes: Billing system changes.
+- id: IND-DOC-027
+  name: Stated income or employer not verifiable
+  description: Application cites employer or income that cannot be confirmed.
+  category: document
+  severity: medium
+  detection_type:
+  - kyc_review
+  - document_review
+  data_sources:
+  - application_data
+  false_positive_notes: Self-employed.
+- id: IND-DOC-028
+  name: Cheque appears altered or counterfeit
+  description: Image shows alterations, mismatched MICR or font.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  data_sources:
+  - cheque_images
+  false_positive_notes: Poor scans.
+- id: IND-DOC-029
+  name: Stolen mail cheque deposited under changed payee
+  description: Payee name altered; account holder differs.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - transaction_monitoring
+  data_sources:
+  - cheque_images
+  false_positive_notes: Joint payees.
+- id: IND-DOC-030
+  name: Inconsistent accounts of the incident
+  description: Statements, evidence and photos do not match.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - claim_documents
+  - interviews
+  false_positive_notes: Memory differences.
+- id: IND-DOC-031
+  name: Application misrepresentation such as hidden drivers or addresses
+  description: Details given at quote differ from actual use.
+  category: document
+  severity: medium
+  detection_type:
+  - kyc_review
+  - document_review
+  data_sources:
+  - policy_data
+  - external_data
+  false_positive_notes: Honest oversight.
+- id: IND-DOC-032
+  name: Income or employment documents show signs of alteration
+  description: Payslips, tax forms or bank statements display template reuse or inconsistent fonts.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  data_sources:
+  - application_documents
+  false_positive_notes: Scans of low quality.
+- id: IND-DOC-033
+  name: Property valuation materially above comparable sales
+  description: Valuation inflated relative to recent transactions in the area.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - transaction_monitoring
+  data_sources:
+  - valuation_reports
+  - market_data
+  false_positive_notes: Rapidly rising markets.
+- id: IND-DOC-034
+  name: Occupancy or purpose misrepresented
+  description: Owner-occupier application where property is let or used differently.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - application_data
+  - tenancy_data
+  false_positive_notes: Changed circumstances.
+- id: IND-DOC-035
+  name: Tenders show suspiciously similar pricing or documents
+  description: Bids contain shared errors, formatting or pricing relationships.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - tender_documents
+  false_positive_notes: Industry standard templates.
+- id: IND-DOC-036
+  name: Invoices for services or goods not received
+  description: Payment is approved without delivery evidence.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - transaction_monitoring
+  data_sources:
+  - invoices
+  - goods_receipts
+  false_positive_notes: Timing delays.
+- id: IND-DOC-037
+  name: Claim details inconsistent with income, residency or account history
+  description: Declared income, dependants or circumstances conflict with data held on the customer.
+  category: document
+  severity: medium
+  detection_type:
+  - kyc_review
+  - document_review
+  data_sources:
+  - claim_data
+  - external_data
+  - account_data
+  false_positive_notes: Late updates.
+- id: IND-DOC-038
+  name: Same invoice or shipment financed or invoiced multiple times
+  description: The same invoice, bill of lading or goods are presented to multiple financiers or invoiced
+    more than once.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - transaction_monitoring
+  data_sources:
+  - invoice_data
+  - registries
+  - trade_documents
+  - invoice_registry
+  false_positive_notes: Reassignments.
+- id: IND-DOC-039
+  name: Unusually low wages, deductions or accommodation charges
+  description: Pay after deductions is far below minimum wage standards; heavy deductions for housing,
+    food and transport.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - payslips
+  - audit_reports
+  false_positive_notes: Statutory deductions and employer housing are lawful.
+- id: IND-DOC-040
+  name: Winnings claims lacking supporting records
+  description: Requests for win certificates or cheques not matching records.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  - customer_behaviour
+  data_sources:
+  - win_records
+  false_positive_notes: Documentation requests are genuine.
+- id: IND-DOC-041
+  name: Customer lacks records of senders and recipients
+  description: No ledger of clients, with limited or no identification.
+  category: document
+  severity: high
+  detection_type:
+  - kyc_review
+  - document_review
+  data_sources:
+  - kyc_file
+  false_positive_notes: Informal community use.
+- id: IND-DOC-042
+  name: Loan with no commercial purpose or unusual terms
+  description: Interest-free, no repayments, or terms inconsistent with market.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  data_sources:
+  - loan_agreements
+  false_positive_notes: Family loans.
+- id: IND-DOC-043
+  name: Inconsistent loan documentation or backdated agreements
+  description: Dates, signatures or amounts inconsistent.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  data_sources:
+  - loan_agreements
+  false_positive_notes: Errors happen.
+- id: IND-DOC-044
+  name: Unregistered or unlicensed fundraising
+  description: Raising funds without registration or authority.
+  category: document
+  severity: medium
+  detection_type:
+  - kyc_review
+  - external_intel
+  data_sources:
+  - regulator_data
+  false_positive_notes: Small groups.
+- id: IND-DOC-045
+  name: Fake or inflated beneficiaries and invoices
+  description: Payments to suppliers with weak evidence.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  data_sources:
+  - invoices
+  false_positive_notes: Small suppliers.
+- id: IND-DOC-046
+  name: Generic or inconsistent business activity
+  description: Vague business descriptions such as consulting or general trading; documents inconsistent
+    with the activity.
+  category: document
+  severity: medium
+  detection_type:
+  - kyc_review
+  - document_review
+  data_sources:
+  - kyc_file
+  false_positive_notes: Genuine small consultancies are common.
+- id: IND-DOC-047
+  name: Related-party or unknown-party loans and deposits lacking documentation
+  description: Intercompany loans, director deposits or loans from unknown persons with no agreements,
+    interest or repayment terms.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  - investigator_judgement
+  - transaction_monitoring
+  data_sources:
+  - intercompany_documents
+  - loan_records
+  false_positive_notes: Informal group funding is common in small groups.
+- id: IND-DOC-048
+  name: Fake commercial front using civilian goods descriptions
+  description: Containers described as machinery or toys with weights conflicting with documents.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - trade_documents
+  - customs_data
+  false_positive_notes: Weights vary.
+- id: IND-DOC-049
+  name: Provenance gaps or documents inconsistent with object history
+  description: Missing ownership chain, 1970-era gap or fake certificates.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - provenance_docs
+  - databases
+  false_positive_notes: Old works often have gaps.
+- id: IND-DOC-050
+  name: Vague or generic goods descriptions
+  description: Trade documents use generic terms or imprecise descriptions or mismatched HS codes where
+    specifics would be expected.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - invoices
+  - packing_lists
+  - trade_documents
+  false_positive_notes: Commercial shorthand is common.
+- id: IND-DOC-051
+  name: Forced purchase of services, supplies or cars at inflated prices
+  description: Businesses pay inflated invoices to specific suppliers.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - invoices
+  false_positive_notes: Preferred suppliers exist.
+- id: IND-DOC-052
+  name: Goods in transit declared to low-tax or non-EU destinations but not arriving
+  description: Duty-suspended shipments disappear or end up in domestic markets.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - transit_documents
+  - customs_data
+  false_positive_notes: Documentation delays occur.
+- id: IND-DOC-053
+  name: Use of multiple identities or fabricated credentials in onboarding
+  description: Documents, employment history or references show signs of fabrication.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  - kyc_review
+  data_sources:
+  - identity_documents
+  false_positive_notes: Document quality varies.
+- id: IND-DOC-054
+  name: End-user information vague, missing or refused
+  description: Customer or buyer is evasive about end use, final destination or end-user certificate,
+    or declines re-export undertakings.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - customer_behaviour
+  data_sources:
+  - end_use_certificates
+  - orders
+  - end_use_statements
+  false_positive_notes: Commercial confidentiality can explain limited detail.
+- id: IND-DOC-055
+  name: Price or specification not in line with commercial norms
+  description: Equipment priced far above or below market, or specifications altered to fall below control
+    thresholds.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - invoices
+  - technical_specifications
+  false_positive_notes: Prices vary with customisation and volume.
+- id: IND-DOC-056
+  name: Vessel identity discrepancies
+  description: Physical details, IMO or name do not match registry records, or signs of identity spoofing.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - external_intel
+  data_sources:
+  - vessel_databases
+  - imagery
+  false_positive_notes: Data entry errors occur.
+- id: IND-DOC-057
+  name: Insurance, classification or P&I cover absent or changed abruptly
+  description: Cover is cancelled, provided by unknown insurers or classification society changes.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  - external_intel
+  data_sources:
+  - insurance_documents
+  false_positive_notes: Cover changes with market conditions.
+- id: IND-DOC-058
+  name: Letter of credit terms that are unusually flexible or amended repeatedly
+  description: Frequent amendments to beneficiary, destination or description, or acceptance of discrepant
+    documents.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - lc_documents
+  false_positive_notes: Amendments occur in ordinary trade.
+- id: IND-DOC-059
+  name: Vessel, voyage or shipper details missing or implausible
+  description: Transport documents lack vessel identifiers or show impossible voyage timing.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - bills_of_lading
+  - vessel_data
+  false_positive_notes: Booking details can change before departure.
+- id: IND-DOC-060
+  name: Goods relabelled, repackaged or invoiced under different HS codes
+  description: Descriptions change between stages of the supply chain.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  data_sources:
+  - invoices
+  - customs_filings
+  false_positive_notes: Classification errors are common.
+- id: IND-DOC-061
+  name: Document or sanction-licence irregularities
+  description: Applications or licence reliance appear inconsistent or altered.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - licence_documents
+  false_positive_notes: Administrative errors occur.
+- id: IND-DOC-062
+  name: Attestations of price compliance without supporting invoices
+  description: Counterparties provide generic declarations but cannot supply itemised contracts and invoices
+    showing the price of oil and services.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - attestations
+  - invoices
+  false_positive_notes: Commercial confidentiality may limit disclosures.
+- id: IND-DOC-063
+  name: Discrepancy between loading port, origin documents and tracking
+  description: Declared origin differs from vessel tracking and port records.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - external_intel
+  data_sources:
+  - bills_of_lading
+  - tracking_data
+  false_positive_notes: Port calls vary with operational changes.
+- id: IND-DOC-064
+  name: Free-text fields containing instructions to avoid mention of certain parties
+  description: Messages instruct downstream banks not to reference parties or contain unusual remarks.
+  category: document
+  severity: high
+  detection_type:
+  - screening
+  - transaction_monitoring
+  data_sources:
+  - payment_messages
+  false_positive_notes: Poor wording may be innocent.
+- id: IND-DOC-065
+  name: Different party name between message and underlying invoice
+  description: Payment shows one remitter while documents show another.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  - transaction_monitoring
+  data_sources:
+  - invoices
+  - messages
+  false_positive_notes: Third-party payers exist.
+- id: IND-DOC-066
+  name: Invoices with identical formats across 'unrelated' suppliers
+  description: Documents share templates, wording or bank accounts across different companies.
+  category: document
+  severity: medium
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - invoices
+  - trade_documents
+  false_positive_notes: Accounting software may produce similar templates.
+- id: IND-DOC-067
+  name: Local taxation language in invoices or payments
+  description: Documents reference levies, tolls or taxes payable to non-state bodies or local commanders.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - invoices
+  - payment_references
+  false_positive_notes: Poor translation and informal local terminology may be misleading.

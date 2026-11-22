@@ -16,224 +16,76 @@ typology:
     8)
   - FATF Recommendation 8 and its Interpretive Note
   indicators:
-  - id: TF-NPO-001
-    name: Operations in high-risk areas without credible delivery evidence
-    description: Organisation sends funds to areas with active terrorist presence but cannot evidence
-      projects, beneficiaries, partners or auditable delivery.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - kyc_review
-    - document_review
-    - investigator_judgement
-    data_sources:
-    - grant_agreements
-    - project_reports
-    - transaction_data
-    false_positive_notes: Humanitarian actors in crisis zones often work through informal channels and
+  - ref: IND-TYP-058
+    legacy_id: TF-NPO-001
+    context: Organisation sends funds to areas with active terrorist presence but cannot evidence projects,
+      beneficiaries, partners or auditable delivery.
+    false_positive_context: Humanitarian actors in crisis zones often work through informal channels and
       face real documentation barriers.
     controls:
-    - id: TF-NPO-001-C1
-      name: Risk-based NPO due diligence
-      type: preventive
-      description: Collect programme documentation, partner details and delivery evidence proportionate
-        to destination risk.
-      implementation: process
-      effectiveness: high
-    - id: TF-NPO-001-C2
-      name: Periodic outcome verification
-      type: detective
-      description: Request post-delivery reports, third-party monitoring or audits for high-risk flows.
-      implementation: process
-      effectiveness: medium
-    - id: TF-NPO-001-C3
-      name: Humanitarian carve-out guidance
-      type: governance
-      description: Maintain policy to support legitimate aid and avoid blanket de-risking.
-      implementation: policy
-      effectiveness: medium
-  - id: TF-NPO-002
-    name: Beneficial owners, trustees or signatories linked to concerning persons
-    description: Officers, trustees or major donors appear in adverse media, sanctions or terrorist designation
+    - CTL-024
+    - CTL-128
+    - CTL-165
+  - ref: IND-OWN-011
+    legacy_id: TF-NPO-002
+    context: Officers, trustees or major donors appear in adverse media, sanctions or terrorist designation
       data, or share details with previously reported entities.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - screening
-    - kyc_review
-    data_sources:
-    - trustee_records
-    - sanctions_lists
-    - adverse_media
-    false_positive_notes: Common names and community roles produce coincidental matches.
+    name_in_typology: Beneficial owners, trustees or signatories linked to concerning persons
+    false_positive_context: Common names and community roles produce coincidental matches.
     controls:
-    - id: TF-NPO-002-C1
-      name: Governance-party screening
-      type: preventive
-      description: Screen trustees, signatories, senior managers and principal donors at onboarding and
-        ongoing.
-      implementation: rule
-      effectiveness: high
-    - id: TF-NPO-002-C2
-      name: Control-person analysis
-      type: detective
-      description: Identify who actually directs funds beyond formally registered office-holders.
-      implementation: process
-      effectiveness: medium
-  - id: TF-NPO-003
-    name: Donations structured through cash or anonymous collections
-    description: Large volumes of cash collection boxes, bucket collections or anonymous donations deposited
+    - CTL-029
+    - CTL-005
+  - ref: IND-TXN-034
+    legacy_id: TF-NPO-003
+    context: Large volumes of cash collection boxes, bucket collections or anonymous donations deposited
       with no collection records.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - kyc_review
-    data_sources:
-    - cash_deposits
-    - collection_logs
-    false_positive_notes: Street collections and community events are cash heavy and lawful.
+    name_in_typology: Donations structured through cash or anonymous collections
+    false_positive_context: Street collections and community events are cash heavy and lawful.
     controls:
-    - id: TF-NPO-003-C1
-      name: Cash profile baselining
-      type: detective
-      description: Compare cash deposits to expected fundraising activity and registration status.
-      implementation: rule
-      effectiveness: medium
-    - id: TF-NPO-003-C2
-      name: Collection record expectation
-      type: preventive
-      description: Request collection logs and counting procedures for sustained cash deposits.
-      implementation: process
-      effectiveness: medium
-  - id: TF-NPO-004
-    name: Funds pass through quickly to personal accounts or unrelated entities
-    description: Charity account receives donations and immediately forwards most funds to individuals,
-      personal accounts or businesses unrelated to stated objects.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - account_activity
-    - counterparty_data
-    false_positive_notes: Some charities grant to individuals or use procurement agents.
+    - CTL-064
+    - CTL-055
+  - ref: IND-TXN-001
+    legacy_id: TF-NPO-004
+    context: Charity account receives donations and immediately forwards most funds to individuals, personal
+      accounts or businesses unrelated to stated objects.
+    name_in_typology: Funds pass through quickly to personal accounts or unrelated entities
+    false_positive_context: Some charities grant to individuals or use procurement agents.
     controls:
-    - id: TF-NPO-004-C1
-      name: Pass-through rule
-      type: detective
-      description: Alert on high in-out ratio within short windows to non-institutional recipients.
-      implementation: rule
-      effectiveness: medium
-    - id: TF-NPO-004-C2
-      name: Purpose-of-payment challenge
-      type: preventive
-      description: Ask for beneficiary rationale and constitutional basis for grants to individuals.
-      implementation: process
-      effectiveness: medium
-  - id: TF-NPO-005
-    name: Activity inconsistent with registered purpose
-    description: Transactions, geographies or counterparties do not match the objects declared in the
-      registration or constitution.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - kyc_review
-    - transaction_monitoring
-    data_sources:
-    - registry_data
-    - account_activity
-    false_positive_notes: Charities evolve and respond to emergencies outside their normal remit.
+    - CTL-040
+    - CTL-022
+  - ref: IND-BEH-118
+    legacy_id: TF-NPO-005
+    context: Transactions, geographies or counterparties do not match the objects declared in the registration
+      or constitution.
+    false_positive_context: Charities evolve and respond to emergencies outside their normal remit.
     controls:
-    - id: TF-NPO-005-C1
-      name: Purpose-versus-activity comparison
-      type: detective
-      description: Compare declared objects against observed flows during periodic review.
-      implementation: process
-      effectiveness: medium
-    - id: TF-NPO-005-C2
-      name: Registry cross-check
-      type: preventive
-      description: Verify registration, filings and status with the relevant charity regulator.
-      implementation: technology
-      effectiveness: medium
-  - id: TF-NPO-006
-    name: Unregistered or recently de-registered organisation soliciting funds
-    description: Entity collects donations without evidence of registration, or continues after loss of
-      status, regulatory warning or inquiry.
-    category: customer
-    severity: medium
-    detection_type:
-    - kyc_review
-    - external_intel
-    data_sources:
-    - registry_data
-    - regulator_notices
-    false_positive_notes: Small community groups may be exempt from registration thresholds.
+    - CTL-042
+    - CTL-142
+  - ref: IND-CUS-005
+    legacy_id: TF-NPO-006
+    context: Entity collects donations without evidence of registration, or continues after loss of status,
+      regulatory warning or inquiry.
+    name_in_typology: Unregistered or recently de-registered organisation soliciting funds
+    severity_in_typology: medium
+    false_positive_context: Small community groups may be exempt from registration thresholds.
     controls:
-    - id: TF-NPO-006-C1
-      name: Registration verification at onboarding
-      type: preventive
-      description: Confirm registration or exemption basis against authoritative registers.
-      implementation: process
-      effectiveness: high
-    - id: TF-NPO-006-C2
-      name: Regulator notice monitoring
-      type: detective
-      description: Subscribe to regulatory notices and update risk ratings on enforcement action.
-      implementation: technology
-      effectiveness: medium
-  - id: TF-NPO-007
-    name: Funds routed through intermediaries or informal value transfer in conflict zones
-    description: Charity uses third-party agents, MVTS or cash couriers to reach recipients where regulated
+    - CTL-116
+    - CTL-032
+  - ref: IND-PRD-065
+    legacy_id: TF-NPO-007
+    context: Charity uses third-party agents, MVTS or cash couriers to reach recipients where regulated
       banking is limited, with limited visibility of the final recipient.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - document_review
-    data_sources:
-    - payment_instructions
-    - partner_agreements
-    false_positive_notes: Banking access is genuinely restricted in some crisis settings.
+    name_in_typology: Funds routed through intermediaries or informal value transfer in conflict zones
+    severity_in_typology: medium
+    false_positive_context: Banking access is genuinely restricted in some crisis settings.
     controls:
-    - id: TF-NPO-007-C1
-      name: Intermediary due diligence
-      type: preventive
-      description: Assess and document agents used, including ownership and screening.
-      implementation: process
-      effectiveness: medium
-    - id: TF-NPO-007-C2
-      name: Destination-risk limits
-      type: preventive
-      description: Set approval thresholds and conditions for transfers to high-risk areas.
-      implementation: policy
-      effectiveness: medium
-  - id: TF-NPO-008
-    name: Fundraising claims inconsistent with use of funds
-    description: Public appeals describe one cause while expenditure patterns show little programme spending
+    - CTL-112
+    - CTL-027
+  - ref: IND-BEH-119
+    legacy_id: TF-NPO-008
+    context: Public appeals describe one cause while expenditure patterns show little programme spending
       or large payments to connected parties.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    - external_intel
-    data_sources:
-    - fundraising_materials
-    - financial_statements
-    false_positive_notes: Overhead ratios vary and appeals may legitimately change focus.
+    false_positive_context: Overhead ratios vary and appeals may legitimately change focus.
     controls:
-    - id: TF-NPO-008-C1
-      name: Financial statement review
-      type: detective
-      description: Review accounts for programme spend ratios and related-party payments.
-      implementation: process
-      effectiveness: medium
-    - id: TF-NPO-008-C2
-      name: Public appeal monitoring
-      type: detective
-      description: Monitor published appeals and compare them to flows.
-      implementation: technology
-      effectiveness: low
+    - CTL-065
+    - CTL-032

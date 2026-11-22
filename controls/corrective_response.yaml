@@ -1,0 +1,19 @@
+controls:
+- id: CTL-103
+  name: Funds hold, freeze and recall procedure
+  family: corrective_response
+  type: corrective
+  implementation: process
+  effectiveness: high
+  description: Provides a defined, legally grounded capability to restrict, hold, freeze or recall funds
+    and accounts pending review or on confirmed exposure, with clear triggers and approvers. It stops
+    onward dissipation of suspected illicit funds.
+  also_known_as:
+  - Account restriction and fund holds
+  - Rapid recall and fund-freeze procedure
+  - Account restriction procedures
+  - Temporary account hold review
+  - Outbound hold on suspicious pass-through
+  - Hold and review procedure
+  - Block and freeze playbook
+  - Payment hold and query

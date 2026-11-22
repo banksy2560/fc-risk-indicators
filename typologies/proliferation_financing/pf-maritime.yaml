@@ -15,212 +15,63 @@ typology:
   - US Department of State, Treasury and Coast Guard, Global Maritime Advisory on sanctions evasion (2020)
   - Reports of the UN Panel of Experts on the DPRK (issuing body general reference)
   indicators:
-  - id: PF-MARITIME-001
-    name: AIS gaps in sensitive areas
-    description: Vessel stops transmitting position data for extended periods near ports or transhipment
-      areas of concern.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - external_intel
-    - investigator_judgement
-    data_sources:
-    - ais_data
-    - vessel_tracking
-    false_positive_notes: Poor coverage and equipment faults cause gaps.
+  - ref: IND-TYP-047
+    legacy_id: PF-MARITIME-001
+    context: Vessel stops transmitting position data for extended periods near ports or transhipment areas
+      of concern.
+    false_positive_context: Poor coverage and equipment faults cause gaps.
     controls:
-    - id: PF-MARITIME-001-C1
-      name: AIS gap analytics
-      type: detective
-      description: Use maritime analytics to flag unexplained gaps.
-      implementation: technology
-      effectiveness: medium
-    - id: PF-MARITIME-001-C2
-      name: Voyage explanation request
-      type: preventive
-      description: Ask owners and charterers to explain gaps.
-      implementation: process
-      effectiveness: medium
-    - id: PF-MARITIME-001-C3
-      name: Vessel risk scoring policy
-      type: governance
-      description: Define actions at risk score thresholds.
-      implementation: policy
-      effectiveness: medium
-  - id: PF-MARITIME-002
-    name: Frequent flag changes or flagging in registries with weak oversight
-    description: Short intervals between flag changes or use of open registries with poor enforcement.
-    category: typology_specific
-    severity: medium
-    detection_type:
-    - external_intel
-    - kyc_review
-    data_sources:
-    - vessel_registry_data
-    false_positive_notes: Sale and commercial reasons motivate flag changes.
+    - CTL-143
+    - CTL-126
+    - CTL-138
+  - ref: IND-TYP-048
+    legacy_id: PF-MARITIME-002
+    context: Short intervals between flag changes or use of open registries with poor enforcement.
+    false_positive_context: Sale and commercial reasons motivate flag changes.
     controls:
-    - id: PF-MARITIME-002-C1
-      name: Flag history review
-      type: detective
-      description: Check vessel flag and name history.
-      implementation: technology
-      effectiveness: medium
-    - id: PF-MARITIME-002-C2
-      name: Registry risk rating
-      type: preventive
-      description: Rate registries by oversight quality.
-      implementation: policy
-      effectiveness: medium
-  - id: PF-MARITIME-003
-    name: Ship-to-ship transfers outside designated areas
-    description: Vessel meets others at sea away from regular transfer zones, followed by changed destination.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - external_intel
-    - investigator_judgement
-    data_sources:
-    - ais_data
-    - satellite_imagery
-    false_positive_notes: STS operations are routine in certain trades.
+    - CTL-143
+    - CTL-154
+  - ref: IND-TYP-049
+    legacy_id: PF-MARITIME-003
+    context: Vessel meets others at sea away from regular transfer zones, followed by changed destination.
+    name_in_typology: Ship-to-ship transfers outside designated areas
+    false_positive_context: STS operations are routine in certain trades.
     controls:
-    - id: PF-MARITIME-003-C1
-      name: STS detection analytics
-      type: detective
-      description: Use proximity and speed analytics.
-      implementation: technology
-      effectiveness: medium
-    - id: PF-MARITIME-003-C2
-      name: Cargo origin attestation
-      type: preventive
-      description: Require cargo origin and transfer statements.
-      implementation: process
-      effectiveness: medium
-    - id: PF-MARITIME-003-C3
-      name: Insurance and financing conditions
-      type: governance
-      description: Tie cover and finance to maritime due diligence.
-      implementation: policy
-      effectiveness: medium
-  - id: PF-MARITIME-004
-    name: Ownership and management by shell entities with rapid changes
-    description: Vessel owner or manager changes frequently, with newly formed companies and shared addresses.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    - external_intel
-    data_sources:
-    - ship_registry
-    - corporate_registry
-    false_positive_notes: Single-ship companies are normal in shipping.
+    - CTL-143
+    - CTL-135
+    - CTL-036
+  - ref: IND-OWN-009
+    legacy_id: PF-MARITIME-004
+    context: Vessel owner or manager changes frequently, with newly formed companies and shared addresses.
+    name_in_typology: Ownership and management by shell entities with rapid changes
+    false_positive_context: Single-ship companies are normal in shipping.
     controls:
-    - id: PF-MARITIME-004-C1
-      name: Ultimate ownership tracing
-      type: preventive
-      description: Trace ownership and management to natural persons.
-      implementation: process
-      effectiveness: high
-    - id: PF-MARITIME-004-C2
-      name: Network analysis of owners
-      type: detective
-      description: Link entities by address and officers.
-      implementation: technology
-      effectiveness: medium
-  - id: PF-MARITIME-005
-    name: Vessel identity discrepancies
-    description: Physical details, IMO or name do not match registry records, or signs of identity spoofing.
-    category: document
-    severity: high
-    detection_type:
-    - document_review
-    - external_intel
-    data_sources:
-    - vessel_databases
-    - imagery
-    false_positive_notes: Data entry errors occur.
+    - CTL-005
+    - CTL-048
+  - ref: IND-DOC-056
+    legacy_id: PF-MARITIME-005
+    context: Physical details, IMO or name do not match registry records, or signs of identity spoofing.
+    false_positive_context: Data entry errors occur.
     controls:
-    - id: PF-MARITIME-005-C1
-      name: IMO number verification
-      type: preventive
-      description: Verify identity in authoritative databases.
-      implementation: technology
-      effectiveness: high
-    - id: PF-MARITIME-005-C2
-      name: Spoofing indicators review
-      type: detective
-      description: Assess location inconsistencies and duplicates.
-      implementation: process
-      effectiveness: medium
-  - id: PF-MARITIME-006
-    name: Port calls at locations of concern followed by false next port
-    description: Vessel declares destinations inconsistent with subsequent movements.
-    category: geographic
-    severity: medium
-    detection_type:
-    - external_intel
-    - document_review
-    data_sources:
-    - voyage_data
-    false_positive_notes: Cargo routing changes frequently.
+    - CTL-143
+    - CTL-126
+    - CTL-142
+  - ref: IND-GEO-025
+    legacy_id: PF-MARITIME-006
+    context: Vessel declares destinations inconsistent with subsequent movements.
+    false_positive_context: Cargo routing changes frequently.
     controls:
-    - id: PF-MARITIME-006-C1
-      name: Declared-versus-actual voyage comparison
-      type: detective
-      description: Compare declarations and tracked movements.
-      implementation: technology
-      effectiveness: medium
-    - id: PF-MARITIME-006-C2
-      name: Charterer confirmation
-      type: preventive
-      description: Confirm voyage with charterer.
-      implementation: process
-      effectiveness: medium
-  - id: PF-MARITIME-007
-    name: Payments for bunkers, port fees or crew from unrelated parties
-    description: Operating costs paid by third parties unconnected to the shipowner or charterer.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - document_review
-    data_sources:
-    - payment_messages
-    false_positive_notes: Ship agents pay on behalf of owners.
+    - CTL-143
+  - ref: IND-TXN-023
+    legacy_id: PF-MARITIME-007
+    context: Operating costs paid by third parties unconnected to the shipowner or charterer.
+    name_in_typology: Payments for bunkers, port fees or crew from unrelated parties
+    false_positive_context: Ship agents pay on behalf of owners.
     controls:
-    - id: PF-MARITIME-007-C1
-      name: Payer linkage checks
-      type: preventive
-      description: Ask payer relationship for vessel costs.
-      implementation: process
-      effectiveness: medium
-    - id: PF-MARITIME-007-C2
-      name: Maritime payment rules
-      type: detective
-      description: Flag atypical payers for vessel services.
-      implementation: rule
-      effectiveness: medium
-  - id: PF-MARITIME-008
-    name: Insurance, classification or P&I cover absent or changed abruptly
-    description: Cover is cancelled, provided by unknown insurers or classification society changes.
-    category: document
-    severity: medium
-    detection_type:
-    - document_review
-    - external_intel
-    data_sources:
-    - insurance_documents
-    false_positive_notes: Cover changes with market conditions.
+    - CTL-046
+  - ref: IND-DOC-057
+    legacy_id: PF-MARITIME-008
+    context: Cover is cancelled, provided by unknown insurers or classification society changes.
+    false_positive_context: Cover changes with market conditions.
     controls:
-    - id: PF-MARITIME-008-C1
-      name: Cover verification
-      type: preventive
-      description: Verify insurers and class status.
-      implementation: process
-      effectiveness: medium
-    - id: PF-MARITIME-008-C2
-      name: Insurer reputation screening
-      type: detective
-      description: Check insurers against risk data.
-      implementation: technology
-      effectiveness: medium
+    - CTL-143

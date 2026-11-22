@@ -18,333 +18,92 @@ typology:
   - FinCEN, Advisory to Financial Institutions on Cyber-Events and Cyber-Enabled Crime (FIN-2016-A005,
     2016)
   indicators:
-  - id: CY-NEOBANK-001
-    name: Burst of applications sharing devices, IPs or contact data
-    description: Many sign-ups arrive in a short period with common device fingerprints or phone/email
-      patterns.
-    category: behavioural
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - customer_behaviour
-    data_sources:
-    - onboarding_logs
-    - device_data
-    false_positive_notes: Marketing campaigns; shared public Wi-Fi.
+  - ref: IND-BEH-012
+    legacy_id: CY-NEOBANK-001
+    context: Many sign-ups arrive in a short period with common device fingerprints or phone/email patterns.
+    name_in_typology: Burst of applications sharing devices, IPs or contact data
+    false_positive_context: Marketing campaigns; shared public Wi-Fi.
     controls:
-    - id: CY-NEOBANK-001-C1
-      name: Device intelligence and behavioural biometrics
-      type: detective
-      description: Fingerprint devices and analyse session behaviour (typing, navigation, remote-access
-        tools, emulators) to spot shared, scripted or hijacked sessions.
-      implementation: technology
-      effectiveness: high
-    - id: CY-NEOBANK-001-C2
-      name: Onboarding data consistency rules
-      type: preventive
-      description: Rules that compare submitted identifiers (email, phone, address, device, bank account)
-        against existing records and known-bad data.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-NEOBANK-001-C3
-      name: Graph and network analytics
-      type: detective
-      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
-        and fan-in/fan-out structures.
-      implementation: model
-      effectiveness: high
-  - id: CY-NEOBANK-002
-    name: Account dormant then suddenly high-velocity inflows and outflows
-    description: Account opens, idles, then moves large funds quickly in a pass-through pattern.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - ledger_data
-    false_positive_notes: Seasonal use.
+    - CTL-091
+    - CTL-004
+    - CTL-048
+  - ref: IND-TXN-011
+    legacy_id: CY-NEOBANK-002
+    context: Account opens, idles, then moves large funds quickly in a pass-through pattern.
+    name_in_typology: Account dormant then suddenly high-velocity inflows and outflows
+    false_positive_context: Seasonal use.
     controls:
-    - id: CY-NEOBANK-002-C1
-      name: Mule account detection model
-      type: detective
-      description: Model that scores inbound-then-outbound pass-through, new payee churn and profile mismatch
-        to flag likely mule accounts.
-      implementation: model
-      effectiveness: high
-    - id: CY-NEOBANK-002-C2
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-NEOBANK-002-C3
-      name: Account restriction and fund holds
-      type: corrective
-      description: Ability to restrict, hold or recall funds rapidly pending review, with defined legal
-        and operational triggers.
-      implementation: process
-      effectiveness: medium
-  - id: CY-NEOBANK-003
-    name: Inbound payments from many unrelated sources, outbound to crypto or abroad
-    description: Accounts act as aggregation points for third-party funds, then pay out to exchanges.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - ledger_data
-    - counterparty_data
-    false_positive_notes: Freelancers and marketplace sellers.
+    - CTL-051
+    - CTL-037
+    - CTL-103
+  - ref: IND-TXN-004
+    legacy_id: CY-NEOBANK-003
+    context: Accounts act as aggregation points for third-party funds, then pay out to exchanges.
+    name_in_typology: Inbound payments from many unrelated sources, outbound to crypto or abroad
+    false_positive_context: Freelancers and marketplace sellers.
     controls:
-    - id: CY-NEOBANK-003-C1
-      name: Mule account detection model
-      type: detective
-      description: Model that scores inbound-then-outbound pass-through, new payee churn and profile mismatch
-        to flag likely mule accounts.
-      implementation: model
-      effectiveness: high
-    - id: CY-NEOBANK-003-C2
-      name: Graph and network analytics
-      type: detective
-      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
-        and fan-in/fan-out structures.
-      implementation: model
-      effectiveness: high
-    - id: CY-NEOBANK-003-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-NEOBANK-004
-    name: Identity documents or selfies reused across applicants
-    description: Same image or template appears under multiple names or with minor edits.
-    category: document
-    severity: high
-    detection_type:
-    - document_review
-    data_sources:
-    - onboarding_images
-    false_positive_notes: Resubmission after failed attempts.
+    - CTL-051
+    - CTL-048
+    - CTL-093
+  - ref: IND-DOC-010
+    legacy_id: CY-NEOBANK-004
+    context: Same image or template appears under multiple names or with minor edits.
+    name_in_typology: Identity documents or selfies reused across applicants
+    false_positive_context: Resubmission after failed attempts.
     controls:
-    - id: CY-NEOBANK-004-C1
-      name: Document authentication and data verification
-      type: preventive
-      description: Verify ID documents for tampering or forgery and cross-check data against authoritative
-        sources.
-      implementation: technology
-      effectiveness: high
-    - id: CY-NEOBANK-004-C2
-      name: Liveness detection and injection-attack defence
-      type: preventive
-      description: Active/passive liveness with detection of virtual cameras, replayed video and synthetic
-        faces at onboarding and high-risk events.
-      implementation: technology
-      effectiveness: high
-    - id: CY-NEOBANK-004-C3
-      name: Onboarding data consistency rules
-      type: preventive
-      description: Rules that compare submitted identifiers (email, phone, address, device, bank account)
-        against existing records and known-bad data.
-      implementation: rule
-      effectiveness: medium
-  - id: CY-NEOBANK-005
-    name: Declared occupation or income inconsistent with account turnover
-    description: Student or unemployed applicant sees large volumes.
-    category: customer
-    severity: medium
-    detection_type:
-    - kyc_review
-    - transaction_monitoring
-    data_sources:
-    - customer_profile
-    - ledger_data
-    false_positive_notes: Gig earnings and gifts.
+    - CTL-002
+    - CTL-001
+    - CTL-004
+  - ref: IND-CUS-002
+    legacy_id: CY-NEOBANK-005
+    context: Student or unemployed applicant sees large volumes.
+    name_in_typology: Declared occupation or income inconsistent with account turnover
+    false_positive_context: Gig earnings and gifts.
     controls:
-    - id: CY-NEOBANK-005-C1
-      name: Enhanced due diligence
-      type: preventive
-      description: Collect additional information on activity purpose, expected volumes and ownership
-        before approval or continued service, with senior sign-off.
-      implementation: process
-      effectiveness: medium
-    - id: CY-NEOBANK-005-C2
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-NEOBANK-005-C3
-      name: Source of funds and wealth verification
-      type: preventive
-      description: Obtain and corroborate evidence of where funds originate when activity exceeds thresholds
-        or profile.
-      implementation: process
-      effectiveness: medium
-  - id: CY-NEOBANK-006
-    name: Remote access or emulator use during onboarding
-    description: Sessions show remote-control tools, emulators or automation scripts.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - customer_behaviour
-    data_sources:
-    - device_data
-    - session_logs
-    false_positive_notes: Accessibility tools.
+    - CTL-023
+    - CTL-037
+    - CTL-012
+  - ref: IND-BEH-007
+    legacy_id: CY-NEOBANK-006
+    context: Sessions show remote-control tools, emulators or automation scripts.
+    name_in_typology: Remote access or emulator use during onboarding
+    severity_in_typology: medium
+    false_positive_context: Accessibility tools.
     controls:
-    - id: CY-NEOBANK-006-C1
-      name: Device intelligence and behavioural biometrics
-      type: detective
-      description: Fingerprint devices and analyse session behaviour (typing, navigation, remote-access
-        tools, emulators) to spot shared, scripted or hijacked sessions.
-      implementation: technology
-      effectiveness: high
-    - id: CY-NEOBANK-006-C2
-      name: Liveness detection and injection-attack defence
-      type: preventive
-      description: Active/passive liveness with detection of virtual cameras, replayed video and synthetic
-        faces at onboarding and high-risk events.
-      implementation: technology
-      effectiveness: high
-    - id: CY-NEOBANK-006-C3
-      name: IP, geolocation and anonymisation detection
-      type: detective
-      description: Detect VPN, proxy, Tor and geolocation mismatch against declared residence and sanctioned
-        or high-risk jurisdictions.
-      implementation: rule
-      effectiveness: medium
-  - id: CY-NEOBANK-007
-    name: Account opened for a young or elderly person but controlled by another
-    description: Behaviour and device suggest a controller other than the account holder.
-    category: customer
-    severity: medium
-    detection_type:
-    - customer_behaviour
-    - investigator_judgement
-    data_sources:
-    - device_data
-    - customer_records
-    false_positive_notes: Guardianship or carer arrangements.
+    - CTL-091
+    - CTL-001
+    - CTL-092
+  - ref: IND-CUS-020
+    legacy_id: CY-NEOBANK-007
+    context: Behaviour and device suggest a controller other than the account holder.
+    false_positive_context: Guardianship or carer arrangements.
     controls:
-    - id: CY-NEOBANK-007-C1
-      name: Device intelligence and behavioural biometrics
-      type: detective
-      description: Fingerprint devices and analyse session behaviour (typing, navigation, remote-access
-        tools, emulators) to spot shared, scripted or hijacked sessions.
-      implementation: technology
-      effectiveness: high
-    - id: CY-NEOBANK-007-C2
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-    - id: CY-NEOBANK-007-C3
-      name: Enhanced due diligence
-      type: preventive
-      description: Collect additional information on activity purpose, expected volumes and ownership
-        before approval or continued service, with senior sign-off.
-      implementation: process
-      effectiveness: medium
-  - id: CY-NEOBANK-008
-    name: Rapid sequence of new payee additions
-    description: Many new beneficiaries added in a short period, often to unrelated accounts.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - payee_data
-    false_positive_notes: Payroll set-up.
+    - CTL-091
+    - CTL-093
+    - CTL-023
+  - ref: IND-BEH-046
+    legacy_id: CY-NEOBANK-008
+    context: Many new beneficiaries added in a short period, often to unrelated accounts.
+    false_positive_context: Payroll set-up.
     controls:
-    - id: CY-NEOBANK-008-C1
-      name: Step-up authentication on risky events
-      type: preventive
-      description: Trigger strong re-authentication for credential, device or payee changes and large
-        or unusual payments.
-      implementation: technology
-      effectiveness: high
-    - id: CY-NEOBANK-008-C2
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-NEOBANK-008-C3
-      name: Mule account detection model
-      type: detective
-      description: Model that scores inbound-then-outbound pass-through, new payee churn and profile mismatch
-        to flag likely mule accounts.
-      implementation: model
-      effectiveness: high
-  - id: CY-NEOBANK-009
-    name: Business account for newly created entity with generic purpose
-    description: Newly formed companies open accounts with vague descriptions and no web presence.
-    category: ownership_structure
-    severity: medium
-    detection_type:
-    - kyc_review
-    data_sources:
-    - corporate_records
-    - websites
-    false_positive_notes: Early-stage start-ups.
+    - CTL-073
+    - CTL-037
+    - CTL-051
+  - ref: IND-OWN-007
+    legacy_id: CY-NEOBANK-009
+    context: Newly formed companies open accounts with vague descriptions and no web presence.
+    name_in_typology: Business account for newly created entity with generic purpose
+    severity_in_typology: medium
+    false_positive_context: Early-stage start-ups.
     controls:
-    - id: CY-NEOBANK-009-C1
-      name: Enhanced due diligence
-      type: preventive
-      description: Collect additional information on activity purpose, expected volumes and ownership
-        before approval or continued service, with senior sign-off.
-      implementation: process
-      effectiveness: medium
-    - id: CY-NEOBANK-009-C2
-      name: Document authentication and data verification
-      type: preventive
-      description: Verify ID documents for tampering or forgery and cross-check data against authoritative
-        sources.
-      implementation: technology
-      effectiveness: high
-    - id: CY-NEOBANK-009-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-NEOBANK-010
-    name: Referral or incentive abuse patterns
-    description: Clusters of accounts claiming rewards and withdrawing promptly.
-    category: behavioural
-    severity: low
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - promotion_logs
-    false_positive_notes: Promotion participants.
+    - CTL-023
+    - CTL-002
+    - CTL-093
+  - ref: IND-BEH-047
+    legacy_id: CY-NEOBANK-010
+    context: Clusters of accounts claiming rewards and withdrawing promptly.
+    false_positive_context: Promotion participants.
     controls:
-    - id: CY-NEOBANK-010-C1
-      name: Graph and network analytics
-      type: detective
-      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
-        and fan-in/fan-out structures.
-      implementation: model
-      effectiveness: high
-    - id: CY-NEOBANK-010-C2
-      name: Onboarding data consistency rules
-      type: preventive
-      description: Rules that compare submitted identifiers (email, phone, address, device, bank account)
-        against existing records and known-bad data.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-NEOBANK-010-C3
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
+    - CTL-048
+    - CTL-004
+    - CTL-037

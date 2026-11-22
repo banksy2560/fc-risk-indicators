@@ -16,215 +16,75 @@ typology:
   - FATF, Guidance for a Risk-Based Approach for Trust and Company Service Providers (2019)
   - FATF, Money Laundering Using Trust and Company Service Providers (2010)
   indicators:
-  - id: ML-TCSP-001
-    name: Bulk company formation for undisclosed clients
-    description: TCSP forms large numbers of entities with little client information.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - registry_data
-    false_positive_notes: Formation agents serve volume clients.
+  - ref: IND-TYP-041
+    legacy_id: ML-TCSP-001
+    context: TCSP forms large numbers of entities with little client information.
+    false_positive_context: Formation agents serve volume clients.
     controls:
-    - id: ML-TCSP-001-C1
-      name: TCSP due diligence
-      type: preventive
-      description: Review licensing, CDD and sample files.
-      implementation: process
-      effectiveness: high
-    - id: ML-TCSP-001-C2
-      name: Formation volume monitoring
-      type: detective
-      description: Monitor formation volumes by agent.
-      implementation: rule
-      effectiveness: medium
-  - id: ML-TCSP-002
-    name: Nominee services without disclosure of principal
-    description: Nominee directors or shareholders with no record of beneficial owner.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    data_sources:
-    - kyc_file
-    false_positive_notes: Lawful nominee regimes exist.
+    - CTL-117
+    - CTL-049
+    - CTL-004
+  - ref: IND-OWN-001
+    legacy_id: ML-TCSP-002
+    context: Nominee directors or shareholders with no record of beneficial owner.
+    name_in_typology: Nominee services without disclosure of principal
+    false_positive_context: Lawful nominee regimes exist.
     controls:
-    - id: ML-TCSP-002-C1
-      name: Nominee disclosure requirement
-      type: preventive
-      description: Require principals to be identified.
-      implementation: policy
-      effectiveness: high
-    - id: ML-TCSP-002-C2
-      name: Nominee register verification
-      type: preventive
-      description: Verify with registers.
-      implementation: process
-      effectiveness: medium
-  - id: ML-TCSP-003
-    name: Introduced customers with no direct contact
-    description: Client business introduced through TCSP with no face-to-face contact and little data.
-    category: customer
-    severity: medium
-    detection_type:
-    - kyc_review
-    data_sources:
-    - onboarding_data
-    false_positive_notes: Remote introductions are common.
+    - CTL-007
+    - CTL-005
+    - CTL-006
+  - ref: IND-CUS-042
+    legacy_id: ML-TCSP-003
+    context: Client business introduced through TCSP with no face-to-face contact and little data.
+    false_positive_context: Remote introductions are common.
     controls:
-    - id: ML-TCSP-003-C1
-      name: Reliance due diligence
-      type: preventive
-      description: Test introducer CDD.
-      implementation: process
-      effectiveness: medium
-    - id: ML-TCSP-003-C2
-      name: Direct contact for high risk
-      type: preventive
-      description: Verify directly.
-      implementation: process
-      effectiveness: medium
-  - id: ML-TCSP-004
-    name: Structures lack commercial rationale
-    description: Multi-layer vehicles for simple business.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    data_sources:
-    - ownership_charts
-    false_positive_notes: Tax planning.
+    - CTL-019
+    - CTL-070
+  - ref: IND-OWN-002
+    legacy_id: ML-TCSP-004
+    context: Multi-layer vehicles for simple business.
+    name_in_typology: Structures lack commercial rationale
+    false_positive_context: Tax planning.
     controls:
-    - id: ML-TCSP-004-C1
-      name: Rationale assessment
-      type: preventive
-      description: Assess and record rationale.
-      implementation: process
-      effectiveness: high
-    - id: ML-TCSP-004-C2
-      name: Complexity escalation
-      type: governance
-      description: Escalate to senior compliance.
-      implementation: policy
-      effectiveness: medium
-  - id: ML-TCSP-005
-    name: Registered address or mailbox shared by many entities
-    description: Same address serves numerous unrelated entities.
-    category: ownership_structure
-    severity: medium
-    detection_type:
-    - kyc_review
-    data_sources:
-    - corporate_registry
-    false_positive_notes: Virtual offices.
+    - CTL-008
+    - CTL-005
+    - CTL-010
+  - ref: IND-OWN-008
+    legacy_id: ML-TCSP-005
+    context: Same address serves numerous unrelated entities.
+    name_in_typology: Registered address or mailbox shared by many entities
+    false_positive_context: Virtual offices.
     controls:
-    - id: ML-TCSP-005-C1
-      name: Address clustering
-      type: detective
-      description: Cluster entities by address.
-      implementation: technology
-      effectiveness: medium
-    - id: ML-TCSP-005-C2
-      name: Substance check
-      type: preventive
-      description: Verify presence.
-      implementation: process
-      effectiveness: medium
-  - id: ML-TCSP-006
-    name: Frequent changes of directors, names or owners
-    description: Entities rapidly change identity.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - kyc_review
-    data_sources:
-    - registry_changes
-    false_positive_notes: Corporate restructuring.
+    - CTL-049
+    - CTL-010
+  - ref: IND-BEH-016
+    legacy_id: ML-TCSP-006
+    context: Entities rapidly change identity.
+    name_in_typology: Frequent changes of directors, names or owners
+    false_positive_context: Corporate restructuring.
     controls:
-    - id: ML-TCSP-006-C1
-      name: Change monitoring
-      type: detective
-      description: Alert on registry changes.
-      implementation: technology
-      effectiveness: medium
-    - id: ML-TCSP-006-C2
-      name: Re-verification
-      type: preventive
-      description: Refresh CDD on change.
-      implementation: process
-      effectiveness: medium
-  - id: ML-TCSP-007
-    name: Bank accounts opened or operated by TCSP staff
-    description: TCSP is signatory or conduit for client funds.
-    category: counterparty
-    severity: high
-    detection_type:
-    - kyc_review
-    - transaction_monitoring
-    data_sources:
-    - account_mandates
-    false_positive_notes: Administration services.
+    - CTL-014
+  - ref: IND-CPT-040
+    legacy_id: ML-TCSP-007
+    context: TCSP is signatory or conduit for client funds.
+    false_positive_context: Administration services.
     controls:
-    - id: ML-TCSP-007-C1
-      name: Signatory review
-      type: preventive
-      description: Assess authority and need.
-      implementation: process
-      effectiveness: high
-    - id: ML-TCSP-007-C2
-      name: Pooled account monitoring
-      type: detective
-      description: Monitor pooled client accounts.
-      implementation: rule
-      effectiveness: medium
-  - id: ML-TCSP-008
-    name: Reluctance to provide beneficial owner information
-    description: TCSP resists or delays beneficial ownership details.
-    category: behavioural
-    severity: high
-    detection_type:
-    - kyc_review
-    - customer_behaviour
-    data_sources:
-    - kyc_file
-    false_positive_notes: Confidentiality concerns.
+    - CTL-018
+    - CTL-118
+  - ref: IND-BEH-001
+    legacy_id: ML-TCSP-008
+    context: TCSP resists or delays beneficial ownership details.
+    name_in_typology: Reluctance to provide beneficial owner information
+    false_positive_context: Confidentiality concerns.
     controls:
-    - id: ML-TCSP-008-C1
-      name: Beneficial ownership information gate
-      type: preventive
-      description: Block onboarding or activity until beneficial owner data is provided and verified;
-        escalate refusals to compliance.
-      implementation: process
-      effectiveness: high
-    - id: ML-TCSP-008-C2
-      name: Exit policy
-      type: corrective
-      description: Terminate where unresolved.
-      implementation: policy
-      effectiveness: medium
-  - id: ML-TCSP-009
-    name: Activity in secrecy jurisdictions without links
-    description: Entity uses secrecy jurisdictions unrelated to operations.
-    category: geographic
-    severity: medium
-    detection_type:
-    - kyc_review
-    - screening
-    data_sources:
-    - corporate_registry
-    false_positive_notes: Tax-neutral hubs.
+    - CTL-006
+    - CTL-016
+  - ref: IND-GEO-038
+    legacy_id: ML-TCSP-009
+    context: Entity uses secrecy jurisdictions unrelated to operations.
+    name_in_typology: Activity in secrecy jurisdictions without links
+    severity_in_typology: medium
+    false_positive_context: Tax-neutral hubs.
     controls:
-    - id: ML-TCSP-009-C1
-      name: Jurisdiction risk rating
-      type: preventive
-      description: Rate and apply EDD.
-      implementation: policy
-      effectiveness: medium
-    - id: ML-TCSP-009-C2
-      name: Purpose verification
-      type: preventive
-      description: Verify link.
-      implementation: process
-      effectiveness: medium
+    - CTL-027
+    - CTL-011

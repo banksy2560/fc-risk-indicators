@@ -1,0 +1,49 @@
+controls:
+- id: CTL-034
+  name: Aggregated ownership and control assessment
+  family: sanctions_specific
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Aggregates holdings of all designated persons, tests who really controls an entity despite
+    formal shareholdings, and reviews recent ownership transfers and threshold proximity. It prevents
+    ownership-based sanctions thresholds being avoided by splitting or nominee transfers.
+  also_known_as:
+  - Control-link analysis
+  - Ownership history review
+  - Control-based assessment
+  - Aggregation logic
+  - Threshold-proximity alerts
+  - Source-of-wealth validation
+  - Funding source tracing
+- id: CTL-035
+  name: Embargoed-destination and geographic access restrictions
+  family: sanctions_specific
+  type: preventive
+  implementation: rule
+  effectiveness: high
+  description: Blocks or refers transfers, goods, services and system access linked to embargoed or comprehensively
+    sanctioned territories using address, route, payment-country and device-location signals. It prevents
+    prohibited dealings from being processed.
+  also_known_as:
+  - Geolocation and IP screening
+  - Conflict-zone exposure screening
+  - Embargo country controls
+  - Conflict origin screening
+  - IP and device geoblocking
+- id: CTL-036
+  name: Sanctions escalation and legal clearance
+  family: sanctions_specific
+  type: governance
+  implementation: process
+  effectiveness: medium
+  description: Routes potential sanctions, proscription or restricted-party exposure to a specialist sanctions
+    or legal team for decision before proceeding, and sets conditions for finance and insurance. It ensures
+    complex legal judgements are made by qualified people.
+  also_known_as:
+  - Escalation to sanctions team
+  - Ransom payment reporting
+  - Trade desk escalation
+  - Insurance and financing conditions
+  - Victim payment guidance
+  - Legal and sanctions clearance

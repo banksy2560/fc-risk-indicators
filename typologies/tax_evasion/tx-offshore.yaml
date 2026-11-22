@@ -19,213 +19,66 @@ typology:
     (2018)
   - FATF and OECD, Money Laundering Awareness Handbook for Tax Examiners and Tax Auditors (2012)
   indicators:
-  - id: TX-OFFSHORE-001
-    name: Inconsistent tax residency declarations
-    description: Customer self-certifies residence in one jurisdiction while mailing address, phone, spending
+  - ref: IND-CUS-051
+    legacy_id: TX-OFFSHORE-001
+    context: Customer self-certifies residence in one jurisdiction while mailing address, phone, spending
       or travel point to another.
-    category: customer
-    severity: high
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - self_certifications
-    - kyc_files
-    - card_data
-    false_positive_notes: Expatriates and frequent travellers may have complex but genuine residency.
+    false_positive_context: Expatriates and frequent travellers may have complex but genuine residency.
     controls:
-    - id: TX-OFFSHORE-001-C1
-      name: Self-certification reasonableness test
-      type: preventive
-      description: Test CRS/FATCA self-certifications against indicia such as addresses, phone numbers
-        and standing instructions.
-      implementation: rule
-      effectiveness: high
-    - id: TX-OFFSHORE-001-C2
-      name: Change-of-circumstances review
-      type: detective
-      description: Re-test residency when new indicia appear and request documentary evidence.
-      implementation: process
-      effectiveness: medium
-  - id: TX-OFFSHORE-002
-    name: Request to hold mail or avoid statements and reporting
-    description: Customer asks for hold-mail, numbered accounts or avoids providing tax identification
-      numbers.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - customer_behaviour
-    - kyc_review
-    data_sources:
-    - kyc_files
-    - account_instructions
-    false_positive_notes: Privacy or security concerns can motivate such requests.
+    - CTL-066
+    - CTL-014
+  - ref: IND-BEH-109
+    legacy_id: TX-OFFSHORE-002
+    context: Customer asks for hold-mail, numbered accounts or avoids providing tax identification numbers.
+    false_positive_context: Privacy or security concerns can motivate such requests.
     controls:
-    - id: TX-OFFSHORE-002-C1
-      name: TIN collection enforcement
-      type: preventive
-      description: Block or restrict accounts lacking required tax identification after follow-up.
-      implementation: rule
-      effectiveness: high
-    - id: TX-OFFSHORE-002-C2
-      name: Frontline awareness training
-      type: preventive
-      description: Train staff to recognise and escalate secrecy-seeking requests.
-      implementation: training
-      effectiveness: medium
-  - id: TX-OFFSHORE-003
-    name: Funds repatriated via cash, bearer instruments or third-party accounts
-    description: Customer deposits foreign-sourced cash or cheques or receives funds from unrelated individuals,
+    - CTL-066
+    - CTL-170
+  - ref: IND-TXN-139
+    legacy_id: TX-OFFSHORE-003
+    context: Customer deposits foreign-sourced cash or cheques or receives funds from unrelated individuals,
       avoiding visible foreign accounts.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - payment_records
-    - cash_reports
-    false_positive_notes: Gifts and family support can cause third-party transfers.
+    false_positive_context: Gifts and family support can cause third-party transfers.
     controls:
-    - id: TX-OFFSHORE-003-C1
-      name: Foreign-origin source-of-funds check
-      type: preventive
-      description: Ask evidence for large foreign-origin funds and their tax treatment.
-      implementation: process
-      effectiveness: medium
-    - id: TX-OFFSHORE-003-C2
-      name: Third-party deposit monitoring
-      type: detective
-      description: Alert on repeated deposits from unrelated parties or foreign cash.
-      implementation: rule
-      effectiveness: medium
-  - id: TX-OFFSHORE-004
-    name: Shell company or foundation with no commercial purpose holding personal assets
-    description: Passive entity in a low-transparency jurisdiction holds the customer's investments, property
+    - CTL-012
+    - CTL-046
+  - ref: IND-OWN-004
+    legacy_id: TX-OFFSHORE-004
+    context: Passive entity in a low-transparency jurisdiction holds the customer's investments, property
       or accounts.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - company_registry
-    - kyc_files
-    false_positive_notes: Entities can serve estate planning or asset protection legitimately.
+    name_in_typology: Shell company or foundation with no commercial purpose holding personal assets
+    false_positive_context: Entities can serve estate planning or asset protection legitimately.
     controls:
-    - id: TX-OFFSHORE-004-C1
-      name: Structure purpose assessment
-      type: preventive
-      description: Document legitimate reasons and tax compliance status for passive holding entities.
-      implementation: process
-      effectiveness: high
-    - id: TX-OFFSHORE-004-C2
-      name: Controlling person look-through
-      type: preventive
-      description: Identify controlling persons and apply CRS look-through for passive non-financial entities.
-      implementation: process
-      effectiveness: high
-  - id: TX-OFFSHORE-005
-    name: Nominee directors or shareholders
-    description: Entity officers appear to be professional nominees with no real decision-making role.
-    category: ownership_structure
-    severity: medium
-    detection_type:
-    - kyc_review
-    - document_review
-    data_sources:
-    - company_registry
-    - constitutional_docs
-    false_positive_notes: Nominees are lawful in some jurisdictions for privacy.
+    - CTL-008
+    - CTL-066
+  - ref: IND-OWN-001
+    legacy_id: TX-OFFSHORE-005
+    context: Entity officers appear to be professional nominees with no real decision-making role.
+    severity_in_typology: medium
+    false_positive_context: Nominees are lawful in some jurisdictions for privacy.
     controls:
-    - id: TX-OFFSHORE-005-C1
-      name: Nominee arrangement disclosure
-      type: preventive
-      description: Require disclosure of nominee arrangements and the nominator's identity.
-      implementation: process
-      effectiveness: medium
-    - id: TX-OFFSHORE-005-C2
-      name: Registry cross-check
-      type: detective
-      description: Cross-check officers against known nominee providers.
-      implementation: technology
-      effectiveness: medium
-  - id: TX-OFFSHORE-006
-    name: Transfers to jurisdictions with weak transparency soon after reporting changes
-    description: Funds shifted to non-participating or low-transparency jurisdictions around the introduction
+    - CTL-007
+    - CTL-142
+  - ref: IND-GEO-035
+    legacy_id: TX-OFFSHORE-006
+    context: Funds shifted to non-participating or low-transparency jurisdictions around the introduction
       of reporting obligations or voluntary-disclosure windows.
-    category: geographic
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - external_intel
-    data_sources:
-    - payment_records
-    - jurisdiction_lists
-    false_positive_notes: Business or investment reasons may exist for moves.
+    false_positive_context: Business or investment reasons may exist for moves.
     controls:
-    - id: TX-OFFSHORE-006-C1
-      name: Jurisdiction transfer rules
-      type: detective
-      description: Alert on significant outbound flows to low-transparency jurisdictions inconsistent
-        with profile.
-      implementation: rule
-      effectiveness: medium
-    - id: TX-OFFSHORE-006-C2
-      name: Regulatory intelligence updates
-      type: governance
-      description: Track changes in disclosure regimes and recalibrate rules.
-      implementation: process
-      effectiveness: medium
-  - id: TX-OFFSHORE-007
-    name: Loans or credit cards used to access hidden funds
-    description: Customer borrows locally but repays from or secured on foreign undeclared accounts, or
-      uses offshore-issued cards for domestic spend.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - loan_files
-    - card_data
-    false_positive_notes: Foreign-currency collateral lending is common in private banking.
+    - CTL-045
+    - CTL-166
+  - ref: IND-PRD-060
+    legacy_id: TX-OFFSHORE-007
+    context: Customer borrows locally but repays from or secured on foreign undeclared accounts, or uses
+      offshore-issued cards for domestic spend.
+    false_positive_context: Foreign-currency collateral lending is common in private banking.
     controls:
-    - id: TX-OFFSHORE-007-C1
-      name: Back-to-back lending review
-      type: detective
-      description: Review loans secured on offshore deposits for rationale and declarations.
-      implementation: process
-      effectiveness: medium
-    - id: TX-OFFSHORE-007-C2
-      name: Offshore card spend analytics
-      type: detective
-      description: Monitor domestic spend on offshore-issued cards.
-      implementation: model
-      effectiveness: low
-  - id: TX-OFFSHORE-008
-    name: Use of intermediaries who market secrecy
-    description: Customer introduced by advisers or promoters advertising confidentiality or tax-free
-      outcomes.
-    category: counterparty
-    severity: high
-    detection_type:
-    - investigator_judgement
-    - external_intel
-    data_sources:
-    - kyc_files
-    - adverse_media
-    false_positive_notes: Wealth advisers legitimately offer privacy and tax planning within the law.
+    - CTL-151
+    - CTL-045
+  - ref: IND-CPT-057
+    legacy_id: TX-OFFSHORE-008
+    context: Customer introduced by advisers or promoters advertising confidentiality or tax-free outcomes.
+    false_positive_context: Wealth advisers legitimately offer privacy and tax planning within the law.
     controls:
-    - id: TX-OFFSHORE-008-C1
-      name: Introducer due diligence
-      type: preventive
-      description: Risk-assess introducers and decline those marketing non-compliance.
-      implementation: process
-      effectiveness: high
-    - id: TX-OFFSHORE-008-C2
-      name: Adverse media and enforcement screening
-      type: detective
-      description: Screen introducers and promoters against tax enforcement releases.
-      implementation: technology
-      effectiveness: medium
+    - CTL-019
+    - CTL-032

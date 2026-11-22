@@ -1,0 +1,1890 @@
+indicators:
+- id: IND-TXN-001
+  name: Rapid pass-through of received funds
+  description: Funds received into an account are forwarded onward within a very short period, often in
+    near-equal amounts and leaving minimal balance.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - transaction_data
+  - ledger_data
+  - account_data
+  - payment_data
+  - account_activity
+  - counterparty_data
+  false_positive_notes: Legitimate payment intermediaries, treasury sweeps and agents routinely pass funds
+    through quickly.
+- id: IND-TXN-002
+  name: Rapid movement offshore or to crypto after receipt
+  description: Incoming funds are quickly sent abroad or converted to virtual assets soon after being
+    credited.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - account_data
+  - transaction_data
+  false_positive_notes: Genuine international payments or planned crypto purchases by established customers.
+- id: IND-TXN-003
+  name: Account receiving funds from multiple apparent fraud victims
+  description: A new or low-activity account receives payments from several unrelated individuals who
+    appear to be victims of fraud or phishing, followed by onward movement or cash-out.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - ledger_data
+  - payment_references
+  - blockchain_analytics
+  - payment_records
+  - account_data
+  - atm_data
+  false_positive_notes: Legitimate sales, crowdfunding or refunds can look similar; check payment references
+    and account history.
+- id: IND-TXN-004
+  name: Many unrelated senders paying a single account or recipient
+  description: Numerous unrelated payers send frequent, often small, payments to one account, wallet or
+    beneficiary, or one funder pays many beneficiaries, with no clear commercial relationship.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - blockchain_analytics
+  - ledger_data
+  - account_data
+  - payment_data
+  - remittance_data
+  - payment_records
+  - game_logs
+  - account_records
+  - load_records
+  - bank_transactions
+  - counterparty_data
+  false_positive_notes: Legitimate retailers, charities, marketplaces and payroll can show high payer
+    counts.
+- id: IND-TXN-005
+  name: Transfers to many newly created crypto addresses
+  description: Repeated small or fixed-amount transfers to many fresh or new crypto addresses.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - withdrawal_addresses
+  - blockchain_analytics
+  - transaction_data
+  false_positive_notes: Privacy-conscious users and wallet software that rotates addresses can produce
+    this pattern.
+- id: IND-TXN-006
+  name: Cash deposits just below reporting or identification threshold
+  description: Repeated cash deposits kept just under a reporting, identification or monitoring threshold.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - kiosk_logs
+  - phone_numbers
+  - transaction_data
+  - cash_deposit_records
+  false_positive_notes: Customers may deposit regular round sums that coincidentally sit below thresholds.
+- id: IND-TXN-007
+  name: Cash deposits split across branches, ATMs or accounts
+  description: Cash is deposited in several locations, channels or accounts on the same day or over a
+    short period so that no single deposit stands out.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - transaction_data
+  - channel_logs
+  - cash_deposit_data
+  - atm_data
+  - cash_deposits
+  - wire_data
+  false_positive_notes: Businesses with multiple outlets may deposit locally at different branches.
+- id: IND-TXN-008
+  name: Non-cash transfers or loads just below identification or reporting thresholds
+  description: Repeated transfers, remittances or card/wallet loads kept just below an identification,
+    record-keeping or travel-rule threshold.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - remittance_data
+  - load_records
+  - transfer_records
+  - transaction_data
+  false_positive_notes: Customers may use standard amounts or product limits that happen to sit just under
+    thresholds.
+- id: IND-TXN-009
+  name: Payments or claims split to stay below internal approval limits
+  description: Payments, claims or contracts are broken into amounts just under internal authorisation
+    limits.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payment_records
+  - approval_logs
+  - expense_data
+  - purchasing_data
+  false_positive_notes: Routine small recurring purchases and budget-driven phasing can resemble this.
+- id: IND-TXN-010
+  name: Repeated round-value transactions
+  description: Transactions are repeatedly in round or unusually uniform amounts that do not fit the stated
+    purpose.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - transaction_data
+  false_positive_notes: Rents, salaries, loan instalments and fees are commonly round amounts.
+- id: IND-TXN-011
+  name: Dormant account suddenly reactivated or high-velocity activity
+  description: A dormant or low-activity account suddenly shows high-velocity inflows and outflows.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - account_status
+  - transaction_data
+  - ledger_data
+  false_positive_notes: Seasonal use, life events or a customer returning after absence.
+- id: IND-TXN-012
+  name: Sudden large increase in transaction volume
+  description: Transaction volume or value rises abruptly well beyond historical levels, including through
+    a respondent or reactivated account.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - transaction_data
+  - account_activity
+  false_positive_notes: Business growth, seasonality, acquisitions or one-off events.
+- id: IND-TXN-013
+  name: Activity inconsistent with customer profile
+  description: Transactions or withdrawals are uncharacteristic of, or inconsistent with, the customer's
+    known profile, income or expected activity.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  - kyc_review
+  data_sources:
+  - transaction_data
+  - kyc_profile
+  - account_data
+  - financial_statements
+  false_positive_notes: Life events, windfalls or changed circumstances may explain the change.
+- id: IND-TXN-014
+  name: Volumes exceed documented production or capacity
+  description: Exports or output reported exceed documented production, concession or capacity limits.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  - external_intel
+  data_sources:
+  - export_records
+  - concession_data
+  - trade_statistics
+  - customs_data
+  false_positive_notes: Stockpiles, undocumented but legitimate sources or reporting lags.
+- id: IND-TXN-015
+  name: Circular or round-trip flows among related parties
+  description: Funds or goods-linked payments loop back to the originator or between related counterparties,
+    or are traded back and forth.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - transaction_data
+  - network_data
+  - payment_records
+  - link_analysis
+  - registry_data
+  false_positive_notes: Group treasury arrangements and legitimate back-to-back trading.
+- id: IND-TXN-016
+  name: Mirror or offsetting transactions between jurisdictions
+  description: Reciprocal or offsetting payments occur between counterparties or operators in different
+    countries with no direct value transfer.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - transaction_data
+  - wire_data
+  - payment_records
+  false_positive_notes: Netting and reciprocal arrangements between related businesses.
+- id: IND-TXN-017
+  name: Workers paid to third-party or multiple accounts
+  description: Wages are paid to accounts not held by the worker or split across several accounts.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  - kyc_review
+  data_sources:
+  - payment_records
+  - payroll_files
+  - payment_data
+  - wallet_data
+  false_positive_notes: Workers may have family accounts or split pay by choice.
+- id: IND-TXN-018
+  name: Chain-hopping through bridges shortly after receipt
+  description: Virtual assets are moved across chains or bridges and converted soon after being received.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - blockchain_analytics
+  - withdrawal_addresses
+  false_positive_notes: Legitimate DeFi users bridge assets for fees or liquidity.
+- id: IND-TXN-019
+  name: Refund and chargeback abuse
+  description: Unusual refund or chargeback volumes or cycles relative to sales.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payment_data
+  - chargeback_data
+  false_positive_notes: Seasonal returns, disputes or product quality issues.
+- id: IND-TXN-020
+  name: Transaction price materially different from market value
+  description: Price paid differs sharply from market value, comparable sales or estimates without commercial
+    justification.
+  category: transaction
+  severity: high
+  detection_type:
+  - document_review
+  - investigator_judgement
+  - transaction_monitoring
+  data_sources:
+  - valuation_reports
+  - land_registry
+  - trade_documents
+  - price_databases
+  - sale_records
+  - valuation_data
+  - marketplace_data
+  - price_history
+  - price_data
+  - tender_documents
+  - price_benchmarks
+  false_positive_notes: Distressed sales, rare items, quality differences or volatile markets.
+- id: IND-TXN-021
+  name: High-value purchases paid in cash, crypto or non-standard funds
+  description: High-value assets are bought with cash, crypto, third-party or otherwise non-standard funding.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - document_review
+  - customer_behaviour
+  - kyc_review
+  data_sources:
+  - payment_records
+  - payment_data
+  false_positive_notes: Some buyers legitimately pay with cash or crypto; verify source of funds.
+- id: IND-TXN-022
+  name: Cash payments to informal suppliers or ground-level operators
+  description: Large or repeated cash payments to informal traders, producers or workers in extraction
+    or supply chains.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - cash_data
+  - payment_records
+  - deposit_records
+  - invoices
+  false_positive_notes: Informal markets often transact in cash.
+- id: IND-TXN-023
+  name: Payments from or for third parties unrelated to the underlying trade
+  description: Payments are made by parties with no apparent link to the underlying transaction, goods
+    or services.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - document_review
+  data_sources:
+  - payment_messages
+  - invoices
+  - payment_data
+  false_positive_notes: Group companies, agents or financiers may pay on behalf of the principal.
+- id: IND-TXN-024
+  name: Payment directed to personal or third-party account
+  description: Payment is requested to, or credited to, a personal, third-party or differently named account
+    rather than the contracted payee.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - payment_instructions
+  - bank_data
+  - vendor_master
+  - payment_data
+  false_positive_notes: Factoring, assignment, or legitimate account changes.
+- id: IND-TXN-025
+  name: Sudden liquidation of savings or assets
+  description: Savings, investments or assets are sold abruptly, followed by withdrawal or transfer.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - account_history
+  - payment_data
+  - account_activity
+  - asset_records
+  false_positive_notes: Planned purchases, retirement or genuine need for funds.
+- id: IND-TXN-026
+  name: Sudden credit utilisation spike then bust-out
+  description: Credit builds up and is then rapidly utilised to limit or cashed out after a period of
+    low use.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - account_data
+  - ledger_data
+  - credit_data
+  false_positive_notes: Large planned purchases or seasonal spending.
+- id: IND-TXN-027
+  name: Large buy-in or deposits with little underlying activity
+  description: Substantial funds are deposited or bought in with minimal gambling or betting activity
+    before withdrawal.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - casino_floor_records
+  - gambling_account_data
+  false_positive_notes: Players who deposit but pause play.
+- id: IND-TXN-028
+  name: Fee or tax payment demanded to release funds
+  description: Payments are made as fees or taxes supposedly needed to release a prize, loan, inheritance
+    or gains.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - payment_data
+  false_positive_notes: Genuine release fees exist but are rare and verifiable.
+- id: IND-TXN-029
+  name: Payment references suggesting scam scripts
+  description: Payment narratives or references contain wording linked to scams such as safe accounts
+    or investment schemes.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payment_data
+  - narratives
+  - payment_references
+  false_positive_notes: Innocuous use of similar words.
+- id: IND-TXN-030
+  name: Rapid onward movement after cash credits
+  description: Cash deposited is quickly withdrawn or transferred onward, including to another location
+    or to unhosted wallets.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - transaction_data
+  - atm_logs
+  - cash_deposit_data
+  - payment_records
+  - ledger_data
+  false_positive_notes: Customers may use cash deposits for immediate bills.
+- id: IND-TXN-031
+  name: Large credit followed by prompt withdrawals
+  description: A cheque deposit or refund is credited and quickly withdrawn or transferred before it clears
+    or is verified.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - deposit_data
+  - account_data
+  false_positive_notes: Customers needing urgent access to funds.
+- id: IND-TXN-032
+  name: Rapid stored-value or wallet hops then cash-out
+  description: Stored value or funds move quickly between wallets or cards and are then cashed out.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - wallet_transfers
+  - ledger_data
+  - wallet_data
+  false_positive_notes: Normal wallet top-ups and withdrawals.
+- id: IND-TXN-033
+  name: Bulk purchase or sale of cards or vouchers
+  description: Large volumes of prepaid cards or gift cards are purchased or sold.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - card_orders
+  - payment_data
+  - order_data
+  false_positive_notes: Corporate gifting or promotions.
+- id: IND-TXN-034
+  name: Cash or anonymous donations
+  description: Donations are made through cash, anonymous collections or structured amounts.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - kyc_review
+  data_sources:
+  - donation_records
+  - cash_deposits
+  - collection_logs
+  false_positive_notes: Legitimate fundraising events often use cash.
+- id: IND-TXN-035
+  name: Professional client account used as pass-through
+  description: A professional's client account is used to move funds with no underlying legal or advisory
+    work.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - client_account_data
+  false_positive_notes: Legitimate client-money handling.
+- id: IND-TXN-036
+  name: Recurring small cash payments to border, customs or permit agents
+  description: Repeated low-value cash disbursements or petty cash entries labelled 'expediting', 'facilitation'
+    or 'processing' at ports, borders or ministries.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - document_review
+  data_sources:
+  - petty_cash
+  - expense_reports
+  false_positive_notes: Some official fees are legitimately paid in cash with receipts.
+- id: IND-TXN-037
+  name: Fees to distributors well above market margin
+  description: Distributor discounts or rebates are unusually large without commercial rationale, leaving
+    room for onward payments.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - pricing_data
+  - contracts
+  false_positive_notes: Volume discounts and market entry may justify higher margins.
+- id: IND-TXN-038
+  name: Success fee paid to consultant in a high-corruption market
+  description: Large success-based or commission payments to a consultant or agent tied to winning a contract
+    with a state body in a high-corruption-risk jurisdiction.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - payment_records
+  - contract_files
+  - corruption_indices
+  false_positive_notes: Genuine commercial agents are commonly paid success fees; rates in some sectors
+    are legitimately high.
+- id: IND-TXN-039
+  name: Gifts, travel or hospitality for officials paid through third parties
+  description: Payments for luxury travel, tuition, medical treatment or property for officials or relatives,
+    booked via a vendor or card.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - expense_reports
+  - card_data
+  - payments
+  false_positive_notes: Official delegations legitimately receive modest hospitality and reasonable travel
+    for site visits.
+- id: IND-TXN-040
+  name: Post-award payments from supplier to buyer-linked accounts
+  description: Winning supplier transfers funds to persons or companies connected to the procuring official
+    shortly after payment.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - payment_records
+  - corporate_registries
+  false_positive_notes: Supplier subcontracting may pay related parties innocently.
+- id: IND-TXN-041
+  name: Large inflows from state-owned entities or ministries to private accounts
+  description: Funds from government bodies or state enterprises arrive at private or personal accounts
+    with no apparent contractual basis.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - payment_records
+  - sector_intelligence
+  false_positive_notes: State suppliers and contractors receive government funds legitimately.
+- id: IND-TXN-042
+  name: Rapid movement through correspondent or private banking channels
+  description: Large sums move quickly through several banks and jurisdictions after arrival, with no
+    hold period.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payment_records
+  - swift_messages
+  false_positive_notes: Treasury and liquidity management can cause fast movements.
+- id: IND-TXN-043
+  name: No apparent economic or lawful rationale
+  description: Transactions lack commercial logic given the customer's business or relationship.
+  category: transaction
+  severity: high
+  detection_type:
+  - investigator_judgement
+  - transaction_monitoring
+  data_sources:
+  - transaction_data
+  - kyc_profile
+  false_positive_notes: Atypical but genuine one-off deals occur.
+- id: IND-TXN-044
+  name: Use of multiple accounts to move funds
+  description: Customer spreads activity across many accounts, products or institutions.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - account_data
+  false_positive_notes: Customers separate budgets legitimately.
+- id: IND-TXN-045
+  name: Cash from bulk notes in poor condition or unusual denominations
+  description: Large volumes of small or bundled notes deposited in sequence.
+  category: transaction
+  severity: low
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - kiosk_logs
+  false_positive_notes: Cash-based businesses.
+- id: IND-TXN-046
+  name: Frequent small purchases to marketplace-linked addresses
+  description: Repeated low-value withdrawals to wallets clustering with market deposit infrastructure,
+    consistent with buyer activity.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - blockchain_analytics
+  - withdrawal_addresses
+  false_positive_notes: False cluster attribution.
+- id: IND-TXN-047
+  name: Layered swaps through multiple DEX pools and bridges
+  description: On-chain history shows repeated swaps and bridge crossings with no yield or trading logic
+    before arrival at the platform.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - blockchain_analytics
+  false_positive_notes: Yield farmers and aggregators routing automatically.
+- id: IND-TXN-048
+  name: Use of freshly created wallets funded from a single source
+  description: Chain of new wallets each funded by the previous one before depositing to a regulated service.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - blockchain_analytics
+  - wallet_addresses
+  false_positive_notes: Wallet hygiene and per-protocol wallets.
+- id: IND-TXN-049
+  name: Rapid cash-out after cross-chain arrival
+  description: Assets arriving via bridge are sold into fiat or stablecoin and withdrawn within a short
+    window.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - ledger_data
+  - bridge_logs
+  false_positive_notes: Normal arbitrage.
+- id: IND-TXN-050
+  name: Wrapped or low-liquidity token conversions at poor rates
+  description: Customer accepts clearly unfavourable swap prices or uses thin-liquidity tokens, suggesting
+    priority on obscuring origin.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - trade_history
+  - market_data
+  false_positive_notes: Illiquid-market inexperience.
+- id: IND-TXN-051
+  name: Sales of high-value items with no shipping or delivery evidence
+  description: Orders marked complete without tracking, or delivered to unrelated addresses.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - order_data
+  - logistics_data
+  false_positive_notes: Digital goods.
+- id: IND-TXN-052
+  name: Rapid sequential conversions across many asset types
+  description: Funds received are swapped through several tokens or stablecoins in quick succession with
+    no apparent trading rationale before withdrawal.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - trade_history
+  - ledger_data
+  false_positive_notes: Active traders, arbitrageurs and market makers.
+- id: IND-TXN-053
+  name: Newly minted NFT sold immediately for large sums to unrelated wallet
+  description: Creator mints and sells quickly to a single buyer funded by a cluster with no history.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - blockchain_analytics
+  false_positive_notes: Primary sales by established artists.
+- id: IND-TXN-054
+  name: Fast conversion of in-game currency to cash or crypto
+  description: Large currency amounts earned or received are cashed out through third-party sites within
+    a short period.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - game_logs
+  - ledger_data
+  false_positive_notes: Professional players and streamers.
+- id: IND-TXN-055
+  name: Customer purchases virtual assets and sends them immediately to a new wallet
+  description: A first-time or unsophisticated buyer buys a large amount and withdraws it all to an unfamiliar
+    address, consistent with a victim ransom payment.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - trade_history
+  - withdrawal_addresses
+  false_positive_notes: Legitimate first-time investors.
+- id: IND-TXN-056
+  name: Large transfers to or from unhosted wallets without ownership proof
+  description: High-value transfers involve self-hosted addresses where the customer has not demonstrated
+    control.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - wallet_addresses
+  - transfer_records
+  false_positive_notes: Customers who self-custody for security.
+- id: IND-TXN-057
+  name: P2P payments received from third-party bank accounts
+  description: Buyers pay from accounts not in the buyer's name, or sellers receive from unknown payers.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - bank_transactions
+  - p2p_records
+  false_positive_notes: Family-funded purchases.
+- id: IND-TXN-058
+  name: Same credits sold multiple times or retired and resold
+  description: Serial numbers appear in more than one transaction or after retirement.
+  category: transaction
+  severity: high
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - registry_data
+  - trade_data
+  false_positive_notes: Registry timing issues can show duplicate records.
+- id: IND-TXN-059
+  name: Payments for at-sea transhipment, fuel and supplies
+  description: Payments to reefer ships or bunker suppliers in remote waters.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - payment_records
+  - invoices
+  false_positive_notes: Transhipment is lawful under authorised conditions.
+- id: IND-TXN-060
+  name: Diamond or gem trade with undervalued or round-trip transactions
+  description: Stones traded at prices off market, flowing through several traders and returning to origin.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - invoices
+  - valuation_data
+  false_positive_notes: Valuation of stones is subjective.
+- id: IND-TXN-061
+  name: Collection firm paid low fees yet reporting large volumes
+  description: Waste firm bills clients far below market disposal rates.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - invoices
+  - tariff_data
+  false_positive_notes: Efficiency or subsidies may lower prices.
+- id: IND-TXN-062
+  name: Repeated payments to same beneficiary with escalating narratives
+  description: 'Victim-side: sunk-cost pattern.'
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payment_data
+  false_positive_notes: Recurring bills.
+- id: IND-TXN-063
+  name: Payment to new payee under apparent time pressure
+  description: 'Victim-side: a first payment of unusually high value to a newly created payee, made quickly
+    after a phone call or message and often outside normal patterns.'
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - payment_data
+  - payee_history
+  false_positive_notes: Genuine house purchases, one-off large bills or planned gifts to new payees.
+- id: IND-TXN-064
+  name: New payee added and funds drained rapidly
+  description: Attacker adds beneficiaries and transfers most of the balance in one session.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payment_data
+  false_positive_notes: Genuine house or business payments.
+- id: IND-TXN-065
+  name: Cash advances and purchases of resaleable goods
+  description: Heavy use of cash advances, gift cards and high-resale items near the credit limit.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - card_data
+  false_positive_notes: Genuine purchases.
+- id: IND-TXN-066
+  name: Rapid payments from third-party or overdrawn accounts to inflate limits
+  description: Payments that bounce or are reversed after credit is restored.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payment_data
+  false_positive_notes: Genuine payment errors.
+- id: IND-TXN-067
+  name: Mobile deposit of same item at multiple institutions
+  description: Duplicate presentment.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - deposit_data
+  - industry_data
+  false_positive_notes: Technical retries.
+- id: IND-TXN-068
+  name: Rapid structured withdrawals below reporting thresholds
+  description: Multiple withdrawals after deposit.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - account_data
+  false_positive_notes: Cash needs.
+- id: IND-TXN-069
+  name: Card testing with many small authorisations
+  description: Bursts of low-value attempts across cards, many declined, followed by a successful larger
+    purchase.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - authorisation_data
+  false_positive_notes: Merchant retries.
+- id: IND-TXN-070
+  name: High-value purchases of resalable goods
+  description: Electronics, gift cards or digital goods with quick delivery.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - order_data
+  false_positive_notes: Genuine retail demand.
+- id: IND-TXN-071
+  name: Customer instructed to move money to a 'safe' account
+  description: 'Victim-side: pretext of protection leads to transfers to unfamiliar accounts.'
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - payment_data
+  false_positive_notes: Genuine account moves.
+- id: IND-TXN-072
+  name: Employee accounts receive unusual payments
+  description: Staff accounts credited from customers, vendors or dormant accounts.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - account_data
+  false_positive_notes: Salary advances.
+- id: IND-TXN-073
+  name: Alterations to payroll or master data outside cycle
+  description: Changes made around pay run by one user.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - audit_logs
+  false_positive_notes: Genuine corrections.
+- id: IND-TXN-074
+  name: Deposit or equity funded by unexplained third party
+  description: Large deposit credited from unrelated accounts.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - account_data
+  false_positive_notes: Gifts from relatives.
+- id: IND-TXN-075
+  name: Loan proceeds diverted immediately offshore or to unrelated parties
+  description: Funds leave to accounts unrelated to the purpose.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payment_data
+  false_positive_notes: Legitimate property or business payments.
+- id: IND-TXN-076
+  name: Outflows paying earlier investors in matching round amounts
+  description: 'Operator-side: credits are followed by payments to prior investors in neat sums, plus
+    cash-outs to insiders.'
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - account_data
+  false_positive_notes: Legitimate coupon or dividend payments.
+- id: IND-TXN-077
+  name: Investor funds diverted to personal assets or luxury spending
+  description: 'Operator-side: lifestyle spending, property or vehicle purchases funded from investor
+    accounts.'
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - account_data
+  false_positive_notes: High-net-worth operators with separate wealth.
+- id: IND-TXN-078
+  name: Escalating transfers to crypto exchanges by a first-time buyer
+  description: 'Victim-side: a customer with no crypto history makes repeated, rising purchases and onward
+    transfers to external wallets within weeks.'
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - payment_data
+  - exchange_flows
+  false_positive_notes: Genuine retail interest in crypto.
+- id: IND-TXN-079
+  name: Funds routed to multiple small accounts then consolidated
+  description: 'Mule-side: scam proceeds are split across many personal and corporate accounts before
+    consolidation and cash-out.'
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - account_data
+  - payment_data
+  false_positive_notes: Payroll or marketplace payouts with similar structure.
+- id: IND-TXN-080
+  name: Gift-card or peer-to-peer payments to a single remote contact
+  description: 'Victim-side: regular payments or vouchers sent to one beneficiary overseas with emotional
+    narratives.'
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payment_data
+  false_positive_notes: Family support abroad.
+- id: IND-TXN-081
+  name: Multiple refunds into the same account
+  description: Unrelated refunds converge on one account or card.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - account_data
+  false_positive_notes: Tax preparers.
+- id: IND-TXN-082
+  name: Repayments funded by new financing from same borrower
+  description: Revolving structure where old invoices are settled with new drawings.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - account_data
+  false_positive_notes: Working-capital cycles.
+- id: IND-TXN-083
+  name: Sudden growth in financed volume without business rationale
+  description: Facility usage rises faster than turnover.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - facility_data
+  false_positive_notes: Genuine expansion.
+- id: IND-TXN-084
+  name: Funds diverted to unrelated accounts
+  description: Proceeds sent to parties outside the trade.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payment_data
+  false_positive_notes: Group treasury.
+- id: IND-TXN-085
+  name: Sudden new spending on unrelated person
+  description: Frequent payments or purchases benefiting a carer or acquaintance.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payment_data
+  false_positive_notes: Genuine family support.
+- id: IND-TXN-086
+  name: Frequent ATM use by carer or unusual card use
+  description: Cards used where customer is unlikely to be present.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - card_data
+  - atm_data
+  false_positive_notes: Delegated errands.
+- id: IND-TXN-087
+  name: Property or investment sold under pressure
+  description: Large assets liquidated with hurried instructions.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - transaction_data
+  false_positive_notes: Downsizing.
+- id: IND-TXN-088
+  name: Recruitment fees charged to workers
+  description: Payments from workers to recruiters or employers for placement, visas or training, creating
+    debt.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - payment_records
+  - supplier_audits
+  false_positive_notes: Fees may be legitimately borne by employers in compliant models.
+- id: IND-TXN-089
+  name: Payment of workers in cash with no payroll records
+  description: Large cash payroll withdrawals with no tax or social contributions.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - document_review
+  data_sources:
+  - payment_records
+  - tax_filings
+  false_positive_notes: Informal economy may lawfully include cash wages.
+- id: IND-TXN-090
+  name: Seasonal worker mass remittance to few beneficiaries
+  description: Many workers all send funds to one recipient in home country.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - remittance_data
+  false_positive_notes: Workers from one village may send to a single trusted agent.
+- id: IND-TXN-091
+  name: Repeated low-value payments to overseas recipients with live-stream links
+  description: Small recurring transfers to individuals in jurisdictions of known high-risk, with references
+    to live shows or streaming.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - remittance_data
+  - payment_references
+  false_positive_notes: Remittances to family and creator payments are common.
+- id: IND-TXN-092
+  name: Crypto transfers to addresses linked to abuse marketplaces
+  description: Customer sends virtual assets to wallets clustered with abuse-related services.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - blockchain_analytics
+  false_positive_notes: Mixed-use services create indirect exposure.
+- id: IND-TXN-093
+  name: Family remittances for 'travel arrangements' to unfamiliar counterparties
+  description: Repeated transfers from diaspora senders to third-country individuals with messages about
+    journeys or guarantees.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - remittance_data
+  - payment_references
+  false_positive_notes: Families fund legitimate travel and relocation.
+- id: IND-TXN-094
+  name: Purchase of vessels, vehicles or boats and cash payments to boat suppliers
+  description: Purchases of inflatable boats, engines, vans or lorries paid in cash by individuals with
+    no business purpose.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - card_data
+  - merchant_data
+  false_positive_notes: Hobbyists and small businesses buy boats and engines.
+- id: IND-TXN-095
+  name: Hotel, safe house or apartment payments for groups in transit hubs
+  description: Short stays booked for many persons, paid by one individual or cash.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - card_data
+  - booking_data
+  false_positive_notes: Tourism, events and tour operators.
+- id: IND-TXN-096
+  name: Payments for online adverts and hotels or short-stay lets for multiple rooms
+  description: Frequent purchases of escort or commercial sex adverts, bulk hotel bookings and short-term
+    rentals paid by the same card or account.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - card_data
+  - merchant_data
+  false_positive_notes: Hospitality and legitimate escort or event businesses exist.
+- id: IND-TXN-097
+  name: Wage or benefit payments immediately withdrawn by another person
+  description: Salary, welfare or loan proceeds are withdrawn in full by someone not the account holder
+    or sent to a third party on receipt.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - payroll_data
+  - atm_logs
+  - payment_records
+  false_positive_notes: Remittance to family is common after payday.
+- id: IND-TXN-098
+  name: Large undeclared or inconsistent cross-border cash declarations
+  description: Discrepancies between declared and found cash or declarations lacking purpose.
+  category: transaction
+  severity: high
+  detection_type:
+  - investigator_judgement
+  - external_intel
+  data_sources:
+  - declaration_records
+  false_positive_notes: Honest errors.
+- id: IND-TXN-099
+  name: Large cash deposits soon after foreign travel
+  description: Deposits follow trips to cash-prone jurisdictions.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - transaction_data
+  - travel_data
+  false_positive_notes: Tourism earnings.
+- id: IND-TXN-100
+  name: Cash deposits exceed plausible business capacity
+  description: Declared turnover or deposits are higher than the premises size, staffing, opening hours
+    or stock purchases would support.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - kyc_review
+  data_sources:
+  - transaction_data
+  - kyc_profile
+  - peer_benchmarks
+  false_positive_notes: New or fast-growing businesses can legitimately outperform peers.
+- id: IND-TXN-101
+  name: Deposits unsupported by supplier or cost-of-sales activity
+  description: Cash takings are high but there are few payments to suppliers, rent, wages or tax authorities.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - transaction_data
+  - accounts_payable_data
+  false_positive_notes: Cash-paid suppliers or off-account costs may exist.
+- id: IND-TXN-102
+  name: Sudden growth in cash volumes
+  description: Step-change in deposit values or frequency without explanation such as new outlets or season.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - transaction_data
+  false_positive_notes: Expansion, promotion or events can explain growth.
+- id: IND-TXN-103
+  name: Large cash withdrawals paired with deposits of equivalent value
+  description: Cash is repeatedly withdrawn and redeposited, or round-tripped with associated accounts.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - transaction_data
+  false_positive_notes: Float management for tills may look similar.
+- id: IND-TXN-104
+  name: Transaction volumes disproportionate to respondent's size
+  description: Flows far exceed expected levels for the respondent's balance sheet or footprint.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - transaction_data
+  false_positive_notes: Business growth or new products.
+- id: IND-TXN-105
+  name: Pooled flows with frequent round-sum payments
+  description: Large round-value payments or repeated amounts for multiple unrelated beneficiaries.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - transaction_data
+  false_positive_notes: Settlement batches.
+- id: IND-TXN-106
+  name: Aborted transactions with funds returned elsewhere
+  description: Deals cancelled and money sent to different parties.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - client_account_data
+  false_positive_notes: Deals collapse.
+- id: IND-TXN-107
+  name: Large cash payments to professional
+  description: Fees or deposits in cash.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payment_records
+  false_positive_notes: Small firms.
+- id: IND-TXN-108
+  name: Large cash deposits followed by payments to many individuals or businesses
+  description: Cash received and paid out to numerous parties abroad or locally.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - transaction_data
+  false_positive_notes: Payroll for distributed workers.
+- id: IND-TXN-109
+  name: Large single premium paid then early surrender
+  description: Policy funded with lump sum and cancelled soon after, with refund to third party.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - policy_data
+  false_positive_notes: Policyholder circumstances change.
+- id: IND-TXN-110
+  name: Overfunded policies and partial withdrawals
+  description: Paid in excess of required premium then withdrawn.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - policy_data
+  false_positive_notes: Misestimates happen.
+- id: IND-TXN-111
+  name: Securities deposited then transferred out without trading
+  description: Shares deposited and moved with no market activity.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - securities_data
+  false_positive_notes: Custody moves.
+- id: IND-TXN-112
+  name: Loan funded by related offshore party and repaid early
+  description: Borrower receives loan from an entity linked to themselves and repays rapidly.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - loan_data
+  - transaction_data
+  false_positive_notes: Group financing.
+- id: IND-TXN-113
+  name: Loan secured on assets or deposits from third parties of unclear origin
+  description: Collateral is cash deposit or asset funded by unknown source.
+  category: transaction
+  severity: high
+  detection_type:
+  - kyc_review
+  - document_review
+  data_sources:
+  - collateral_records
+  false_positive_notes: Cash-secured lending is common.
+- id: IND-TXN-114
+  name: Unusual real-estate or luxury purchases
+  description: High-value purchases by PEPs or associates abroad.
+  category: transaction
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  - external_intel
+  data_sources:
+  - land_registry
+  - adverse_media
+  false_positive_notes: Wealthy PEPs may buy property.
+- id: IND-TXN-115
+  name: Funds move in fixed commission-like deductions
+  description: Recurring small percentage retained from inbound flows consistent with fee-taking by an
+    intermediary.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - transaction_data
+  false_positive_notes: Brokers and payment agents charge fees.
+- id: IND-TXN-116
+  name: Mortgage repaid early or from unusual sources
+  description: Loan quickly settled in lump sum or by third parties.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - loan_data
+  false_positive_notes: Windfalls trigger early repayment.
+- id: IND-TXN-117
+  name: Illicit and legitimate funds mixed in operating account
+  description: Business income blended with unexplained inflows.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - transaction_data
+  false_positive_notes: Owner loans.
+- id: IND-TXN-118
+  name: Frequent payments to the same third-party beneficiary of unclear purpose
+  description: Recurring payments to unexplained counterparties.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - transaction_data
+  false_positive_notes: Subscriptions.
+- id: IND-TXN-119
+  name: Multiple firearm or component purchases by one person for others
+  description: Repeated purchases of guns, parts or ammunition inconsistent with sport use, paid by different
+    people.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - card_data
+  - dealer_records
+  false_positive_notes: Collectors and ranges buy in volume.
+- id: IND-TXN-120
+  name: Cash purchases with prompt resale or export
+  description: Weapons purchased for cash and quickly moved abroad.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - cash_data
+  false_positive_notes: Collectors may sell.
+- id: IND-TXN-121
+  name: Payments to manufacturers in known counterfeit production regions with no brand
+  description: Payments to factories lacking licences.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - payment_records
+  false_positive_notes: Contract manufacturers exist.
+- id: IND-TXN-122
+  name: Cash-out through gift cards, prepaid, or money mules in other countries
+  description: Funds converted into hard-to-trace instruments.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - card_data
+  - payment_records
+  false_positive_notes: Gift cards are bought legitimately.
+- id: IND-TXN-123
+  name: Regular fixed payments from a small business to an individual with no invoices
+  description: Payments at regular intervals to a person or company with no service provided.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - payment_records
+  false_positive_notes: Rent and retainers also recur.
+- id: IND-TXN-124
+  name: High-interest informal loans with repayments to non-lender individuals
+  description: Repeated payments with high effective interest rates and rollovers.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - payment_records
+  - loan_data
+  false_positive_notes: Family loans are legit.
+- id: IND-TXN-125
+  name: Wholesaler purchases far exceed local market demand
+  description: Volumes of cigarettes or alcohol bought by a retailer or distributor exceed plausible consumption.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - invoices
+  - sector_data
+  false_positive_notes: Border areas and tourism cause higher sales.
+- id: IND-TXN-126
+  name: Cross-border cash and remittance flows from retailers to overseas suppliers
+  description: Regular remittances to suppliers in source countries without invoices.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - remittance_data
+  false_positive_notes: Diaspora shops import goods.
+- id: IND-TXN-127
+  name: Payments that include references to designated or restricted entities
+  description: Payment messages show names, addresses or vessels linked to restricted lists.
+  category: transaction
+  severity: high
+  detection_type:
+  - screening
+  - transaction_monitoring
+  data_sources:
+  - swift_messages
+  - sanctions_lists
+  false_positive_notes: Partial name matches generate false hits.
+- id: IND-TXN-128
+  name: Open-account trade with buyers in high-risk jurisdictions lacking track record
+  description: New relationships with large unsecured trade flows to or from countries of proliferation
+    concern.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - kyc_review
+  data_sources:
+  - account_activity
+  false_positive_notes: Genuine market entry occurs.
+- id: IND-TXN-129
+  name: Large OTC or peer-to-peer purchases paid in cash or non-bank rails
+  description: Purchases with limited traceability to source of funds.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - kyc_review
+  data_sources:
+  - otc_records
+  false_positive_notes: Cash purchase happens in some markets.
+- id: IND-TXN-130
+  name: Stablecoin use to hold value of designated person's funds
+  description: Large stablecoin balances held with limited stated purpose by customers linked to designated
+    persons.
+  category: transaction
+  severity: medium
+  detection_type:
+  - kyc_review
+  - transaction_monitoring
+  data_sources:
+  - wallet_data
+  false_positive_notes: Stablecoins are widely used for savings.
+- id: IND-TXN-131
+  name: Payments from jurisdictions of concern in settlement of third-country sales
+  description: Funds arrive from or return to parties in the restricted jurisdiction.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - screening
+  data_sources:
+  - payment_messages
+  false_positive_notes: Group treasury flows.
+- id: IND-TXN-132
+  name: Multiple small shipments to avoid scrutiny
+  description: Orders split into smaller consignments to stay below review thresholds.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - order_data
+  false_positive_notes: Just-in-time practices are common.
+- id: IND-TXN-133
+  name: Fee arrangements disproportionate to services or paid by third parties
+  description: Unusually high or opaque fees.
+  category: transaction
+  severity: medium
+  detection_type:
+  - document_review
+  - transaction_monitoring
+  data_sources:
+  - invoices
+  false_positive_notes: Specialist work attracts high fees.
+- id: IND-TXN-134
+  name: Asset transfers shortly before or after designation
+  description: Titles move to relatives, trusts or associates around designation dates.
+  category: transaction
+  severity: high
+  detection_type:
+  - external_intel
+  - investigator_judgement
+  data_sources:
+  - title_records
+  false_positive_notes: Estate planning occurs.
+- id: IND-TXN-135
+  name: Cargo priced near cap with inflated freight, insurance or ancillary charges
+  description: Separately invoiced services carry unusually high costs.
+  category: transaction
+  severity: high
+  detection_type:
+  - document_review
+  - transaction_monitoring
+  data_sources:
+  - invoices
+  - price_data
+  false_positive_notes: Market volatility and war-risk premiums raise costs.
+- id: IND-TXN-136
+  name: Payments in alternative currencies or via smaller banks
+  description: Payments denominated or routed to avoid mainstream channels.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payment_messages
+  false_positive_notes: Currency diversification is common.
+- id: IND-TXN-137
+  name: Funding of a company by a designated person's connected sources
+  description: Capital injections, loans or guarantees come from entities linked to a designated party.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - loan_agreements
+  - account_activity
+  false_positive_notes: Group financing is common.
+- id: IND-TXN-138
+  name: Use of cover payments that omit underlying parties
+  description: Cover message shows only the banks, with details of ultimate parties absent.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - mt202cov_data
+  false_positive_notes: Cover method is used for ordinary correspondent business.
+- id: IND-TXN-139
+  name: Funds repatriated via cash, bearer instruments or third-party accounts
+  description: Customer deposits foreign-sourced cash or cheques or receives funds from unrelated individuals,
+    avoiding visible foreign accounts.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - payment_records
+  - cash_reports
+  false_positive_notes: Gifts and family support can cause third-party transfers.
+- id: IND-TXN-140
+  name: Cash withdrawals match payroll amounts
+  description: Large cash withdrawals shortly after receiving client funds, close to total weekly wages,
+    with no matching payroll tax payments.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - payment_records
+  - tax_payments
+  false_positive_notes: Genuine cash-in-hand wages exist in some sectors.
+- id: IND-TXN-141
+  name: Payments to workers just under tax or reporting thresholds
+  description: Pay split into amounts staying below withholding or reporting thresholds.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payment_records
+  false_positive_notes: Part-time work may legitimately fall below thresholds.
+- id: IND-TXN-142
+  name: Declared turnover lower than card and bank takings imply
+  description: Card acquiring volumes or supplier purchases suggest higher sales than the business reports
+    to authorities.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - pos_data
+  - tax_filings
+  - payment_records
+  false_positive_notes: Timing differences, refunds and tips affect reconciliation.
+- id: IND-TXN-143
+  name: Cash deposits well below expected for business type
+  description: A business with high card use but little cash banking, despite sector norms of cash trade.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - cash_deposit_data
+  - sector_benchmarks
+  false_positive_notes: Cash may be used to pay suppliers legitimately.
+- id: IND-TXN-144
+  name: Payments in and out the same day with thin margin
+  description: Funds received from buyer are paid onward to supplier, often same day, leaving little retained.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payment_records
+  false_positive_notes: Distributors and agents may operate on thin margins and pass-through.
+- id: IND-TXN-145
+  name: Many small donations from geographically diverse donors to a single organiser
+  description: Large numbers of low-value contributions from many countries into one recipient account
+    that then withdraws promptly.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - donation_data
+  - payout_data
+  false_positive_notes: Viral humanitarian appeals and memorial funds show similar patterns.
+- id: IND-TXN-146
+  name: Urgent transfers described as emergency family or legal payments
+  description: Customer receives or sends sudden large transfers framed as emergencies, to unfamiliar
+    parties or accounts abroad.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - account_activity
+  - payment_messages
+  false_positive_notes: Genuine medical and legal emergencies produce similar urgency.
+- id: IND-TXN-147
+  name: Cash collected from multiple unrelated individuals then moved abroad
+  description: Collection of funds across diaspora members or business owners followed by consolidated
+    cross-border transfer.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - kyc_review
+  data_sources:
+  - cash_deposits
+  - transfers
+  false_positive_notes: Community fundraising for family and festivals is common.
+- id: IND-TXN-148
+  name: Remittances from family or associates to individuals in border areas
+  description: Recurrent small transfers to recipients in or near conflict zones with no clear family
+    relationship or humanitarian need.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - kyc_review
+  data_sources:
+  - remittance_data
+  false_positive_notes: Diaspora families routinely support relatives in affected regions.
+- id: IND-TXN-149
+  name: Loans or credit taken with no repayment intent
+  description: Customer obtains borrowing and then leaves the jurisdiction, defaulting.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - loan_data
+  false_positive_notes: Job loss and financial trouble cause defaults.
+- id: IND-TXN-150
+  name: Travel booked to destination near conflict via indirect route
+  description: Itineraries with unusual routing, one-way tickets and short-notice booking inconsistent
+    with customer profile.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - travel_booking_data
+  false_positive_notes: Budget travellers, migrants and workers regularly use multi-leg routes.
+- id: IND-TXN-151
+  name: Settlement via trade, with mismatched invoices
+  description: Offsetting flows are arranged through trade payments unrelated to the underlying goods.
+  category: transaction
+  severity: medium
+  detection_type:
+  - document_review
+  - transaction_monitoring
+  data_sources:
+  - trade_documents
+  - payment_data
+  false_positive_notes: Genuine trade can be netted among related firms.
+- id: IND-TXN-152
+  name: Rapid consumer credit drawdown with no stated purpose
+  description: Customer takes several unsecured loans, credit cards or overdraft limits in a short window
+    and withdraws or transfers the proceeds quickly, then ceases repayment.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - kyc_review
+  data_sources:
+  - loan_data
+  - card_transactions
+  - account_activity
+  false_positive_notes: Common in financial distress, gambling or fraud victimisation; most such patterns
+    are not terrorism related.
+- id: IND-TXN-153
+  name: Payments to intermediaries in neighbouring transit jurisdictions
+  description: Commodity proceeds are settled through agents or companies in jurisdictions adjacent to
+    conflict areas and then forwarded onward.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - payment_messages
+  - counterparty_data
+  false_positive_notes: Regional hubs are common commercial centres.
+- id: IND-TXN-154
+  name: Unusual use of cash or barter in commodity deals
+  description: Settlement via cash, barter or netting arrangements without documentation.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - document_review
+  data_sources:
+  - settlement_records
+  false_positive_notes: Barter and cash remain used in some commodity markets.
+- id: IND-TXN-155
+  name: Rapid conversion of donations to stablecoins then off-ramp through peer-to-peer channels
+  description: Funds are converted and cashed out using unregulated peer-to-peer exchanges.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - exchange_data
+  - p2p_data
+  false_positive_notes: P2P trading is a common legitimate on-ramp in some regions.
+- id: IND-TXN-156
+  name: Sudden large inflows from newly funded unhosted wallets
+  description: Large first deposits from unhosted wallets with no history, followed by immediate transfers
+    out.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - blockchain_analytics
+  false_positive_notes: Users migrating between platforms behave this way.

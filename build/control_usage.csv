@@ -1,0 +1,178 @@
+control,name,family,type,indicators,typologies,typology_ids
+CTL-090,Device intelligence and fingerprinting,behavioural_device_analytics,detective,18,12,FR-ATO;FR-BUST;FR-CNP;FR-IDT;FR-IMP;FR-TAX;HT-TRAFFICK;ML-THIRDPARTY;OP-CYBERPROC;SANC-CRYPTO;TF-VASP;XC-CHANNEL
+CTL-091,Behavioural biometrics and session analytics,behavioural_device_analytics,detective,45,24,CY-ATOMULE;CY-DARKNET;CY-GIGPLAT;CY-MIXER;CY-MVTS;CY-NEOBANK;CY-PAYFAC;CY-PREPAID;CY-SYNTHID;FR-ADV;FR-APP;FR-ATO;FR-BEC;FR-BUST;FR-CHQ;FR-CNP;FR-IDT;FR-IMP;FR-INSD;FR-ROM;FR-VULN;ML-MULE;OP-CYBERPROC;XC-CHANNEL
+CTL-092,"IP, geolocation and anonymisation detection",behavioural_device_analytics,detective,13,15,CY-ATOMULE;CY-DARKNET;CY-GIGPLAT;CY-MIXER;CY-NEOBANK;CY-NFTGAME;CY-PAYFAC;CY-PREPAID;CY-RANSOM;CY-SYNTHID;CY-UNHOSTED;PF-DPRKREV;SANC-CRYPTO;TF-CROWDFUND;TF-VASP
+CTL-062,Cash acceptance and settlement limits,cash_controls,preventive,8,9,ML-BULKCASH;ML-GATEKEEPER;ML-HVG;ML-NPO;ML-REALESTATE;OP-ART;OP-DRUGS;SANC-LUXURY;TF-STATESPONSOR
+CTL-063,"Cash exchange, declaration and courier checks",cash_controls,detective,8,5,ML-BULKCASH;OP-DRUGS;OP-EXTORT;TF-EXTORT;TX-SKIM
+CTL-064,Cash deposit profiling and peer benchmarking,cash_controls,detective,9,9,EC-LOGGING;EC-WASTE;HT-SMUGGLE;ML-BULKCASH;ML-CASHBIZ;ML-FUNNEL;TF-NPO;TX-SKIM;XC-CUSTOMER
+CTL-103,"Funds hold, freeze and recall procedure",corrective_response,corrective,23,25,CY-ATM;CY-DARKNET;CY-DEFI;CY-MIXER;CY-MVTS;CY-NEOBANK;CY-NFTGAME;CY-PAYFAC;CY-PREPAID;CY-RANSOM;CY-SYNTHID;CY-UNHOSTED;FR-ATO;FR-BEC;FR-IMP;FR-LOAN;FR-TAX;HT-OCSE;ML-FUNNEL;ML-MULE;PF-DPRKREV;SANC-CRYPTO;SANC-DIVERSION;SANC-OILCAP;TF-VASP
+CTL-001,Electronic identity verification with liveness,customer_due_diligence,preventive,19,16,CY-GIGPLAT;CY-NEOBANK;CY-SYNTHID;FR-APP;FR-BEC;FR-CHQ;FR-CNP;FR-IDT;FR-TAX;HT-OCSE;ML-REALESTATE;OP-CYBERPROC;PF-DPRKREV;TF-CROWDFUND;XC-CHANNEL;XC-ONBOARDING-DOC
+CTL-002,Identity and supporting document authentication,customer_due_diligence,preventive,23,17,CY-NEOBANK;CY-PREPAID;CY-SYNTHID;FR-BEC;FR-BUST;FR-CHQ;FR-IDT;FR-INS;FR-LOAN;FR-TFIN;ML-LOANBACK;ML-SHELL;PF-DPRKREV;PF-TRADEFIN;SANC-ENABLERS;XC-CHANNEL;XC-ONBOARDING-DOC
+CTL-003,Address and registered-office verification,customer_due_diligence,preventive,3,4,ML-SHELL;SANC-DIVERSION;XC-ONBOARDING-DOC;XC-OWNERSHIP
+CTL-004,Duplicate and synthetic identity checks at onboarding,customer_due_diligence,preventive,19,12,CY-ATM;CY-DARKNET;CY-MVTS;CY-NEOBANK;CY-PREPAID;CY-SYNTHID;CY-UNHOSTED;ML-MULE;ML-TCSP;TF-CROWDFUND;XC-CUSTOMER;XC-ONBOARDING-DOC
+CTL-005,Beneficial ownership identification and verification,customer_due_diligence,preventive,19,23,BC-FBRIBE;BC-KLEPTO;EC-FISHING;EC-LOGGING;HT-FORCEDLAB;ML-CASHBIZ;ML-HVG;ML-INSSEC;ML-PEP;ML-REALESTATE;ML-SHELL;ML-TCSP;ML-THIRDPARTY;OP-ART;OP-EXTORT;PF-CORRESP;PF-MARITIME;SANC-DIVERSION;SANC-LUXURY;SANC-OWNERSHIP;TF-NPO;XC-CUSTOMER;XC-OWNERSHIP
+CTL-006,Beneficial ownership information gate,customer_due_diligence,preventive,4,4,ML-TCSP;SANC-OWNERSHIP;XC-CUSTOMER;XC-OWNERSHIP
+CTL-007,Nominee and bearer instrument controls,customer_due_diligence,preventive,3,6,ML-GATEKEEPER;ML-SHELL;ML-TCSP;SANC-OWNERSHIP;TX-OFFSHORE;XC-OWNERSHIP
+CTL-008,Complex structure rationale and approval,customer_due_diligence,preventive,5,12,BC-KLEPTO;ML-GATEKEEPER;ML-PEP;ML-PMLN;ML-REALESTATE;ML-SHELL;ML-TCSP;SANC-OWNERSHIP;TX-OFFSHORE;TX-PAYROLL;XC-CUSTOMER;XC-OWNERSHIP
+CTL-009,Trust and legal arrangement due diligence,customer_due_diligence,preventive,2,2,ML-NPO;XC-OWNERSHIP
+CTL-010,Substance and physical presence verification,customer_due_diligence,preventive,11,12,BC-KICKBACK;EC-WASTE;EC-WILDLIFE;ML-CASHBIZ;ML-PMLN;ML-SHELL;ML-TCSP;PF-DPRKREV;TF-STATESPONSOR;TX-SKIM;TX-VATFRAUD;XC-OWNERSHIP
+CTL-011,Purpose and intended nature of relationship,customer_due_diligence,preventive,19,20,EC-WILDLIFE;HT-TRAFFICK;ML-CASHBIZ;ML-FUNNEL;ML-GATEKEEPER;ML-HAWALA;ML-INSSEC;ML-LOANBACK;ML-PMLN;ML-SHELL;ML-TCSP;ML-THIRDPARTY;PF-DUALUSE;SANC-ENABLERS;TF-LONEACTOR;TX-SKIM;XC-CUSTOMER;XC-GEOGRAPHY;XC-PRODUCT;XC-TXN-BEHAVIOUR
+CTL-012,Source of funds verification,customer_due_diligence,preventive,24,26,CY-DARKNET;CY-DEFI;CY-MVTS;CY-NEOBANK;CY-NFTGAME;CY-RANSOM;EC-MINING;ML-BULKCASH;ML-CASHBIZ;ML-CASINO;ML-HVG;ML-LOANBACK;ML-NPO;ML-PEP;ML-REALESTATE;ML-SHELL;ML-STRUCT;ML-THIRDPARTY;OP-GAMBLE;PF-DPRKREV;SANC-CRYPTO;SANC-LUXURY;TF-EXTORT;TX-OFFSHORE;XC-OWNERSHIP;XC-PRODUCT
+CTL-013,Source of wealth corroboration,customer_due_diligence,preventive,3,6,BC-KLEPTO;ML-PEP;ML-REALESTATE;TX-SKIM;XC-CUSTOMER;XC-GEOGRAPHY
+CTL-014,Periodic and event-driven KYC refresh,customer_due_diligence,preventive,29,21,FR-ADV;FR-APP;FR-CHQ;FR-INSD;FR-LOAN;FR-PONZ;FR-TAX;FR-TFIN;FR-VULN;ML-CASHBIZ;ML-NPO;ML-PEP;ML-TCSP;ML-THIRDPARTY;SANC-DIVERSION;SANC-ENABLERS;TX-OFFSHORE;XC-CUSTOMER;XC-INSTITUTIONAL;XC-OWNERSHIP;XC-TXN-BEHAVIOUR
+CTL-015,Customer risk rating and classification,customer_due_diligence,preventive,5,3,TX-VATFRAUD;XC-CUSTOMER;XC-INSTITUTIONAL
+CTL-016,"Account restriction, decline and exit policy",customer_due_diligence,corrective,12,14,BC-FACILIT;EC-LOGGING;HT-FORCEDLAB;ML-CORRBANK;ML-GATEKEEPER;ML-HAWALA;ML-PEP;ML-TCSP;PF-CORRESP;PF-DUALUSE;SANC-CRYPTO;SANC-DIVERSION;TF-HAWALA;XC-CUSTOMER
+CTL-017,Dormant account reactivation controls,customer_due_diligence,preventive,3,3,ML-SHELL;TX-VATFRAUD;XC-TXN-BEHAVIOUR
+CTL-018,Signatory and mandate review,customer_due_diligence,preventive,4,4,ML-TCSP;ML-THIRDPARTY;XC-CHANNEL;XC-OWNERSHIP
+CTL-019,Introducer and reliance due diligence,customer_due_diligence,preventive,4,3,ML-TCSP;TX-OFFSHORE;XC-CHANNEL
+CTL-020,Additional checks for remote and higher-risk onboarding,customer_due_diligence,preventive,1,1,XC-CHANNEL
+CTL-021,Agent and distribution network due diligence,customer_due_diligence,preventive,7,7,HT-SMUGGLE;ML-HVG;ML-REALESTATE;OP-GAMBLE;TF-EXTORT;TF-HAWALA;XC-CHANNEL
+CTL-022,Customer enquiry on unusual activity,customer_due_diligence,corrective,13,13,HT-SMUGGLE;ML-CASHBIZ;ML-FUNNEL;ML-HAWALA;ML-NPO;ML-REALESTATE;PF-CORRESP;SANC-CRYPTO;TF-EXTORT;TF-FTF;TF-LONEACTOR;TF-NPO;XC-TXN-BEHAVIOUR
+CTL-176,Data quality and ownership controls,data_and_technology,detective,1,1,XC-INSTITUTIONAL
+CTL-177,Privileged access and user-activity monitoring,data_and_technology,detective,1,1,XC-INSTITUTIONAL
+CTL-023,Risk-based enhanced due diligence,enhanced_due_diligence,preventive,28,22,CY-ATOMULE;CY-DARKNET;CY-DEFI;CY-GIGPLAT;CY-MIXER;CY-MVTS;CY-NEOBANK;CY-NFTGAME;CY-PAYFAC;CY-RANSOM;CY-SYNTHID;CY-UNHOSTED;ML-BULKCASH;ML-CORRBANK;ML-FUNNEL;ML-NPO;ML-REALESTATE;SANC-ENABLERS;TF-LONEACTOR;XC-CUSTOMER;XC-OWNERSHIP;XC-PRODUCT
+CTL-024,Sector-tailored enhanced due diligence,enhanced_due_diligence,preventive,17,15,EC-CARBON;EC-WASTE;ML-HVG;ML-PMLN;ML-THIRDPARTY;OP-ARMS;OP-ART;OP-DRUGS;OP-GAMBLE;OP-TOBACCO;PF-DUALUSE;TF-HAWALA;TF-NPO;XC-GEOGRAPHY;XC-PRODUCT
+CTL-025,Senior management approval and risk acceptance,enhanced_due_diligence,governance,6,8,BC-KLEPTO;ML-CORRBANK;ML-GATEKEEPER;ML-PEP;ML-REALESTATE;SANC-OILCAP;XC-CUSTOMER;XC-ONBOARDING-DOC
+CTL-026,PEP enhanced measures,enhanced_due_diligence,preventive,6,4,BC-KLEPTO;ML-PEP;TF-STATESPONSOR;XC-CUSTOMER
+CTL-027,High-risk jurisdiction enhanced measures,enhanced_due_diligence,preventive,9,9,ML-HAWALA;ML-REALESTATE;ML-SHELL;ML-TCSP;PF-TRADEFIN;TF-HAWALA;TF-NPO;TF-VASP;XC-GEOGRAPHY
+CTL-067,Merchant onboarding and business verification,fraud_prevention_friction,preventive,10,5,CY-PAYFAC;FR-BUST;FR-CNP;OP-COUNTER;TX-SKIM
+CTL-068,Dynamic payment friction and scam warnings,fraud_prevention_friction,preventive,33,13,CY-ATM;CY-ATOMULE;CY-DEFI;CY-GIGPLAT;CY-RANSOM;FR-ADV;FR-APP;FR-IMP;FR-PONZ;FR-ROM;FR-VULN;OP-CYBERPROC;TF-EXTORT
+CTL-069,Payee name verification,fraud_prevention_friction,preventive,10,9,BC-FACILIT;BC-KICKBACK;CY-ATOMULE;CY-GIGPLAT;CY-UNHOSTED;FR-APP;FR-BEC;FR-IMP;FR-TAX
+CTL-070,Out-of-band call-back verification,fraud_prevention_friction,preventive,15,12,BC-KICKBACK;FR-BEC;FR-IMP;FR-INS;FR-TFIN;FR-VULN;ML-GATEKEEPER;ML-MULE;ML-TCSP;OP-CYBERPROC;XC-CHANNEL;XC-ONBOARDING-DOC
+CTL-071,Cooling-off and delayed release for new payees,fraud_prevention_friction,preventive,6,5,BC-FBRIBE;FR-APP;FR-ATO;FR-ROM;FR-VULN
+CTL-072,Risk-based transaction and account limits,fraud_prevention_friction,preventive,24,16,CY-ATM;CY-DEFI;CY-MVTS;CY-NFTGAME;CY-PREPAID;CY-RANSOM;CY-UNHOSTED;ML-FUNNEL;ML-LOANBACK;ML-MULE;PF-DPRKREV;SANC-CRYPTO;TF-CROWDFUND;TF-LONEACTOR;TF-VASP;XC-PRODUCT
+CTL-073,Strong authentication and step-up,fraud_prevention_friction,preventive,18,12,CY-ATOMULE;CY-GIGPLAT;CY-MVTS;CY-NEOBANK;CY-SYNTHID;FR-ATO;FR-BEC;FR-IMP;ML-MULE;OP-CYBERPROC;TF-VASP;XC-CHANNEL
+CTL-074,Customer education and awareness,fraud_prevention_friction,preventive,17,12,FR-ADV;FR-APP;FR-CHQ;FR-IDT;FR-IMP;FR-INS;FR-PONZ;FR-ROM;FR-TAX;FR-VULN;OP-CYBERPROC;TF-CROWDFUND
+CTL-075,Trusted-contact and vulnerable-customer process,fraud_prevention_friction,preventive,12,4,FR-ADV;FR-APP;FR-ROM;FR-VULN
+CTL-076,"Seller, organiser and payee verification with payout controls",fraud_prevention_friction,preventive,12,3,CY-GIGPLAT;CY-NFTGAME;TF-CROWDFUND
+CTL-077,Segregation of duties and dual authorisation,fraud_prevention_friction,preventive,9,5,BC-FBRIBE;FR-BEC;FR-INSD;FR-LOAN;FR-PROC
+CTL-078,Vendor master-data and bank-detail change control,fraud_prevention_friction,preventive,8,5,BC-FACILIT;BC-FBRIBE;FR-BEC;FR-INSD;FR-PROC
+CTL-079,Deposit holds and funds-availability policy,fraud_prevention_friction,preventive,8,4,FR-ADV;FR-BUST;FR-CHQ;OP-CYBERPROC
+CTL-080,Cardholder authentication and tokenisation,fraud_prevention_friction,preventive,5,2,FR-CNP;FR-IMP
+CTL-081,Cheque and image analytics,fraud_prevention_friction,detective,5,1,FR-CHQ
+CTL-082,Threat intelligence and takedown,fraud_prevention_friction,detective,12,7,FR-ADV;FR-BEC;FR-IMP;FR-INS;FR-PONZ;FR-ROM;TF-CROWDFUND
+CTL-083,Consortium and external intelligence data,fraud_prevention_friction,detective,63,31,CY-ATM;CY-ATOMULE;CY-DARKNET;CY-DEFI;CY-GIGPLAT;CY-MVTS;CY-NFTGAME;CY-PAYFAC;CY-PREPAID;CY-RANSOM;FR-ADV;FR-APP;FR-ATO;FR-BEC;FR-BUST;FR-CHQ;FR-CNP;FR-IDT;FR-IMP;FR-INS;FR-INSD;FR-LOAN;FR-PONZ;FR-PROC;FR-ROM;FR-TAX;FR-TFIN;ML-MULE;SANC-CRYPTO;TF-EXTORT;XC-ONBOARDING-DOC
+CTL-084,"Income, affordability and underwriting verification",fraud_prevention_friction,preventive,18,8,FR-BUST;FR-IDT;FR-INS;FR-LOAN;FR-PROC;FR-TAX;ML-LOANBACK;TF-FTF
+CTL-085,Claims analytics and payment verification,fraud_prevention_friction,detective,11,4,FR-INS;FR-LOAN;FR-PROC;TF-EXTORT
+CTL-086,Independent verification of underlying transaction,fraud_prevention_friction,preventive,11,4,FR-PROC;FR-TFIN;ML-TBML;SANC-OILCAP
+CTL-087,Duplicate document and duplicate financing detection,fraud_prevention_friction,detective,4,4,EC-CARBON;FR-TFIN;ML-TBML;TX-VATFRAUD
+CTL-088,Account detail change monitoring and cool-down,fraud_prevention_friction,preventive,8,4,FR-ATO;FR-VULN;TF-CROWDFUND;XC-CUSTOMER
+CTL-089,Refund destination and validation controls,fraud_prevention_friction,preventive,9,5,FR-PROC;FR-TAX;ML-GATEKEEPER;ML-HVG;ML-INSSEC
+CTL-154,"Country, corridor and port risk rating framework",governance_policy,governance,13,9,EC-FISHING;EC-MINING;EC-WASTE;ML-GATEKEEPER;ML-HAWALA;PF-MARITIME;PF-TRADEFIN;SANC-DIVERSION;XC-GEOGRAPHY
+CTL-155,Three lines of defence accountability,governance_policy,governance,2,1,XC-INSTITUTIONAL
+CTL-156,Management information and board challenge,governance_policy,governance,1,1,XC-INSTITUTIONAL
+CTL-157,Enterprise and product risk assessment,governance_policy,governance,5,4,EC-MINING;PF-DPRKREV;SANC-LUXURY;XC-INSTITUTIONAL
+CTL-158,New product and change approval,governance_policy,governance,2,1,XC-PRODUCT
+CTL-159,Scenario tuning and independent model validation,governance_policy,governance,3,3,SANC-DIVERSION;SANC-STRIPPING;XC-INSTITUTIONAL
+CTL-160,Backlog management and surge resourcing,governance_policy,corrective,2,1,XC-INSTITUTIONAL
+CTL-161,Issue management and remediation validation,governance_policy,governance,2,2,SANC-ENABLERS;XC-INSTITUTIONAL
+CTL-162,Risk appetite and product policy statements,governance_policy,governance,9,8,CY-ATM;CY-DEFI;CY-MVTS;CY-NFTGAME;CY-PAYFAC;CY-PREPAID;CY-RANSOM;TF-VASP
+CTL-163,Whistleblowing and speak-up channels,governance_policy,governance,11,6,FR-INSD;FR-LOAN;FR-PROC;HT-FORCEDLAB;OP-TOBACCO;XC-INSTITUTIONAL
+CTL-164,Conflict-of-interest declaration and management,governance_policy,governance,2,2,BC-FBRIBE;XC-PRODUCT
+CTL-165,Fair-treatment and de-risking safeguards,governance_policy,governance,2,2,ML-MULE;TF-NPO
+CTL-166,Regulatory and typology intelligence updates,governance_policy,governance,2,2,TF-FTF;TX-OFFSHORE
+CTL-167,Sector and commodity risk policy,governance_policy,governance,5,5,EC-CARBON;SANC-LUXURY;TF-CROWDFUND;TF-EXTORT;TF-STATESPONSOR
+CTL-168,"Gifts, hospitality and expense controls",governance_policy,preventive,4,3,BC-FACILIT;BC-FBRIBE;ML-NPO
+CTL-093,Specialist investigation and suspicious activity reporting,investigation_reporting,corrective,52,17,CY-ATM;CY-ATOMULE;CY-DARKNET;CY-DEFI;CY-GIGPLAT;CY-MIXER;CY-MVTS;CY-NEOBANK;CY-NFTGAME;CY-PAYFAC;CY-PREPAID;CY-RANSOM;CY-SYNTHID;CY-UNHOSTED;HT-OCSE;ML-STRUCT;XC-TXN-BEHAVIOUR
+CTL-094,Case management and cross-team escalation,investigation_reporting,governance,16,13,EC-WILDLIFE;FR-ADV;FR-APP;FR-BEC;FR-BUST;FR-CNP;FR-IDT;FR-INSD;FR-PONZ;FR-PROC;FR-TAX;FR-VULN;OP-COUNTER
+CTL-095,Network case investigation,investigation_reporting,corrective,6,6,ML-HAWALA;ML-MULE;ML-PMLN;OP-DRUGS;OP-EXTORT;TX-VATFRAUD
+CTL-096,Law enforcement request handling and liaison,investigation_reporting,governance,3,3,HT-SMUGGLE;OP-DRUGS;TX-VATFRAUD
+CTL-097,Information sharing and public-private partnership,investigation_reporting,governance,20,19,BC-KICKBACK;EC-FISHING;EC-LOGGING;EC-WILDLIFE;HT-TRAFFICK;ML-BULKCASH;ML-PMLN;OP-ARMS;OP-COUNTER;OP-EXTORT;OP-GAMBLE;OP-TOBACCO;PF-CORRESP;PF-DPRKREV;TF-CROWDFUND;TF-FTF;TF-LONEACTOR;TF-VASP;TX-PAYROLL
+CTL-098,Internal unusual-activity reporting channel,investigation_reporting,governance,6,5,HT-OCSE;ML-BULKCASH;ML-GATEKEEPER;ML-STRUCT;XC-INSTITUTIONAL
+CTL-099,Suspicious reporting timeliness and quality assurance,investigation_reporting,detective,2,1,XC-INSTITUTIONAL
+CTL-100,Safeguarding and victim-centred referral protocol,investigation_reporting,corrective,10,7,EC-FISHING;HT-OCSE;HT-SMUGGLE;HT-TRAFFICK;ML-MULE;OP-EXTORT;TF-FTF
+CTL-101,Prior-report cross-reference and feedback loop,investigation_reporting,detective,3,4,PF-CORRESP;TF-FTF;TF-HAWALA;TF-LONEACTOR
+CTL-102,Suspicion escalation and reporting decision protocol,investigation_reporting,governance,7,6,PF-DUALUSE;SANC-ENABLERS;SANC-STRIPPING;TF-EXTORT;TF-FTF;TF-LONEACTOR
+CTL-174,Record retention and audit trail,record_keeping_audit,governance,3,3,ML-HAWALA;SANC-OILCAP;SANC-STRIPPING
+CTL-175,"Sampling, quality assurance and analytics audit",record_keeping_audit,detective,35,12,FR-INS;FR-INSD;FR-LOAN;FR-PROC;FR-TFIN;ML-CORRBANK;ML-HAWALA;ML-NPO;SANC-OILCAP;SANC-STRIPPING;XC-CHANNEL;XC-INSTITUTIONAL
+CTL-034,Aggregated ownership and control assessment,sanctions_specific,preventive,5,2,PF-DPRKREV;SANC-OWNERSHIP
+CTL-035,Embargoed-destination and geographic access restrictions,sanctions_specific,preventive,6,4,OP-ARMS;OP-ART;SANC-CRYPTO;XC-GEOGRAPHY
+CTL-036,Sanctions escalation and legal clearance,sanctions_specific,governance,7,7,OP-ARMS;OP-CYBERPROC;PF-CORRESP;PF-MARITIME;SANC-CRYPTO;SANC-OWNERSHIP;TF-EXTORT
+CTL-028,"PEP, relative and close associate screening",screening,preventive,8,8,BC-FBRIBE;BC-KLEPTO;EC-LOGGING;EC-WILDLIFE;ML-PEP;SANC-OWNERSHIP;TF-STATESPONSOR;XC-CUSTOMER
+CTL-029,Sanctions and restricted-party screening,screening,preventive,25,27,CY-ATM;CY-DARKNET;CY-DEFI;CY-MIXER;CY-MVTS;CY-NFTGAME;CY-RANSOM;CY-UNHOSTED;EC-MINING;HT-OCSE;OP-ARMS;OP-ART;OP-COUNTER;OP-DRUGS;OP-EXTORT;OP-GAMBLE;PF-DPRKREV;SANC-CRYPTO;SANC-DIVERSION;SANC-ENABLERS;SANC-OILCAP;SANC-OWNERSHIP;SANC-STRIPPING;TF-HAWALA;TF-NPO;XC-ONBOARDING-DOC;XC-TXN-BEHAVIOUR
+CTL-030,Payment message and free-text screening,screening,preventive,10,8,HT-OCSE;HT-SMUGGLE;ML-MULE;PF-CORRESP;SANC-STRIPPING;TF-EXTORT;XC-GEOGRAPHY;XC-PRODUCT
+CTL-031,Re-screening on list updates,screening,preventive,5,4,SANC-CRYPTO;SANC-LUXURY;SANC-OWNERSHIP;TF-LONEACTOR
+CTL-032,Adverse media and enforcement screening,screening,detective,19,25,BC-KLEPTO;EC-CARBON;EC-FISHING;EC-LOGGING;EC-WASTE;EC-WILDLIFE;FR-BEC;FR-PONZ;FR-PROC;FR-ROM;HT-FORCEDLAB;HT-OCSE;HT-SMUGGLE;HT-TRAFFICK;ML-CORRBANK;ML-NPO;ML-PEP;ML-PMLN;OP-ARMS;OP-COUNTER;TF-LONEACTOR;TF-NPO;TX-OFFSHORE;TX-VATFRAUD;XC-CUSTOMER
+CTL-033,Alert adjudication standards and quality assurance,screening,governance,4,5,BC-KLEPTO;PF-CORRESP;SANC-STRIPPING;XC-CUSTOMER;XC-ONBOARDING-DOC
+CTL-150,Product-specific misuse surveillance,sector_and_product_specific,detective,10,5,HT-OCSE;ML-HVG;ML-INSSEC;ML-REALESTATE;XC-PRODUCT
+CTL-151,Lending and collateral integrity checks,sector_and_product_specific,preventive,7,6,ML-LOANBACK;ML-REALESTATE;ML-SHELL;ML-THIRDPARTY;TF-FTF;TX-OFFSHORE
+CTL-152,Gaming cash-out and win-document controls,sector_and_product_specific,preventive,3,2,ML-CASINO;OP-GAMBLE
+CTL-153,Gaming and betting play surveillance,sector_and_product_specific,detective,12,2,ML-CASINO;OP-GAMBLE
+CTL-065,Financial statement and tax reconciliation,tax_transparency,detective,7,6,EC-CARBON;ML-CASHBIZ;ML-THIRDPARTY;TF-NPO;TX-PAYROLL;TX-SKIM
+CTL-066,Tax residency self-certification testing,tax_transparency,preventive,4,2,TX-OFFSHORE;XC-GEOGRAPHY
+CTL-104,Correspondent respondent due diligence and risk rating,third_party_correspondent,preventive,7,4,ML-CORRBANK;PF-CORRESP;SANC-OILCAP;XC-PRODUCT
+CTL-105,Nested activity disclosure and detection,third_party_correspondent,preventive,4,4,BC-KLEPTO;ML-CORRBANK;PF-CORRESP;XC-PRODUCT
+CTL-106,Periodic respondent review and volume monitoring,third_party_correspondent,detective,9,3,ML-CORRBANK;PF-CORRESP;SANC-STRIPPING
+CTL-107,Request-for-information process,third_party_correspondent,corrective,3,4,ML-CORRBANK;PF-CORRESP;SANC-STRIPPING;TF-HAWALA
+CTL-108,Shell bank prohibition,third_party_correspondent,preventive,1,1,ML-CORRBANK
+CTL-109,Payable-through and sub-account controls,third_party_correspondent,preventive,1,1,ML-CORRBANK
+CTL-110,Payment message completeness and quality controls,third_party_correspondent,preventive,4,5,ML-CORRBANK;PF-CORRESP;SANC-STRIPPING;TF-HAWALA;XC-INSTITUTIONAL
+CTL-111,Cover payment transparency checks,third_party_correspondent,preventive,2,1,SANC-STRIPPING
+CTL-112,Third-party and intermediary due diligence,third_party_correspondent,preventive,19,17,BC-FACILIT;BC-FBRIBE;EC-CARBON;EC-WILDLIFE;ML-CASINO;ML-NPO;ML-PEP;ML-PMLN;OP-ART;OP-COUNTER;OP-TOBACCO;SANC-LUXURY;SANC-OILCAP;TF-EXTORT;TF-NPO;TF-STATESPONSOR;XC-CHANNEL
+CTL-113,Vendor onboarding verification,third_party_correspondent,preventive,2,2,BC-KICKBACK;ML-NPO
+CTL-114,Ongoing third-party monitoring,third_party_correspondent,detective,5,3,BC-FACILIT;BC-FBRIBE;XC-CHANNEL
+CTL-115,Outsourcing and vendor oversight,third_party_correspondent,preventive,1,1,XC-INSTITUTIONAL
+CTL-116,Licence and regulatory status verification,third_party_correspondent,preventive,10,11,EC-MINING;EC-WASTE;HT-SMUGGLE;ML-CORRBANK;ML-HAWALA;ML-NPO;OP-ARMS;SANC-ENABLERS;TF-HAWALA;TF-NPO;XC-CUSTOMER
+CTL-117,Gatekeeper and company service provider due diligence,third_party_correspondent,preventive,6,4,ML-GATEKEEPER;ML-TCSP;SANC-ENABLERS;SANC-LUXURY
+CTL-118,Omnibus and pooled account transparency,third_party_correspondent,preventive,4,4,ML-INSSEC;ML-TCSP;XC-CHANNEL;XC-PRODUCT
+CTL-119,Client money account verification and rules,third_party_correspondent,preventive,2,2,ML-GATEKEEPER;ML-PMLN
+CTL-120,Contractual compliance clauses,third_party_correspondent,preventive,5,3,BC-FACILIT;HT-FORCEDLAB;XC-CHANNEL
+CTL-121,Subcontractor transparency,third_party_correspondent,preventive,1,1,BC-KICKBACK
+CTL-122,Labour provider and recruiter due diligence,third_party_correspondent,preventive,6,4,EC-FISHING;HT-FORCEDLAB;HT-TRAFFICK;TX-PAYROLL
+CTL-123,Trade document review and consistency checking,trade_and_supply_chain,preventive,15,16,EC-LOGGING;EC-WASTE;EC-WILDLIFE;ML-HVG;ML-TBML;OP-ARMS;OP-COUNTER;OP-TOBACCO;PF-DUALUSE;PF-TRADEFIN;SANC-DIVERSION;SANC-OILCAP;SANC-STRIPPING;TF-STATESPONSOR;TX-VATFRAUD;XC-PRODUCT
+CTL-124,Price and value benchmarking,trade_and_supply_chain,detective,11,15,BC-KICKBACK;EC-CARBON;EC-WASTE;EC-WILDLIFE;ML-HVG;ML-REALESTATE;ML-TBML;OP-COUNTER;OP-EXTORT;OP-TOBACCO;PF-DUALUSE;SANC-OILCAP;TF-HAWALA;TF-STATESPONSOR;XC-PRODUCT
+CTL-125,Shipment tracking and logistics evidence,trade_and_supply_chain,detective,4,3,ML-TBML;OP-TOBACCO;TX-VATFRAUD
+CTL-126,Route plausibility and transshipment screening,trade_and_supply_chain,detective,8,9,EC-FISHING;ML-TBML;OP-ARMS;PF-DUALUSE;PF-MARITIME;PF-TRADEFIN;SANC-DIVERSION;TF-STATESPONSOR;XC-GEOGRAPHY
+CTL-127,Free-zone and free-port due diligence,trade_and_supply_chain,preventive,5,6,ML-HVG;ML-TBML;OP-ART;OP-COUNTER;OP-TOBACCO;SANC-LUXURY
+CTL-128,End-use and outcome verification,trade_and_supply_chain,preventive,7,6,EC-CARBON;OP-ARMS;OP-DRUGS;OP-TOBACCO;PF-DUALUSE;TF-NPO
+CTL-129,Re-export restrictions and undertakings,trade_and_supply_chain,preventive,2,2,PF-TRADEFIN;SANC-DIVERSION
+CTL-130,Control-list and dual-use goods screening,trade_and_supply_chain,preventive,7,5,OP-DRUGS;PF-DUALUSE;PF-TRADEFIN;SANC-DIVERSION;XC-GEOGRAPHY
+CTL-131,High-risk goods and commodity tagging,trade_and_supply_chain,preventive,5,6,EC-LOGGING;EC-MINING;EC-WASTE;EC-WILDLIFE;ML-HVG;ML-TBML
+CTL-132,Trade amendment monitoring,trade_and_supply_chain,detective,3,3,ML-TBML;PF-DUALUSE;PF-TRADEFIN
+CTL-133,Counterparty capacity and trade profile assessment,trade_and_supply_chain,preventive,6,5,EC-WASTE;ML-TBML;PF-DUALUSE;PF-TRADEFIN;SANC-DIVERSION
+CTL-134,Licence and permit verification for regulated goods,trade_and_supply_chain,preventive,11,10,EC-FISHING;EC-MINING;EC-WASTE;EC-WILDLIFE;ML-GATEKEEPER;ML-HVG;ML-LOANBACK;ML-TBML;OP-ART;OP-COUNTER
+CTL-135,"Origin, provenance and chain-of-custody verification",trade_and_supply_chain,preventive,13,9,EC-LOGGING;EC-MINING;ML-HVG;ML-INSSEC;OP-ART;PF-MARITIME;SANC-LUXURY;SANC-OILCAP;TF-STATESPONSOR
+CTL-136,Supply-chain mapping and traceability,trade_and_supply_chain,preventive,5,6,EC-FISHING;EC-LOGGING;EC-MINING;EC-WASTE;HT-FORCEDLAB;ML-HVG
+CTL-137,Supplier audit and remediation,trade_and_supply_chain,detective,4,2,EC-FISHING;HT-FORCEDLAB
+CTL-138,Satellite and geospatial verification,trade_and_supply_chain,detective,4,3,EC-CARBON;EC-LOGGING;PF-MARITIME
+CTL-139,Volume and capacity plausibility analytics,trade_and_supply_chain,detective,8,7,EC-FISHING;EC-LOGGING;EC-MINING;EC-WASTE;OP-COUNTER;OP-TOBACCO;SANC-DIVERSION
+CTL-140,Trade-and-settlement reconciliation,trade_and_supply_chain,detective,8,6,ML-HAWALA;ML-LOANBACK;ML-TBML;OP-TOBACCO;TF-HAWALA;TF-STATESPONSOR
+CTL-141,Independent valuation and appraisal,trade_and_supply_chain,preventive,5,5,EC-MINING;ML-HVG;ML-INSSEC;ML-REALESTATE;OP-ART
+CTL-142,Asset registry cross-check,trade_and_supply_chain,detective,10,8,EC-CARBON;ML-LOANBACK;ML-REALESTATE;OP-ART;PF-MARITIME;SANC-LUXURY;TF-NPO;TX-OFFSHORE
+CTL-143,Vessel due diligence and tracking analytics,trade_and_supply_chain,preventive,13,5,EC-FISHING;PF-MARITIME;PF-TRADEFIN;SANC-LUXURY;SANC-OILCAP
+CTL-144,Credit and certificate registry verification,trade_and_supply_chain,preventive,5,1,EC-CARBON
+CTL-169,Role-based financial crime training,training_culture,preventive,8,9,BC-FBRIBE;ML-GATEKEEPER;ML-INSSEC;ML-LOANBACK;OP-ARMS;OP-ART;TX-PAYROLL;TX-SKIM;XC-INSTITUTIONAL
+CTL-170,Front-line recognition and conversation training,training_culture,preventive,40,23,FR-ADV;FR-APP;FR-BEC;FR-CHQ;FR-IMP;FR-INS;FR-INSD;FR-PONZ;FR-ROM;FR-TFIN;FR-VULN;HT-OCSE;HT-SMUGGLE;HT-TRAFFICK;ML-HVG;ML-MULE;ML-PMLN;ML-STRUCT;OP-CYBERPROC;OP-EXTORT;TX-OFFSHORE;XC-CUSTOMER;XC-ONBOARDING-DOC
+CTL-171,Typology-focused staff training,training_culture,preventive,13,10,CY-ATM;CY-ATOMULE;CY-DARKNET;CY-DEFI;CY-MIXER;CY-UNHOSTED;HT-TRAFFICK;OP-DRUGS;SANC-OWNERSHIP;TF-STATESPONSOR
+CTL-172,Analyst training on weak-signal combination,training_culture,preventive,3,3,HT-FORCEDLAB;TF-FTF;TF-LONEACTOR
+CTL-173,Sector and partner awareness outreach,training_culture,preventive,6,5,EC-MINING;EC-WASTE;HT-SMUGGLE;OP-TOBACCO;PF-DPRKREV
+CTL-037,"Velocity, volume and threshold rules",transaction_monitoring,detective,79,34,CY-ATM;CY-ATOMULE;CY-DARKNET;CY-DEFI;CY-GIGPLAT;CY-MIXER;CY-MVTS;CY-NEOBANK;CY-NFTGAME;CY-PAYFAC;CY-PREPAID;CY-RANSOM;CY-SYNTHID;CY-UNHOSTED;FR-ADV;FR-APP;FR-ATO;FR-BUST;FR-CHQ;FR-CNP;FR-IDT;FR-IMP;FR-INS;FR-INSD;FR-LOAN;FR-PONZ;FR-PROC;FR-TAX;FR-TFIN;OP-CYBERPROC;OP-EXTORT;TF-LONEACTOR;XC-CHANNEL;XC-PRODUCT
+CTL-038,Structuring and threshold-avoidance detection,transaction_monitoring,detective,7,8,BC-FBRIBE;ML-HAWALA;ML-STRUCT;OP-EXTORT;TF-HAWALA;TX-PAYROLL;TX-SKIM;XC-TXN-BEHAVIOUR
+CTL-039,Cross-account and cross-channel activity aggregation,transaction_monitoring,detective,13,11,ML-CASHBIZ;ML-CASINO;ML-HAWALA;ML-NPO;ML-PMLN;ML-STRUCT;SANC-DIVERSION;TF-LONEACTOR;TX-SKIM;XC-PRODUCT;XC-TXN-BEHAVIOUR
+CTL-040,Pass-through and rapid movement detection,transaction_monitoring,detective,16,19,BC-KLEPTO;HT-TRAFFICK;ML-FUNNEL;ML-GATEKEEPER;ML-INSSEC;ML-MULE;ML-NPO;ML-PMLN;ML-SHELL;ML-STRUCT;PF-DPRKREV;SANC-ENABLERS;TF-FTF;TF-NPO;TF-STATESPONSOR;TF-VASP;TX-VATFRAUD;XC-OWNERSHIP;XC-TXN-BEHAVIOUR
+CTL-041,"Fan-in, fan-out and funnel account detection",transaction_monitoring,detective,14,15,HT-FORCEDLAB;HT-OCSE;HT-SMUGGLE;HT-TRAFFICK;ML-FUNNEL;ML-HAWALA;ML-STRUCT;OP-DRUGS;OP-EXTORT;OP-GAMBLE;TF-CROWDFUND;TF-EXTORT;TF-HAWALA;TF-VASP;TX-PAYROLL
+CTL-042,Profile-versus-activity deviation monitoring,transaction_monitoring,detective,23,18,BC-KLEPTO;ML-CASHBIZ;ML-FUNNEL;ML-MULE;ML-NPO;ML-PEP;ML-SHELL;ML-STRUCT;ML-THIRDPARTY;OP-DRUGS;OP-EXTORT;TF-EXTORT;TF-LONEACTOR;TF-NPO;TX-PAYROLL;TX-SKIM;XC-CUSTOMER;XC-TXN-BEHAVIOUR
+CTL-043,Lifestyle and high-value purchase consistency review,transaction_monitoring,detective,7,9,BC-FBRIBE;BC-KLEPTO;ML-HVG;ML-NPO;ML-PEP;ML-REALESTATE;OP-ARMS;OP-DRUGS;TX-SKIM
+CTL-044,Round-amount and repeated-value pattern detection,transaction_monitoring,detective,2,2,ML-CORRBANK;XC-TXN-BEHAVIOUR
+CTL-045,Geographic and corridor-based monitoring,transaction_monitoring,detective,24,22,BC-FBRIBE;EC-WILDLIFE;HT-SMUGGLE;ML-BULKCASH;ML-FUNNEL;ML-PEP;ML-SHELL;ML-STRUCT;OP-COUNTER;OP-DRUGS;PF-TRADEFIN;SANC-DIVERSION;SANC-OILCAP;SANC-STRIPPING;TF-CROWDFUND;TF-EXTORT;TF-FTF;TF-LONEACTOR;TX-OFFSHORE;TX-VATFRAUD;XC-GEOGRAPHY;XC-PRODUCT
+CTL-046,Third-party payer and depositor controls,transaction_monitoring,preventive,13,24,ML-CASINO;ML-FUNNEL;ML-GATEKEEPER;ML-HVG;ML-INSSEC;ML-LOANBACK;ML-PEP;ML-PMLN;ML-REALESTATE;ML-STRUCT;ML-TBML;ML-THIRDPARTY;PF-DPRKREV;PF-DUALUSE;PF-MARITIME;PF-TRADEFIN;SANC-ENABLERS;SANC-LUXURY;TF-CROWDFUND;TF-FTF;TF-HAWALA;TX-OFFSHORE;TX-VATFRAUD;XC-TXN-BEHAVIOUR
+CTL-047,Circular flow and round-tripping detection,transaction_monitoring,detective,11,13,EC-CARBON;EC-MINING;ML-CASHBIZ;ML-HAWALA;ML-LOANBACK;ML-PMLN;ML-SHELL;OP-ART;OP-DRUGS;SANC-ENABLERS;SANC-LUXURY;TX-VATFRAUD;XC-TXN-BEHAVIOUR
+CTL-048,Graph and network link analytics,transaction_monitoring,detective,34,25,BC-KICKBACK;BC-KLEPTO;CY-ATM;CY-ATOMULE;CY-DARKNET;CY-DEFI;CY-GIGPLAT;CY-MIXER;CY-MVTS;CY-NEOBANK;CY-NFTGAME;CY-PAYFAC;CY-PREPAID;CY-RANSOM;CY-SYNTHID;CY-UNHOSTED;ML-FUNNEL;ML-LOANBACK;ML-PEP;ML-PMLN;ML-REALESTATE;PF-CORRESP;PF-MARITIME;SANC-ENABLERS;XC-TXN-BEHAVIOUR
+CTL-049,Shared-identifier clustering and entity linkage,transaction_monitoring,detective,38,31,BC-KICKBACK;EC-LOGGING;FR-BUST;FR-CHQ;FR-IDT;FR-INS;FR-LOAN;FR-PONZ;FR-PROC;FR-ROM;FR-TAX;FR-TFIN;HT-OCSE;HT-TRAFFICK;ML-CASHBIZ;ML-FUNNEL;ML-INSSEC;ML-MULE;ML-TCSP;ML-THIRDPARTY;OP-COUNTER;PF-DUALUSE;SANC-ENABLERS;SANC-OWNERSHIP;TF-CROWDFUND;TF-LONEACTOR;TX-PAYROLL;TX-VATFRAUD;XC-ONBOARDING-DOC;XC-OWNERSHIP;XC-TXN-BEHAVIOUR
+CTL-050,Successor and phoenix entity detection,transaction_monitoring,detective,1,2,EC-WASTE;TX-PAYROLL
+CTL-051,Mule account detection model,transaction_monitoring,detective,23,22,CY-ATOMULE;CY-MIXER;CY-MVTS;CY-NEOBANK;CY-PREPAID;CY-SYNTHID;CY-UNHOSTED;FR-ADV;FR-APP;FR-ATO;FR-BEC;FR-CHQ;FR-IMP;FR-INS;FR-PONZ;FR-ROM;FR-TAX;ML-FUNNEL;ML-MULE;OP-CYBERPROC;OP-DRUGS;OP-EXTORT
+CTL-052,Typology-based scenario design,transaction_monitoring,detective,16,11,HT-SMUGGLE;HT-TRAFFICK;ML-PMLN;OP-ARMS;OP-ART;OP-CYBERPROC;OP-EXTORT;TF-EXTORT;TF-FTF;TF-LONEACTOR;XC-INSTITUTIONAL
+CTL-053,Risk-weighted counterparty monitoring,transaction_monitoring,detective,2,2,ML-THIRDPARTY;XC-TXN-BEHAVIOUR
+CTL-054,Tightened monitoring for new accounts and entities,transaction_monitoring,detective,3,5,ML-MULE;ML-SHELL;TF-STATESPONSOR;TX-VATFRAUD;XC-OWNERSHIP
+CTL-055,Declared turnover and cash-flow reconciliation,transaction_monitoring,detective,12,10,EC-MINING;EC-WILDLIFE;ML-CASHBIZ;ML-PMLN;ML-THIRDPARTY;OP-ARMS;OP-TOBACCO;TF-NPO;TX-SKIM;TX-VATFRAUD
+CTL-056,Payroll and worker payment flow analytics,transaction_monitoring,detective,9,3,HT-FORCEDLAB;HT-TRAFFICK;TX-PAYROLL
+CTL-057,Merchant transaction and portfolio monitoring,transaction_monitoring,detective,23,13,CY-GIGPLAT;CY-MVTS;CY-NFTGAME;CY-PAYFAC;CY-PREPAID;EC-MINING;FR-BUST;FR-CNP;HT-OCSE;OP-COUNTER;OP-DRUGS;OP-GAMBLE;TX-SKIM
+CTL-058,Public-funds payment monitoring and contract evidence,transaction_monitoring,detective,4,4,BC-KICKBACK;BC-KLEPTO;ML-PEP;TF-STATESPONSOR
+CTL-059,Procurement bid and award analytics,transaction_monitoring,detective,10,4,BC-FBRIBE;BC-KICKBACK;FR-INSD;FR-PROC
+CTL-060,Intermediary payment and commission controls,transaction_monitoring,preventive,7,4,BC-FACILIT;BC-FBRIBE;SANC-ENABLERS;TF-EXTORT
+CTL-061,Unlicensed money transfer detection,transaction_monitoring,detective,5,4,ML-HAWALA;SANC-ENABLERS;TF-EXTORT;TF-HAWALA
+CTL-145,Blockchain analytics and wallet attribution,virtual_assets,detective,39,19,CY-ATM;CY-ATOMULE;CY-DARKNET;CY-DEFI;CY-MIXER;CY-NFTGAME;CY-RANSOM;CY-UNHOSTED;FR-ROM;HT-OCSE;HT-SMUGGLE;OP-CYBERPROC;OP-DRUGS;OP-GAMBLE;PF-DPRKREV;SANC-CRYPTO;TF-CROWDFUND;TF-VASP;XC-PRODUCT
+CTL-146,Travel rule data exchange,virtual_assets,preventive,7,5,CY-MIXER;CY-MVTS;CY-UNHOSTED;TF-VASP;XC-PRODUCT
+CTL-147,Obfuscation exposure and thresholds,virtual_assets,detective,3,2,SANC-CRYPTO;TF-VASP
+CTL-148,Unhosted wallet ownership proof,virtual_assets,preventive,1,1,TF-VASP
+CTL-149,Counterparty VASP and platform due diligence,virtual_assets,preventive,7,9,CY-DEFI;CY-MIXER;CY-MVTS;CY-PAYFAC;CY-RANSOM;CY-UNHOSTED;OP-CYBERPROC;PF-DPRKREV;SANC-CRYPTO

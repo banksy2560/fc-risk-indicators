@@ -1,0 +1,47 @@
+controls:
+- id: CTL-090
+  name: Device intelligence and fingerprinting
+  family: behavioural_device_analytics
+  type: detective
+  implementation: technology
+  effectiveness: high
+  description: Fingerprints devices, IP addresses, emulators and network attributes to link applications,
+    sessions and accounts and to flag shared or anomalous infrastructure. It exposes mule rings and multiple-account
+    abuse.
+  also_known_as:
+  - Device and network intelligence
+  - Device and IP clustering
+  - Device intelligence
+  - Device and login anomaly detection
+  - Device linkage analytics
+  - Shared device clustering
+  - Device and behaviour analytics
+  - Device and identity linkage
+- id: CTL-091
+  name: Behavioural biometrics and session analytics
+  family: behavioural_device_analytics
+  type: detective
+  implementation: model
+  effectiveness: high
+  description: Analyses typing, navigation, remote-access tooling, call-in-progress signals and deviation
+    from baseline to spot coached, scripted or hijacked sessions. It detects coercion and takeover.
+  also_known_as:
+  - Behavioural and session analytics
+  - Device intelligence and behavioural biometrics
+  - Channel-behaviour profiling
+  - Remote access and login anomaly detection
+  - Behavioural biometrics
+- id: CTL-092
+  name: IP, geolocation and anonymisation detection
+  family: behavioural_device_analytics
+  type: detective
+  implementation: rule
+  effectiveness: medium
+  description: Detects use of VPN, proxy and anonymising services and compares access geolocation with
+    declared residence and sanctioned or high-risk jurisdictions. It reveals concealed location and supports
+    geographic restrictions.
+  also_known_as:
+  - Geolocation and device consistency checks
+  - Behavioural geolocation review
+  - IP and device anomaly checks
+  - Geolocation consistency check

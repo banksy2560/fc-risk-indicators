@@ -1,0 +1,102 @@
+controls:
+- id: CTL-028
+  name: PEP, relative and close associate screening
+  family: screening
+  type: preventive
+  implementation: technology
+  effectiveness: high
+  description: Screens customers, beneficial owners, controllers, counterparties and their relatives and
+    close associates against politically exposed person data at onboarding and on an ongoing basis. Matches
+    trigger enhanced measures and senior approval.
+  also_known_as:
+  - PEP and associate screening
+  - Relatives and close associate screening
+  - PEP screening at onboarding and ongoing
+  - Official counterparty screening
+  - Official-link screening
+  - Relatives and close associates screening
+  - Ongoing PEP screening
+  - Associate and family screening
+- id: CTL-029
+  name: Sanctions and restricted-party screening
+  family: screening
+  type: preventive
+  implementation: technology
+  effectiveness: high
+  description: Screens customers, owners, counterparties, vessels, dealers and addresses against sanctions,
+    enforcement and restricted-party lists at onboarding and ongoing, using fuzzy matching and secondary
+    identifiers. Potential matches are held for adjudication before service or funds are released.
+  also_known_as:
+  - Sanctions and watchlist screening including wallet addresses
+  - Watchlist screening at application
+  - Counterparty screening
+  - Sanctions and watchlist screening
+  - Merchant blocklist screening
+  - Sanctions screening
+  - Dealer screening
+  - Regulator alert screening
+- id: CTL-030
+  name: Payment message and free-text screening
+  family: screening
+  type: preventive
+  implementation: rule
+  effectiveness: medium
+  description: Screens payment instructions, references and narrative fields for restricted parties, goods,
+    places and concealment language using tuned matching logic. It catches exposure that does not appear
+    in the customer record.
+  also_known_as:
+  - Reference text analytics
+  - Payment screening for geography keywords
+  - Payment screening and message-quality checks
+  - Payment reference analytics
+  - Payment screening with tuned fuzzy logic
+  - Goods keyword screening in payments
+  - Free-text screening
+  - Payment narrative screening
+- id: CTL-031
+  name: Re-screening on list updates
+  family: screening
+  type: preventive
+  implementation: rule
+  effectiveness: high
+  description: Re-screens the customer base, linked parties and counterparties whenever sanctions or other
+    lists change and on trigger events, with prompt list synchronisation. It closes the gap between onboarding
+    checks and later designations.
+  also_known_as:
+  - List update synchronisation
+  - Re-screening on designation
+  - Re-screening on list update
+  - Counterparty re-screening on list updates
+- id: CTL-032
+  name: Adverse media and enforcement screening
+  family: screening
+  type: detective
+  implementation: technology
+  effectiveness: medium
+  description: Runs continuous screening of customers, owners, introducers, suppliers and counterparties
+    against curated news, leaks, regulatory notices and enforcement releases, with reliability grading
+    and identity disambiguation. It surfaces negative information that registers and lists do not carry.
+  also_known_as:
+  - Adverse media screening
+  - Registry and adverse-media checks
+  - Director history screening
+  - Open-source monitoring
+  - Offshore leaks cross-check
+  - Investor warning screening
+  - Rating and watchdog monitoring
+  - Wildlife-specific adverse media list
+- id: CTL-033
+  name: Alert adjudication standards and quality assurance
+  family: screening
+  type: governance
+  implementation: process
+  effectiveness: medium
+  description: Defines documented criteria for clearing or escalating screening and monitoring alerts,
+    resolves matches using secondary identifiers and samples closed alerts for quality. It makes decisions
+    consistent, defensible and auditable.
+  also_known_as:
+  - Source credibility assessment
+  - Analyst adjudication standards
+  - Adjudication with secondary identifiers
+  - Alert adjudication standards
+  - QA on alert decisions

@@ -16,203 +16,68 @@ typology:
   - 'FATF, Virtual Assets: Targeted Updates (annual)'
   - OFSI, Cryptoasset guidance (general reference)
   indicators:
-  - id: SANC-CRYPTO-001
-    name: Wallet addresses attributed to designated persons
-    description: Customer transacts with addresses published in sanctions lists or attributed by analytics.
-    category: counterparty
-    severity: high
-    detection_type:
-    - screening
-    - transaction_monitoring
-    data_sources:
-    - blockchain_analytics
-    - designation_lists
-    false_positive_notes: Address clustering errors occur.
+  - ref: IND-CPT-050
+    legacy_id: SANC-CRYPTO-001
+    context: Customer transacts with addresses published in sanctions lists or attributed by analytics.
+    name_in_typology: Wallet addresses attributed to designated persons
+    false_positive_context: Address clustering errors occur.
     controls:
-    - id: SANC-CRYPTO-001-C1
-      name: Address screening
-      type: preventive
-      description: Screen addresses on deposit and withdrawal.
-      implementation: technology
-      effectiveness: high
-    - id: SANC-CRYPTO-001-C2
-      name: Block and freeze playbook
-      type: corrective
-      description: Apply designated-party blocks consistent with legal duties.
-      implementation: process
-      effectiveness: high
-    - id: SANC-CRYPTO-001-C3
-      name: List update synchronisation
-      type: preventive
-      description: Update address lists promptly.
-      implementation: rule
-      effectiveness: medium
-  - id: SANC-CRYPTO-002
-    name: Access from sanctioned jurisdictions via VPN or proxy
-    description: Technical indicators suggest the user is located in a comprehensively sanctioned area.
-    category: geographic
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - kyc_review
-    data_sources:
-    - ip_data
-    - device_data
-    false_positive_notes: Privacy tools are widely used.
+    - CTL-145
+    - CTL-103
+    - CTL-031
+  - ref: IND-GEO-026
+    legacy_id: SANC-CRYPTO-002
+    context: Technical indicators suggest the user is located in a comprehensively sanctioned area.
+    false_positive_context: Privacy tools are widely used.
     controls:
-    - id: SANC-CRYPTO-002-C1
-      name: IP and device geoblocking
-      type: preventive
-      description: Block access using layered signals.
-      implementation: technology
-      effectiveness: medium
-    - id: SANC-CRYPTO-002-C2
-      name: Behavioural geolocation review
-      type: detective
-      description: Review behavioural cues of location.
-      implementation: model
-      effectiveness: medium
-  - id: SANC-CRYPTO-003
-    name: Exposure to non-compliant exchanges in sanctioned or high-risk locations
-    description: Funds flow to or from VASPs known for weak sanctions controls.
-    category: counterparty
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - external_intel
-    data_sources:
-    - blockchain_analytics
-    false_positive_notes: Indirect exposure is difficult to assess.
+    - CTL-035
+    - CTL-092
+  - ref: IND-CPT-011
+    legacy_id: SANC-CRYPTO-003
+    context: Funds flow to or from VASPs known for weak sanctions controls.
+    name_in_typology: Exposure to non-compliant exchanges in sanctioned or high-risk locations
+    false_positive_context: Indirect exposure is difficult to assess.
     controls:
-    - id: SANC-CRYPTO-003-C1
-      name: VASP due diligence
-      type: preventive
-      description: Assess counterparties' controls.
-      implementation: process
-      effectiveness: medium
-    - id: SANC-CRYPTO-003-C2
-      name: Exposure thresholds
-      type: detective
-      description: Set direct and indirect exposure limits.
-      implementation: rule
-      effectiveness: medium
-  - id: SANC-CRYPTO-004
-    name: Use of mixers or privacy services after inbound transfers from higher-risk sources
-    description: Funds are obfuscated shortly after arrival.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - blockchain_analytics
-    false_positive_notes: Privacy use is lawful.
+    - CTL-149
+    - CTL-147
+  - ref: IND-PRD-056
+    legacy_id: SANC-CRYPTO-004
+    context: Funds are obfuscated shortly after arrival.
+    name_in_typology: Use of mixers or privacy services after inbound transfers from higher-risk sources
+    severity_in_typology: medium
+    false_positive_context: Privacy use is lawful.
     controls:
-    - id: SANC-CRYPTO-004-C1
-      name: Obfuscation exposure rule
-      type: detective
-      description: Flag mixing and privacy-service exposure.
-      implementation: rule
-      effectiveness: medium
-    - id: SANC-CRYPTO-004-C2
-      name: Customer explanation
-      type: preventive
-      description: Seek rationale.
-      implementation: process
-      effectiveness: medium
-  - id: SANC-CRYPTO-005
-    name: Ransom or stolen funds paid to addresses linked to designated actors
-    description: Wallets receive funds from ransomware or theft with attribution.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - external_intel
-    - screening
-    data_sources:
-    - threat_intelligence
-    false_positive_notes: Victims pay without knowing attribution.
+    - CTL-147
+    - CTL-022
+  - ref: IND-TYP-019
+    legacy_id: SANC-CRYPTO-005
+    context: Wallets receive funds from ransomware or theft with attribution.
+    name_in_typology: Ransom or stolen funds paid to addresses linked to designated actors
+    false_positive_context: Victims pay without knowing attribution.
     controls:
-    - id: SANC-CRYPTO-005-C1
-      name: Threat intel integration
-      type: preventive
-      description: Integrate intelligence feeds.
-      implementation: technology
-      effectiveness: high
-    - id: SANC-CRYPTO-005-C2
-      name: Victim payment guidance
-      type: governance
-      description: Provide guidance on sanctions risk of ransom payments.
-      implementation: policy
-      effectiveness: medium
-  - id: SANC-CRYPTO-006
-    name: Large OTC or peer-to-peer purchases paid in cash or non-bank rails
-    description: Purchases with limited traceability to source of funds.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - kyc_review
-    data_sources:
-    - otc_records
-    false_positive_notes: Cash purchase happens in some markets.
+    - CTL-083
+    - CTL-036
+  - ref: IND-TXN-129
+    legacy_id: SANC-CRYPTO-006
+    context: Purchases with limited traceability to source of funds.
+    false_positive_context: Cash purchase happens in some markets.
     controls:
-    - id: SANC-CRYPTO-006-C1
-      name: Source-of-funds checks
-      type: preventive
-      description: Verify source of large purchases.
-      implementation: process
-      effectiveness: medium
-    - id: SANC-CRYPTO-006-C2
-      name: P2P limits
-      type: preventive
-      description: Set limits.
-      implementation: policy
-      effectiveness: medium
-  - id: SANC-CRYPTO-007
-    name: Stablecoin use to hold value of designated person's funds
-    description: Large stablecoin balances held with limited stated purpose by customers linked to designated
+    - CTL-012
+    - CTL-072
+  - ref: IND-TXN-130
+    legacy_id: SANC-CRYPTO-007
+    context: Large stablecoin balances held with limited stated purpose by customers linked to designated
       persons.
-    category: transaction
-    severity: medium
-    detection_type:
-    - kyc_review
-    - transaction_monitoring
-    data_sources:
-    - wallet_data
-    false_positive_notes: Stablecoins are widely used for savings.
+    false_positive_context: Stablecoins are widely used for savings.
     controls:
-    - id: SANC-CRYPTO-007-C1
-      name: Beneficial owner screening
-      type: preventive
-      description: Screen customers and owners.
-      implementation: rule
-      effectiveness: medium
-    - id: SANC-CRYPTO-007-C2
-      name: Large-balance review
-      type: detective
-      description: Review large balances for source.
-      implementation: rule
-      effectiveness: medium
-  - id: SANC-CRYPTO-008
-    name: Account sharing or intermediary accounts used by third parties
-    description: Customer account is used for third-party funds.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - customer_behaviour
-    data_sources:
-    - account_activity
-    false_positive_notes: Family sharing occurs.
+    - CTL-029
+    - CTL-012
+  - ref: IND-BEH-005
+    legacy_id: SANC-CRYPTO-008
+    context: Customer account is used for third-party funds.
+    name_in_typology: Account sharing or intermediary accounts used by third parties
+    severity_in_typology: medium
+    false_positive_context: Family sharing occurs.
     controls:
-    - id: SANC-CRYPTO-008-C1
-      name: Device and behaviour analytics
-      type: detective
-      description: Detect shared use.
-      implementation: model
-      effectiveness: medium
-    - id: SANC-CRYPTO-008-C2
-      name: Terms of use enforcement
-      type: corrective
-      description: Close accounts for violations.
-      implementation: process
-      effectiveness: low
+    - CTL-090
+    - CTL-016

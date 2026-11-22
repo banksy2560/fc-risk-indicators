@@ -14,312 +14,97 @@ typology:
   - EMVCo and card scheme guidance on 3-D Secure and chargebacks (general)
   - FinCEN, advisories on cyber-enabled fraud (general)
   indicators:
-  - id: FR-CNP-001
-    name: Card testing with many small authorisations
-    description: Bursts of low-value attempts across cards, many declined, followed by a successful larger
+  - ref: IND-TXN-069
+    legacy_id: FR-CNP-001
+    context: Bursts of low-value attempts across cards, many declined, followed by a successful larger
       purchase.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - authorisation_data
-    false_positive_notes: Merchant retries.
+    false_positive_context: Merchant retries.
     controls:
-    - id: FR-CNP-001-C1
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules on count, value, geography and timing alert analysts to bursts or structured
-        activity.
-      implementation: rule
-      effectiveness: medium
-    - id: FR-CNP-001-C2
-      name: 3-D Secure and tokenisation
-      type: preventive
-      description: Authenticates the cardholder on online purchases and replaces card data with tokens
-        to shift liability and block misuse.
-      implementation: technology
-      effectiveness: high
-    - id: FR-CNP-001-C3
-      name: Device and network intelligence
-      type: detective
-      description: Fingerprints devices, IPs and emulators to link applications or sessions and flag anomalous
-        or shared infrastructure.
-      implementation: technology
-      effectiveness: high
+    - CTL-037
+    - CTL-080
+    - CTL-090
     references:
     - UK Finance, Annual Fraud Report (published annually)
-  - id: FR-CNP-002
-    name: Shipping address differs from billing and is a reshipper
-    description: Goods sent to a freight forwarder or address linked to previous fraud.
-    category: geographic
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - order_data
-    false_positive_notes: Gifts.
+  - ref: IND-GEO-027
+    legacy_id: FR-CNP-002
+    context: Goods sent to a freight forwarder or address linked to previous fraud.
+    name_in_typology: Shipping address differs from billing and is a reshipper
+    false_positive_context: Gifts.
     controls:
-    - id: FR-CNP-002-C1
-      name: 3-D Secure and tokenisation
-      type: preventive
-      description: Authenticates the cardholder on online purchases and replaces card data with tokens
-        to shift liability and block misuse.
-      implementation: technology
-      effectiveness: high
-    - id: FR-CNP-002-C2
-      name: Device and network intelligence
-      type: detective
-      description: Fingerprints devices, IPs and emulators to link applications or sessions and flag anomalous
-        or shared infrastructure.
-      implementation: technology
-      effectiveness: high
-    - id: FR-CNP-002-C3
-      name: Consortium and shared fraud data
-      type: detective
-      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
-        sharing to catch known bad actors early.
-      implementation: technology
-      effectiveness: high
+    - CTL-080
+    - CTL-090
+    - CTL-083
     references:
     - UK Finance, Annual Fraud Report (published annually)
-  - id: FR-CNP-003
-    name: Multiple cards used from one device or IP
-    description: One endpoint presents many card numbers.
-    category: behavioural
-    severity: high
-    detection_type:
-    - customer_behaviour
-    data_sources:
-    - device_data
-    false_positive_notes: Shared devices in shops.
+  - ref: IND-BEH-066
+    legacy_id: FR-CNP-003
+    context: One endpoint presents many card numbers.
+    false_positive_context: Shared devices in shops.
     controls:
-    - id: FR-CNP-003-C1
-      name: Device and network intelligence
-      type: detective
-      description: Fingerprints devices, IPs and emulators to link applications or sessions and flag anomalous
-        or shared infrastructure.
-      implementation: technology
-      effectiveness: high
-    - id: FR-CNP-003-C2
-      name: Consortium and shared fraud data
-      type: detective
-      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
-        sharing to catch known bad actors early.
-      implementation: technology
-      effectiveness: high
-    - id: FR-CNP-003-C3
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules on count, value, geography and timing alert analysts to bursts or structured
-        activity.
-      implementation: rule
-      effectiveness: medium
+    - CTL-090
+    - CTL-083
+    - CTL-037
     references:
     - UK Finance, Annual Fraud Report (published annually)
-  - id: FR-CNP-004
-    name: High-value purchases of resalable goods
-    description: Electronics, gift cards or digital goods with quick delivery.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - order_data
-    false_positive_notes: Genuine retail demand.
+  - ref: IND-TXN-070
+    legacy_id: FR-CNP-004
+    context: Electronics, gift cards or digital goods with quick delivery.
+    false_positive_context: Genuine retail demand.
     controls:
-    - id: FR-CNP-004-C1
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules on count, value, geography and timing alert analysts to bursts or structured
-        activity.
-      implementation: rule
-      effectiveness: medium
-    - id: FR-CNP-004-C2
-      name: 3-D Secure and tokenisation
-      type: preventive
-      description: Authenticates the cardholder on online purchases and replaces card data with tokens
-        to shift liability and block misuse.
-      implementation: technology
-      effectiveness: high
-    - id: FR-CNP-004-C3
-      name: Behavioural and session analytics
-      type: detective
-      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
-        signals, deviation from baseline) to surface coached or controlled activity.
-      implementation: model
-      effectiveness: high
+    - CTL-037
+    - CTL-080
+    - CTL-091
     references:
     - UK Finance, Annual Fraud Report (published annually)
-  - id: FR-CNP-005
-    name: Cardholder disputes shortly after delivery despite genuine session
-    description: 'Friendly fraud: cardholder denies a transaction made from their own device.'
-    category: behavioural
-    severity: medium
-    detection_type:
-    - customer_behaviour
-    - transaction_monitoring
-    data_sources:
-    - dispute_data
-    false_positive_notes: Genuine disputes.
+  - ref: IND-BEH-021
+    legacy_id: FR-CNP-005
+    context: 'Friendly fraud: cardholder denies a transaction made from their own device.'
+    name_in_typology: Cardholder disputes shortly after delivery despite genuine session
+    false_positive_context: Genuine disputes.
     controls:
-    - id: FR-CNP-005-C1
-      name: Chargeback and merchant-risk analytics
-      type: detective
-      description: Monitors dispute ratios, refund patterns and merchant behaviour, and identifies repeat
-        disputers and friendly fraud.
-      implementation: model
-      effectiveness: medium
-    - id: FR-CNP-005-C2
-      name: Device and network intelligence
-      type: detective
-      description: Fingerprints devices, IPs and emulators to link applications or sessions and flag anomalous
-        or shared infrastructure.
-      implementation: technology
-      effectiveness: high
-    - id: FR-CNP-005-C3
-      name: Case management and fraud MI governance
-      type: governance
-      description: Outcomes, losses and false positives are tracked and fed back into rule tuning and
-        risk appetite.
-      implementation: process
-      effectiveness: medium
+    - CTL-057
+    - CTL-090
+    - CTL-094
     references:
     - UK Finance, Annual Fraud Report (published annually)
-  - id: FR-CNP-006
-    name: Merchant chargeback ratio above scheme thresholds
-    description: 'Merchant-side: high disputes and refunds.'
-    category: counterparty
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - merchant_data
-    false_positive_notes: Seasonal peaks.
+  - ref: IND-CPT-021
+    legacy_id: FR-CNP-006
+    context: 'Merchant-side: high disputes and refunds.'
+    false_positive_context: Seasonal peaks.
     controls:
-    - id: FR-CNP-006-C1
-      name: Chargeback and merchant-risk analytics
-      type: detective
-      description: Monitors dispute ratios, refund patterns and merchant behaviour, and identifies repeat
-        disputers and friendly fraud.
-      implementation: model
-      effectiveness: medium
-    - id: FR-CNP-006-C2
-      name: Merchant onboarding and monitoring
-      type: preventive
-      description: Verifies merchants and monitors for transaction laundering, bust-out and dubious business
-        models.
-      implementation: process
-      effectiveness: medium
-    - id: FR-CNP-006-C3
-      name: Case management and fraud MI governance
-      type: governance
-      description: Outcomes, losses and false positives are tracked and fed back into rule tuning and
-        risk appetite.
-      implementation: process
-      effectiveness: medium
+    - CTL-057
+    - CTL-067
+    - CTL-094
     references:
     - UK Finance, Annual Fraud Report (published annually)
-  - id: FR-CNP-007
-    name: Transaction laundering via a front merchant
-    description: Merchant processes sales for undisclosed businesses.
-    category: counterparty
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - merchant_data
-    false_positive_notes: Aggregators.
+  - ref: IND-CPT-022
+    legacy_id: FR-CNP-007
+    context: Merchant processes sales for undisclosed businesses.
+    name_in_typology: Transaction laundering via a front merchant
+    false_positive_context: Aggregators.
     controls:
-    - id: FR-CNP-007-C1
-      name: Merchant onboarding and monitoring
-      type: preventive
-      description: Verifies merchants and monitors for transaction laundering, bust-out and dubious business
-        models.
-      implementation: process
-      effectiveness: medium
-    - id: FR-CNP-007-C2
-      name: Chargeback and merchant-risk analytics
-      type: detective
-      description: Monitors dispute ratios, refund patterns and merchant behaviour, and identifies repeat
-        disputers and friendly fraud.
-      implementation: model
-      effectiveness: medium
-    - id: FR-CNP-007-C3
-      name: Consortium and shared fraud data
-      type: detective
-      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
-        sharing to catch known bad actors early.
-      implementation: technology
-      effectiveness: high
+    - CTL-067
+    - CTL-057
+    - CTL-083
     references:
     - UK Finance, Annual Fraud Report (published annually)
-  - id: FR-CNP-008
-    name: Account created and used within minutes
-    description: New account follows rapid purchase flow.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - customer_behaviour
-    data_sources:
-    - session_telemetry
-    false_positive_notes: Impulse buys.
+  - ref: IND-BEH-067
+    legacy_id: FR-CNP-008
+    context: New account follows rapid purchase flow.
+    false_positive_context: Impulse buys.
     controls:
-    - id: FR-CNP-008-C1
-      name: Device and network intelligence
-      type: detective
-      description: Fingerprints devices, IPs and emulators to link applications or sessions and flag anomalous
-        or shared infrastructure.
-      implementation: technology
-      effectiveness: high
-    - id: FR-CNP-008-C2
-      name: Behavioural and session analytics
-      type: detective
-      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
-        signals, deviation from baseline) to surface coached or controlled activity.
-      implementation: model
-      effectiveness: high
-    - id: FR-CNP-008-C3
-      name: Document and biometric identity verification
-      type: preventive
-      description: Verifies identity documents and liveness at onboarding or high-risk events, with checks
-        against authoritative data sources.
-      implementation: technology
-      effectiveness: high
+    - CTL-090
+    - CTL-091
+    - CTL-001
     references:
     - UK Finance, Annual Fraud Report (published annually)
-  - id: FR-CNP-009
-    name: 3-D Secure bypass or failed authentication retried
-    description: Attempts changed to non-authenticated channels.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - authentication_logs
-    false_positive_notes: Technical failure.
+  - ref: IND-PRD-030
+    legacy_id: FR-CNP-009
+    context: Attempts changed to non-authenticated channels.
+    false_positive_context: Technical failure.
     controls:
-    - id: FR-CNP-009-C1
-      name: 3-D Secure and tokenisation
-      type: preventive
-      description: Authenticates the cardholder on online purchases and replaces card data with tokens
-        to shift liability and block misuse.
-      implementation: technology
-      effectiveness: high
-    - id: FR-CNP-009-C2
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules on count, value, geography and timing alert analysts to bursts or structured
-        activity.
-      implementation: rule
-      effectiveness: medium
-    - id: FR-CNP-009-C3
-      name: Behavioural and session analytics
-      type: detective
-      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
-        signals, deviation from baseline) to surface coached or controlled activity.
-      implementation: model
-      effectiveness: high
+    - CTL-080
+    - CTL-037
+    - CTL-091
     references:
     - UK Finance, Annual Fraud Report (published annually)

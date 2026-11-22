@@ -16,207 +16,66 @@ typology:
   - FATF, Money Laundering from Tax Crimes (2021)
   - EU VAT Directive and tax authority guidance on VAT fraud
   indicators:
-  - id: TX-VATFRAUD-001
-    name: Newly formed company with rapid high-value cross-border trading
-    description: Company with minimal history, few staff and basic premises records large intra-EU or
-      cross-border turnover quickly.
-    category: customer
-    severity: high
-    detection_type:
-    - kyc_review
-    - transaction_monitoring
-    data_sources:
-    - company_registry
-    - vat_registration
-    - payment_records
-    false_positive_notes: Fast-growing start-ups and trading vehicles exist.
+  - ref: IND-CUS-010
+    legacy_id: TX-VATFRAUD-001
+    context: Company with minimal history, few staff and basic premises records large intra-EU or cross-border
+      turnover quickly.
+    name_in_typology: Newly formed company with rapid high-value cross-border trading
+    false_positive_context: Fast-growing start-ups and trading vehicles exist.
     controls:
-    - id: TX-VATFRAUD-001-C1
-      name: VAT number validation and substance check
-      type: preventive
-      description: Validate VAT registration and verify premises, staff and stock.
-      implementation: process
-      effectiveness: high
-    - id: TX-VATFRAUD-001-C2
-      name: New-business ramp-up alert
-      type: detective
-      description: Alert on turnover far above onboarding projections in early months.
-      implementation: rule
-      effectiveness: medium
-  - id: TX-VATFRAUD-002
-    name: Circular payment flows among related counterparties
-    description: Funds return to origin after passing through several companies in a chain within days.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - payment_records
-    - link_analysis
-    false_positive_notes: Group treasury or back-to-back trading may be similar.
+    - CTL-010
+    - CTL-054
+  - ref: IND-TXN-015
+    legacy_id: TX-VATFRAUD-002
+    context: Funds return to origin after passing through several companies in a chain within days.
+    name_in_typology: Circular payment flows among related counterparties
+    false_positive_context: Group treasury or back-to-back trading may be similar.
     controls:
-    - id: TX-VATFRAUD-002-C1
-      name: Circular flow detection
-      type: detective
-      description: Use graph analytics to find loops of payments across accounts.
-      implementation: model
-      effectiveness: high
-    - id: TX-VATFRAUD-002-C2
-      name: Network investigation referral
-      type: corrective
-      description: Refer clusters to financial intelligence for tax authority liaison.
-      implementation: process
-      effectiveness: medium
-  - id: TX-VATFRAUD-003
-    name: Goods are high-value, low-weight and easily moved
-    description: Trade in mobile phones, chips, precious metals, or CO2 allowances with no storage or
-      transport evidence.
-    category: typology_specific
-    severity: medium
-    detection_type:
-    - document_review
-    - investigator_judgement
-    data_sources:
-    - invoices
-    - shipping_documents
-    false_positive_notes: These goods are legitimate high-volume trade lines.
+    - CTL-047
+    - CTL-095
+  - ref: IND-TYP-053
+    legacy_id: TX-VATFRAUD-003
+    context: Trade in mobile phones, chips, precious metals, or CO2 allowances with no storage or transport
+      evidence.
+    false_positive_context: These goods are legitimate high-volume trade lines.
     controls:
-    - id: TX-VATFRAUD-003-C1
-      name: Sector risk scoring
-      type: preventive
-      description: Apply higher risk weighting to customers trading in known fraud-prone goods.
-      implementation: model
-      effectiveness: medium
-    - id: TX-VATFRAUD-003-C2
-      name: Logistics evidence checks
-      type: detective
-      description: Request CMRs, warehouse records and delivery confirmations for sampled trades.
-      implementation: process
-      effectiveness: medium
-  - id: TX-VATFRAUD-004
-    name: Payments in and out the same day with thin margin
-    description: Funds received from buyer are paid onward to supplier, often same day, leaving little
-      retained.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - payment_records
-    false_positive_notes: Distributors and agents may operate on thin margins and pass-through.
+    - CTL-015
+    - CTL-125
+  - ref: IND-TXN-144
+    legacy_id: TX-VATFRAUD-004
+    context: Funds received from buyer are paid onward to supplier, often same day, leaving little retained.
+    false_positive_context: Distributors and agents may operate on thin margins and pass-through.
     controls:
-    - id: TX-VATFRAUD-004-C1
-      name: Pass-through velocity rule
-      type: detective
-      description: Alert when 90%+ of credits leave within one or two days.
-      implementation: rule
-      effectiveness: medium
-    - id: TX-VATFRAUD-004-C2
-      name: Business model reasonableness review
-      type: detective
-      description: Compare observed margins to sector norms.
-      implementation: process
-      effectiveness: medium
-  - id: TX-VATFRAUD-005
-    name: Payments to or from jurisdictions unrelated to goods
-    description: Counterparties are in different countries from the goods' origin or destination, often
-      via third-country accounts.
-    category: geographic
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - document_review
-    data_sources:
-    - payment_records
-    - shipping_documents
-    false_positive_notes: Complex supply chains cause legitimate triangulation.
+    - CTL-040
+    - CTL-055
+  - ref: IND-GEO-019
+    legacy_id: TX-VATFRAUD-005
+    context: Counterparties are in different countries from the goods' origin or destination, often via
+      third-country accounts.
+    name_in_typology: Payments to or from jurisdictions unrelated to goods
+    false_positive_context: Complex supply chains cause legitimate triangulation.
     controls:
-    - id: TX-VATFRAUD-005-C1
-      name: Flow-vs-goods geography rule
-      type: detective
-      description: Compare payment geography with declared trade routes.
-      implementation: rule
-      effectiveness: medium
-    - id: TX-VATFRAUD-005-C2
-      name: Third-party payer controls
-      type: preventive
-      description: Query payments from or to parties not on the invoice.
-      implementation: process
-      effectiveness: medium
-  - id: TX-VATFRAUD-006
-    name: Directors or addresses linked to prior defaulted VAT companies
-    description: Officers or premises previously appeared in VAT-defaulting entities or liquidations.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - screening
-    - kyc_review
-    data_sources:
-    - company_registry
-    - insolvency_records
-    - adverse_media
-    false_positive_notes: Directors can have genuine business failures.
+    - CTL-045
+    - CTL-046
+  - ref: IND-OWN-009
+    legacy_id: TX-VATFRAUD-006
+    context: Officers or premises previously appeared in VAT-defaulting entities or liquidations.
+    name_in_typology: Directors or addresses linked to prior defaulted VAT companies
+    false_positive_context: Directors can have genuine business failures.
     controls:
-    - id: TX-VATFRAUD-006-C1
-      name: Director history screening
-      type: preventive
-      description: Screen officers against insolvency and enforcement data.
-      implementation: technology
-      effectiveness: medium
-    - id: TX-VATFRAUD-006-C2
-      name: Shared-attribute entity matching
-      type: detective
-      description: Link entities with shared addresses, phones and devices.
-      implementation: model
-      effectiveness: medium
-  - id: TX-VATFRAUD-007
-    name: Invoices with identical formats across 'unrelated' suppliers
-    description: Documents share templates, wording or bank accounts across different companies.
-    category: document
-    severity: medium
-    detection_type:
-    - document_review
-    - investigator_judgement
-    data_sources:
-    - invoices
-    - trade_documents
-    false_positive_notes: Accounting software may produce similar templates.
+    - CTL-032
+    - CTL-049
+  - ref: IND-DOC-066
+    legacy_id: TX-VATFRAUD-007
+    context: Documents share templates, wording or bank accounts across different companies.
+    false_positive_context: Accounting software may produce similar templates.
     controls:
-    - id: TX-VATFRAUD-007-C1
-      name: Document similarity analysis
-      type: detective
-      description: Detect templated invoices and reused bank details.
-      implementation: model
-      effectiveness: medium
-    - id: TX-VATFRAUD-007-C2
-      name: Trade documentation sampling
-      type: detective
-      description: Sample trade finance documents for authenticity.
-      implementation: process
-      effectiveness: medium
-  - id: TX-VATFRAUD-008
-    name: Sudden stop of activity and withdrawal of funds before VAT due
-    description: Account activity ceases and balances drain just before VAT returns fall due.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - payment_records
-    - vat_filings
-    false_positive_notes: Seasonal businesses may pause trading.
+    - CTL-087
+    - CTL-123
+  - ref: IND-BEH-113
+    legacy_id: TX-VATFRAUD-008
+    context: Account activity ceases and balances drain just before VAT returns fall due.
+    false_positive_context: Seasonal businesses may pause trading.
     controls:
-    - id: TX-VATFRAUD-008-C1
-      name: Dormancy-after-spike alert
-      type: detective
-      description: Alert on rapid cessation after high-turnover periods.
-      implementation: rule
-      effectiveness: medium
-    - id: TX-VATFRAUD-008-C2
-      name: Authority information request handling
-      type: governance
-      description: Process tax authority requests quickly and prioritise suspicious reports.
-      implementation: process
-      effectiveness: medium
+    - CTL-017
+    - CTL-096

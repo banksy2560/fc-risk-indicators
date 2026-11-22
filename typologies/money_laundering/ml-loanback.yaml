@@ -16,193 +16,62 @@ typology:
   - FATF, Concealment of Beneficial Ownership (2018)
   - JMLSG Guidance, lending and sector guidance (general)
   indicators:
-  - id: ML-LOANBACK-001
-    name: Loan funded by related offshore party and repaid early
-    description: Borrower receives loan from an entity linked to themselves and repays rapidly.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - loan_data
-    - transaction_data
-    false_positive_notes: Group financing.
+  - ref: IND-TXN-112
+    legacy_id: ML-LOANBACK-001
+    context: Borrower receives loan from an entity linked to themselves and repays rapidly.
+    false_positive_context: Group financing.
     controls:
-    - id: ML-LOANBACK-001-C1
-      name: Related-party lending review
-      type: preventive
-      description: Verify lender ownership and economic rationale.
-      implementation: process
-      effectiveness: high
-    - id: ML-LOANBACK-001-C2
-      name: Early repayment alert
-      type: detective
-      description: Alert on unusually quick settlement.
-      implementation: rule
-      effectiveness: medium
-  - id: ML-LOANBACK-002
-    name: Loan secured on assets or deposits from third parties of unclear origin
-    description: Collateral is cash deposit or asset funded by unknown source.
-    category: transaction
-    severity: high
-    detection_type:
-    - kyc_review
-    - document_review
-    data_sources:
-    - collateral_records
-    false_positive_notes: Cash-secured lending is common.
+    - CTL-151
+    - CTL-084
+    - CTL-047
+  - ref: IND-TXN-113
+    legacy_id: ML-LOANBACK-002
+    context: Collateral is cash deposit or asset funded by unknown source.
+    false_positive_context: Cash-secured lending is common.
     controls:
-    - id: ML-LOANBACK-002-C1
-      name: Collateral source-of-funds check
-      type: preventive
-      description: Verify origin of collateral.
-      implementation: process
-      effectiveness: high
-    - id: ML-LOANBACK-002-C2
-      name: Cash-secured lending limits
-      type: preventive
-      description: Restrict for high-risk customers.
-      implementation: policy
-      effectiveness: medium
-  - id: ML-LOANBACK-003
-    name: Funds return from offshore as foreign investment
-    description: Money sent abroad reappears as shareholder investment or loan.
-    category: geographic
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - wire_data
-    false_positive_notes: Real diaspora investment.
+    - CTL-012
+    - CTL-072
+  - ref: IND-GEO-017
+    legacy_id: ML-LOANBACK-003
+    context: Money sent abroad reappears as shareholder investment or loan.
+    false_positive_context: Real diaspora investment.
     controls:
-    - id: ML-LOANBACK-003-C1
-      name: Round-trip flow detection
-      type: detective
-      description: Match outflows with later inflows from linked parties.
-      implementation: model
-      effectiveness: medium
-    - id: ML-LOANBACK-003-C2
-      name: Foreign investor due diligence
-      type: preventive
-      description: Verify source and control of investors.
-      implementation: process
-      effectiveness: high
-  - id: ML-LOANBACK-004
-    name: Loan with no commercial purpose or unusual terms
-    description: Interest-free, no repayments, or terms inconsistent with market.
-    category: document
-    severity: medium
-    detection_type:
-    - document_review
-    data_sources:
-    - loan_agreements
-    false_positive_notes: Family loans.
+    - CTL-047
+    - CTL-151
+  - ref: IND-DOC-042
+    legacy_id: ML-LOANBACK-004
+    context: Interest-free, no repayments, or terms inconsistent with market.
+    false_positive_context: Family loans.
     controls:
-    - id: ML-LOANBACK-004-C1
-      name: Loan terms reasonableness check
-      type: preventive
-      description: Compare to market terms.
-      implementation: process
-      effectiveness: medium
-    - id: ML-LOANBACK-004-C2
-      name: Documentation standard
-      type: preventive
-      description: Require signed agreements.
-      implementation: policy
-      effectiveness: medium
-  - id: ML-LOANBACK-005
-    name: Inconsistent loan documentation or backdated agreements
-    description: Dates, signatures or amounts inconsistent.
-    category: document
-    severity: medium
-    detection_type:
-    - document_review
-    data_sources:
-    - loan_agreements
-    false_positive_notes: Errors happen.
+    - CTL-151
+  - ref: IND-DOC-043
+    legacy_id: ML-LOANBACK-005
+    context: Dates, signatures or amounts inconsistent.
+    false_positive_context: Errors happen.
     controls:
-    - id: ML-LOANBACK-005-C1
-      name: Document authenticity review
-      type: detective
-      description: Review for tampering.
-      implementation: process
-      effectiveness: medium
-    - id: ML-LOANBACK-005-C2
-      name: Registry cross-check
-      type: detective
-      description: Verify security registrations.
-      implementation: process
-      effectiveness: medium
-  - id: ML-LOANBACK-006
-    name: Borrower repays from unrelated third-party sources
-    description: Repayments from unexpected accounts.
-    category: counterparty
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - payment_data
-    false_positive_notes: Guarantors.
+    - CTL-002
+    - CTL-142
+  - ref: IND-CPT-058
+    legacy_id: ML-LOANBACK-006
+    context: Repayments from unexpected accounts.
+    name_in_typology: Borrower repays from unrelated third-party sources
+    false_positive_context: Guarantors.
     controls:
-    - id: ML-LOANBACK-006-C1
-      name: Repayment source rule
-      type: detective
-      description: Alert on third-party repayment.
-      implementation: rule
-      effectiveness: medium
-    - id: ML-LOANBACK-006-C2
-      name: Source verification
-      type: preventive
-      description: Verify origin.
-      implementation: process
-      effectiveness: medium
-  - id: ML-LOANBACK-007
-    name: Customer indifferent to cost of credit
-    description: Accepts poor terms or fees.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - customer_behaviour
-    - investigator_judgement
-    data_sources:
-    - relationship_notes
-    false_positive_notes: Convenience.
+    - CTL-046
+    - CTL-134
+  - ref: IND-BEH-015
+    legacy_id: ML-LOANBACK-007
+    context: Accepts poor terms or fees.
+    name_in_typology: Customer indifferent to cost of credit
+    false_positive_context: Convenience.
     controls:
-    - id: ML-LOANBACK-007-C1
-      name: Purpose-of-credit interview
-      type: preventive
-      description: Understand rationale.
-      implementation: process
-      effectiveness: medium
-    - id: ML-LOANBACK-007-C2
-      name: Underwriter training
-      type: preventive
-      description: Train on this indicator.
-      implementation: training
-      effectiveness: low
-  - id: ML-LOANBACK-008
-    name: Circular trade or invoices among connected entities
-    description: Invoices cycled among related firms, returning funds to origin.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - transaction_data
-    false_positive_notes: Group trading.
+    - CTL-011
+    - CTL-169
+  - ref: IND-TYP-036
+    legacy_id: ML-LOANBACK-008
+    context: Invoices cycled among related firms, returning funds to origin.
+    false_positive_context: Group trading.
     controls:
-    - id: ML-LOANBACK-008-C1
-      name: Circular flow analytics
-      type: detective
-      description: Detect loops via graph analysis.
-      implementation: model
-      effectiveness: high
-    - id: ML-LOANBACK-008-C2
-      name: Related-party transaction review
-      type: preventive
-      description: Review group trades.
-      implementation: process
-      effectiveness: medium
+    - CTL-047
+    - CTL-048
+    - CTL-140

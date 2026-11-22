@@ -17,240 +17,79 @@ typology:
   - UNODC, Global Report on Trafficking in Persons
   - Egmont Group, public material on financial intelligence and human trafficking
   indicators:
-  - id: HT-TRAFFICK-001
-    name: Account controlled by a third party
-    description: Someone other than the account holder appears to hold the card, PIN or online credentials,
+  - ref: IND-BEH-005
+    legacy_id: HT-TRAFFICK-001
+    context: Someone other than the account holder appears to hold the card, PIN or online credentials,
       accompanying the holder or accessing from a shared device.
-    category: behavioural
-    severity: high
-    detection_type:
-    - customer_behaviour
-    - transaction_monitoring
-    data_sources:
-    - branch_observations
-    - device_data
-    - account_activity
-    false_positive_notes: Family members, carers and partners may legitimately help with banking.
+    name_in_typology: Account controlled by a third party
+    false_positive_context: Family members, carers and partners may legitimately help with banking.
     controls:
-    - id: HT-TRAFFICK-001-C1
-      name: Frontline victim-awareness training
-      type: preventive
-      description: Train branch and contact-centre staff to notice controlled customers and respond safely
-        without alerting the controller.
-      implementation: training
-      effectiveness: high
-    - id: HT-TRAFFICK-001-C2
-      name: Device and login anomaly detection
-      type: detective
-      description: Detect multiple accounts accessed from the same device or IP by apparently different
-        people.
-      implementation: rule
-      effectiveness: medium
-  - id: HT-TRAFFICK-002
-    name: Multiple unrelated accounts opened with the same address or phone
-    description: Several new customers share contact details, often in accommodation used to house workers.
-    category: customer
-    severity: high
-    detection_type:
-    - kyc_review
-    - transaction_monitoring
-    data_sources:
-    - kyc_files
-    - onboarding_data
-    false_positive_notes: Shared households, student housing and hostels create shared addresses.
+    - CTL-170
+    - CTL-090
+  - ref: IND-CUS-007
+    legacy_id: HT-TRAFFICK-002
+    context: Several new customers share contact details, often in accommodation used to house workers.
+    name_in_typology: Multiple unrelated accounts opened with the same address or phone
+    severity_in_typology: high
+    false_positive_context: Shared households, student housing and hostels create shared addresses.
     controls:
-    - id: HT-TRAFFICK-002-C1
-      name: Shared-identifier clustering
-      type: detective
-      description: Identify onboarding clusters sharing addresses, devices or phone numbers.
-      implementation: model
-      effectiveness: medium
-    - id: HT-TRAFFICK-002-C2
-      name: Victim-centred escalation protocol
-      type: governance
-      description: Provide a protocol to escalate to specialist team with safeguarding and law-enforcement
-        referral guidance.
-      implementation: process
-      effectiveness: high
-  - id: HT-TRAFFICK-003
-    name: Payments for online adverts and hotels or short-stay lets for multiple rooms
-    description: Frequent purchases of escort or commercial sex adverts, bulk hotel bookings and short-term
+    - CTL-049
+    - CTL-100
+  - ref: IND-TXN-096
+    legacy_id: HT-TRAFFICK-003
+    context: Frequent purchases of escort or commercial sex adverts, bulk hotel bookings and short-term
       rentals paid by the same card or account.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - card_data
-    - merchant_data
-    false_positive_notes: Hospitality and legitimate escort or event businesses exist.
+    false_positive_context: Hospitality and legitimate escort or event businesses exist.
     controls:
-    - id: HT-TRAFFICK-003-C1
-      name: Merchant category and keyword rules
-      type: detective
-      description: Flag recurring payments to advert platforms and short-stay lets tied to multiple travellers.
-      implementation: rule
-      effectiveness: medium
-    - id: HT-TRAFFICK-003-C2
-      name: Typology-based alert tuning
-      type: detective
-      description: Tune alerts using FIU red-flag lists and feedback loops.
-      implementation: process
-      effectiveness: medium
-  - id: HT-TRAFFICK-004
-    name: Cash deposits followed by quick transfers to a handler in another city
-    description: Multiple low-value cash deposits by different people into one account, then rapid onward
+    - CTL-052
+  - ref: IND-TXN-030
+    legacy_id: HT-TRAFFICK-004
+    context: Multiple low-value cash deposits by different people into one account, then rapid onward
       transfer or ATM withdrawal.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - cash_deposit_data
-    - payment_records
-    false_positive_notes: Group business or family collections can resemble this.
+    name_in_typology: Cash deposits followed by quick transfers to a handler in another city
+    false_positive_context: Group business or family collections can resemble this.
     controls:
-    - id: HT-TRAFFICK-004-C1
-      name: Funnel account detection
-      type: detective
-      description: Detect many-to-one cash deposits followed by quick outbound transfers.
-      implementation: rule
-      effectiveness: medium
-    - id: HT-TRAFFICK-004-C2
-      name: Enhanced review of funnel beneficiary
-      type: detective
-      description: Assess beneficiary profile and relationships.
-      implementation: process
-      effectiveness: medium
-  - id: HT-TRAFFICK-005
-    name: Wage or benefit payments immediately withdrawn by another person
-    description: Salary, welfare or loan proceeds are withdrawn in full by someone not the account holder
+    - CTL-041
+  - ref: IND-TXN-097
+    legacy_id: HT-TRAFFICK-005
+    context: Salary, welfare or loan proceeds are withdrawn in full by someone not the account holder
       or sent to a third party on receipt.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - customer_behaviour
-    data_sources:
-    - payroll_data
-    - atm_logs
-    - payment_records
-    false_positive_notes: Remittance to family is common after payday.
+    false_positive_context: Remittance to family is common after payday.
     controls:
-    - id: HT-TRAFFICK-005-C1
-      name: Wage sweep rule
-      type: detective
-      description: Detect payroll credit followed by full withdrawal at the same ATM by multiple accounts.
-      implementation: rule
-      effectiveness: medium
-    - id: HT-TRAFFICK-005-C2
-      name: Welfare and credit abuse referral
-      type: corrective
-      description: Refer likely exploitation of benefits to appropriate authorities.
-      implementation: process
-      effectiveness: medium
-  - id: HT-TRAFFICK-006
-    name: Customer appears fearful, unable to speak freely, or lacks own ID
-    description: Customer accompanied by a person who speaks for them, avoids eye contact, lacks access
-      to documents or appears coached.
-    category: behavioural
-    severity: high
-    detection_type:
-    - customer_behaviour
-    - investigator_judgement
-    data_sources:
-    - branch_observations
-    false_positive_notes: Language barriers and shyness have other explanations.
+    - CTL-040
+    - CTL-100
+  - ref: IND-BEH-004
+    legacy_id: HT-TRAFFICK-006
+    context: Customer accompanied by a person who speaks for them, avoids eye contact, lacks access to
+      documents or appears coached.
+    name_in_typology: Customer appears fearful, unable to speak freely, or lacks own ID
+    false_positive_context: Language barriers and shyness have other explanations.
     controls:
-    - id: HT-TRAFFICK-006-C1
-      name: Safe-contact response procedure
-      type: preventive
-      description: Enable staff to offer private conversation and to discreetly alert specialist teams.
-      implementation: process
-      effectiveness: high
-    - id: HT-TRAFFICK-006-C2
-      name: Safeguarding escalation
-      type: governance
-      description: Provide pathways to law enforcement and victim support organisations.
-      implementation: process
-      effectiveness: high
-  - id: HT-TRAFFICK-007
-    name: Travel and visa fee payments for groups from the same recruiter
-    description: Bulk payments for flights, visas and recruitment fees to a labour recruiter, sometimes
-      debt-financed.
-    category: counterparty
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - payment_records
-    - sponsor_data
-    false_positive_notes: Genuine recruitment agencies charge fees in some corridors.
+    - CTL-100
+    - CTL-170
+    - CTL-171
+  - ref: IND-CPT-033
+    legacy_id: HT-TRAFFICK-007
+    context: Bulk payments for flights, visas and recruitment fees to a labour recruiter, sometimes debt-financed.
+    false_positive_context: Genuine recruitment agencies charge fees in some corridors.
     controls:
-    - id: HT-TRAFFICK-007-C1
-      name: Recruiter due diligence
-      type: preventive
-      description: Screen recruiters and labour brokers for licences and adverse media.
-      implementation: process
-      effectiveness: medium
-    - id: HT-TRAFFICK-007-C2
-      name: Recruitment fee flow rule
-      type: detective
-      description: Flag unusual group payments tied to recruitment corridors.
-      implementation: rule
-      effectiveness: medium
-  - id: HT-TRAFFICK-008
-    name: Business front for exploitation with revenue not matching staff
-    description: Massage, nail, car-wash, restaurant or agricultural entity with cash patterns and many
-      resident staff but poor payroll evidence.
-    category: customer
-    severity: medium
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - kyc_files
-    - tax_filings
-    - payment_records
-    false_positive_notes: Small businesses in these sectors are overwhelmingly legitimate.
+    - CTL-122
+    - CTL-056
+  - ref: IND-CUS-012
+    legacy_id: HT-TRAFFICK-008
+    context: Massage, nail, car-wash, restaurant or agricultural entity with cash patterns and many resident
+      staff but poor payroll evidence.
+    name_in_typology: Business front for exploitation with revenue not matching staff
+    false_positive_context: Small businesses in these sectors are overwhelmingly legitimate.
     controls:
-    - id: HT-TRAFFICK-008-C1
-      name: Sector-aware KYC prompts
-      type: preventive
-      description: Ask staffing, pay and housing questions for higher-risk sectors.
-      implementation: process
-      effectiveness: medium
-    - id: HT-TRAFFICK-008-C2
-      name: Payroll coherence checks
-      type: detective
-      description: Compare payroll flows with declared headcount.
-      implementation: process
-      effectiveness: medium
-  - id: HT-TRAFFICK-009
-    name: Adverse media or intelligence on trafficking network associations
-    description: Customer or counterparties named in credible reports or law enforcement requests relating
+    - CTL-011
+    - CTL-056
+  - ref: IND-CPT-059
+    legacy_id: HT-TRAFFICK-009
+    context: Customer or counterparties named in credible reports or law enforcement requests relating
       to trafficking.
-    category: counterparty
-    severity: high
-    detection_type:
-    - screening
-    - external_intel
-    data_sources:
-    - adverse_media
-    - law_enforcement_requests
-    false_positive_notes: Reports may involve unrelated namesakes.
+    name_in_typology: Adverse media or intelligence on trafficking network associations
+    false_positive_context: Reports may involve unrelated namesakes.
     controls:
-    - id: HT-TRAFFICK-009-C1
-      name: Adverse media screening
-      type: detective
-      description: Screen against trafficking-related keywords across languages.
-      implementation: technology
-      effectiveness: medium
-    - id: HT-TRAFFICK-009-C2
-      name: Information sharing partnerships
-      type: governance
-      description: Join public-private partnerships to receive indicator updates.
-      implementation: process
-      effectiveness: high
+    - CTL-032
+    - CTL-097

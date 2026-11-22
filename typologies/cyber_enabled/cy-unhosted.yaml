@@ -19,335 +19,90 @@ typology:
   - FATF, Targeted Update on Implementation of the FATF Standards on Virtual Assets and Virtual Asset
     Service Providers (annual editions)
   indicators:
-  - id: CY-UNHOSTED-001
-    name: Large transfers to or from unhosted wallets without ownership proof
-    description: High-value transfers involve self-hosted addresses where the customer has not demonstrated
+  - ref: IND-TXN-056
+    legacy_id: CY-UNHOSTED-001
+    context: High-value transfers involve self-hosted addresses where the customer has not demonstrated
       control.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - wallet_addresses
-    - transfer_records
-    false_positive_notes: Customers who self-custody for security.
+    false_positive_context: Customers who self-custody for security.
     controls:
-    - id: CY-UNHOSTED-001-C1
-      name: Travel rule data exchange and counterparty checks
-      type: preventive
-      description: Collect and transmit originator and beneficiary information with transfers, and block
-        or hold transfers where counterparty data is missing or unreliable.
-      implementation: technology
-      effectiveness: medium
-    - id: CY-UNHOSTED-001-C2
-      name: Blockchain analytics and wallet attribution
-      type: detective
-      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
-        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
-      implementation: technology
-      effectiveness: high
-    - id: CY-UNHOSTED-001-C3
-      name: Enhanced due diligence
-      type: preventive
-      description: Collect additional information on activity purpose, expected volumes and ownership
-        before approval or continued service, with senior sign-off.
-      implementation: process
-      effectiveness: medium
-  - id: CY-UNHOSTED-002
-    name: Unhosted wallet with high-risk counterparties in history
-    description: Self-hosted address has prior exposure to illicit services, scams or sanctioned addresses.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - external_intel
-    data_sources:
-    - blockchain_analytics
-    false_positive_notes: Inherited exposure from dusting.
+    - CTL-146
+    - CTL-145
+    - CTL-023
+  - ref: IND-TYP-020
+    legacy_id: CY-UNHOSTED-002
+    context: Self-hosted address has prior exposure to illicit services, scams or sanctioned addresses.
+    false_positive_context: Inherited exposure from dusting.
     controls:
-    - id: CY-UNHOSTED-002-C1
-      name: Blockchain analytics and wallet attribution
-      type: detective
-      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
-        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
-      implementation: technology
-      effectiveness: high
-    - id: CY-UNHOSTED-002-C2
-      name: Sanctions and watchlist screening including wallet addresses
-      type: preventive
-      description: Screen customers, counterparties and wallet addresses against sanctions lists and designated-address
-        data in real time.
-      implementation: technology
-      effectiveness: high
-    - id: CY-UNHOSTED-002-C3
-      name: Account restriction and fund holds
-      type: corrective
-      description: Ability to restrict, hold or recall funds rapidly pending review, with defined legal
-        and operational triggers.
-      implementation: process
-      effectiveness: medium
-  - id: CY-UNHOSTED-003
-    name: Wallet shared across multiple customer accounts
-    description: Same external address is whitelisted by several unrelated customers.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - wallet_addresses
-    - customer_records
-    false_positive_notes: Shared family or corporate wallets.
+    - CTL-145
+    - CTL-029
+    - CTL-103
+  - ref: IND-TYP-001
+    legacy_id: CY-UNHOSTED-003
+    context: Same external address is whitelisted by several unrelated customers.
+    name_in_typology: Wallet shared across multiple customer accounts
+    false_positive_context: Shared family or corporate wallets.
     controls:
-    - id: CY-UNHOSTED-003-C1
-      name: Graph and network analytics
-      type: detective
-      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
-        and fan-in/fan-out structures.
-      implementation: model
-      effectiveness: high
-    - id: CY-UNHOSTED-003-C2
-      name: Digital identity and entity resolution
-      type: detective
-      description: Resolve multiple accounts to one underlying person or entity using identity, device
-        and behavioural linkage.
-      implementation: model
-      effectiveness: medium
-    - id: CY-UNHOSTED-003-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-UNHOSTED-004
-    name: P2P advertiser with high volume and many unrelated counterparties
-    description: Seller trades large volume with numerous buyers across payment methods and accounts,
-      resembling unlicensed money transmission.
-    category: customer
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - p2p_records
-    - bank_transactions
-    false_positive_notes: Registered small traders.
+    - CTL-048
+    - CTL-004
+    - CTL-093
+  - ref: IND-CUS-024
+    legacy_id: CY-UNHOSTED-004
+    context: Seller trades large volume with numerous buyers across payment methods and accounts, resembling
+      unlicensed money transmission.
+    false_positive_context: Registered small traders.
     controls:
-    - id: CY-UNHOSTED-004-C1
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-UNHOSTED-004-C2
-      name: Graph and network analytics
-      type: detective
-      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
-        and fan-in/fan-out structures.
-      implementation: model
-      effectiveness: high
-    - id: CY-UNHOSTED-004-C3
-      name: Enhanced due diligence
-      type: preventive
-      description: Collect additional information on activity purpose, expected volumes and ownership
-        before approval or continued service, with senior sign-off.
-      implementation: process
-      effectiveness: medium
-  - id: CY-UNHOSTED-005
-    name: P2P payments received from third-party bank accounts
-    description: Buyers pay from accounts not in the buyer's name, or sellers receive from unknown payers.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - bank_transactions
-    - p2p_records
-    false_positive_notes: Family-funded purchases.
+    - CTL-037
+    - CTL-048
+    - CTL-023
+  - ref: IND-TXN-057
+    legacy_id: CY-UNHOSTED-005
+    context: Buyers pay from accounts not in the buyer's name, or sellers receive from unknown payers.
+    false_positive_context: Family-funded purchases.
     controls:
-    - id: CY-UNHOSTED-005-C1
-      name: Beneficiary name verification
-      type: preventive
-      description: Check payee name and account details before release to reduce misdirected and fraudulent
-        payments.
-      implementation: technology
-      effectiveness: medium
-    - id: CY-UNHOSTED-005-C2
-      name: Mule account detection model
-      type: detective
-      description: Model that scores inbound-then-outbound pass-through, new payee churn and profile mismatch
-        to flag likely mule accounts.
-      implementation: model
-      effectiveness: high
-    - id: CY-UNHOSTED-005-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-UNHOSTED-006
-    name: Rapid cash-in then withdrawal to unhosted wallet
-    description: Fiat deposits are converted and sent to external wallets within minutes, leaving no balance.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - ledger_data
-    false_positive_notes: Customers who dislike custodial risk.
+    - CTL-069
+    - CTL-051
+    - CTL-093
+  - ref: IND-TXN-030
+    legacy_id: CY-UNHOSTED-006
+    context: Fiat deposits are converted and sent to external wallets within minutes, leaving no balance.
+    name_in_typology: Rapid cash-in then withdrawal to unhosted wallet
+    false_positive_context: Customers who dislike custodial risk.
     controls:
-    - id: CY-UNHOSTED-006-C1
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-UNHOSTED-006-C2
-      name: Risk-based limits and cooling-off periods
-      type: preventive
-      description: Cap transaction size and frequency for new or higher-risk users and delay release of
-        funds for added review.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-UNHOSTED-006-C3
-      name: Blockchain analytics and wallet attribution
-      type: detective
-      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
-        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
-      implementation: technology
-      effectiveness: high
-  - id: CY-UNHOSTED-007
-    name: Customer refuses or cannot support wallet ownership verification
-    description: Refusal to sign a message, microtransaction or provide proof of control when requested.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - kyc_review
-    - customer_behaviour
-    data_sources:
-    - rfi_responses
-    false_positive_notes: Technical difficulty.
+    - CTL-037
+    - CTL-072
+    - CTL-145
+  - ref: IND-BEH-053
+    legacy_id: CY-UNHOSTED-007
+    context: Refusal to sign a message, microtransaction or provide proof of control when requested.
+    false_positive_context: Technical difficulty.
     controls:
-    - id: CY-UNHOSTED-007-C1
-      name: Travel rule data exchange and counterparty checks
-      type: preventive
-      description: Collect and transmit originator and beneficiary information with transfers, and block
-        or hold transfers where counterparty data is missing or unreliable.
-      implementation: technology
-      effectiveness: medium
-    - id: CY-UNHOSTED-007-C2
-      name: Enhanced due diligence
-      type: preventive
-      description: Collect additional information on activity purpose, expected volumes and ownership
-        before approval or continued service, with senior sign-off.
-      implementation: process
-      effectiveness: medium
-    - id: CY-UNHOSTED-007-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-UNHOSTED-008
-    name: Use of non-compliant jurisdictions' P2P channels
-    description: Trades routed through P2P markets in jurisdictions lacking VASP supervision.
-    category: geographic
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - ip_logs
-    - p2p_records
-    false_positive_notes: Residents in those places.
+    - CTL-146
+    - CTL-023
+    - CTL-093
+  - ref: IND-GEO-018
+    legacy_id: CY-UNHOSTED-008
+    context: Trades routed through P2P markets in jurisdictions lacking VASP supervision.
+    name_in_typology: Use of non-compliant jurisdictions' P2P channels
+    false_positive_context: Residents in those places.
     controls:
-    - id: CY-UNHOSTED-008-C1
-      name: IP, geolocation and anonymisation detection
-      type: detective
-      description: Detect VPN, proxy, Tor and geolocation mismatch against declared residence and sanctioned
-        or high-risk jurisdictions.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-UNHOSTED-008-C2
-      name: Counterparty provider due diligence
-      type: preventive
-      description: Assess licensing, controls and reputation of counterpart VASPs, PSPs and platforms
-        before enabling flows, and review periodically.
-      implementation: process
-      effectiveness: medium
-    - id: CY-UNHOSTED-008-C3
-      name: Enhanced due diligence
-      type: preventive
-      description: Collect additional information on activity purpose, expected volumes and ownership
-        before approval or continued service, with senior sign-off.
-      implementation: process
-      effectiveness: medium
-  - id: CY-UNHOSTED-009
-    name: Transfers just under reporting or travel-rule thresholds
-    description: Multiple transfers sized to remain beneath thresholds that trigger data collection or
-      review.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transfer_records
-    false_positive_notes: Pricing tiers or budget limits.
+    - CTL-092
+    - CTL-149
+    - CTL-023
+  - ref: IND-TXN-008
+    legacy_id: CY-UNHOSTED-009
+    context: Multiple transfers sized to remain beneath thresholds that trigger data collection or review.
+    name_in_typology: Transfers just under reporting or travel-rule thresholds
+    false_positive_context: Pricing tiers or budget limits.
     controls:
-    - id: CY-UNHOSTED-009-C1
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-UNHOSTED-009-C2
-      name: Travel rule data exchange and counterparty checks
-      type: preventive
-      description: Collect and transmit originator and beneficiary information with transfers, and block
-        or hold transfers where counterparty data is missing or unreliable.
-      implementation: technology
-      effectiveness: medium
-    - id: CY-UNHOSTED-009-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-UNHOSTED-010
-    name: Transacting via escrow-less informal chat groups
-    description: Customer explanations indicate trades arranged through messaging apps rather than regulated
+    - CTL-037
+    - CTL-146
+    - CTL-093
+  - ref: IND-BEH-054
+    legacy_id: CY-UNHOSTED-010
+    context: Customer explanations indicate trades arranged through messaging apps rather than regulated
       venues, with irregular settlement.
-    category: behavioural
-    severity: low
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - rfi_responses
-    false_positive_notes: Common in some communities.
+    false_positive_context: Common in some communities.
     controls:
-    - id: CY-UNHOSTED-010-C1
-      name: Enhanced due diligence
-      type: preventive
-      description: Collect additional information on activity purpose, expected volumes and ownership
-        before approval or continued service, with senior sign-off.
-      implementation: process
-      effectiveness: medium
-    - id: CY-UNHOSTED-010-C2
-      name: Typology-focused staff training
-      type: preventive
-      description: Training for front-line, onboarding and investigation staff on current red flags and
-        escalation routes.
-      implementation: training
-      effectiveness: low
-    - id: CY-UNHOSTED-010-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
+    - CTL-023
+    - CTL-171
+    - CTL-093

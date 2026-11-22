@@ -1,0 +1,55 @@
+controls:
+- id: CTL-062
+  name: Cash acceptance and settlement limits
+  family: cash_controls
+  type: preventive
+  implementation: policy
+  effectiveness: medium
+  description: Prohibits or caps cash for purchases, loans, donations and settlement above a set value,
+    requiring documented non-cash methods and threshold reporting for dealers. It removes a low-traceability
+    payment route.
+  also_known_as:
+  - Cash purchase limits
+  - Dealer reporting
+  - Cash refusal policy
+  - Cash limit policy
+  - Cash acceptance limit
+  - Cash donation limits
+  - Cash threshold restriction
+  - Payment method thresholds
+- id: CTL-063
+  name: Cash exchange, declaration and courier checks
+  family: cash_controls
+  type: detective
+  implementation: process
+  effectiveness: medium
+  description: Collects identification for cash exchange, cross-checks cross-border cash declarations,
+    screens freight, mail and cash-in-transit use and applies courier intelligence. It addresses bulk
+    cash movement across borders.
+  also_known_as:
+  - Declaration and detection programme
+  - Travel-linked deposit alert
+  - Foreign cash threshold rule
+  - Exchange customer ID
+  - Freight and mail screening
+  - Courier profile intelligence
+  - Cash courier checks
+  - Cross-border cash declaration checks
+- id: CTL-064
+  name: Cash deposit profiling and peer benchmarking
+  family: cash_controls
+  type: detective
+  implementation: model
+  effectiveness: medium
+  description: Compares cash deposits and withdrawals with expected activity, sector and location peers
+    and declared turnover, alerting on outliers. It helps find cash that is inconsistent with the stated
+    business.
+  also_known_as:
+  - Cash withdrawal profiling
+  - Peer-benchmarked cash deposit monitoring
+  - Cash payment pattern review
+  - CIT use reasonableness
+  - Cash volume benchmark
+  - Peer benchmarking model
+  - Sector cash benchmarking
+  - Cash profile baselining

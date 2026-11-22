@@ -11,318 +11,98 @@ typology:
   - UK Government Counter Fraud Function, publications on public sector fraud (general)
   - ACFE, Report to the Nations (published biennially)
   indicators:
-  - id: FR-PROC-001
-    name: Tenders show suspiciously similar pricing or documents
-    description: Bids contain shared errors, formatting or pricing relationships.
-    category: document
-    severity: high
-    detection_type:
-    - document_review
-    - investigator_judgement
-    data_sources:
-    - tender_documents
-    false_positive_notes: Industry standard templates.
+  - ref: IND-DOC-035
+    legacy_id: FR-PROC-001
+    context: Bids contain shared errors, formatting or pricing relationships.
+    false_positive_context: Industry standard templates.
     controls:
-    - id: FR-PROC-001-C1
-      name: Procurement red-flag analytics
-      type: detective
-      description: Tests bidding and award data for rotation, price clustering, splitting and conflicts
-        of interest.
-      implementation: rule
-      effectiveness: medium
-    - id: FR-PROC-001-C2
-      name: Data-analytics audit and exception testing
-      type: detective
-      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
-        ghost records and outliers.
-      implementation: process
-      effectiveness: medium
-    - id: FR-PROC-001-C3
-      name: Claims analytics and link analysis
-      type: detective
-      description: Scores claims and links parties, providers and addresses to uncover organised or repeat
-        fraud.
-      implementation: model
-      effectiveness: medium
+    - CTL-059
+    - CTL-175
+    - CTL-085
     references:
     - OECD, guidelines for fighting bid rigging in public procurement (general)
-  - id: FR-PROC-002
-    name: Rotation of winning bidders
-    description: Contracts win in turn across a small group.
-    category: counterparty
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - award_data
-    false_positive_notes: Small specialist market.
+  - ref: IND-CPT-027
+    legacy_id: FR-PROC-002
+    context: Contracts win in turn across a small group.
+    false_positive_context: Small specialist market.
     controls:
-    - id: FR-PROC-002-C1
-      name: Procurement red-flag analytics
-      type: detective
-      description: Tests bidding and award data for rotation, price clustering, splitting and conflicts
-        of interest.
-      implementation: rule
-      effectiveness: medium
-    - id: FR-PROC-002-C2
-      name: Data-analytics audit and exception testing
-      type: detective
-      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
-        ghost records and outliers.
-      implementation: process
-      effectiveness: medium
-    - id: FR-PROC-002-C3
-      name: Consortium and shared fraud data
-      type: detective
-      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
-        sharing to catch known bad actors early.
-      implementation: technology
-      effectiveness: high
+    - CTL-059
+    - CTL-175
+    - CTL-083
     references:
     - OECD, guidelines for fighting bid rigging in public procurement (general)
-  - id: FR-PROC-003
-    name: Contract splitting to avoid thresholds
-    description: Series of awards just below tender limits.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - purchasing_data
-    false_positive_notes: Genuine phased work.
+  - ref: IND-TXN-009
+    legacy_id: FR-PROC-003
+    context: Series of awards just below tender limits.
+    name_in_typology: Contract splitting to avoid thresholds
+    false_positive_context: Genuine phased work.
     controls:
-    - id: FR-PROC-003-C1
-      name: Procurement red-flag analytics
-      type: detective
-      description: Tests bidding and award data for rotation, price clustering, splitting and conflicts
-        of interest.
-      implementation: rule
-      effectiveness: medium
-    - id: FR-PROC-003-C2
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules on count, value, geography and timing alert analysts to bursts or structured
-        activity.
-      implementation: rule
-      effectiveness: medium
-    - id: FR-PROC-003-C3
-      name: Data-analytics audit and exception testing
-      type: detective
-      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
-        ghost records and outliers.
-      implementation: process
-      effectiveness: medium
+    - CTL-059
+    - CTL-037
+    - CTL-175
     references:
     - OECD, guidelines for fighting bid rigging in public procurement (general)
-  - id: FR-PROC-004
-    name: Supplier is shell company with no footprint
-    description: Registered address and staff do not match the supply.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    - screening
-    data_sources:
-    - company_registry
-    - vendor_master
-    false_positive_notes: New suppliers.
+  - ref: IND-OWN-006
+    legacy_id: FR-PROC-004
+    context: Registered address and staff do not match the supply.
+    name_in_typology: Supplier is shell company with no footprint
+    false_positive_context: New suppliers.
     controls:
-    - id: FR-PROC-004-C1
-      name: Registry and adverse-media checks
-      type: detective
-      description: Validates entity existence, licensing and reputation through registries and media screening.
-      implementation: technology
-      effectiveness: medium
-    - id: FR-PROC-004-C2
-      name: Vendor master-data change control
-      type: preventive
-      description: Bank-detail changes to payees require independent verification and are reviewed before
-        the next payment run.
-      implementation: process
-      effectiveness: high
-    - id: FR-PROC-004-C3
-      name: Data-analytics audit and exception testing
-      type: detective
-      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
-        ghost records and outliers.
-      implementation: process
-      effectiveness: medium
+    - CTL-032
+    - CTL-078
+    - CTL-175
     references:
     - OECD, guidelines for fighting bid rigging in public procurement (general)
-  - id: FR-PROC-005
-    name: Invoices for services or goods not received
-    description: Payment is approved without delivery evidence.
-    category: document
-    severity: high
-    detection_type:
-    - document_review
-    - transaction_monitoring
-    data_sources:
-    - invoices
-    - goods_receipts
-    false_positive_notes: Timing delays.
+  - ref: IND-DOC-036
+    legacy_id: FR-PROC-005
+    context: Payment is approved without delivery evidence.
+    false_positive_context: Timing delays.
     controls:
-    - id: FR-PROC-005-C1
-      name: Independent verification of underlying transaction
-      type: preventive
-      description: Confirms goods, services or receivables directly with the obligor or through inspection
-        before funds are advanced.
-      implementation: process
-      effectiveness: high
-    - id: FR-PROC-005-C2
-      name: Data-analytics audit and exception testing
-      type: detective
-      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
-        ghost records and outliers.
-      implementation: process
-      effectiveness: medium
-    - id: FR-PROC-005-C3
-      name: Segregation of duties and dual authorisation
-      type: preventive
-      description: No single person can create, approve and release; sensitive changes need an independent
-        second approver.
-      implementation: policy
-      effectiveness: high
+    - CTL-086
+    - CTL-175
+    - CTL-077
     references:
     - OECD, guidelines for fighting bid rigging in public procurement (general)
-  - id: FR-PROC-006
-    name: Official has undisclosed relationship with supplier
-    description: Conflict of interest appears from registry or declarations.
-    category: counterparty
-    severity: high
-    detection_type:
-    - investigator_judgement
-    - screening
-    data_sources:
-    - declarations
-    - registry_data
-    false_positive_notes: Common surnames.
+  - ref: IND-CPT-028
+    legacy_id: FR-PROC-006
+    context: Conflict of interest appears from registry or declarations.
+    false_positive_context: Common surnames.
     controls:
-    - id: FR-PROC-006-C1
-      name: Whistleblowing and conduct monitoring
-      type: detective
-      description: Confidential reporting channel and conduct analytics surface insider misconduct and
-        collusion.
-      implementation: process
-      effectiveness: medium
-    - id: FR-PROC-006-C2
-      name: Data-analytics audit and exception testing
-      type: detective
-      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
-        ghost records and outliers.
-      implementation: process
-      effectiveness: medium
-    - id: FR-PROC-006-C3
-      name: Procurement red-flag analytics
-      type: detective
-      description: Tests bidding and award data for rotation, price clustering, splitting and conflicts
-        of interest.
-      implementation: rule
-      effectiveness: medium
+    - CTL-163
+    - CTL-175
+    - CTL-059
     references:
     - OECD, guidelines for fighting bid rigging in public procurement (general)
-  - id: FR-PROC-007
-    name: Benefit claimants share bank accounts or addresses
-    description: Many claims route to same accounts or addresses.
-    category: customer
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - claim_data
-    - account_data
-    false_positive_notes: Households.
+  - ref: IND-CUS-007
+    legacy_id: FR-PROC-007
+    context: Many claims route to same accounts or addresses.
+    name_in_typology: Benefit claimants share bank accounts or addresses
+    severity_in_typology: high
+    false_positive_context: Households.
     controls:
-    - id: FR-PROC-007-C1
-      name: Entity resolution and link analysis
-      type: detective
-      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
-        identities.
-      implementation: model
-      effectiveness: high
-    - id: FR-PROC-007-C2
-      name: Consortium and shared fraud data
-      type: detective
-      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
-        sharing to catch known bad actors early.
-      implementation: technology
-      effectiveness: high
-    - id: FR-PROC-007-C3
-      name: Refund destination and filing validation
-      type: preventive
-      description: Checks refund or benefit destination accounts against claimant identity and prior history
-        before release.
-      implementation: rule
-      effectiveness: medium
+    - CTL-049
+    - CTL-083
+    - CTL-089
     references:
     - OECD, guidelines for fighting bid rigging in public procurement (general)
-  - id: FR-PROC-008
-    name: Claim details contradict income or residency evidence
-    description: Declared circumstances conflict with data.
-    category: document
-    severity: medium
-    detection_type:
-    - kyc_review
-    - document_review
-    data_sources:
-    - claim_data
-    - external_data
-    false_positive_notes: Late updates.
+  - ref: IND-DOC-037
+    legacy_id: FR-PROC-008
+    context: Declared circumstances conflict with data.
+    name_in_typology: Claim details contradict income or residency evidence
+    false_positive_context: Late updates.
     controls:
-    - id: FR-PROC-008-C1
-      name: Income, affordability and bureau verification
-      type: preventive
-      description: Verifies stated income, employment and obligations independently and cross-checks bureau
-        and application data.
-      implementation: process
-      effectiveness: high
-    - id: FR-PROC-008-C2
-      name: Underwriting verification and data matching
-      type: preventive
-      description: Validates application facts against third-party data and prior-claim or application
-        history.
-      implementation: process
-      effectiveness: medium
-    - id: FR-PROC-008-C3
-      name: Consortium and shared fraud data
-      type: detective
-      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
-        sharing to catch known bad actors early.
-      implementation: technology
-      effectiveness: high
+    - CTL-084
+    - CTL-083
     references:
     - OECD, guidelines for fighting bid rigging in public procurement (general)
-  - id: FR-PROC-009
-    name: Spike in claims via one agent or channel
-    description: Unusual volume tied to intermediary.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - claim_data
-    false_positive_notes: Outreach campaigns.
+  - ref: IND-PRD-005
+    legacy_id: FR-PROC-009
+    context: Unusual volume tied to intermediary.
+    name_in_typology: Spike in claims via one agent or channel
+    false_positive_context: Outreach campaigns.
     controls:
-    - id: FR-PROC-009-C1
-      name: Claims analytics and link analysis
-      type: detective
-      description: Scores claims and links parties, providers and addresses to uncover organised or repeat
-        fraud.
-      implementation: model
-      effectiveness: medium
-    - id: FR-PROC-009-C2
-      name: Data-analytics audit and exception testing
-      type: detective
-      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
-        ghost records and outliers.
-      implementation: process
-      effectiveness: medium
-    - id: FR-PROC-009-C3
-      name: Case management and fraud MI governance
-      type: governance
-      description: Outcomes, losses and false positives are tracked and fed back into rule tuning and
-        risk appetite.
-      implementation: process
-      effectiveness: medium
+    - CTL-085
+    - CTL-175
+    - CTL-094
     references:
     - OECD, guidelines for fighting bid rigging in public procurement (general)

@@ -1,0 +1,88 @@
+controls:
+- id: CTL-023
+  name: Risk-based enhanced due diligence
+  family: enhanced_due_diligence
+  type: preventive
+  implementation: process
+  effectiveness: high
+  description: Applies additional information gathering, corroboration, monitoring and senior review to
+    relationships or transactions assessed as higher risk, covering purpose, expected activity, ownership
+    and funds. The depth is proportionate to the risk drivers identified.
+  also_known_as:
+  - Enhanced due diligence
+  - Enhanced due diligence by tier
+  - Cross-border customer EDD
+  - Outbound transfer EDD
+  - Risk-based EDD
+  - Portfolio EDD
+  - Enhanced monitoring
+  - Enhanced due diligence and activity review
+- id: CTL-024
+  name: Sector-tailored enhanced due diligence
+  family: enhanced_due_diligence
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Applies targeted enhanced checks to customer types or sectors known to be vulnerable to
+    misuse, such as cash-intensive trades, money service businesses, high-value dealers, professional
+    services, charities or waste handlers. Questions and evidence are tailored to how the sector normally
+    operates.
+  also_known_as:
+  - NPO and humanitarian due diligence
+  - Box holder due diligence
+  - Developer EDD
+  - Enhanced due diligence on waste clients
+  - Dealer controls
+  - Auction CDD
+  - MSB customer risk controls
+  - Professional sector EDD
+- id: CTL-025
+  name: Senior management approval and risk acceptance
+  family: enhanced_due_diligence
+  type: governance
+  implementation: policy
+  effectiveness: medium
+  description: Requires named senior management or a committee to approve onboarding, continuation or
+    waivers for higher-risk relationships, with documented mitigations and periodic re-approval. It adds
+    accountability and an independent challenge to risk acceptance.
+  also_known_as:
+  - Senior management PEP approval
+  - Risk acceptance committee review
+  - No-exceptions escalation path
+  - Senior approval and annual review
+  - Senior approval
+  - Senior management approval
+  - Senior sign-off
+  - Track-record threshold
+- id: CTL-026
+  name: PEP enhanced measures
+  family: enhanced_due_diligence
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Applies corroborated source-of-wealth checks, senior sign-off, enhanced monitoring and
+    sceptical review of public-sector links for politically exposed persons and their networks. It targets
+    the corruption and misappropriation risk specific to these customers.
+  also_known_as:
+  - Property purchase EDD trigger
+  - Senior management approval and enhanced due diligence
+  - Self-declaration and verification
+  - Enhanced review for state-connected counterparties
+- id: CTL-027
+  name: High-risk jurisdiction enhanced measures
+  family: enhanced_due_diligence
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Applies enhanced review, approval, limits and conditions to relationships or flows that
+    involve jurisdictions rated higher risk for secrecy, corruption, conflict or weak controls. Triggers
+    include nationality, residence, counterparties and payment routing.
+  also_known_as:
+  - Automated country-list screening
+  - Mandatory EDD and approval
+  - Risk-based EDD triggers
+  - Rationale documentation for booking location
+  - Enhanced transfer review
+  - Jurisdiction risk screening
+  - Country risk EDD
+  - Jurisdiction risk rating

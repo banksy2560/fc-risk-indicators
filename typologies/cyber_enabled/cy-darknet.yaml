@@ -20,346 +20,92 @@ typology:
   - FinCEN, Advisory on Illicit Activity Involving Convertible Virtual Currency (FIN-2019-A003, 2019)
   - Europol, Internet Organised Crime Threat Assessment (IOCTA), darknet chapters
   indicators:
-  - id: CY-DARKNET-001
-    name: Direct exposure to known darknet market addresses
-    description: Customer deposits or withdrawals have direct or near-direct exposure to addresses attributed
+  - ref: IND-TYP-004
+    legacy_id: CY-DARKNET-001
+    context: Customer deposits or withdrawals have direct or near-direct exposure to addresses attributed
       to darknet markets or their escrow wallets.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - external_intel
-    data_sources:
-    - blockchain_analytics
-    false_positive_notes: Exposure through very diluted chains; researchers and journalists.
+    false_positive_context: Exposure through very diluted chains; researchers and journalists.
     controls:
-    - id: CY-DARKNET-001-C1
-      name: Blockchain analytics and wallet attribution
-      type: detective
-      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
-        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
-      implementation: technology
-      effectiveness: high
-    - id: CY-DARKNET-001-C2
-      name: Sanctions and watchlist screening including wallet addresses
-      type: preventive
-      description: Screen customers, counterparties and wallet addresses against sanctions lists and designated-address
-        data in real time.
-      implementation: technology
-      effectiveness: high
-    - id: CY-DARKNET-001-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-DARKNET-002
-    name: Frequent small purchases to marketplace-linked addresses
-    description: Repeated low-value withdrawals to wallets clustering with market deposit infrastructure,
+    - CTL-145
+    - CTL-029
+    - CTL-093
+  - ref: IND-TXN-046
+    legacy_id: CY-DARKNET-002
+    context: Repeated low-value withdrawals to wallets clustering with market deposit infrastructure,
       consistent with buyer activity.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - blockchain_analytics
-    - withdrawal_addresses
-    false_positive_notes: False cluster attribution.
+    false_positive_context: False cluster attribution.
     controls:
-    - id: CY-DARKNET-002-C1
-      name: Blockchain analytics and wallet attribution
-      type: detective
-      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
-        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
-      implementation: technology
-      effectiveness: high
-    - id: CY-DARKNET-002-C2
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-DARKNET-002-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-DARKNET-003
-    name: Vendor-style inflows from many unrelated senders
-    description: Account receives numerous small transfers from unconnected wallets then consolidates
-      and sends onward in large amounts.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - blockchain_analytics
-    - ledger_data
-    false_positive_notes: Merchants, creators and fundraisers accepting crypto.
+    - CTL-145
+    - CTL-037
+    - CTL-093
+  - ref: IND-TXN-004
+    legacy_id: CY-DARKNET-003
+    context: Account receives numerous small transfers from unconnected wallets then consolidates and
+      sends onward in large amounts.
+    name_in_typology: Vendor-style inflows from many unrelated senders
+    false_positive_context: Merchants, creators and fundraisers accepting crypto.
     controls:
-    - id: CY-DARKNET-003-C1
-      name: Blockchain analytics and wallet attribution
-      type: detective
-      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
-        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
-      implementation: technology
-      effectiveness: high
-    - id: CY-DARKNET-003-C2
-      name: Graph and network analytics
-      type: detective
-      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
-        and fan-in/fan-out structures.
-      implementation: model
-      effectiveness: high
-    - id: CY-DARKNET-003-C3
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-  - id: CY-DARKNET-004
-    name: Use of privacy tools between market exposure and exchange deposit
-    description: Funds from market clusters pass through mixers or privacy coins before arriving at the
-      platform.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - external_intel
-    data_sources:
-    - blockchain_analytics
-    false_positive_notes: Genuine privacy preference.
+    - CTL-145
+    - CTL-048
+    - CTL-037
+  - ref: IND-TYP-005
+    legacy_id: CY-DARKNET-004
+    context: Funds from market clusters pass through mixers or privacy coins before arriving at the platform.
+    name_in_typology: Use of privacy tools between market exposure and exchange deposit
+    false_positive_context: Genuine privacy preference.
     controls:
-    - id: CY-DARKNET-004-C1
-      name: Blockchain analytics and wallet attribution
-      type: detective
-      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
-        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
-      implementation: technology
-      effectiveness: high
-    - id: CY-DARKNET-004-C2
-      name: Sanctions and watchlist screening including wallet addresses
-      type: preventive
-      description: Screen customers, counterparties and wallet addresses against sanctions lists and designated-address
-        data in real time.
-      implementation: technology
-      effectiveness: high
-    - id: CY-DARKNET-004-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-DARKNET-005
-    name: Operational-security behaviours at onboarding and login
-    description: Use of Tor, disposable email, burner phones and rotated devices alongside high-volume
-      trading.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - customer_behaviour
-    data_sources:
-    - ip_logs
-    - device_data
-    - kyc_data
-    false_positive_notes: Privacy-minded customers.
+    - CTL-145
+    - CTL-029
+    - CTL-093
+  - ref: IND-BEH-042
+    legacy_id: CY-DARKNET-005
+    context: Use of Tor, disposable email, burner phones and rotated devices alongside high-volume trading.
+    false_positive_context: Privacy-minded customers.
     controls:
-    - id: CY-DARKNET-005-C1
-      name: Device intelligence and behavioural biometrics
-      type: detective
-      description: Fingerprint devices and analyse session behaviour (typing, navigation, remote-access
-        tools, emulators) to spot shared, scripted or hijacked sessions.
-      implementation: technology
-      effectiveness: high
-    - id: CY-DARKNET-005-C2
-      name: IP, geolocation and anonymisation detection
-      type: detective
-      description: Detect VPN, proxy, Tor and geolocation mismatch against declared residence and sanctioned
-        or high-risk jurisdictions.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-DARKNET-005-C3
-      name: Onboarding data consistency rules
-      type: preventive
-      description: Rules that compare submitted identifiers (email, phone, address, device, bank account)
-        against existing records and known-bad data.
-      implementation: rule
-      effectiveness: medium
-  - id: CY-DARKNET-006
-    name: Cash-out through multiple accounts of same user group
-    description: Proceeds are routed to several accounts sharing devices or beneficiaries and cashed out
-      in fiat by different parties.
-    category: counterparty
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - device_data
-    - bank_accounts
-    false_positive_notes: Family members sharing devices.
+    - CTL-091
+    - CTL-092
+    - CTL-004
+  - ref: IND-CPT-008
+    legacy_id: CY-DARKNET-006
+    context: Proceeds are routed to several accounts sharing devices or beneficiaries and cashed out in
+      fiat by different parties.
+    false_positive_context: Family members sharing devices.
     controls:
-    - id: CY-DARKNET-006-C1
-      name: Graph and network analytics
-      type: detective
-      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
-        and fan-in/fan-out structures.
-      implementation: model
-      effectiveness: high
-    - id: CY-DARKNET-006-C2
-      name: Digital identity and entity resolution
-      type: detective
-      description: Resolve multiple accounts to one underlying person or entity using identity, device
-        and behavioural linkage.
-      implementation: model
-      effectiveness: medium
-    - id: CY-DARKNET-006-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-DARKNET-007
-    name: Income level unsupported by declared profile
-    description: Large virtual asset turnover for a customer who declared minimal income or no source
-      of wealth.
-    category: customer
-    severity: medium
-    detection_type:
-    - kyc_review
-    - transaction_monitoring
-    data_sources:
-    - customer_profile
-    - ledger_data
-    false_positive_notes: Gifts, inheritances and capital gains.
+    - CTL-048
+    - CTL-004
+    - CTL-093
+  - ref: IND-CUS-002
+    legacy_id: CY-DARKNET-007
+    context: Large virtual asset turnover for a customer who declared minimal income or no source of wealth.
+    name_in_typology: Income level unsupported by declared profile
+    false_positive_context: Gifts, inheritances and capital gains.
     controls:
-    - id: CY-DARKNET-007-C1
-      name: Source of funds and wealth verification
-      type: preventive
-      description: Obtain and corroborate evidence of where funds originate when activity exceeds thresholds
-        or profile.
-      implementation: process
-      effectiveness: medium
-    - id: CY-DARKNET-007-C2
-      name: Enhanced due diligence
-      type: preventive
-      description: Collect additional information on activity purpose, expected volumes and ownership
-        before approval or continued service, with senior sign-off.
-      implementation: process
-      effectiveness: medium
-    - id: CY-DARKNET-007-C3
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-  - id: CY-DARKNET-008
-    name: Payments for postage, packaging or related services alongside crypto activity
-    description: Card and bank transactions to shipping supplies and anonymous mailbox services coincide
-      with virtual asset sales or purchases.
-    category: typology_specific
-    severity: low
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - bank_transactions
-    - card_data
-    false_positive_notes: Online sellers and small businesses.
+    - CTL-012
+    - CTL-023
+    - CTL-037
+  - ref: IND-TYP-006
+    legacy_id: CY-DARKNET-008
+    context: Card and bank transactions to shipping supplies and anonymous mailbox services coincide with
+      virtual asset sales or purchases.
+    false_positive_context: Online sellers and small businesses.
     controls:
-    - id: CY-DARKNET-008-C1
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-    - id: CY-DARKNET-008-C2
-      name: Typology-focused staff training
-      type: preventive
-      description: Training for front-line, onboarding and investigation staff on current red flags and
-        escalation routes.
-      implementation: training
-      effectiveness: low
-    - id: CY-DARKNET-008-C3
-      name: External intelligence and consortium feeds
-      type: detective
-      description: Ingest law-enforcement, industry and commercial threat intelligence on indicators,
-        mule accounts and scam infrastructure.
-      implementation: technology
-      effectiveness: medium
-  - id: CY-DARKNET-009
-    name: Rapid withdrawal to personal cash via peer-to-peer sellers
-    description: Fiat-conversion occurs through informal P2P sellers paid by cash deposit or gift cards
-      soon after receiving crypto.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - p2p_records
-    - bank_transactions
-    false_positive_notes: Legitimate P2P use in underbanked regions.
+    - CTL-093
+    - CTL-171
+    - CTL-083
+  - ref: IND-PRD-022
+    legacy_id: CY-DARKNET-009
+    context: Fiat-conversion occurs through informal P2P sellers paid by cash deposit or gift cards soon
+      after receiving crypto.
+    false_positive_context: Legitimate P2P use in underbanked regions.
     controls:
-    - id: CY-DARKNET-009-C1
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-DARKNET-009-C2
-      name: Blockchain analytics and wallet attribution
-      type: detective
-      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
-        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
-      implementation: technology
-      effectiveness: high
-    - id: CY-DARKNET-009-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-DARKNET-010
-    name: Law-enforcement or media notice naming customer or wallet
-    description: Third-party intelligence links the customer or addresses to marketplace activity.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - external_intel
-    data_sources:
-    - adverse_media
-    - law_enforcement_requests
-    false_positive_notes: Reporting errors or name matches.
+    - CTL-037
+    - CTL-145
+    - CTL-093
+  - ref: IND-TYP-007
+    legacy_id: CY-DARKNET-010
+    context: Third-party intelligence links the customer or addresses to marketplace activity.
+    false_positive_context: Reporting errors or name matches.
     controls:
-    - id: CY-DARKNET-010-C1
-      name: External intelligence and consortium feeds
-      type: detective
-      description: Ingest law-enforcement, industry and commercial threat intelligence on indicators,
-        mule accounts and scam infrastructure.
-      implementation: technology
-      effectiveness: medium
-    - id: CY-DARKNET-010-C2
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-    - id: CY-DARKNET-010-C3
-      name: Account restriction and fund holds
-      type: corrective
-      description: Ability to restrict, hold or recall funds rapidly pending review, with defined legal
-        and operational triggers.
-      implementation: process
-      effectiveness: medium
+    - CTL-083
+    - CTL-093
+    - CTL-103

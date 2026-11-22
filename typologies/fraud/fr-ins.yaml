@@ -12,318 +12,95 @@ typology:
   - Association of British Insurers, annual detected fraud statistics (general)
   - ACFE, Report to the Nations (published biennially)
   indicators:
-  - id: FR-INS-001
-    name: Claim shortly after policy inception or increase in cover
-    description: Loss occurs soon after purchase or upgrade of cover.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - policy_data
-    - claims_data
-    false_positive_notes: Genuine early loss.
+  - ref: IND-TYP-025
+    legacy_id: FR-INS-001
+    context: Loss occurs soon after purchase or upgrade of cover.
+    false_positive_context: Genuine early loss.
     controls:
-    - id: FR-INS-001-C1
-      name: Underwriting verification and data matching
-      type: preventive
-      description: Validates application facts against third-party data and prior-claim or application
-        history.
-      implementation: process
-      effectiveness: medium
-    - id: FR-INS-001-C2
-      name: Claims analytics and link analysis
-      type: detective
-      description: Scores claims and links parties, providers and addresses to uncover organised or repeat
-        fraud.
-      implementation: model
-      effectiveness: medium
-    - id: FR-INS-001-C3
-      name: Consortium and shared fraud data
-      type: detective
-      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
-        sharing to catch known bad actors early.
-      implementation: technology
-      effectiveness: high
+    - CTL-084
+    - CTL-085
+    - CTL-083
     references:
     - Insurance Fraud Bureau (UK), published guidance on fraud trends (general)
-  - id: FR-INS-002
-    name: Repeated claims across insurers by linked parties
-    description: Same people, vehicles or addresses appear in multiple claims.
-    category: counterparty
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - claims_data
-    - industry_data
-    false_positive_notes: Coincidental similarity.
+  - ref: IND-CPT-023
+    legacy_id: FR-INS-002
+    context: Same people, vehicles or addresses appear in multiple claims.
+    false_positive_context: Coincidental similarity.
     controls:
-    - id: FR-INS-002-C1
-      name: Consortium and shared fraud data
-      type: detective
-      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
-        sharing to catch known bad actors early.
-      implementation: technology
-      effectiveness: high
-    - id: FR-INS-002-C2
-      name: Claims analytics and link analysis
-      type: detective
-      description: Scores claims and links parties, providers and addresses to uncover organised or repeat
-        fraud.
-      implementation: model
-      effectiveness: medium
-    - id: FR-INS-002-C3
-      name: Entity resolution and link analysis
-      type: detective
-      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
-        identities.
-      implementation: model
-      effectiveness: high
+    - CTL-083
+    - CTL-085
+    - CTL-049
     references:
     - Insurance Fraud Bureau (UK), published guidance on fraud trends (general)
-  - id: FR-INS-003
-    name: Inconsistent accounts of the incident
-    description: Statements, evidence and photos do not match.
-    category: document
-    severity: high
-    detection_type:
-    - document_review
-    - investigator_judgement
-    data_sources:
-    - claim_documents
-    - interviews
-    false_positive_notes: Memory differences.
+  - ref: IND-DOC-030
+    legacy_id: FR-INS-003
+    context: Statements, evidence and photos do not match.
+    false_positive_context: Memory differences.
     controls:
-    - id: FR-INS-003-C1
-      name: Claims analytics and link analysis
-      type: detective
-      description: Scores claims and links parties, providers and addresses to uncover organised or repeat
-        fraud.
-      implementation: model
-      effectiveness: medium
-    - id: FR-INS-003-C2
-      name: Frontline training and conversation scripts
-      type: preventive
-      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
-        and escalate with a defined script and authority to pause.
-      implementation: training
-      effectiveness: medium
-    - id: FR-INS-003-C3
-      name: Document forensics and source verification
-      type: detective
-      description: Analyses supporting documents for tampering, template reuse and metadata anomalies,
-        and confirms with the issuer.
-      implementation: technology
-      effectiveness: medium
+    - CTL-085
+    - CTL-170
+    - CTL-002
     references:
     - Insurance Fraud Bureau (UK), published guidance on fraud trends (general)
-  - id: FR-INS-004
-    name: Repair or medical invoices inflated or from linked providers
-    description: Providers submit pattern-bearing invoices with unusual pricing.
-    category: counterparty
-    severity: medium
-    detection_type:
-    - document_review
-    - transaction_monitoring
-    data_sources:
-    - invoices
-    false_positive_notes: Legitimate specialist providers.
+  - ref: IND-CPT-024
+    legacy_id: FR-INS-004
+    context: Providers submit pattern-bearing invoices with unusual pricing.
+    false_positive_context: Legitimate specialist providers.
     controls:
-    - id: FR-INS-004-C1
-      name: Claims analytics and link analysis
-      type: detective
-      description: Scores claims and links parties, providers and addresses to uncover organised or repeat
-        fraud.
-      implementation: model
-      effectiveness: medium
-    - id: FR-INS-004-C2
-      name: Data-analytics audit and exception testing
-      type: detective
-      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
-        ghost records and outliers.
-      implementation: process
-      effectiveness: medium
-    - id: FR-INS-004-C3
-      name: Entity resolution and link analysis
-      type: detective
-      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
-        identities.
-      implementation: model
-      effectiveness: high
+    - CTL-085
+    - CTL-175
+    - CTL-049
     references:
     - Insurance Fraud Bureau (UK), published guidance on fraud trends (general)
-  - id: FR-INS-005
-    name: Pressure for fast settlement or cash payout
-    description: Claimant urges payment and resists documentation.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - customer_behaviour
-    data_sources:
-    - claim_notes
-    false_positive_notes: Genuine hardship.
+  - ref: IND-BEH-071
+    legacy_id: FR-INS-005
+    context: Claimant urges payment and resists documentation.
+    false_positive_context: Genuine hardship.
     controls:
-    - id: FR-INS-005-C1
-      name: Frontline training and conversation scripts
-      type: preventive
-      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
-        and escalate with a defined script and authority to pause.
-      implementation: training
-      effectiveness: medium
-    - id: FR-INS-005-C2
-      name: Claims analytics and link analysis
-      type: detective
-      description: Scores claims and links parties, providers and addresses to uncover organised or repeat
-        fraud.
-      implementation: model
-      effectiveness: medium
-    - id: FR-INS-005-C3
-      name: Out-of-band callback verification
-      type: preventive
-      description: Instructions or detail changes are verified by calling a number held on file, never
-        one supplied in the request.
-      implementation: process
-      effectiveness: high
+    - CTL-170
+    - CTL-085
+    - CTL-070
     references:
     - Insurance Fraud Bureau (UK), published guidance on fraud trends (general)
-  - id: FR-INS-006
-    name: 'Ghost broking: fake policy sold to customer'
-    description: 'Victim-side: customer pays for cover that does not exist or is under false details.'
-    category: product_channel
-    severity: high
-    detection_type:
-    - external_intel
-    - document_review
-    data_sources:
-    - policy_checks
-    - customer_reports
-    false_positive_notes: Cheap but genuine policy.
+  - ref: IND-PRD-036
+    legacy_id: FR-INS-006
+    context: 'Victim-side: customer pays for cover that does not exist or is under false details.'
+    false_positive_context: Cheap but genuine policy.
     controls:
-    - id: FR-INS-006-C1
-      name: Customer education and awareness
-      type: preventive
-      description: Targeted messaging helps customers recognise the scam script and know how to verify.
-      implementation: training
-      effectiveness: low
-    - id: FR-INS-006-C2
-      name: Threat intelligence and takedown
-      type: detective
-      description: Monitors for spoofed domains, fake apps, adverts and numbers and arranges their takedown
-        and customer alerts.
-      implementation: technology
-      effectiveness: medium
-    - id: FR-INS-006-C3
-      name: Underwriting verification and data matching
-      type: preventive
-      description: Validates application facts against third-party data and prior-claim or application
-        history.
-      implementation: process
-      effectiveness: medium
+    - CTL-074
+    - CTL-082
+    - CTL-084
     references:
     - Insurance Fraud Bureau (UK), published guidance on fraud trends (general)
-  - id: FR-INS-007
-    name: Payments from claims to unrelated third parties
-    description: Claim proceeds are redirected via mule accounts.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - payment_data
-    false_positive_notes: Assignment to repairers.
+  - ref: IND-TXN-024
+    legacy_id: FR-INS-007
+    context: Claim proceeds are redirected via mule accounts.
+    name_in_typology: Payments from claims to unrelated third parties
+    severity_in_typology: medium
+    false_positive_context: Assignment to repairers.
     controls:
-    - id: FR-INS-007-C1
-      name: Mule account detection model
-      type: detective
-      description: Detects inbound-funds-then-rapid-outflow and other mule patterns on receiving accounts,
-        enabling holds and exits.
-      implementation: model
-      effectiveness: high
-    - id: FR-INS-007-C2
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules on count, value, geography and timing alert analysts to bursts or structured
-        activity.
-      implementation: rule
-      effectiveness: medium
-    - id: FR-INS-007-C3
-      name: Consortium and shared fraud data
-      type: detective
-      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
-        sharing to catch known bad actors early.
-      implementation: technology
-      effectiveness: high
+    - CTL-051
+    - CTL-037
+    - CTL-083
     references:
     - Insurance Fraud Bureau (UK), published guidance on fraud trends (general)
-  - id: FR-INS-008
-    name: Staged or contrived accident indicators
-    description: Low-impact incidents with multiple occupants, witness and similar circumstances.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - investigator_judgement
-    data_sources:
-    - claims_data
-    false_positive_notes: Genuine busy-road incidents.
+  - ref: IND-TYP-026
+    legacy_id: FR-INS-008
+    context: Low-impact incidents with multiple occupants, witness and similar circumstances.
+    false_positive_context: Genuine busy-road incidents.
     controls:
-    - id: FR-INS-008-C1
-      name: Claims analytics and link analysis
-      type: detective
-      description: Scores claims and links parties, providers and addresses to uncover organised or repeat
-        fraud.
-      implementation: model
-      effectiveness: medium
-    - id: FR-INS-008-C2
-      name: Entity resolution and link analysis
-      type: detective
-      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
-        identities.
-      implementation: model
-      effectiveness: high
-    - id: FR-INS-008-C3
-      name: Consortium and shared fraud data
-      type: detective
-      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
-        sharing to catch known bad actors early.
-      implementation: technology
-      effectiveness: high
+    - CTL-085
+    - CTL-049
+    - CTL-083
     references:
     - Insurance Fraud Bureau (UK), published guidance on fraud trends (general)
-  - id: FR-INS-009
-    name: Application misrepresentation such as hidden drivers or addresses
-    description: Details given at quote differ from actual use.
-    category: document
-    severity: medium
-    detection_type:
-    - kyc_review
-    - document_review
-    data_sources:
-    - policy_data
-    - external_data
-    false_positive_notes: Honest oversight.
+  - ref: IND-DOC-031
+    legacy_id: FR-INS-009
+    context: Details given at quote differ from actual use.
+    false_positive_context: Honest oversight.
     controls:
-    - id: FR-INS-009-C1
-      name: Underwriting verification and data matching
-      type: preventive
-      description: Validates application facts against third-party data and prior-claim or application
-        history.
-      implementation: process
-      effectiveness: medium
-    - id: FR-INS-009-C2
-      name: Consortium and shared fraud data
-      type: detective
-      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
-        sharing to catch known bad actors early.
-      implementation: technology
-      effectiveness: high
-    - id: FR-INS-009-C3
-      name: Claims analytics and link analysis
-      type: detective
-      description: Scores claims and links parties, providers and addresses to uncover organised or repeat
-        fraud.
-      implementation: model
-      effectiveness: medium
+    - CTL-084
+    - CTL-083
+    - CTL-085
     references:
     - Insurance Fraud Bureau (UK), published guidance on fraud trends (general)

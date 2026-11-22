@@ -1,0 +1,30 @@
+controls:
+- id: CTL-174
+  name: Record retention and audit trail
+  family: record_keeping_audit
+  type: governance
+  implementation: policy
+  effectiveness: medium
+  description: Maintains records of identification, transactions, decisions and exceptions for the required
+    period, with logs of deviations and a retrievable audit trail. It allows regulators and investigators
+    to reconstruct events and supports later challenge of decisions.
+  also_known_as:
+  - Recordkeeping obligations
+  - Document retention and audit
+  - Exceptions log
+- id: CTL-175
+  name: Sampling, quality assurance and analytics audit
+  family: record_keeping_audit
+  type: detective
+  implementation: process
+  effectiveness: medium
+  description: Takes periodic samples of customer files, alert decisions, relied-upon files or analytical
+    datasets and tests them for exceptions, duplicates and errors, feeding findings back to owners and
+    training. It independently confirms that controls work as designed.
+  also_known_as:
+  - Data-analytics audit and exception testing
+  - QA feedback loop
+  - Sampling review
+  - Customer file review
+  - Sample testing
+  - Spot-check sampling

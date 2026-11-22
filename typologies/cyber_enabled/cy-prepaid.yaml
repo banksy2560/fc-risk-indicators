@@ -18,334 +18,91 @@ typology:
     Services (2013)
   - FATF, Opportunities and Challenges of New Technologies for AML/CFT (2021)
   indicators:
-  - id: CY-PREPAID-001
-    name: Bulk purchase of cards by one person or entity
-    description: One buyer acquires many cards, often in cash, with a common funding source or shipping
-      address.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - card_orders
-    - payment_data
-    false_positive_notes: Corporate gifting or incentive programmes.
+  - ref: IND-TXN-033
+    legacy_id: CY-PREPAID-001
+    context: One buyer acquires many cards, often in cash, with a common funding source or shipping address.
+    name_in_typology: Bulk purchase of cards by one person or entity
+    false_positive_context: Corporate gifting or incentive programmes.
     controls:
-    - id: CY-PREPAID-001-C1
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PREPAID-001-C2
-      name: Onboarding data consistency rules
-      type: preventive
-      description: Rules that compare submitted identifiers (email, phone, address, device, bank account)
-        against existing records and known-bad data.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PREPAID-001-C3
-      name: Risk-based limits and cooling-off periods
-      type: preventive
-      description: Cap transaction size and frequency for new or higher-risk users and delay release of
-        funds for added review.
-      implementation: rule
-      effectiveness: medium
-  - id: CY-PREPAID-002
-    name: Cards funded by many unrelated third parties
-    description: Multiple unconnected payers load one card or small set of cards.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - load_records
-    - bank_transactions
-    false_positive_notes: Family contributions.
+    - CTL-037
+    - CTL-004
+    - CTL-072
+  - ref: IND-TXN-004
+    legacy_id: CY-PREPAID-002
+    context: Multiple unconnected payers load one card or small set of cards.
+    name_in_typology: Cards funded by many unrelated third parties
+    severity_in_typology: medium
+    false_positive_context: Family contributions.
     controls:
-    - id: CY-PREPAID-002-C1
-      name: Graph and network analytics
-      type: detective
-      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
-        and fan-in/fan-out structures.
-      implementation: model
-      effectiveness: high
-    - id: CY-PREPAID-002-C2
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PREPAID-002-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-PREPAID-003
-    name: Loads immediately followed by foreign ATM withdrawals
-    description: Funds are drawn down in cash overseas or in high-risk locations soon after loading.
-    category: geographic
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - card_transactions
-    - atm_logs
-    false_positive_notes: Travellers.
+    - CTL-048
+    - CTL-037
+    - CTL-093
+  - ref: IND-GEO-001
+    legacy_id: CY-PREPAID-003
+    context: Funds are drawn down in cash overseas or in high-risk locations soon after loading.
+    false_positive_context: Travellers.
     controls:
-    - id: CY-PREPAID-003-C1
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PREPAID-003-C2
-      name: IP, geolocation and anonymisation detection
-      type: detective
-      description: Detect VPN, proxy, Tor and geolocation mismatch against declared residence and sanctioned
-        or high-risk jurisdictions.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PREPAID-003-C3
-      name: Risk-based limits and cooling-off periods
-      type: preventive
-      description: Cap transaction size and frequency for new or higher-risk users and delay release of
-        funds for added review.
-      implementation: rule
-      effectiveness: medium
-  - id: CY-PREPAID-004
-    name: Repeated loads just below identification thresholds
-    description: Multiple loads sized to avoid enhanced verification.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - load_records
-    false_positive_notes: Budget-based usage.
+    - CTL-037
+    - CTL-092
+    - CTL-072
+  - ref: IND-TXN-008
+    legacy_id: CY-PREPAID-004
+    context: Multiple loads sized to avoid enhanced verification.
+    name_in_typology: Repeated loads just below identification thresholds
+    false_positive_context: Budget-based usage.
     controls:
-    - id: CY-PREPAID-004-C1
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PREPAID-004-C2
-      name: Risk-based limits and cooling-off periods
-      type: preventive
-      description: Cap transaction size and frequency for new or higher-risk users and delay release of
-        funds for added review.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PREPAID-004-C3
-      name: Onboarding data consistency rules
-      type: preventive
-      description: Rules that compare submitted identifiers (email, phone, address, device, bank account)
-        against existing records and known-bad data.
-      implementation: rule
-      effectiveness: medium
-  - id: CY-PREPAID-005
-    name: Multiple cards sharing identifiers
-    description: Different cardholders share phone, address, email or device.
-    category: customer
-    severity: medium
-    detection_type:
-    - kyc_review
-    - transaction_monitoring
-    data_sources:
-    - customer_records
-    - device_data
-    false_positive_notes: Households.
+    - CTL-037
+    - CTL-072
+    - CTL-004
+  - ref: IND-CUS-007
+    legacy_id: CY-PREPAID-005
+    context: Different cardholders share phone, address, email or device.
+    name_in_typology: Multiple cards sharing identifiers
+    false_positive_context: Households.
     controls:
-    - id: CY-PREPAID-005-C1
-      name: Onboarding data consistency rules
-      type: preventive
-      description: Rules that compare submitted identifiers (email, phone, address, device, bank account)
-        against existing records and known-bad data.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PREPAID-005-C2
-      name: Graph and network analytics
-      type: detective
-      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
-        and fan-in/fan-out structures.
-      implementation: model
-      effectiveness: high
-    - id: CY-PREPAID-005-C3
-      name: Device intelligence and behavioural biometrics
-      type: detective
-      description: Fingerprint devices and analyse session behaviour (typing, navigation, remote-access
-        tools, emulators) to spot shared, scripted or hijacked sessions.
-      implementation: technology
-      effectiveness: high
-  - id: CY-PREPAID-006
-    name: Anonymous or minimally verified cards with high turnover
-    description: Cards without full ID show large inflows and outflows inconsistent with low-limit design.
-    category: product_channel
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - card_records
-    false_positive_notes: Misapplied product tiers.
+    - CTL-004
+    - CTL-048
+    - CTL-091
+  - ref: IND-PRD-013
+    legacy_id: CY-PREPAID-006
+    context: Cards without full ID show large inflows and outflows inconsistent with low-limit design.
+    name_in_typology: Anonymous or minimally verified cards with high turnover
+    false_positive_context: Misapplied product tiers.
     controls:
-    - id: CY-PREPAID-006-C1
-      name: Risk-based limits and cooling-off periods
-      type: preventive
-      description: Cap transaction size and frequency for new or higher-risk users and delay release of
-        funds for added review.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PREPAID-006-C2
-      name: Document authentication and data verification
-      type: preventive
-      description: Verify ID documents for tampering or forgery and cross-check data against authoritative
-        sources.
-      implementation: technology
-      effectiveness: high
-    - id: CY-PREPAID-006-C3
-      name: Risk appetite and product risk assessment
-      type: governance
-      description: Documented appetite, product-level risk assessment and approval gate covering this
-        activity, reviewed on a set cadence.
-      implementation: policy
-      effectiveness: medium
-  - id: CY-PREPAID-007
-    name: Card used to pay high-risk online merchants
-    description: Spend concentrates at gambling, darknet-adjacent or unlicensed merchants.
-    category: counterparty
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - merchant_codes
-    - card_transactions
-    false_positive_notes: Legal entertainment spend.
+    - CTL-072
+    - CTL-002
+    - CTL-162
+  - ref: IND-CPT-014
+    legacy_id: CY-PREPAID-007
+    context: Spend concentrates at gambling, darknet-adjacent or unlicensed merchants.
+    false_positive_context: Legal entertainment spend.
     controls:
-    - id: CY-PREPAID-007-C1
-      name: Merchant and portfolio transaction monitoring
-      type: detective
-      description: Monitor merchant-level patterns such as ticket size, refund and chargeback rates, descriptor
-        mismatch and cross-merchant flows.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PREPAID-007-C2
-      name: External intelligence and consortium feeds
-      type: detective
-      description: Ingest law-enforcement, industry and commercial threat intelligence on indicators,
-        mule accounts and scam infrastructure.
-      implementation: technology
-      effectiveness: medium
-    - id: CY-PREPAID-007-C3
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-  - id: CY-PREPAID-008
-    name: Rapid transfers of stored value between wallets then cash-out
-    description: Funds hop across stored-value accounts to peer wallets, then to cash or crypto.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - wallet_transfers
-    - ledger_data
-    false_positive_notes: Peer payments.
+    - CTL-057
+    - CTL-083
+    - CTL-037
+  - ref: IND-TXN-032
+    legacy_id: CY-PREPAID-008
+    context: Funds hop across stored-value accounts to peer wallets, then to cash or crypto.
+    name_in_typology: Rapid transfers of stored value between wallets then cash-out
+    false_positive_context: Peer payments.
     controls:
-    - id: CY-PREPAID-008-C1
-      name: Graph and network analytics
-      type: detective
-      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
-        and fan-in/fan-out structures.
-      implementation: model
-      effectiveness: high
-    - id: CY-PREPAID-008-C2
-      name: Mule account detection model
-      type: detective
-      description: Model that scores inbound-then-outbound pass-through, new payee churn and profile mismatch
-        to flag likely mule accounts.
-      implementation: model
-      effectiveness: high
-    - id: CY-PREPAID-008-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-PREPAID-009
-    name: Cards received by mules and redirected abroad
-    description: Cards shipped to freight forwarders or mail drops, then used elsewhere.
-    category: geographic
-    severity: medium
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - shipping_data
-    - customer_records
-    false_positive_notes: Expatriates.
+    - CTL-048
+    - CTL-051
+    - CTL-093
+  - ref: IND-GEO-027
+    legacy_id: CY-PREPAID-009
+    context: Cards shipped to freight forwarders or mail drops, then used elsewhere.
+    name_in_typology: Cards received by mules and redirected abroad
+    false_positive_context: Expatriates.
     controls:
-    - id: CY-PREPAID-009-C1
-      name: Onboarding data consistency rules
-      type: preventive
-      description: Rules that compare submitted identifiers (email, phone, address, device, bank account)
-        against existing records and known-bad data.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PREPAID-009-C2
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-    - id: CY-PREPAID-009-C3
-      name: IP, geolocation and anonymisation detection
-      type: detective
-      description: Detect VPN, proxy, Tor and geolocation mismatch against declared residence and sanctioned
-        or high-risk jurisdictions.
-      implementation: rule
-      effectiveness: medium
-  - id: CY-PREPAID-010
-    name: Tops-up with fraudulent funding sources
-    description: Loads via cards or accounts reported stolen, followed by cash-out.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - chargeback_data
-    - load_records
-    false_positive_notes: Disputed genuine charges.
+    - CTL-004
+    - CTL-093
+    - CTL-092
+  - ref: IND-TYP-018
+    legacy_id: CY-PREPAID-010
+    context: Loads via cards or accounts reported stolen, followed by cash-out.
+    false_positive_context: Disputed genuine charges.
     controls:
-    - id: CY-PREPAID-010-C1
-      name: Device intelligence and behavioural biometrics
-      type: detective
-      description: Fingerprint devices and analyse session behaviour (typing, navigation, remote-access
-        tools, emulators) to spot shared, scripted or hijacked sessions.
-      implementation: technology
-      effectiveness: high
-    - id: CY-PREPAID-010-C2
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PREPAID-010-C3
-      name: Account restriction and fund holds
-      type: corrective
-      description: Ability to restrict, hold or recall funds rapidly pending review, with defined legal
-        and operational triggers.
-      implementation: process
-      effectiveness: medium
+    - CTL-091
+    - CTL-037
+    - CTL-103

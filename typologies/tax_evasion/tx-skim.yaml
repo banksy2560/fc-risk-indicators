@@ -16,202 +16,66 @@ typology:
   - FATF, Money Laundering from Tax Crimes (2021)
   - FATF and OECD, Money Laundering Awareness Handbook for Tax Examiners and Tax Auditors (2012)
   indicators:
-  - id: TX-SKIM-001
-    name: Declared turnover lower than card and bank takings imply
-    description: Card acquiring volumes or supplier purchases suggest higher sales than the business reports
+  - ref: IND-TXN-142
+    legacy_id: TX-SKIM-001
+    context: Card acquiring volumes or supplier purchases suggest higher sales than the business reports
       to authorities.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - pos_data
-    - tax_filings
-    - payment_records
-    false_positive_notes: Timing differences, refunds and tips affect reconciliation.
+    false_positive_context: Timing differences, refunds and tips affect reconciliation.
     controls:
-    - id: TX-SKIM-001-C1
-      name: Acquiring-to-declared reconciliation
-      type: detective
-      description: Reconcile card turnover with other known revenue for cash-intensive merchants.
-      implementation: process
-      effectiveness: high
-    - id: TX-SKIM-001-C2
-      name: Stock-purchase to sales plausibility check
-      type: detective
-      description: Compare supplier purchases to reported sales to spot understatement.
-      implementation: model
-      effectiveness: medium
-  - id: TX-SKIM-002
-    name: Cash deposits well below expected for business type
-    description: A business with high card use but little cash banking, despite sector norms of cash trade.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - cash_deposit_data
-    - sector_benchmarks
-    false_positive_notes: Cash may be used to pay suppliers legitimately.
+    - CTL-055
+    - CTL-065
+    - CTL-042
+  - ref: IND-TXN-143
+    legacy_id: TX-SKIM-002
+    context: A business with high card use but little cash banking, despite sector norms of cash trade.
+    false_positive_context: Cash may be used to pay suppliers legitimately.
     controls:
-    - id: TX-SKIM-002-C1
-      name: Sector cash benchmarking
-      type: detective
-      description: Compare cash banking with sector peers.
-      implementation: model
-      effectiveness: medium
-    - id: TX-SKIM-002-C2
-      name: Cash-use review at renewal
-      type: detective
-      description: Understand how cash takings are used and documented.
-      implementation: process
-      effectiveness: medium
-  - id: TX-SKIM-003
-    name: Cash used to pay suppliers and wages directly
-    description: Owner pays suppliers, rent or staff in cash taken from takings before banking.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - kyc_files
-    - payment_records
-    false_positive_notes: Small suppliers sometimes insist on cash.
+    - CTL-064
+    - CTL-055
+  - ref: IND-BEH-111
+    legacy_id: TX-SKIM-003
+    context: Owner pays suppliers, rent or staff in cash taken from takings before banking.
+    false_positive_context: Small suppliers sometimes insist on cash.
     controls:
-    - id: TX-SKIM-003-C1
-      name: Payment method inquiry
-      type: preventive
-      description: Ask about payment methods during KYC and review annually.
-      implementation: process
-      effectiveness: low
-    - id: TX-SKIM-003-C2
-      name: Awareness for business bankers
-      type: preventive
-      description: Train bankers to recognise skimming signs.
-      implementation: training
-      effectiveness: medium
-  - id: TX-SKIM-004
-    name: Structured cash deposits across branches or accounts
-    description: Cash banked in many amounts just below reporting thresholds, often across multiple branches
+    - CTL-011
+    - CTL-169
+  - ref: IND-TXN-007
+    legacy_id: TX-SKIM-004
+    context: Cash banked in many amounts just below reporting thresholds, often across multiple branches
       or personal accounts.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - cash_deposit_data
-    false_positive_notes: Some businesses make routine daily deposits in small sums.
+    name_in_typology: Structured cash deposits across branches or accounts
+    severity_in_typology: medium
+    false_positive_context: Some businesses make routine daily deposits in small sums.
     controls:
-    - id: TX-SKIM-004-C1
-      name: Cash structuring rules
-      type: detective
-      description: Alert on repeated sub-threshold cash across accounts and branches.
-      implementation: rule
-      effectiveness: medium
-    - id: TX-SKIM-004-C2
-      name: Linked-account aggregation
-      type: detective
-      description: Aggregate deposits across connected business and personal accounts.
-      implementation: model
-      effectiveness: medium
-  - id: TX-SKIM-005
-    name: POS software with sales-suppression features or tampered records
-    description: Use of unfamiliar till software, offline mode usage, or missing sequential receipts.
-    category: product_channel
-    severity: high
-    detection_type:
-    - investigator_judgement
-    - external_intel
-    data_sources:
-    - pos_data
-    - tax_authority_intel
-    false_positive_notes: Software glitches or offline trading can cause gaps.
+    - CTL-038
+    - CTL-039
+  - ref: IND-PRD-061
+    legacy_id: TX-SKIM-005
+    context: Use of unfamiliar till software, offline mode usage, or missing sequential receipts.
+    false_positive_context: Software glitches or offline trading can cause gaps.
     controls:
-    - id: TX-SKIM-005-C1
-      name: POS provider risk intelligence
-      type: detective
-      description: Track vendors flagged by tax authorities for suppression modules.
-      implementation: technology
-      effectiveness: medium
-    - id: TX-SKIM-005-C2
-      name: Merchant acquiring review
-      type: preventive
-      description: Review merchants with unusual offline or voided-transaction rates.
-      implementation: process
-      effectiveness: medium
-  - id: TX-SKIM-006
-    name: High refund or void rates on card terminals
-    description: Frequent voids and cash refunds conceal sales.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - pos_data
-    false_positive_notes: Retail returns drive legitimate refunds.
+    - CTL-057
+    - CTL-067
+    - CTL-065
+  - ref: IND-BEH-112
+    legacy_id: TX-SKIM-006
+    context: Frequent voids and cash refunds conceal sales.
+    false_positive_context: Retail returns drive legitimate refunds.
     controls:
-    - id: TX-SKIM-006-C1
-      name: Void/refund anomaly rule
-      type: detective
-      description: Compare refund and void rates with peer groups.
-      implementation: rule
-      effectiveness: medium
-    - id: TX-SKIM-006-C2
-      name: Merchant on-site visit
-      type: detective
-      description: Perform visits for flagged merchants.
-      implementation: process
-      effectiveness: medium
-  - id: TX-SKIM-007
-    name: Owner lifestyle inconsistent with declared profits
-    description: Spending, assets and property purchases exceed what reported profits could support.
-    category: customer
-    severity: high
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - tax_filings
-    - asset_registers
-    - card_data
-    false_positive_notes: Family wealth or gifts could explain this.
+    - CTL-057
+    - CTL-010
+  - ref: IND-CUS-001
+    legacy_id: TX-SKIM-007
+    context: Spending, assets and property purchases exceed what reported profits could support.
+    name_in_typology: Owner lifestyle inconsistent with declared profits
+    false_positive_context: Family wealth or gifts could explain this.
     controls:
-    - id: TX-SKIM-007-C1
-      name: Lifestyle versus income review
-      type: detective
-      description: Compare spending with documented income in periodic reviews.
-      implementation: process
-      effectiveness: medium
-    - id: TX-SKIM-007-C2
-      name: Net-worth source evidence
-      type: preventive
-      description: Request evidence for large asset purchases by cash-business owners.
-      implementation: process
-      effectiveness: high
-  - id: TX-SKIM-008
-    name: Cash transferred to offshore through MVTS or cash couriers
-    description: Cash takings leave the country via money transfer, hawala-style networks or couriers.
-    category: product_channel
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - external_intel
-    data_sources:
-    - remittance_data
-    - customs_reports
-    false_positive_notes: Diaspora remittance is common and lawful.
+    - CTL-043
+    - CTL-013
+  - ref: IND-PRD-062
+    legacy_id: TX-SKIM-008
+    context: Cash takings leave the country via money transfer, hawala-style networks or couriers.
+    false_positive_context: Diaspora remittance is common and lawful.
     controls:
-    - id: TX-SKIM-008-C1
-      name: Remittance profile alerts
-      type: detective
-      description: Flag senders whose remittances exceed declared income.
-      implementation: rule
-      effectiveness: medium
-    - id: TX-SKIM-008-C2
-      name: Cross-border cash declaration checks
-      type: detective
-      description: Cross-check declarations with customer profile.
-      implementation: process
-      effectiveness: medium
+    - CTL-042
+    - CTL-063

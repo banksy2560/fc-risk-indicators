@@ -1,59 +1,74 @@
-# Indicator Schema (v0.1)
+# Schema (v0.2: linked catalogues)
 
-Each typology is one YAML file in `typologies/<domain>/<typology-id>.yaml`.
+Every concept is defined **once** and linked many times:
 
+```
+controls/<family>.yaml        canonical controls          CTL-###
+indicators/<category>.yaml    canonical indicators        IND-<CAT>-###
+typologies/<domain>/*.yaml    typologies; each links to canonical indicators and,
+                              per link, to the controls used in that typology
+build/                        GENERATED reverse views (never edit by hand)
+```
+
+Many-to-many: one control serves many indicators and typologies; one indicator appears in many typologies.
+To add a control or indicator that already exists in spirit, **link the existing one**. `tools/validate.py` warns on near-duplicate names.
+
+## Control (`controls/<family>.yaml`)
+```yaml
+controls:
+  - id: CTL-012
+    name: Velocity and threshold rules
+    family: transaction_monitoring
+    type: detective            # preventive | detective | corrective | governance
+    implementation: rule       # rule | model | process | policy | training | technology
+    effectiveness: medium      # low | medium | high, typical and indicative only
+    description: 2-3 sentences: what it is and how it mitigates. Generic, not typology-specific.
+    also_known_as: [synonyms merged into this control]
+```
+
+## Canonical indicator (`indicators/<category>.yaml`)
+```yaml
+indicators:
+  - id: IND-TXN-017
+    name: Rapid pass-through of received funds
+    description: 1-2 generic sentences describing the observable pattern.
+    category: transaction      # customer | transaction | geographic | product_channel | behavioural | ownership_structure | document | counterparty | typology_specific
+    severity: high             # indicative signal strength (low|medium|high). NOT a risk rating; never aggregate worst-of.
+    detection_type: [transaction_monitoring]   # transaction_monitoring | kyc_review | screening | customer_behaviour | document_review | investigator_judgement | external_intel
+    data_sources: [account_transactions]
+    false_positive_notes: Generic legitimate explanations.
+```
+
+## Typology (`typologies/<domain>/<id>.yaml`)
 ```yaml
 typology:
-  id: ML-TBML                       # DOMAIN-SHORTNAME, unique
-  name: Trade-Based Money Laundering
-  domain: money_laundering          # money_laundering | terrorist_financing | proliferation_financing | sanctions | fraud | bribery_corruption | tax_evasion | human_trafficking_modern_slavery | environmental_crime | cyber_enabled | other_predicate | cross_cutting
-  description: >                    # 2-4 sentences, plain language
-  stage: [placement, layering]      # ML only; optional otherwise
-  sectors: [banking, trade_finance] # banking | payments | crypto | insurance | securities | casino_gaming | dnfbp | real_estate | mvts | fintech | trade_finance | corporate_services | art_luxury | all
-  sources:                          # real, citable references (FATF reports, FinCEN advisories, Egmont, Wolfsberg, JMLSG, AUSTRAC, FCA, etc.)
-    - "FATF, Trade-Based Money Laundering: Trends and Developments (2020)"
+  id: ML-MULE
+  name: Money mules
+  domain: money_laundering     # money_laundering | terrorist_financing | proliferation_financing | sanctions | fraud | bribery_corruption | tax_evasion | human_trafficking_modern_slavery | environmental_crime | cyber_enabled | other_predicate | cross_cutting
+  description: ...
+  stage: [placement, layering] # optional
+  sectors: [banking, payments] # banking | payments | crypto | insurance | securities | casino_gaming | dnfbp | real_estate | mvts | fintech | trade_finance | corporate_services | art_luxury | all
+  sources: ["issuing body, report, year (verify before relying)"]
   indicators:
-    - id: ML-TBML-001               # typology id + 3-digit sequence
-      name: Invoice value inconsistent with market price
-      description: What is observed, in one or two sentences.
-      category: transaction         # customer | transaction | geographic | product_channel | behavioural | ownership_structure | document | counterparty | typology_specific
-      severity: high                # low | medium | high (inherent signal strength, not customer risk)
-      detection_type: [transaction_monitoring, kyc_review]  # transaction_monitoring | kyc_review | screening | customer_behaviour | document_review | investigator_judgement | external_intel
-      data_sources: [trade_documents, price_databases]
-      false_positive_notes: Legitimate reasons the indicator may fire.
-      controls:
-        - id: ML-TBML-001-C1
-          name: Trade price benchmarking
-          type: detective           # preventive | detective | corrective | governance
-          description: What the control is and how it mitigates the indicator.
-          implementation: rule | model | process | policy | training | technology
-          effectiveness: medium     # low | medium | high (typical, indicative)
-      references: ["FATF TBML 2020, Annex"]
+    - ref: IND-TXN-017                 # canonical indicator
+      legacy_id: ML-MULE-003           # v0.1 id, kept for traceability
+      context: How this indicator shows up in THIS typology (typology-specific wording lives here).
+      severity_in_typology: medium     # optional, only when it differs from canonical
+      name_in_typology: ...            # optional
+      false_positive_context: ...      # optional
+      controls: [CTL-012, CTL-044]     # controls used for this indicator in this typology
 ```
 
-Rules
-- Indicators are red flags, not proof of crime; always include `false_positive_notes`.
-- Every indicator needs at least one preventive or detective control; high-severity ones need at least two.
-- No real persons, institutions or case details. Cite published sources only; do not fabricate citations. If unsure of an exact title/year, cite the issuing body and topic generally.
-- Write original wording; do not copy source text.
+## Rules (enforced by `tools/validate.py`)
+- All `ref`s and control ids resolve; an indicator is linked at most once per typology.
+- Every link has at least one preventive or detective control; high-severity links should have at least two distinct controls.
+- Indicators are red flags, not proof of crime. Canonical indicators include `false_positive_notes`.
+- No real persons, institutions or case details. Cite published sources only; do not fabricate citations. Original wording only.
+- Orphans (unlinked controls or indicators) and near-duplicate names produce warnings; `--strict` fails on warnings.
 
-## v0.2 additions (optional now, required before v1.0). See DESIGN.md.
+## Planned (not yet populated)
+Typology `exposure` block (channels, payment_rails, customer_segments, products) and per-indicator `evidence_basis`, `confidence`, `last_reviewed`, `status`, `provenance`. See DESIGN.md.
+`severity` means indicative signal strength only.
 
-Typology level:
-```yaml
-  exposure:                         # typology is the unit; these are dimensions, not owners
-    channels: [mobile_app, online_banking, branch, atm, call_centre, broker_intermediary, api_open_banking]
-    payment_rails: [fast_payments, card, cash, wire_swift, cheque, direct_debit, crypto_onramp, cross_border_remittance, trade_instruments]
-    customer_segments: [retail, student, new_to_bank, sme, corporate, private_banking, non_resident, vulnerable]
-    products: [transaction_account, savings, credit_card, loan_mortgage, trade_finance, investment_insurance, prepaid_stored_value, safe_deposit]
-  owner_role_suggestion: "Head of Financial Crime Risk"   # suggestion only; adopters assign owners
-```
-Indicator level:
-```yaml
-      evidence_basis: published_guidance   # published_guidance | regulator_typology | case_study | practitioner_judgement | ai_draft_unreviewed
-      confidence: medium                   # low | medium | high (in the indicator's discriminating power)
-      last_reviewed: 2026-11-22
-      status: draft                        # draft | sme_reviewed | validated
-      provenance: ai_drafted               # ai_drafted | human_authored | mixed
-```
-`severity` means indicative signal strength only; it is not a risk rating and must not be aggregated worst-of.
+## Generated views
+`python3 tools/build_index.py .` writes `build/`: flat typology-indicator-control CSV, control and indicator usage, typology x control matrix, and `REVERSE_INDEX.md` (most reused controls and indicators).

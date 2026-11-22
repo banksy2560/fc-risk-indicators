@@ -1,0 +1,408 @@
+controls:
+- id: CTL-037
+  name: Velocity, volume and threshold rules
+  family: transaction_monitoring
+  type: detective
+  implementation: rule
+  effectiveness: medium
+  description: Rules that alert on abnormal count, value or speed of movements over defined windows compared
+    with customer profile and peer norms. They provide baseline coverage across many typologies.
+  also_known_as:
+  - Velocity and threshold rules
+  - Onboarding velocity monitoring
+  - Velocity monitoring
+  - New-payee anomaly rule
+  - Credit velocity rule
+  - Large liquidation trigger
+- id: CTL-038
+  name: Structuring and threshold-avoidance detection
+  family: transaction_monitoring
+  type: detective
+  implementation: rule
+  effectiveness: medium
+  description: Detects repeated transactions placed just below reporting or approval limits, tuned by
+    band and window per segment. It counters deliberate splitting designed to avoid scrutiny.
+  also_known_as:
+  - Threshold-avoidance detection
+  - Threshold-proximity scenario
+  - Threshold avoidance rule
+  - Near-threshold cash rule
+  - Sequential-number review
+  - Deposit pattern analytics
+  - Threshold clustering analytics
+  - Cash structuring rules
+- id: CTL-039
+  name: Cross-account and cross-channel activity aggregation
+  family: transaction_monitoring
+  type: detective
+  implementation: rule
+  effectiveness: medium
+  description: Aggregates cash and other activity by customer, related party, account, branch, channel
+    and day so that splitting across touchpoints cannot evade review, supported by a single customer view.
+    It gives analysts a holistic picture of exposure.
+  also_known_as:
+  - Cash threshold reporting and monitoring
+  - Aggregation across accounts and channels
+  - Customer-level aggregation
+  - Group-level cash risk assessment
+  - Single-customer-view policy
+  - MSB transaction aggregation
+  - Sender-recipient aggregation
+  - Donation logging
+- id: CTL-040
+  name: Pass-through and rapid movement detection
+  family: transaction_monitoring
+  type: detective
+  implementation: rule
+  effectiveness: high
+  description: Alerts when inflows are quickly moved out with little retained balance, including cash-in
+    fast-out and rapid conversion or cash-out. It reveals accounts used as conduits for layering.
+  also_known_as:
+  - Pass-through velocity rule
+  - Pass-through activity monitoring
+  - Pass-through velocity scenario
+  - Wage sweep rule
+  - Aggregated outbound wire rule
+  - Cash-out channel rule
+  - Pass-through monitoring
+  - Retained-percentage pattern analytics
+- id: CTL-041
+  name: Fan-in, fan-out and funnel account detection
+  family: transaction_monitoring
+  type: detective
+  implementation: rule
+  effectiveness: medium
+  description: Detects accounts receiving from many unrelated senders, or sending to many beneficiaries,
+    followed by consolidation or onward movement. It surfaces collector, funnel and mule structures.
+  also_known_as:
+  - Beneficiary concentration analytics
+  - Many-to-one micro-payment rule
+  - Corridor and recipient clustering
+  - Many-to-one recipient rule
+  - Funnel account detection
+  - Enhanced review of funnel beneficiary
+  - Depositor diversity rule
+  - Fan-out pattern rule
+- id: CTL-042
+  name: Profile-versus-activity deviation monitoring
+  family: transaction_monitoring
+  type: detective
+  implementation: model
+  effectiveness: medium
+  description: Compares actual activity with the customer's declared profile, history and peers and alerts
+    on material or trend-breaking deviation, usually as a contextual signal. It catches change that rules
+    on fixed thresholds miss.
+  also_known_as:
+  - Profile-versus-activity review
+  - Expected activity profile comparison
+  - Profile-deviation monitoring
+  - Combined-factor scoring
+  - Trend-break monitoring
+  - Trend break detection
+  - Profile-to-activity comparison
+  - Profile-vs-activity analytics
+- id: CTL-043
+  name: Lifestyle and high-value purchase consistency review
+  family: transaction_monitoring
+  type: detective
+  implementation: process
+  effectiveness: medium
+  description: Compares observed spending, luxury and asset purchases and personal-type use of business
+    funds with documented income and wealth during periodic reviews and alerts. It highlights unexplained
+    affluence that may indicate illicit income.
+  also_known_as:
+  - Merchant category monitoring
+  - Lifestyle-profile consistency review
+  - Luxury merchant alerts
+  - Profile comparison
+  - Private-spend rule
+  - High-value asset monitoring
+  - Affordability test
+  - Lifestyle consistency review
+- id: CTL-044
+  name: Round-amount and repeated-value pattern detection
+  family: transaction_monitoring
+  type: detective
+  implementation: rule
+  effectiveness: low
+  description: Alerts on repeated round-value or identical-value transactions by counterparty over a window.
+    It is a supporting indicator of artificial, pre-arranged or structured flows and is best combined
+    with other signals.
+  also_known_as:
+  - Round-amount pattern scenario
+  - Round-value pattern rule
+- id: CTL-045
+  name: Geographic and corridor-based monitoring
+  family: transaction_monitoring
+  type: detective
+  implementation: rule
+  effectiveness: medium
+  description: Alerts on unusual countries, corridors, deposit locations and geolocation dispersion relative
+    to the customer profile or on activity near designated risk regions. It focuses review on geographic
+    anomalies.
+  also_known_as:
+  - Corridor monitoring
+  - Beneficiary-jurisdiction mismatch rule
+  - Conflict-area geofencing
+  - Out-of-profile country alerts
+  - Corridor-specific monitoring scenarios
+  - Corridor analytics
+  - Border region transaction scenarios
+  - Border region monitoring
+- id: CTL-046
+  name: Third-party payer and depositor controls
+  family: transaction_monitoring
+  type: preventive
+  implementation: rule
+  effectiveness: high
+  description: Detects, restricts and challenges payments or deposits made by or to parties not named
+    in the contract, account or invoice, and requires evidence of the relationship. It stops accounts
+    and trades being funded by unexplained third parties.
+  also_known_as:
+  - Third-party payment policy
+  - Third-party payment controls
+  - Third-party payment rule
+  - Third-party deposit rule
+  - Payment source check
+  - Third-party deposit restrictions
+  - Payer identity checks
+  - Third-party payer check
+- id: CTL-047
+  name: Circular flow and round-tripping detection
+  family: transaction_monitoring
+  type: detective
+  implementation: model
+  effectiveness: medium
+  description: Detects funds that return to their origin or loop between linked parties through reciprocal,
+    matched, netted or round-trip flows using graph analysis and account comparison. It exposes artificial
+    turnover and loan-back structures.
+  also_known_as:
+  - Network analysis
+  - Circular flow detection
+  - Round-trip detection
+  - Related-party transaction review
+  - Investigator escalation
+  - Withdraw-redeposit loop rule
+  - Reciprocity detection
+  - Round-trip flow detection
+- id: CTL-048
+  name: Graph and network link analytics
+  family: transaction_monitoring
+  type: detective
+  implementation: model
+  effectiveness: high
+  description: Links accounts, devices, addresses, directors and beneficiaries to surface rings, shared
+    attributes and flow structures that single-account views miss. It supports detection of organised
+    networks.
+  also_known_as:
+  - Graph and network analytics
+  - Buyer link analysis
+  - Relationship network analysis
+  - Network linking analytics
+  - Association mapping
+  - Network analytics on shared controllers
+  - Related-party property linkage
+  - Control and funding flow analysis
+- id: CTL-049
+  name: Shared-identifier clustering and entity linkage
+  family: transaction_monitoring
+  type: detective
+  implementation: model
+  effectiveness: medium
+  description: Clusters customers, vendors and entities that share addresses, phones, devices, officers
+    or bank details, including against staff records. It reveals common control and hidden relationships.
+  also_known_as:
+  - Entity resolution and link analysis
+  - Vendor master data analytics
+  - Link analysis on identifiers
+  - Registered-address clustering analysis
+  - Linked-account detection
+  - Linked-entity analytics
+  - Identity linkage analytics
+  - Shared-identifier clustering
+- id: CTL-050
+  name: Successor and phoenix entity detection
+  family: transaction_monitoring
+  type: detective
+  implementation: model
+  effectiveness: medium
+  description: Links newly formed companies to failed or abandoned predecessors through shared officers,
+    addresses, customers and bank details. It detects serial use of disposable entities to shed liabilities
+    and move value.
+  also_known_as:
+  - Phoenix company analytics
+  - Phoenix company detection
+- id: CTL-051
+  name: Mule account detection model
+  family: transaction_monitoring
+  type: detective
+  implementation: model
+  effectiveness: high
+  description: Model that scores inbound-then-outbound pass-through, new-payee churn, counterparty diversity
+    and profile mismatch to flag likely mule accounts. It prioritises accounts for review and restriction.
+  also_known_as:
+  - Single-purpose account detection
+  - Pass-through mule model
+  - Mule account detection
+- id: CTL-052
+  name: Typology-based scenario design
+  family: transaction_monitoring
+  type: detective
+  implementation: rule
+  effectiveness: medium
+  description: Translates published and sanitised typologies and red flags into targeted monitoring scenarios
+    and context-aware rules that are reviewed periodically. It aligns monitoring with known criminal methods.
+  also_known_as:
+  - Informal transfer typology updates
+  - Purchase pattern rules
+  - Accommodation payment monitoring
+  - Merchant category and keyword rules
+  - Typology-based alert tuning
+  - Typology-based scenarios
+  - Dealer straw-purchase alerts
+  - Cash and crypto alerts
+- id: CTL-053
+  name: Risk-weighted counterparty monitoring
+  family: transaction_monitoring
+  type: detective
+  implementation: rule
+  effectiveness: medium
+  description: Weights alert priority by the assessed risk of the counterparty and profiles counterparties
+    that cannot be explained by the customer's business. It directs analyst attention to payments involving
+    higher-risk parties.
+  also_known_as:
+  - Counterparty relationship profiling
+- id: CTL-054
+  name: Tightened monitoring for new accounts and entities
+  family: transaction_monitoring
+  type: detective
+  implementation: rule
+  effectiveness: medium
+  description: Applies lower thresholds and closer review during the first months of an account or entity
+    and alerts on turnover far above onboarding projections. It addresses the elevated risk at the start
+    of a relationship.
+  also_known_as:
+  - Early-life activity monitoring
+  - New-account velocity rule
+  - New entity enhanced monitoring
+  - New-business ramp-up alert
+  - Volume-versus-profile monitoring
+- id: CTL-055
+  name: Declared turnover and cash-flow reconciliation
+  family: transaction_monitoring
+  type: detective
+  implementation: process
+  effectiveness: medium
+  description: Reconciles cash, stock purchases, sales and exports with declared business activity to
+    test whether deposits are plausible. It is used to identify unrecorded or injected cash.
+  also_known_as:
+  - Business-model reasonableness review
+  - Cash-flow reconciliation
+  - Cash-to-export reconciliation
+  - Cash-in versus cost-out ratio rule
+  - Source-of-deposit tagging
+  - Cash movement reconciliation
+  - Non-trade inflow tagging
+  - Cash and export correlation
+- id: CTL-056
+  name: Payroll and worker payment flow analytics
+  family: transaction_monitoring
+  type: detective
+  implementation: process
+  effectiveness: medium
+  description: Compares payroll flows with declared headcount, checks that wages reach workers' own accounts
+    and flags cash payroll, recruiter payments and many-to-one wage patterns. It surfaces undeclared work
+    and labour exploitation.
+  also_known_as:
+  - Recruiter payment screening
+  - Account ownership checks
+  - Cash payroll rule
+  - Tax and payroll reconciliation
+  - Recruitment fee flow rule
+  - Payroll coherence checks
+  - Wage-cycle cash rule
+  - Payroll bank-account validation
+- id: CTL-057
+  name: Merchant transaction and portfolio monitoring
+  family: transaction_monitoring
+  type: detective
+  implementation: rule
+  effectiveness: medium
+  description: Monitors merchant-level patterns such as ticket size, refund, void and chargeback rates,
+    descriptor mismatch and cross-merchant flows. It identifies transaction laundering, bust-out and illicit
+    merchants.
+  also_known_as:
+  - Merchant and portfolio transaction monitoring
+  - Chargeback and merchant-risk analytics
+  - Equipment merchant alerts
+  - Acquirer merchant monitoring
+  - Chargeback thresholds
+  - Merchant remediation
+  - Merchant alerts for equipment sales
+  - Gambling MCC masking detection
+- id: CTL-058
+  name: Public-funds payment monitoring and contract evidence
+  family: transaction_monitoring
+  type: detective
+  implementation: rule
+  effectiveness: medium
+  description: Flags credits from public bodies to personal or new accounts, atypical state-to-private
+    flows and onward movement, and requires contracts and tender evidence for payments from state entities.
+    It targets diversion of public money.
+  also_known_as:
+  - Onward flow tracing
+  - Government-origin payment alerts
+  - Contract basis verification
+  - Public-contract link analysis
+  - Contract documentation requirement
+  - Source-of-funds review for state payments
+  - Public-sector exposure rules
+- id: CTL-059
+  name: Procurement bid and award analytics
+  family: transaction_monitoring
+  type: detective
+  implementation: model
+  effectiveness: medium
+  description: Tests bidding and award data for rotation, cover bids, price clustering, splitting, variations
+    and exceptions to competition, and requires independent cost and justification review. It detects
+    collusion and corrupt awards.
+  also_known_as:
+  - Procurement red-flag analytics
+  - Event-linked payment review
+  - Independent cost review
+  - Bid pattern analytics
+  - Variation monitoring
+  - Variation approval governance
+  - Exception-use reporting
+  - Justification quality review
+- id: CTL-060
+  name: Intermediary payment and commission controls
+  family: transaction_monitoring
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Benchmarks agent commissions, rebates and fees, requires justification and compliance sign-off
+    for payments in high-risk markets, and tests invoices for evidence of real services. It limits disguised
+    bribery.
+  also_known_as:
+  - Receipt and official-fee verification
+  - Invoice-to-tariff reconciliation
+  - Margin benchmarking
+  - Rebate approval governance
+  - Commission benchmarking
+  - Agent payment pre-approval
+  - Deliverables evidence check
+  - Invoice description analytics
+- id: CTL-061
+  name: Unlicensed money transfer detection
+  family: transaction_monitoring
+  type: detective
+  implementation: model
+  effectiveness: medium
+  description: Detects remitter-like activity, pooled flows and informal channel use on accounts not authorised
+    for money transfer. It finds unregistered MVTS operators and hawala-type settlement.
+  also_known_as:
+  - Unregistered MVTS detection model
+  - Remitter profile checks
+  - Channel policy
+  - Pooled-activity analytics

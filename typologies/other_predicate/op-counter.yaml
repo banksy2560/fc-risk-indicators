@@ -16,197 +16,60 @@ typology:
   - World Customs Organization, public material on IP enforcement
   - FATF, Money Laundering Vulnerabilities of Free Trade Zones (2010)
   indicators:
-  - id: OP-COUNTER-001
-    name: Branded goods at prices far below genuine retail
-    description: Prices implausible for authentic products.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - external_intel
-    - investigator_judgement
-    data_sources:
-    - marketplace_data
-    false_positive_notes: Discounts and grey market exist.
+  - ref: IND-PRD-055
+    legacy_id: OP-COUNTER-001
+    context: Prices implausible for authentic products.
+    name_in_typology: Branded goods at prices far below genuine retail
+    false_positive_context: Discounts and grey market exist.
     controls:
-    - id: OP-COUNTER-001-C1
-      name: Price anomaly checks
-      type: detective
-      description: Compare prices.
-      implementation: rule
-      effectiveness: medium
-    - id: OP-COUNTER-001-C2
-      name: Marketplace takedown cooperation
-      type: governance
-      description: Share with platforms.
-      implementation: process
-      effectiveness: medium
-  - id: OP-COUNTER-002
-    name: Importer of brand-name goods with no distribution authorisation
-    description: No authorisation or licence from brand owner.
-    category: counterparty
-    severity: high
-    detection_type:
-    - kyc_review
-    - document_review
-    data_sources:
-    - kyc_files
-    - brand_data
-    false_positive_notes: Parallel imports are lawful in places.
+    - CTL-124
+    - CTL-097
+  - ref: IND-CPT-045
+    legacy_id: OP-COUNTER-002
+    context: No authorisation or licence from brand owner.
+    false_positive_context: Parallel imports are lawful in places.
     controls:
-    - id: OP-COUNTER-002-C1
-      name: Authorisation verification
-      type: preventive
-      description: Ask for brand authorisation.
-      implementation: process
-      effectiveness: high
-    - id: OP-COUNTER-002-C2
-      name: Brand-owner intelligence use
-      type: detective
-      description: Use lists.
-      implementation: technology
-      effectiveness: medium
-  - id: OP-COUNTER-003
-    name: Trade documents with imprecise descriptions or mismatched HS codes
-    description: Generic descriptions of brand goods.
-    category: document
-    severity: medium
-    detection_type:
-    - document_review
-    - investigator_judgement
-    data_sources:
-    - trade_documents
-    false_positive_notes: Descriptions vary.
+    - CTL-134
+    - CTL-032
+  - ref: IND-DOC-050
+    legacy_id: OP-COUNTER-003
+    context: Generic descriptions of brand goods.
+    name_in_typology: Trade documents with imprecise descriptions or mismatched HS codes
+    severity_in_typology: medium
+    false_positive_context: Descriptions vary.
     controls:
-    - id: OP-COUNTER-003-C1
-      name: HS code and description checks
-      type: detective
-      description: Compare descriptors.
-      implementation: rule
-      effectiveness: medium
-    - id: OP-COUNTER-003-C2
-      name: Trade finance review
-      type: preventive
-      description: Review before financing.
-      implementation: process
-      effectiveness: medium
-  - id: OP-COUNTER-004
-    name: Shipments transiting free zones and repackaged
-    description: Goods relabelled in transit hubs.
-    category: geographic
-    severity: medium
-    detection_type:
-    - document_review
-    - external_intel
-    data_sources:
-    - customs_data
-    false_positive_notes: Transit hubs are legitimate.
+    - CTL-123
+  - ref: IND-GEO-022
+    legacy_id: OP-COUNTER-004
+    context: Goods relabelled in transit hubs.
+    false_positive_context: Transit hubs are legitimate.
     controls:
-    - id: OP-COUNTER-004-C1
-      name: Transit pattern analytics
-      type: detective
-      description: Detect relabel patterns.
-      implementation: model
-      effectiveness: medium
-    - id: OP-COUNTER-004-C2
-      name: Free zone due diligence
-      type: preventive
-      description: Verify.
-      implementation: process
-      effectiveness: medium
-  - id: OP-COUNTER-005
-    name: Many small online storefronts with common bank accounts or directors
-    description: Network of shops sharing accounts.
-    category: customer
-    severity: high
-    detection_type:
-    - kyc_review
-    - transaction_monitoring
-    data_sources:
-    - payment_records
-    - device_data
-    false_positive_notes: Same owner may run several shops.
+    - CTL-139
+    - CTL-127
+  - ref: IND-CUS-045
+    legacy_id: OP-COUNTER-005
+    context: Network of shops sharing accounts.
+    false_positive_context: Same owner may run several shops.
     controls:
-    - id: OP-COUNTER-005-C1
-      name: Merchant network linking
-      type: detective
-      description: Link storefronts.
-      implementation: model
-      effectiveness: medium
-    - id: OP-COUNTER-005-C2
-      name: Acquirer merchant due diligence
-      type: preventive
-      description: Verify merchants.
-      implementation: process
-      effectiveness: high
-  - id: OP-COUNTER-006
-    name: Payments to manufacturers in known counterfeit production regions with no brand
-    description: Payments to factories lacking licences.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - payment_records
-    false_positive_notes: Contract manufacturers exist.
+    - CTL-049
+    - CTL-067
+  - ref: IND-TXN-121
+    legacy_id: OP-COUNTER-006
+    context: Payments to factories lacking licences.
+    false_positive_context: Contract manufacturers exist.
     controls:
-    - id: OP-COUNTER-006-C1
-      name: Supplier IP due diligence
-      type: preventive
-      description: Check IP compliance.
-      implementation: process
-      effectiveness: medium
-    - id: OP-COUNTER-006-C2
-      name: Corridor monitoring
-      type: detective
-      description: Monitor corridors.
-      implementation: rule
-      effectiveness: medium
-  - id: OP-COUNTER-007
-    name: Counterfeit pharmaceuticals or safety-critical parts
-    description: Medicines or auto parts from unlicensed sources.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - investigator_judgement
-    - external_intel
-    data_sources:
-    - regulator_alerts
-    false_positive_notes: Generics are lawful.
+    - CTL-112
+    - CTL-045
+  - ref: IND-TYP-042
+    legacy_id: OP-COUNTER-007
+    context: Medicines or auto parts from unlicensed sources.
+    false_positive_context: Generics are lawful.
     controls:
-    - id: OP-COUNTER-007-C1
-      name: Regulator alert screening
-      type: preventive
-      description: Screen against alerts.
-      implementation: technology
-      effectiveness: high
-    - id: OP-COUNTER-007-C2
-      name: Health-and-safety escalation
-      type: governance
-      description: Escalate promptly.
-      implementation: process
-      effectiveness: high
-  - id: OP-COUNTER-008
-    name: Merchant chargebacks and complaints about fake goods
-    description: High consumer complaints.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - external_intel
-    data_sources:
-    - chargeback_data
-    false_positive_notes: Complaints occur.
+    - CTL-029
+    - CTL-094
+  - ref: IND-BEH-098
+    legacy_id: OP-COUNTER-008
+    context: High consumer complaints.
+    false_positive_context: Complaints occur.
     controls:
-    - id: OP-COUNTER-008-C1
-      name: Chargeback thresholds
-      type: detective
-      description: Monitor complaints.
-      implementation: rule
-      effectiveness: medium
-    - id: OP-COUNTER-008-C2
-      name: Merchant remediation
-      type: corrective
-      description: Require action.
-      implementation: process
-      effectiveness: medium
+    - CTL-057

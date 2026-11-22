@@ -13,20 +13,26 @@ An open-source catalogue of financial crime **risk indicators (red flags)** orga
 
 ## Layout
 ```
-typologies/<domain>/<typology>.yaml   # indicators + controls
-tools/validate.py                     # schema checks (needs pyyaml)
+controls/<family>.yaml        # 177 canonical controls, each defined once
+indicators/<category>.yaml    # 654 canonical indicators, each defined once
+typologies/<domain>/*.yaml    # 106 typologies linking to indicators + controls
+build/                        # generated reverse views (control -> typologies etc.)
+tools/validate.py             # integrity + duplicate checks (needs pyyaml)
+tools/build_index.py          # regenerates build/
 ```
+Controls and indicators are **linked, not copied**: one control serves many indicators and typologies. See [SCHEMA.md](SCHEMA.md).
 
 ## Use
 ```
 pip install pyyaml
-python3 tools/validate.py .
+python3 tools/validate.py .      # add --strict to fail on warnings
+python3 tools/build_index.py .   # regenerate build/
 ```
 
 ## Known limitations
-- Control descriptions are drawn from shared templates and repeat across indicators; per-indicator tailoring is planned.
+- Controls and indicators were de-duplicated by AI clustering; borderline merges are listed in [REVIEW_QUEUE.md](REVIEW_QUEUE.md) for human review. Singleton indicators still carry some typology-flavoured wording.
+- A few typologies have thin control coverage (e.g. institutional governance); gaps are noted in the review queue.
 - Exposure tags, provenance and review fields (schema v0.2) are not yet populated.
-- Some indicators lack a preventive/detective control; the validator reports these.
 - Detection bias: do not calibrate indicator weighting solely against your own SAR or loss data.
 
 ## Contributing

@@ -11,312 +11,96 @@ typology:
   - FinCEN, advisories on check fraud (general)
   - Industry guidance on funds availability and check clearing (general)
   indicators:
-  - id: FR-CHQ-001
-    name: Large cheque deposited followed by prompt withdrawals
-    description: Funds are drawn before the cheque clears.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - deposit_data
-    false_positive_notes: Genuine large cheques.
+  - ref: IND-TXN-031
+    legacy_id: FR-CHQ-001
+    context: Funds are drawn before the cheque clears.
+    name_in_typology: Large cheque deposited followed by prompt withdrawals
+    false_positive_context: Genuine large cheques.
     controls:
-    - id: FR-CHQ-001-C1
-      name: Deposit holds and funds-availability policy
-      type: preventive
-      description: Risk-based holds on uncleared deposits limit withdrawal until the item is confirmed
-        good.
-      implementation: policy
-      effectiveness: medium
-    - id: FR-CHQ-001-C2
-      name: Cheque and image analytics
-      type: detective
-      description: Detects altered, counterfeit or duplicate items and unusual deposit patterns using
-        image and MICR analysis.
-      implementation: technology
-      effectiveness: medium
-    - id: FR-CHQ-001-C3
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules on count, value, geography and timing alert analysts to bursts or structured
-        activity.
-      implementation: rule
-      effectiveness: medium
+    - CTL-079
+    - CTL-081
+    - CTL-037
     references:
     - UK Finance, Annual Fraud Report (published annually)
-  - id: FR-CHQ-002
-    name: Cheque appears altered or counterfeit
-    description: Image shows alterations, mismatched MICR or font.
-    category: document
-    severity: high
-    detection_type:
-    - document_review
-    data_sources:
-    - cheque_images
-    false_positive_notes: Poor scans.
+  - ref: IND-DOC-028
+    legacy_id: FR-CHQ-002
+    context: Image shows alterations, mismatched MICR or font.
+    false_positive_context: Poor scans.
     controls:
-    - id: FR-CHQ-002-C1
-      name: Cheque and image analytics
-      type: detective
-      description: Detects altered, counterfeit or duplicate items and unusual deposit patterns using
-        image and MICR analysis.
-      implementation: technology
-      effectiveness: medium
-    - id: FR-CHQ-002-C2
-      name: Document forensics and source verification
-      type: detective
-      description: Analyses supporting documents for tampering, template reuse and metadata anomalies,
-        and confirms with the issuer.
-      implementation: technology
-      effectiveness: medium
-    - id: FR-CHQ-002-C3
-      name: Deposit holds and funds-availability policy
-      type: preventive
-      description: Risk-based holds on uncleared deposits limit withdrawal until the item is confirmed
-        good.
-      implementation: policy
-      effectiveness: medium
+    - CTL-081
+    - CTL-002
+    - CTL-079
     references:
     - UK Finance, Annual Fraud Report (published annually)
-  - id: FR-CHQ-003
-    name: Deposit of third-party cheque from unknown payer
-    description: Payee and depositor have no relationship.
-    category: counterparty
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - kyc_review
-    data_sources:
-    - deposit_data
-    false_positive_notes: Family gifts.
+  - ref: IND-CPT-058
+    legacy_id: FR-CHQ-003
+    context: Payee and depositor have no relationship.
+    name_in_typology: Deposit of third-party cheque from unknown payer
+    false_positive_context: Family gifts.
     controls:
-    - id: FR-CHQ-003-C1
-      name: Cheque and image analytics
-      type: detective
-      description: Detects altered, counterfeit or duplicate items and unusual deposit patterns using
-        image and MICR analysis.
-      implementation: technology
-      effectiveness: medium
-    - id: FR-CHQ-003-C2
-      name: Enhanced due diligence and periodic KYC review
-      type: detective
-      description: Targeted review of purpose, source of funds and expected activity when behaviour diverges
-        from the profile.
-      implementation: process
-      effectiveness: medium
-    - id: FR-CHQ-003-C3
-      name: Deposit holds and funds-availability policy
-      type: preventive
-      description: Risk-based holds on uncleared deposits limit withdrawal until the item is confirmed
-        good.
-      implementation: policy
-      effectiveness: medium
+    - CTL-081
+    - CTL-014
+    - CTL-079
     references:
     - UK Finance, Annual Fraud Report (published annually)
-  - id: FR-CHQ-004
-    name: Overpayment request after receiving cheque
-    description: 'Victim-side: seller is asked to refund an overpayment before the cheque clears.'
-    category: behavioural
-    severity: high
-    detection_type:
-    - customer_behaviour
-    - investigator_judgement
-    data_sources:
-    - customer_reports
-    false_positive_notes: Genuine mistake.
+  - ref: IND-BEH-022
+    legacy_id: FR-CHQ-004
+    context: 'Victim-side: seller is asked to refund an overpayment before the cheque clears.'
+    name_in_typology: Overpayment request after receiving cheque
+    false_positive_context: Genuine mistake.
     controls:
-    - id: FR-CHQ-004-C1
-      name: Customer education and awareness
-      type: preventive
-      description: Targeted messaging helps customers recognise the scam script and know how to verify.
-      implementation: training
-      effectiveness: low
-    - id: FR-CHQ-004-C2
-      name: Frontline training and conversation scripts
-      type: preventive
-      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
-        and escalate with a defined script and authority to pause.
-      implementation: training
-      effectiveness: medium
-    - id: FR-CHQ-004-C3
-      name: Deposit holds and funds-availability policy
-      type: preventive
-      description: Risk-based holds on uncleared deposits limit withdrawal until the item is confirmed
-        good.
-      implementation: policy
-      effectiveness: medium
+    - CTL-074
+    - CTL-170
+    - CTL-079
     references:
     - UK Finance, Annual Fraud Report (published annually)
-  - id: FR-CHQ-005
-    name: Mobile deposit of same item at multiple institutions
-    description: Duplicate presentment.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - deposit_data
-    - industry_data
-    false_positive_notes: Technical retries.
+  - ref: IND-TXN-067
+    legacy_id: FR-CHQ-005
+    context: Duplicate presentment.
+    false_positive_context: Technical retries.
     controls:
-    - id: FR-CHQ-005-C1
-      name: Cheque and image analytics
-      type: detective
-      description: Detects altered, counterfeit or duplicate items and unusual deposit patterns using
-        image and MICR analysis.
-      implementation: technology
-      effectiveness: medium
-    - id: FR-CHQ-005-C2
-      name: Consortium and shared fraud data
-      type: detective
-      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
-        sharing to catch known bad actors early.
-      implementation: technology
-      effectiveness: high
-    - id: FR-CHQ-005-C3
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules on count, value, geography and timing alert analysts to bursts or structured
-        activity.
-      implementation: rule
-      effectiveness: medium
+    - CTL-081
+    - CTL-083
+    - CTL-037
     references:
     - UK Finance, Annual Fraud Report (published annually)
-  - id: FR-CHQ-006
-    name: New account with immediate cheque deposits
-    description: Account opened and quickly funded by cheques.
-    category: customer
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - account_data
-    false_positive_notes: Genuine new customers.
+  - ref: IND-CUS-030
+    legacy_id: FR-CHQ-006
+    context: Account opened and quickly funded by cheques.
+    false_positive_context: Genuine new customers.
     controls:
-    - id: FR-CHQ-006-C1
-      name: Deposit holds and funds-availability policy
-      type: preventive
-      description: Risk-based holds on uncleared deposits limit withdrawal until the item is confirmed
-        good.
-      implementation: policy
-      effectiveness: medium
-    - id: FR-CHQ-006-C2
-      name: Document and biometric identity verification
-      type: preventive
-      description: Verifies identity documents and liveness at onboarding or high-risk events, with checks
-        against authoritative data sources.
-      implementation: technology
-      effectiveness: high
-    - id: FR-CHQ-006-C3
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules on count, value, geography and timing alert analysts to bursts or structured
-        activity.
-      implementation: rule
-      effectiveness: medium
+    - CTL-079
+    - CTL-001
+    - CTL-037
     references:
     - UK Finance, Annual Fraud Report (published annually)
-  - id: FR-CHQ-007
-    name: Rapid structured withdrawals below reporting thresholds
-    description: Multiple withdrawals after deposit.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - account_data
-    false_positive_notes: Cash needs.
+  - ref: IND-TXN-068
+    legacy_id: FR-CHQ-007
+    context: Multiple withdrawals after deposit.
+    false_positive_context: Cash needs.
     controls:
-    - id: FR-CHQ-007-C1
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules on count, value, geography and timing alert analysts to bursts or structured
-        activity.
-      implementation: rule
-      effectiveness: medium
-    - id: FR-CHQ-007-C2
-      name: Enhanced due diligence and periodic KYC review
-      type: detective
-      description: Targeted review of purpose, source of funds and expected activity when behaviour diverges
-        from the profile.
-      implementation: process
-      effectiveness: medium
-    - id: FR-CHQ-007-C3
-      name: Behavioural and session analytics
-      type: detective
-      description: Scores session behaviour (typing, navigation, remote-access tooling, call-in-progress
-        signals, deviation from baseline) to surface coached or controlled activity.
-      implementation: model
-      effectiveness: high
+    - CTL-037
+    - CTL-014
+    - CTL-091
     references:
     - UK Finance, Annual Fraud Report (published annually)
-  - id: FR-CHQ-008
-    name: Stolen mail cheque deposited under changed payee
-    description: Payee name altered; account holder differs.
-    category: document
-    severity: high
-    detection_type:
-    - document_review
-    - transaction_monitoring
-    data_sources:
-    - cheque_images
-    false_positive_notes: Joint payees.
+  - ref: IND-DOC-029
+    legacy_id: FR-CHQ-008
+    context: Payee name altered; account holder differs.
+    false_positive_context: Joint payees.
     controls:
-    - id: FR-CHQ-008-C1
-      name: Cheque and image analytics
-      type: detective
-      description: Detects altered, counterfeit or duplicate items and unusual deposit patterns using
-        image and MICR analysis.
-      implementation: technology
-      effectiveness: medium
-    - id: FR-CHQ-008-C2
-      name: Deposit holds and funds-availability policy
-      type: preventive
-      description: Risk-based holds on uncleared deposits limit withdrawal until the item is confirmed
-        good.
-      implementation: policy
-      effectiveness: medium
-    - id: FR-CHQ-008-C3
-      name: Consortium and shared fraud data
-      type: detective
-      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
-        sharing to catch known bad actors early.
-      implementation: technology
-      effectiveness: high
+    - CTL-081
+    - CTL-079
+    - CTL-083
     references:
     - UK Finance, Annual Fraud Report (published annually)
-  - id: FR-CHQ-009
-    name: Many cheques deposited by multiple unrelated customers
-    description: A ring uses recruited accounts.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - deposit_data
-    false_positive_notes: Business deposits.
+  - ref: IND-BEH-065
+    legacy_id: FR-CHQ-009
+    context: A ring uses recruited accounts.
+    false_positive_context: Business deposits.
     controls:
-    - id: FR-CHQ-009-C1
-      name: Mule account detection model
-      type: detective
-      description: Detects inbound-funds-then-rapid-outflow and other mule patterns on receiving accounts,
-        enabling holds and exits.
-      implementation: model
-      effectiveness: high
-    - id: FR-CHQ-009-C2
-      name: Consortium and shared fraud data
-      type: detective
-      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
-        sharing to catch known bad actors early.
-      implementation: technology
-      effectiveness: high
-    - id: FR-CHQ-009-C3
-      name: Entity resolution and link analysis
-      type: detective
-      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
-        identities.
-      implementation: model
-      effectiveness: high
+    - CTL-051
+    - CTL-083
+    - CTL-049
     references:
     - UK Finance, Annual Fraud Report (published annually)

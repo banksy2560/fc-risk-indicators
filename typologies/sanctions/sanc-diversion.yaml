@@ -15,202 +15,61 @@ typology:
   - BIS and FinCEN, Joint Alert on Newly Identified Efforts by Russia to Evade Export Controls (2023)
   - FATF, Trade-Based Money Laundering (2020)
   indicators:
-  - id: SANC-DIVERSION-001
-    name: Customer in transit country suddenly trades controlled or high-priority items
-    description: A firm with a different history begins importing restricted items for resale.
-    category: customer
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - kyc_review
-    data_sources:
-    - trade_data
-    - account_activity
-    false_positive_notes: Market expansion and new product lines occur.
+  - ref: IND-CUS-050
+    legacy_id: SANC-DIVERSION-001
+    context: A firm with a different history begins importing restricted items for resale.
+    false_positive_context: Market expansion and new product lines occur.
     controls:
-    - id: SANC-DIVERSION-001-C1
-      name: Business-change monitoring
-      type: detective
-      description: Detect changes in goods profile.
-      implementation: rule
-      effectiveness: medium
-    - id: SANC-DIVERSION-001-C2
-      name: Refreshed KYC on change
-      type: preventive
-      description: Review rationale and customers.
-      implementation: process
-      effectiveness: high
-    - id: SANC-DIVERSION-001-C3
-      name: High-priority items list
-      type: preventive
-      description: Screen for relevant item codes.
-      implementation: technology
-      effectiveness: medium
-  - id: SANC-DIVERSION-002
-    name: Orders from addresses in transit zones with no storage or sales operations
-    description: Items ordered and shipped to mailbox or warehouse addresses without a visible business.
-    category: geographic
-    severity: medium
-    detection_type:
-    - document_review
-    - investigator_judgement
-    data_sources:
-    - shipping_documents
-    false_positive_notes: Fulfilment centres are common.
+    - CTL-133
+    - CTL-014
+    - CTL-130
+  - ref: IND-GEO-027
+    legacy_id: SANC-DIVERSION-002
+    context: Items ordered and shipped to mailbox or warehouse addresses without a visible business.
+    name_in_typology: Orders from addresses in transit zones with no storage or sales operations
+    false_positive_context: Fulfilment centres are common.
     controls:
-    - id: SANC-DIVERSION-002-C1
-      name: Address verification
-      type: preventive
-      description: Verify business presence.
-      implementation: technology
-      effectiveness: medium
-    - id: SANC-DIVERSION-002-C2
-      name: Delivery pattern analysis
-      type: detective
-      description: Spot repeated deliveries to the same address.
-      implementation: rule
-      effectiveness: medium
-  - id: SANC-DIVERSION-003
-    name: End-user information absent, or customer declines re-export commitments
-    description: Buyer will not confirm end use or sign re-export undertakings.
-    category: document
-    severity: high
-    detection_type:
-    - document_review
-    - customer_behaviour
-    data_sources:
-    - end_use_statements
-    false_positive_notes: Some buyers resist paperwork.
+    - CTL-003
+    - CTL-126
+  - ref: IND-DOC-054
+    legacy_id: SANC-DIVERSION-003
+    context: Buyer will not confirm end use or sign re-export undertakings.
+    name_in_typology: End-user information absent, or customer declines re-export commitments
+    false_positive_context: Some buyers resist paperwork.
     controls:
-    - id: SANC-DIVERSION-003-C1
-      name: Re-export undertaking requirement
-      type: preventive
-      description: Require contractual and documentary commitments.
-      implementation: process
-      effectiveness: high
-    - id: SANC-DIVERSION-003-C2
-      name: Decline protocol
-      type: governance
-      description: Escalate and decline where unwilling.
-      implementation: policy
-      effectiveness: medium
-  - id: SANC-DIVERSION-004
-    name: Sharp rise in exports to specific transit countries of restricted items
-    description: Aggregate trade data shows spikes in categories of concern to particular countries.
-    category: geographic
-    severity: medium
-    detection_type:
-    - external_intel
-    - transaction_monitoring
-    data_sources:
-    - trade_statistics
-    false_positive_notes: Demand shifts are normal.
+    - CTL-129
+    - CTL-016
+  - ref: IND-GEO-028
+    legacy_id: SANC-DIVERSION-004
+    context: Aggregate trade data shows spikes in categories of concern to particular countries.
+    false_positive_context: Demand shifts are normal.
     controls:
-    - id: SANC-DIVERSION-004-C1
-      name: Trade statistics monitoring
-      type: detective
-      description: Use public trade data in risk assessment.
-      implementation: technology
-      effectiveness: medium
-    - id: SANC-DIVERSION-004-C2
-      name: Country-level risk scoring
-      type: governance
-      description: Adjust country risk ratings.
-      implementation: policy
-      effectiveness: medium
-  - id: SANC-DIVERSION-005
-    name: Payments from jurisdictions of concern in settlement of third-country sales
-    description: Funds arrive from or return to parties in the restricted jurisdiction.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - screening
-    data_sources:
-    - payment_messages
-    false_positive_notes: Group treasury flows.
+    - CTL-139
+    - CTL-154
+  - ref: IND-TXN-131
+    legacy_id: SANC-DIVERSION-005
+    context: Funds arrive from or return to parties in the restricted jurisdiction.
+    false_positive_context: Group treasury flows.
     controls:
-    - id: SANC-DIVERSION-005-C1
-      name: Payer origin analysis
-      type: detective
-      description: Analyse payer geography.
-      implementation: rule
-      effectiveness: medium
-    - id: SANC-DIVERSION-005-C2
-      name: Payment hold and query
-      type: preventive
-      description: Query unexplained links.
-      implementation: process
-      effectiveness: high
-  - id: SANC-DIVERSION-006
-    name: Goods relabelled, repackaged or invoiced under different HS codes
-    description: Descriptions change between stages of the supply chain.
-    category: document
-    severity: medium
-    detection_type:
-    - document_review
-    data_sources:
-    - invoices
-    - customs_filings
-    false_positive_notes: Classification errors are common.
+    - CTL-045
+    - CTL-103
+  - ref: IND-DOC-060
+    legacy_id: SANC-DIVERSION-006
+    context: Descriptions change between stages of the supply chain.
+    false_positive_context: Classification errors are common.
     controls:
-    - id: SANC-DIVERSION-006-C1
-      name: HS-code consistency checks
-      type: detective
-      description: Compare codes across stages.
-      implementation: technology
-      effectiveness: medium
-    - id: SANC-DIVERSION-006-C2
-      name: Customs data comparison
-      type: detective
-      description: Compare with customs filings.
-      implementation: process
-      effectiveness: medium
-  - id: SANC-DIVERSION-007
-    name: Company with owners or staff linked to the restricted jurisdiction
-    description: Directors or addresses link to the restricted country while located elsewhere.
-    category: ownership_structure
-    severity: medium
-    detection_type:
-    - kyc_review
-    - screening
-    data_sources:
-    - registry_data
-    false_positive_notes: Diaspora businesses are common.
+    - CTL-123
+  - ref: IND-OWN-025
+    legacy_id: SANC-DIVERSION-007
+    context: Directors or addresses link to the restricted country while located elsewhere.
+    false_positive_context: Diaspora businesses are common.
     controls:
-    - id: SANC-DIVERSION-007-C1
-      name: Ownership and nationality screening
-      type: preventive
-      description: Screen owners against restrictions.
-      implementation: rule
-      effectiveness: medium
-    - id: SANC-DIVERSION-007-C2
-      name: Control analysis
-      type: detective
-      description: Assess actual control.
-      implementation: process
-      effectiveness: medium
-  - id: SANC-DIVERSION-008
-    name: Multiple small shipments to avoid scrutiny
-    description: Orders split into smaller consignments to stay below review thresholds.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - order_data
-    false_positive_notes: Just-in-time practices are common.
+    - CTL-029
+    - CTL-005
+  - ref: IND-TXN-132
+    legacy_id: SANC-DIVERSION-008
+    context: Orders split into smaller consignments to stay below review thresholds.
+    false_positive_context: Just-in-time practices are common.
     controls:
-    - id: SANC-DIVERSION-008-C1
-      name: Order aggregation
-      type: detective
-      description: Aggregate by consignee.
-      implementation: rule
-      effectiveness: medium
-    - id: SANC-DIVERSION-008-C2
-      name: Threshold review
-      type: governance
-      description: Review threshold design.
-      implementation: policy
-      effectiveness: low
+    - CTL-039
+    - CTL-159

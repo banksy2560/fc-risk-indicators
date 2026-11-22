@@ -16,217 +16,70 @@ typology:
   - FATF, Guidance on Money or Value Transfer Services (2016)
   - FATF, Money Laundering Through Money Remittance and Currency Exchange Providers (2010)
   indicators:
-  - id: ML-HAWALA-001
-    name: Unlicensed operator accounts receive many unrelated deposits
-    description: Personal or business accounts used as collection point for many senders without licence.
-    category: customer
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - transaction_data
-    - licence_registers
-    false_positive_notes: Family collections and community groups.
+  - ref: IND-CUS-006
+    legacy_id: ML-HAWALA-001
+    context: Personal or business accounts used as collection point for many senders without licence.
+    name_in_typology: Unlicensed operator accounts receive many unrelated deposits
+    false_positive_context: Family collections and community groups.
     controls:
-    - id: ML-HAWALA-001-C1
-      name: Unregistered MVTS detection model
-      type: detective
-      description: Detect patterns of remitter-like activity on non-MVTS accounts.
-      implementation: model
-      effectiveness: high
-    - id: ML-HAWALA-001-C2
-      name: Licence verification
-      type: preventive
-      description: Verify licences for MVTS customers.
-      implementation: process
-      effectiveness: high
-  - id: ML-HAWALA-002
-    name: Large cash deposits followed by payments to many individuals or businesses
-    description: Cash received and paid out to numerous parties abroad or locally.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    false_positive_notes: Payroll for distributed workers.
+    - CTL-061
+    - CTL-116
+  - ref: IND-TXN-108
+    legacy_id: ML-HAWALA-002
+    context: Cash received and paid out to numerous parties abroad or locally.
+    false_positive_context: Payroll for distributed workers.
     controls:
-    - id: ML-HAWALA-002-C1
-      name: Fan-out pattern rule
-      type: detective
-      description: Alert on many beneficiaries after cash inflows.
-      implementation: rule
-      effectiveness: high
-    - id: ML-HAWALA-002-C2
-      name: Purpose-of-payment review
-      type: preventive
-      description: Check stated purpose and supporting evidence.
-      implementation: process
-      effectiveness: medium
-  - id: ML-HAWALA-003
-    name: Settlement via trade, invoices or gold
-    description: Balancing between brokers is done through goods, invoices or precious metals.
-    category: typology_specific
-    severity: medium
-    detection_type:
-    - investigator_judgement
-    - document_review
-    data_sources:
-    - trade_documents
-    false_positive_notes: Real trade also exists.
+    - CTL-041
+    - CTL-022
+  - ref: IND-TYP-034
+    legacy_id: ML-HAWALA-003
+    context: Balancing between brokers is done through goods, invoices or precious metals.
+    false_positive_context: Real trade also exists.
     controls:
-    - id: ML-HAWALA-003-C1
-      name: Trade settlement analytics
-      type: detective
-      description: Link trade and remittance flows.
-      implementation: model
-      effectiveness: medium
-    - id: ML-HAWALA-003-C2
-      name: Documentary evidence request
-      type: preventive
-      description: Request support for trade invoices.
-      implementation: process
-      effectiveness: medium
-  - id: ML-HAWALA-004
-    name: Reciprocal payments between operators across countries
-    description: Payments in and out between linked accounts without a direct transfer.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - transaction_data
-    false_positive_notes: Netting among banks.
+    - CTL-140
+  - ref: IND-TXN-016
+    legacy_id: ML-HAWALA-004
+    context: Payments in and out between linked accounts without a direct transfer.
+    name_in_typology: Reciprocal payments between operators across countries
+    false_positive_context: Netting among banks.
     controls:
-    - id: ML-HAWALA-004-C1
-      name: Reciprocity detection
-      type: detective
-      description: Compare opposite flows across linked accounts.
-      implementation: model
-      effectiveness: medium
-    - id: ML-HAWALA-004-C2
-      name: Network investigation
-      type: detective
-      description: Map broker networks.
-      implementation: process
-      effectiveness: medium
-  - id: ML-HAWALA-005
-    name: Customer lacks records of senders and recipients
-    description: No ledger of clients, with limited or no identification.
-    category: document
-    severity: high
-    detection_type:
-    - kyc_review
-    - document_review
-    data_sources:
-    - kyc_file
-    false_positive_notes: Informal community use.
+    - CTL-047
+    - CTL-095
+  - ref: IND-DOC-041
+    legacy_id: ML-HAWALA-005
+    context: No ledger of clients, with limited or no identification.
+    false_positive_context: Informal community use.
     controls:
-    - id: ML-HAWALA-005-C1
-      name: Recordkeeping obligations
-      type: preventive
-      description: Require records and identification as licence condition.
-      implementation: policy
-      effectiveness: high
-    - id: ML-HAWALA-005-C2
-      name: Customer file review
-      type: detective
-      description: Sample records during reviews.
-      implementation: process
-      effectiveness: medium
-  - id: ML-HAWALA-006
-    name: Frequent use of money service businesses and exchange houses by the same account
-    description: Multiple MSB transactions and exchange houses, often similar amounts.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - msb_data
-    false_positive_notes: Migrant workers send regularly.
+    - CTL-174
+    - CTL-175
+  - ref: IND-PRD-046
+    legacy_id: ML-HAWALA-006
+    context: Multiple MSB transactions and exchange houses, often similar amounts.
+    name_in_typology: Frequent use of money service businesses and exchange houses by the same account
+    false_positive_context: Migrant workers send regularly.
     controls:
-    - id: ML-HAWALA-006-C1
-      name: MSB transaction aggregation
-      type: detective
-      description: Aggregate across providers.
-      implementation: rule
-      effectiveness: medium
-    - id: ML-HAWALA-006-C2
-      name: Remitter profile checks
-      type: preventive
-      description: Verify sender profile.
-      implementation: process
-      effectiveness: medium
-  - id: ML-HAWALA-007
-    name: Flows to or from corridors known for informal transfer
-    description: Payments linked to countries or regions where hawala is prevalent and controls are weak.
-    category: geographic
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - screening
-    data_sources:
-    - transaction_data
-    false_positive_notes: Legitimate corridors.
+    - CTL-039
+    - CTL-061
+  - ref: IND-GEO-044
+    legacy_id: ML-HAWALA-007
+    context: Payments linked to countries or regions where hawala is prevalent and controls are weak.
+    name_in_typology: Flows to or from corridors known for informal transfer
+    false_positive_context: Legitimate corridors.
     controls:
-    - id: ML-HAWALA-007-C1
-      name: Corridor risk scoring
-      type: detective
-      description: Score corridors and escalate.
-      implementation: model
-      effectiveness: medium
-    - id: ML-HAWALA-007-C2
-      name: Enhanced transfer review
-      type: preventive
-      description: Review high-risk corridor flows.
-      implementation: process
-      effectiveness: medium
-  - id: ML-HAWALA-008
-    name: Operator reluctant to disclose service model
-    description: Refuses to describe how payments are made or settled.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - kyc_review
-    - customer_behaviour
-    data_sources:
-    - kyc_file
-    false_positive_notes: Confidentiality concerns.
+    - CTL-154
+    - CTL-027
+  - ref: IND-BEH-091
+    legacy_id: ML-HAWALA-008
+    context: Refuses to describe how payments are made or settled.
+    false_positive_context: Confidentiality concerns.
     controls:
-    - id: ML-HAWALA-008-C1
-      name: Business model questionnaire
-      type: preventive
-      description: Structured questions on service and settlement.
-      implementation: process
-      effectiveness: medium
-    - id: ML-HAWALA-008-C2
-      name: Relationship exit criteria
-      type: corrective
-      description: Exit when not credible.
-      implementation: policy
-      effectiveness: medium
-  - id: ML-HAWALA-009
-    name: Structured transfers below record-keeping thresholds
-    description: Many small transfers avoid thresholds.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    false_positive_notes: Regular small remittances.
+    - CTL-011
+    - CTL-016
+  - ref: IND-TXN-008
+    legacy_id: ML-HAWALA-009
+    context: Many small transfers avoid thresholds.
+    name_in_typology: Structured transfers below record-keeping thresholds
+    false_positive_context: Regular small remittances.
     controls:
-    - id: ML-HAWALA-009-C1
-      name: Threshold avoidance rule
-      type: detective
-      description: Cluster sub-threshold transfers by sender and recipient.
-      implementation: rule
-      effectiveness: medium
-    - id: ML-HAWALA-009-C2
-      name: Sender-recipient aggregation
-      type: detective
-      description: Aggregate by identifiers.
-      implementation: rule
-      effectiveness: medium
+    - CTL-038
+    - CTL-039

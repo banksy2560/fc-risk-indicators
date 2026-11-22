@@ -15,214 +15,69 @@ typology:
   - FATF, Financing of Recruitment for Terrorist Purposes (2018)
   - FATF, Terrorist Financing Risk Assessment Guidance (2019)
   indicators:
-  - id: TF-STATESPONSOR-001
-    name: Commodity trade originating from areas controlled by armed groups
-    description: Shipments of oil, minerals, scrap or agricultural goods with origin documentation tied
-      to territory where terrorist groups operate.
-    category: geographic
-    severity: high
-    detection_type:
-    - document_review
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - trade_documents
-    - origin_certificates
-    false_positive_notes: Legitimate producers in border regions can have mixed supply chains.
+  - ref: IND-GEO-006
+    legacy_id: TF-STATESPONSOR-001
+    context: Shipments of oil, minerals, scrap or agricultural goods with origin documentation tied to
+      territory where terrorist groups operate.
+    name_in_typology: Commodity trade originating from areas controlled by armed groups
+    false_positive_context: Legitimate producers in border regions can have mixed supply chains.
     controls:
-    - id: TF-STATESPONSOR-001-C1
-      name: Origin verification
-      type: preventive
-      description: Require evidence of origin and chain of custody for high-risk-region commodities.
-      implementation: process
-      effectiveness: high
-    - id: TF-STATESPONSOR-001-C2
-      name: Geographic risk rules in trade screening
-      type: detective
-      description: Screen origin, loading and routing against risk-region lists.
-      implementation: rule
-      effectiveness: medium
-    - id: TF-STATESPONSOR-001-C3
-      name: Commodity sourcing policy
-      type: governance
-      description: Define restrictions and approval levels for relevant commodities.
-      implementation: policy
-      effectiveness: medium
-  - id: TF-STATESPONSOR-002
-    name: Trading company with no operational history receives or sends commodity payments
-    description: Newly formed broker handles large commodity payments, has little physical presence and
-      uses third-country accounts.
-    category: customer
-    severity: medium
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - registry_data
-    - account_activity
-    false_positive_notes: Start-up traders do exist.
+    - CTL-135
+    - CTL-126
+    - CTL-167
+  - ref: IND-CUS-010
+    legacy_id: TF-STATESPONSOR-002
+    context: Newly formed broker handles large commodity payments, has little physical presence and uses
+      third-country accounts.
+    name_in_typology: Trading company with no operational history receives or sends commodity payments
+    severity_in_typology: medium
+    false_positive_context: Start-up traders do exist.
     controls:
-    - id: TF-STATESPONSOR-002-C1
-      name: Shell-risk onboarding review
-      type: preventive
-      description: Test commercial rationale, premises and staffing at onboarding.
-      implementation: process
-      effectiveness: medium
-    - id: TF-STATESPONSOR-002-C2
-      name: Volume-versus-profile monitoring
-      type: detective
-      description: Alert on activity exceeding expected scale for the entity age.
-      implementation: rule
-      effectiveness: medium
-  - id: TF-STATESPONSOR-003
-    name: Payments to intermediaries in neighbouring transit jurisdictions
-    description: Commodity proceeds are settled through agents or companies in jurisdictions adjacent
-      to conflict areas and then forwarded onward.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - payment_messages
-    - counterparty_data
-    false_positive_notes: Regional hubs are common commercial centres.
+    - CTL-010
+    - CTL-054
+  - ref: IND-TXN-153
+    legacy_id: TF-STATESPONSOR-003
+    context: Commodity proceeds are settled through agents or companies in jurisdictions adjacent to conflict
+      areas and then forwarded onward.
+    false_positive_context: Regional hubs are common commercial centres.
     controls:
-    - id: TF-STATESPONSOR-003-C1
-      name: Transit-hub flow analytics
-      type: detective
-      description: Analyse flows through hub entities with onward forwarding to higher-risk areas.
-      implementation: model
-      effectiveness: medium
-    - id: TF-STATESPONSOR-003-C2
-      name: Intermediary identity checks
-      type: preventive
-      description: Verify beneficiary and control of intermediaries.
-      implementation: process
-      effectiveness: medium
-  - id: TF-STATESPONSOR-004
-    name: Cultural property or antiquities sales with weak provenance
-    description: Trade in antiquities or artefacts with gaps in provenance linked to conflict-zone origin.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - document_review
-    - investigator_judgement
-    data_sources:
-    - provenance_documents
-    - sale_records
-    false_positive_notes: Older collections may have incomplete but benign provenance.
+    - CTL-040
+    - CTL-112
+  - ref: IND-PRD-068
+    legacy_id: TF-STATESPONSOR-004
+    context: Trade in antiquities or artefacts with gaps in provenance linked to conflict-zone origin.
+    false_positive_context: Older collections may have incomplete but benign provenance.
     controls:
-    - id: TF-STATESPONSOR-004-C1
-      name: Provenance documentation requirement
-      type: preventive
-      description: Seek export licences and ownership history before handling payments.
-      implementation: process
-      effectiveness: medium
-    - id: TF-STATESPONSOR-004-C2
-      name: Sector-specific red-flag training
-      type: preventive
-      description: Train art and antiquities-sector staff.
-      implementation: training
-      effectiveness: medium
-  - id: TF-STATESPONSOR-005
-    name: Transactions involving entities tied to state support for designated groups
-    description: Counterparties publicly linked, by credible reports, to government support for terrorist
+    - CTL-135
+    - CTL-171
+  - ref: IND-CPT-056
+    legacy_id: TF-STATESPONSOR-005
+    context: Counterparties publicly linked, by credible reports, to government support for terrorist
       organisations.
-    category: counterparty
-    severity: high
-    detection_type:
-    - screening
-    - external_intel
-    data_sources:
-    - sanctions_lists
-    - adverse_media
-    false_positive_notes: Government-owned entities are widely used in legitimate trade.
+    false_positive_context: Government-owned entities are widely used in legitimate trade.
     controls:
-    - id: TF-STATESPONSOR-005-C1
-      name: State-linked entity screening
-      type: preventive
-      description: Screen for state ownership and credible adverse reporting.
-      implementation: rule
-      effectiveness: high
-    - id: TF-STATESPONSOR-005-C2
-      name: Enhanced review for state-connected counterparties
-      type: detective
-      description: Perform deeper review of purpose and ultimate beneficiary.
-      implementation: process
-      effectiveness: medium
-  - id: TF-STATESPONSOR-006
-    name: Discrepancies between invoice, shipment and payment details
-    description: Quantity, price, consignee or route differs across documents in commodity transactions.
-    category: document
-    severity: medium
-    detection_type:
-    - document_review
-    - investigator_judgement
-    data_sources:
-    - invoices
-    - bills_of_lading
-    false_positive_notes: Errors and commercial renegotiation are routine.
+    - CTL-028
+    - CTL-026
+  - ref: IND-DOC-020
+    legacy_id: TF-STATESPONSOR-006
+    context: Quantity, price, consignee or route differs across documents in commodity transactions.
+    name_in_typology: Discrepancies between invoice, shipment and payment details
+    severity_in_typology: medium
+    false_positive_context: Errors and commercial renegotiation are routine.
     controls:
-    - id: TF-STATESPONSOR-006-C1
-      name: Three-way document matching
-      type: detective
-      description: Compare invoice, bill of lading and payment instructions.
-      implementation: process
-      effectiveness: medium
-    - id: TF-STATESPONSOR-006-C2
-      name: Price benchmarking
-      type: detective
-      description: Compare declared price to market benchmarks.
-      implementation: technology
-      effectiveness: medium
-  - id: TF-STATESPONSOR-007
-    name: Unusual use of cash or barter in commodity deals
-    description: Settlement via cash, barter or netting arrangements without documentation.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - document_review
-    data_sources:
-    - settlement_records
-    false_positive_notes: Barter and cash remain used in some commodity markets.
+    - CTL-123
+    - CTL-124
+  - ref: IND-TXN-154
+    legacy_id: TF-STATESPONSOR-007
+    context: Settlement via cash, barter or netting arrangements without documentation.
+    false_positive_context: Barter and cash remain used in some commodity markets.
     controls:
-    - id: TF-STATESPONSOR-007-C1
-      name: Settlement method policy
-      type: governance
-      description: Restrict undocumented cash or barter settlement.
-      implementation: policy
-      effectiveness: medium
-    - id: TF-STATESPONSOR-007-C2
-      name: Exception reporting
-      type: detective
-      description: Report deals settled outside standard banking channels.
-      implementation: rule
-      effectiveness: low
-  - id: TF-STATESPONSOR-008
-    name: Funding flows following government transfers to non-state entities
-    description: Payments from state or quasi-state entities to private firms or individuals lacking evident
+    - CTL-062
+    - CTL-140
+  - ref: IND-TYP-059
+    legacy_id: TF-STATESPONSOR-008
+    context: Payments from state or quasi-state entities to private firms or individuals lacking evident
       services.
-    category: typology_specific
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - external_intel
-    data_sources:
-    - payment_data
-    - adverse_media
-    false_positive_notes: Grants and subsidies to private recipients are common.
+    false_positive_context: Grants and subsidies to private recipients are common.
     controls:
-    - id: TF-STATESPONSOR-008-C1
-      name: Source-of-funds review for state payments
-      type: preventive
-      description: Examine purpose and recipients of state-sourced flows.
-      implementation: process
-      effectiveness: medium
-    - id: TF-STATESPONSOR-008-C2
-      name: Public-sector exposure rules
-      type: detective
-      description: Flag atypical state-to-private flows in high-risk contexts.
-      implementation: rule
-      effectiveness: medium
+    - CTL-058

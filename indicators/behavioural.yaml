@@ -1,0 +1,1690 @@
+indicators:
+- id: IND-BEH-001
+  name: Reluctance to disclose beneficial ownership or control
+  description: Customer or intermediary is vague, delayed or inconsistent when asked who owns, controls
+    or ultimately benefits from an account, entity or funds.
+  category: behavioural
+  severity: high
+  detection_type:
+  - kyc_review
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - kyc_file
+  - ownership_records
+  - case_notes
+  false_positive_notes: Complex but legitimate structures and slow third-party registries can cause delay;
+    weigh against documentary support.
+- id: IND-BEH-002
+  name: Refusal or delay in answering due diligence requests
+  description: Customer or counterparty delays, refuses or gives incomplete or evasive responses to KYC,
+    refresh or request-for-information enquiries.
+  category: behavioural
+  severity: high
+  detection_type:
+  - kyc_review
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - kyc_file
+  - rfi_logs
+  - case_notes
+  false_positive_notes: Genuine administrative delay or language barriers can look similar; check for
+    repeat patterns.
+- id: IND-BEH-003
+  name: Unable or unwilling to explain transaction purpose or origin
+  description: When asked about a transaction, the customer gives vague, rehearsed, inconsistent or shifting
+    explanations of its purpose, source or counterparties.
+  category: behavioural
+  severity: high
+  detection_type:
+  - kyc_review
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - case_notes
+  - transaction_data
+  - kyc_file
+  false_positive_notes: Unsophisticated customers may explain poorly; compare explanation with documents
+    and profile.
+- id: IND-BEH-004
+  name: Customer accompanied, directed or coached by a third party
+  description: Another person speaks for, accompanies or dictates instructions to the customer, who may
+    appear fearful, scripted or unable to explain the activity.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - branch_observations
+  - contact_centre_notes
+  - cctv_footage
+  false_positive_notes: Carers, relatives or interpreters may legitimately assist; assess the customer's
+    autonomy.
+- id: IND-BEH-005
+  name: Account controlled or used by someone other than the holder
+  description: Signs that a third party holds the card, PIN, credentials or device, or that funds and
+    activity belong to someone other than the named holder.
+  category: behavioural
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - device_logs
+  - transaction_data
+  - account_mandates
+  - kyc_file
+  false_positive_notes: Family members, agents and authorised signatories may legitimately operate accounts.
+- id: IND-BEH-006
+  name: Customer on a live call while transacting
+  description: Customer is on an active phone call, hesitant or following dictated instructions while
+    depositing cash or making an online payment.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - session_logs
+  - branch_observations
+  - cctv_footage
+  false_positive_notes: Customers often use phones for ordinary reasons; stronger when combined with unusual
+    payments.
+- id: IND-BEH-007
+  name: Remote-access, emulator or automation tools in session
+  description: Remote-desktop, screen-sharing, emulator or scripted-control tools are detected during
+    onboarding, login or payment sessions.
+  category: behavioural
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  false_positive_notes: IT support and accessibility tools can trigger detections.
+- id: IND-BEH-008
+  name: Login from unfamiliar device, location or infrastructure
+  description: Session originates from a device, country, emulator or network not previously associated
+    with the customer, including shortly after a phishing event.
+  category: behavioural
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - ip_geolocation
+  - session_logs
+  false_positive_notes: Travel, new phones and VPN use are common legitimate causes.
+- id: IND-BEH-009
+  name: Multiple failed logins followed by success
+  description: Repeated failed authentication attempts, often across accounts from one source, followed
+    by successful access.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - authentication_logs
+  - device_logs
+  false_positive_notes: Customers forgetting passwords produce similar patterns.
+- id: IND-BEH-010
+  name: SIM swap or number port before transfers
+  description: Mobile number is ported or SIM replaced shortly before one-time-passcode-protected actions
+    or outbound transfers.
+  category: behavioural
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - telecom_signals
+  - transaction_data
+  - authentication_logs
+  false_positive_notes: Customers legitimately replace lost or upgraded phones.
+- id: IND-BEH-011
+  name: Credential or contact change followed by new payee and payments
+  description: Password, email or phone details are changed, followed in the same session or day by a
+    new payee and large outbound payments.
+  category: behavioural
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - authentication_logs
+  - transaction_data
+  - device_logs
+  false_positive_notes: Customers may update details and pay a new supplier at the same time.
+- id: IND-BEH-012
+  name: Shared device, contact or address data across many applicants or senders
+  description: The same device fingerprint, IP, phone, email or address appears across many applications,
+    claims or apparent customers.
+  category: behavioural
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - application_data
+  - ip_geolocation
+  false_positive_notes: Households, shared workplaces and shared devices can explain overlaps.
+- id: IND-BEH-013
+  name: Urgent payment instruction or payment-detail change outside normal process
+  description: Staff receive urgent, confidential requests, or changes to beneficiary details, directing
+    payment to a new beneficiary outside normal workflow.
+  category: behavioural
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - payment_instructions
+  - email_records
+  - transaction_data
+  false_positive_notes: Genuine urgent business payments and supplier bank changes occur; verify via a
+    known channel.
+- id: IND-BEH-014
+  name: Rapid resale or return of recently acquired asset
+  description: An asset is bought and quickly resold or returned for a refund in a different payment form,
+    with no apparent reason or improvement.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - transaction_data
+  - asset_registry
+  - sales_records
+  false_positive_notes: Genuine market changes or buyer remorse can cause quick resale.
+- id: IND-BEH-015
+  name: Customer indifferent to cost, return or value
+  description: Customer readily accepts poor terms, fees, losses, penalties or prices, showing little
+    interest in performance, provenance or negotiation.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - case_notes
+  - transaction_data
+  false_positive_notes: Wealthy or inexperienced customers may be less price sensitive.
+- id: IND-BEH-016
+  name: Frequent changes of customer or entity details
+  description: Customer or entity repeatedly changes name, address, contact details, directors, signatories
+    or ownership.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - kyc_review
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - kyc_file
+  - corporate_registry
+  - change_logs
+  false_positive_notes: Restructurings and growth-related changes are common for young businesses.
+- id: IND-BEH-017
+  name: Repeated change of consignee or buyer in transit
+  description: Shipments or cargoes are re-routed, re-invoiced or have ownership shifted through successive
+    parties without clear commercial reason.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - trade_documents
+  - shipping_data
+  - transaction_data
+  false_positive_notes: Commodity trading legitimately involves resale in transit.
+- id: IND-BEH-018
+  name: Pressure to speed up or bypass checks
+  description: Customer or intermediary urges rapid completion, secrecy or bypassing of checks, or leans
+    on personal connections.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - case_notes
+  - onboarding_records
+  false_positive_notes: Time-critical commercial deals create genuine urgency.
+- id: IND-BEH-019
+  name: Staff override of controls or excessive record access
+  description: Employees override approvals, alter records, access records without need or show unusual
+    relationships with customers.
+  category: behavioural
+  severity: high
+  detection_type:
+  - investigator_judgement
+  - transaction_monitoring
+  data_sources:
+  - access_logs
+  - audit_trails
+  - hr_records
+  false_positive_notes: Privileged roles and emergency fixes legitimately involve overrides; require documented
+    approval.
+- id: IND-BEH-020
+  name: New account or entity with sudden high activity
+  description: A recently opened account or newly formed entity with little history abruptly sees large
+    or numerous payments unrelated to its profile.
+  category: behavioural
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - kyc_review
+  data_sources:
+  - transaction_data
+  - account_opening_records
+  - corporate_registry
+  false_positive_notes: New businesses may ramp up quickly; assess against stated plans.
+- id: IND-BEH-021
+  name: Customer disputes legitimate transactions
+  description: Customer falsely claims non-receipt or unauthorised use for transactions they made, often
+    from their own device.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - dispute_records
+  - device_logs
+  - delivery_records
+  false_positive_notes: Genuine fraud and merchant errors also produce disputes.
+- id: IND-BEH-022
+  name: Overpayment by cheque or money order from an unknown party
+  description: A cheque or money order from an unknown party exceeds the amount due and a refund of the
+    excess is requested before clearance.
+  category: behavioural
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - cheque_images
+  - transaction_data
+  - customer_reports
+  false_positive_notes: Genuine overpayments occur but rarely with refund pressure.
+- id: IND-BEH-023
+  name: Expense claims with unusual gifts or entertainment near licence events
+  description: Employee expenses for gifts, meals or travel for officials around inspections, permits
+    or renewals.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-024
+  name: Payments timed around contract award
+  description: Cluster of payments to an intermediary just before or after a tender decision, licence
+    grant or regulatory approval.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-025
+  name: Repeated wins by the same supplier with narrow margins
+  description: One supplier repeatedly wins just below competitors or in rotation among a small group.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-026
+  name: Luxury asset spending inconsistent with profile
+  description: High-value purchases of yachts, jets, art, jewellery or education by a PEP-linked customer
+    not explained by known income.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-027
+  name: Channel used inconsistent with customer profile
+  description: Customer uses channels atypical for them, such as a distant branch or sudden switch to
+    digital.
+  category: behavioural
+  severity: low
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-028
+  name: Occupation or business inconsistent with wealth
+  description: Declared occupation, age or business does not plausibly explain the scale of assets or
+    funds.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-029
+  name: Weak AML governance and oversight
+  description: Board and senior management receive limited or irregular financial crime reporting and
+    there is unclear accountability.
+  category: behavioural
+  severity: high
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - governance_records
+  - audit_reports
+  - mi_reports
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-030
+  name: Persistent alert backlog
+  description: Monitoring or screening alerts stay unreviewed beyond service levels.
+  category: behavioural
+  severity: high
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - governance_records
+  - audit_reports
+  - mi_reports
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-031
+  name: Monitoring scenarios not tuned or validated
+  description: Rules and models have not been calibrated, tested or reviewed against current risk.
+  category: behavioural
+  severity: high
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - governance_records
+  - audit_reports
+  - mi_reports
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-032
+  name: Poor customer and transaction data quality
+  description: Missing, inconsistent or incorrectly mapped data weakens screening and monitoring.
+  category: behavioural
+  severity: high
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - governance_records
+  - audit_reports
+  - mi_reports
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-033
+  name: Significant outsourcing of control activities
+  description: Screening, onboarding or investigation tasks are outsourced with limited oversight.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - governance_records
+  - audit_reports
+  - mi_reports
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-034
+  name: Overdue periodic reviews or KYC refresh
+  description: Customer reviews exceed scheduled dates, particularly for high-risk customers.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - governance_records
+  - audit_reports
+  - mi_reports
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-035
+  name: Inadequate or outdated enterprise risk assessment
+  description: Risk assessment is stale, unscoped, or not used to drive controls.
+  category: behavioural
+  severity: high
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - governance_records
+  - audit_reports
+  - mi_reports
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-036
+  name: Insufficient training or low staff awareness
+  description: Staff cannot recognise red flags, late completion of training, high error rates in quality
+    checks.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - governance_records
+  - audit_reports
+  - mi_reports
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-037
+  name: Slow or poor-quality suspicious activity reporting
+  description: Reports are filed late, are thin in content or the volume is out of line with peers.
+  category: behavioural
+  severity: high
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - governance_records
+  - audit_reports
+  - mi_reports
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-038
+  name: Unresolved audit or regulatory findings
+  description: Previous findings remain open or recur.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - governance_records
+  - audit_reports
+  - mi_reports
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-039
+  name: Older customer on first use with large amounts
+  description: First-time, elderly user deposits large sums, often on a phone call, consistent with scam
+    coercion.
+  category: behavioural
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-040
+  name: Use of multiple kiosks across locations in one day
+  description: User travels between machines to avoid limits or detection.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-041
+  name: Customer recruited online for fake job offering payment handling
+  description: Customer describes job ads asking to receive and forward funds.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-042
+  name: Operational-security behaviours at onboarding and login
+  description: Use of Tor, disposable email, burner phones and rotated devices alongside high-volume trading.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-043
+  name: Withdrawals to bridge contracts at odds with profile
+  description: Retail customers with no on-chain history send large sums directly to bridges or DeFi contracts.
+  category: behavioural
+  severity: low
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-044
+  name: Account rental or resale signals
+  description: Credential changes, new device and region shifts for an established seller.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-045
+  name: Use of anonymising network access to the platform
+  description: Sessions originate from Tor, rotating proxies or VPNs inconsistent with declared residence,
+    combined with high-value transfers.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-046
+  name: Rapid sequence of new payee additions
+  description: Many new beneficiaries added in a short period, often to unrelated accounts.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-047
+  name: Referral or incentive abuse patterns
+  description: Clusters of accounts claiming rewards and withdrawing promptly.
+  category: behavioural
+  severity: low
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-048
+  name: Card-not-present volume with testing patterns
+  description: Many small authorisations from varied cards, consistent with card testing then fraud.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-049
+  name: Account use inconsistent with prior low-risk behaviour
+  description: Dormant or low-activity account abruptly receives or sends large volumes in a pattern tied
+    to publicised ransomware campaigns.
+  category: behavioural
+  severity: low
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-050
+  name: Mismatch between claimed identity and device, IP or voice
+  description: Geolocation, language or voice biometrics inconsistent with the stated identity.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-051
+  name: Voice or video call authentication challenges failed
+  description: Callers using cloned voices or video deepfakes during high-value requests.
+  category: behavioural
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-052
+  name: Applications following failed attempts with edited data
+  description: Repeated retries altering one data element until approval.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-053
+  name: Customer refuses or cannot support wallet ownership verification
+  description: Refusal to sign a message, microtransaction or provide proof of control when requested.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-054
+  name: Transacting via escrow-less informal chat groups
+  description: Customer explanations indicate trades arranged through messaging apps rather than regulated
+    venues, with irregular settlement.
+  category: behavioural
+  severity: low
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-055
+  name: Retirement certificates claimed for corporate net-zero without registry proof
+  description: Companies or traders claim offsets via documents that do not match retirement records.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-056
+  name: Crew payments below standards or via third parties
+  description: Crew recruited by agencies with fees, wages held back, or payments to agents.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-057
+  name: Mixed legal and illegal operations blending flows
+  description: Legitimate recycler also receives mislabelled loads and commingled revenue.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-058
+  name: Customer talks of winning lottery or foreign relative
+  description: explanations show belief in unsolicited windfall.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-059
+  name: Password reset or credential change from unrecognised channel
+  description: Self-service reset triggered from an unfamiliar environment.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-060
+  name: Session shows automated or scripted interaction
+  description: Non-human timing, headless browser or scripted API calls.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-061
+  name: Payment initiated outside normal approval chain
+  description: bypass of the usual purchase order or approval, or approver working remotely at odd hours.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-062
+  name: Corporate login from unusual location or after mailbox rule change
+  description: mailbox forwarding rules and unfamiliar logins precede payment fraud.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-063
+  name: Customer unreachable after account reaches limit
+  description: Contact details become invalid and the customer ceases engagement.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-064
+  name: Early limit increase requests
+  description: Repeated and quickly sought limit increases soon after account opening.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-065
+  name: Many cheques deposited by multiple unrelated customers
+  description: A ring uses recruited accounts.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-066
+  name: Multiple cards used from one device or IP
+  description: One endpoint presents many card numbers.
+  category: behavioural
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-067
+  name: Account created and used within minutes
+  description: New account follows rapid purchase flow.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-068
+  name: Victim reports unknown accounts or credit enquiries
+  description: customer discovers accounts opened in their name through alerts or reports.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-069
+  name: Customer reports unsolicited call or text from 'the bank'
+  description: contact claims to be from the bank's fraud team and requests action, codes or transfers.
+  category: behavioural
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-070
+  name: One-time passcode shared or requested during a call
+  description: authentication codes are read out or entered while the customer is on a live call.
+  category: behavioural
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - device_logs
+  - session_logs
+  - transaction_data
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-071
+  name: Pressure for fast settlement or cash payout
+  description: Claimant urges payment and resists documentation.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-072
+  name: Employee never takes leave or resists rotation
+  description: Behavioural red flag for concealment.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-073
+  name: Staff lifestyle inconsistent with pay
+  description: Visible spending beyond known income.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-074
+  name: Customer complaints about staff handling
+  description: Repeated complaints or unauthorised changes by one employee.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-075
+  name: Insider override of credit policy or unusual speed of approval
+  description: Staff-approved exceptions or rapid decisions with limited verification.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-076
+  name: Delays or fees when investors request withdrawals
+  description: customers report blocked withdrawals or demands for charges and taxes; complaints rise.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-077
+  name: Customer borrowing to invest or reinvesting returns repeatedly
+  description: customer takes credit or rolls over supposed profits and refers friends.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-078
+  name: Customer mentions an online partner never met
+  description: explanations of payment mention a recent online relationship, overseas partner, military
+    or offshore worker who cannot meet.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-079
+  name: Accounts used as pass-through for overseas scam operations
+  description: recruited accounts receive victim funds and convert quickly to stablecoins or wire abroad.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-080
+  name: Customer is isolated and defensive about intervention
+  description: customer insists on completing payments, becomes upset with questions or states friends
+    and family do not understand.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-081
+  name: Account holder surprised by refund or victim reports unexpected claim
+  description: customer discovers a fraudulent return in their name.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-082
+  name: Borrower reluctant to allow inspection or direct debtor contact
+  description: Obstructive behaviour.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-083
+  name: Confusion or fear about own finances
+  description: Customer appears unsure of balances, recent transactions or reason for payments.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-084
+  name: Customer targeted by scams
+  description: repeated scam payments or telephone contacts.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-085
+  name: Document retention or restricted movement reported
+  description: Audit or customer information indicates passports withheld, workers housed on site or unable
+    to leave.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-086
+  name: Customer receiving payments for access to minors
+  description: Account shows payments in return for introductions or access, plus use of prepaid cards
+    and anonymous payment methods.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-087
+  name: Requests for payments to be hidden or descriptions disguised
+  description: Customer uses deceptive references or asks to avoid records on payments.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-088
+  name: Exit fees or debt bondage reports from customer
+  description: Customer reveals owing large sums to a facilitator, or being pressured to repay.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-089
+  name: Chips passed between players or taken away
+  description: Chips transferred between customers or cashed by third parties.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-090
+  name: Account with little other activity
+  description: No salary, bills, or everyday spending, only deposits and withdrawals.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-091
+  name: Operator reluctant to disclose service model
+  description: Refuses to describe how payments are made or settled.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-092
+  name: Policy loans or assignments to third parties
+  description: Rapid loans, assignments or beneficiary changes.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-093
+  name: Personal use of NPO accounts
+  description: Transactions of a private nature.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-094
+  name: Attempts to avoid disclosure of PEP status
+  description: Customer denies or omits political role despite evidence.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-095
+  name: Buyers or agents reluctant to provide information
+  description: Parties avoid face-to-face contact, deal via representatives or insist on speed.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-096
+  name: Customer reacts to reporting or ID requirements
+  description: Customer reduces a transaction, splits it, or leaves when asked for ID, source of funds
+    or told a report may be filed.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-097
+  name: Frequent amendments or letter of credit changes
+  description: Repeated changes to beneficiaries, payment terms or amounts shortly before payment.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-098
+  name: Merchant chargebacks and complaints about fake goods
+  description: High consumer complaints.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-099
+  name: Customers sending funds to crypto exchanges after being contacted by 'advisers'
+  description: Scam victims transferring under pressure.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-100
+  name: Cash couriering or bulk cash seizures linked to customer
+  description: Customer or associates tied to seized cash or declarations.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-101
+  name: Proceeds spent on assets, vehicles or in casinos and then converted
+  description: Lifestyle spending and asset purchases funded by cash.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-102
+  name: Sudden cash withdrawals followed by pay-outs under apparent pressure
+  description: Customer withdraws cash and appears distressed or accompanied.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-103
+  name: Use of third-party couriers or intermediaries to collect cash
+  description: Cash picked up by runners; multiple deposits by apparent intermediaries.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-104
+  name: Bets with minimal risk, such as opposing outcomes at different books
+  description: Low-risk betting and quick withdrawals to launder.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-105
+  name: Vehicle or container rental by small firms for bulk transport
+  description: Frequent rental or purchase of vans and containers.
+  category: behavioural
+  severity: low
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-106
+  name: Re-export of controlled items by distributors in transit jurisdictions
+  description: Importer reorders and quickly re-exports technical items to another country.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-107
+  name: Advisers instructed to use complex structures after a customer's designation risk emerges
+  description: Request for restructuring after adverse news or risk of designation.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-108
+  name: Frequent changes of intermediary banks or repeated reformatting of payments
+  description: Rejected payments are resubmitted with altered details.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-109
+  name: Request to hold mail or avoid statements and reporting
+  description: Customer asks for hold-mail, numbered accounts or avoids providing tax identification numbers.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-110
+  name: Sole-trader or bogus self-employment structure for large workforce
+  description: Many workers treated as independent contractors despite working under direction for one
+    client.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-111
+  name: Cash used to pay suppliers and wages directly
+  description: Owner pays suppliers, rent or staff in cash taken from takings before banking.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-112
+  name: High refund or void rates on card terminals
+  description: Frequent voids and cash refunds conceal sales.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-113
+  name: Sudden stop of activity and withdrawal of funds before VAT due
+  description: Account activity ceases and balances drain just before VAT returns fall due.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-114
+  name: Use of coded language, rapid channel migration or deleted campaigns
+  description: Organiser moves between platforms or handles, closes campaigns and restarts under new names
+    after scrutiny.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-115
+  name: Campaigns exploiting a crisis event with unverified beneficiaries
+  description: Appeals created immediately after conflict or disaster events with no known organisation
+    behind them and no verifiable delivery route.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-116
+  name: Closure of accounts and withdrawal of savings before travel
+  description: Customer empties accounts, cancels commitments or sells possessions in a short interval
+    without clear purpose.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-117
+  name: Sudden change in financial behaviour and lifestyle
+  description: Customer shifts from stable spending to minimal discretionary spend, repeated cash withdrawals,
+    closing of long-standing products or giving away assets.
+  category: behavioural
+  severity: low
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-118
+  name: Activity inconsistent with registered purpose
+  description: Transactions, geographies or counterparties do not match the objects declared in the registration
+    or constitution.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.
+- id: IND-BEH-119
+  name: Fundraising claims inconsistent with use of funds
+  description: Public appeals describe one cause while expenditure patterns show little programme spending
+    or large payments to connected parties.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_profile
+  - transaction_data
+  - case_notes
+  false_positive_notes: May have innocent explanations; assess in context of customer profile and other
+    indicators.

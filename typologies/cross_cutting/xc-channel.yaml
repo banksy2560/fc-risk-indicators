@@ -12,238 +12,77 @@ typology:
     approach)
   - Wolfsberg Group, Guidance on a Risk Based Approach for Managing Money Laundering Risks
   indicators:
-  - id: XC-CHANNEL-001
-    name: Non-face-to-face relationship
-    description: Customer is onboarded and serviced without any in-person contact.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - kyc_review
-    data_sources:
-    - onboarding_logs
-    false_positive_notes: Digital channels are the norm for many.
+  - ref: IND-PRD-002
+    legacy_id: XC-CHANNEL-001
+    context: Customer is onboarded and serviced without any in-person contact.
+    false_positive_context: Digital channels are the norm for many.
     controls:
-    - id: XC-CHANNEL-001-C1
-      name: Electronic identity verification
-      type: preventive
-      description: Use document and liveness checks or trusted digital ID.
-      implementation: technology
-      effectiveness: high
-    - id: XC-CHANNEL-001-C2
-      name: Additional checks for remote high-risk customers
-      type: preventive
-      description: Require supplementary evidence or call-back.
-      implementation: process
-      effectiveness: medium
-  - id: XC-CHANNEL-002
-    name: Use of introducers or intermediaries
-    description: Customers originate from agents, brokers or introducers who may not apply adequate checks.
-    category: product_channel
-    severity: high
-    detection_type:
-    - kyc_review
-    data_sources:
-    - introducer_records
-    false_positive_notes: Intermediaries are standard in many industries.
+    - CTL-001
+    - CTL-020
+  - ref: IND-PRD-003
+    legacy_id: XC-CHANNEL-002
+    context: Customers originate from agents, brokers or introducers who may not apply adequate checks.
+    false_positive_context: Intermediaries are standard in many industries.
     controls:
-    - id: XC-CHANNEL-002-C1
-      name: Introducer due diligence and agreements
-      type: preventive
-      description: Vet introducers and require written responsibilities.
-      implementation: process
-      effectiveness: high
-    - id: XC-CHANNEL-002-C2
-      name: Introducer-level quality monitoring
-      type: detective
-      description: Report alerts and exits per introducer.
-      implementation: technology
-      effectiveness: medium
-  - id: XC-CHANNEL-003
-    name: Reliance on third-party CDD
-    description: Institution relies on another entity's due diligence without testing it.
-    category: product_channel
-    severity: high
-    detection_type:
-    - kyc_review
-    data_sources:
-    - reliance_agreements
-    false_positive_notes: Reliance is permitted when conditions are met.
+    - CTL-019
+    - CTL-114
+    - CTL-120
+  - ref: IND-PRD-004
+    legacy_id: XC-CHANNEL-003
+    context: Institution relies on another entity's due diligence without testing it.
+    false_positive_context: Reliance is permitted when conditions are met.
     controls:
-    - id: XC-CHANNEL-003-C1
-      name: Reliance eligibility assessment
-      type: preventive
-      description: Confirm regulation, supervision and access to data.
-      implementation: process
-      effectiveness: high
-    - id: XC-CHANNEL-003-C2
-      name: Sample testing of relied-upon files
-      type: detective
-      description: Test files periodically for quality.
-      implementation: process
-      effectiveness: medium
-  - id: XC-CHANNEL-004
-    name: Remote onboarding with weak verification
-    description: Onboarding relies on a single image or unverified selfie, with no database check.
-    category: document
-    severity: high
-    detection_type:
-    - kyc_review
-    data_sources:
-    - onboarding_logs
-    false_positive_notes: Quality devices vary.
+    - CTL-019
+    - CTL-175
+    - CTL-120
+  - ref: IND-DOC-004
+    legacy_id: XC-CHANNEL-004
+    context: Onboarding relies on a single image or unverified selfie, with no database check.
+    false_positive_context: Quality devices vary.
     controls:
-    - id: XC-CHANNEL-004-C1
-      name: Liveness and tamper detection
-      type: preventive
-      description: Detect spoofing, replay and manipulated images.
-      implementation: technology
-      effectiveness: high
-    - id: XC-CHANNEL-004-C2
-      name: Database corroboration
-      type: preventive
-      description: Corroborate identity attributes against reliable sources.
-      implementation: technology
-      effectiveness: medium
-  - id: XC-CHANNEL-005
-    name: High volume of onboarding from single source
-    description: Unusual surge of accounts via one channel, introducer, IP range or device.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - customer_behaviour
-    data_sources:
-    - onboarding_logs
-    - device_data
-    false_positive_notes: Campaigns and partnerships cause legitimate spikes.
+    - CTL-001
+    - CTL-002
+  - ref: IND-PRD-005
+    legacy_id: XC-CHANNEL-005
+    context: Unusual surge of accounts via one channel, introducer, IP range or device.
+    name_in_typology: High volume of onboarding from single source
+    false_positive_context: Campaigns and partnerships cause legitimate spikes.
     controls:
-    - id: XC-CHANNEL-005-C1
-      name: Onboarding velocity monitoring
-      type: detective
-      description: Alert on spikes by source.
-      implementation: rule
-      effectiveness: medium
-    - id: XC-CHANNEL-005-C2
-      name: Device and IP clustering
-      type: detective
-      description: Group accounts opened from shared devices.
-      implementation: technology
-      effectiveness: medium
-  - id: XC-CHANNEL-006
-    name: Anonymous or masked access
-    description: Use of VPN, proxy, anonymising tools or emulators when accessing services.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - customer_behaviour
-    data_sources:
-    - device_data
-    false_positive_notes: Privacy tools are widely used.
+    - CTL-037
+    - CTL-090
+  - ref: IND-PRD-006
+    legacy_id: XC-CHANNEL-006
+    context: Use of VPN, proxy, anonymising tools or emulators when accessing services.
+    false_positive_context: Privacy tools are widely used.
     controls:
-    - id: XC-CHANNEL-006-C1
-      name: Device intelligence
-      type: detective
-      description: Score device and network risk.
-      implementation: technology
-      effectiveness: medium
-    - id: XC-CHANNEL-006-C2
-      name: Step-up authentication
-      type: preventive
-      description: Require additional verification on risky sessions.
-      implementation: technology
-      effectiveness: medium
-  - id: XC-CHANNEL-007
-    name: Agent or branch network with weak oversight
-    description: Distributed agents operate with inconsistent controls or limited supervision.
-    category: product_channel
-    severity: high
-    detection_type:
-    - investigator_judgement
-    data_sources:
-    - agent_performance_data
-    false_positive_notes: Networks vary in maturity.
+    - CTL-090
+    - CTL-073
+  - ref: IND-PRD-007
+    legacy_id: XC-CHANNEL-007
+    context: Distributed agents operate with inconsistent controls or limited supervision.
+    false_positive_context: Networks vary in maturity.
     controls:
-    - id: XC-CHANNEL-007-C1
-      name: Agent onboarding and monitoring programme
-      type: preventive
-      description: Vet and train agents and monitor outliers.
-      implementation: process
-      effectiveness: high
-    - id: XC-CHANNEL-007-C2
-      name: Quality assurance visits
-      type: detective
-      description: Inspect agent compliance.
-      implementation: process
-      effectiveness: medium
-  - id: XC-CHANNEL-008
-    name: Account opened by third party on customer's behalf
-    description: Application completed by someone other than the customer without clear authority.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - kyc_review
-    data_sources:
-    - onboarding_logs
-    false_positive_notes: Guardians and professional representatives act lawfully.
+    - CTL-021
+    - CTL-114
+    - CTL-175
+  - ref: IND-PRD-008
+    legacy_id: XC-CHANNEL-008
+    context: Application completed by someone other than the customer without clear authority.
+    false_positive_context: Guardians and professional representatives act lawfully.
     controls:
-    - id: XC-CHANNEL-008-C1
-      name: Authority verification
-      type: preventive
-      description: Verify and record authority and identity of the representative.
-      implementation: process
-      effectiveness: high
-    - id: XC-CHANNEL-008-C2
-      name: Customer direct confirmation
-      type: preventive
-      description: Confirm directly with the customer.
-      implementation: process
-      effectiveness: medium
-  - id: XC-CHANNEL-009
-    name: Channel used inconsistent with customer profile
-    description: Customer uses channels atypical for them, such as a distant branch or sudden switch to
-      digital.
-    category: behavioural
-    severity: low
-    detection_type:
-    - transaction_monitoring
-    - customer_behaviour
-    data_sources:
-    - channel_logs
-    false_positive_notes: Convenience and travel explain many cases.
+    - CTL-018
+    - CTL-070
+  - ref: IND-BEH-027
+    legacy_id: XC-CHANNEL-009
+    context: Customer uses channels atypical for them, such as a distant branch or sudden switch to digital.
+    false_positive_context: Convenience and travel explain many cases.
     controls:
-    - id: XC-CHANNEL-009-C1
-      name: Channel-behaviour profiling
-      type: detective
-      description: Flag departures from usual channel use.
-      implementation: model
-      effectiveness: low
-    - id: XC-CHANNEL-009-C2
-      name: Call-back validation
-      type: preventive
-      description: Validate unusual instructions.
-      implementation: process
-      effectiveness: medium
-  - id: XC-CHANNEL-010
-    name: Pooled or omnibus access through intermediaries
-    description: Intermediaries trade or transact on behalf of undisclosed underlying clients.
-    category: product_channel
-    severity: high
-    detection_type:
-    - kyc_review
-    - transaction_monitoring
-    data_sources:
-    - account_data
-    false_positive_notes: Omnibus structures are routine in securities.
+    - CTL-091
+    - CTL-070
+  - ref: IND-PRD-009
+    legacy_id: XC-CHANNEL-010
+    context: Intermediaries trade or transact on behalf of undisclosed underlying clients.
+    false_positive_context: Omnibus structures are routine in securities.
     controls:
-    - id: XC-CHANNEL-010-C1
-      name: Underlying client information access
-      type: preventive
-      description: Contractually secure rights to underlying data.
-      implementation: process
-      effectiveness: medium
-    - id: XC-CHANNEL-010-C2
-      name: Intermediary risk assessment
-      type: governance
-      description: Assess intermediary controls periodically.
-      implementation: process
-      effectiveness: high
+    - CTL-118
+    - CTL-112

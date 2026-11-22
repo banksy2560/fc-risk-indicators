@@ -1,0 +1,732 @@
+indicators:
+- id: IND-CPT-001
+  name: Customs broker or freight forwarder with unusually high disbursements
+  description: Broker invoices include large unitemised 'disbursements' or 'duties' that exceed published
+    tariffs.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - document_review
+  - transaction_monitoring
+  data_sources:
+  - invoices
+  - customs_declarations
+  - tariff_data
+  false_positive_notes: Duties vary with classification and valuation disputes.
+- id: IND-CPT-002
+  name: Third party has no anti-bribery policy or refuses audit rights
+  description: Intermediary resists contractual anti-corruption clauses, books-and-records access, or
+    certification.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - kyc_review
+  - investigator_judgement
+  data_sources:
+  - contracts
+  - due_diligence_files
+  false_positive_notes: Small suppliers may lack formal policies but cooperate otherwise.
+- id: IND-CPT-003
+  name: Intermediary introduced by official or customer insists on use
+  description: A government contact recommends or demands a specific agent, with limited competitive selection.
+  category: counterparty
+  severity: high
+  detection_type:
+  - investigator_judgement
+  - kyc_review
+  data_sources:
+  - due_diligence_files
+  - procurement_records
+  false_positive_notes: Local requirements may legitimately mandate local partners.
+- id: IND-CPT-004
+  name: Intermediary linked to a public official or relative
+  description: Agent or its owners are relatives, associates or former colleagues of an official with
+    influence over the relevant decision.
+  category: counterparty
+  severity: high
+  detection_type:
+  - screening
+  - kyc_review
+  data_sources:
+  - pep_lists
+  - adverse_media
+  - kyc_files
+  false_positive_notes: Small markets mean many people have family ties to government; links alone are
+    not wrongdoing.
+- id: IND-CPT-005
+  name: Vendor linked to employee or without verifiable existence
+  description: Vendor has no verifiable address, tax number or deliveries, or shares address or bank details
+    with an employee.
+  category: counterparty
+  severity: high
+  detection_type:
+  - kyc_review
+  - document_review
+  - transaction_monitoring
+  data_sources:
+  - vendor_master
+  - hr_records
+  - procurement_records
+  false_positive_notes: New or very small vendors and sole traders may use home addresses, and employees
+    may legitimately be related to vendors with disclosure.
+- id: IND-CPT-006
+  name: Payments to crypto exchanges or cash-out channels soon after receipt
+  description: Funds sent to exchanges, gift-card merchants or remittance providers immediately.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payee_data
+  false_positive_notes: Active traders.
+- id: IND-CPT-007
+  name: Same beneficiary reached by many mule accounts
+  description: Graph shows many accounts paying the same ultimate beneficiary.
+  category: counterparty
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payee_data
+  - graph_data
+  false_positive_notes: Landlord or merchant.
+- id: IND-CPT-008
+  name: Cash-out through multiple accounts of same user group
+  description: Proceeds are routed to several accounts sharing devices or beneficiaries and cashed out
+    in fiat by different parties.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - device_data
+  - bank_accounts
+  false_positive_notes: Family members sharing devices.
+- id: IND-CPT-009
+  name: Counterparty is a non-compliant cross-chain service
+  description: Flows route through aggregators or bridges without KYC and with no governance accountability.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - blockchain_analytics
+  - service_attribution
+  false_positive_notes: Many such services are used by mainstream traders.
+- id: IND-CPT-010
+  name: Payout to account not matching verified identity or declared beneficiary
+  description: Payouts or disbursements are directed to bank accounts, cards or wallets that do not match
+    the verified customer or declared beneficiary.
+  category: counterparty
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - kyc_review
+  data_sources:
+  - payout_records
+  - kyc_records
+  - account_ownership_data
+  false_positive_notes: Customers may legitimately use a joint, family or business account, or a new account
+    after a bank change.
+- id: IND-CPT-011
+  name: Funds sent to unlicensed or weakly regulated exchanges
+  description: Withdrawals or flows go to exchanges or VASPs that lack licensing or effective AML and
+    sanctions controls.
+  category: counterparty
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - blockchain_analytics
+  - vasp_registry
+  - transaction_records
+  false_positive_notes: Some legitimate smaller platforms are not yet registered or are licensed in other
+    regimes.
+- id: IND-CPT-012
+  name: Agent with unusual cash volumes or splitting behaviour
+  description: Agent location processes volumes far above peers, with suspicious customer splitting.
+  category: counterparty
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - agent_data
+  - transaction_data
+  false_positive_notes: High-footfall locations.
+- id: IND-CPT-013
+  name: Rapid cash-out of settlements to third-party accounts
+  description: Settlement funds are sent immediately to unrelated accounts, often offshore.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - settlement_data
+  false_positive_notes: Group treasury.
+- id: IND-CPT-014
+  name: Card used to pay high-risk online merchants
+  description: Spend concentrates at gambling, darknet-adjacent or unlicensed merchants.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - merchant_codes
+  - card_transactions
+  false_positive_notes: Legal entertainment spend.
+- id: IND-CPT-015
+  name: Use of OTC desks or brokers with minimal due diligence for conversion to fiat
+  description: Large over-the-counter trades or fiat off-ramps via brokers that avoid identity verification,
+    pay via third parties or operate outside strong supervision.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - blockchain_analytics
+  - transaction_records
+  - counterparty_data
+  false_positive_notes: Institutional and high-net-worth customers legitimately use OTC desks.
+- id: IND-CPT-016
+  name: Intermediary or broker with no track record and aggressive marketing
+  description: New broker promises guaranteed returns or urgent allocation.
+  category: counterparty
+  severity: high
+  detection_type:
+  - kyc_review
+  - external_intel
+  data_sources:
+  - company_registry
+  - adverse_media
+  false_positive_notes: Start-ups can be genuine.
+- id: IND-CPT-017
+  name: Seafood sales through traders with no traceability
+  description: Processors or exporters cannot show the vessel or catch origin.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - kyc_review
+  - document_review
+  data_sources:
+  - supplier_files
+  - certificates
+  false_positive_notes: Smaller traders may lack digital records.
+- id: IND-CPT-018
+  name: Payments to public officials to obtain permits or bypass controls
+  description: Payments are made to officials, rangers or couriers around licences, inspections, reserves,
+    ports or border clearances.
+  category: counterparty
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - document_review
+  data_sources:
+  - transaction_records
+  - expense_reports
+  - permit_records
+  false_positive_notes: Official fees and per diems can be legitimate and documented.
+- id: IND-CPT-019
+  name: Beneficiary account name mismatch or no-match result
+  description: 'Victim-side: confirmation-of-payee check returns no match or close match and the customer
+    proceeds regardless.'
+  category: counterparty
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - payee_check_results
+  - payment_data
+  false_positive_notes: Typos, trading names or joint accounts producing benign mismatches.
+- id: IND-CPT-020
+  name: Change of beneficiary bank details close to a payment
+  description: 'Victim-side: supplier payment details are altered shortly before an invoice is due, via
+    email or portal.'
+  category: counterparty
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - document_review
+  data_sources:
+  - vendor_master
+  - payment_data
+  false_positive_notes: Real supplier bank migrations.
+- id: IND-CPT-021
+  name: Merchant chargeback ratio above scheme thresholds
+  description: 'Merchant-side: high disputes and refunds.'
+  category: counterparty
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - merchant_data
+  false_positive_notes: Seasonal peaks.
+- id: IND-CPT-022
+  name: Transaction laundering through front merchants
+  description: A merchant processes sales for undisclosed businesses, or customers use merchants whose
+    profile suggests card-cash-out or third-party processing.
+  category: counterparty
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - card_transaction_data
+  - merchant_profile
+  false_positive_notes: Marketplaces and aggregators legitimately process sub-merchant sales.
+- id: IND-CPT-023
+  name: Repeated claims across insurers by linked parties
+  description: Same people, vehicles or addresses appear in multiple claims.
+  category: counterparty
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - claims_data
+  - industry_data
+  false_positive_notes: Coincidental similarity.
+- id: IND-CPT-024
+  name: Repair or medical invoices inflated or from linked providers
+  description: Providers submit pattern-bearing invoices with unusual pricing.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - document_review
+  - transaction_monitoring
+  data_sources:
+  - invoices
+  false_positive_notes: Legitimate specialist providers.
+- id: IND-CPT-025
+  name: Broker or intermediary with unusual early default rate
+  description: Applications from one source show disproportionate early payment default or document anomalies.
+  category: counterparty
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - portfolio_data
+  false_positive_notes: Higher-risk niche lenders.
+- id: IND-CPT-026
+  name: Unlicensed or cloned operator receiving payments
+  description: Payments go to operators, platforms or merchants that are absent from regulatory registers,
+    imitate a legitimate firm, or process under a disguised merchant category.
+  category: counterparty
+  severity: high
+  detection_type:
+  - kyc_review
+  - screening
+  - transaction_monitoring
+  data_sources:
+  - regulator_registers
+  - merchant_data
+  - transaction_records
+  false_positive_notes: Registers may lag, and licences may be held by a related group entity.
+- id: IND-CPT-027
+  name: Rotation of winning bidders
+  description: Contracts win in turn across a small group.
+  category: counterparty
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - award_data
+  false_positive_notes: Small specialist market.
+- id: IND-CPT-028
+  name: Official has undisclosed relationship with supplier
+  description: Conflict of interest appears from registry or declarations.
+  category: counterparty
+  severity: high
+  detection_type:
+  - investigator_judgement
+  - screening
+  data_sources:
+  - declarations
+  - registry_data
+  false_positive_notes: Common surnames.
+- id: IND-CPT-029
+  name: Invoices from related parties with round values
+  description: Counterparties share ownership and amounts look artificial.
+  category: counterparty
+  severity: high
+  detection_type:
+  - document_review
+  - kyc_review
+  data_sources:
+  - invoice_data
+  - company_registry
+  false_positive_notes: Group trading.
+- id: IND-CPT-030
+  name: Debtor denies or cannot confirm the invoice
+  description: Obligor verification fails.
+  category: counterparty
+  severity: high
+  detection_type:
+  - document_review
+  data_sources:
+  - debtor_confirmation
+  false_positive_notes: Admin lag.
+- id: IND-CPT-031
+  name: Payments to platforms flagged for illegal content
+  description: Payments to websites, hosting or payment accounts identified in intelligence as selling
+    abuse material.
+  category: counterparty
+  severity: high
+  detection_type:
+  - screening
+  - external_intel
+  data_sources:
+  - merchant_data
+  - law_enforcement_intel
+  false_positive_notes: Domain intelligence can include false matches.
+- id: IND-CPT-032
+  name: Document fraud service payments
+  description: Payments to document brokers, translators and forged document suppliers.
+  category: counterparty
+  severity: high
+  detection_type:
+  - investigator_judgement
+  - external_intel
+  data_sources:
+  - adverse_media
+  - payment_records
+  false_positive_notes: Legitimate translation and visa agencies exist.
+- id: IND-CPT-033
+  name: Travel and visa fee payments for groups from the same recruiter
+  description: Bulk payments for flights, visas and recruitment fees to a labour recruiter, sometimes
+    debt-financed.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - payment_records
+  - sponsor_data
+  false_positive_notes: Genuine recruitment agencies charge fees in some corridors.
+- id: IND-CPT-034
+  name: Respondent serves undisclosed downstream institutions
+  description: Respondent provides access to its account for other banks or payment firms (nesting) without
+    disclosure.
+  category: counterparty
+  severity: high
+  detection_type:
+  - kyc_review
+  - transaction_monitoring
+  data_sources:
+  - due_diligence_files
+  - payment_messages
+  false_positive_notes: Group and agency arrangements are disclosed normally.
+- id: IND-CPT-035
+  name: Many unrelated depositors paying into one account
+  description: Numerous unconnected individuals make deposits into the same account, often in similar
+    amounts or within short windows.
+  category: counterparty
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - transaction_records
+  - deposit_slips
+  - branch_data
+  false_positive_notes: Collections for clubs, charities, landlords or crowdfunding can legitimately attract
+    many depositors.
+- id: IND-CPT-036
+  name: Auction or intermediary used to obscure parties
+  description: Agents or anonymous bidding.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - kyc_review
+  data_sources:
+  - auction_records
+  false_positive_notes: Privacy requests.
+- id: IND-CPT-037
+  name: Shared devices, IP addresses or contact details across accounts
+  description: Multiple unrelated accounts share devices, phone numbers, email or addresses.
+  category: counterparty
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - device_data
+  - kyc_file
+  false_positive_notes: Households and shared workplaces share details.
+- id: IND-CPT-038
+  name: Large payments from state entities or contractors
+  description: Receipts from government bodies, state-owned firms or contractors linked to PEP's remit.
+  category: counterparty
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - transaction_data
+  false_positive_notes: Legitimate fees from state-owned firms.
+- id: IND-CPT-039
+  name: Use of intermediaries and agents to handle funds
+  description: Lawyers, brokers or fixers move funds on behalf of PEP.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - transaction_data
+  false_positive_notes: Professionals commonly act for wealthy clients.
+- id: IND-CPT-040
+  name: Bank accounts opened or operated by TCSP staff
+  description: TCSP is signatory or conduit for client funds.
+  category: counterparty
+  severity: high
+  detection_type:
+  - kyc_review
+  - transaction_monitoring
+  data_sources:
+  - account_mandates
+  false_positive_notes: Administration services.
+- id: IND-CPT-041
+  name: Transfers pass through accounts of relatives or employees
+  description: Staff or family accounts used for business flows.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - transaction_data
+  false_positive_notes: Family businesses.
+- id: IND-CPT-042
+  name: Brokers or dealers lacking licences or end-user certificates
+  description: Intermediary arranges transfers without export licences.
+  category: counterparty
+  severity: high
+  detection_type:
+  - kyc_review
+  - document_review
+  data_sources:
+  - licence_registers
+  - trade_documents
+  false_positive_notes: Licensing differs by country.
+- id: IND-CPT-043
+  name: Payments from or to sanctioned or embargoed parties
+  description: Counterparties on arms embargo or sanctions lists.
+  category: counterparty
+  severity: high
+  detection_type:
+  - screening
+  data_sources:
+  - sanctions_lists
+  false_positive_notes: Name matches are common.
+- id: IND-CPT-044
+  name: Seller is dealer new to market or with sanctions or adverse media
+  description: Unknown or suspect dealer.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - screening
+  - kyc_review
+  data_sources:
+  - adverse_media
+  false_positive_notes: New dealers exist.
+- id: IND-CPT-045
+  name: Importer of brand-name goods with no distribution authorisation
+  description: No authorisation or licence from brand owner.
+  category: counterparty
+  severity: high
+  detection_type:
+  - kyc_review
+  - document_review
+  data_sources:
+  - kyc_files
+  - brand_data
+  false_positive_notes: Parallel imports are lawful in places.
+- id: IND-CPT-046
+  name: Import-export firms trading chemicals with unusual consignees
+  description: Importers deal with unfamiliar overseas parties in high-risk corridors for precursor sources.
+  category: counterparty
+  severity: high
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - trade_documents
+  - customs_data
+  false_positive_notes: Chemical trade is large and lawful.
+- id: IND-CPT-047
+  name: Players or officials receive payments from betting-linked parties
+  description: Payments to athletes, referees from unrelated parties.
+  category: counterparty
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - screening
+  data_sources:
+  - payment_records
+  - sports_data
+  false_positive_notes: Sponsorships and fees exist.
+- id: IND-CPT-048
+  name: Illegal factory equipment or leaf purchases
+  description: Orders for tobacco-making machinery, paper, filters.
+  category: counterparty
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - invoices
+  - merchant_data
+  false_positive_notes: Roll-your-own firms are lawful.
+- id: IND-CPT-049
+  name: Respondent processing for front companies of concern in prior reports
+  description: Respondent's customers appear in prior internal or external reports.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - external_intel
+  - investigator_judgement
+  data_sources:
+  - internal_sar_history
+  false_positive_notes: Coincidental overlap.
+- id: IND-CPT-050
+  name: Exposure to wallets attributed to designated, stolen-fund or illicit actors
+  description: Customer transacts directly or near-directly with blockchain addresses attributed by sanctions
+    lists or analytics to designated persons, thefts, ransomware or terrorist fundraising.
+  category: counterparty
+  severity: high
+  detection_type:
+  - screening
+  - external_intel
+  - transaction_monitoring
+  data_sources:
+  - blockchain_analytics
+  - sanctions_lists
+  - transaction_records
+  false_positive_notes: Indirect exposure through large services or mixed-source addresses can generate
+    low-quality hits; assess hop distance and attribution confidence.
+- id: IND-CPT-051
+  name: Adviser or agent acting for multiple linked clients
+  description: A single provider, broker, lawyer or agent sets up entities or handles transactions for
+    many related clients with similar structures.
+  category: counterparty
+  severity: high
+  detection_type:
+  - kyc_review
+  - investigator_judgement
+  data_sources:
+  - client_records
+  - corporate_registry
+  - entity_formation_data
+  false_positive_notes: Professional advisers legitimately serve many clients, including related ones.
+- id: IND-CPT-052
+  name: Family members or close associates acquiring assets and positions
+  description: Relatives or known associates assume ownership or management of designated person's holdings.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - screening
+  - external_intel
+  data_sources:
+  - adverse_media
+  - registry_data
+  false_positive_notes: Family businesses commonly pass to relatives.
+- id: IND-CPT-053
+  name: Sender or intermediary with history of message-quality deficiencies
+  description: Peer institution frequently sends payments with data gaps.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - history_logs
+  false_positive_notes: Technical problems may be systemic.
+- id: IND-CPT-054
+  name: Crisis consultancy or ransom-response payments without documentation
+  description: Payments to intermediaries described as negotiators or consultants with limited contracts
+    or oversight.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - invoices
+  - contracts
+  false_positive_notes: Professional crisis response firms exist and are lawful.
+- id: IND-CPT-055
+  name: Dealings with known facilitators or persons on investigative watch lists
+  description: Customer transacts, including in small amounts, with persons identified in public or law-enforcement
+    material as facilitators or subjects of prior reports.
+  category: counterparty
+  severity: high
+  detection_type:
+  - screening
+  - external_intel
+  - transaction_monitoring
+  data_sources:
+  - law_enforcement_requests
+  - prior_reports
+  - transaction_records
+  false_positive_notes: Low-value contact may be innocent, such as family or community links or name matches.
+- id: IND-CPT-056
+  name: Transactions involving entities tied to state support for designated groups
+  description: Counterparties publicly linked, by credible reports, to government support for terrorist
+    organisations.
+  category: counterparty
+  severity: high
+  detection_type:
+  - screening
+  - external_intel
+  data_sources:
+  - sanctions_lists
+  - adverse_media
+  false_positive_notes: Government-owned entities are widely used in legitimate trade.
+- id: IND-CPT-057
+  name: Use of intermediaries who market secrecy
+  description: Customer introduced by advisers or promoters advertising confidentiality or tax-free outcomes.
+  category: counterparty
+  severity: high
+  detection_type:
+  - investigator_judgement
+  - external_intel
+  data_sources:
+  - kyc_files
+  - adverse_media
+  false_positive_notes: Wealth advisers legitimately offer privacy and tax planning within the law.
+- id: IND-CPT-058
+  name: Payments from or to unrelated third parties
+  description: Funds are paid or received, or instructions are given to pay, through parties with no evident
+    link to the customer, contract, debt or insured interest. Includes third-party cheques, loan repayments,
+    premiums, gaming funds and goods payments not matching the documentation.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - kyc_review
+  data_sources:
+  - transaction_records
+  - customer_profile
+  - contract_documents
+  false_positive_notes: Legitimate third-party payers exist, such as family members, parents, guarantors,
+    payment agents or corporate treasury entities, and are usually explainable with documentation.
+- id: IND-CPT-059
+  name: Adverse media or intelligence linking counterparties to criminal activity
+  description: Counterparties, suppliers, respondents or controllers appear in adverse media, law-enforcement
+    notices or intelligence connected to financial crime, abuse, forced labour or organised crime.
+  category: counterparty
+  severity: high
+  detection_type:
+  - screening
+  - external_intel
+  - kyc_review
+  data_sources:
+  - adverse_media
+  - law_enforcement_requests
+  - intelligence_reports
+  - counterparty_data
+  false_positive_notes: Adverse media can be inaccurate, dated or relate to a namesake; verify identity
+    and credibility before acting.

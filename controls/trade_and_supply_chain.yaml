@@ -1,0 +1,349 @@
+controls:
+- id: CTL-123
+  name: Trade document review and consistency checking
+  family: trade_and_supply_chain
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Trained staff and automated checks review goods, parties, routes, descriptions and codes
+    across invoice, bill of lading and payment documents. It exposes mismatches and falsified paper.
+  also_known_as:
+  - Trade document review by trained staff
+  - Document consistency rule
+  - Trade finance waste checks
+  - Transit document consistency checks
+  - Document consistency checking
+  - Discrepancy escalation policy
+  - Document weight and value checks
+  - HS code and description checks
+- id: CTL-124
+  name: Price and value benchmarking
+  family: trade_and_supply_chain
+  type: detective
+  implementation: technology
+  effectiveness: medium
+  description: Compares declared unit prices, award values, fees and ancillary costs with reference databases,
+    estimates and comparable contracts, and requires documented rationale for outliers. It detects over-
+    and under-invoicing and inflated awards.
+  also_known_as:
+  - Price benchmarking
+  - Price benchmarking tools
+  - Price benchmark checks
+  - Shipment value benchmarking
+  - Trade price benchmarking
+  - Pricing explanation requirement
+  - Price anomaly checks
+  - Supplier price benchmark
+- id: CTL-125
+  name: Shipment tracking and logistics evidence
+  family: trade_and_supply_chain
+  type: detective
+  implementation: technology
+  effectiveness: medium
+  description: Verifies that goods physically moved as documented by matching shipping, container, customs
+    and logistics records, and by requesting transport evidence such as delivery confirmations and warehouse
+    records for sampled trades. It exposes fictitious or misdescribed shipments used to justify payments.
+  also_known_as:
+  - Shipment tracking verification
+  - Logistics pattern review
+  - Logistics evidence checks
+- id: CTL-126
+  name: Route plausibility and transshipment screening
+  family: trade_and_supply_chain
+  type: detective
+  implementation: rule
+  effectiveness: medium
+  description: Compares shipping routes, ports and delivery points with typical lanes and risk lists,
+    and requests explanation for unusual hubs or indirect delivery. It reveals diversion, transshipment
+    and evasion routing.
+  also_known_as:
+  - Transshipment route analysis
+  - Transhipment authorisation checks
+  - Route plausibility screening
+  - Routing anomaly checks
+  - Consignee and address analytics
+  - Delivery rationale review
+  - Route plausibility check
+  - Transshipment due diligence
+- id: CTL-127
+  name: Free-zone and free-port due diligence
+  family: trade_and_supply_chain
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Applies enhanced checks to operators, counterparties, storage rationale and transactions
+    that involve free-trade zones and free ports, including facility operator controls. It addresses the
+    opacity and reduced oversight these locations can offer.
+  also_known_as:
+  - Freeport counterparty due diligence
+  - Free-trade-zone enhanced review
+  - Storage rationale review
+  - Free port due diligence
+  - Free zone due diligence
+  - Free zone transaction rules
+  - Zone counterparties due diligence
+  - Free-port facility due diligence
+- id: CTL-128
+  name: End-use and outcome verification
+  family: trade_and_supply_chain
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Requires end-user statements, authenticates their signatories, verifies licences and sites,
+    and obtains post-delivery reports for goods and funds. It confirms that goods or funds reach the stated
+    end use.
+  also_known_as:
+  - End-user certificate authentication
+  - Chemical end-user verification
+  - Equipment buyer verification
+  - Equipment end-user checks
+  - End-use certificate requirement
+  - Periodic outcome verification
+- id: CTL-129
+  name: Re-export restrictions and undertakings
+  family: trade_and_supply_chain
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Obtains contractual and documentary undertakings restricting re-export or onward sale to
+    specified destinations and flags rapid resale patterns. It limits diversion of goods to prohibited
+    end users.
+  also_known_as:
+  - Re-export pattern analysis
+  - Reexport undertakings
+  - Re-export undertaking requirement
+- id: CTL-130
+  name: Control-list and dual-use goods screening
+  family: trade_and_supply_chain
+  type: preventive
+  implementation: technology
+  effectiveness: medium
+  description: Screens goods descriptions, HS codes and items against export-control, precursor and procurement
+    watch lists, with access to technical review. It catches proliferation-sensitive and restricted goods.
+  also_known_as:
+  - Export-control and diversion red-flag checklist
+  - Trade finance precursor screening
+  - Control-list keyword screening
+  - Technical review support
+  - Procurement watch list integration
+  - Control-list term matching
+  - High-priority items list
+- id: CTL-131
+  name: High-risk goods and commodity tagging
+  family: trade_and_supply_chain
+  type: preventive
+  implementation: policy
+  effectiveness: medium
+  description: Maintains lists of higher-risk goods, species and commodity codes, tags relevant transactions
+    and triggers extra documentary checks and screening of descriptions. It focuses scrutiny on the goods
+    most associated with abuse.
+  also_known_as:
+  - Timber species risk list
+  - Commodity-description risk screening
+  - Species-risk keyword screening
+  - Commodity risk tagging
+- id: CTL-132
+  name: Trade amendment monitoring
+  family: trade_and_supply_chain
+  type: detective
+  implementation: rule
+  effectiveness: medium
+  description: Alerts on repeated or late amendments to consignee, destination, price or parties in a
+    trade, and re-runs due diligence on changed parties. It detects manipulation of documents to evade
+    controls after approval.
+  also_known_as:
+  - Amendment velocity alert
+  - Beneficiary change verification
+  - Amendment monitoring
+  - Amendment pattern monitoring
+- id: CTL-133
+  name: Counterparty capacity and trade profile assessment
+  family: trade_and_supply_chain
+  type: preventive
+  implementation: model
+  effectiveness: medium
+  description: Tests whether a counterparty's size, history, equipment and sector make the traded volume
+    and goods plausible, and models an expected trade profile to alert on deviation. It detects trading
+    that is out of line with the business.
+  also_known_as:
+  - Consignee verification
+  - Counterparty capacity assessment
+  - Trade profile model
+  - Goods-to-profile mismatch rule
+  - Customer history assessment
+  - Business-change monitoring
+- id: CTL-134
+  name: Licence and permit verification for regulated goods
+  family: trade_and_supply_chain
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Validates licences, permits, certificates and authorisations with the issuing authority
+    and compares their scope with observed activity or shipments. It prevents genuine permits being misused
+    or forged permits being accepted.
+  also_known_as:
+  - Source verification
+  - Permit verification
+  - Catch certificate validation
+  - Licence authenticity verification
+  - Licence misuse monitoring
+  - Client contract due diligence
+  - Permit usage monitoring
+  - Export documentation check
+- id: CTL-135
+  name: Origin, provenance and chain-of-custody verification
+  family: trade_and_supply_chain
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Requires documentary evidence of origin, legal sourcing, custody and conformity with responsible-sourcing
+    standards, including for informal or recycled supply. It keeps illicitly sourced goods from entering
+    the financed or traded chain.
+  also_known_as:
+  - Provenance documentation requirement
+  - Legal source documentation
+  - Supplier origin attestation
+  - Informal supplier due diligence
+  - Refiner due diligence alignment
+  - Recycled material verification
+  - Sourcing due diligence
+  - Hallmark and assay verification
+- id: CTL-136
+  name: Supply-chain mapping and traceability
+  family: trade_and_supply_chain
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Maps suppliers and sub-suppliers back through the chain, down to plot, mine or farm level
+    where relevant, and requires traceability of key inputs to origin. It makes hidden high-risk sources
+    visible so they can be excluded or audited.
+  also_known_as:
+  - Seafood traceability requirements
+  - Supply-chain mapping
+  - Supply-chain risk mapping
+  - Traceability and audit programme
+- id: CTL-137
+  name: Supplier audit and remediation
+  family: trade_and_supply_chain
+  type: detective
+  implementation: process
+  effectiveness: medium
+  description: Audits suppliers and processors, including interviews and records, and requires corrective
+    action plans and remediation with support for affected workers. It verifies conditions on the ground
+    and drives fixes rather than only detecting problems.
+  also_known_as:
+  - Supplier audits
+  - Supplier wage audits
+  - Remediation protocol
+  - Enhanced supplier engagement
+- id: CTL-138
+  name: Satellite and geospatial verification
+  family: trade_and_supply_chain
+  type: detective
+  implementation: technology
+  effectiveness: medium
+  description: Uses satellite imagery, land-cover and site evidence to test claims about operations, land
+    use, production or activity at a location. It provides independent physical verification that does
+    not rely on counterparty documents.
+  also_known_as:
+  - Satellite and site evidence review
+  - Geospatial deforestation checks
+- id: CTL-139
+  name: Volume and capacity plausibility analytics
+  family: trade_and_supply_chain
+  type: detective
+  implementation: model
+  effectiveness: medium
+  description: Compares reported volumes with capacity, production, mass balance, concession size and
+    national trade statistics to test whether quantities are physically possible. It exposes inflated,
+    laundered or mislabelled flows.
+  also_known_as:
+  - Capacity-versus-catch analytics
+  - Volume plausibility checks
+  - Origin laundering analytics
+  - Trade-statistics anomaly review
+  - Scrap flow analytics
+  - Mass-balance reconciliation
+  - Transit pattern analytics
+  - Demand plausibility modelling
+- id: CTL-140
+  name: Trade-and-settlement reconciliation
+  family: trade_and_supply_chain
+  type: detective
+  implementation: process
+  effectiveness: medium
+  description: Reconciles trade documents, invoices and shipments with the payments that settle them and
+    reviews settlement made outside standard banking channels. It exposes trade-based laundering where
+    payment logic does not match the underlying deal.
+  also_known_as:
+  - Trade settlement analytics
+  - Documentary evidence request
+  - Remittance versus trade profile
+  - Informal supplier review
+  - Trade-and-remittance reconciliation
+  - Exception reporting
+- id: CTL-141
+  name: Independent valuation and appraisal
+  family: trade_and_supply_chain
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Obtains independent valuations, appraisals or comparable-sale evidence for high-value assets,
+    collateral and traded goods, and escalates large variances. It reveals deliberately mispriced assets
+    used to move or conceal value.
+  also_known_as:
+  - Price variance escalation
+  - Independent valuation review
+  - Independent appraisal
+  - Price reasonableness check
+  - Independent valuation comparison
+  - Valuation benchmarking
+  - Collateral valuation review
+- id: CTL-142
+  name: Asset registry cross-check
+  family: trade_and_supply_chain
+  type: detective
+  implementation: technology
+  effectiveness: medium
+  description: Cross-checks asset ownership, title history, security registrations and registry changes
+    against official registers, including for changes close to designation or transaction dates. It confirms
+    that the person presenting an asset genuinely owns it.
+  also_known_as:
+  - Registry cross-check
+  - Title history review
+  - Registry history checks
+- id: CTL-143
+  name: Vessel due diligence and tracking analytics
+  family: trade_and_supply_chain
+  type: preventive
+  implementation: technology
+  effectiveness: medium
+  description: Verifies vessel identity, ownership, flag history, insurance and class, and analyses tracking
+    data for gaps, loitering, ship-to-ship transfers and spoofing. It addresses sanctions and illicit-trade
+    evasion at sea.
+  also_known_as:
+  - Vessel screening against IUU lists
+  - AIS behaviour monitoring
+  - Fuel and supply payment review
+  - Landing-pattern analytics
+  - AIS gap analytics
+  - Voyage explanation request
+  - Vessel risk scoring policy
+  - Flag history review
+- id: CTL-144
+  name: Credit and certificate registry verification
+  family: trade_and_supply_chain
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Verifies credit serial numbers, status and retirement on recognised registries, checks
+    verifier accreditation, host-country accounting and independent quality ratings, and uses technical
+    review of claims. It prevents double counting and fraudulent environmental credits.
+  also_known_as:
+  - Registry verification
+  - Verifier accreditation check
+  - Serial number reconciliation
+  - Double-counting controls
+  - Quality rating consultation
+  - Technical review of claims
+  - Retirement evidence verification

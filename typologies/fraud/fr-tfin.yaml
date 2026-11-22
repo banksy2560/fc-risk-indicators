@@ -13,278 +13,86 @@ typology:
   - ICC, trade finance fraud and BAFT guidance (general)
   - ACFE, Report to the Nations (published biennially)
   indicators:
-  - id: FR-TFIN-001
-    name: Same invoice or bill of lading presented to multiple financiers
-    description: Duplicate financing detected by registry or internal matching.
-    category: document
-    severity: high
-    detection_type:
-    - document_review
-    data_sources:
-    - invoice_data
-    - registries
-    false_positive_notes: Reassignments.
+  - ref: IND-DOC-038
+    legacy_id: FR-TFIN-001
+    context: Duplicate financing detected by registry or internal matching.
+    name_in_typology: Same invoice or bill of lading presented to multiple financiers
+    false_positive_context: Reassignments.
     controls:
-    - id: FR-TFIN-001-C1
-      name: Duplicate-financing and invoice registry check
-      type: preventive
-      description: Checks each invoice or document against internal records and shared registries so one
-        asset cannot be financed twice.
-      implementation: technology
-      effectiveness: high
-    - id: FR-TFIN-001-C2
-      name: Independent verification of underlying transaction
-      type: preventive
-      description: Confirms goods, services or receivables directly with the obligor or through inspection
-        before funds are advanced.
-      implementation: process
-      effectiveness: high
-    - id: FR-TFIN-001-C3
-      name: Consortium and shared fraud data
-      type: detective
-      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
-        sharing to catch known bad actors early.
-      implementation: technology
-      effectiveness: high
+    - CTL-087
+    - CTL-086
+    - CTL-083
     references:
     - 'FATF and Egmont Group, Trade-Based Money Laundering: Trends and Developments (2020)'
-  - id: FR-TFIN-002
-    name: Invoices from related parties with round values
-    description: Counterparties share ownership and amounts look artificial.
-    category: counterparty
-    severity: high
-    detection_type:
-    - document_review
-    - kyc_review
-    data_sources:
-    - invoice_data
-    - company_registry
-    false_positive_notes: Group trading.
+  - ref: IND-CPT-029
+    legacy_id: FR-TFIN-002
+    context: Counterparties share ownership and amounts look artificial.
+    false_positive_context: Group trading.
     controls:
-    - id: FR-TFIN-002-C1
-      name: Independent verification of underlying transaction
-      type: preventive
-      description: Confirms goods, services or receivables directly with the obligor or through inspection
-        before funds are advanced.
-      implementation: process
-      effectiveness: high
-    - id: FR-TFIN-002-C2
-      name: Entity resolution and link analysis
-      type: detective
-      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
-        identities.
-      implementation: model
-      effectiveness: high
-    - id: FR-TFIN-002-C3
-      name: Duplicate-financing and invoice registry check
-      type: preventive
-      description: Checks each invoice or document against internal records and shared registries so one
-        asset cannot be financed twice.
-      implementation: technology
-      effectiveness: high
+    - CTL-086
+    - CTL-049
+    - CTL-087
     references:
     - 'FATF and Egmont Group, Trade-Based Money Laundering: Trends and Developments (2020)'
-  - id: FR-TFIN-003
-    name: Debtor denies or cannot confirm the invoice
-    description: Obligor verification fails.
-    category: counterparty
-    severity: high
-    detection_type:
-    - document_review
-    data_sources:
-    - debtor_confirmation
-    false_positive_notes: Admin lag.
+  - ref: IND-CPT-030
+    legacy_id: FR-TFIN-003
+    context: Obligor verification fails.
+    false_positive_context: Admin lag.
     controls:
-    - id: FR-TFIN-003-C1
-      name: Independent verification of underlying transaction
-      type: preventive
-      description: Confirms goods, services or receivables directly with the obligor or through inspection
-        before funds are advanced.
-      implementation: process
-      effectiveness: high
-    - id: FR-TFIN-003-C2
-      name: Out-of-band callback verification
-      type: preventive
-      description: Instructions or detail changes are verified by calling a number held on file, never
-        one supplied in the request.
-      implementation: process
-      effectiveness: high
-    - id: FR-TFIN-003-C3
-      name: Data-analytics audit and exception testing
-      type: detective
-      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
-        ghost records and outliers.
-      implementation: process
-      effectiveness: medium
+    - CTL-086
+    - CTL-070
+    - CTL-175
     references:
     - 'FATF and Egmont Group, Trade-Based Money Laundering: Trends and Developments (2020)'
-  - id: FR-TFIN-004
-    name: Repayments funded by new financing from same borrower
-    description: Revolving structure where old invoices are settled with new drawings.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - account_data
-    false_positive_notes: Working-capital cycles.
+  - ref: IND-TXN-082
+    legacy_id: FR-TFIN-004
+    context: Revolving structure where old invoices are settled with new drawings.
+    false_positive_context: Working-capital cycles.
     controls:
-    - id: FR-TFIN-004-C1
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules on count, value, geography and timing alert analysts to bursts or structured
-        activity.
-      implementation: rule
-      effectiveness: medium
-    - id: FR-TFIN-004-C2
-      name: Data-analytics audit and exception testing
-      type: detective
-      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
-        ghost records and outliers.
-      implementation: process
-      effectiveness: medium
-    - id: FR-TFIN-004-C3
-      name: Enhanced due diligence and periodic KYC review
-      type: detective
-      description: Targeted review of purpose, source of funds and expected activity when behaviour diverges
-        from the profile.
-      implementation: process
-      effectiveness: medium
+    - CTL-037
+    - CTL-175
+    - CTL-014
     references:
     - 'FATF and Egmont Group, Trade-Based Money Laundering: Trends and Developments (2020)'
-  - id: FR-TFIN-005
-    name: Shipping documents inconsistent with goods or route
-    description: Dates, weights, ports or vessel details do not align.
-    category: document
-    severity: medium
-    detection_type:
-    - document_review
-    data_sources:
-    - shipping_docs
-    false_positive_notes: Clerical errors.
+  - ref: IND-DOC-020
+    legacy_id: FR-TFIN-005
+    context: Dates, weights, ports or vessel details do not align.
+    name_in_typology: Shipping documents inconsistent with goods or route
+    severity_in_typology: medium
+    false_positive_context: Clerical errors.
     controls:
-    - id: FR-TFIN-005-C1
-      name: Independent verification of underlying transaction
-      type: preventive
-      description: Confirms goods, services or receivables directly with the obligor or through inspection
-        before funds are advanced.
-      implementation: process
-      effectiveness: high
-    - id: FR-TFIN-005-C2
-      name: Document forensics and source verification
-      type: detective
-      description: Analyses supporting documents for tampering, template reuse and metadata anomalies,
-        and confirms with the issuer.
-      implementation: technology
-      effectiveness: medium
-    - id: FR-TFIN-005-C3
-      name: Data-analytics audit and exception testing
-      type: detective
-      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
-        ghost records and outliers.
-      implementation: process
-      effectiveness: medium
+    - CTL-086
+    - CTL-002
+    - CTL-175
     references:
     - 'FATF and Egmont Group, Trade-Based Money Laundering: Trends and Developments (2020)'
-  - id: FR-TFIN-006
-    name: Sudden growth in financed volume without business rationale
-    description: Facility usage rises faster than turnover.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - facility_data
-    false_positive_notes: Genuine expansion.
+  - ref: IND-TXN-083
+    legacy_id: FR-TFIN-006
+    context: Facility usage rises faster than turnover.
+    false_positive_context: Genuine expansion.
     controls:
-    - id: FR-TFIN-006-C1
-      name: Enhanced due diligence and periodic KYC review
-      type: detective
-      description: Targeted review of purpose, source of funds and expected activity when behaviour diverges
-        from the profile.
-      implementation: process
-      effectiveness: medium
-    - id: FR-TFIN-006-C2
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules on count, value, geography and timing alert analysts to bursts or structured
-        activity.
-      implementation: rule
-      effectiveness: medium
-    - id: FR-TFIN-006-C3
-      name: Data-analytics audit and exception testing
-      type: detective
-      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
-        ghost records and outliers.
-      implementation: process
-      effectiveness: medium
+    - CTL-014
+    - CTL-037
+    - CTL-175
     references:
     - 'FATF and Egmont Group, Trade-Based Money Laundering: Trends and Developments (2020)'
-  - id: FR-TFIN-007
-    name: Funds diverted to unrelated accounts
-    description: Proceeds sent to parties outside the trade.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - payment_data
-    false_positive_notes: Group treasury.
+  - ref: IND-TXN-084
+    legacy_id: FR-TFIN-007
+    context: Proceeds sent to parties outside the trade.
+    false_positive_context: Group treasury.
     controls:
-    - id: FR-TFIN-007-C1
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules on count, value, geography and timing alert analysts to bursts or structured
-        activity.
-      implementation: rule
-      effectiveness: medium
-    - id: FR-TFIN-007-C2
-      name: Independent verification of underlying transaction
-      type: preventive
-      description: Confirms goods, services or receivables directly with the obligor or through inspection
-        before funds are advanced.
-      implementation: process
-      effectiveness: high
-    - id: FR-TFIN-007-C3
-      name: Consortium and shared fraud data
-      type: detective
-      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
-        sharing to catch known bad actors early.
-      implementation: technology
-      effectiveness: high
+    - CTL-037
+    - CTL-086
+    - CTL-083
     references:
     - 'FATF and Egmont Group, Trade-Based Money Laundering: Trends and Developments (2020)'
-  - id: FR-TFIN-008
-    name: Borrower reluctant to allow inspection or direct debtor contact
-    description: Obstructive behaviour.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - investigator_judgement
-    data_sources:
-    - relationship_notes
-    false_positive_notes: Confidentiality concerns.
+  - ref: IND-BEH-082
+    legacy_id: FR-TFIN-008
+    context: Obstructive behaviour.
+    false_positive_context: Confidentiality concerns.
     controls:
-    - id: FR-TFIN-008-C1
-      name: Independent verification of underlying transaction
-      type: preventive
-      description: Confirms goods, services or receivables directly with the obligor or through inspection
-        before funds are advanced.
-      implementation: process
-      effectiveness: high
-    - id: FR-TFIN-008-C2
-      name: Frontline training and conversation scripts
-      type: preventive
-      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
-        and escalate with a defined script and authority to pause.
-      implementation: training
-      effectiveness: medium
-    - id: FR-TFIN-008-C3
-      name: Data-analytics audit and exception testing
-      type: detective
-      description: Periodic analytics across payroll, expenses or purchasing data identify duplicates,
-        ghost records and outliers.
-      implementation: process
-      effectiveness: medium
+    - CTL-086
+    - CTL-170
+    - CTL-175
     references:
     - 'FATF and Egmont Group, Trade-Based Money Laundering: Trends and Developments (2020)'

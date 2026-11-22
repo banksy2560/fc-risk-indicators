@@ -17,205 +17,66 @@ typology:
   - FATF, Money Laundering/Terrorist Financing Risks and Vulnerabilities Associated with Gold (2015)
   - UN Security Council expert panel reports on illicit mineral trade
   indicators:
-  - id: EC-MINING-001
-    name: Gold of unclear origin sold to refiners or exporters
-    description: Customer sells gold or concentrate with no mine licence, assay or chain-of-custody documents.
-    category: document
-    severity: high
-    detection_type:
-    - document_review
-    - investigator_judgement
-    data_sources:
-    - assay_records
-    - export_permits
-    false_positive_notes: Artisanal miners often lack formal paperwork.
+  - ref: IND-DOC-021
+    legacy_id: EC-MINING-001
+    context: Customer sells gold or concentrate with no mine licence, assay or chain-of-custody documents.
+    name_in_typology: Gold of unclear origin sold to refiners or exporters
+    false_positive_context: Artisanal miners often lack formal paperwork.
     controls:
-    - id: EC-MINING-001-C1
-      name: Provenance documentation requirement
-      type: preventive
-      description: Require mine of origin, licence and transport documents.
-      implementation: process
-      effectiveness: high
-    - id: EC-MINING-001-C2
-      name: Refiner due diligence alignment
-      type: preventive
-      description: Align with recognised responsible-sourcing standards.
-      implementation: policy
-      effectiveness: high
-  - id: EC-MINING-002
-    name: Exports exceeding official production of origin country
-    description: Quantities exported by a country or trader exceed credible domestic production.
-    category: transaction
-    severity: high
-    detection_type:
-    - investigator_judgement
-    - external_intel
-    data_sources:
-    - trade_statistics
-    - customs_data
-    false_positive_notes: Trade statistics can have timing differences.
+    - CTL-135
+    - CTL-136
+    - CTL-131
+  - ref: IND-TXN-014
+    legacy_id: EC-MINING-002
+    context: Quantities exported by a country or trader exceed credible domestic production.
+    name_in_typology: Exports exceeding official production of origin country
+    false_positive_context: Trade statistics can have timing differences.
     controls:
-    - id: EC-MINING-002-C1
-      name: Trade-statistics anomaly review
-      type: detective
-      description: Compare declared export to production data.
-      implementation: model
-      effectiveness: medium
-    - id: EC-MINING-002-C2
-      name: Transit hub exposure scoring
-      type: preventive
-      description: Score flows via hubs known for laundering.
-      implementation: model
-      effectiveness: medium
-  - id: EC-MINING-003
-    name: Large cash purchases from informal miners and traders
-    description: Dealer pays cash at remote sites and deposits to bank accounts mixed with legitimate
-      sales.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - cash_data
-    - deposit_records
-    false_positive_notes: Artisanal mining economies are cash based.
+    - CTL-139
+    - CTL-154
+  - ref: IND-TXN-022
+    legacy_id: EC-MINING-003
+    context: Dealer pays cash at remote sites and deposits to bank accounts mixed with legitimate sales.
+    name_in_typology: Large cash purchases from informal miners and traders
+    false_positive_context: Artisanal mining economies are cash based.
     controls:
-    - id: EC-MINING-003-C1
-      name: Cash-flow reconciliation
-      type: detective
-      description: Reconcile purchases, stock and sales.
-      implementation: rule
-      effectiveness: medium
-    - id: EC-MINING-003-C2
-      name: Source-of-cash review
-      type: preventive
-      description: Request evidence of cash sources for deposits.
-      implementation: process
-      effectiveness: medium
-  - id: EC-MINING-004
-    name: Dealer with no licence or with licences used by third parties
-    description: Licence-holder 'rents' licence to others or licences conflict with location.
-    category: customer
-    severity: high
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - licence_registers
-    - kyc_files
-    false_positive_notes: Brokerage structures sometimes lawful.
+    - CTL-055
+    - CTL-012
+  - ref: IND-CUS-005
+    legacy_id: EC-MINING-004
+    context: Licence-holder 'rents' licence to others or licences conflict with location.
+    name_in_typology: Dealer with no licence or with licences used by third parties
+    false_positive_context: Brokerage structures sometimes lawful.
     controls:
-    - id: EC-MINING-004-C1
-      name: Licence authenticity verification
-      type: preventive
-      description: Verify with issuing authority.
-      implementation: process
-      effectiveness: high
-    - id: EC-MINING-004-C2
-      name: Licence misuse monitoring
-      type: detective
-      description: Compare licences with observed activity.
-      implementation: rule
-      effectiveness: medium
-  - id: EC-MINING-005
-    name: Jewellery, scrap gold or recycled metal used to mask origin
-    description: Surge in 'scrap' or 'recycled' gold from small sellers with no records.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - investigator_judgement
-    - transaction_monitoring
-    data_sources:
-    - assay_records
-    - invoices
-    false_positive_notes: Scrap markets are legitimate.
+    - CTL-134
+    - CTL-116
+    - CTL-136
+  - ref: IND-PRD-026
+    legacy_id: EC-MINING-005
+    context: Surge in 'scrap' or 'recycled' gold from small sellers with no records.
+    false_positive_context: Scrap markets are legitimate.
     controls:
-    - id: EC-MINING-005-C1
-      name: Recycled material verification
-      type: preventive
-      description: Require evidence for recycled claims.
-      implementation: process
-      effectiveness: medium
-    - id: EC-MINING-005-C2
-      name: Scrap flow analytics
-      type: detective
-      description: Detect disproportionate scrap flows.
-      implementation: model
-      effectiveness: medium
-  - id: EC-MINING-006
-    name: Links to armed groups or sanctioned parties in conflict areas
-    description: Mining or trade in territories controlled by armed groups with payments to checkpoints.
-    category: geographic
-    severity: high
-    detection_type:
-    - screening
-    - external_intel
-    data_sources:
-    - sanctions_lists
-    - ngo_reports
-    false_positive_notes: Local taxes may be legitimate.
+    - CTL-135
+    - CTL-139
+  - ref: IND-GEO-006
+    legacy_id: EC-MINING-006
+    context: Mining or trade in territories controlled by armed groups with payments to checkpoints.
+    name_in_typology: Links to armed groups or sanctioned parties in conflict areas
+    false_positive_context: Local taxes may be legitimate.
     controls:
-    - id: EC-MINING-006-C1
-      name: Conflict-affected area risk assessment
-      type: preventive
-      description: Assess exposure per OECD guidance.
-      implementation: process
-      effectiveness: high
-    - id: EC-MINING-006-C2
-      name: Sanctions and watchlist screening
-      type: detective
-      description: Screen counterparties and vessels.
-      implementation: technology
-      effectiveness: high
-  - id: EC-MINING-007
-    name: Mercury, cyanide and equipment purchases without mining licence
-    description: Purchase of dredges, mercury or bulk chemicals by unlicensed persons.
-    category: typology_specific
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - merchant_data
-    - import_records
-    false_positive_notes: Industrial users buy chemicals.
+    - CTL-157
+    - CTL-029
+  - ref: IND-TYP-022
+    legacy_id: EC-MINING-007
+    context: Purchase of dredges, mercury or bulk chemicals by unlicensed persons.
+    false_positive_context: Industrial users buy chemicals.
     controls:
-    - id: EC-MINING-007-C1
-      name: Equipment merchant alerts
-      type: detective
-      description: Flag purchases linked to unlicensed sites.
-      implementation: rule
-      effectiveness: medium
-    - id: EC-MINING-007-C2
-      name: Chemical supplier awareness
-      type: preventive
-      description: Train partners to report suspicious sales.
-      implementation: training
-      effectiveness: low
-  - id: EC-MINING-008
-    name: Diamond or gem trade with undervalued or round-trip transactions
-    description: Stones traded at prices off market, flowing through several traders and returning to
-      origin.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - invoices
-    - valuation_data
-    false_positive_notes: Valuation of stones is subjective.
+    - CTL-057
+    - CTL-173
+  - ref: IND-TXN-060
+    legacy_id: EC-MINING-008
+    context: Stones traded at prices off market, flowing through several traders and returning to origin.
+    false_positive_context: Valuation of stones is subjective.
     controls:
-    - id: EC-MINING-008-C1
-      name: Independent valuation review
-      type: detective
-      description: Compare to independent valuations.
-      implementation: process
-      effectiveness: medium
-    - id: EC-MINING-008-C2
-      name: Round-trip detection
-      type: detective
-      description: Detect circular trades.
-      implementation: model
-      effectiveness: medium
+    - CTL-141
+    - CTL-047

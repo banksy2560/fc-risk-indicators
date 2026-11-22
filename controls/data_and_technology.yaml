@@ -1,0 +1,23 @@
+controls:
+- id: CTL-176
+  name: Data quality and ownership controls
+  family: data_and_technology
+  type: detective
+  implementation: technology
+  effectiveness: medium
+  description: Measures completeness, accuracy and timeliness of the data that feeds screening and monitoring,
+    reconciles sources and assigns named owners and deadlines for remediation. Controls built on poor
+    data fail silently, so this keeps detection reliable.
+  also_known_as:
+  - Data quality controls and reconciliation
+  - Data ownership and remediation plan
+- id: CTL-177
+  name: Privileged access and user-activity monitoring
+  family: data_and_technology
+  type: detective
+  implementation: technology
+  effectiveness: medium
+  description: Restricts and logs privileged and bulk access to customer and case systems and alerts on
+    anomalous user activity. It deters insider misuse and leakage of sensitive investigations and customer
+    data.
+  also_known_as: []

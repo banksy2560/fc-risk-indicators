@@ -1,0 +1,782 @@
+indicators:
+- id: IND-PRD-001
+  name: Prime real estate purchases in foreign cities
+  description: Acquisition of high-value property abroad through companies or relatives, inconsistent
+    with declared means.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - kyc_review
+  - transaction_monitoring
+  data_sources:
+  - property_records
+  - payment_records
+  false_positive_notes: Wealthy individuals legitimately invest in overseas property.
+- id: IND-PRD-002
+  name: Non-face-to-face relationship
+  description: Customer is onboarded and serviced without any in-person contact.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - kyc_review
+  data_sources:
+  - onboarding_logs
+  false_positive_notes: Digital channels are the norm for many.
+- id: IND-PRD-003
+  name: Use of introducers or intermediaries
+  description: Customers originate from agents, brokers or introducers who may not apply adequate checks.
+  category: product_channel
+  severity: high
+  detection_type:
+  - kyc_review
+  data_sources:
+  - introducer_records
+  false_positive_notes: Intermediaries are standard in many industries.
+- id: IND-PRD-004
+  name: Reliance on third-party CDD
+  description: Institution relies on another entity's due diligence without testing it.
+  category: product_channel
+  severity: high
+  detection_type:
+  - kyc_review
+  data_sources:
+  - reliance_agreements
+  false_positive_notes: Reliance is permitted when conditions are met.
+- id: IND-PRD-005
+  name: Spike in volume via a single channel, agent or source
+  description: Unusual surge in accounts or claims originating from one channel, introducer, agent, IP
+    range or device.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - onboarding_logs
+  - device_data
+  - claim_data
+  false_positive_notes: Campaigns and partnerships cause legitimate spikes.
+- id: IND-PRD-006
+  name: Anonymous or masked access
+  description: Use of VPN, proxy, anonymising tools or emulators when accessing services.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  data_sources:
+  - device_data
+  false_positive_notes: Privacy tools are widely used.
+- id: IND-PRD-007
+  name: Agent or branch network with weak oversight
+  description: Distributed agents operate with inconsistent controls or limited supervision.
+  category: product_channel
+  severity: high
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - agent_performance_data
+  false_positive_notes: Networks vary in maturity.
+- id: IND-PRD-008
+  name: Account opened by third party on customer's behalf
+  description: Application completed by someone other than the customer without clear authority.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - kyc_review
+  data_sources:
+  - onboarding_logs
+  false_positive_notes: Guardians and professional representatives act lawfully.
+- id: IND-PRD-009
+  name: Pooled or omnibus access through intermediaries
+  description: Intermediaries trade or transact on behalf of undisclosed underlying clients.
+  category: product_channel
+  severity: high
+  detection_type:
+  - kyc_review
+  - transaction_monitoring
+  data_sources:
+  - account_data
+  false_positive_notes: Omnibus structures are routine in securities.
+- id: IND-PRD-010
+  name: Private banking and wealth management
+  description: High-net-worth relationships with bespoke structures, discretion expectations and large
+    flows.
+  category: product_channel
+  severity: high
+  detection_type:
+  - kyc_review
+  data_sources:
+  - product_data
+  - kyc_profile
+  false_positive_notes: Most wealth clients are wholly legitimate.
+- id: IND-PRD-011
+  name: Correspondent banking relationship
+  description: Provision of accounts or payment services to other financial institutions that process
+    on behalf of unknown customers.
+  category: product_channel
+  severity: high
+  detection_type:
+  - kyc_review
+  - transaction_monitoring
+  data_sources:
+  - respondent_files
+  - payment_messages
+  false_positive_notes: Correspondents are essential infrastructure.
+- id: IND-PRD-012
+  name: Trade finance and documentary credits
+  description: Products reliant on documentation that can be manipulated, with pricing and goods difficult
+    to verify.
+  category: product_channel
+  severity: high
+  detection_type:
+  - kyc_review
+  - document_review
+  data_sources:
+  - trade_documents
+  false_positive_notes: Documents vary legitimately by sector.
+- id: IND-PRD-013
+  name: Anonymous or lightly verified prepaid or stored-value instruments
+  description: Prepaid cards or stored-value products without full ID, with high load limits, cross-border
+    use or turnover inconsistent with design.
+  category: product_channel
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - kyc_review
+  data_sources:
+  - card_data
+  - card_records
+  false_positive_notes: Prepaid cards serve the unbanked.
+- id: IND-PRD-014
+  name: Virtual asset services
+  description: Provision of services enabling conversion, custody or transfer of virtual assets.
+  category: product_channel
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - wallet_data
+  - blockchain_analytics
+  false_positive_notes: Adoption of virtual assets for legitimate investment is widespread.
+- id: IND-PRD-015
+  name: Safe deposit boxes
+  description: Physical storage of unknown assets with limited visibility.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - access_logs
+  false_positive_notes: Customers store documents and heirlooms.
+- id: IND-PRD-016
+  name: Cash services and high-limit cash handling
+  description: Services involving large cash deposits, withdrawals, currency exchange or cash-in-transit.
+  category: product_channel
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - cash_transaction_data
+  false_positive_notes: Cash remains legitimate for many.
+- id: IND-PRD-017
+  name: Payable-through or pooled access enabling third-party payments
+  description: Underlying customers of another party transact directly through payable-through, pooled
+    or payment-agent facilities.
+  category: product_channel
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - kyc_review
+  data_sources:
+  - account_data
+  - product_data
+  false_positive_notes: Pooled accounts are standard for professionals.
+- id: IND-PRD-018
+  name: New or innovative product without risk assessment
+  description: Product launched without documented ML/TF risk assessment or controls.
+  category: product_channel
+  severity: high
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - product_approval_records
+  false_positive_notes: Minor variants may be assessed under existing products.
+- id: IND-PRD-019
+  name: Cross-border payment and remittance services
+  description: Services moving value across borders quickly through multiple intermediaries.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payment_messages
+  false_positive_notes: Remittances support families.
+- id: IND-PRD-020
+  name: Anonymity-enhancing features
+  description: Products permitting use without full identification, such as mixers, bearer-like instruments
+    or unverified top-ups.
+  category: product_channel
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - kyc_review
+  data_sources:
+  - product_data
+  false_positive_notes: Privacy features can be sought for lawful reasons.
+- id: IND-PRD-021
+  name: Kiosk placed in high-risk locations without monitoring
+  description: Machines in venues with weak oversight show disproportionate high-risk activity.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  - transaction_monitoring
+  data_sources:
+  - kiosk_inventory
+  - incident_reports
+  false_positive_notes: Foot-traffic driven volume.
+- id: IND-PRD-022
+  name: Rapid withdrawal to personal cash via peer-to-peer sellers
+  description: Fiat-conversion occurs through informal P2P sellers paid by cash deposit or gift cards
+    soon after receiving crypto.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - p2p_records
+  - bank_transactions
+  false_positive_notes: Legitimate P2P use in underbanked regions.
+- id: IND-PRD-023
+  name: Listings for services priced at nonsensical levels
+  description: Listings use extreme or placeholder prices likely used to move amounts.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - listing_data
+  false_positive_notes: Price errors.
+- id: IND-PRD-024
+  name: Marketplace or game operator lacks AML controls
+  description: Operator permits unlimited withdrawal and trade, ignores abuse reports and does not verify
+    high-value users.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - audit_reports
+  - policy_documents
+  false_positive_notes: Small operators.
+- id: IND-PRD-025
+  name: Website content differs from the underwriting file
+  description: Live site sells restricted products, redirects or has cloned or hidden pages.
+  category: product_channel
+  severity: high
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - web_monitoring
+  false_positive_notes: Website redesign.
+- id: IND-PRD-026
+  name: Jewellery, scrap gold or recycled metal used to mask origin
+  description: Surge in 'scrap' or 'recycled' gold from small sellers with no records.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  - transaction_monitoring
+  data_sources:
+  - assay_records
+  - invoices
+  false_positive_notes: Scrap markets are legitimate.
+- id: IND-PRD-027
+  name: Illicit sales or services advertised on social media or marketplaces with app or crypto payments
+  description: Informal sellers or operators advertise online and collect payment through payment apps,
+    crypto or unlabelled payments.
+  category: product_channel
+  severity: high
+  detection_type:
+  - external_intel
+  - transaction_monitoring
+  data_sources:
+  - open_source
+  - payment_records
+  - blockchain_analytics
+  - crypto_data
+  false_positive_notes: Antique and pet markets exist lawfully.
+- id: IND-PRD-028
+  name: Prepaid cards or gift card codes purchased and shared
+  description: 'Victim-side: buying vouchers and reading out codes.'
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - card_data
+  - retail_intel
+  false_positive_notes: Gifts.
+- id: IND-PRD-029
+  name: Card replacement or wallet provisioning to new address
+  description: Attacker requests cards or tokens to alternate addresses.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - card_data
+  false_positive_notes: Genuine moves.
+- id: IND-PRD-030
+  name: 3-D Secure bypass or failed authentication retried
+  description: Attempts changed to non-authenticated channels.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - authentication_logs
+  false_positive_notes: Technical failure.
+- id: IND-PRD-031
+  name: Authorised-user or piggyback tradeline abuse
+  description: 'Synthetic: new identity added as authorised user to build a credit score.'
+  category: product_channel
+  severity: medium
+  detection_type:
+  - kyc_review
+  data_sources:
+  - bureau_data
+  false_positive_notes: Family arrangements.
+- id: IND-PRD-032
+  name: Rapid account opening across multiple institutions
+  description: Identity is used for several products in a short window.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - bureau_enquiries
+  false_positive_notes: Rate shopping.
+- id: IND-PRD-033
+  name: Spoofed phone number matching the bank's real number
+  description: Outbound spoofing makes calls appear genuine; call-detail records reveal the discrepancy.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - external_intel
+  data_sources:
+  - telco_intel
+  false_positive_notes: Legitimate forwarding.
+- id: IND-PRD-034
+  name: Payment card details used at new merchants immediately after a call
+  description: 'Victim-side: card details given verbally are used for online purchases or wallet provisioning.'
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - card_data
+  - wallet_provisioning
+  false_positive_notes: Customer purchases.
+- id: IND-PRD-035
+  name: Spike in digital wallet provisioning on one customer card
+  description: Attacker provisions the card to multiple wallets after obtaining one-time codes.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - wallet_provisioning
+  false_positive_notes: Multiple devices owned by customer.
+- id: IND-PRD-036
+  name: 'Ghost broking: fake policy sold to customer'
+  description: 'Victim-side: customer pays for cover that does not exist or is under false details.'
+  category: product_channel
+  severity: high
+  detection_type:
+  - external_intel
+  - document_review
+  data_sources:
+  - policy_checks
+  - customer_reports
+  false_positive_notes: Cheap but genuine policy.
+- id: IND-PRD-037
+  name: Recruitment-based rewards or tiered commissions
+  description: Payments reward introducing new participants rather than selling goods or services.
+  category: product_channel
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - commission_records
+  - marketing_material
+  false_positive_notes: Standard multi-level marketing with genuine retail sales.
+- id: IND-PRD-038
+  name: Loan, credit card or remortgage taken to fund transfers
+  description: 'Victim-side: the customer draws credit or equity shortly before sending money away, often
+    citing a vague purpose.'
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - kyc_review
+  data_sources:
+  - credit_data
+  - payment_data
+  false_positive_notes: Legitimate refinancing for investment.
+- id: IND-PRD-039
+  name: Prepaid cards loaded with refunds
+  description: Refunds sent to prepaid products.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - card_data
+  false_positive_notes: Unbanked customers.
+- id: IND-PRD-040
+  name: Guarantee or escrow payments through informal value transfer
+  description: Funds held by an agent and released only upon arrival, sometimes via hawala-type providers.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - mvts_data
+  - intelligence_reports
+  false_positive_notes: Informal remittance is used widely for legitimate reasons.
+- id: IND-PRD-041
+  name: Deposits in foreign currency or unusual denominations
+  description: Large foreign notes exchanged or deposited.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - exchange_records
+  false_positive_notes: Travellers.
+- id: IND-PRD-042
+  name: Bulk cash purchases of precious goods, vehicles or remittance
+  description: Cash used to buy portable assets for transport.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - transaction_data
+  false_positive_notes: Normal retail.
+- id: IND-PRD-043
+  name: Funds deposited and withdrawn from casino account with little play
+  description: Casino deposit accounts used like bank accounts.
+  category: product_channel
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - account_data
+  false_positive_notes: Players keep balances.
+- id: IND-PRD-044
+  name: Online gaming accounts with deposit via multiple cards or wallets
+  description: Multiple payment instruments for an account with low play.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payment_data
+  false_positive_notes: Shared cards.
+- id: IND-PRD-045
+  name: Use of cash deposit machines and cards across multiple accounts
+  description: Debit cards or deposit tokens shared or sent to others to deposit.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - card_data
+  - atm_logs
+  false_positive_notes: Family members share cards sometimes.
+- id: IND-PRD-046
+  name: Frequent use of money service businesses, exchange houses or cash couriers alongside bank flows
+  description: Account activity regularly blends MSB, exchange house or cash courier movements with bank
+    transfers.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - msb_data
+  - cash_data
+  - mvts_data
+  false_positive_notes: Migrant workers send regularly.
+- id: IND-PRD-047
+  name: Trading in low-liquidity securities with unrelated parties
+  description: Illiquid instruments used to move value.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - trade_data
+  false_positive_notes: Genuine investors.
+- id: IND-PRD-048
+  name: Account credentials accessed from remote locations or by third parties
+  description: Logins from foreign IPs or remote-access tools soon after opening.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - digital_logs
+  false_positive_notes: Travel and VPN use are common.
+- id: IND-PRD-049
+  name: Frequent purchase of monetary instruments in small amounts
+  description: Multiple money orders, drafts, prepaid cards or cheques purchased with cash in sub-threshold
+    amounts.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - instrument_sales_logs
+  false_positive_notes: Some customers lack bank accounts and use instruments for rent or bills.
+- id: IND-PRD-050
+  name: Dual-use or high-risk goods without supporting licences
+  description: Trade in goods commonly abused for value transfer (used cars, electronics, gold, scrap)
+    lacks usual licences or logistics.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - document_review
+  data_sources:
+  - trade_documents
+  - licence_data
+  false_positive_notes: Licence regimes vary.
+- id: IND-PRD-051
+  name: Client or pooled accounts used for non-client flows
+  description: Professionals' client accounts used as banks.
+  category: product_channel
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - client_account_data
+  false_positive_notes: Client accounts hold funds.
+- id: IND-PRD-052
+  name: Purchase of 3D-printing, CNC machines and parts for gun manufacture
+  description: Orders for firearm blueprint files, receivers, jigs.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  - external_intel
+  data_sources:
+  - merchant_data
+  false_positive_notes: Hobbyists and makers exist.
+- id: IND-PRD-053
+  name: Art or collectibles held in free ports without display or trade
+  description: Artworks are acquired and stored long term in free ports with no movement, display or documented
+    purpose.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  - kyc_review
+  - document_review
+  data_sources:
+  - storage_records
+  - sale_records
+  false_positive_notes: Storage is normal.
+- id: IND-PRD-054
+  name: Use of art as collateral or for loan with unclear valuations
+  description: Loans secured on art with inflated valuations.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - loan_files
+  false_positive_notes: Art-secured lending is lawful.
+- id: IND-PRD-055
+  name: Branded or duty-paid goods priced far below genuine market levels
+  description: Prices are implausibly low for authentic or duty-paid products, suggesting counterfeit
+    or illicit supply.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - external_intel
+  - investigator_judgement
+  data_sources:
+  - marketplace_data
+  - open_source
+  - price_data
+  false_positive_notes: Discounts and grey market exist.
+- id: IND-PRD-056
+  name: Use of mixers, chain-hopping or privacy coins
+  description: Funds are moved through mixers, privacy coins or rapid cross-chain conversion to obscure
+    origin.
+  category: product_channel
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - blockchain_analytics
+  - ip_data
+  false_positive_notes: Privacy can be lawful.
+- id: IND-PRD-057
+  name: Bulk purchases of precursor chemicals or lab equipment
+  description: Customer buys large chemical quantities, pill presses or glassware inconsistent with stated
+    business.
+  category: product_channel
+  severity: high
+  detection_type:
+  - kyc_review
+  - transaction_monitoring
+  data_sources:
+  - invoices
+  - merchant_data
+  false_positive_notes: Industrial and academic buyers legitimately purchase chemicals.
+- id: IND-PRD-058
+  name: Use of crypto and prepaid cards for gambling top-ups
+  description: Layering via crypto into betting accounts.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - blockchain_analytics
+  false_positive_notes: Crypto betting is legal in places.
+- id: IND-PRD-059
+  name: Facilitator relying on informal channels, cash or trade offsets for clients
+  description: Payments for clients via netting, barter or unrecorded transfers.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - account_data
+  false_positive_notes: Informal systems are used in some communities.
+- id: IND-PRD-060
+  name: Loans or credit cards used to access hidden funds
+  description: Customer borrows locally but repays from or secured on foreign undeclared accounts, or
+    uses offshore-issued cards for domestic spend.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - loan_files
+  - card_data
+  false_positive_notes: Foreign-currency collateral lending is common in private banking.
+- id: IND-PRD-061
+  name: POS software with sales-suppression features or tampered records
+  description: Use of unfamiliar till software, offline mode usage, or missing sequential receipts.
+  category: product_channel
+  severity: high
+  detection_type:
+  - investigator_judgement
+  - external_intel
+  data_sources:
+  - pos_data
+  - tax_authority_intel
+  false_positive_notes: Software glitches or offline trading can cause gaps.
+- id: IND-PRD-062
+  name: Cash transferred to offshore through MVTS or cash couriers
+  description: Cash takings leave the country via money transfer, hawala-style networks or couriers.
+  category: product_channel
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - remittance_data
+  - customs_reports
+  false_positive_notes: Diaspora remittance is common and lawful.
+- id: IND-PRD-063
+  name: Donations routed to cryptocurrency addresses or messaging-app collection points
+  description: Appeal asks for crypto transfers or direct contact on encrypted channels instead of regulated
+    payment methods.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - external_intel
+  - transaction_monitoring
+  data_sources:
+  - blockchain_analytics
+  - platform_content
+  false_positive_notes: Crypto donations are legitimate in some communities.
+- id: IND-PRD-064
+  name: Kidnap and ransom insurance claims with unusual payee structure
+  description: Claims paid to third parties or in cash with limited verification of the event.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - claims_data
+  false_positive_notes: Claim handling often involves confidential intermediaries.
+- id: IND-PRD-065
+  name: Funds routed via informal agents or cash couriers into conflict areas
+  description: Funds reach regions with armed groups through informal value transfer, MVTS or cash couriers.
+  category: product_channel
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  - document_review
+  data_sources:
+  - agent_records
+  - cash_declarations
+  - payment_instructions
+  - partner_agreements
+  false_positive_notes: Informal channels are often the only access in fragile regions.
+- id: IND-PRD-066
+  name: Agent network with rapid expansion in higher-risk locations
+  description: Operator adds agents quickly in areas with terrorist presence without strengthened oversight.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - kyc_review
+  - investigator_judgement
+  data_sources:
+  - agent_lists
+  false_positive_notes: Growth in diaspora markets is common.
+- id: IND-PRD-067
+  name: Use of multiple accounts or prepaid products to stay below thresholds
+  description: Funds spread across several accounts, prepaid cards or wallets at the same or different
+    providers, each carrying small balances before consolidated cash-out.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - account_activity
+  - prepaid_card_data
+  - device_data
+  false_positive_notes: Students, migrants and unbanked users frequently use multiple small products.
+- id: IND-PRD-068
+  name: Cultural property or antiquities sales with weak provenance
+  description: Trade in antiquities or artefacts with gaps in provenance linked to conflict-zone origin.
+  category: product_channel
+  severity: medium
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - provenance_documents
+  - sale_records
+  false_positive_notes: Older collections may have incomplete but benign provenance.

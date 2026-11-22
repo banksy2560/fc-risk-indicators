@@ -18,329 +18,87 @@ typology:
     Services (2013)
   - Card scheme rules on merchant and payment facilitator monitoring (general reference)
   indicators:
-  - id: CY-PAYFAC-001
-    name: Transaction descriptors or products inconsistent with registered business
-    description: Card data show goods or services unrelated to the merchant's declared activity or website.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    - merchant_profile
-    false_positive_notes: Diversified merchants.
+  - ref: IND-TYP-016
+    legacy_id: CY-PAYFAC-001
+    context: Card data show goods or services unrelated to the merchant's declared activity or website.
+    false_positive_context: Diversified merchants.
     controls:
-    - id: CY-PAYFAC-001-C1
-      name: Merchant and portfolio transaction monitoring
-      type: detective
-      description: Monitor merchant-level patterns such as ticket size, refund and chargeback rates, descriptor
-        mismatch and cross-merchant flows.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PAYFAC-001-C2
-      name: Merchant onboarding and website/business verification
-      type: preventive
-      description: Verify merchant identity, business model, website content and expected volumes before
-        activation; re-verify on change.
-      implementation: process
-      effectiveness: high
-    - id: CY-PAYFAC-001-C3
-      name: External intelligence and consortium feeds
-      type: detective
-      description: Ingest law-enforcement, industry and commercial threat intelligence on indicators,
-        mule accounts and scam infrastructure.
-      implementation: technology
-      effectiveness: medium
-  - id: CY-PAYFAC-002
-    name: Unusual ticket sizes or round amounts
-    description: Average ticket differs sharply from the merchant category or is repetitive and rounded.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - transaction_data
-    false_positive_notes: Subscription pricing.
+    - CTL-057
+    - CTL-067
+    - CTL-083
+  - ref: IND-TXN-010
+    legacy_id: CY-PAYFAC-002
+    context: Average ticket differs sharply from the merchant category or is repetitive and rounded.
+    name_in_typology: Unusual ticket sizes or round amounts
+    false_positive_context: Subscription pricing.
     controls:
-    - id: CY-PAYFAC-002-C1
-      name: Merchant and portfolio transaction monitoring
-      type: detective
-      description: Monitor merchant-level patterns such as ticket size, refund and chargeback rates, descriptor
-        mismatch and cross-merchant flows.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PAYFAC-002-C2
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PAYFAC-002-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-PAYFAC-003
-    name: High chargeback and refund ratios
-    description: Chargebacks or refunds exceed scheme thresholds or peer averages.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - chargeback_data
-    false_positive_notes: Seasonal returns.
+    - CTL-057
+    - CTL-037
+    - CTL-093
+  - ref: IND-TXN-019
+    legacy_id: CY-PAYFAC-003
+    context: Chargebacks or refunds exceed scheme thresholds or peer averages.
+    name_in_typology: High chargeback and refund ratios
+    false_positive_context: Seasonal returns.
     controls:
-    - id: CY-PAYFAC-003-C1
-      name: Merchant and portfolio transaction monitoring
-      type: detective
-      description: Monitor merchant-level patterns such as ticket size, refund and chargeback rates, descriptor
-        mismatch and cross-merchant flows.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PAYFAC-003-C2
-      name: Merchant onboarding and website/business verification
-      type: preventive
-      description: Verify merchant identity, business model, website content and expected volumes before
-        activation; re-verify on change.
-      implementation: process
-      effectiveness: high
-    - id: CY-PAYFAC-003-C3
-      name: Account restriction and fund holds
-      type: corrective
-      description: Ability to restrict, hold or recall funds rapidly pending review, with defined legal
-        and operational triggers.
-      implementation: process
-      effectiveness: medium
-  - id: CY-PAYFAC-004
-    name: Sub-merchants sharing owners, devices or bank accounts
-    description: Many sub-merchants link to the same individuals or accounts.
-    category: ownership_structure
-    severity: medium
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - merchant_records
-    - bank_accounts
-    false_positive_notes: Franchise groups.
+    - CTL-057
+    - CTL-067
+    - CTL-103
+  - ref: IND-OWN-010
+    legacy_id: CY-PAYFAC-004
+    context: Many sub-merchants link to the same individuals or accounts.
+    name_in_typology: Sub-merchants sharing owners, devices or bank accounts
+    false_positive_context: Franchise groups.
     controls:
-    - id: CY-PAYFAC-004-C1
-      name: Graph and network analytics
-      type: detective
-      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
-        and fan-in/fan-out structures.
-      implementation: model
-      effectiveness: high
-    - id: CY-PAYFAC-004-C2
-      name: Merchant onboarding and website/business verification
-      type: preventive
-      description: Verify merchant identity, business model, website content and expected volumes before
-        activation; re-verify on change.
-      implementation: process
-      effectiveness: high
-    - id: CY-PAYFAC-004-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-PAYFAC-005
-    name: Website content differs from the underwriting file
-    description: Live site sells restricted products, redirects or has cloned or hidden pages.
-    category: product_channel
-    severity: high
-    detection_type:
-    - investigator_judgement
-    data_sources:
-    - web_monitoring
-    false_positive_notes: Website redesign.
+    - CTL-048
+    - CTL-067
+    - CTL-093
+  - ref: IND-PRD-025
+    legacy_id: CY-PAYFAC-005
+    context: Live site sells restricted products, redirects or has cloned or hidden pages.
+    false_positive_context: Website redesign.
     controls:
-    - id: CY-PAYFAC-005-C1
-      name: Merchant onboarding and website/business verification
-      type: preventive
-      description: Verify merchant identity, business model, website content and expected volumes before
-        activation; re-verify on change.
-      implementation: process
-      effectiveness: high
-    - id: CY-PAYFAC-005-C2
-      name: External intelligence and consortium feeds
-      type: detective
-      description: Ingest law-enforcement, industry and commercial threat intelligence on indicators,
-        mule accounts and scam infrastructure.
-      implementation: technology
-      effectiveness: medium
-    - id: CY-PAYFAC-005-C3
-      name: Merchant and portfolio transaction monitoring
-      type: detective
-      description: Monitor merchant-level patterns such as ticket size, refund and chargeback rates, descriptor
-        mismatch and cross-merchant flows.
-      implementation: rule
-      effectiveness: medium
-  - id: CY-PAYFAC-006
-    name: Rapid cash-out of settlements to third-party accounts
-    description: Settlement funds are sent immediately to unrelated accounts, often offshore.
-    category: counterparty
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - settlement_data
-    false_positive_notes: Group treasury.
+    - CTL-067
+    - CTL-083
+    - CTL-057
+  - ref: IND-CPT-013
+    legacy_id: CY-PAYFAC-006
+    context: Settlement funds are sent immediately to unrelated accounts, often offshore.
+    false_positive_context: Group treasury.
     controls:
-    - id: CY-PAYFAC-006-C1
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PAYFAC-006-C2
-      name: Counterparty provider due diligence
-      type: preventive
-      description: Assess licensing, controls and reputation of counterpart VASPs, PSPs and platforms
-        before enabling flows, and review periodically.
-      implementation: process
-      effectiveness: medium
-    - id: CY-PAYFAC-006-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-PAYFAC-007
-    name: Traffic spikes outside merchant geography
-    description: Sales volume arises from countries unrelated to the merchant's market.
-    category: geographic
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - ip_logs
-    - transaction_data
-    false_positive_notes: Export-oriented merchants.
+    - CTL-037
+    - CTL-149
+    - CTL-093
+  - ref: IND-GEO-019
+    legacy_id: CY-PAYFAC-007
+    context: Sales volume arises from countries unrelated to the merchant's market.
+    name_in_typology: Traffic spikes outside merchant geography
+    false_positive_context: Export-oriented merchants.
     controls:
-    - id: CY-PAYFAC-007-C1
-      name: Merchant and portfolio transaction monitoring
-      type: detective
-      description: Monitor merchant-level patterns such as ticket size, refund and chargeback rates, descriptor
-        mismatch and cross-merchant flows.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PAYFAC-007-C2
-      name: IP, geolocation and anonymisation detection
-      type: detective
-      description: Detect VPN, proxy, Tor and geolocation mismatch against declared residence and sanctioned
-        or high-risk jurisdictions.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PAYFAC-007-C3
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-  - id: CY-PAYFAC-008
-    name: Card-not-present volume with testing patterns
-    description: Many small authorisations from varied cards, consistent with card testing then fraud.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - authorisation_logs
-    false_positive_notes: Prepaid micro-purchases.
+    - CTL-057
+    - CTL-092
+    - CTL-037
+  - ref: IND-BEH-048
+    legacy_id: CY-PAYFAC-008
+    context: Many small authorisations from varied cards, consistent with card testing then fraud.
+    false_positive_context: Prepaid micro-purchases.
     controls:
-    - id: CY-PAYFAC-008-C1
-      name: Device intelligence and behavioural biometrics
-      type: detective
-      description: Fingerprint devices and analyse session behaviour (typing, navigation, remote-access
-        tools, emulators) to spot shared, scripted or hijacked sessions.
-      implementation: technology
-      effectiveness: high
-    - id: CY-PAYFAC-008-C2
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PAYFAC-008-C3
-      name: Merchant and portfolio transaction monitoring
-      type: detective
-      description: Monitor merchant-level patterns such as ticket size, refund and chargeback rates, descriptor
-        mismatch and cross-merchant flows.
-      implementation: rule
-      effectiveness: medium
-  - id: CY-PAYFAC-009
-    name: Payment facilitator onboarding lacks beneficial-owner data
-    description: Sub-merchants onboarded without full ownership or identity checks.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    data_sources:
-    - onboarding_files
-    false_positive_notes: Low-risk micro-merchants under threshold.
+    - CTL-091
+    - CTL-037
+    - CTL-057
+  - ref: IND-OWN-018
+    legacy_id: CY-PAYFAC-009
+    context: Sub-merchants onboarded without full ownership or identity checks.
+    false_positive_context: Low-risk micro-merchants under threshold.
     controls:
-    - id: CY-PAYFAC-009-C1
-      name: Merchant onboarding and website/business verification
-      type: preventive
-      description: Verify merchant identity, business model, website content and expected volumes before
-        activation; re-verify on change.
-      implementation: process
-      effectiveness: high
-    - id: CY-PAYFAC-009-C2
-      name: Enhanced due diligence
-      type: preventive
-      description: Collect additional information on activity purpose, expected volumes and ownership
-        before approval or continued service, with senior sign-off.
-      implementation: process
-      effectiveness: medium
-    - id: CY-PAYFAC-009-C3
-      name: Risk appetite and product risk assessment
-      type: governance
-      description: Documented appetite, product-level risk assessment and approval gate covering this
-        activity, reviewed on a set cadence.
-      implementation: policy
-      effectiveness: medium
-  - id: CY-PAYFAC-010
-    name: Use of multiple shell merchant accounts to spread volume
-    description: Volumes distributed across many accounts to stay below monitoring thresholds.
-    category: typology_specific
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - merchant_records
-    - transaction_data
-    false_positive_notes: Business structure choices.
+    - CTL-067
+    - CTL-023
+    - CTL-162
+  - ref: IND-TYP-017
+    legacy_id: CY-PAYFAC-010
+    context: Volumes distributed across many accounts to stay below monitoring thresholds.
+    false_positive_context: Business structure choices.
     controls:
-    - id: CY-PAYFAC-010-C1
-      name: Graph and network analytics
-      type: detective
-      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
-        and fan-in/fan-out structures.
-      implementation: model
-      effectiveness: high
-    - id: CY-PAYFAC-010-C2
-      name: Merchant and portfolio transaction monitoring
-      type: detective
-      description: Monitor merchant-level patterns such as ticket size, refund and chargeback rates, descriptor
-        mismatch and cross-merchant flows.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-PAYFAC-010-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
+    - CTL-048
+    - CTL-057
+    - CTL-093

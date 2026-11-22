@@ -1,0 +1,655 @@
+indicator,name,category,severity,typologies,typology_ids
+IND-BEH-001,Reluctance to disclose beneficial ownership or control,behavioural,high,3,ML-TCSP;SANC-OWNERSHIP;XC-CUSTOMER
+IND-BEH-002,Refusal or delay in answering due diligence requests,behavioural,high,2,ML-CORRBANK;XC-CUSTOMER
+IND-BEH-003,Unable or unwilling to explain transaction purpose or origin,behavioural,high,4,CY-MIXER;FR-APP;ML-BULKCASH;ML-PMLN
+IND-BEH-004,"Customer accompanied, directed or coached by a third party",behavioural,high,3,FR-VULN;HT-TRAFFICK;ML-MULE
+IND-BEH-005,Account controlled or used by someone other than the holder,behavioural,high,5,CY-GIGPLAT;HT-FORCEDLAB;HT-TRAFFICK;ML-THIRDPARTY;SANC-CRYPTO
+IND-BEH-006,Customer on a live call while transacting,behavioural,high,2,CY-ATM;FR-APP
+IND-BEH-007,"Remote-access, emulator or automation tools in session",behavioural,high,3,CY-ATOMULE;CY-NEOBANK;FR-APP
+IND-BEH-008,"Login from unfamiliar device, location or infrastructure",behavioural,high,2,FR-ATO;FR-IMP
+IND-BEH-009,Multiple failed logins followed by success,behavioural,medium,2,CY-ATOMULE;FR-ATO
+IND-BEH-010,SIM swap or number port before transfers,behavioural,high,2,CY-MVTS;FR-ATO
+IND-BEH-011,Credential or contact change followed by new payee and payments,behavioural,high,2,CY-ATOMULE;OP-CYBERPROC
+IND-BEH-012,"Shared device, contact or address data across many applicants or senders",behavioural,high,5,CY-MVTS;CY-NEOBANK;FR-BUST;FR-IDT;FR-TAX
+IND-BEH-013,Urgent payment instruction or payment-detail change outside normal process,behavioural,high,2,FR-BEC;OP-CYBERPROC
+IND-BEH-014,Rapid resale or return of recently acquired asset,behavioural,medium,2,ML-HVG;ML-REALESTATE
+IND-BEH-015,"Customer indifferent to cost, return or value",behavioural,medium,3,ML-HVG;ML-INSSEC;ML-LOANBACK
+IND-BEH-016,Frequent changes of customer or entity details,behavioural,medium,2,ML-TCSP;XC-CUSTOMER
+IND-BEH-017,Repeated change of consignee or buyer in transit,behavioural,medium,2,PF-DUALUSE;SANC-OILCAP
+IND-BEH-018,Pressure to speed up or bypass checks,behavioural,medium,2,ML-GATEKEEPER;XC-ONBOARDING-DOC
+IND-BEH-019,Staff override of controls or excessive record access,behavioural,high,2,FR-INSD;XC-INSTITUTIONAL
+IND-BEH-020,New account or entity with sudden high activity,behavioural,high,2,ML-MULE;ML-SHELL
+IND-BEH-021,Customer disputes legitimate transactions,behavioural,medium,2,FR-BUST;FR-CNP
+IND-BEH-022,Overpayment by cheque or money order from an unknown party,behavioural,high,2,FR-ADV;FR-CHQ
+IND-BEH-023,Expense claims with unusual gifts or entertainment near licence events,behavioural,medium,1,BC-FACILIT
+IND-BEH-024,Payments timed around contract award,behavioural,medium,1,BC-FBRIBE
+IND-BEH-025,Repeated wins by the same supplier with narrow margins,behavioural,medium,1,BC-KICKBACK
+IND-BEH-026,Luxury asset spending inconsistent with profile,behavioural,medium,1,BC-KLEPTO
+IND-BEH-027,Channel used inconsistent with customer profile,behavioural,low,1,XC-CHANNEL
+IND-BEH-028,Occupation or business inconsistent with wealth,behavioural,medium,1,XC-CUSTOMER
+IND-BEH-029,Weak AML governance and oversight,behavioural,high,1,XC-INSTITUTIONAL
+IND-BEH-030,Persistent alert backlog,behavioural,high,1,XC-INSTITUTIONAL
+IND-BEH-031,Monitoring scenarios not tuned or validated,behavioural,high,1,XC-INSTITUTIONAL
+IND-BEH-032,Poor customer and transaction data quality,behavioural,high,1,XC-INSTITUTIONAL
+IND-BEH-033,Significant outsourcing of control activities,behavioural,medium,1,XC-INSTITUTIONAL
+IND-BEH-034,Overdue periodic reviews or KYC refresh,behavioural,medium,1,XC-INSTITUTIONAL
+IND-BEH-035,Inadequate or outdated enterprise risk assessment,behavioural,high,1,XC-INSTITUTIONAL
+IND-BEH-036,Insufficient training or low staff awareness,behavioural,medium,1,XC-INSTITUTIONAL
+IND-BEH-037,Slow or poor-quality suspicious activity reporting,behavioural,high,1,XC-INSTITUTIONAL
+IND-BEH-038,Unresolved audit or regulatory findings,behavioural,medium,1,XC-INSTITUTIONAL
+IND-BEH-039,Older customer on first use with large amounts,behavioural,high,1,CY-ATM
+IND-BEH-040,Use of multiple kiosks across locations in one day,behavioural,medium,1,CY-ATM
+IND-BEH-041,Customer recruited online for fake job offering payment handling,behavioural,medium,1,CY-ATOMULE
+IND-BEH-042,Operational-security behaviours at onboarding and login,behavioural,medium,1,CY-DARKNET
+IND-BEH-043,Withdrawals to bridge contracts at odds with profile,behavioural,low,1,CY-DEFI
+IND-BEH-044,Account rental or resale signals,behavioural,medium,1,CY-GIGPLAT
+IND-BEH-045,Use of anonymising network access to the platform,behavioural,medium,1,CY-MIXER
+IND-BEH-046,Rapid sequence of new payee additions,behavioural,medium,1,CY-NEOBANK
+IND-BEH-047,Referral or incentive abuse patterns,behavioural,low,1,CY-NEOBANK
+IND-BEH-048,Card-not-present volume with testing patterns,behavioural,medium,1,CY-PAYFAC
+IND-BEH-049,Account use inconsistent with prior low-risk behaviour,behavioural,low,1,CY-RANSOM
+IND-BEH-050,"Mismatch between claimed identity and device, IP or voice",behavioural,medium,1,CY-SYNTHID
+IND-BEH-051,Voice or video call authentication challenges failed,behavioural,high,1,CY-SYNTHID
+IND-BEH-052,Applications following failed attempts with edited data,behavioural,medium,1,CY-SYNTHID
+IND-BEH-053,Customer refuses or cannot support wallet ownership verification,behavioural,medium,1,CY-UNHOSTED
+IND-BEH-054,Transacting via escrow-less informal chat groups,behavioural,low,1,CY-UNHOSTED
+IND-BEH-055,Retirement certificates claimed for corporate net-zero without registry proof,behavioural,medium,1,EC-CARBON
+IND-BEH-056,Crew payments below standards or via third parties,behavioural,high,1,EC-FISHING
+IND-BEH-057,Mixed legal and illegal operations blending flows,behavioural,medium,1,EC-WASTE
+IND-BEH-058,Customer talks of winning lottery or foreign relative,behavioural,high,1,FR-ADV
+IND-BEH-059,Password reset or credential change from unrecognised channel,behavioural,medium,1,FR-ATO
+IND-BEH-060,Session shows automated or scripted interaction,behavioural,medium,1,FR-ATO
+IND-BEH-061,Payment initiated outside normal approval chain,behavioural,medium,1,FR-BEC
+IND-BEH-062,Corporate login from unusual location or after mailbox rule change,behavioural,medium,1,FR-BEC
+IND-BEH-063,Customer unreachable after account reaches limit,behavioural,medium,1,FR-BUST
+IND-BEH-064,Early limit increase requests,behavioural,medium,1,FR-BUST
+IND-BEH-065,Many cheques deposited by multiple unrelated customers,behavioural,medium,1,FR-CHQ
+IND-BEH-066,Multiple cards used from one device or IP,behavioural,high,1,FR-CNP
+IND-BEH-067,Account created and used within minutes,behavioural,medium,1,FR-CNP
+IND-BEH-068,Victim reports unknown accounts or credit enquiries,behavioural,medium,1,FR-IDT
+IND-BEH-069,Customer reports unsolicited call or text from 'the bank',behavioural,high,1,FR-IMP
+IND-BEH-070,One-time passcode shared or requested during a call,behavioural,high,1,FR-IMP
+IND-BEH-071,Pressure for fast settlement or cash payout,behavioural,medium,1,FR-INS
+IND-BEH-072,Employee never takes leave or resists rotation,behavioural,medium,1,FR-INSD
+IND-BEH-073,Staff lifestyle inconsistent with pay,behavioural,medium,1,FR-INSD
+IND-BEH-074,Customer complaints about staff handling,behavioural,medium,1,FR-INSD
+IND-BEH-075,Insider override of credit policy or unusual speed of approval,behavioural,medium,1,FR-LOAN
+IND-BEH-076,Delays or fees when investors request withdrawals,behavioural,medium,1,FR-PONZ
+IND-BEH-077,Customer borrowing to invest or reinvesting returns repeatedly,behavioural,medium,1,FR-PONZ
+IND-BEH-078,Customer mentions an online partner never met,behavioural,high,1,FR-ROM
+IND-BEH-079,Accounts used as pass-through for overseas scam operations,behavioural,high,1,FR-ROM
+IND-BEH-080,Customer is isolated and defensive about intervention,behavioural,medium,1,FR-ROM
+IND-BEH-081,Account holder surprised by refund or victim reports unexpected claim,behavioural,medium,1,FR-TAX
+IND-BEH-082,Borrower reluctant to allow inspection or direct debtor contact,behavioural,medium,1,FR-TFIN
+IND-BEH-083,Confusion or fear about own finances,behavioural,medium,1,FR-VULN
+IND-BEH-084,Customer targeted by scams,behavioural,high,1,FR-VULN
+IND-BEH-085,Document retention or restricted movement reported,behavioural,high,1,HT-FORCEDLAB
+IND-BEH-086,Customer receiving payments for access to minors,behavioural,high,1,HT-OCSE
+IND-BEH-087,Requests for payments to be hidden or descriptions disguised,behavioural,medium,1,HT-OCSE
+IND-BEH-088,Exit fees or debt bondage reports from customer,behavioural,high,1,HT-SMUGGLE
+IND-BEH-089,Chips passed between players or taken away,behavioural,high,1,ML-CASINO
+IND-BEH-090,Account with little other activity,behavioural,medium,1,ML-FUNNEL
+IND-BEH-091,Operator reluctant to disclose service model,behavioural,medium,1,ML-HAWALA
+IND-BEH-092,Policy loans or assignments to third parties,behavioural,medium,1,ML-INSSEC
+IND-BEH-093,Personal use of NPO accounts,behavioural,medium,1,ML-NPO
+IND-BEH-094,Attempts to avoid disclosure of PEP status,behavioural,high,1,ML-PEP
+IND-BEH-095,Buyers or agents reluctant to provide information,behavioural,medium,1,ML-REALESTATE
+IND-BEH-096,Customer reacts to reporting or ID requirements,behavioural,high,1,ML-STRUCT
+IND-BEH-097,Frequent amendments or letter of credit changes,behavioural,medium,1,ML-TBML
+IND-BEH-098,Merchant chargebacks and complaints about fake goods,behavioural,medium,1,OP-COUNTER
+IND-BEH-099,Customers sending funds to crypto exchanges after being contacted by 'advisers',behavioural,high,1,OP-CYBERPROC
+IND-BEH-100,Cash couriering or bulk cash seizures linked to customer,behavioural,high,1,OP-DRUGS
+IND-BEH-101,"Proceeds spent on assets, vehicles or in casinos and then converted",behavioural,medium,1,OP-DRUGS
+IND-BEH-102,Sudden cash withdrawals followed by pay-outs under apparent pressure,behavioural,high,1,OP-EXTORT
+IND-BEH-103,Use of third-party couriers or intermediaries to collect cash,behavioural,medium,1,OP-EXTORT
+IND-BEH-104,"Bets with minimal risk, such as opposing outcomes at different books",behavioural,medium,1,OP-GAMBLE
+IND-BEH-105,Vehicle or container rental by small firms for bulk transport,behavioural,low,1,OP-TOBACCO
+IND-BEH-106,Re-export of controlled items by distributors in transit jurisdictions,behavioural,medium,1,PF-TRADEFIN
+IND-BEH-107,Advisers instructed to use complex structures after a customer's designation risk emerges,behavioural,high,1,SANC-ENABLERS
+IND-BEH-108,Frequent changes of intermediary banks or repeated reformatting of payments,behavioural,high,1,SANC-STRIPPING
+IND-BEH-109,Request to hold mail or avoid statements and reporting,behavioural,medium,1,TX-OFFSHORE
+IND-BEH-110,Sole-trader or bogus self-employment structure for large workforce,behavioural,medium,1,TX-PAYROLL
+IND-BEH-111,Cash used to pay suppliers and wages directly,behavioural,medium,1,TX-SKIM
+IND-BEH-112,High refund or void rates on card terminals,behavioural,medium,1,TX-SKIM
+IND-BEH-113,Sudden stop of activity and withdrawal of funds before VAT due,behavioural,medium,1,TX-VATFRAUD
+IND-BEH-114,"Use of coded language, rapid channel migration or deleted campaigns",behavioural,medium,1,TF-CROWDFUND
+IND-BEH-115,Campaigns exploiting a crisis event with unverified beneficiaries,behavioural,medium,1,TF-CROWDFUND
+IND-BEH-116,Closure of accounts and withdrawal of savings before travel,behavioural,medium,1,TF-FTF
+IND-BEH-117,Sudden change in financial behaviour and lifestyle,behavioural,low,1,TF-LONEACTOR
+IND-BEH-118,Activity inconsistent with registered purpose,behavioural,medium,1,TF-NPO
+IND-BEH-119,Fundraising claims inconsistent with use of funds,behavioural,medium,1,TF-NPO
+IND-CPT-001,Customs broker or freight forwarder with unusually high disbursements,counterparty,medium,1,BC-FACILIT
+IND-CPT-002,Third party has no anti-bribery policy or refuses audit rights,counterparty,medium,1,BC-FACILIT
+IND-CPT-003,Intermediary introduced by official or customer insists on use,counterparty,high,1,BC-FACILIT
+IND-CPT-004,Intermediary linked to a public official or relative,counterparty,high,1,BC-FBRIBE
+IND-CPT-005,Vendor linked to employee or without verifiable existence,counterparty,high,2,BC-KICKBACK;FR-INSD
+IND-CPT-006,Payments to crypto exchanges or cash-out channels soon after receipt,counterparty,medium,1,CY-ATOMULE
+IND-CPT-007,Same beneficiary reached by many mule accounts,counterparty,high,1,CY-ATOMULE
+IND-CPT-008,Cash-out through multiple accounts of same user group,counterparty,medium,1,CY-DARKNET
+IND-CPT-009,Counterparty is a non-compliant cross-chain service,counterparty,medium,1,CY-DEFI
+IND-CPT-010,Payout to account not matching verified identity or declared beneficiary,counterparty,high,2,CY-GIGPLAT;TF-CROWDFUND
+IND-CPT-011,Funds sent to unlicensed or weakly regulated exchanges,counterparty,high,2,CY-MIXER;SANC-CRYPTO
+IND-CPT-012,Agent with unusual cash volumes or splitting behaviour,counterparty,high,1,CY-MVTS
+IND-CPT-013,Rapid cash-out of settlements to third-party accounts,counterparty,medium,1,CY-PAYFAC
+IND-CPT-014,Card used to pay high-risk online merchants,counterparty,medium,1,CY-PREPAID
+IND-CPT-015,Use of OTC desks or brokers with minimal due diligence for conversion to fiat,counterparty,medium,2,CY-RANSOM;PF-DPRKREV
+IND-CPT-016,Intermediary or broker with no track record and aggressive marketing,counterparty,high,1,EC-CARBON
+IND-CPT-017,Seafood sales through traders with no traceability,counterparty,medium,1,EC-FISHING
+IND-CPT-018,Payments to public officials to obtain permits or bypass controls,counterparty,high,2,EC-LOGGING;EC-WILDLIFE
+IND-CPT-019,Beneficiary account name mismatch or no-match result,counterparty,medium,1,FR-APP
+IND-CPT-020,Change of beneficiary bank details close to a payment,counterparty,high,1,FR-BEC
+IND-CPT-021,Merchant chargeback ratio above scheme thresholds,counterparty,high,1,FR-CNP
+IND-CPT-022,Transaction laundering through front merchants,counterparty,high,2,FR-BUST;FR-CNP
+IND-CPT-023,Repeated claims across insurers by linked parties,counterparty,high,1,FR-INS
+IND-CPT-024,Repair or medical invoices inflated or from linked providers,counterparty,medium,1,FR-INS
+IND-CPT-025,Broker or intermediary with unusual early default rate,counterparty,high,1,FR-LOAN
+IND-CPT-026,Unlicensed or cloned operator receiving payments,counterparty,high,3,FR-PONZ;FR-ROM;OP-GAMBLE
+IND-CPT-027,Rotation of winning bidders,counterparty,high,1,FR-PROC
+IND-CPT-028,Official has undisclosed relationship with supplier,counterparty,high,1,FR-PROC
+IND-CPT-029,Invoices from related parties with round values,counterparty,high,1,FR-TFIN
+IND-CPT-030,Debtor denies or cannot confirm the invoice,counterparty,high,1,FR-TFIN
+IND-CPT-031,Payments to platforms flagged for illegal content,counterparty,high,1,HT-OCSE
+IND-CPT-032,Document fraud service payments,counterparty,high,1,HT-SMUGGLE
+IND-CPT-033,Travel and visa fee payments for groups from the same recruiter,counterparty,medium,1,HT-TRAFFICK
+IND-CPT-034,Respondent serves undisclosed downstream institutions,counterparty,high,1,ML-CORRBANK
+IND-CPT-035,Many unrelated depositors paying into one account,counterparty,high,2,ML-FUNNEL;ML-STRUCT
+IND-CPT-036,Auction or intermediary used to obscure parties,counterparty,medium,1,ML-HVG
+IND-CPT-037,"Shared devices, IP addresses or contact details across accounts",counterparty,high,1,ML-MULE
+IND-CPT-038,Large payments from state entities or contractors,counterparty,high,1,ML-PEP
+IND-CPT-039,Use of intermediaries and agents to handle funds,counterparty,medium,1,ML-PEP
+IND-CPT-040,Bank accounts opened or operated by TCSP staff,counterparty,high,1,ML-TCSP
+IND-CPT-041,Transfers pass through accounts of relatives or employees,counterparty,medium,1,ML-THIRDPARTY
+IND-CPT-042,Brokers or dealers lacking licences or end-user certificates,counterparty,high,1,OP-ARMS
+IND-CPT-043,Payments from or to sanctioned or embargoed parties,counterparty,high,1,OP-ARMS
+IND-CPT-044,Seller is dealer new to market or with sanctions or adverse media,counterparty,medium,1,OP-ART
+IND-CPT-045,Importer of brand-name goods with no distribution authorisation,counterparty,high,1,OP-COUNTER
+IND-CPT-046,Import-export firms trading chemicals with unusual consignees,counterparty,high,1,OP-DRUGS
+IND-CPT-047,Players or officials receive payments from betting-linked parties,counterparty,high,1,OP-GAMBLE
+IND-CPT-048,Illegal factory equipment or leaf purchases,counterparty,high,1,OP-TOBACCO
+IND-CPT-049,Respondent processing for front companies of concern in prior reports,counterparty,medium,1,PF-CORRESP
+IND-CPT-050,"Exposure to wallets attributed to designated, stolen-fund or illicit actors",counterparty,high,4,OP-CYBERPROC;PF-DPRKREV;SANC-CRYPTO;TF-VASP
+IND-CPT-051,Adviser or agent acting for multiple linked clients,counterparty,high,2,SANC-ENABLERS;SANC-LUXURY
+IND-CPT-052,Family members or close associates acquiring assets and positions,counterparty,medium,1,SANC-OWNERSHIP
+IND-CPT-053,Sender or intermediary with history of message-quality deficiencies,counterparty,medium,1,SANC-STRIPPING
+IND-CPT-054,Crisis consultancy or ransom-response payments without documentation,counterparty,medium,1,TF-EXTORT
+IND-CPT-055,Dealings with known facilitators or persons on investigative watch lists,counterparty,high,2,TF-FTF;TF-LONEACTOR
+IND-CPT-056,Transactions involving entities tied to state support for designated groups,counterparty,high,1,TF-STATESPONSOR
+IND-CPT-057,Use of intermediaries who market secrecy,counterparty,high,1,TX-OFFSHORE
+IND-CPT-058,Payments from or to unrelated third parties,counterparty,medium,10,FR-CHQ;ML-CASHBIZ;ML-CASINO;ML-GATEKEEPER;ML-INSSEC;ML-LOANBACK;ML-PMLN;ML-TBML;ML-THIRDPARTY;XC-TXN-BEHAVIOUR
+IND-CPT-059,Adverse media or intelligence linking counterparties to criminal activity,counterparty,high,6,HT-FORCEDLAB;HT-TRAFFICK;ML-CORRBANK;ML-PMLN;OP-EXTORT;XC-TXN-BEHAVIOUR
+IND-CUS-001,Wealth or spending inconsistent with known means,customer,high,5,BC-KLEPTO;ML-HVG;ML-PEP;ML-REALESTATE;TX-SKIM
+IND-CUS-002,Account activity inconsistent with declared occupation or income,customer,medium,6,CY-ATOMULE;CY-DARKNET;CY-MVTS;CY-NEOBANK;ML-MULE;ML-STRUCT
+IND-CUS-003,Adverse media on customer or associates,customer,high,8,BC-KLEPTO;EC-FISHING;EC-LOGGING;EC-WASTE;EC-WILDLIFE;HT-OCSE;TF-LONEACTOR;XC-CUSTOMER
+IND-CUS-004,"Prior regulatory, criminal or enforcement history",customer,high,2,SANC-ENABLERS;XC-CUSTOMER
+IND-CUS-005,"Missing, misused or unverifiable licence or registration",customer,high,4,EC-MINING;EC-WASTE;TF-HAWALA;TF-NPO
+IND-CUS-006,Account collecting funds from many unrelated payers,customer,high,3,HT-SMUGGLE;ML-HAWALA;OP-EXTORT
+IND-CUS-007,Multiple customers sharing contact details or addresses,customer,medium,4,CY-PREPAID;CY-SYNTHID;FR-PROC;HT-TRAFFICK
+IND-CUS-008,One person holding multiple identities or accounts,customer,medium,3,HT-OCSE;ML-CASINO;ML-MULE
+IND-CUS-009,Inconsistent or synthetic identity data at onboarding,customer,medium,4,OP-CYBERPROC;PF-DPRKREV;TF-CROWDFUND;TF-VASP
+IND-CUS-010,Newly established customer with rapid high-value activity,customer,high,4,CY-GIGPLAT;SANC-OILCAP;TF-STATESPONSOR;TX-VATFRAUD
+IND-CUS-011,No evidence of real operations,customer,high,2,ML-SHELL;PF-DPRKREV
+IND-CUS-012,Business revenue inconsistent with staffing or operating costs,customer,medium,2,HT-TRAFFICK;TX-PAYROLL
+IND-CUS-013,Cash-intensive business,customer,medium,2,OP-TOBACCO;XC-CUSTOMER
+IND-CUS-014,Recent change of contact or delivery details,customer,high,2,FR-ATO;FR-VULN
+IND-CUS-015,Accounts held via family members or associates,customer,high,1,BC-KLEPTO
+IND-CUS-016,Politically exposed person as customer or controller,customer,high,1,XC-CUSTOMER
+IND-CUS-017,Non-resident customer without clear rationale,customer,medium,1,XC-CUSTOMER
+IND-CUS-018,Customer in a high-risk sector,customer,medium,1,XC-CUSTOMER
+IND-CUS-019,Customer claims to be a DeFi developer or protocol team without evidence,customer,medium,1,CY-DEFI
+IND-CUS-020,Account opened for a young or elderly person but controlled by another,customer,medium,1,CY-NEOBANK
+IND-CUS-021,Marketplace sellers with no identity verification receiving large payouts,customer,medium,1,CY-NFTGAME
+IND-CUS-022,Corporate account pays an unusual crypto purchase after a cyber event,customer,medium,1,CY-RANSOM
+IND-CUS-023,Third-party payer funds purchase on behalf of a victim,customer,medium,1,CY-RANSOM
+IND-CUS-024,P2P advertiser with high volume and many unrelated counterparties,customer,high,1,CY-UNHOSTED
+IND-CUS-025,Vessel with history of AIS gaps or name and flag changes,customer,high,1,EC-FISHING
+IND-CUS-026,Front businesses combining legal goods and wildlife products,customer,high,1,EC-WILDLIFE
+IND-CUS-027,Recruited receiving account for reshipping or payment processing,customer,high,1,FR-ADV
+IND-CUS-028,Receiving account is new or recently dormant with many unrelated senders,customer,high,1,FR-APP
+IND-CUS-029,Multiple prior scam alerts or repeat victimisation,customer,medium,1,FR-APP
+IND-CUS-030,New account with immediate cheque deposits,customer,medium,1,FR-CHQ
+IND-CUS-031,Thin or recently created credit file with high requested limits,customer,high,1,FR-IDT
+IND-CUS-032,Straw buyer or nominee applicant,customer,high,1,FR-LOAN
+IND-CUS-033,Undisclosed liabilities or multiple simultaneous applications,customer,medium,1,FR-LOAN
+IND-CUS-034,Recently opened account receiving government payments,customer,high,1,FR-TAX
+IND-CUS-035,New joint account holder or power of attorney added,customer,high,1,FR-VULN
+IND-CUS-036,Frequent cash-in-transit use by a non-retail customer,customer,medium,1,ML-BULKCASH
+IND-CUS-037,Individual or business holder lacks economic link to deposit areas,customer,medium,1,ML-FUNNEL
+IND-CUS-038,Account opened with limited documentation or by recruited individuals,customer,medium,1,ML-FUNNEL
+IND-CUS-039,Client unwilling to provide ownership or source of funds,customer,high,1,ML-GATEKEEPER
+IND-CUS-040,Newly acquired PEP status not re-assessed,customer,medium,1,ML-PEP
+IND-CUS-041,Shipment volume exceeds the counterparty's capability,customer,medium,1,ML-TBML
+IND-CUS-042,Introduced customers with no direct contact,customer,medium,1,ML-TCSP
+IND-CUS-043,Personal account used for business flows,customer,medium,1,ML-THIRDPARTY
+IND-CUS-044,Armed groups or militias as end users linked to customers,customer,high,1,OP-ARMS
+IND-CUS-045,Many small online storefronts with common bank accounts or directors,customer,high,1,OP-COUNTER
+IND-CUS-046,"Pharmacy, clinic or online pharmacy with abnormal opioid volumes",customer,medium,1,OP-DRUGS
+IND-CUS-047,Underground casino or card house with cash and chip sales,customer,medium,1,OP-GAMBLE
+IND-CUS-048,Respondent bank with presence or business in jurisdictions of proliferation concern,customer,high,1,PF-CORRESP
+IND-CUS-049,Customer or counterparty business inconsistent with technical goods traded,customer,high,1,PF-DUALUSE
+IND-CUS-050,Customer in transit country suddenly trades controlled or high-priority items,customer,high,1,SANC-DIVERSION
+IND-CUS-051,Inconsistent tax residency declarations,customer,high,1,TX-OFFSHORE
+IND-CUS-052,Minors or young adults funded by third parties,customer,medium,1,TF-FTF
+IND-CUS-053,Operator account with transactions inconsistent with a retail remittance profile,customer,high,1,TF-HAWALA
+IND-DOC-001,Vague invoices for unspecified services,document,medium,1,BC-FBRIBE
+IND-DOC-002,Frequent contract variations or change orders,document,medium,1,BC-KICKBACK
+IND-DOC-003,Emergency or single-source award with weak justification,document,medium,1,BC-KICKBACK
+IND-DOC-004,Remote onboarding with weak verification,document,high,1,XC-CHANNEL
+IND-DOC-005,Identity document tampering or forensic failure,document,high,2,FR-IDT;XC-ONBOARDING-DOC
+IND-DOC-006,Inconsistent personal details across documents or sources,document,high,2,FR-IDT;XC-ONBOARDING-DOC
+IND-DOC-007,Fictitious or unverifiable address,document,medium,1,XC-ONBOARDING-DOC
+IND-DOC-008,Shared identifiers across unrelated customers,document,high,2,CY-ATM;XC-ONBOARDING-DOC
+IND-DOC-009,Synthetic identity with thin or newly created footprint,document,high,2,CY-SYNTHID;XC-ONBOARDING-DOC
+IND-DOC-010,Documents or images reused or templated across applicants,document,high,3,CY-NEOBANK;CY-SYNTHID;XC-ONBOARDING-DOC
+IND-DOC-011,"Expired, unusual or low-assurance documents",document,low,1,XC-ONBOARDING-DOC
+IND-DOC-012,Applicant details match watchlist or fraud record,document,high,1,XC-ONBOARDING-DOC
+IND-DOC-013,Signature or contact details differ on later instructions,document,medium,1,XC-ONBOARDING-DOC
+IND-DOC-014,Payee name verification fails or mismatches,document,medium,1,CY-ATOMULE
+IND-DOC-015,"Missing, incomplete or placeholder originator and beneficiary information",document,high,5,CY-MVTS;ML-CORRBANK;PF-CORRESP;SANC-STRIPPING;TF-HAWALA
+IND-DOC-016,Selfie or video shows signs of synthetic or injected media,document,high,1,CY-SYNTHID
+IND-DOC-017,"Dates of birth, SSN or national ID not matching authoritative records",document,high,1,CY-SYNTHID
+IND-DOC-018,Project lacking verifiable registry entry or independent verification,document,high,1,EC-CARBON
+IND-DOC-019,Catch documentation inconsistent with vessel capacity or licence,document,high,1,EC-FISHING
+IND-DOC-020,Trade documents inconsistent with each other,document,high,5,EC-LOGGING;FR-TFIN;ML-TBML;PF-TRADEFIN;TF-STATESPONSOR
+IND-DOC-021,"Unclear provenance of gold, metals or stones",document,high,2,EC-MINING;ML-HVG
+IND-DOC-022,Waste shipped as used goods or recyclables,document,high,1,EC-WASTE
+IND-DOC-023,Trade in CITES-listed species with irregular permits,document,high,1,EC-WILDLIFE
+IND-DOC-024,Transit via logistics hubs with changed consignee or false declarations,document,high,1,EC-WILDLIFE
+IND-DOC-025,Lookalike or recently registered sender domain,document,high,1,FR-BEC
+IND-DOC-026,Invoice amount or format differs from prior invoices,document,medium,1,FR-BEC
+IND-DOC-027,Stated income or employer not verifiable,document,medium,1,FR-BUST
+IND-DOC-028,Cheque appears altered or counterfeit,document,high,1,FR-CHQ
+IND-DOC-029,Stolen mail cheque deposited under changed payee,document,high,1,FR-CHQ
+IND-DOC-030,Inconsistent accounts of the incident,document,high,1,FR-INS
+IND-DOC-031,Application misrepresentation such as hidden drivers or addresses,document,medium,1,FR-INS
+IND-DOC-032,Income or employment documents show signs of alteration,document,high,1,FR-LOAN
+IND-DOC-033,Property valuation materially above comparable sales,document,high,1,FR-LOAN
+IND-DOC-034,Occupancy or purpose misrepresented,document,medium,1,FR-LOAN
+IND-DOC-035,Tenders show suspiciously similar pricing or documents,document,high,1,FR-PROC
+IND-DOC-036,Invoices for services or goods not received,document,high,1,FR-PROC
+IND-DOC-037,"Claim details inconsistent with income, residency or account history",document,medium,2,FR-PROC;FR-TAX
+IND-DOC-038,Same invoice or shipment financed or invoiced multiple times,document,high,2,FR-TFIN;ML-TBML
+IND-DOC-039,"Unusually low wages, deductions or accommodation charges",document,high,1,HT-FORCEDLAB
+IND-DOC-040,Winnings claims lacking supporting records,document,medium,1,ML-CASINO
+IND-DOC-041,Customer lacks records of senders and recipients,document,high,1,ML-HAWALA
+IND-DOC-042,Loan with no commercial purpose or unusual terms,document,medium,1,ML-LOANBACK
+IND-DOC-043,Inconsistent loan documentation or backdated agreements,document,medium,1,ML-LOANBACK
+IND-DOC-044,Unregistered or unlicensed fundraising,document,medium,1,ML-NPO
+IND-DOC-045,Fake or inflated beneficiaries and invoices,document,medium,1,ML-NPO
+IND-DOC-046,Generic or inconsistent business activity,document,medium,1,ML-SHELL
+IND-DOC-047,Related-party or unknown-party loans and deposits lacking documentation,document,medium,2,ML-SHELL;ML-THIRDPARTY
+IND-DOC-048,Fake commercial front using civilian goods descriptions,document,medium,1,OP-ARMS
+IND-DOC-049,Provenance gaps or documents inconsistent with object history,document,high,1,OP-ART
+IND-DOC-050,Vague or generic goods descriptions,document,high,2,OP-COUNTER;PF-TRADEFIN
+IND-DOC-051,"Forced purchase of services, supplies or cars at inflated prices",document,medium,1,OP-EXTORT
+IND-DOC-052,Goods in transit declared to low-tax or non-EU destinations but not arriving,document,high,1,OP-TOBACCO
+IND-DOC-053,Use of multiple identities or fabricated credentials in onboarding,document,medium,1,PF-DPRKREV
+IND-DOC-054,"End-user information vague, missing or refused",document,high,2,PF-DUALUSE;SANC-DIVERSION
+IND-DOC-055,Price or specification not in line with commercial norms,document,medium,1,PF-DUALUSE
+IND-DOC-056,Vessel identity discrepancies,document,high,1,PF-MARITIME
+IND-DOC-057,"Insurance, classification or P&I cover absent or changed abruptly",document,medium,1,PF-MARITIME
+IND-DOC-058,Letter of credit terms that are unusually flexible or amended repeatedly,document,medium,1,PF-TRADEFIN
+IND-DOC-059,"Vessel, voyage or shipper details missing or implausible",document,high,1,PF-TRADEFIN
+IND-DOC-060,"Goods relabelled, repackaged or invoiced under different HS codes",document,medium,1,SANC-DIVERSION
+IND-DOC-061,Document or sanction-licence irregularities,document,high,1,SANC-ENABLERS
+IND-DOC-062,Attestations of price compliance without supporting invoices,document,high,1,SANC-OILCAP
+IND-DOC-063,"Discrepancy between loading port, origin documents and tracking",document,high,1,SANC-OILCAP
+IND-DOC-064,Free-text fields containing instructions to avoid mention of certain parties,document,high,1,SANC-STRIPPING
+IND-DOC-065,Different party name between message and underlying invoice,document,medium,1,SANC-STRIPPING
+IND-DOC-066,Invoices with identical formats across 'unrelated' suppliers,document,medium,1,TX-VATFRAUD
+IND-DOC-067,Local taxation language in invoices or payments,document,high,1,TF-EXTORT
+IND-GEO-001,Loads immediately followed by foreign ATM withdrawals,geographic,high,1,CY-PREPAID
+IND-GEO-002,Funds routed to project developers in high-risk jurisdictions with no activity,geographic,medium,1,EC-CARBON
+IND-GEO-003,Port calls in ports of low inspection standards,geographic,medium,1,EC-FISHING
+IND-GEO-004,Origin country is a transit-only processor with no forests,geographic,medium,1,EC-LOGGING
+IND-GEO-005,Operation in or adjacent to protected areas or indigenous lands,geographic,medium,1,EC-LOGGING
+IND-GEO-006,Armed-group territory or sanctioned parties in conflict areas,geographic,high,2,EC-MINING;TF-STATESPONSOR
+IND-GEO-007,Shipments to countries with weak controls and few recycling facilities,geographic,medium,1,EC-WASTE
+IND-GEO-008,"Wildlife-related payments between source, transit and consumer countries",geographic,medium,1,EC-WILDLIFE
+IND-GEO-009,Payments to money transfer services overseas,geographic,medium,1,FR-ADV
+IND-GEO-010,First payment to a new beneficiary in a different jurisdiction,geographic,high,1,FR-BEC
+IND-GEO-011,"Address is mail-drop, virtual or shared by many applicants",geographic,medium,1,FR-IDT
+IND-GEO-012,Suppliers in sectors or regions with high forced-labour risk,geographic,medium,1,HT-FORCEDLAB
+IND-GEO-013,Accounts or flows in border regions with cross-border movement,geographic,medium,2,HT-SMUGGLE;ML-BULKCASH
+IND-GEO-014,Cash deposits from many states or regions,geographic,high,1,ML-FUNNEL
+IND-GEO-015,Funds sent offshore soon after collection,geographic,high,1,ML-FUNNEL
+IND-GEO-016,Customer geography far from the professional's practice,geographic,low,1,ML-GATEKEEPER
+IND-GEO-017,Funds return from offshore as foreign investment,geographic,high,1,ML-LOANBACK
+IND-GEO-018,Counterparty or flows in higher-risk jurisdictions with weak AML controls,geographic,medium,7,CY-MVTS;CY-NFTGAME;CY-RANSOM;CY-UNHOSTED;ML-CORRBANK;ML-NPO;ML-REALESTATE
+IND-GEO-019,Payments or activity in jurisdictions unrelated to the customer's business or goods,geographic,medium,6,BC-FBRIBE;CY-PAYFAC;ML-SHELL;TF-HAWALA;TX-VATFRAUD;XC-GEOGRAPHY
+IND-GEO-020,Shipping through high-risk transit hubs with changed destinations,geographic,high,1,OP-ARMS
+IND-GEO-021,Objects from conflict zones or countries with looting,geographic,high,1,OP-ART
+IND-GEO-022,Shipments transiting free zones and repackaged,geographic,medium,1,OP-COUNTER
+IND-GEO-023,Businesses closing or reporting threats alongside payment spikes,geographic,medium,1,OP-EXTORT
+IND-GEO-024,Payments to or from free-trade zones and tax-free ports,geographic,medium,1,OP-TOBACCO
+IND-GEO-025,Port calls at locations of concern followed by false next port,geographic,medium,1,PF-MARITIME
+IND-GEO-026,Access from sanctioned jurisdictions via VPN or proxy,geographic,high,1,SANC-CRYPTO
+IND-GEO-027,"Delivery to forwarder, mailbox or address unrelated to buyer",geographic,medium,4,CY-PREPAID;FR-CNP;PF-DUALUSE;SANC-DIVERSION
+IND-GEO-028,Sharp rise in exports to specific transit countries of restricted items,geographic,medium,1,SANC-DIVERSION
+IND-GEO-029,Provider acts for many clients from the same higher-risk jurisdiction,geographic,medium,1,SANC-ENABLERS
+IND-GEO-030,Payments routed through banks in jurisdictions with weak controls for no clear reason,geographic,medium,1,SANC-STRIPPING
+IND-GEO-031,Cash or card use in border and transit areas near conflict zones,geographic,high,2,TF-CROWDFUND;TF-FTF
+IND-GEO-032,Transfers following threat or abduction reports from region,geographic,medium,1,TF-EXTORT
+IND-GEO-033,Travel and accommodation spending to conflict-adjacent regions,geographic,medium,1,TF-LONEACTOR
+IND-GEO-034,Customer location inconsistent with declared residence,geographic,medium,1,TF-VASP
+IND-GEO-035,Transfers to jurisdictions with weak transparency soon after reporting changes,geographic,high,1,TX-OFFSHORE
+IND-GEO-036,Nexus to FATF black-listed jurisdiction,geographic,high,1,XC-GEOGRAPHY
+IND-GEO-037,Nexus to FATF grey-listed jurisdiction,geographic,medium,1,XC-GEOGRAPHY
+IND-GEO-038,Secrecy or low-transparency jurisdiction nexus,geographic,high,2,ML-TCSP;XC-GEOGRAPHY
+IND-GEO-039,Conflict zone or fragile state exposure,geographic,high,1,XC-GEOGRAPHY
+IND-GEO-040,High-corruption jurisdiction nexus,geographic,medium,2,ML-PEP;XC-GEOGRAPHY
+IND-GEO-041,Routing through trade-diversion or transshipment hubs,geographic,medium,3,ML-TBML;PF-TRADEFIN;XC-GEOGRAPHY
+IND-GEO-042,Sanctioned country proximity,geographic,high,1,XC-GEOGRAPHY
+IND-GEO-043,Offshore financial centre use for non-resident clients,geographic,medium,1,XC-GEOGRAPHY
+IND-GEO-044,Cross-border corridor with known abuse typologies,geographic,medium,2,ML-HAWALA;XC-GEOGRAPHY
+IND-OWN-001,Nominee directors or shareholders,ownership_structure,high,5,ML-SHELL;ML-TCSP;SANC-OWNERSHIP;TX-OFFSHORE;XC-OWNERSHIP
+IND-OWN-002,Complex layered structure without commercial rationale,ownership_structure,high,8,BC-KLEPTO;EC-FISHING;ML-GATEKEEPER;ML-SHELL;ML-TCSP;SANC-OWNERSHIP;XC-CUSTOMER;XC-OWNERSHIP
+IND-OWN-003,High-value asset held through opaque vehicle,ownership_structure,high,4,ML-HVG;ML-REALESTATE;OP-ART;SANC-LUXURY
+IND-OWN-004,Passive offshore vehicle or foundation holding personal assets,ownership_structure,high,2,ML-PEP;TX-OFFSHORE
+IND-OWN-005,Beneficial owner or controller cannot be identified,ownership_structure,high,4,ML-CASHBIZ;ML-NPO;PF-CORRESP;XC-OWNERSHIP
+IND-OWN-006,Shell entity with no operating footprint,ownership_structure,high,5,BC-FBRIBE;FR-BEC;FR-PROC;PF-DUALUSE;XC-OWNERSHIP
+IND-OWN-007,Newly formed entity with vague purpose and large flows,ownership_structure,high,4,CY-NEOBANK;ML-PMLN;OP-DRUGS;XC-OWNERSHIP
+IND-OWN-008,Registered address shared by many entities,ownership_structure,medium,3,ML-SHELL;ML-TCSP;XC-OWNERSHIP
+IND-OWN-009,Short-lived or rotating entities with common controllers,ownership_structure,high,5,EC-LOGGING;EC-WASTE;PF-MARITIME;TX-PAYROLL;TX-VATFRAUD
+IND-OWN-010,Multiple entities under common control,ownership_structure,medium,4,CY-PAYFAC;ML-CASHBIZ;ML-PMLN;TX-PAYROLL
+IND-OWN-011,Ownership or controllers linked to designated or previously reported parties,ownership_structure,high,3,PF-DPRKREV;TF-HAWALA;TF-NPO
+IND-OWN-012,Joint-venture partner owned by government-connected persons,ownership_structure,high,1,BC-FACILIT
+IND-OWN-013,Supplier lacks capacity for awarded contract,ownership_structure,high,1,BC-KICKBACK
+IND-OWN-014,Bearer shares or bearer instruments,ownership_structure,high,1,XC-OWNERSHIP
+IND-OWN-015,Declared and discovered ownership mismatch,ownership_structure,high,1,XC-OWNERSHIP
+IND-OWN-016,Trust or foundation with undisclosed parties,ownership_structure,high,1,XC-OWNERSHIP
+IND-OWN-017,Control exercised through informal arrangements,ownership_structure,medium,1,XC-OWNERSHIP
+IND-OWN-018,Payment facilitator onboarding lacks beneficial-owner data,ownership_structure,high,1,CY-PAYFAC
+IND-OWN-019,Operator accounts opened in many names or institutions,ownership_structure,medium,1,FR-PONZ
+IND-OWN-020,Labour provider with no registration or opaque ownership,ownership_structure,high,1,HT-FORCEDLAB
+IND-OWN-021,Links to shell banks or unlicensed entities,ownership_structure,high,1,ML-CORRBANK
+IND-OWN-022,Use of omnibus or nominee accounts,ownership_structure,high,1,ML-INSSEC
+IND-OWN-023,Use of relatives or close associates as account holders,ownership_structure,high,1,ML-PEP
+IND-OWN-024,Multiple properties bought by same person or nominees,ownership_structure,medium,1,ML-REALESTATE
+IND-OWN-025,Company with owners or staff linked to the restricted jurisdiction,ownership_structure,medium,1,SANC-DIVERSION
+IND-OWN-026,Recent ownership reductions by a designated person around designation date,ownership_structure,high,1,SANC-OWNERSHIP
+IND-OWN-027,Aggregate designated-party ownership just below the threshold,ownership_structure,high,1,SANC-OWNERSHIP
+IND-OWN-028,"Shared addresses, phone numbers or advisers with designated entities",ownership_structure,medium,1,SANC-OWNERSHIP
+IND-PRD-001,Prime real estate purchases in foreign cities,product_channel,medium,1,BC-KLEPTO
+IND-PRD-002,Non-face-to-face relationship,product_channel,medium,1,XC-CHANNEL
+IND-PRD-003,Use of introducers or intermediaries,product_channel,high,1,XC-CHANNEL
+IND-PRD-004,Reliance on third-party CDD,product_channel,high,1,XC-CHANNEL
+IND-PRD-005,"Spike in volume via a single channel, agent or source",product_channel,medium,2,FR-PROC;XC-CHANNEL
+IND-PRD-006,Anonymous or masked access,product_channel,medium,1,XC-CHANNEL
+IND-PRD-007,Agent or branch network with weak oversight,product_channel,high,1,XC-CHANNEL
+IND-PRD-008,Account opened by third party on customer's behalf,product_channel,medium,1,XC-CHANNEL
+IND-PRD-009,Pooled or omnibus access through intermediaries,product_channel,high,1,XC-CHANNEL
+IND-PRD-010,Private banking and wealth management,product_channel,high,1,XC-PRODUCT
+IND-PRD-011,Correspondent banking relationship,product_channel,high,1,XC-PRODUCT
+IND-PRD-012,Trade finance and documentary credits,product_channel,high,1,XC-PRODUCT
+IND-PRD-013,Anonymous or lightly verified prepaid or stored-value instruments,product_channel,high,2,CY-PREPAID;XC-PRODUCT
+IND-PRD-014,Virtual asset services,product_channel,high,1,XC-PRODUCT
+IND-PRD-015,Safe deposit boxes,product_channel,medium,1,XC-PRODUCT
+IND-PRD-016,Cash services and high-limit cash handling,product_channel,high,1,XC-PRODUCT
+IND-PRD-017,Payable-through or pooled access enabling third-party payments,product_channel,high,2,ML-CORRBANK;XC-PRODUCT
+IND-PRD-018,New or innovative product without risk assessment,product_channel,high,1,XC-PRODUCT
+IND-PRD-019,Cross-border payment and remittance services,product_channel,medium,1,XC-PRODUCT
+IND-PRD-020,Anonymity-enhancing features,product_channel,high,1,XC-PRODUCT
+IND-PRD-021,Kiosk placed in high-risk locations without monitoring,product_channel,medium,1,CY-ATM
+IND-PRD-022,Rapid withdrawal to personal cash via peer-to-peer sellers,product_channel,medium,1,CY-DARKNET
+IND-PRD-023,Listings for services priced at nonsensical levels,product_channel,medium,1,CY-GIGPLAT
+IND-PRD-024,Marketplace or game operator lacks AML controls,product_channel,medium,1,CY-NFTGAME
+IND-PRD-025,Website content differs from the underwriting file,product_channel,high,1,CY-PAYFAC
+IND-PRD-026,"Jewellery, scrap gold or recycled metal used to mask origin",product_channel,medium,1,EC-MINING
+IND-PRD-027,Illicit sales or services advertised on social media or marketplaces with app or crypto payments,product_channel,high,3,EC-WILDLIFE;HT-SMUGGLE;OP-DRUGS
+IND-PRD-028,Prepaid cards or gift card codes purchased and shared,product_channel,medium,1,FR-ADV
+IND-PRD-029,Card replacement or wallet provisioning to new address,product_channel,medium,1,FR-ATO
+IND-PRD-030,3-D Secure bypass or failed authentication retried,product_channel,medium,1,FR-CNP
+IND-PRD-031,Authorised-user or piggyback tradeline abuse,product_channel,medium,1,FR-IDT
+IND-PRD-032,Rapid account opening across multiple institutions,product_channel,medium,1,FR-IDT
+IND-PRD-033,Spoofed phone number matching the bank's real number,product_channel,medium,1,FR-IMP
+IND-PRD-034,Payment card details used at new merchants immediately after a call,product_channel,medium,1,FR-IMP
+IND-PRD-035,Spike in digital wallet provisioning on one customer card,product_channel,medium,1,FR-IMP
+IND-PRD-036,Ghost broking: fake policy sold to customer,product_channel,high,1,FR-INS
+IND-PRD-037,Recruitment-based rewards or tiered commissions,product_channel,high,1,FR-PONZ
+IND-PRD-038,"Loan, credit card or remortgage taken to fund transfers",product_channel,medium,1,FR-ROM
+IND-PRD-039,Prepaid cards loaded with refunds,product_channel,medium,1,FR-TAX
+IND-PRD-040,Guarantee or escrow payments through informal value transfer,product_channel,medium,1,HT-SMUGGLE
+IND-PRD-041,Deposits in foreign currency or unusual denominations,product_channel,medium,1,ML-BULKCASH
+IND-PRD-042,"Bulk cash purchases of precious goods, vehicles or remittance",product_channel,medium,1,ML-BULKCASH
+IND-PRD-043,Funds deposited and withdrawn from casino account with little play,product_channel,high,1,ML-CASINO
+IND-PRD-044,Online gaming accounts with deposit via multiple cards or wallets,product_channel,medium,1,ML-CASINO
+IND-PRD-045,Use of cash deposit machines and cards across multiple accounts,product_channel,medium,1,ML-FUNNEL
+IND-PRD-046,"Frequent use of money service businesses, exchange houses or cash couriers alongside bank flows",product_channel,medium,2,ML-HAWALA;ML-PMLN
+IND-PRD-047,Trading in low-liquidity securities with unrelated parties,product_channel,medium,1,ML-INSSEC
+IND-PRD-048,Account credentials accessed from remote locations or by third parties,product_channel,medium,1,ML-MULE
+IND-PRD-049,Frequent purchase of monetary instruments in small amounts,product_channel,medium,1,ML-STRUCT
+IND-PRD-050,Dual-use or high-risk goods without supporting licences,product_channel,medium,1,ML-TBML
+IND-PRD-051,Client or pooled accounts used for non-client flows,product_channel,high,1,ML-THIRDPARTY
+IND-PRD-052,"Purchase of 3D-printing, CNC machines and parts for gun manufacture",product_channel,medium,1,OP-ARMS
+IND-PRD-053,Art or collectibles held in free ports without display or trade,product_channel,medium,2,OP-ART;SANC-LUXURY
+IND-PRD-054,Use of art as collateral or for loan with unclear valuations,product_channel,medium,1,OP-ART
+IND-PRD-055,Branded or duty-paid goods priced far below genuine market levels,product_channel,medium,2,OP-COUNTER;OP-TOBACCO
+IND-PRD-056,"Use of mixers, chain-hopping or privacy coins",product_channel,high,3,OP-CYBERPROC;SANC-CRYPTO;TF-VASP
+IND-PRD-057,Bulk purchases of precursor chemicals or lab equipment,product_channel,high,1,OP-DRUGS
+IND-PRD-058,Use of crypto and prepaid cards for gambling top-ups,product_channel,medium,1,OP-GAMBLE
+IND-PRD-059,"Facilitator relying on informal channels, cash or trade offsets for clients",product_channel,medium,1,SANC-ENABLERS
+IND-PRD-060,Loans or credit cards used to access hidden funds,product_channel,medium,1,TX-OFFSHORE
+IND-PRD-061,POS software with sales-suppression features or tampered records,product_channel,high,1,TX-SKIM
+IND-PRD-062,Cash transferred to offshore through MVTS or cash couriers,product_channel,high,1,TX-SKIM
+IND-PRD-063,Donations routed to cryptocurrency addresses or messaging-app collection points,product_channel,medium,1,TF-CROWDFUND
+IND-PRD-064,Kidnap and ransom insurance claims with unusual payee structure,product_channel,medium,1,TF-EXTORT
+IND-PRD-065,Funds routed via informal agents or cash couriers into conflict areas,product_channel,high,2,TF-EXTORT;TF-NPO
+IND-PRD-066,Agent network with rapid expansion in higher-risk locations,product_channel,medium,1,TF-HAWALA
+IND-PRD-067,Use of multiple accounts or prepaid products to stay below thresholds,product_channel,medium,1,TF-LONEACTOR
+IND-PRD-068,Cultural property or antiquities sales with weak provenance,product_channel,medium,1,TF-STATESPONSOR
+IND-TXN-001,Rapid pass-through of received funds,transaction,high,8,CY-ATOMULE;CY-MIXER;FR-APP;ML-MULE;ML-NPO;ML-SHELL;TF-NPO;XC-TXN-BEHAVIOUR
+IND-TXN-002,Rapid movement offshore or to crypto after receipt,transaction,high,2,FR-BEC;ML-MULE
+IND-TXN-003,Account receiving funds from multiple apparent fraud victims,transaction,high,5,CY-ATOMULE;CY-RANSOM;FR-ATO;FR-IMP;OP-CYBERPROC
+IND-TXN-004,Many unrelated senders paying a single account or recipient,transaction,high,8,CY-DARKNET;CY-MVTS;CY-NEOBANK;CY-NFTGAME;CY-PREPAID;FR-PONZ;HT-OCSE;OP-GAMBLE
+IND-TXN-005,Transfers to many newly created crypto addresses,transaction,medium,2,CY-MIXER;TF-VASP
+IND-TXN-006,Cash deposits just below reporting or identification threshold,transaction,high,3,CY-ATM;ML-STRUCT;XC-TXN-BEHAVIOUR
+IND-TXN-007,"Cash deposits split across branches, ATMs or accounts",transaction,high,4,ML-STRUCT;OP-DRUGS;TF-HAWALA;TX-SKIM
+IND-TXN-008,Non-cash transfers or loads just below identification or reporting thresholds,transaction,medium,4,CY-MVTS;CY-PREPAID;CY-UNHOSTED;ML-HAWALA
+IND-TXN-009,Payments or claims split to stay below internal approval limits,transaction,medium,3,BC-FBRIBE;FR-INSD;FR-PROC
+IND-TXN-010,Repeated round-value transactions,transaction,medium,2,CY-PAYFAC;XC-TXN-BEHAVIOUR
+IND-TXN-011,Dormant account suddenly reactivated or high-velocity activity,transaction,high,2,CY-NEOBANK;XC-TXN-BEHAVIOUR
+IND-TXN-012,Sudden large increase in transaction volume,transaction,medium,2,PF-CORRESP;XC-TXN-BEHAVIOUR
+IND-TXN-013,Activity inconsistent with customer profile,transaction,high,3,FR-VULN;ML-NPO;XC-TXN-BEHAVIOUR
+IND-TXN-014,Volumes exceed documented production or capacity,transaction,high,2,EC-LOGGING;EC-MINING
+IND-TXN-015,Circular or round-trip flows among related parties,transaction,high,3,EC-CARBON;TX-VATFRAUD;XC-TXN-BEHAVIOUR
+IND-TXN-016,Mirror or offsetting transactions between jurisdictions,transaction,medium,3,ML-HAWALA;ML-PMLN;OP-DRUGS
+IND-TXN-017,Workers paid to third-party or multiple accounts,transaction,high,2,PF-DPRKREV;TX-PAYROLL
+IND-TXN-018,Chain-hopping through bridges shortly after receipt,transaction,high,3,CY-MIXER;CY-RANSOM;PF-DPRKREV
+IND-TXN-019,Refund and chargeback abuse,transaction,high,2,CY-GIGPLAT;CY-PAYFAC
+IND-TXN-020,Transaction price materially different from market value,transaction,high,7,BC-KICKBACK;CY-NFTGAME;EC-CARBON;ML-HVG;ML-REALESTATE;ML-TBML;OP-ART
+IND-TXN-021,"High-value purchases paid in cash, crypto or non-standard funds",transaction,high,4,ML-HVG;ML-REALESTATE;OP-ART;SANC-LUXURY
+IND-TXN-022,Cash payments to informal suppliers or ground-level operators,transaction,medium,4,EC-LOGGING;EC-MINING;EC-WASTE;EC-WILDLIFE
+IND-TXN-023,Payments from or for third parties unrelated to the underlying trade,transaction,medium,4,PF-DUALUSE;PF-MARITIME;PF-TRADEFIN;SANC-LUXURY
+IND-TXN-024,Payment directed to personal or third-party account,transaction,high,4,BC-FACILIT;BC-KICKBACK;FR-INS;FR-TAX
+IND-TXN-025,Sudden liquidation of savings or assets,transaction,medium,2,FR-APP;TF-LONEACTOR
+IND-TXN-026,Sudden credit utilisation spike then bust-out,transaction,high,3,CY-SYNTHID;FR-BUST;FR-IDT
+IND-TXN-027,Large buy-in or deposits with little underlying activity,transaction,high,2,ML-CASINO;OP-GAMBLE
+IND-TXN-028,Fee or tax payment demanded to release funds,transaction,high,2,FR-ADV;FR-ROM
+IND-TXN-029,Payment references suggesting scam scripts,transaction,medium,2,FR-APP;ML-MULE
+IND-TXN-030,Rapid onward movement after cash credits,transaction,medium,4,CY-UNHOSTED;HT-TRAFFICK;ML-FUNNEL;ML-STRUCT
+IND-TXN-031,Large credit followed by prompt withdrawals,transaction,high,2,FR-CHQ;FR-TAX
+IND-TXN-032,Rapid stored-value or wallet hops then cash-out,transaction,medium,2,CY-MVTS;CY-PREPAID
+IND-TXN-033,Bulk purchase or sale of cards or vouchers,transaction,high,2,CY-GIGPLAT;CY-PREPAID
+IND-TXN-034,Cash or anonymous donations,transaction,medium,2,ML-NPO;TF-NPO
+IND-TXN-035,Professional client account used as pass-through,transaction,high,2,ML-GATEKEEPER;SANC-ENABLERS
+IND-TXN-036,"Recurring small cash payments to border, customs or permit agents",transaction,medium,1,BC-FACILIT
+IND-TXN-037,Fees to distributors well above market margin,transaction,medium,1,BC-FACILIT
+IND-TXN-038,Success fee paid to consultant in a high-corruption market,transaction,high,1,BC-FBRIBE
+IND-TXN-039,"Gifts, travel or hospitality for officials paid through third parties",transaction,medium,1,BC-FBRIBE
+IND-TXN-040,Post-award payments from supplier to buyer-linked accounts,transaction,high,1,BC-KICKBACK
+IND-TXN-041,Large inflows from state-owned entities or ministries to private accounts,transaction,high,1,BC-KLEPTO
+IND-TXN-042,Rapid movement through correspondent or private banking channels,transaction,medium,1,BC-KLEPTO
+IND-TXN-043,No apparent economic or lawful rationale,transaction,high,1,XC-TXN-BEHAVIOUR
+IND-TXN-044,Use of multiple accounts to move funds,transaction,medium,1,XC-TXN-BEHAVIOUR
+IND-TXN-045,Cash from bulk notes in poor condition or unusual denominations,transaction,low,1,CY-ATM
+IND-TXN-046,Frequent small purchases to marketplace-linked addresses,transaction,medium,1,CY-DARKNET
+IND-TXN-047,Layered swaps through multiple DEX pools and bridges,transaction,high,1,CY-DEFI
+IND-TXN-048,Use of freshly created wallets funded from a single source,transaction,medium,1,CY-DEFI
+IND-TXN-049,Rapid cash-out after cross-chain arrival,transaction,medium,1,CY-DEFI
+IND-TXN-050,Wrapped or low-liquidity token conversions at poor rates,transaction,medium,1,CY-DEFI
+IND-TXN-051,Sales of high-value items with no shipping or delivery evidence,transaction,high,1,CY-GIGPLAT
+IND-TXN-052,Rapid sequential conversions across many asset types,transaction,high,1,CY-MIXER
+IND-TXN-053,Newly minted NFT sold immediately for large sums to unrelated wallet,transaction,medium,1,CY-NFTGAME
+IND-TXN-054,Fast conversion of in-game currency to cash or crypto,transaction,medium,1,CY-NFTGAME
+IND-TXN-055,Customer purchases virtual assets and sends them immediately to a new wallet,transaction,medium,1,CY-RANSOM
+IND-TXN-056,Large transfers to or from unhosted wallets without ownership proof,transaction,medium,1,CY-UNHOSTED
+IND-TXN-057,P2P payments received from third-party bank accounts,transaction,medium,1,CY-UNHOSTED
+IND-TXN-058,Same credits sold multiple times or retired and resold,transaction,high,1,EC-CARBON
+IND-TXN-059,"Payments for at-sea transhipment, fuel and supplies",transaction,medium,1,EC-FISHING
+IND-TXN-060,Diamond or gem trade with undervalued or round-trip transactions,transaction,medium,1,EC-MINING
+IND-TXN-061,Collection firm paid low fees yet reporting large volumes,transaction,high,1,EC-WASTE
+IND-TXN-062,Repeated payments to same beneficiary with escalating narratives,transaction,medium,1,FR-ADV
+IND-TXN-063,Payment to new payee under apparent time pressure,transaction,high,1,FR-APP
+IND-TXN-064,New payee added and funds drained rapidly,transaction,high,1,FR-ATO
+IND-TXN-065,Cash advances and purchases of resaleable goods,transaction,high,1,FR-BUST
+IND-TXN-066,Rapid payments from third-party or overdrawn accounts to inflate limits,transaction,high,1,FR-BUST
+IND-TXN-067,Mobile deposit of same item at multiple institutions,transaction,high,1,FR-CHQ
+IND-TXN-068,Rapid structured withdrawals below reporting thresholds,transaction,medium,1,FR-CHQ
+IND-TXN-069,Card testing with many small authorisations,transaction,high,1,FR-CNP
+IND-TXN-070,High-value purchases of resalable goods,transaction,medium,1,FR-CNP
+IND-TXN-071,Customer instructed to move money to a 'safe' account,transaction,high,1,FR-IMP
+IND-TXN-072,Employee accounts receive unusual payments,transaction,high,1,FR-INSD
+IND-TXN-073,Alterations to payroll or master data outside cycle,transaction,medium,1,FR-INSD
+IND-TXN-074,Deposit or equity funded by unexplained third party,transaction,medium,1,FR-LOAN
+IND-TXN-075,Loan proceeds diverted immediately offshore or to unrelated parties,transaction,high,1,FR-LOAN
+IND-TXN-076,Outflows paying earlier investors in matching round amounts,transaction,high,1,FR-PONZ
+IND-TXN-077,Investor funds diverted to personal assets or luxury spending,transaction,medium,1,FR-PONZ
+IND-TXN-078,Escalating transfers to crypto exchanges by a first-time buyer,transaction,high,1,FR-ROM
+IND-TXN-079,Funds routed to multiple small accounts then consolidated,transaction,high,1,FR-ROM
+IND-TXN-080,Gift-card or peer-to-peer payments to a single remote contact,transaction,medium,1,FR-ROM
+IND-TXN-081,Multiple refunds into the same account,transaction,high,1,FR-TAX
+IND-TXN-082,Repayments funded by new financing from same borrower,transaction,high,1,FR-TFIN
+IND-TXN-083,Sudden growth in financed volume without business rationale,transaction,medium,1,FR-TFIN
+IND-TXN-084,Funds diverted to unrelated accounts,transaction,medium,1,FR-TFIN
+IND-TXN-085,Sudden new spending on unrelated person,transaction,medium,1,FR-VULN
+IND-TXN-086,Frequent ATM use by carer or unusual card use,transaction,medium,1,FR-VULN
+IND-TXN-087,Property or investment sold under pressure,transaction,medium,1,FR-VULN
+IND-TXN-088,Recruitment fees charged to workers,transaction,high,1,HT-FORCEDLAB
+IND-TXN-089,Payment of workers in cash with no payroll records,transaction,medium,1,HT-FORCEDLAB
+IND-TXN-090,Seasonal worker mass remittance to few beneficiaries,transaction,medium,1,HT-FORCEDLAB
+IND-TXN-091,Repeated low-value payments to overseas recipients with live-stream links,transaction,high,1,HT-OCSE
+IND-TXN-092,Crypto transfers to addresses linked to abuse marketplaces,transaction,high,1,HT-OCSE
+IND-TXN-093,Family remittances for 'travel arrangements' to unfamiliar counterparties,transaction,medium,1,HT-SMUGGLE
+IND-TXN-094,"Purchase of vessels, vehicles or boats and cash payments to boat suppliers",transaction,high,1,HT-SMUGGLE
+IND-TXN-095,"Hotel, safe house or apartment payments for groups in transit hubs",transaction,medium,1,HT-SMUGGLE
+IND-TXN-096,Payments for online adverts and hotels or short-stay lets for multiple rooms,transaction,medium,1,HT-TRAFFICK
+IND-TXN-097,Wage or benefit payments immediately withdrawn by another person,transaction,high,1,HT-TRAFFICK
+IND-TXN-098,Large undeclared or inconsistent cross-border cash declarations,transaction,high,1,ML-BULKCASH
+IND-TXN-099,Large cash deposits soon after foreign travel,transaction,medium,1,ML-BULKCASH
+IND-TXN-100,Cash deposits exceed plausible business capacity,transaction,high,1,ML-CASHBIZ
+IND-TXN-101,Deposits unsupported by supplier or cost-of-sales activity,transaction,high,1,ML-CASHBIZ
+IND-TXN-102,Sudden growth in cash volumes,transaction,medium,1,ML-CASHBIZ
+IND-TXN-103,Large cash withdrawals paired with deposits of equivalent value,transaction,medium,1,ML-CASHBIZ
+IND-TXN-104,Transaction volumes disproportionate to respondent's size,transaction,medium,1,ML-CORRBANK
+IND-TXN-105,Pooled flows with frequent round-sum payments,transaction,medium,1,ML-CORRBANK
+IND-TXN-106,Aborted transactions with funds returned elsewhere,transaction,medium,1,ML-GATEKEEPER
+IND-TXN-107,Large cash payments to professional,transaction,medium,1,ML-GATEKEEPER
+IND-TXN-108,Large cash deposits followed by payments to many individuals or businesses,transaction,high,1,ML-HAWALA
+IND-TXN-109,Large single premium paid then early surrender,transaction,high,1,ML-INSSEC
+IND-TXN-110,Overfunded policies and partial withdrawals,transaction,medium,1,ML-INSSEC
+IND-TXN-111,Securities deposited then transferred out without trading,transaction,medium,1,ML-INSSEC
+IND-TXN-112,Loan funded by related offshore party and repaid early,transaction,high,1,ML-LOANBACK
+IND-TXN-113,Loan secured on assets or deposits from third parties of unclear origin,transaction,high,1,ML-LOANBACK
+IND-TXN-114,Unusual real-estate or luxury purchases,transaction,medium,1,ML-PEP
+IND-TXN-115,Funds move in fixed commission-like deductions,transaction,high,1,ML-PMLN
+IND-TXN-116,Mortgage repaid early or from unusual sources,transaction,medium,1,ML-REALESTATE
+IND-TXN-117,Illicit and legitimate funds mixed in operating account,transaction,high,1,ML-THIRDPARTY
+IND-TXN-118,Frequent payments to the same third-party beneficiary of unclear purpose,transaction,medium,1,ML-THIRDPARTY
+IND-TXN-119,Multiple firearm or component purchases by one person for others,transaction,high,1,OP-ARMS
+IND-TXN-120,Cash purchases with prompt resale or export,transaction,medium,1,OP-ARMS
+IND-TXN-121,Payments to manufacturers in known counterfeit production regions with no brand,transaction,medium,1,OP-COUNTER
+IND-TXN-122,"Cash-out through gift cards, prepaid, or money mules in other countries",transaction,medium,1,OP-CYBERPROC
+IND-TXN-123,Regular fixed payments from a small business to an individual with no invoices,transaction,high,1,OP-EXTORT
+IND-TXN-124,High-interest informal loans with repayments to non-lender individuals,transaction,medium,1,OP-EXTORT
+IND-TXN-125,Wholesaler purchases far exceed local market demand,transaction,high,1,OP-TOBACCO
+IND-TXN-126,Cross-border cash and remittance flows from retailers to overseas suppliers,transaction,medium,1,OP-TOBACCO
+IND-TXN-127,Payments that include references to designated or restricted entities,transaction,high,1,PF-CORRESP
+IND-TXN-128,Open-account trade with buyers in high-risk jurisdictions lacking track record,transaction,medium,1,PF-TRADEFIN
+IND-TXN-129,Large OTC or peer-to-peer purchases paid in cash or non-bank rails,transaction,medium,1,SANC-CRYPTO
+IND-TXN-130,Stablecoin use to hold value of designated person's funds,transaction,medium,1,SANC-CRYPTO
+IND-TXN-131,Payments from jurisdictions of concern in settlement of third-country sales,transaction,high,1,SANC-DIVERSION
+IND-TXN-132,Multiple small shipments to avoid scrutiny,transaction,medium,1,SANC-DIVERSION
+IND-TXN-133,Fee arrangements disproportionate to services or paid by third parties,transaction,medium,1,SANC-ENABLERS
+IND-TXN-134,Asset transfers shortly before or after designation,transaction,high,1,SANC-LUXURY
+IND-TXN-135,"Cargo priced near cap with inflated freight, insurance or ancillary charges",transaction,high,1,SANC-OILCAP
+IND-TXN-136,Payments in alternative currencies or via smaller banks,transaction,medium,1,SANC-OILCAP
+IND-TXN-137,Funding of a company by a designated person's connected sources,transaction,medium,1,SANC-OWNERSHIP
+IND-TXN-138,Use of cover payments that omit underlying parties,transaction,medium,1,SANC-STRIPPING
+IND-TXN-139,"Funds repatriated via cash, bearer instruments or third-party accounts",transaction,medium,1,TX-OFFSHORE
+IND-TXN-140,Cash withdrawals match payroll amounts,transaction,high,1,TX-PAYROLL
+IND-TXN-141,Payments to workers just under tax or reporting thresholds,transaction,medium,1,TX-PAYROLL
+IND-TXN-142,Declared turnover lower than card and bank takings imply,transaction,high,1,TX-SKIM
+IND-TXN-143,Cash deposits well below expected for business type,transaction,medium,1,TX-SKIM
+IND-TXN-144,Payments in and out the same day with thin margin,transaction,medium,1,TX-VATFRAUD
+IND-TXN-145,Many small donations from geographically diverse donors to a single organiser,transaction,medium,1,TF-CROWDFUND
+IND-TXN-146,Urgent transfers described as emergency family or legal payments,transaction,medium,1,TF-EXTORT
+IND-TXN-147,Cash collected from multiple unrelated individuals then moved abroad,transaction,medium,1,TF-EXTORT
+IND-TXN-148,Remittances from family or associates to individuals in border areas,transaction,high,1,TF-FTF
+IND-TXN-149,Loans or credit taken with no repayment intent,transaction,medium,1,TF-FTF
+IND-TXN-150,Travel booked to destination near conflict via indirect route,transaction,medium,1,TF-FTF
+IND-TXN-151,"Settlement via trade, with mismatched invoices",transaction,medium,1,TF-HAWALA
+IND-TXN-152,Rapid consumer credit drawdown with no stated purpose,transaction,medium,1,TF-LONEACTOR
+IND-TXN-153,Payments to intermediaries in neighbouring transit jurisdictions,transaction,medium,1,TF-STATESPONSOR
+IND-TXN-154,Unusual use of cash or barter in commodity deals,transaction,medium,1,TF-STATESPONSOR
+IND-TXN-155,Rapid conversion of donations to stablecoins then off-ramp through peer-to-peer channels,transaction,medium,1,TF-VASP
+IND-TXN-156,Sudden large inflows from newly funded unhosted wallets,transaction,medium,1,TF-VASP
+IND-TYP-001,Same external wallet used by multiple unrelated customers,typology_specific,high,2,CY-ATM;CY-UNHOSTED
+IND-TYP-002,Destination wallet linked to scam or fraud clusters,typology_specific,high,1,CY-ATM
+IND-TYP-003,Operator lacks effective transaction monitoring,typology_specific,medium,1,CY-ATM
+IND-TYP-004,Direct exposure to known darknet market addresses,typology_specific,high,1,CY-DARKNET
+IND-TYP-005,"Use of mixers, privacy coins or privacy pools around platform activity",typology_specific,high,5,CY-DARKNET;CY-DEFI;CY-MIXER;CY-NFTGAME;CY-RANSOM
+IND-TYP-006,"Payments for postage, packaging or related services alongside crypto activity",typology_specific,low,1,CY-DARKNET
+IND-TYP-007,Law-enforcement or media notice naming customer or wallet,typology_specific,high,1,CY-DARKNET
+IND-TYP-008,Inbound funds traced to exploited protocols or hacks,typology_specific,high,1,CY-DEFI
+IND-TYP-009,"Interaction with sanctioned or designated contracts, mixers or addresses",typology_specific,high,2,CY-DEFI;CY-MIXER
+IND-TYP-010,Collusive purchases between related buyer and seller accounts,typology_specific,high,1,CY-GIGPLAT
+IND-TYP-011,Buyers directed off-platform to pay,typology_specific,medium,1,CY-GIGPLAT
+IND-TYP-012,Deposits with direct or indirect exposure to mixing services,typology_specific,high,1,CY-MIXER
+IND-TYP-013,Unlicensed or unregistered operator behaviour,typology_specific,high,1,CY-MVTS
+IND-TYP-014,Wash or matched trades between connected parties,typology_specific,high,2,CY-NFTGAME;ML-INSSEC
+IND-TYP-015,Accounts bought with stolen cards then items resold,typology_specific,high,1,CY-NFTGAME
+IND-TYP-016,Transaction descriptors or products inconsistent with registered business,typology_specific,high,1,CY-PAYFAC
+IND-TYP-017,Use of multiple shell merchant accounts to spread volume,typology_specific,medium,1,CY-PAYFAC
+IND-TYP-018,Tops-up with fraudulent funding sources,typology_specific,high,1,CY-PREPAID
+IND-TYP-019,Wallet attributed to ransomware or theft actors,typology_specific,high,2,CY-RANSOM;SANC-CRYPTO
+IND-TYP-020,Unhosted wallet with high-risk counterparties in history,typology_specific,high,1,CY-UNHOSTED
+IND-TYP-021,Inflated baseline or additionality claims,typology_specific,medium,1,EC-CARBON
+IND-TYP-022,"Mercury, cyanide and equipment purchases without mining licence",typology_specific,medium,1,EC-MINING
+IND-TYP-023,Scam web domains or phone numbers reported,typology_specific,medium,1,FR-ADV
+IND-TYP-024,Mass of near-identical SMS or links referencing parcels or fines,typology_specific,medium,1,FR-IMP
+IND-TYP-025,Claim shortly after policy inception or increase in cover,typology_specific,high,1,FR-INS
+IND-TYP-026,Staged or contrived accident indicators,typology_specific,high,1,FR-INS
+IND-TYP-027,Ghost employee or duplicate bank account on payroll,typology_specific,high,1,FR-INSD
+IND-TYP-028,Promised returns far above market with low stated risk,typology_specific,high,1,FR-PONZ
+IND-TYP-029,"Cash concealed in vehicles, shipments or parcels",typology_specific,high,1,ML-BULKCASH
+IND-TYP-030,Business type inconsistent with location or customer base,typology_specific,medium,1,ML-CASHBIZ
+IND-TYP-031,Junket or VIP operators moving funds across borders,typology_specific,high,1,ML-CASINO
+IND-TYP-032,Player collusion or chip-dumping,typology_specific,medium,1,ML-CASINO
+IND-TYP-033,Professional's role unusual for the work,typology_specific,medium,1,ML-GATEKEEPER
+IND-TYP-034,"Settlement via trade, invoices or gold",typology_specific,medium,1,ML-HAWALA
+IND-TYP-035,Vehicle purchased for cash and exported quickly,typology_specific,medium,1,ML-HVG
+IND-TYP-036,Circular trade or invoices among connected entities,typology_specific,high,1,ML-LOANBACK
+IND-TYP-037,Activities do not match stated objects,typology_specific,medium,1,ML-NPO
+IND-TYP-038,Complex use of multiple services for single flow,typology_specific,medium,1,ML-PMLN
+IND-TYP-039,Currency denomination or condition anomalies,typology_specific,low,1,ML-STRUCT
+IND-TYP-040,Phantom shipment indicators,typology_specific,high,1,ML-TBML
+IND-TYP-041,Bulk company formation for undisclosed clients,typology_specific,high,1,ML-TCSP
+IND-TYP-042,Counterfeit pharmaceuticals or safety-critical parts,typology_specific,high,1,OP-COUNTER
+IND-TYP-043,Unusual betting patterns on lower-league or youth matches,typology_specific,high,1,OP-GAMBLE
+IND-TYP-044,Nested relationships with unidentified downstream banks,typology_specific,high,1,PF-CORRESP
+IND-TYP-045,Trade-related payments through correspondent for goods of proliferation concern,typology_specific,high,1,PF-CORRESP
+IND-TYP-046,Orders for items matching procurement watch lists or inquiries,typology_specific,high,1,PF-DUALUSE
+IND-TYP-047,AIS gaps in sensitive areas,typology_specific,high,1,PF-MARITIME
+IND-TYP-048,Frequent flag changes or flagging in registries with weak oversight,typology_specific,medium,1,PF-MARITIME
+IND-TYP-049,Ship-to-ship transfers without clear commercial purpose,typology_specific,high,2,PF-MARITIME;SANC-OILCAP
+IND-TYP-050,Vessel or aircraft registered under flags of convenience with managers in secrecy locations,typology_specific,medium,1,SANC-LUXURY
+IND-TYP-051,"Tanker with older age, unusual classification, or no recognised P&I",typology_specific,medium,1,SANC-OILCAP
+IND-TYP-052,Screening alerts closed repeatedly for the same pattern with minimal rationale,typology_specific,low,1,SANC-STRIPPING
+IND-TYP-053,"Goods are high-value, low-weight and easily moved",typology_specific,medium,1,TX-VATFRAUD
+IND-TYP-054,Campaign narrative linked to extremist content or designated groups,typology_specific,high,1,TF-CROWDFUND
+IND-TYP-055,Business pays recurring unexplained amounts to regional intermediaries,typology_specific,high,1,TF-EXTORT
+IND-TYP-056,Purchase of equipment commonly carried by fighters,typology_specific,low,1,TF-FTF
+IND-TYP-057,Purchases consistent with attack preparation reported by authorities,typology_specific,medium,1,TF-LONEACTOR
+IND-TYP-058,Operations in high-risk areas without credible delivery evidence,typology_specific,high,1,TF-NPO
+IND-TYP-059,Funding flows following government transfers to non-state entities,typology_specific,medium,1,TF-STATESPONSOR
+IND-TYP-060,Solicitation of donations via social channels using addresses linked to extremist content,typology_specific,high,1,TF-VASP

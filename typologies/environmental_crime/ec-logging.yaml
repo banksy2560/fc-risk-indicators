@@ -15,204 +15,66 @@ typology:
   - EU Timber Regulation and EU Deforestation Regulation guidance
   - OECD, Due Diligence Guidance for Responsible Business Conduct (2018)
   indicators:
-  - id: EC-LOGGING-001
-    name: Timber exports exceeding documented concession capacity
-    description: Export volumes from a client are higher than its licensed harvest area could plausibly
-      yield.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - export_records
-    - concession_data
-    false_positive_notes: Stocks and purchases from other licensed sources may explain.
+  - ref: IND-TXN-014
+    legacy_id: EC-LOGGING-001
+    context: Export volumes from a client are higher than its licensed harvest area could plausibly yield.
+    name_in_typology: Timber exports exceeding documented concession capacity
+    false_positive_context: Stocks and purchases from other licensed sources may explain.
     controls:
-    - id: EC-LOGGING-001-C1
-      name: Volume plausibility checks
-      type: detective
-      description: Compare exports with concession capacity and satellite evidence.
-      implementation: process
-      effectiveness: high
-    - id: EC-LOGGING-001-C2
-      name: Legal source documentation
-      type: preventive
-      description: Require harvesting permits and chain-of-custody proof.
-      implementation: process
-      effectiveness: high
-  - id: EC-LOGGING-002
-    name: Species or origin descriptions inconsistent across documents
-    description: Shipping, customs and invoices mention different species, origin or volumes.
-    category: document
-    severity: high
-    detection_type:
-    - document_review
-    - investigator_judgement
-    data_sources:
-    - trade_documents
-    - customs_data
-    false_positive_notes: Descriptions of mixed woods often vary.
+    - CTL-139
+    - CTL-135
+  - ref: IND-DOC-020
+    legacy_id: EC-LOGGING-002
+    context: Shipping, customs and invoices mention different species, origin or volumes.
+    name_in_typology: Species or origin descriptions inconsistent across documents
+    false_positive_context: Descriptions of mixed woods often vary.
     controls:
-    - id: EC-LOGGING-002-C1
-      name: Document consistency rule
-      type: detective
-      description: Compare descriptors across the document set.
-      implementation: rule
-      effectiveness: medium
-    - id: EC-LOGGING-002-C2
-      name: Timber species risk list
-      type: preventive
-      description: Maintain high-risk species list for review.
-      implementation: policy
-      effectiveness: medium
-  - id: EC-LOGGING-003
-    name: Origin country is a transit-only processor with no forests
-    description: Exports declared from a country with little domestic timber supply, indicating laundering
+    - CTL-123
+    - CTL-131
+  - ref: IND-GEO-004
+    legacy_id: EC-LOGGING-003
+    context: Exports declared from a country with little domestic timber supply, indicating laundering
       of origin.
-    category: geographic
-    severity: medium
-    detection_type:
-    - investigator_judgement
-    - transaction_monitoring
-    data_sources:
-    - trade_data
-    false_positive_notes: Processing hubs import and re-export timber lawfully.
+    false_positive_context: Processing hubs import and re-export timber lawfully.
     controls:
-    - id: EC-LOGGING-003-C1
-      name: Origin laundering analytics
-      type: detective
-      description: Compare export and import statistics by hub.
-      implementation: model
-      effectiveness: medium
-    - id: EC-LOGGING-003-C2
-      name: Supplier origin attestation
-      type: preventive
-      description: Require verified origin attestations.
-      implementation: process
-      effectiveness: medium
-  - id: EC-LOGGING-004
-    name: Cash payments to local loggers and chain-saw operators
-    description: Large cash withdrawals followed by purchases of raw logs from informal suppliers.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - cash_data
-    - payment_records
-    false_positive_notes: Informal logging is lawful in some community forestry.
+    - CTL-139
+    - CTL-135
+  - ref: IND-TXN-022
+    legacy_id: EC-LOGGING-004
+    context: Large cash withdrawals followed by purchases of raw logs from informal suppliers.
+    name_in_typology: Cash payments to local loggers and chain-saw operators
+    false_positive_context: Informal logging is lawful in some community forestry.
     controls:
-    - id: EC-LOGGING-004-C1
-      name: Cash withdrawal profiling
-      type: detective
-      description: Profile cash outflows for timber traders.
-      implementation: rule
-      effectiveness: medium
-    - id: EC-LOGGING-004-C2
-      name: Informal supplier due diligence
-      type: preventive
-      description: Document legality of informal sourcing.
-      implementation: process
-      effectiveness: medium
-  - id: EC-LOGGING-005
-    name: Shell exporters opened for short period with identical directors
-    description: Several short-lived timber exporters share directors, addresses and bank signatories.
-    category: ownership_structure
-    severity: high
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - company_registry
-    - kyc_files
-    false_positive_notes: Groups restructure for commercial reasons.
+    - CTL-064
+    - CTL-135
+  - ref: IND-OWN-009
+    legacy_id: EC-LOGGING-005
+    context: Several short-lived timber exporters share directors, addresses and bank signatories.
+    name_in_typology: Shell exporters opened for short period with identical directors
+    false_positive_context: Groups restructure for commercial reasons.
     controls:
-    - id: EC-LOGGING-005-C1
-      name: Linked-entity analytics
-      type: detective
-      description: Cluster entities by shared attributes.
-      implementation: model
-      effectiveness: medium
-    - id: EC-LOGGING-005-C2
-      name: Beneficial owner verification
-      type: preventive
-      description: Identify owners and screen against enforcement lists.
-      implementation: process
-      effectiveness: high
-  - id: EC-LOGGING-006
-    name: Payments to officials for permits or to bypass inspections
-    description: Payments to forestry or customs officials linked to licences or clearances.
-    category: counterparty
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - screening
-    data_sources:
-    - payment_records
-    - pep_lists
-    false_positive_notes: Fees and official services are lawfully paid.
+    - CTL-049
+    - CTL-005
+  - ref: IND-CPT-018
+    legacy_id: EC-LOGGING-006
+    context: Payments to forestry or customs officials linked to licences or clearances.
+    name_in_typology: Payments to officials for permits or to bypass inspections
+    false_positive_context: Fees and official services are lawfully paid.
     controls:
-    - id: EC-LOGGING-006-C1
-      name: Official counterparty screening
-      type: detective
-      description: Screen counterparties for forestry and customs officials.
-      implementation: technology
-      effectiveness: medium
-    - id: EC-LOGGING-006-C2
-      name: Anti-bribery integration
-      type: governance
-      description: Coordinate with anti-corruption units.
-      implementation: process
-      effectiveness: medium
-  - id: EC-LOGGING-007
-    name: Operation in or adjacent to protected areas or indigenous lands
-    description: Customer's supply is sourced from areas with legal restrictions or conflicts reported.
-    category: geographic
-    severity: medium
-    detection_type:
-    - external_intel
-    - kyc_review
-    data_sources:
-    - satellite_data
-    - ngo_reports
-    false_positive_notes: Boundaries can be disputed.
+    - CTL-028
+    - CTL-097
+  - ref: IND-GEO-005
+    legacy_id: EC-LOGGING-007
+    context: Customer's supply is sourced from areas with legal restrictions or conflicts reported.
+    false_positive_context: Boundaries can be disputed.
     controls:
-    - id: EC-LOGGING-007-C1
-      name: Geospatial deforestation checks
-      type: detective
-      description: Use satellite alerts to test supplier plots.
-      implementation: technology
-      effectiveness: medium
-    - id: EC-LOGGING-007-C2
-      name: Supply-chain mapping
-      type: preventive
-      description: Map suppliers to plot level.
-      implementation: process
-      effectiveness: medium
-  - id: EC-LOGGING-008
-    name: Adverse media on illegal logging or enforcement notices
-    description: Customer is named in seizure, sanction or investigation news.
-    category: customer
-    severity: high
-    detection_type:
-    - screening
-    - external_intel
-    data_sources:
-    - adverse_media
-    - enforcement_notices
-    false_positive_notes: Reports may be unrelated.
+    - CTL-138
+    - CTL-136
+  - ref: IND-CUS-003
+    legacy_id: EC-LOGGING-008
+    context: Customer is named in seizure, sanction or investigation news.
+    name_in_typology: Adverse media on illegal logging or enforcement notices
+    false_positive_context: Reports may be unrelated.
     controls:
-    - id: EC-LOGGING-008-C1
-      name: Adverse media screening
-      type: detective
-      description: Screen for timber-crime terms.
-      implementation: technology
-      effectiveness: medium
-    - id: EC-LOGGING-008-C2
-      name: Account review and exit procedures
-      type: corrective
-      description: Define review triggers and exit conditions.
-      implementation: process
-      effectiveness: medium
+    - CTL-032
+    - CTL-016

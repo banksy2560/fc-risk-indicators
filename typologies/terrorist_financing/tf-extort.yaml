@@ -14,209 +14,67 @@ typology:
   - FATF, Organised Maritime Piracy and Related Kidnapping for Ransom (2011)
   - UN Security Council Resolution 2133 (2014) on kidnapping for ransom by terrorist groups
   indicators:
-  - id: TF-EXTORT-001
-    name: Urgent transfers described as emergency family or legal payments
-    description: Customer receives or sends sudden large transfers framed as emergencies, to unfamiliar
-      parties or accounts abroad.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - account_activity
-    - payment_messages
-    false_positive_notes: Genuine medical and legal emergencies produce similar urgency.
+  - ref: IND-TXN-146
+    legacy_id: TF-EXTORT-001
+    context: Customer receives or sends sudden large transfers framed as emergencies, to unfamiliar parties
+      or accounts abroad.
+    false_positive_context: Genuine medical and legal emergencies produce similar urgency.
     controls:
-    - id: TF-EXTORT-001-C1
-      name: Urgent payment challenge
-      type: preventive
-      description: Prompt staff to ask about purpose and relationship for urgent out-of-pattern transfers.
-      implementation: process
-      effectiveness: medium
-    - id: TF-EXTORT-001-C2
-      name: Emergency pattern rule
-      type: detective
-      description: Alert on high-value out-of-profile transfers to high-risk jurisdictions.
-      implementation: rule
-      effectiveness: medium
-  - id: TF-EXTORT-002
-    name: Business pays recurring unexplained amounts to regional intermediaries
-    description: Operators in conflict-affected areas make periodic payments to individuals labelled as
-      security, fees or consultants.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - accounts_payable
-    - payment_data
-    false_positive_notes: Private security and facilitation fees can be lawful but need documentation.
+    - CTL-068
+    - CTL-052
+  - ref: IND-TYP-055
+    legacy_id: TF-EXTORT-002
+    context: Operators in conflict-affected areas make periodic payments to individuals labelled as security,
+      fees or consultants.
+    false_positive_context: Private security and facilitation fees can be lawful but need documentation.
     controls:
-    - id: TF-EXTORT-002-C1
-      name: Payee justification review
-      type: preventive
-      description: Request contractual basis and service evidence for recurring security-type payments.
-      implementation: process
-      effectiveness: medium
-    - id: TF-EXTORT-002-C2
-      name: Sector risk policy
-      type: governance
-      description: Set guidance for operations in areas where armed groups tax or extort commerce.
-      implementation: policy
-      effectiveness: medium
-  - id: TF-EXTORT-003
-    name: Cash collected from multiple unrelated individuals then moved abroad
-    description: Collection of funds across diaspora members or business owners followed by consolidated
-      cross-border transfer.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - kyc_review
-    data_sources:
-    - cash_deposits
-    - transfers
-    false_positive_notes: Community fundraising for family and festivals is common.
+    - CTL-022
+    - CTL-167
+    - CTL-042
+    - CTL-060
+  - ref: IND-TXN-147
+    legacy_id: TF-EXTORT-003
+    context: Collection of funds across diaspora members or business owners followed by consolidated cross-border
+      transfer.
+    false_positive_context: Community fundraising for family and festivals is common.
     controls:
-    - id: TF-EXTORT-003-C1
-      name: Collector pattern detection
-      type: detective
-      description: Detect many-to-one inflows followed by outbound transfers.
-      implementation: model
-      effectiveness: medium
-    - id: TF-EXTORT-003-C2
-      name: Source-of-funds enquiry
-      type: preventive
-      description: Ask for context when pooled funds exceed baseline.
-      implementation: process
-      effectiveness: medium
-  - id: TF-EXTORT-004
-    name: Crisis consultancy or ransom-response payments without documentation
-    description: Payments to intermediaries described as negotiators or consultants with limited contracts
+    - CTL-041
+    - CTL-012
+  - ref: IND-CPT-054
+    legacy_id: TF-EXTORT-004
+    context: Payments to intermediaries described as negotiators or consultants with limited contracts
       or oversight.
-    category: counterparty
-    severity: medium
-    detection_type:
-    - document_review
-    - investigator_judgement
-    data_sources:
-    - invoices
-    - contracts
-    false_positive_notes: Professional crisis response firms exist and are lawful.
+    false_positive_context: Professional crisis response firms exist and are lawful.
     controls:
-    - id: TF-EXTORT-004-C1
-      name: Intermediary due diligence
-      type: preventive
-      description: Verify identity, licences and engagement terms of crisis-response intermediaries.
-      implementation: process
-      effectiveness: medium
-    - id: TF-EXTORT-004-C2
-      name: Legal and sanctions clearance
-      type: governance
-      description: Require legal review for payments linked to proscribed groups.
-      implementation: policy
-      effectiveness: high
-  - id: TF-EXTORT-005
-    name: Kidnap and ransom insurance claims with unusual payee structure
-    description: Claims paid to third parties or in cash with limited verification of the event.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - document_review
-    - investigator_judgement
-    data_sources:
-    - claims_data
-    false_positive_notes: Claim handling often involves confidential intermediaries.
+    - CTL-112
+    - CTL-036
+  - ref: IND-PRD-064
+    legacy_id: TF-EXTORT-005
+    context: Claims paid to third parties or in cash with limited verification of the event.
+    false_positive_context: Claim handling often involves confidential intermediaries.
     controls:
-    - id: TF-EXTORT-005-C1
-      name: Claims payment verification
-      type: preventive
-      description: Verify payee identity and sanctions exposure before settlement.
-      implementation: process
-      effectiveness: medium
-    - id: TF-EXTORT-005-C2
-      name: Claims pattern monitoring
-      type: detective
-      description: Monitor for repeated claims in the same region or by the same intermediary.
-      implementation: technology
-      effectiveness: low
-  - id: TF-EXTORT-006
-    name: Transfers following threat or abduction reports from region
-    description: Payments from relatives or employers rise coincident with publicly reported kidnappings
-      or extortion campaigns.
-    category: geographic
-    severity: medium
-    detection_type:
-    - external_intel
-    - transaction_monitoring
-    data_sources:
-    - news_feeds
-    - transfers
-    false_positive_notes: Remittance spikes occur around disasters and conflicts for many reasons.
+    - CTL-085
+  - ref: IND-GEO-032
+    legacy_id: TF-EXTORT-006
+    context: Payments from relatives or employers rise coincident with publicly reported kidnappings or
+      extortion campaigns.
+    false_positive_context: Remittance spikes occur around disasters and conflicts for many reasons.
     controls:
-    - id: TF-EXTORT-006-C1
-      name: Event-linked monitoring
-      type: detective
-      description: Correlate spikes in specific corridors with reported events.
-      implementation: rule
-      effectiveness: low
-    - id: TF-EXTORT-006-C2
-      name: Open-source monitoring feed
-      type: governance
-      description: Maintain event-feed inputs to monitoring teams.
-      implementation: technology
-      effectiveness: medium
-  - id: TF-EXTORT-007
-    name: Payments routed through informal or non-bank agents in affected areas
-    description: Funds delivered via cash couriers or informal agents into regions where armed groups
-      operate.
-    category: product_channel
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - agent_records
-    - cash_declarations
-    false_positive_notes: Informal channels are often the only access in fragile regions.
+    - CTL-045
+    - CTL-083
+  - ref: IND-PRD-065
+    legacy_id: TF-EXTORT-007
+    context: Funds delivered via cash couriers or informal agents into regions where armed groups operate.
+    name_in_typology: Payments routed through informal or non-bank agents in affected areas
+    false_positive_context: Informal channels are often the only access in fragile regions.
     controls:
-    - id: TF-EXTORT-007-C1
-      name: Agent due diligence and caps
-      type: preventive
-      description: Set agent onboarding standards and transaction limits for high-risk locations.
-      implementation: process
-      effectiveness: medium
-    - id: TF-EXTORT-007-C2
-      name: Agent-level analytics
-      type: detective
-      description: Flag agents with unusual flows tied to higher-risk areas.
-      implementation: model
-      effectiveness: medium
-  - id: TF-EXTORT-008
-    name: Local taxation language in invoices or payments
-    description: Documents reference levies, tolls or taxes payable to non-state bodies or local commanders.
-    category: document
-    severity: high
-    detection_type:
-    - document_review
-    - investigator_judgement
-    data_sources:
-    - invoices
-    - payment_references
-    false_positive_notes: Poor translation and informal local terminology may be misleading.
+    - CTL-021
+    - CTL-061
+    - CTL-063
+  - ref: IND-DOC-067
+    legacy_id: TF-EXTORT-008
+    context: Documents reference levies, tolls or taxes payable to non-state bodies or local commanders.
+    false_positive_context: Poor translation and informal local terminology may be misleading.
     controls:
-    - id: TF-EXTORT-008-C1
-      name: Payment narrative screening
-      type: detective
-      description: Screen payment references and documents for terms suggesting non-state taxation.
-      implementation: technology
-      effectiveness: medium
-    - id: TF-EXTORT-008-C2
-      name: Escalation protocol
-      type: governance
-      description: Define escalation to compliance and legal when documents imply payments to armed groups.
-      implementation: policy
-      effectiveness: high
+    - CTL-030
+    - CTL-102

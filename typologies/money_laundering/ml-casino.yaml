@@ -15,217 +15,65 @@ typology:
   - FATF, Vulnerabilities of Casinos and Gaming Sector (2009)
   - FATF, Guidance on the Risk-Based Approach for Casinos (2008)
   indicators:
-  - id: ML-CASINO-001
-    name: Large cash buy-in with minimal gambling
-    description: Customer buys chips with cash, plays little, and cashes out.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - customer_behaviour
-    data_sources:
-    - casino_floor_records
-    false_positive_notes: Recreational customers may stop early.
+  - ref: IND-TXN-027
+    legacy_id: ML-CASINO-001
+    context: Customer buys chips with cash, plays little, and cashes out.
+    name_in_typology: Large cash buy-in with minimal gambling
+    false_positive_context: Recreational customers may stop early.
     controls:
-    - id: ML-CASINO-001-C1
-      name: Buy-in versus play ratio rule
-      type: detective
-      description: Compare buy-in to turnover and loss.
-      implementation: rule
-      effectiveness: high
-    - id: ML-CASINO-001-C2
-      name: Cash-out to cheque restrictions
-      type: preventive
-      description: Limit cheque issue to evidenced winnings.
-      implementation: policy
-      effectiveness: medium
-  - id: ML-CASINO-002
-    name: Chips passed between players or taken away
-    description: Chips transferred between customers or cashed by third parties.
-    category: behavioural
-    severity: high
-    detection_type:
-    - customer_behaviour
-    - investigator_judgement
-    data_sources:
-    - surveillance
-    - floor_records
-    false_positive_notes: Social play occurs.
+    - CTL-153
+    - CTL-152
+  - ref: IND-BEH-089
+    legacy_id: ML-CASINO-002
+    context: Chips transferred between customers or cashed by third parties.
+    false_positive_context: Social play occurs.
     controls:
-    - id: ML-CASINO-002-C1
-      name: Chip transfer surveillance
-      type: detective
-      description: Surveillance and logging of chip passes.
-      implementation: technology
-      effectiveness: medium
-    - id: ML-CASINO-002-C2
-      name: Third-party redemption prohibition
-      type: preventive
-      description: Cash out only to the buyer.
-      implementation: policy
-      effectiveness: high
-  - id: ML-CASINO-003
-    name: Funds deposited and withdrawn from casino account with little play
-    description: Casino deposit accounts used like bank accounts.
-    category: product_channel
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - account_data
-    false_positive_notes: Players keep balances.
+    - CTL-153
+    - CTL-152
+  - ref: IND-PRD-043
+    legacy_id: ML-CASINO-003
+    context: Casino deposit accounts used like bank accounts.
+    false_positive_context: Players keep balances.
     controls:
-    - id: ML-CASINO-003-C1
-      name: Front-money account monitoring
-      type: detective
-      description: Alert on deposits withdrawn with limited gaming.
-      implementation: rule
-      effectiveness: high
-    - id: ML-CASINO-003-C2
-      name: Source of funds for deposits
-      type: preventive
-      description: Verify source for large deposits.
-      implementation: process
-      effectiveness: medium
-  - id: ML-CASINO-004
-    name: Use of multiple identities or accounts
-    description: Same person plays under different names or accounts.
-    category: customer
-    severity: medium
-    detection_type:
-    - kyc_review
-    - customer_behaviour
-    data_sources:
-    - player_data
-    false_positive_notes: Players own several accounts.
+    - CTL-153
+    - CTL-012
+  - ref: IND-CUS-008
+    legacy_id: ML-CASINO-004
+    context: Same person plays under different names or accounts.
+    name_in_typology: Use of multiple identities or accounts
+    false_positive_context: Players own several accounts.
     controls:
-    - id: ML-CASINO-004-C1
-      name: Player identity matching
-      type: detective
-      description: Match biometrics and data across accounts.
-      implementation: technology
-      effectiveness: medium
-    - id: ML-CASINO-004-C2
-      name: Single-customer-view policy
-      type: preventive
-      description: Enforce one view of customer.
-      implementation: policy
-      effectiveness: medium
-  - id: ML-CASINO-005
-    name: Third-party funding of play
-    description: Funds from third parties or unusual bank sources pay for play.
-    category: counterparty
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - payment_data
-    false_positive_notes: Gifted funds.
+    - CTL-153
+    - CTL-039
+  - ref: IND-CPT-058
+    legacy_id: ML-CASINO-005
+    context: Funds from third parties or unusual bank sources pay for play.
+    name_in_typology: Third-party funding of play
+    false_positive_context: Gifted funds.
     controls:
-    - id: ML-CASINO-005-C1
-      name: Third-party deposit rule
-      type: detective
-      description: Alert on payments not from the customer.
-      implementation: rule
-      effectiveness: medium
-    - id: ML-CASINO-005-C2
-      name: Payment source check
-      type: preventive
-      description: Reject non-customer-sourced funds.
-      implementation: policy
-      effectiveness: medium
-  - id: ML-CASINO-006
-    name: Junket or VIP operators moving funds across borders
-    description: Junket arrangements shift large funds without clear play.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - junket_records
-    false_positive_notes: Genuine VIP markets.
+    - CTL-046
+  - ref: IND-TYP-031
+    legacy_id: ML-CASINO-006
+    context: Junket arrangements shift large funds without clear play.
+    false_positive_context: Genuine VIP markets.
     controls:
-    - id: ML-CASINO-006-C1
-      name: Junket operator due diligence
-      type: preventive
-      description: Vet operators and principals.
-      implementation: process
-      effectiveness: high
-    - id: ML-CASINO-006-C2
-      name: Junket reconciliations
-      type: detective
-      description: Reconcile funds in/out with play.
-      implementation: process
-      effectiveness: medium
-  - id: ML-CASINO-007
-    name: Online gaming accounts with deposit via multiple cards or wallets
-    description: Multiple payment instruments for an account with low play.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - payment_data
-    false_positive_notes: Shared cards.
+    - CTL-112
+    - CTL-153
+  - ref: IND-PRD-044
+    legacy_id: ML-CASINO-007
+    context: Multiple payment instruments for an account with low play.
+    false_positive_context: Shared cards.
     controls:
-    - id: ML-CASINO-007-C1
-      name: Instrument diversity rule
-      type: detective
-      description: Alert on multiple instruments per player.
-      implementation: rule
-      effectiveness: medium
-    - id: ML-CASINO-007-C2
-      name: Bonus abuse and play analytics
-      type: detective
-      description: Detect collusive play.
-      implementation: model
-      effectiveness: medium
-  - id: ML-CASINO-008
-    name: Winnings claims lacking supporting records
-    description: Requests for win certificates or cheques not matching records.
-    category: document
-    severity: medium
-    detection_type:
-    - document_review
-    - customer_behaviour
-    data_sources:
-    - win_records
-    false_positive_notes: Documentation requests are genuine.
+    - CTL-153
+  - ref: IND-DOC-040
+    legacy_id: ML-CASINO-008
+    context: Requests for win certificates or cheques not matching records.
+    false_positive_context: Documentation requests are genuine.
     controls:
-    - id: ML-CASINO-008-C1
-      name: Win certificate controls
-      type: preventive
-      description: Issue only on verified records.
-      implementation: policy
-      effectiveness: medium
-    - id: ML-CASINO-008-C2
-      name: Audit of win documents
-      type: detective
-      description: Periodic audit.
-      implementation: process
-      effectiveness: medium
-  - id: ML-CASINO-009
-    name: Player collusion or chip-dumping
-    description: Players lose deliberately to a counterpart.
-    category: typology_specific
-    severity: medium
-    detection_type:
-    - customer_behaviour
-    - investigator_judgement
-    data_sources:
-    - game_data
-    false_positive_notes: Rare coincidence.
+    - CTL-152
+  - ref: IND-TYP-032
+    legacy_id: ML-CASINO-009
+    context: Players lose deliberately to a counterpart.
+    false_positive_context: Rare coincidence.
     controls:
-    - id: ML-CASINO-009-C1
-      name: Collusion detection analytics
-      type: detective
-      description: Analyse play patterns between accounts.
-      implementation: model
-      effectiveness: medium
-    - id: ML-CASINO-009-C2
-      name: Table-games surveillance
-      type: detective
-      description: Monitor suspicious play.
-      implementation: process
-      effectiveness: medium
+    - CTL-153

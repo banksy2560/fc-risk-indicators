@@ -1,0 +1,723 @@
+indicators:
+- id: IND-TYP-001
+  name: Same external wallet used by multiple unrelated customers
+  description: Many different customers send to or whitelist the same external address.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - kiosk_logs
+  - blockchain_analytics
+  - wallet_addresses
+  - customer_records
+  false_positive_notes: Merchant or charity address.
+- id: IND-TYP-002
+  name: Destination wallet linked to scam or fraud clusters
+  description: Receiving address is attributed to investment, romance or impersonation scams.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - blockchain_analytics
+  false_positive_notes: Attribution lag.
+- id: IND-TYP-003
+  name: Operator lacks effective transaction monitoring
+  description: Operator fails to monitor wallets, refunds or complaints, allowing patterns to persist.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - audit_reports
+  - complaints
+  false_positive_notes: Early-stage operators.
+- id: IND-TYP-004
+  name: Direct exposure to known darknet market addresses
+  description: Customer deposits or withdrawals have direct or near-direct exposure to addresses attributed
+    to darknet markets or their escrow wallets.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - blockchain_analytics
+  false_positive_notes: Exposure through very diluted chains; researchers and journalists.
+- id: IND-TYP-005
+  name: Use of mixers, privacy coins or privacy pools around platform activity
+  description: Funds pass through mixers, privacy coins or privacy-preserving pools before or after platform
+    activity without commercial rationale.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  - kyc_review
+  data_sources:
+  - blockchain_analytics
+  - trade_history
+  - customer_profile
+  false_positive_notes: Genuine privacy preference.
+- id: IND-TYP-006
+  name: Payments for postage, packaging or related services alongside crypto activity
+  description: Card and bank transactions to shipping supplies and anonymous mailbox services coincide
+    with virtual asset sales or purchases.
+  category: typology_specific
+  severity: low
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - bank_transactions
+  - card_data
+  false_positive_notes: Online sellers and small businesses.
+- id: IND-TYP-007
+  name: Law-enforcement or media notice naming customer or wallet
+  description: Third-party intelligence links the customer or addresses to marketplace activity.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - external_intel
+  data_sources:
+  - adverse_media
+  - law_enforcement_requests
+  false_positive_notes: Reporting errors or name matches.
+- id: IND-TYP-008
+  name: Inbound funds traced to exploited protocols or hacks
+  description: Deposits have provenance in a smart-contract exploit, bridge hack or theft attributed by
+    analytics providers.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - blockchain_analytics
+  - threat_intel
+  false_positive_notes: Funds returned under a bounty or recovered legitimately.
+- id: IND-TYP-009
+  name: Interaction with sanctioned or designated contracts, mixers or addresses
+  description: Transfers touch contracts, pools, relayers or addresses designated by authorities or flagged
+    in advisories.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - screening
+  - external_intel
+  data_sources:
+  - sanctions_lists
+  - blockchain_analytics
+  false_positive_notes: Indirect exposure via shared liquidity.
+- id: IND-TYP-010
+  name: Collusive purchases between related buyer and seller accounts
+  description: Accounts sharing devices or funding sources transact with each other to create revenue.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - order_data
+  - device_data
+  false_positive_notes: Family businesses.
+- id: IND-TYP-011
+  name: Buyers directed off-platform to pay
+  description: Messaging encourages payment via transfer or crypto outside platform protections.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - message_logs
+  - complaints
+  false_positive_notes: Local community norms.
+- id: IND-TYP-012
+  name: Deposits with direct or indirect exposure to mixing services
+  description: Incoming virtual asset transfers trace to known mixer or tumbler clusters within a small
+    number of hops.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - blockchain_analytics
+  - wallet_addresses
+  false_positive_notes: Users of privacy tools for lawful privacy reasons, or exposure via a long, diluted
+    transaction chain.
+- id: IND-TYP-013
+  name: Unlicensed or unregistered operator behaviour
+  description: Individuals operate collection points or chat-app based services with no licence.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - investigator_judgement
+  - external_intel
+  data_sources:
+  - web_intel
+  - complaints
+  false_positive_notes: Informal community services without profit.
+- id: IND-TYP-014
+  name: Wash or matched trades between connected parties
+  description: Assets or securities are traded repeatedly between linked accounts or wallets at unrealistic
+    prices.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  - investigator_judgement
+  data_sources:
+  - blockchain_analytics
+  - marketplace_data
+  - trade_data
+  false_positive_notes: Collectors moving assets between own wallets.
+- id: IND-TYP-015
+  name: Accounts bought with stolen cards then items resold
+  description: Chargebacks on purchases of currency or items followed by transfer to other accounts.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payment_data
+  - chargeback_data
+  false_positive_notes: Genuine friendly fraud.
+- id: IND-TYP-016
+  name: Transaction descriptors or products inconsistent with registered business
+  description: Card data show goods or services unrelated to the merchant's declared activity or website.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - transaction_data
+  - merchant_profile
+  false_positive_notes: Diversified merchants.
+- id: IND-TYP-017
+  name: Use of multiple shell merchant accounts to spread volume
+  description: Volumes distributed across many accounts to stay below monitoring thresholds.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - merchant_records
+  - transaction_data
+  false_positive_notes: Business structure choices.
+- id: IND-TYP-018
+  name: Tops-up with fraudulent funding sources
+  description: Loads via cards or accounts reported stolen, followed by cash-out.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - chargeback_data
+  - load_records
+  false_positive_notes: Disputed genuine charges.
+- id: IND-TYP-019
+  name: Wallet attributed to ransomware or theft actors
+  description: Source or destination address is attributed to ransomware affiliates, theft or designated
+    actors.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - screening
+  - external_intel
+  data_sources:
+  - blockchain_analytics
+  - sanctions_lists
+  - threat_intelligence
+  false_positive_notes: Attribution may be outdated.
+- id: IND-TYP-020
+  name: Unhosted wallet with high-risk counterparties in history
+  description: Self-hosted address has prior exposure to illicit services, scams or sanctioned addresses.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - blockchain_analytics
+  false_positive_notes: Inherited exposure from dusting.
+- id: IND-TYP-021
+  name: Inflated baseline or additionality claims
+  description: Reduction claims implausible versus public data or comparable projects.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  - document_review
+  data_sources:
+  - project_documents
+  - scientific_data
+  false_positive_notes: Methodologies are technical and contested.
+- id: IND-TYP-022
+  name: Mercury, cyanide and equipment purchases without mining licence
+  description: Purchase of dredges, mercury or bulk chemicals by unlicensed persons.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - merchant_data
+  - import_records
+  false_positive_notes: Industrial users buy chemicals.
+- id: IND-TYP-023
+  name: Scam web domains or phone numbers reported
+  description: External intelligence indicates active campaigns.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - external_intel
+  data_sources:
+  - threat_intel
+  false_positive_notes: False reports.
+- id: IND-TYP-024
+  name: Mass of near-identical SMS or links referencing parcels or fines
+  description: Bank brand impersonation campaigns observed in threat feeds and customer reports.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - external_intel
+  data_sources:
+  - threat_intel
+  - customer_reports
+  false_positive_notes: Legitimate notices.
+- id: IND-TYP-025
+  name: Claim shortly after policy inception or increase in cover
+  description: Loss occurs soon after purchase or upgrade of cover.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - policy_data
+  - claims_data
+  false_positive_notes: Genuine early loss.
+- id: IND-TYP-026
+  name: Staged or contrived accident indicators
+  description: Low-impact incidents with multiple occupants, witness and similar circumstances.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - claims_data
+  false_positive_notes: Genuine busy-road incidents.
+- id: IND-TYP-027
+  name: Ghost employee or duplicate bank account on payroll
+  description: Payroll records show employees without HR evidence or shared bank details.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - payroll_data
+  - hr_data
+  false_positive_notes: Shared family accounts.
+- id: IND-TYP-028
+  name: Promised returns far above market with low stated risk
+  description: Operator marketing guarantees consistently high returns, often with testimonials and urgency;
+    victims relay these claims when transferring.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - external_intel
+  - customer_behaviour
+  data_sources:
+  - marketing_material
+  - customer_statements
+  false_positive_notes: Genuine high-risk, high-return products clearly disclosed.
+- id: IND-TYP-029
+  name: Cash concealed in vehicles, shipments or parcels
+  description: Cash found hidden in goods, freight or mail.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - investigator_judgement
+  - external_intel
+  data_sources:
+  - seizure_reports
+  false_positive_notes: Rare.
+- id: IND-TYP-030
+  name: Business type inconsistent with location or customer base
+  description: Cash business operating where demand appears limited, with few visible customers or irregular
+    hours.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  - external_intel
+  data_sources:
+  - site_visit_reports
+  - open_source_data
+  false_positive_notes: Online-only operations or early-stage businesses may appear quiet.
+- id: IND-TYP-031
+  name: Junket or VIP operators moving funds across borders
+  description: Junket arrangements shift large funds without clear play.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - kyc_review
+  - investigator_judgement
+  data_sources:
+  - junket_records
+  false_positive_notes: Genuine VIP markets.
+- id: IND-TYP-032
+  name: Player collusion or chip-dumping
+  description: Players lose deliberately to a counterpart.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - game_data
+  false_positive_notes: Rare coincidence.
+- id: IND-TYP-033
+  name: Professional's role unusual for the work
+  description: Professional acts as nominee, director, or intermediary beyond normal remit.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - engagement_letters
+  false_positive_notes: Trust services.
+- id: IND-TYP-034
+  name: Settlement via trade, invoices or gold
+  description: Balancing between brokers is done through goods, invoices or precious metals.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  - document_review
+  data_sources:
+  - trade_documents
+  false_positive_notes: Real trade also exists.
+- id: IND-TYP-035
+  name: Vehicle purchased for cash and exported quickly
+  description: Luxury cars bought and shipped abroad soon after.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  - document_review
+  data_sources:
+  - export_records
+  false_positive_notes: Exporters operate.
+- id: IND-TYP-036
+  name: Circular trade or invoices among connected entities
+  description: Invoices cycled among related firms, returning funds to origin.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - transaction_data
+  false_positive_notes: Group trading.
+- id: IND-TYP-037
+  name: Activities do not match stated objects
+  description: Spending outside charitable purposes.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  - kyc_review
+  data_sources:
+  - financial_statements
+  false_positive_notes: Mission drift.
+- id: IND-TYP-038
+  name: Complex use of multiple services for single flow
+  description: One flow touches cash, remitters, trade invoices, crypto and corporate accounts in a short
+    time.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - investigator_judgement
+  - transaction_monitoring
+  data_sources:
+  - transaction_data
+  - cross_channel_logs
+  false_positive_notes: Complex corporate treasury flows exist.
+- id: IND-TYP-039
+  name: Currency denomination or condition anomalies
+  description: Cash arrives in unusual bundles, rubber-banded small notes, or mixed denominations inconsistent
+    with the stated source.
+  category: typology_specific
+  severity: low
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - cash_handling_notes
+  - teller_observations
+  false_positive_notes: Retail cash is often in small notes; condition varies by source.
+- id: IND-TYP-040
+  name: Phantom shipment indicators
+  description: 'No verifiable movement of goods: missing tracking, inspection or insurance evidence.'
+  category: typology_specific
+  severity: high
+  detection_type:
+  - document_review
+  - external_intel
+  data_sources:
+  - shipping_data
+  - inspection_reports
+  false_positive_notes: Smaller shipments may lack tracking.
+- id: IND-TYP-041
+  name: Bulk company formation for undisclosed clients
+  description: TCSP forms large numbers of entities with little client information.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - kyc_review
+  - investigator_judgement
+  data_sources:
+  - registry_data
+  false_positive_notes: Formation agents serve volume clients.
+- id: IND-TYP-042
+  name: Counterfeit pharmaceuticals or safety-critical parts
+  description: Medicines or auto parts from unlicensed sources.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - investigator_judgement
+  - external_intel
+  data_sources:
+  - regulator_alerts
+  false_positive_notes: Generics are lawful.
+- id: IND-TYP-043
+  name: Unusual betting patterns on lower-league or youth matches
+  description: Large late stakes on obscure markets.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - external_intel
+  - investigator_judgement
+  data_sources:
+  - integrity_alerts
+  false_positive_notes: Sharp bettors exist.
+- id: IND-TYP-044
+  name: Nested relationships with unidentified downstream banks
+  description: Respondent processes payments for other banks without disclosure.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - kyc_review
+  - transaction_monitoring
+  data_sources:
+  - respondent_data
+  false_positive_notes: Some nested arrangements are legitimate and permitted.
+- id: IND-TYP-045
+  name: Trade-related payments through correspondent for goods of proliferation concern
+  description: Payments relate to goods on control lists or to parties on alerts.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - screening
+  data_sources:
+  - payment_references
+  false_positive_notes: Generic words can create false hits.
+- id: IND-TYP-046
+  name: Orders for items matching procurement watch lists or inquiries
+  description: Goods, parties or addresses match published alerts by export-control or enforcement authorities.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - screening
+  - external_intel
+  data_sources:
+  - watchlists
+  - government_alerts
+  false_positive_notes: List data may be dated or generic.
+- id: IND-TYP-047
+  name: AIS gaps in sensitive areas
+  description: Vessel stops transmitting position data for extended periods near ports or transhipment
+    areas of concern.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - external_intel
+  - investigator_judgement
+  data_sources:
+  - ais_data
+  - vessel_tracking
+  false_positive_notes: Poor coverage and equipment faults cause gaps.
+- id: IND-TYP-048
+  name: Frequent flag changes or flagging in registries with weak oversight
+  description: Short intervals between flag changes or use of open registries with poor enforcement.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - external_intel
+  - kyc_review
+  data_sources:
+  - vessel_registry_data
+  false_positive_notes: Sale and commercial reasons motivate flag changes.
+- id: IND-TYP-049
+  name: Ship-to-ship transfers without clear commercial purpose
+  description: Vessel meets others at sea off normal transfer areas, followed by a changed declared destination.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - external_intel
+  - investigator_judgement
+  data_sources:
+  - ais_data
+  - satellite_imagery
+  - cargo_documents
+  false_positive_notes: STS operations are routine in certain trades.
+- id: IND-TYP-050
+  name: Vessel or aircraft registered under flags of convenience with managers in secrecy locations
+  description: Registration choices obscure the true owner.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - external_intel
+  - kyc_review
+  data_sources:
+  - ship_registry
+  - aircraft_registry
+  false_positive_notes: Flags of convenience are mainstream.
+- id: IND-TYP-051
+  name: Tanker with older age, unusual classification, or no recognised P&I
+  description: Vessels outside mainstream commercial insurance and class regimes carry the cargo.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - external_intel
+  - document_review
+  data_sources:
+  - vessel_data
+  - insurance_documents
+  false_positive_notes: Older vessels trade lawfully.
+- id: IND-TYP-052
+  name: Screening alerts closed repeatedly for the same pattern with minimal rationale
+  description: Internal indicator of weak alert handling that may mask manipulation.
+  category: typology_specific
+  severity: low
+  detection_type:
+  - investigator_judgement
+  data_sources:
+  - alert_records
+  false_positive_notes: Genuine recurrent false positives.
+- id: IND-TYP-053
+  name: Goods are high-value, low-weight and easily moved
+  description: Trade in mobile phones, chips, precious metals, or CO2 allowances with no storage or transport
+    evidence.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - invoices
+  - shipping_documents
+  false_positive_notes: These goods are legitimate high-volume trade lines.
+- id: IND-TYP-054
+  name: Campaign narrative linked to extremist content or designated groups
+  description: Fundraising page, post or channel references violent groups, glorifies violence or is linked
+    to accounts removed for extremism.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - external_intel
+  - investigator_judgement
+  data_sources:
+  - platform_content
+  - open_source_intel
+  false_positive_notes: Political or religious speech, and news reporting, may reference the same topics
+    lawfully.
+- id: IND-TYP-055
+  name: Business pays recurring unexplained amounts to regional intermediaries
+  description: Operators in conflict-affected areas make periodic payments to individuals labelled as
+    security, fees or consultants.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - kyc_review
+  - investigator_judgement
+  data_sources:
+  - accounts_payable
+  - payment_data
+  false_positive_notes: Private security and facilitation fees can be lawful but need documentation.
+- id: IND-TYP-056
+  name: Purchase of equipment commonly carried by fighters
+  description: Retail purchases of outdoor, protective, communication or medical gear in unusual quantity
+    shortly before travel.
+  category: typology_specific
+  severity: low
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - card_transactions
+  false_positive_notes: Hiking, camping and humanitarian volunteering generate the same purchases.
+- id: IND-TYP-057
+  name: Purchases consistent with attack preparation reported by authorities
+  description: Spending on items or services that match typologies shared by law enforcement or public-private
+    partnerships, such as particular combinations of retail goods, vehicle hire and reconnaissance-type
+    travel.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - card_transactions
+  - merchant_category_data
+  false_positive_notes: Individual purchases are lawful; only the combination, timing and external intel
+    make it meaningful.
+- id: IND-TYP-058
+  name: Operations in high-risk areas without credible delivery evidence
+  description: Organisation sends funds to areas with active terrorist presence but cannot evidence projects,
+    beneficiaries, partners or auditable delivery.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - kyc_review
+  - document_review
+  - investigator_judgement
+  data_sources:
+  - grant_agreements
+  - project_reports
+  - transaction_data
+  false_positive_notes: Humanitarian actors in crisis zones often work through informal channels and face
+    real documentation barriers.
+- id: IND-TYP-059
+  name: Funding flows following government transfers to non-state entities
+  description: Payments from state or quasi-state entities to private firms or individuals lacking evident
+    services.
+  category: typology_specific
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - payment_data
+  - adverse_media
+  false_positive_notes: Grants and subsidies to private recipients are common.
+- id: IND-TYP-060
+  name: Solicitation of donations via social channels using addresses linked to extremist content
+  description: Publicly advertised wallet addresses appear in extremist channels or campaigns.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - external_intel
+  - screening
+  data_sources:
+  - open_source_intel
+  - blockchain_analytics
+  false_positive_notes: Open-source attribution may be unreliable.

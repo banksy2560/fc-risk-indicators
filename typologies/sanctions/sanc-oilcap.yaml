@@ -16,207 +16,65 @@ typology:
   - Price Cap Coalition, Advisory for the Maritime Oil Industry and Related Sectors (2023)
   - OFSI, guidance on maritime services and price cap (general reference)
   indicators:
-  - id: SANC-OILCAP-001
-    name: Attestations of price compliance without supporting invoices
-    description: Counterparties provide generic declarations but cannot supply itemised contracts and
-      invoices showing the price of oil and services.
-    category: document
-    severity: high
-    detection_type:
-    - document_review
-    - investigator_judgement
-    data_sources:
-    - attestations
-    - invoices
-    false_positive_notes: Commercial confidentiality may limit disclosures.
+  - ref: IND-DOC-062
+    legacy_id: SANC-OILCAP-001
+    context: Counterparties provide generic declarations but cannot supply itemised contracts and invoices
+      showing the price of oil and services.
+    false_positive_context: Commercial confidentiality may limit disclosures.
     controls:
-    - id: SANC-OILCAP-001-C1
-      name: Attestation validation process
-      type: preventive
-      description: Require and test itemised pricing evidence in line with regulator guidance.
-      implementation: process
-      effectiveness: high
-    - id: SANC-OILCAP-001-C2
-      name: Document retention and audit
-      type: governance
-      description: Maintain records for regulatory inquiry.
-      implementation: policy
-      effectiveness: medium
-    - id: SANC-OILCAP-001-C3
-      name: Spot-check sampling
-      type: detective
-      description: Sample attestations for verification.
-      implementation: process
-      effectiveness: medium
-  - id: SANC-OILCAP-002
-    name: Cargo priced near cap with inflated freight, insurance or ancillary charges
-    description: Separately invoiced services carry unusually high costs.
-    category: transaction
-    severity: high
-    detection_type:
-    - document_review
-    - transaction_monitoring
-    data_sources:
-    - invoices
-    - price_data
-    false_positive_notes: Market volatility and war-risk premiums raise costs.
+    - CTL-124
+    - CTL-174
+    - CTL-175
+  - ref: IND-TXN-135
+    legacy_id: SANC-OILCAP-002
+    context: Separately invoiced services carry unusually high costs.
+    false_positive_context: Market volatility and war-risk premiums raise costs.
     controls:
-    - id: SANC-OILCAP-002-C1
-      name: Ancillary cost benchmarking
-      type: detective
-      description: Compare freight and insurance costs to market data.
-      implementation: technology
-      effectiveness: medium
-    - id: SANC-OILCAP-002-C2
-      name: Cost component breakdown requirement
-      type: preventive
-      description: Require separate disclosure of cost components.
-      implementation: process
-      effectiveness: medium
-  - id: SANC-OILCAP-003
-    name: Tanker with older age, unusual classification, or no recognised P&I
-    description: Vessels outside mainstream commercial insurance and class regimes carry the cargo.
-    category: typology_specific
-    severity: medium
-    detection_type:
-    - external_intel
-    - document_review
-    data_sources:
-    - vessel_data
-    - insurance_documents
-    false_positive_notes: Older vessels trade lawfully.
+    - CTL-124
+    - CTL-123
+    - CTL-086
+  - ref: IND-TYP-051
+    legacy_id: SANC-OILCAP-003
+    context: Vessels outside mainstream commercial insurance and class regimes carry the cargo.
+    false_positive_context: Older vessels trade lawfully.
     controls:
-    - id: SANC-OILCAP-003-C1
-      name: Vessel due diligence
-      type: preventive
-      description: Check age, class, insurance and ownership.
-      implementation: technology
-      effectiveness: medium
-    - id: SANC-OILCAP-003-C2
-      name: Insurance verification
-      type: preventive
-      description: Confirm cover validity.
-      implementation: process
-      effectiveness: medium
-  - id: SANC-OILCAP-004
-    name: Ship-to-ship transfers with no clear commercial purpose
-    description: Cargo transferred at sea off the route and followed by a different declared destination.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - external_intel
-    - investigator_judgement
-    data_sources:
-    - ais_data
-    - cargo_documents
-    false_positive_notes: STS is normal in oil trade.
+    - CTL-143
+  - ref: IND-TYP-049
+    legacy_id: SANC-OILCAP-004
+    context: Cargo transferred at sea off the route and followed by a different declared destination.
+    name_in_typology: Ship-to-ship transfers with no clear commercial purpose
+    false_positive_context: STS is normal in oil trade.
     controls:
-    - id: SANC-OILCAP-004-C1
-      name: STS analytics
-      type: detective
-      description: Detect transfers using maritime data.
-      implementation: technology
-      effectiveness: medium
-    - id: SANC-OILCAP-004-C2
-      name: Cargo origin evidence requirement
-      type: preventive
-      description: Demand evidence on cargo origin.
-      implementation: process
-      effectiveness: high
-  - id: SANC-OILCAP-005
-    name: Newly established trading intermediaries in hub jurisdictions
-    description: Recently incorporated traders with little track record buying and reselling restricted-origin
+    - CTL-143
+    - CTL-135
+  - ref: IND-CUS-010
+    legacy_id: SANC-OILCAP-005
+    context: Recently incorporated traders with little track record buying and reselling restricted-origin
       cargo.
-    category: customer
-    severity: high
-    detection_type:
-    - kyc_review
-    - investigator_judgement
-    data_sources:
-    - registry_data
-    false_positive_notes: New traders enter the market regularly.
+    name_in_typology: Newly established trading intermediaries in hub jurisdictions
+    false_positive_context: New traders enter the market regularly.
     controls:
-    - id: SANC-OILCAP-005-C1
-      name: Trader due diligence
-      type: preventive
-      description: Verify owners, financing and operations.
-      implementation: process
-      effectiveness: high
-    - id: SANC-OILCAP-005-C2
-      name: Track-record threshold
-      type: governance
-      description: Escalate approval for new entrants.
-      implementation: policy
-      effectiveness: medium
-  - id: SANC-OILCAP-006
-    name: Payments in alternative currencies or via smaller banks
-    description: Payments denominated or routed to avoid mainstream channels.
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - payment_messages
-    false_positive_notes: Currency diversification is common.
+    - CTL-112
+    - CTL-025
+  - ref: IND-TXN-136
+    legacy_id: SANC-OILCAP-006
+    context: Payments denominated or routed to avoid mainstream channels.
+    false_positive_context: Currency diversification is common.
     controls:
-    - id: SANC-OILCAP-006-C1
-      name: Routing pattern rule
-      type: detective
-      description: Detect unusual currency and routing.
-      implementation: rule
-      effectiveness: medium
-    - id: SANC-OILCAP-006-C2
-      name: Counterparty bank review
-      type: preventive
-      description: Assess counterparty banks.
-      implementation: process
-      effectiveness: medium
-  - id: SANC-OILCAP-007
-    name: Discrepancy between loading port, origin documents and tracking
-    description: Declared origin differs from vessel tracking and port records.
-    category: document
-    severity: high
-    detection_type:
-    - document_review
-    - external_intel
-    data_sources:
-    - bills_of_lading
-    - tracking_data
-    false_positive_notes: Port calls vary with operational changes.
+    - CTL-045
+    - CTL-104
+  - ref: IND-DOC-063
+    legacy_id: SANC-OILCAP-007
+    context: Declared origin differs from vessel tracking and port records.
+    false_positive_context: Port calls vary with operational changes.
     controls:
-    - id: SANC-OILCAP-007-C1
-      name: Origin cross-check
-      type: detective
-      description: Compare declared origin with tracking.
-      implementation: process
-      effectiveness: high
-    - id: SANC-OILCAP-007-C2
-      name: Hold pending clarification
-      type: corrective
-      description: Hold transaction until reconciled.
-      implementation: process
-      effectiveness: medium
-  - id: SANC-OILCAP-008
-    name: Repeated changes of buyer or consignee mid-voyage
-    description: Cargo ownership shifts while at sea without clear commercial reason.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - document_review
-    - investigator_judgement
-    data_sources:
-    - trade_documents
-    false_positive_notes: Cargo is often traded afloat.
+    - CTL-135
+    - CTL-103
+  - ref: IND-BEH-017
+    legacy_id: SANC-OILCAP-008
+    context: Cargo ownership shifts while at sea without clear commercial reason.
+    name_in_typology: Repeated changes of buyer or consignee mid-voyage
+    false_positive_context: Cargo is often traded afloat.
     controls:
-    - id: SANC-OILCAP-008-C1
-      name: Change-of-title monitoring
-      type: detective
-      description: Flag mid-voyage changes.
-      implementation: rule
-      effectiveness: medium
-    - id: SANC-OILCAP-008-C2
-      name: Buyer screening
-      type: preventive
-      description: Screen new parties promptly.
-      implementation: rule
-      effectiveness: medium
+    - CTL-143
+    - CTL-029

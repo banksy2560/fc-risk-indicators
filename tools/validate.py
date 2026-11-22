@@ -1,49 +1,87 @@
 #!/usr/bin/env python3
-"""Validate typology YAML files against SCHEMA.md rules. Usage: validate.py [root]"""
-import sys, pathlib, yaml
+"""Validate the linked library (schema v0.2). Usage: validate.py [root] [--strict]
+
+Layout: controls/*.yaml, indicators/*.yaml, typologies/**/*.yaml
+Typologies link to canonical indicators (ref) and to canonical controls (controls: [CTL-..]).
+Also guards against re-introducing duplicates (near-identical names)."""
+import sys, pathlib, re, yaml, itertools
 
 DOMAINS = {"money_laundering","terrorist_financing","proliferation_financing","sanctions","fraud","bribery_corruption","tax_evasion","human_trafficking_modern_slavery","environmental_crime","cyber_enabled","other_predicate","cross_cutting"}
 CATS = {"customer","transaction","geographic","product_channel","behavioural","ownership_structure","document","counterparty","typology_specific"}
 SEV = {"low","medium","high"}
 CTYPE = {"preventive","detective","corrective","governance"}
 IMPL = {"rule","model","process","policy","training","technology"}
+tok = lambda s: set(re.sub(r"\W+", " ", s.lower()).split())
 
-def main(root):
-    errs, ids, n_ind, n_ctl, n_typ = [], set(), 0, 0, 0
-    for f in sorted(pathlib.Path(root).glob("typologies/**/*.yaml")):
+def load(root, pattern, key):
+    out = []
+    for f in sorted(pathlib.Path(root).glob(pattern)):
         try:
-            t = yaml.safe_load(f.read_text())["typology"]
+            out += [(f, x) for x in yaml.safe_load(f.read_text())[key]]
         except Exception as e:
-            errs.append(f"{f}: parse error {e}"); continue
-        n_typ += 1
-        e = lambda m: errs.append(f"{f.name}: {m}")
-        for k in ("id","name","domain","description","sources","indicators"):
-            if not t.get(k): e(f"missing {k}")
-        if t.get("domain") not in DOMAINS: e(f"bad domain {t.get('domain')}")
-        if t.get("id") in ids: e("duplicate typology id")
-        ids.add(t.get("id"))
-        for i in t.get("indicators") or []:
-            n_ind += 1
-            iid = i.get("id","?")
-            if iid in ids: e(f"duplicate id {iid}")
-            ids.add(iid)
-            if not str(iid).startswith(str(t.get("id"))): e(f"{iid} not prefixed by typology id")
-            if i.get("category") not in CATS: e(f"{iid} bad category")
-            if i.get("severity") not in SEV: e(f"{iid} bad severity")
-            if not i.get("false_positive_notes"): e(f"{iid} missing false_positive_notes")
-            ctl = i.get("controls") or []
-            if not ctl: e(f"{iid} no controls")
-            if i.get("severity") == "high" and len(ctl) < 2: e(f"{iid} high severity needs >=2 controls")
-            if ctl and not any(c.get("type") in ("preventive","detective") for c in ctl): e(f"{iid} needs preventive/detective control")
-            for c in ctl:
-                n_ctl += 1
-                if c.get("id") in ids: e(f"duplicate id {c.get('id')}")
-                ids.add(c.get("id"))
-                if c.get("type") not in CTYPE: e(f"{c.get('id')} bad type")
-                if c.get("implementation") not in IMPL: e(f"{c.get('id')} bad implementation")
-                if c.get("effectiveness") not in SEV: e(f"{c.get('id')} bad effectiveness")
-    print(f"typologies={n_typ} indicators={n_ind} controls={n_ctl} errors={len(errs)}")
-    for m in errs: print(" -", m)
-    sys.exit(1 if errs else 0)
+            print(f"PARSE ERROR {f}: {e}"); sys.exit(1)
+    return out
 
-main(sys.argv[1] if len(sys.argv) > 1 else ".")
+def main(root, strict):
+    errs, warns = [], []
+    ctls = {}
+    for f, c in load(root, "controls/*.yaml", "controls"):
+        cid = c.get("id")
+        if cid in ctls: errs.append(f"duplicate control id {cid}")
+        ctls[cid] = c
+        if c.get("type") not in CTYPE: errs.append(f"{cid} bad type")
+        if c.get("implementation") not in IMPL: errs.append(f"{cid} bad implementation")
+        if c.get("effectiveness") not in SEV: errs.append(f"{cid} bad effectiveness")
+        if not c.get("description"): errs.append(f"{cid} missing description")
+    inds = {}
+    for f, i in load(root, "indicators/*.yaml", "indicators"):
+        iid = i.get("id")
+        if iid in inds: errs.append(f"duplicate indicator id {iid}")
+        inds[iid] = i
+        if i.get("category") not in CATS: errs.append(f"{iid} bad category")
+        if i.get("severity") not in SEV: errs.append(f"{iid} bad severity")
+        if not i.get("false_positive_notes"): errs.append(f"{iid} missing false_positive_notes")
+    used_i, used_c, tids, legacy = set(), set(), set(), set()
+    n_typ = n_link = 0
+    for f in sorted(pathlib.Path(root).glob("typologies/**/*.yaml")):
+        t = yaml.safe_load(f.read_text())["typology"]
+        n_typ += 1
+        for k in ("id","name","domain","description","sources","indicators"):
+            if not t.get(k): errs.append(f"{f.name}: missing {k}")
+        if t.get("domain") not in DOMAINS: errs.append(f"{f.name}: bad domain")
+        if t["id"] in tids: errs.append(f"duplicate typology id {t['id']}")
+        tids.add(t["id"])
+        seen = set()
+        for l in t["indicators"]:
+            n_link += 1
+            ref = l.get("ref")
+            if ref not in inds: errs.append(f"{t['id']}: unknown indicator ref {ref}"); continue
+            if ref in seen: errs.append(f"{t['id']}: indicator {ref} linked twice")
+            seen.add(ref); used_i.add(ref)
+            if not l.get("context"): errs.append(f"{t['id']}/{ref}: missing typology context")
+            sev = l.get("severity_in_typology", inds[ref]["severity"])
+            if sev not in SEV: errs.append(f"{t['id']}/{ref}: bad severity_in_typology")
+            lc = l.get("controls") or []
+            for c in lc:
+                if c not in ctls: errs.append(f"{t['id']}/{ref}: unknown control {c}")
+                else: used_c.add(c)
+            kinds = [ctls[c]["type"] for c in lc if c in ctls]
+            if not any(k in ("preventive","detective") for k in kinds): errs.append(f"{t['id']}/{ref}: needs a preventive/detective control")
+            if sev == "high" and len(set(lc)) < 2: errs.append(f"{t['id']}/{ref}: high severity needs >=2 controls")
+    for iid in inds:
+        if iid not in used_i: warns.append(f"orphan indicator {iid} (not linked from any typology)")
+    for cid in ctls:
+        if cid not in used_c: warns.append(f"orphan control {cid} (not linked from any indicator)")
+    # duplicate guard: near-identical names within each catalogue
+    for label, items in (("control", ctls), ("indicator", inds)):
+        names = [(k, tok(v["name"])) for k, v in items.items()]
+        for (a, ta), (b, tb) in itertools.combinations(names, 2):
+            if ta and tb and len(ta & tb) / len(ta | tb) >= 0.85:
+                warns.append(f"possible duplicate {label}s: {a} / {b}")
+    print(f"typologies={n_typ} indicators(canonical)={len(inds)} links={n_link} controls(canonical)={len(ctls)} errors={len(errs)} warnings={len(warns)}")
+    for m in errs: print(" ERROR:", m)
+    for m in warns[:40]: print(" warn:", m)
+    sys.exit(1 if errs or (strict and warns) else 0)
+
+args = [a for a in sys.argv[1:] if not a.startswith("--")]
+main(args[0] if args else ".", "--strict" in sys.argv)

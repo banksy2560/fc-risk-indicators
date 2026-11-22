@@ -1,0 +1,294 @@
+controls:
+- id: CTL-067
+  name: Merchant onboarding and business verification
+  family: fraud_prevention_friction
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Verifies merchant identity, business model, website content and expected volumes before
+    activation and re-verifies on change, with remediation of weak merchants. It stops fronts and disguised
+    businesses entering payment channels.
+  also_known_as:
+  - Merchant onboarding and website/business verification
+  - Merchant onboarding and monitoring
+  - Acquirer merchant due diligence
+- id: CTL-068
+  name: Dynamic payment friction and scam warnings
+  family: fraud_prevention_friction
+  type: preventive
+  implementation: rule
+  effectiveness: medium
+  description: Risk-scored payments trigger a purpose question and a tailored scam warning, or a call-back,
+    before release to the customer. It gives the customer a chance to reconsider and interrupts payments
+    made under deception.
+  also_known_as:
+  - Dynamic payment friction and tailored warnings
+  - Customer intervention and scam warnings
+  - Crypto transfer friction
+  - Urgent payment challenge
+- id: CTL-069
+  name: Payee name verification
+  family: fraud_prevention_friction
+  type: preventive
+  implementation: technology
+  effectiveness: high
+  description: Checks the payee name against the destination account before release and warns on no-match
+    or close-match, and flags payee-name mismatches against contracted entities. It interrupts misdirected,
+    spoofed and fraudulent payments.
+  also_known_as:
+  - Confirmation of payee / name-matching
+  - Beneficiary name verification
+  - Payee-name matching
+  - Payee mismatch rule
+- id: CTL-070
+  name: Out-of-band call-back verification
+  family: fraud_prevention_friction
+  type: preventive
+  implementation: process
+  effectiveness: high
+  description: Verifies instructions, detail changes and unusual requests by contacting the customer on
+    a channel held on file, never one supplied in the request. It defeats impersonation and account takeover.
+  also_known_as:
+  - Out-of-band callback verification
+  - Account change call-back
+  - Customer direct confirmation
+  - Call-back validation
+  - Signature and contact verification
+  - Out-of-band confirmation
+  - Payment instruction verification
+  - Confirmation call-back
+- id: CTL-071
+  name: Cooling-off and delayed release for new payees
+  family: fraud_prevention_friction
+  type: preventive
+  implementation: rule
+  effectiveness: medium
+  description: Holds or delays the first large payment to a new payee or to changed details so the customer
+    or institution can verify before funds leave. It buys time to detect coercion or fraud.
+  also_known_as:
+  - Hold or cooling-off on new high-value payees
+  - Pre-payment hold for novel counterparties
+- id: CTL-072
+  name: Risk-based transaction and account limits
+  family: fraud_prevention_friction
+  type: preventive
+  implementation: rule
+  effectiveness: medium
+  description: Caps transaction size, frequency, load, withdrawal and deposit values, with staged increases
+    as legitimate behaviour is established and per-customer limits at kiosks. It bounds the loss and laundering
+    capacity of new or higher-risk accounts.
+  also_known_as:
+  - Risk-based limits and cooling-off periods
+  - Kiosk operator controls
+  - Load and spend limits
+  - Identification thresholds
+  - Deposit limits on new accounts
+  - Cash-secured lending limits
+  - Staged limits for new accounts
+  - Velocity limits for new accounts
+- id: CTL-073
+  name: Strong authentication and step-up
+  family: fraud_prevention_friction
+  type: preventive
+  implementation: technology
+  effectiveness: high
+  description: Requires phishing-resistant authentication and additional verification on risky sessions,
+    credential or payee changes and large payments. It blocks unauthorised access and payments.
+  also_known_as:
+  - Step-up authentication on risky events
+  - Step-up authentication
+  - Step-up verification
+- id: CTL-074
+  name: Customer education and awareness
+  family: fraud_prevention_friction
+  type: preventive
+  implementation: training
+  effectiveness: low
+  description: Provides targeted messaging that helps customers recognise scam scripts and mule recruitment,
+    verify requests independently and use trusted routes for giving or paying. It reduces victimisation
+    and unwitting participation.
+  also_known_as:
+  - Mule recruitment awareness
+  - Trusted-partner routing
+- id: CTL-075
+  name: Trusted-contact and vulnerable-customer process
+  family: fraud_prevention_friction
+  type: preventive
+  implementation: process
+  effectiveness: medium
+  description: Allows customers to nominate a trusted contact and applies tailored handling and permitted
+    escalation when vulnerability is flagged. It adds a safeguard for customers more exposed to manipulation
+    or coercion.
+  also_known_as: []
+- id: CTL-076
+  name: Seller, organiser and payee verification with payout controls
+  family: fraud_prevention_friction
+  type: preventive
+  implementation: rule
+  effectiveness: medium
+  description: Verifies sellers, workers and fundraising organisers, matches payees to verified identities
+    and holds or staggers payouts for new or anomalous accounts. It limits platform abuse.
+  also_known_as:
+  - Seller verification and payout controls
+  - Campaign onboarding checks
+  - Payout hold on new campaigns
+  - Event-driven heightened review
+- id: CTL-077
+  name: Segregation of duties and dual authorisation
+  family: fraud_prevention_friction
+  type: preventive
+  implementation: policy
+  effectiveness: high
+  description: Ensures no single person can create, approve and release a payment or master-data change,
+    requiring an independent second approver. It controls insider and impersonation fraud.
+  also_known_as: []
+- id: CTL-078
+  name: Vendor master-data and bank-detail change control
+  family: fraud_prevention_friction
+  type: preventive
+  implementation: process
+  effectiveness: high
+  description: Requires independent verification and review of any new or changed supplier bank details
+    before the next payment run, including challenge of redirections to third-country accounts. It stops
+    payment-diversion and business-email-compromise fraud.
+  also_known_as:
+  - Vendor master-data change control
+  - Bank detail change controls
+  - Payment redirection challenge
+- id: CTL-079
+  name: Deposit holds and funds-availability policy
+  family: fraud_prevention_friction
+  type: preventive
+  implementation: policy
+  effectiveness: medium
+  description: Places risk-based holds on uncleared or unusual inbound items and funds, limiting withdrawal
+    until the item is confirmed good. It protects against losses from counterfeit, reversible or suspicious
+    deposits.
+  also_known_as:
+  - Real-time inbound payment holds
+- id: CTL-080
+  name: Cardholder authentication and tokenisation
+  family: fraud_prevention_friction
+  type: preventive
+  implementation: technology
+  effectiveness: high
+  description: Authenticates the cardholder at online checkout through an additional challenge and replaces
+    stored card numbers with tokens. It blocks use of stolen card details and shifts liability for unauthorised
+    transactions.
+  also_known_as:
+  - 3-D Secure and tokenisation
+- id: CTL-081
+  name: Cheque and image analytics
+  family: fraud_prevention_friction
+  type: detective
+  implementation: technology
+  effectiveness: medium
+  description: Applies image and magnetic-ink analysis to deposited items to find alterations, counterfeits
+    and duplicates, and monitors unusual deposit patterns. It stops paper-instrument fraud before funds
+    are made available.
+  also_known_as: []
+- id: CTL-082
+  name: Threat intelligence and takedown
+  family: fraud_prevention_friction
+  type: detective
+  implementation: technology
+  effectiveness: medium
+  description: Monitors for spoofed domains, fake apps, adverts, numbers and fraudulent campaigns, and
+    arranges takedown, suspension and customer alerts. It removes criminal infrastructure.
+  also_known_as:
+  - Takedown and referral process
+- id: CTL-083
+  name: Consortium and external intelligence data
+  family: fraud_prevention_friction
+  type: detective
+  implementation: technology
+  effectiveness: high
+  description: Matches accounts, devices, identifiers and beneficiaries against industry fraud sharing
+    and ingests law-enforcement, commercial and open-source threat feeds, including victim reports from
+    other institutions. It catches known bad actors early.
+  also_known_as:
+  - Consortium and shared fraud data
+  - External intelligence and consortium feeds
+  - Consortium fraud data checks
+  - Victim data sharing
+  - Consortium data sharing
+  - Threat intel integration
+  - Open-source monitoring feed
+- id: CTL-084
+  name: Income, affordability and underwriting verification
+  family: fraud_prevention_friction
+  type: preventive
+  implementation: process
+  effectiveness: high
+  description: Independently verifies stated income, employment, obligations and application facts against
+    third-party, bureau and prior-history data at origination. It reduces application, credit and insurance
+    fraud.
+  also_known_as:
+  - Income, affordability and bureau verification
+  - Underwriting verification and data matching
+  - Credit application consistency check
+- id: CTL-085
+  name: Claims analytics and payment verification
+  family: fraud_prevention_friction
+  type: detective
+  implementation: model
+  effectiveness: medium
+  description: Scores claims, links parties, providers and addresses, monitors repeat claims by region
+    or intermediary and verifies payee identity and sanctions exposure before settlement. It uncovers
+    organised and repeat claims fraud.
+  also_known_as:
+  - Claims analytics and link analysis
+  - Claims payment verification
+  - Claims pattern monitoring
+- id: CTL-086
+  name: Independent verification of underlying transaction
+  family: fraud_prevention_friction
+  type: preventive
+  implementation: process
+  effectiveness: high
+  description: Confirms the existence of underlying goods, services or receivables directly with the obligor
+    or through inspection before funds are advanced. It defeats fictitious invoices and transactions that
+    exist only on paper.
+  also_known_as:
+  - Independent inspection triggers
+- id: CTL-087
+  name: Duplicate document and duplicate financing detection
+  family: fraud_prevention_friction
+  type: detective
+  implementation: technology
+  effectiveness: medium
+  description: Hashes and fuzzy-matches invoice and shipping documents within and across clients and checks
+    shared registries so one asset cannot be financed twice. It detects reused and fabricated paper.
+  also_known_as:
+  - Duplicate-financing and invoice registry check
+  - Duplicate document detection
+  - Financing registry check
+  - Document similarity analysis
+- id: CTL-088
+  name: Account detail change monitoring and cool-down
+  family: fraud_prevention_friction
+  type: preventive
+  implementation: rule
+  effectiveness: medium
+  description: Contact, device or payee changes trigger notification to the prior channel and restrict
+    risky actions for a short period, with alerts on clusters of changes. It disrupts takeover.
+  also_known_as:
+  - Cooling period and notification on detail changes
+  - Change-event monitoring
+  - Payout account re-verification
+- id: CTL-089
+  name: Refund destination and validation controls
+  family: fraud_prevention_friction
+  type: preventive
+  implementation: policy
+  effectiveness: medium
+  description: Requires refunds, cancellations and aborted-deal repayments to go back only to the original
+    payer and method after validation of the request. It blocks the use of refunds to convert illicit
+    funds into clean payments.
+  also_known_as:
+  - Refund destination and filing validation
+  - Aborted-deal refund control
+  - Aborted deal reporting
+  - Refund method policy
+  - Refund destination control
+  - Refund validation

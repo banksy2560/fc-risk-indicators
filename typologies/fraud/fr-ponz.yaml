@@ -15,324 +15,100 @@ typology:
   - IOSCO, investor alerts on unregistered investment offerings (general)
   - ACFE, Report to the Nations (published biennially)
   indicators:
-  - id: FR-PONZ-001
-    name: Promised returns far above market with low stated risk
-    description: Operator marketing guarantees consistently high returns, often with testimonials and
-      urgency; victims relay these claims when transferring.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - external_intel
-    - customer_behaviour
-    data_sources:
-    - marketing_material
-    - customer_statements
-    false_positive_notes: Genuine high-risk, high-return products clearly disclosed.
+  - ref: IND-TYP-028
+    legacy_id: FR-PONZ-001
+    context: Operator marketing guarantees consistently high returns, often with testimonials and urgency;
+      victims relay these claims when transferring.
+    false_positive_context: Genuine high-risk, high-return products clearly disclosed.
     controls:
-    - id: FR-PONZ-001-C1
-      name: Registry and adverse-media checks
-      type: detective
-      description: Validates entity existence, licensing and reputation through registries and media screening.
-      implementation: technology
-      effectiveness: medium
-    - id: FR-PONZ-001-C2
-      name: Frontline training and conversation scripts
-      type: preventive
-      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
-        and escalate with a defined script and authority to pause.
-      implementation: training
-      effectiveness: medium
-    - id: FR-PONZ-001-C3
-      name: Threat intelligence and takedown
-      type: detective
-      description: Monitors for spoofed domains, fake apps, adverts and numbers and arranges their takedown
-        and customer alerts.
-      implementation: technology
-      effectiveness: medium
+    - CTL-032
+    - CTL-170
+    - CTL-082
     references:
     - FATF, guidance on risk-based approach and proceeds of fraud (general)
-  - id: FR-PONZ-002
-    name: Many small inflows from unrelated individuals into one account
-    description: 'Operator-side: numerous retail credits referencing the ''investment'' or a referral
-      code, inconsistent with the stated business.'
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - account_data
-    - payment_data
-    false_positive_notes: Crowdfunding, clubs or bonafide pooled schemes.
+  - ref: IND-TXN-004
+    legacy_id: FR-PONZ-002
+    context: 'Operator-side: numerous retail credits referencing the ''investment'' or a referral code,
+      inconsistent with the stated business.'
+    name_in_typology: Many small inflows from unrelated individuals into one account
+    false_positive_context: Crowdfunding, clubs or bonafide pooled schemes.
     controls:
-    - id: FR-PONZ-002-C1
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules on count, value, geography and timing alert analysts to bursts or structured
-        activity.
-      implementation: rule
-      effectiveness: medium
-    - id: FR-PONZ-002-C2
-      name: Mule account detection model
-      type: detective
-      description: Detects inbound-funds-then-rapid-outflow and other mule patterns on receiving accounts,
-        enabling holds and exits.
-      implementation: model
-      effectiveness: high
-    - id: FR-PONZ-002-C3
-      name: Enhanced due diligence and periodic KYC review
-      type: detective
-      description: Targeted review of purpose, source of funds and expected activity when behaviour diverges
-        from the profile.
-      implementation: process
-      effectiveness: medium
+    - CTL-037
+    - CTL-051
+    - CTL-014
     references:
     - FATF, guidance on risk-based approach and proceeds of fraud (general)
-  - id: FR-PONZ-003
-    name: Outflows paying earlier investors in matching round amounts
-    description: 'Operator-side: credits are followed by payments to prior investors in neat sums, plus
-      cash-outs to insiders.'
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - account_data
-    false_positive_notes: Legitimate coupon or dividend payments.
+  - ref: IND-TXN-076
+    legacy_id: FR-PONZ-003
+    context: 'Operator-side: credits are followed by payments to prior investors in neat sums, plus cash-outs
+      to insiders.'
+    false_positive_context: Legitimate coupon or dividend payments.
     controls:
-    - id: FR-PONZ-003-C1
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules on count, value, geography and timing alert analysts to bursts or structured
-        activity.
-      implementation: rule
-      effectiveness: medium
-    - id: FR-PONZ-003-C2
-      name: Entity resolution and link analysis
-      type: detective
-      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
-        identities.
-      implementation: model
-      effectiveness: high
-    - id: FR-PONZ-003-C3
-      name: Enhanced due diligence and periodic KYC review
-      type: detective
-      description: Targeted review of purpose, source of funds and expected activity when behaviour diverges
-        from the profile.
-      implementation: process
-      effectiveness: medium
+    - CTL-037
+    - CTL-049
+    - CTL-014
     references:
     - FATF, guidance on risk-based approach and proceeds of fraud (general)
-  - id: FR-PONZ-004
-    name: Recruitment-based rewards or tiered commissions
-    description: Payments reward introducing new participants rather than selling goods or services.
-    category: product_channel
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - external_intel
-    data_sources:
-    - commission_records
-    - marketing_material
-    false_positive_notes: Standard multi-level marketing with genuine retail sales.
+  - ref: IND-PRD-037
+    legacy_id: FR-PONZ-004
+    context: Payments reward introducing new participants rather than selling goods or services.
+    false_positive_context: Standard multi-level marketing with genuine retail sales.
     controls:
-    - id: FR-PONZ-004-C1
-      name: Registry and adverse-media checks
-      type: detective
-      description: Validates entity existence, licensing and reputation through registries and media screening.
-      implementation: technology
-      effectiveness: medium
-    - id: FR-PONZ-004-C2
-      name: Threat intelligence and takedown
-      type: detective
-      description: Monitors for spoofed domains, fake apps, adverts and numbers and arranges their takedown
-        and customer alerts.
-      implementation: technology
-      effectiveness: medium
-    - id: FR-PONZ-004-C3
-      name: Enhanced due diligence and periodic KYC review
-      type: detective
-      description: Targeted review of purpose, source of funds and expected activity when behaviour diverges
-        from the profile.
-      implementation: process
-      effectiveness: medium
+    - CTL-032
+    - CTL-082
+    - CTL-014
     references:
     - FATF, guidance on risk-based approach and proceeds of fraud (general)
-  - id: FR-PONZ-005
-    name: Unregistered or unlicensed operator
-    description: Operator is absent from regulator registers or holds a licence unrelated to the activity
+  - ref: IND-CPT-026
+    legacy_id: FR-PONZ-005
+    context: Operator is absent from regulator registers or holds a licence unrelated to the activity
       offered.
-    category: counterparty
-    severity: high
-    detection_type:
-    - screening
-    - kyc_review
-    data_sources:
-    - regulator_registers
-    false_positive_notes: New firms awaiting authorisation.
+    name_in_typology: Unregistered or unlicensed operator
+    false_positive_context: New firms awaiting authorisation.
     controls:
-    - id: FR-PONZ-005-C1
-      name: Registry and adverse-media checks
-      type: detective
-      description: Validates entity existence, licensing and reputation through registries and media screening.
-      implementation: technology
-      effectiveness: medium
-    - id: FR-PONZ-005-C2
-      name: Enhanced due diligence and periodic KYC review
-      type: detective
-      description: Targeted review of purpose, source of funds and expected activity when behaviour diverges
-        from the profile.
-      implementation: process
-      effectiveness: medium
-    - id: FR-PONZ-005-C3
-      name: Consortium and shared fraud data
-      type: detective
-      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
-        sharing to catch known bad actors early.
-      implementation: technology
-      effectiveness: high
+    - CTL-032
+    - CTL-014
+    - CTL-083
     references:
     - FATF, guidance on risk-based approach and proceeds of fraud (general)
-  - id: FR-PONZ-006
-    name: Delays or fees when investors request withdrawals
-    description: 'Victim-side: customers report blocked withdrawals or demands for charges and taxes;
-      complaints rise.'
-    category: behavioural
-    severity: medium
-    detection_type:
-    - customer_behaviour
-    - external_intel
-    data_sources:
-    - complaints
-    - customer_reports
-    false_positive_notes: Genuine liquidity gates in funds.
+  - ref: IND-BEH-076
+    legacy_id: FR-PONZ-006
+    context: 'Victim-side: customers report blocked withdrawals or demands for charges and taxes; complaints
+      rise.'
+    false_positive_context: Genuine liquidity gates in funds.
     controls:
-    - id: FR-PONZ-006-C1
-      name: Threat intelligence and takedown
-      type: detective
-      description: Monitors for spoofed domains, fake apps, adverts and numbers and arranges their takedown
-        and customer alerts.
-      implementation: technology
-      effectiveness: medium
-    - id: FR-PONZ-006-C2
-      name: Case management and fraud MI governance
-      type: governance
-      description: Outcomes, losses and false positives are tracked and fed back into rule tuning and
-        risk appetite.
-      implementation: process
-      effectiveness: medium
-    - id: FR-PONZ-006-C3
-      name: Frontline training and conversation scripts
-      type: preventive
-      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
-        and escalate with a defined script and authority to pause.
-      implementation: training
-      effectiveness: medium
+    - CTL-082
+    - CTL-094
+    - CTL-170
     references:
     - FATF, guidance on risk-based approach and proceeds of fraud (general)
-  - id: FR-PONZ-007
-    name: Investor funds diverted to personal assets or luxury spending
-    description: 'Operator-side: lifestyle spending, property or vehicle purchases funded from investor
-      accounts.'
-    category: transaction
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - investigator_judgement
-    data_sources:
-    - account_data
-    false_positive_notes: High-net-worth operators with separate wealth.
+  - ref: IND-TXN-077
+    legacy_id: FR-PONZ-007
+    context: 'Operator-side: lifestyle spending, property or vehicle purchases funded from investor accounts.'
+    false_positive_context: High-net-worth operators with separate wealth.
     controls:
-    - id: FR-PONZ-007-C1
-      name: Enhanced due diligence and periodic KYC review
-      type: detective
-      description: Targeted review of purpose, source of funds and expected activity when behaviour diverges
-        from the profile.
-      implementation: process
-      effectiveness: medium
-    - id: FR-PONZ-007-C2
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules on count, value, geography and timing alert analysts to bursts or structured
-        activity.
-      implementation: rule
-      effectiveness: medium
-    - id: FR-PONZ-007-C3
-      name: Entity resolution and link analysis
-      type: detective
-      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
-        identities.
-      implementation: model
-      effectiveness: high
+    - CTL-014
+    - CTL-037
+    - CTL-049
     references:
     - FATF, guidance on risk-based approach and proceeds of fraud (general)
-  - id: FR-PONZ-008
-    name: Customer borrowing to invest or reinvesting returns repeatedly
-    description: 'Victim-side: customer takes credit or rolls over supposed profits and refers friends.'
-    category: behavioural
-    severity: medium
-    detection_type:
-    - customer_behaviour
-    - transaction_monitoring
-    data_sources:
-    - payment_data
-    - credit_data
-    false_positive_notes: Active investors.
+  - ref: IND-BEH-077
+    legacy_id: FR-PONZ-008
+    context: 'Victim-side: customer takes credit or rolls over supposed profits and refers friends.'
+    false_positive_context: Active investors.
     controls:
-    - id: FR-PONZ-008-C1
-      name: Frontline training and conversation scripts
-      type: preventive
-      description: Branch and contact-centre staff are trained to ask open questions, recognise coaching
-        and escalate with a defined script and authority to pause.
-      implementation: training
-      effectiveness: medium
-    - id: FR-PONZ-008-C2
-      name: Dynamic payment friction and tailored warnings
-      type: preventive
-      description: Risk-scored payments trigger a purpose question and a scam-specific warning before
-        release, giving the customer a chance to reconsider.
-      implementation: rule
-      effectiveness: medium
-    - id: FR-PONZ-008-C3
-      name: Customer education and awareness
-      type: preventive
-      description: Targeted messaging helps customers recognise the scam script and know how to verify.
-      implementation: training
-      effectiveness: low
+    - CTL-170
+    - CTL-068
+    - CTL-074
     references:
     - FATF, guidance on risk-based approach and proceeds of fraud (general)
-  - id: FR-PONZ-009
-    name: Operator accounts opened in many names or institutions
-    description: Accounts are repeatedly opened and closed under front companies to receive deposits.
-    category: ownership_structure
-    severity: medium
-    detection_type:
-    - kyc_review
-    - transaction_monitoring
-    data_sources:
-    - kyc_profile
-    - account_data
-    false_positive_notes: Group structures with real subsidiaries.
+  - ref: IND-OWN-019
+    legacy_id: FR-PONZ-009
+    context: Accounts are repeatedly opened and closed under front companies to receive deposits.
+    false_positive_context: Group structures with real subsidiaries.
     controls:
-    - id: FR-PONZ-009-C1
-      name: Entity resolution and link analysis
-      type: detective
-      description: Resolves shared identifiers across applications and accounts to expose rings and synthetic
-        identities.
-      implementation: model
-      effectiveness: high
-    - id: FR-PONZ-009-C2
-      name: Consortium and shared fraud data
-      type: detective
-      description: Matches accounts, devices, identifiers and beneficiaries against industry fraud-intelligence
-        sharing to catch known bad actors early.
-      implementation: technology
-      effectiveness: high
-    - id: FR-PONZ-009-C3
-      name: Enhanced due diligence and periodic KYC review
-      type: detective
-      description: Targeted review of purpose, source of funds and expected activity when behaviour diverges
-        from the profile.
-      implementation: process
-      effectiveness: medium
+    - CTL-049
+    - CTL-083
+    - CTL-014
     references:
     - FATF, guidance on risk-based approach and proceeds of fraud (general)

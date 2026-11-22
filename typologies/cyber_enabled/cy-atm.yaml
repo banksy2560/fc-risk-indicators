@@ -16,336 +16,90 @@ typology:
   - FATF, Updated Guidance for a Risk-Based Approach to Virtual Assets and Virtual Asset Service Providers
     (2021)
   indicators:
-  - id: CY-ATM-001
-    name: Repeated cash deposits just below ID or reporting thresholds
-    description: The same user or phone number uses a kiosk several times in a short period at sizes below
+  - ref: IND-TXN-006
+    legacy_id: CY-ATM-001
+    context: The same user or phone number uses a kiosk several times in a short period at sizes below
       verification tiers.
-    category: transaction
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - kiosk_logs
-    - phone_numbers
-    false_positive_notes: Frequent small purchases by regular users.
+    name_in_typology: Repeated cash deposits just below ID or reporting thresholds
+    false_positive_context: Frequent small purchases by regular users.
     controls:
-    - id: CY-ATM-001-C1
-      name: Kiosk operator controls
-      type: preventive
-      description: Per-customer daily limits, ID and phone verification, on-screen scam warnings and location
-        risk-ranking for kiosks.
-      implementation: technology
-      effectiveness: medium
-    - id: CY-ATM-001-C2
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-ATM-001-C3
-      name: Graph and network analytics
-      type: detective
-      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
-        and fan-in/fan-out structures.
-      implementation: model
-      effectiveness: high
-  - id: CY-ATM-002
-    name: Multiple users sending to the same destination wallet
-    description: Many different kiosk customers direct funds to one address.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - external_intel
-    data_sources:
-    - kiosk_logs
-    - blockchain_analytics
-    false_positive_notes: Merchant or charity address.
+    - CTL-072
+    - CTL-037
+    - CTL-048
+  - ref: IND-TYP-001
+    legacy_id: CY-ATM-002
+    context: Many different kiosk customers direct funds to one address.
+    name_in_typology: Multiple users sending to the same destination wallet
+    false_positive_context: Merchant or charity address.
     controls:
-    - id: CY-ATM-002-C1
-      name: Blockchain analytics and wallet attribution
-      type: detective
-      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
-        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
-      implementation: technology
-      effectiveness: high
-    - id: CY-ATM-002-C2
-      name: Graph and network analytics
-      type: detective
-      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
-        and fan-in/fan-out structures.
-      implementation: model
-      effectiveness: high
-    - id: CY-ATM-002-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-ATM-003
-    name: Older customer on first use with large amounts
-    description: First-time, elderly user deposits large sums, often on a phone call, consistent with
-      scam coercion.
-    category: behavioural
-    severity: high
-    detection_type:
-    - customer_behaviour
-    - transaction_monitoring
-    data_sources:
-    - kiosk_logs
-    - cctv_notes
-    false_positive_notes: Informed investors.
+    - CTL-145
+    - CTL-048
+    - CTL-093
+  - ref: IND-BEH-039
+    legacy_id: CY-ATM-003
+    context: First-time, elderly user deposits large sums, often on a phone call, consistent with scam
+      coercion.
+    false_positive_context: Informed investors.
     controls:
-    - id: CY-ATM-003-C1
-      name: Kiosk operator controls
-      type: preventive
-      description: Per-customer daily limits, ID and phone verification, on-screen scam warnings and location
-        risk-ranking for kiosks.
-      implementation: technology
-      effectiveness: medium
-    - id: CY-ATM-003-C2
-      name: Customer intervention and scam warnings
-      type: corrective
-      description: Contextual warnings and call-backs when a payment shows scam or coercion indicators.
-      implementation: process
-      effectiveness: medium
-    - id: CY-ATM-003-C3
-      name: Risk-based limits and cooling-off periods
-      type: preventive
-      description: Cap transaction size and frequency for new or higher-risk users and delay release of
-        funds for added review.
-      implementation: rule
-      effectiveness: medium
-  - id: CY-ATM-004
-    name: Destination wallet linked to scam or fraud clusters
-    description: Receiving address is attributed to investment, romance or impersonation scams.
-    category: typology_specific
-    severity: high
-    detection_type:
-    - transaction_monitoring
-    - external_intel
-    data_sources:
-    - blockchain_analytics
-    false_positive_notes: Attribution lag.
+    - CTL-072
+    - CTL-068
+  - ref: IND-TYP-002
+    legacy_id: CY-ATM-004
+    context: Receiving address is attributed to investment, romance or impersonation scams.
+    false_positive_context: Attribution lag.
     controls:
-    - id: CY-ATM-004-C1
-      name: Blockchain analytics and wallet attribution
-      type: detective
-      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
-        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
-      implementation: technology
-      effectiveness: high
-    - id: CY-ATM-004-C2
-      name: Sanctions and watchlist screening including wallet addresses
-      type: preventive
-      description: Screen customers, counterparties and wallet addresses against sanctions lists and designated-address
-        data in real time.
-      implementation: technology
-      effectiveness: high
-    - id: CY-ATM-004-C3
-      name: Account restriction and fund holds
-      type: corrective
-      description: Ability to restrict, hold or recall funds rapidly pending review, with defined legal
-        and operational triggers.
-      implementation: process
-      effectiveness: medium
-  - id: CY-ATM-005
-    name: Use of multiple kiosks across locations in one day
-    description: User travels between machines to avoid limits or detection.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    data_sources:
-    - kiosk_logs
-    - geolocation
-    false_positive_notes: Commuters; machine outages.
+    - CTL-145
+    - CTL-029
+    - CTL-103
+  - ref: IND-BEH-040
+    legacy_id: CY-ATM-005
+    context: User travels between machines to avoid limits or detection.
+    false_positive_context: Commuters; machine outages.
     controls:
-    - id: CY-ATM-005-C1
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-ATM-005-C2
-      name: Graph and network analytics
-      type: detective
-      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
-        and fan-in/fan-out structures.
-      implementation: model
-      effectiveness: high
-    - id: CY-ATM-005-C3
-      name: Kiosk operator controls
-      type: preventive
-      description: Per-customer daily limits, ID and phone verification, on-screen scam warnings and location
-        risk-ranking for kiosks.
-      implementation: technology
-      effectiveness: medium
-  - id: CY-ATM-006
-    name: Shared phone number or ID across unrelated transactions
-    description: Same identifiers appear for apparently unrelated users or reused after refusal.
-    category: document
-    severity: medium
-    detection_type:
-    - transaction_monitoring
-    - kyc_review
-    data_sources:
-    - kiosk_logs
-    - id_documents
-    false_positive_notes: Household sharing.
+    - CTL-037
+    - CTL-048
+    - CTL-072
+  - ref: IND-DOC-008
+    legacy_id: CY-ATM-006
+    context: Same identifiers appear for apparently unrelated users or reused after refusal.
+    name_in_typology: Shared phone number or ID across unrelated transactions
+    severity_in_typology: medium
+    false_positive_context: Household sharing.
     controls:
-    - id: CY-ATM-006-C1
-      name: Onboarding data consistency rules
-      type: preventive
-      description: Rules that compare submitted identifiers (email, phone, address, device, bank account)
-        against existing records and known-bad data.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-ATM-006-C2
-      name: Graph and network analytics
-      type: detective
-      description: Link accounts, devices, addresses and beneficiaries to surface rings, shared attributes
-        and fan-in/fan-out structures.
-      implementation: model
-      effectiveness: high
-    - id: CY-ATM-006-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
-  - id: CY-ATM-007
-    name: Kiosk placed in high-risk locations without monitoring
-    description: Machines in venues with weak oversight show disproportionate high-risk activity.
-    category: product_channel
-    severity: medium
-    detection_type:
-    - investigator_judgement
-    - transaction_monitoring
-    data_sources:
-    - kiosk_inventory
-    - incident_reports
-    false_positive_notes: Foot-traffic driven volume.
+    - CTL-004
+    - CTL-048
+    - CTL-093
+  - ref: IND-PRD-021
+    legacy_id: CY-ATM-007
+    context: Machines in venues with weak oversight show disproportionate high-risk activity.
+    false_positive_context: Foot-traffic driven volume.
     controls:
-    - id: CY-ATM-007-C1
-      name: Kiosk operator controls
-      type: preventive
-      description: Per-customer daily limits, ID and phone verification, on-screen scam warnings and location
-        risk-ranking for kiosks.
-      implementation: technology
-      effectiveness: medium
-    - id: CY-ATM-007-C2
-      name: Risk appetite and product risk assessment
-      type: governance
-      description: Documented appetite, product-level risk assessment and approval gate covering this
-        activity, reviewed on a set cadence.
-      implementation: policy
-      effectiveness: medium
-    - id: CY-ATM-007-C3
-      name: External intelligence and consortium feeds
-      type: detective
-      description: Ingest law-enforcement, industry and commercial threat intelligence on indicators,
-        mule accounts and scam infrastructure.
-      implementation: technology
-      effectiveness: medium
-  - id: CY-ATM-008
-    name: Customer on phone while transacting or reading from instructions
-    description: Staff or footage note user following directions while depositing cash.
-    category: behavioural
-    severity: medium
-    detection_type:
-    - investigator_judgement
-    data_sources:
-    - operator_reports
-    - cctv_notes
-    false_positive_notes: Customer using a guide or helper.
+    - CTL-072
+    - CTL-162
+    - CTL-083
+  - ref: IND-BEH-006
+    legacy_id: CY-ATM-008
+    context: Staff or footage note user following directions while depositing cash.
+    name_in_typology: Customer on phone while transacting or reading from instructions
+    severity_in_typology: medium
+    false_positive_context: Customer using a guide or helper.
     controls:
-    - id: CY-ATM-008-C1
-      name: Kiosk operator controls
-      type: preventive
-      description: Per-customer daily limits, ID and phone verification, on-screen scam warnings and location
-        risk-ranking for kiosks.
-      implementation: technology
-      effectiveness: medium
-    - id: CY-ATM-008-C2
-      name: Typology-focused staff training
-      type: preventive
-      description: Training for front-line, onboarding and investigation staff on current red flags and
-        escalation routes.
-      implementation: training
-      effectiveness: low
-    - id: CY-ATM-008-C3
-      name: Customer intervention and scam warnings
-      type: corrective
-      description: Contextual warnings and call-backs when a payment shows scam or coercion indicators.
-      implementation: process
-      effectiveness: medium
-  - id: CY-ATM-009
-    name: Cash from bulk notes in poor condition or unusual denominations
-    description: Large volumes of small or bundled notes deposited in sequence.
-    category: transaction
-    severity: low
-    detection_type:
-    - investigator_judgement
-    data_sources:
-    - kiosk_logs
-    false_positive_notes: Cash-based businesses.
+    - CTL-072
+    - CTL-171
+    - CTL-068
+  - ref: IND-TXN-045
+    legacy_id: CY-ATM-009
+    context: Large volumes of small or bundled notes deposited in sequence.
+    false_positive_context: Cash-based businesses.
     controls:
-    - id: CY-ATM-009-C1
-      name: Kiosk operator controls
-      type: preventive
-      description: Per-customer daily limits, ID and phone verification, on-screen scam warnings and location
-        risk-ranking for kiosks.
-      implementation: technology
-      effectiveness: medium
-    - id: CY-ATM-009-C2
-      name: Velocity and threshold rules
-      type: detective
-      description: Rules that alert on abnormal count, value or speed of movements over short windows
-        compared with customer profile and peer norms.
-      implementation: rule
-      effectiveness: medium
-    - id: CY-ATM-009-C3
-      name: Typology-focused staff training
-      type: preventive
-      description: Training for front-line, onboarding and investigation staff on current red flags and
-        escalation routes.
-      implementation: training
-      effectiveness: low
-  - id: CY-ATM-010
-    name: Operator lacks effective transaction monitoring
-    description: Operator fails to monitor wallets, refunds or complaints, allowing patterns to persist.
-    category: typology_specific
-    severity: medium
-    detection_type:
-    - investigator_judgement
-    data_sources:
-    - audit_reports
-    - complaints
-    false_positive_notes: Early-stage operators.
+    - CTL-072
+    - CTL-037
+    - CTL-171
+  - ref: IND-TYP-003
+    legacy_id: CY-ATM-010
+    context: Operator fails to monitor wallets, refunds or complaints, allowing patterns to persist.
+    false_positive_context: Early-stage operators.
     controls:
-    - id: CY-ATM-010-C1
-      name: Risk appetite and product risk assessment
-      type: governance
-      description: Documented appetite, product-level risk assessment and approval gate covering this
-        activity, reviewed on a set cadence.
-      implementation: policy
-      effectiveness: medium
-    - id: CY-ATM-010-C2
-      name: Blockchain analytics and wallet attribution
-      type: detective
-      description: Screen deposit and withdrawal addresses and trace exposure to illicit clusters, mixers,
-        sanctioned or high-risk services using a blockchain analytics tool, with risk-scored alerts.
-      implementation: technology
-      effectiveness: high
-    - id: CY-ATM-010-C3
-      name: Specialist investigation and suspicious activity reporting
-      type: corrective
-      description: Trained analysts investigate alerts using typology playbooks, document rationale and
-        file reports where suspicion is formed.
-      implementation: process
-      effectiveness: medium
+    - CTL-162
+    - CTL-145
+    - CTL-093

@@ -1,0 +1,217 @@
+typology:
+  id: EC-FISHING
+  name: Illegal, Unreported and Unregulated Fishing
+  domain: environmental_crime
+  description: Fishing in breach of licence, quota or location rules, often with transhipment at sea,
+    vessel identity changes and forced labour on board. The catch is mixed into legal supply and sold
+    via processors, traders and retailers.
+  sectors:
+  - banking
+  - corporate_services
+  - payments
+  - insurance
+  sources:
+  - UNODC, Transnational Organized Crime in the Fishing Industry (2011)
+  - FATF, Money Laundering from Environmental Crime (2021)
+  - FAO, Port State Measures Agreement and related guidance on IUU fishing
+  - Interpol, public material on fisheries crime
+  indicators:
+  - id: EC-FISHING-001
+    name: Vessel with history of AIS gaps or name and flag changes
+    description: Vessel switches off position tracking, changes names or flags often and is on IUU lists.
+    category: customer
+    severity: high
+    detection_type:
+    - screening
+    - external_intel
+    data_sources:
+    - vessel_databases
+    - ais_data
+    false_positive_notes: Technical faults and legitimate re-flagging occur.
+    controls:
+    - id: EC-FISHING-001-C1
+      name: Vessel screening against IUU lists
+      type: preventive
+      description: Screen vessels and owners before financing or insuring.
+      implementation: technology
+      effectiveness: high
+    - id: EC-FISHING-001-C2
+      name: AIS behaviour monitoring
+      type: detective
+      description: Use vessel tracking data to detect gaps and loitering.
+      implementation: technology
+      effectiveness: medium
+  - id: EC-FISHING-002
+    name: Payments for at-sea transhipment, fuel and supplies
+    description: Payments to reefer ships or bunker suppliers in remote waters.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - payment_records
+    - invoices
+    false_positive_notes: Transhipment is lawful under authorised conditions.
+    controls:
+    - id: EC-FISHING-002-C1
+      name: Transhipment authorisation checks
+      type: preventive
+      description: Verify authority for transhipments.
+      implementation: process
+      effectiveness: medium
+    - id: EC-FISHING-002-C2
+      name: Fuel and supply payment review
+      type: detective
+      description: Review flows to remote bunker suppliers.
+      implementation: rule
+      effectiveness: medium
+  - id: EC-FISHING-003
+    name: Catch documentation inconsistent with vessel capacity or licence
+    description: Landing volumes or species exceed capacity, quota or fishing area.
+    category: document
+    severity: high
+    detection_type:
+    - document_review
+    - investigator_judgement
+    data_sources:
+    - catch_certificates
+    - licences
+    false_positive_notes: Reporting varies by flag.
+    controls:
+    - id: EC-FISHING-003-C1
+      name: Catch certificate validation
+      type: preventive
+      description: Validate certificates with authorities.
+      implementation: process
+      effectiveness: high
+    - id: EC-FISHING-003-C2
+      name: Capacity-versus-catch analytics
+      type: detective
+      description: Compare declared catches and capacity.
+      implementation: model
+      effectiveness: medium
+  - id: EC-FISHING-004
+    name: Ownership by layered offshore companies and flags of convenience
+    description: Vessels owned via shell companies in secrecy jurisdictions with unclear controllers.
+    category: ownership_structure
+    severity: high
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - registry_data
+    - ship_registries
+    false_positive_notes: Shipping uses complex structures lawfully.
+    controls:
+    - id: EC-FISHING-004-C1
+      name: Beneficial owner identification
+      type: preventive
+      description: Identify the controllers of fishing fleets.
+      implementation: process
+      effectiveness: high
+    - id: EC-FISHING-004-C2
+      name: Flag state risk scoring
+      type: preventive
+      description: Score flags for IUU risk.
+      implementation: model
+      effectiveness: medium
+  - id: EC-FISHING-005
+    name: Crew payments below standards or via third parties
+    description: Crew recruited by agencies with fees, wages held back, or payments to agents.
+    category: behavioural
+    severity: high
+    detection_type:
+    - investigator_judgement
+    - external_intel
+    data_sources:
+    - crew_agreements
+    - payment_records
+    false_positive_notes: Seafarers' remittance patterns are variable.
+    controls:
+    - id: EC-FISHING-005-C1
+      name: Crew welfare due diligence
+      type: preventive
+      description: Verify recruitment practices and wages.
+      implementation: process
+      effectiveness: high
+    - id: EC-FISHING-005-C2
+      name: Forced labour referral
+      type: governance
+      description: Refer indicators to labour-focused specialists.
+      implementation: process
+      effectiveness: medium
+  - id: EC-FISHING-006
+    name: Seafood sales through traders with no traceability
+    description: Processors or exporters cannot show the vessel or catch origin.
+    category: counterparty
+    severity: medium
+    detection_type:
+    - kyc_review
+    - document_review
+    data_sources:
+    - supplier_files
+    - certificates
+    false_positive_notes: Smaller traders may lack digital records.
+    controls:
+    - id: EC-FISHING-006-C1
+      name: Seafood traceability requirements
+      type: preventive
+      description: Require catch-to-plate traceability.
+      implementation: policy
+      effectiveness: medium
+    - id: EC-FISHING-006-C2
+      name: Supplier audits
+      type: detective
+      description: Audit processors and traders.
+      implementation: process
+      effectiveness: medium
+  - id: EC-FISHING-007
+    name: Port calls in ports of low inspection standards
+    description: Frequent landings at ports with weak controls or non-parties to port state measures.
+    category: geographic
+    severity: medium
+    detection_type:
+    - external_intel
+    - transaction_monitoring
+    data_sources:
+    - port_data
+    false_positive_notes: Ports may be the only option for some fleets.
+    controls:
+    - id: EC-FISHING-007-C1
+      name: Port risk rating
+      type: preventive
+      description: Rate ports by inspection rigour.
+      implementation: model
+      effectiveness: medium
+    - id: EC-FISHING-007-C2
+      name: Landing-pattern analytics
+      type: detective
+      description: Detect avoidance of strict ports.
+      implementation: model
+      effectiveness: medium
+  - id: EC-FISHING-008
+    name: Adverse media or enforcement for IUU activity
+    description: Vessel, owner or manager in sanction or prosecution lists.
+    category: customer
+    severity: high
+    detection_type:
+    - screening
+    - external_intel
+    data_sources:
+    - enforcement_notices
+    - adverse_media
+    false_positive_notes: Past cases may be resolved.
+    controls:
+    - id: EC-FISHING-008-C1
+      name: Adverse media screening
+      type: detective
+      description: Screen for IUU-related terms.
+      implementation: technology
+      effectiveness: medium
+    - id: EC-FISHING-008-C2
+      name: Insurer and lender information sharing
+      type: governance
+      description: Share vessel risk insights where lawful.
+      implementation: process
+      effectiveness: medium

@@ -1,0 +1,231 @@
+typology:
+  id: ML-NPO
+  name: Charities and Non-Profit Organisations Misuse for Money Laundering
+  domain: money_laundering
+  description: Use of charities and NPOs, or their accounts and fundraising channels, to hold, mix or
+    move illicit funds that appear as donations, grants or program spending. This typology covers the
+    money laundering angle only.
+  stage:
+  - placement
+  - layering
+  sectors:
+  - banking
+  - payments
+  - dnfbp
+  sources:
+  - FATF, Best Practices on Combating the Abuse of Non-Profit Organisations (2015, general)
+  - FATF, Risk of Terrorist Abuse in Non-Profit Organisations (2014) and related guidance (general)
+  - Charity regulators' published guidance on financial crime (general)
+  indicators:
+  - id: ML-NPO-001
+    name: Donations inconsistent with fundraising profile
+    description: Receipts out of line with size, reach or history of the NPO.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - transaction_data
+    - financial_statements
+    false_positive_notes: Appeals and bequests.
+    controls:
+    - id: ML-NPO-001-C1
+      name: Peer and history benchmarking
+      type: detective
+      description: Compare income to peers and trend.
+      implementation: model
+      effectiveness: medium
+    - id: ML-NPO-001-C2
+      name: Donor source review
+      type: preventive
+      description: Check large donor sources.
+      implementation: process
+      effectiveness: high
+  - id: ML-NPO-002
+    name: Large anonymous or cash donations
+    description: Substantial cash donations without donor identity.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - donation_records
+    false_positive_notes: Collections.
+    controls:
+    - id: ML-NPO-002-C1
+      name: Cash donation limits
+      type: preventive
+      description: Limit anonymous cash.
+      implementation: policy
+      effectiveness: medium
+    - id: ML-NPO-002-C2
+      name: Donation logging
+      type: detective
+      description: Record and aggregate donations.
+      implementation: process
+      effectiveness: medium
+  - id: ML-NPO-003
+    name: Funds quickly moved to unrelated parties or abroad
+    description: Money leaves without program activity.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - transaction_data
+    false_positive_notes: Overseas projects.
+    controls:
+    - id: ML-NPO-003-C1
+      name: Outflow purpose review
+      type: preventive
+      description: Verify beneficiaries and purpose.
+      implementation: process
+      effectiveness: high
+    - id: ML-NPO-003-C2
+      name: Pass-through monitoring
+      type: detective
+      description: Alert on quick outflow.
+      implementation: rule
+      effectiveness: medium
+  - id: ML-NPO-004
+    name: Opaque governance or controllers
+    description: Unclear trustees, control or beneficial owners.
+    category: ownership_structure
+    severity: high
+    detection_type:
+    - kyc_review
+    data_sources:
+    - charity_register
+    false_positive_notes: Volunteer boards.
+    controls:
+    - id: ML-NPO-004-C1
+      name: Trustee verification
+      type: preventive
+      description: Verify controllers.
+      implementation: process
+      effectiveness: high
+    - id: ML-NPO-004-C2
+      name: Register check
+      type: detective
+      description: Check regulator registers.
+      implementation: technology
+      effectiveness: medium
+  - id: ML-NPO-005
+    name: Activities do not match stated objects
+    description: Spending outside charitable purposes.
+    category: typology_specific
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    - kyc_review
+    data_sources:
+    - financial_statements
+    false_positive_notes: Mission drift.
+    controls:
+    - id: ML-NPO-005-C1
+      name: Objects versus spend review
+      type: preventive
+      description: Compare to objects.
+      implementation: process
+      effectiveness: medium
+    - id: ML-NPO-005-C2
+      name: Annual review
+      type: detective
+      description: Review accounts.
+      implementation: process
+      effectiveness: medium
+  - id: ML-NPO-006
+    name: Unregistered or unlicensed fundraising
+    description: Raising funds without registration or authority.
+    category: document
+    severity: medium
+    detection_type:
+    - kyc_review
+    - external_intel
+    data_sources:
+    - regulator_data
+    false_positive_notes: Small groups.
+    controls:
+    - id: ML-NPO-006-C1
+      name: Registration verification
+      type: preventive
+      description: Verify registration.
+      implementation: process
+      effectiveness: medium
+    - id: ML-NPO-006-C2
+      name: Adverse media check
+      type: detective
+      description: Screen.
+      implementation: technology
+      effectiveness: medium
+  - id: ML-NPO-007
+    name: Personal use of NPO accounts
+    description: Transactions of a private nature.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - transaction_data
+    false_positive_notes: Expenses.
+    controls:
+    - id: ML-NPO-007-C1
+      name: Private-spend rule
+      type: detective
+      description: Flag personal-type spend.
+      implementation: rule
+      effectiveness: medium
+    - id: ML-NPO-007-C2
+      name: Expense policy
+      type: governance
+      description: Require controls.
+      implementation: policy
+      effectiveness: medium
+  - id: ML-NPO-008
+    name: Connections to high-risk jurisdictions
+    description: Programs in high-risk areas without controls.
+    category: geographic
+    severity: medium
+    detection_type:
+    - screening
+    - kyc_review
+    data_sources:
+    - country_risk_data
+    false_positive_notes: Humanitarian work.
+    controls:
+    - id: ML-NPO-008-C1
+      name: Risk-based EDD
+      type: preventive
+      description: Apply proportionate EDD.
+      implementation: process
+      effectiveness: medium
+    - id: ML-NPO-008-C2
+      name: Delivery partner checks
+      type: preventive
+      description: Vet partners.
+      implementation: process
+      effectiveness: medium
+  - id: ML-NPO-009
+    name: Fake or inflated beneficiaries and invoices
+    description: Payments to suppliers with weak evidence.
+    category: document
+    severity: medium
+    detection_type:
+    - document_review
+    data_sources:
+    - invoices
+    false_positive_notes: Small suppliers.
+    controls:
+    - id: ML-NPO-009-C1
+      name: Supplier verification
+      type: preventive
+      description: Verify suppliers.
+      implementation: process
+      effectiveness: medium
+    - id: ML-NPO-009-C2
+      name: Sample testing
+      type: detective
+      description: Test invoices.
+      implementation: process
+      effectiveness: medium

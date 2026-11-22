@@ -1,0 +1,221 @@
+typology:
+  id: EC-WILDLIFE
+  name: Illegal Wildlife Trade
+  domain: environmental_crime
+  description: Poaching and trafficking of protected animals and plants and their products, such as ivory,
+    rhino horn, pangolin scales, timber species and live animals. Financial signs include front companies
+    mixing legal and illegal trade, payments across source, transit and demand countries, and use of trade
+    documents falsified to pass inspection.
+  sectors:
+  - banking
+  - payments
+  - mvts
+  - corporate_services
+  sources:
+  - FATF, Money Laundering and the Illegal Wildlife Trade (2020)
+  - FATF, Money Laundering from Environmental Crime (2021)
+  - UNODC, World Wildlife Crime Report
+  - CITES, Convention on International Trade in Endangered Species of Wild Fauna and Flora
+  indicators:
+  - id: EC-WILDLIFE-001
+    name: Trade in CITES-listed species with irregular permits
+    description: Customer exports or imports listed species with permits that do not verify, repeat or
+      conflict with quantities.
+    category: document
+    severity: high
+    detection_type:
+    - document_review
+    - investigator_judgement
+    data_sources:
+    - cites_permits
+    - trade_documents
+    false_positive_notes: Licensed breeders and traders deal in listed species.
+    controls:
+    - id: EC-WILDLIFE-001-C1
+      name: Permit verification
+      type: preventive
+      description: Verify permits with issuing authorities for listed-species trade.
+      implementation: process
+      effectiveness: high
+    - id: EC-WILDLIFE-001-C2
+      name: Species-risk keyword screening
+      type: detective
+      description: Screen trade documents for high-risk species and commodity codes.
+      implementation: rule
+      effectiveness: medium
+  - id: EC-WILDLIFE-002
+    name: Wildlife-related payments between source, transit and consumer countries
+    description: Flows between countries known as supply, transit and demand points linked to a small
+      business.
+    category: geographic
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - external_intel
+    data_sources:
+    - swift_messages
+    - payment_records
+    false_positive_notes: Legitimate trade also uses these corridors.
+    controls:
+    - id: EC-WILDLIFE-002-C1
+      name: Corridor analytics
+      type: detective
+      description: Monitor payment corridors identified by FIU and NGO typologies.
+      implementation: model
+      effectiveness: medium
+    - id: EC-WILDLIFE-002-C2
+      name: Customer corridor profiling
+      type: preventive
+      description: Require a rationale for activity in high-risk corridors.
+      implementation: process
+      effectiveness: medium
+  - id: EC-WILDLIFE-003
+    name: Front businesses combining legal goods and wildlife products
+    description: Import-export firm in furniture, traditional medicine or seafood with unusually high-value
+      shipments or inconsistent product descriptions.
+    category: customer
+    severity: high
+    detection_type:
+    - kyc_review
+    - transaction_monitoring
+    data_sources:
+    - trade_documents
+    - kyc_files
+    false_positive_notes: Product descriptions may be imprecise.
+    controls:
+    - id: EC-WILDLIFE-003-C1
+      name: Business-model verification
+      type: preventive
+      description: Verify business model against shipments and inspection records.
+      implementation: process
+      effectiveness: high
+    - id: EC-WILDLIFE-003-C2
+      name: Shipment value benchmarking
+      type: detective
+      description: Compare declared values to market ranges for species and goods.
+      implementation: rule
+      effectiveness: medium
+  - id: EC-WILDLIFE-004
+    name: Payments to wildlife rangers, border officials or couriers
+    description: Payments to officials or low-income individuals around reserves and ports.
+    category: counterparty
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - payment_records
+    false_positive_notes: Payroll and local payments are normal.
+    controls:
+    - id: EC-WILDLIFE-004-C1
+      name: Official-link screening
+      type: detective
+      description: Screen counterparties for official roles using PEP data.
+      implementation: technology
+      effectiveness: medium
+    - id: EC-WILDLIFE-004-C2
+      name: Corruption-linked escalation
+      type: governance
+      description: Link wildlife alerts to anti-corruption teams.
+      implementation: process
+      effectiveness: medium
+  - id: EC-WILDLIFE-005
+    name: Use of online marketplaces and social media payments for exotic animals or ivory
+    description: Sales of rare animals or carved items with payments through apps and unlabelled products.
+    category: product_channel
+    severity: medium
+    detection_type:
+    - external_intel
+    - transaction_monitoring
+    data_sources:
+    - open_source
+    - payment_records
+    false_positive_notes: Antique and pet markets exist lawfully.
+    controls:
+    - id: EC-WILDLIFE-005-C1
+      name: Open-source monitoring
+      type: detective
+      description: Track advert accounts linked to payment identifiers.
+      implementation: technology
+      effectiveness: medium
+    - id: EC-WILDLIFE-005-C2
+      name: Marketplace cooperation
+      type: governance
+      description: Coordinate with platforms and payment providers.
+      implementation: process
+      effectiveness: medium
+  - id: EC-WILDLIFE-006
+    name: Cash intensive purchases by wholesalers at auctions or farms
+    description: Large cash buys from breeders, farms or auctions, then export.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - cash_data
+    - invoices
+    false_positive_notes: Farms are cash-heavy in some regions.
+    controls:
+    - id: EC-WILDLIFE-006-C1
+      name: Cash-to-export reconciliation
+      type: detective
+      description: Reconcile cash purchases with licensed stock and exports.
+      implementation: process
+      effectiveness: medium
+    - id: EC-WILDLIFE-006-C2
+      name: Source verification
+      type: preventive
+      description: Verify farms' licensing.
+      implementation: process
+      effectiveness: medium
+  - id: EC-WILDLIFE-007
+    name: Transit via logistics hubs with changed consignee or false declarations
+    description: Reconsignment or splits in transit with different declared contents.
+    category: document
+    severity: high
+    detection_type:
+    - document_review
+    - investigator_judgement
+    data_sources:
+    - bills_of_lading
+    - customs_data
+    false_positive_notes: Transhipment is routine for logistics.
+    controls:
+    - id: EC-WILDLIFE-007-C1
+      name: Transit document consistency checks
+      type: detective
+      description: Compare descriptions across the documents chain.
+      implementation: rule
+      effectiveness: medium
+    - id: EC-WILDLIFE-007-C2
+      name: Freight partner due diligence
+      type: preventive
+      description: Screen forwarders for wildlife-trade risk.
+      implementation: process
+      effectiveness: high
+  - id: EC-WILDLIFE-008
+    name: Adverse media or enforcement links to wildlife trafficking
+    description: Customer or associates named in prosecutions, seizures or NGO investigations.
+    category: customer
+    severity: high
+    detection_type:
+    - screening
+    - external_intel
+    data_sources:
+    - adverse_media
+    - enforcement_notices
+    false_positive_notes: Allegations may involve different parties.
+    controls:
+    - id: EC-WILDLIFE-008-C1
+      name: Wildlife-specific adverse media list
+      type: detective
+      description: Maintain wildlife-crime media keywords and sources.
+      implementation: technology
+      effectiveness: medium
+    - id: EC-WILDLIFE-008-C2
+      name: Public-private partnership alerts
+      type: governance
+      description: Use partnership indicators and share findings.
+      implementation: process
+      effectiveness: high

@@ -1,0 +1,230 @@
+typology:
+  id: ML-GATEKEEPER
+  name: Legal-Sector and Accountant Gatekeeper Misuse
+  domain: money_laundering
+  description: Misuse of lawyers, notaries, accountants and similar professionals, witting or unwitting,
+    to create structures, hold or move client funds, buy assets or lend credibility to transactions. Client
+    accounts and professional privilege are used to distance funds from their source.
+  stage:
+  - layering
+  - integration
+  sectors:
+  - dnfbp
+  - banking
+  sources:
+  - FATF, Money Laundering and Terrorist Financing Vulnerabilities of Legal Professionals (2013)
+  - FATF, Guidance for a Risk-Based Approach for Legal Professionals (2019)
+  - FATF, Guidance for a Risk-Based Approach for the Accounting Profession (2019)
+  indicators:
+  - id: ML-GATEKEEPER-001
+    name: Client account used with no underlying legal work
+    description: Funds pass through client account without a legal service.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - client_account_data
+    false_positive_notes: Deposits pending completion.
+    controls:
+    - id: ML-GATEKEEPER-001-C1
+      name: Client account transaction rules
+      type: detective
+      description: Alert on flows without matter reference.
+      implementation: rule
+      effectiveness: high
+    - id: ML-GATEKEEPER-001-C2
+      name: Professional body rules on client money
+      type: governance
+      description: Enforce rules on client money.
+      implementation: policy
+      effectiveness: medium
+  - id: ML-GATEKEEPER-002
+    name: Instructions to transfer funds to third parties without explanation
+    description: Sudden redirection of funds to unrelated beneficiaries.
+    category: counterparty
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - customer_behaviour
+    data_sources:
+    - payment_instructions
+    false_positive_notes: Settlement structures.
+    controls:
+    - id: ML-GATEKEEPER-002-C1
+      name: Payment instruction verification
+      type: preventive
+      description: Verify instructions and beneficiary.
+      implementation: process
+      effectiveness: high
+    - id: ML-GATEKEEPER-002-C2
+      name: Third-party payment controls
+      type: detective
+      description: Alert on unrelated beneficiaries.
+      implementation: rule
+      effectiveness: medium
+  - id: ML-GATEKEEPER-003
+    name: Complex structures with no commercial reason
+    description: Creation of layered entities and trusts.
+    category: ownership_structure
+    severity: high
+    detection_type:
+    - kyc_review
+    - investigator_judgement
+    data_sources:
+    - ownership_charts
+    false_positive_notes: Tax planning.
+    controls:
+    - id: ML-GATEKEEPER-003-C1
+      name: Structure rationale review
+      type: preventive
+      description: Assess and record.
+      implementation: process
+      effectiveness: high
+    - id: ML-GATEKEEPER-003-C2
+      name: Senior approval
+      type: governance
+      description: Compliance sign-off.
+      implementation: policy
+      effectiveness: medium
+  - id: ML-GATEKEEPER-004
+    name: Aborted transactions with funds returned elsewhere
+    description: Deals cancelled and money sent to different parties.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - client_account_data
+    false_positive_notes: Deals collapse.
+    controls:
+    - id: ML-GATEKEEPER-004-C1
+      name: Aborted-deal refund control
+      type: preventive
+      description: Refund only to source.
+      implementation: policy
+      effectiveness: high
+    - id: ML-GATEKEEPER-004-C2
+      name: Aborted deal reporting
+      type: detective
+      description: Track and review.
+      implementation: process
+      effectiveness: medium
+  - id: ML-GATEKEEPER-005
+    name: Client insists on speed or secrecy
+    description: Pressure to bypass checks.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - customer_behaviour
+    - investigator_judgement
+    data_sources:
+    - file_notes
+    false_positive_notes: Urgency exists.
+    controls:
+    - id: ML-GATEKEEPER-005-C1
+      name: Pressure escalation process
+      type: preventive
+      description: Escalate undue pressure.
+      implementation: process
+      effectiveness: medium
+    - id: ML-GATEKEEPER-005-C2
+      name: Staff training
+      type: preventive
+      description: Train on red flags.
+      implementation: training
+      effectiveness: low
+  - id: ML-GATEKEEPER-006
+    name: Client unwilling to provide ownership or source of funds
+    description: Refuses details of beneficial owner or source.
+    category: customer
+    severity: high
+    detection_type:
+    - kyc_review
+    data_sources:
+    - kyc_file
+    false_positive_notes: Privacy.
+    controls:
+    - id: ML-GATEKEEPER-006-C1
+      name: Decline-or-exit policy
+      type: corrective
+      description: Refuse or exit without information.
+      implementation: policy
+      effectiveness: high
+    - id: ML-GATEKEEPER-006-C2
+      name: CDD standard
+      type: preventive
+      description: Require verified CDD.
+      implementation: process
+      effectiveness: high
+  - id: ML-GATEKEEPER-007
+    name: Large cash payments to professional
+    description: Fees or deposits in cash.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - payment_records
+    false_positive_notes: Small firms.
+    controls:
+    - id: ML-GATEKEEPER-007-C1
+      name: Cash limit policy
+      type: preventive
+      description: Limit cash.
+      implementation: policy
+      effectiveness: medium
+    - id: ML-GATEKEEPER-007-C2
+      name: Source verification
+      type: preventive
+      description: Verify cash.
+      implementation: process
+      effectiveness: medium
+  - id: ML-GATEKEEPER-008
+    name: Professional's role unusual for the work
+    description: Professional acts as nominee, director, or intermediary beyond normal remit.
+    category: typology_specific
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    data_sources:
+    - engagement_letters
+    false_positive_notes: Trust services.
+    controls:
+    - id: ML-GATEKEEPER-008-C1
+      name: Engagement scope review
+      type: preventive
+      description: Review scope.
+      implementation: process
+      effectiveness: medium
+    - id: ML-GATEKEEPER-008-C2
+      name: Nominee role restrictions
+      type: preventive
+      description: Restrict roles.
+      implementation: policy
+      effectiveness: medium
+  - id: ML-GATEKEEPER-009
+    name: Customer geography far from the professional's practice
+    description: No reason to use this adviser.
+    category: geographic
+    severity: low
+    detection_type:
+    - kyc_review
+    data_sources:
+    - client_data
+    false_positive_notes: Specialist advice.
+    controls:
+    - id: ML-GATEKEEPER-009-C1
+      name: Reason-for-choice question
+      type: preventive
+      description: Ask why.
+      implementation: process
+      effectiveness: low
+    - id: ML-GATEKEEPER-009-C2
+      name: Geographic risk rating
+      type: preventive
+      description: Rate geography.
+      implementation: policy
+      effectiveness: low

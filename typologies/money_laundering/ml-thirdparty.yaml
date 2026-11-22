@@ -1,0 +1,208 @@
+typology:
+  id: ML-THIRDPARTY
+  name: Third-Party Payments and Commingling
+  domain: money_laundering
+  description: Use of third parties to make or receive payments, and the mixing of illicit funds with
+    legitimate funds in business, personal or client accounts, to obscure source and ownership. Includes
+    accounts used by someone other than the holder.
+  stage:
+  - layering
+  sectors:
+  - banking
+  - payments
+  - corporate_services
+  sources:
+  - FATF, Guidance on Risk-Based Approach for banking sector (general)
+  - FATF, Professional Money Laundering (2018)
+  - Wolfsberg Group, guidance on customer due diligence (general)
+  indicators:
+  - id: ML-THIRDPARTY-001
+    name: Payments from or to unrelated third parties
+    description: Payers or payees have no apparent link to the customer.
+    category: counterparty
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - transaction_data
+    false_positive_notes: Gifts, gatekeepers, family.
+    controls:
+    - id: ML-THIRDPARTY-001-C1
+      name: Third-party payment rule
+      type: detective
+      description: Alert on unknown third-party payers.
+      implementation: rule
+      effectiveness: high
+    - id: ML-THIRDPARTY-001-C2
+      name: Third-party payment policy
+      type: governance
+      description: Define when third-party payments are allowed.
+      implementation: policy
+      effectiveness: medium
+  - id: ML-THIRDPARTY-002
+    name: Personal account used for business flows
+    description: Business-like volumes in personal account.
+    category: customer
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - transaction_data
+    false_positive_notes: Sole traders.
+    controls:
+    - id: ML-THIRDPARTY-002-C1
+      name: Account purpose misuse model
+      type: detective
+      description: Detect business patterns in personal accounts.
+      implementation: model
+      effectiveness: medium
+    - id: ML-THIRDPARTY-002-C2
+      name: Product migration
+      type: corrective
+      description: Move to proper business account.
+      implementation: process
+      effectiveness: medium
+  - id: ML-THIRDPARTY-003
+    name: Illicit and legitimate funds mixed in operating account
+    description: Business income blended with unexplained inflows.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - transaction_data
+    false_positive_notes: Owner loans.
+    controls:
+    - id: ML-THIRDPARTY-003-C1
+      name: Non-trade inflow tagging
+      type: detective
+      description: Tag and review non-trade inflows.
+      implementation: rule
+      effectiveness: medium
+    - id: ML-THIRDPARTY-003-C2
+      name: Financial statement reconciliation
+      type: preventive
+      description: Reconcile to accounts.
+      implementation: process
+      effectiveness: high
+  - id: ML-THIRDPARTY-004
+    name: Account controlled by someone other than holder
+    description: Signs of third-party control such as shared devices, mandates.
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    - investigator_judgement
+    data_sources:
+    - device_data
+    - mandates
+    false_positive_notes: Carer or agent arrangements.
+    controls:
+    - id: ML-THIRDPARTY-004-C1
+      name: Power-of-attorney and mandate review
+      type: preventive
+      description: Review mandates.
+      implementation: process
+      effectiveness: medium
+    - id: ML-THIRDPARTY-004-C2
+      name: Device linkage analytics
+      type: detective
+      description: Link devices to controllers.
+      implementation: technology
+      effectiveness: medium
+  - id: ML-THIRDPARTY-005
+    name: Client or pooled accounts used for non-client flows
+    description: Professionals' client accounts used as banks.
+    category: product_channel
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - client_account_data
+    false_positive_notes: Client accounts hold funds.
+    controls:
+    - id: ML-THIRDPARTY-005-C1
+      name: Client account purpose monitoring
+      type: detective
+      description: Compare flows to services.
+      implementation: rule
+      effectiveness: high
+    - id: ML-THIRDPARTY-005-C2
+      name: Professional sector EDD
+      type: preventive
+      description: Review professional account use.
+      implementation: process
+      effectiveness: medium
+  - id: ML-THIRDPARTY-006
+    name: Transfers pass through accounts of relatives or employees
+    description: Staff or family accounts used for business flows.
+    category: counterparty
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - transaction_data
+    false_positive_notes: Family businesses.
+    controls:
+    - id: ML-THIRDPARTY-006-C1
+      name: Related-person flow detection
+      type: detective
+      description: Detect payments via relatives.
+      implementation: model
+      effectiveness: medium
+    - id: ML-THIRDPARTY-006-C2
+      name: Ownership clarification
+      type: preventive
+      description: Document relationships.
+      implementation: process
+      effectiveness: medium
+  - id: ML-THIRDPARTY-007
+    name: Frequent payments to the same third-party beneficiary of unclear purpose
+    description: Recurring payments to unexplained counterparties.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - transaction_data
+    false_positive_notes: Subscriptions.
+    controls:
+    - id: ML-THIRDPARTY-007-C1
+      name: Repeat beneficiary review
+      type: detective
+      description: Review recurring payees.
+      implementation: rule
+      effectiveness: medium
+    - id: ML-THIRDPARTY-007-C2
+      name: Purpose capture
+      type: preventive
+      description: Capture purpose.
+      implementation: process
+      effectiveness: medium
+  - id: ML-THIRDPARTY-008
+    name: Loans or deposits from unknown persons into company accounts
+    description: Directors or others deposit funds without documentation.
+    category: document
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - document_review
+    data_sources:
+    - loan_records
+    false_positive_notes: Capital contributions.
+    controls:
+    - id: ML-THIRDPARTY-008-C1
+      name: Director loan documentation rule
+      type: preventive
+      description: Require documents.
+      implementation: policy
+      effectiveness: medium
+    - id: ML-THIRDPARTY-008-C2
+      name: Capital injection checks
+      type: preventive
+      description: Verify source.
+      implementation: process
+      effectiveness: medium

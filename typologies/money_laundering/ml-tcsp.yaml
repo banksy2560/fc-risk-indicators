@@ -192,10 +192,11 @@ typology:
     false_positive_notes: Confidentiality concerns.
     controls:
     - id: ML-TCSP-008-C1
-      name: Information-request escalation
-      type: governance
-      description: Escalate and restrict if not provided.
-      implementation: policy
+      name: Beneficial ownership information gate
+      type: preventive
+      description: Block onboarding or activity until beneficial owner data is provided and verified;
+        escalate refusals to compliance.
+      implementation: process
       effectiveness: high
     - id: ML-TCSP-008-C2
       name: Exit policy

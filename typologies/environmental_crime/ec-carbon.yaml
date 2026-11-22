@@ -1,0 +1,218 @@
+typology:
+  id: EC-CARBON
+  name: Carbon-Credit Fraud
+  domain: environmental_crime
+  description: Fraudulent creation, sale or claiming of carbon credits and emissions allowances, including
+    double counting, non-existent projects, inflated baselines, VAT fraud on allowance trading and misleading
+    offset claims. Fraud harms climate goals and investors.
+  sectors:
+  - banking
+  - securities
+  - crypto
+  - corporate_services
+  - payments
+  sources:
+  - FATF, Money Laundering from Environmental Crime (2021)
+  - Integrity Council for the Voluntary Carbon Market, Core Carbon Principles (2023)
+  - Europol, public material on emissions trading fraud
+  - 'IOSCO, Voluntary Carbon Markets: Final Report (2024)'
+  indicators:
+  - id: EC-CARBON-001
+    name: Project lacking verifiable registry entry or independent verification
+    description: Credits sold from a project with no registry listing, uncertified verifier or conflicting
+      documents.
+    category: document
+    severity: high
+    detection_type:
+    - document_review
+    - investigator_judgement
+    data_sources:
+    - registry_data
+    - verification_reports
+    false_positive_notes: New projects may still be in registration.
+    controls:
+    - id: EC-CARBON-001-C1
+      name: Registry verification
+      type: preventive
+      description: Confirm credits and serial numbers on recognised registries.
+      implementation: process
+      effectiveness: high
+    - id: EC-CARBON-001-C2
+      name: Verifier accreditation check
+      type: preventive
+      description: Verify third-party verifier status.
+      implementation: process
+      effectiveness: medium
+  - id: EC-CARBON-002
+    name: Same credits sold multiple times or retired and resold
+    description: Serial numbers appear in more than one transaction or after retirement.
+    category: transaction
+    severity: high
+    detection_type:
+    - document_review
+    - investigator_judgement
+    data_sources:
+    - registry_data
+    - trade_data
+    false_positive_notes: Registry timing issues can show duplicate records.
+    controls:
+    - id: EC-CARBON-002-C1
+      name: Serial number reconciliation
+      type: detective
+      description: Check each credit against registry status.
+      implementation: rule
+      effectiveness: high
+    - id: EC-CARBON-002-C2
+      name: Double-counting controls
+      type: preventive
+      description: Require evidence against host-country accounting.
+      implementation: process
+      effectiveness: medium
+  - id: EC-CARBON-003
+    name: Credits priced far below or above market with no quality basis
+    description: Offers significantly diverge from benchmark prices for the project type.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - price_data
+    false_positive_notes: Quality and vintage cause price variation.
+    controls:
+    - id: EC-CARBON-003-C1
+      name: Price benchmark checks
+      type: detective
+      description: Compare to benchmark ranges.
+      implementation: rule
+      effectiveness: medium
+    - id: EC-CARBON-003-C2
+      name: Quality rating consultation
+      type: preventive
+      description: Use independent ratings.
+      implementation: process
+      effectiveness: medium
+  - id: EC-CARBON-004
+    name: Intermediary or broker with no track record and aggressive marketing
+    description: New broker promises guaranteed returns or urgent allocation.
+    category: counterparty
+    severity: high
+    detection_type:
+    - kyc_review
+    - external_intel
+    data_sources:
+    - company_registry
+    - adverse_media
+    false_positive_notes: Start-ups can be genuine.
+    controls:
+    - id: EC-CARBON-004-C1
+      name: Broker due diligence
+      type: preventive
+      description: Verify licences and referees.
+      implementation: process
+      effectiveness: high
+    - id: EC-CARBON-004-C2
+      name: Investor warning screening
+      type: detective
+      description: Check regulator warning lists.
+      implementation: technology
+      effectiveness: medium
+  - id: EC-CARBON-005
+    name: Round-trip trading and VAT fraud in allowance markets
+    description: Allowances bought and sold quickly among connected firms across borders with VAT unpaid.
+    category: transaction
+    severity: high
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - payment_records
+    - registry_data
+    false_positive_notes: Active traders turn over positions fast.
+    controls:
+    - id: EC-CARBON-005-C1
+      name: Circular flow detection
+      type: detective
+      description: Detect loops among traders.
+      implementation: model
+      effectiveness: medium
+    - id: EC-CARBON-005-C2
+      name: VAT risk review
+      type: detective
+      description: Link to VAT-fraud controls.
+      implementation: process
+      effectiveness: medium
+  - id: EC-CARBON-006
+    name: Funds routed to project developers in high-risk jurisdictions with no activity
+    description: Payments to developers in remote regions without site evidence.
+    category: geographic
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - external_intel
+    data_sources:
+    - payment_records
+    - satellite_data
+    false_positive_notes: Rural projects have limited footprint.
+    controls:
+    - id: EC-CARBON-006-C1
+      name: Satellite and site evidence review
+      type: detective
+      description: Check land cover claims.
+      implementation: technology
+      effectiveness: medium
+    - id: EC-CARBON-006-C2
+      name: Developer EDD
+      type: preventive
+      description: Apply enhanced diligence.
+      implementation: process
+      effectiveness: high
+  - id: EC-CARBON-007
+    name: Inflated baseline or additionality claims
+    description: Reduction claims implausible versus public data or comparable projects.
+    category: typology_specific
+    severity: medium
+    detection_type:
+    - investigator_judgement
+    - document_review
+    data_sources:
+    - project_documents
+    - scientific_data
+    false_positive_notes: Methodologies are technical and contested.
+    controls:
+    - id: EC-CARBON-007-C1
+      name: Technical review of claims
+      type: preventive
+      description: Use specialists to review methodology.
+      implementation: process
+      effectiveness: medium
+    - id: EC-CARBON-007-C2
+      name: Rating and watchdog monitoring
+      type: detective
+      description: Monitor independent critiques.
+      implementation: technology
+      effectiveness: medium
+  - id: EC-CARBON-008
+    name: Retirement certificates claimed for corporate net-zero without registry proof
+    description: Companies or traders claim offsets via documents that do not match retirement records.
+    category: behavioural
+    severity: medium
+    detection_type:
+    - document_review
+    - external_intel
+    data_sources:
+    - retirement_records
+    false_positive_notes: Delays between retirement and posting occur.
+    controls:
+    - id: EC-CARBON-008-C1
+      name: Retirement evidence verification
+      type: preventive
+      description: Verify against registry.
+      implementation: process
+      effectiveness: medium
+    - id: EC-CARBON-008-C2
+      name: Greenwashing risk governance
+      type: governance
+      description: Set approval for environmental claims.
+      implementation: policy
+      effectiveness: medium

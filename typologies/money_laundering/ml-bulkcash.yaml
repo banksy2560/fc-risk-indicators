@@ -1,0 +1,209 @@
+typology:
+  id: ML-BULKCASH
+  name: Cash Couriers and Bulk Cash Smuggling
+  domain: money_laundering
+  description: Physical movement of banknotes across borders or within a country, by couriers, vehicles,
+    freight, mail or hidden in goods, to place proceeds in or move them to jurisdictions with weak controls.
+    Flows may reappear as deposits, exchange house transactions or trade.
+  stage:
+  - placement
+  - layering
+  sectors:
+  - banking
+  - mvts
+  - dnfbp
+  sources:
+  - FATF, Money Laundering through the Physical Transportation of Cash (2015)
+  - FATF, Best Practices on Cross-Border Declaration and Disclosure (general)
+  - 'FATF, Cash Couriers: Interpretive Note to Recommendation 32 (general)'
+  indicators:
+  - id: ML-BULKCASH-001
+    name: Large undeclared or inconsistent cross-border cash declarations
+    description: Discrepancies between declared and found cash or declarations lacking purpose.
+    category: transaction
+    severity: high
+    detection_type:
+    - investigator_judgement
+    - external_intel
+    data_sources:
+    - declaration_records
+    false_positive_notes: Honest errors.
+    controls:
+    - id: ML-BULKCASH-001-C1
+      name: Declaration and detection programme
+      type: detective
+      description: Customs targeting and screening.
+      implementation: process
+      effectiveness: high
+    - id: ML-BULKCASH-001-C2
+      name: Information sharing with FIU
+      type: detective
+      description: Share declaration data.
+      implementation: process
+      effectiveness: medium
+  - id: ML-BULKCASH-002
+    name: Large cash deposits soon after foreign travel
+    description: Deposits follow trips to cash-prone jurisdictions.
+    category: transaction
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - investigator_judgement
+    data_sources:
+    - transaction_data
+    - travel_data
+    false_positive_notes: Tourism earnings.
+    controls:
+    - id: ML-BULKCASH-002-C1
+      name: Travel-linked deposit alert
+      type: detective
+      description: Link deposits with travel where lawful.
+      implementation: rule
+      effectiveness: medium
+    - id: ML-BULKCASH-002-C2
+      name: Source-of-funds inquiry
+      type: preventive
+      description: Ask for source.
+      implementation: process
+      effectiveness: medium
+  - id: ML-BULKCASH-003
+    name: Deposits in foreign currency or unusual denominations
+    description: Large foreign notes exchanged or deposited.
+    category: product_channel
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - exchange_records
+    false_positive_notes: Travellers.
+    controls:
+    - id: ML-BULKCASH-003-C1
+      name: Foreign cash threshold rule
+      type: detective
+      description: Alert on large foreign cash exchange.
+      implementation: rule
+      effectiveness: medium
+    - id: ML-BULKCASH-003-C2
+      name: Exchange customer ID
+      type: preventive
+      description: Collect ID.
+      implementation: process
+      effectiveness: medium
+  - id: ML-BULKCASH-004
+    name: Cash concealed in vehicles, shipments or parcels
+    description: Cash found hidden in goods, freight or mail.
+    category: typology_specific
+    severity: high
+    detection_type:
+    - investigator_judgement
+    - external_intel
+    data_sources:
+    - seizure_reports
+    false_positive_notes: Rare.
+    controls:
+    - id: ML-BULKCASH-004-C1
+      name: Freight and mail screening
+      type: detective
+      description: Screen shipments.
+      implementation: technology
+      effectiveness: medium
+    - id: ML-BULKCASH-004-C2
+      name: Courier profile intelligence
+      type: detective
+      description: Use intelligence on couriers.
+      implementation: process
+      effectiveness: medium
+  - id: ML-BULKCASH-005
+    name: Frequent cash-in-transit use by a non-retail customer
+    description: Cash collected or delivered without commercial need.
+    category: customer
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    - kyc_review
+    data_sources:
+    - cit_records
+    false_positive_notes: Genuine retail.
+    controls:
+    - id: ML-BULKCASH-005-C1
+      name: CIT use reasonableness
+      type: preventive
+      description: Check business need.
+      implementation: process
+      effectiveness: medium
+    - id: ML-BULKCASH-005-C2
+      name: Cash volume benchmark
+      type: detective
+      description: Compare to peers.
+      implementation: model
+      effectiveness: medium
+  - id: ML-BULKCASH-006
+    name: Bulk cash purchases of precious goods, vehicles or remittance
+    description: Cash used to buy portable assets for transport.
+    category: product_channel
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - transaction_data
+    false_positive_notes: Normal retail.
+    controls:
+    - id: ML-BULKCASH-006-C1
+      name: Cash purchase limits
+      type: preventive
+      description: Limit cash.
+      implementation: policy
+      effectiveness: medium
+    - id: ML-BULKCASH-006-C2
+      name: Dealer reporting
+      type: detective
+      description: Require threshold reports.
+      implementation: process
+      effectiveness: medium
+  - id: ML-BULKCASH-007
+    name: Account holders in border regions with cross-border flows
+    description: Frequent deposits near borders with matching cross-border transfers.
+    category: geographic
+    severity: medium
+    detection_type:
+    - transaction_monitoring
+    data_sources:
+    - transaction_data
+    false_positive_notes: Cross-border workers.
+    controls:
+    - id: ML-BULKCASH-007-C1
+      name: Border region monitoring
+      type: detective
+      description: Tune alerts for corridors.
+      implementation: rule
+      effectiveness: medium
+    - id: ML-BULKCASH-007-C2
+      name: Cross-border customer EDD
+      type: preventive
+      description: Review activity.
+      implementation: process
+      effectiveness: medium
+  - id: ML-BULKCASH-008
+    name: Customer or courier evasive about cash origin
+    description: Gives inconsistent accounts or refuses declarations.
+    category: behavioural
+    severity: high
+    detection_type:
+    - customer_behaviour
+    - investigator_judgement
+    data_sources:
+    - staff_notes
+    false_positive_notes: Nervous.
+    controls:
+    - id: ML-BULKCASH-008-C1
+      name: Frontline escalation
+      type: preventive
+      description: Escalate and report.
+      implementation: process
+      effectiveness: medium
+    - id: ML-BULKCASH-008-C2
+      name: Cash refusal policy
+      type: preventive
+      description: Refuse cash.
+      implementation: policy
+      effectiveness: medium

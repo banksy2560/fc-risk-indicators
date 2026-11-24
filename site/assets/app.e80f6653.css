@@ -42,6 +42,8 @@ main{outline:0;padding-bottom:56px}
 .lede{max-width:78ch;color:var(--ink-2);margin:-6px 0 18px}
 .eyebrow{font:700 12px var(--ui);letter-spacing:.03em;text-transform:uppercase;color:var(--ink-3)}
 code,kbd{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+kbd.kh{display:none}
+@media (hover:hover) and (pointer:fine){kbd.kh{display:inline}}
 kbd{border:1px solid var(--rule-strong);border-radius:4px;padding:0 5px;background:var(--surface-2)}
 /* banner + nav */
 .banner{background:var(--banner-bg);color:var(--banner-ink);font-size:13px;border-bottom:1px solid var(--rule);padding:0 12px}
@@ -93,6 +95,11 @@ select{min-width:min(100%,320px);max-width:100%}
 #qlist li{padding:7px 10px;border-radius:6px;display:flex;gap:8px;align-items:center;cursor:pointer}
 #qlist li[role=presentation]{cursor:default;padding:8px 10px 3px}
 #qlist li[aria-selected=true]{background:var(--surface-2);outline:2px solid var(--focus);outline-offset:-2px}
+#qlist li[role=option]{align-items:flex-start}
+#qlist .rt{display:flex;flex-direction:column;gap:2px;min-width:0}
+#qlist .why{font-size:12.5px;color:var(--ink-3);line-height:1.35;overflow-wrap:anywhere}
+#qlist .why mark{background:none;color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+#qlist .more{margin:0;white-space:normal;padding:6px 10px}
 #qlist .meta{margin-left:auto;font-size:12px;color:var(--ink-3);white-space:nowrap;padding-left:8px}
 /* ---- linkage diagram: hub and spoke (indicators left, typology card centre, controls right) ---- */
 .sheetwrap{margin-top:4px}
@@ -304,3 +311,7 @@ html.js .dia:not(.on) .dl path{clip-path:inset(0 100% 0 0) stroke-box}
 :root[data-motion="off"] .ln,:root[data-motion="off"] .drawer,:root[data-motion="off"] .scrim{transition:none}
 /* keyboard-driven changes (arrow keys, Enter, Esc) never animate: state changes are instant */
 :root[data-input="kbd"] .node,:root[data-input="kbd"] .mcard,:root[data-input="kbd"] .ln,:root[data-input="kbd"] .drawer,:root[data-input="kbd"] .scrim{transition:none}
+
+.resume{display:flex;gap:10px 16px;flex-wrap:wrap;align-items:center;justify-content:space-between;border:1px solid var(--illus);background:var(--illus-bg);border-radius:var(--r);padding:12px 14px;margin-bottom:14px}
+.resume p{margin:0;max-width:60ch}
+.btn.quiet{border-color:transparent;background:none;font-weight:500;text-decoration:underline}

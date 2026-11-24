@@ -36,11 +36,15 @@ function save() {
   const s = enc();
   try { history.replaceState(null, '', location.pathname + (s ? '#' + s : '')); } catch (e) {}
   try { localStorage.setItem(KEY, s); } catch (e) {}
+  SAVED = ''; hideResume();   // a new answer replaces whatever was saved
 }
+/* Answers in the address restore immediately. Saved answers on this device are never applied on their own: a fresh visit
+   starts blank and offers a "Resume" banner (see offerResume). */
+let SAVED = '';
 (function () {
   const h = location.hash.slice(1);
   if (h && dec(h)) return;
-  try { const v = localStorage.getItem(KEY); if (v) dec(v); } catch (e) {}
+  try { SAVED = localStorage.getItem(KEY) || ''; } catch (e) {}
 })();
 
 /* ---------- derived: product, channels, visible questions, profile tags, matches ---------- */
@@ -205,6 +209,7 @@ function gridHtml() {
 /* ---------- shell ---------- */
 function shell() {
   root.innerHTML =
+    '<div id="resume" class="resume" role="region" aria-label="Saved answers" hidden></div>' +
     '<div class="pmbar"><div class="field"><label for="prof">Start from an example <span class="illus">illustrative</span></label><select id="prof"><option value="">None: start blank</option>' +
     Q.profiles.map(p => '<option value="' + esc(p.id) + '">' + esc(p.n) + '</option>').join('') + '</select></div>' +
     '<div class="acts"><button type="button" class="btn" id="reset">Reset</button><button type="button" class="btn" id="share">Copy link</button></div>' +
@@ -213,7 +218,27 @@ function shell() {
     '<div class="pmbody" id="pmassess"' + (S.g ? ' hidden' : '') + '><div class="qcol" id="qcol"><p class="qh" id="cnt" aria-live="polite"></p><div id="steps"></div></div><aside class="res" id="results" aria-label="Results" aria-live="polite"></aside></div>' +
     '<div id="pmgrid"' + (S.g ? '' : ' hidden') + '></div>';
   $('#prof').value = S.p; profNote(); paintSteps(); if (S.g) $('#pmgrid').innerHTML = gridHtml();
+  offerResume();
 }
+/* ---------- remembered answers: opt-in resume ---------- */
+function describeSaved() {
+  const snap = enc(); dec(SAVED);
+  const p = product(), n = channels().length, has = S.a.size || S.x.size || S.i.size || S.p;
+  dec(snap);
+  if (!has) return '';
+  return p ? p.opt.l + (n ? ', ' + n + ' channel' + (n === 1 ? '' : 's') : '') : 'answers saved';
+}
+function offerResume() {
+  const box = $('#resume'); if (!box || !SAVED) return;
+  const d = describeSaved(); if (!d) return;
+  box.innerHTML = '<p><strong>Saved on this device.</strong> Your last assessment (' + esc(d) + ') is stored in this browser only and has not been loaded.</p>' +
+    '<div class="acts"><button type="button" class="btn" id="resumebtn">Resume your last assessment on this device (' + esc(d) + ')</button>' +
+    '<button type="button" class="btn" id="forgetbtn">Forget saved answers</button>' +
+    '<button type="button" class="btn quiet" id="dismissbtn" aria-label="Dismiss, keep saved answers">Dismiss</button></div>';
+  box.hidden = false;
+}
+function hideResume() { const b = $('#resume'); if (b) { b.hidden = true; b.innerHTML = ''; } }
+function applyState() { $('#prof').value = S.p; profNote(); paintSteps(); prune(); renderResults(); applyTab(); }
 function paintSteps() { const st = $('#steps'); if (st) st.innerHTML = stepsHtml(); }
 function profNote() {
   const p = PROF[S.p];
@@ -250,6 +275,9 @@ root.addEventListener('change', e => {
 });
 root.addEventListener('click', e => {
   const t = e.target.closest('button,a,summary'); if (!t) return;
+  if (t.id === 'resumebtn') { dec(SAVED); ui.animate = true; ui.open = {}; applyState(); save(); const m = $('#prof'); if (m) m.focus({ preventScroll: true }); FC.toast('Saved answers restored'); return; }
+  if (t.id === 'forgetbtn') { try { localStorage.removeItem(KEY); } catch (e) {} SAVED = ''; hideResume(); FC.toast('Saved answers forgotten'); return; }
+  if (t.id === 'dismissbtn') { SAVED = ''; hideResume(); return; }
   if (t.dataset.tog) { const id = t.dataset.tog; S.x.has(id) ? S.x.delete(id) : S.x.add(id); changed(); }
   else if (t.dataset.rm) { S.i.delete(t.dataset.rm); changed(); }
   else if (t.dataset.clr) { Q.questions.find(q => q.id === t.dataset.clr).o.forEach(o => S.a.delete(o.id)); changed(true); }
@@ -267,5 +295,5 @@ root.addEventListener('click', e => {
   }
 });
 root.addEventListener('toggle', e => { const d = e.target; if (d.dataset && d.dataset.g) ui.open[d.dataset.g] = d.open; }, true);
-window.addEventListener('hashchange', () => { dec(location.hash.slice(1)); $('#prof').value = S.p; profNote(); paintSteps(); prune(); renderResults(); applyTab(); });
+window.addEventListener('hashchange', () => { dec(location.hash.slice(1)); applyState(); });
 })();

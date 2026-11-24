@@ -98,38 +98,112 @@ function afterFilter() {
 }
 
 /* ---------- search ---------- */
-let results = [], active = -1;
-function score(name, id, toks) {
-  const n = name.toLowerCase(), i = id.toLowerCase(); let s = 0;
-  for (const t of toks) {
-    if (n.startsWith(t) || i.startsWith(t)) s += 3; else if (n.includes(' ' + t)) s += 2; else if (n.includes(t) || i.includes(t)) s += 1; else return 0;
+/* Names and ids are searchable straight away (from index.json). The first focus or keystroke lazily fetches
+   /data/search.json, which adds descriptions (and key terms for typologies) to the same corpus. */
+const STEM_KEEP = /(ss|us|is)$/;
+const stem = w => {
+  w = w.toLowerCase();
+  if (w.length < 4) return w;
+  if (/ies$/.test(w) && w.length > 4) return w.slice(0, -3) + 'y';
+  if (/(sses|xes|zes|ches|shes)$/.test(w)) return w.slice(0, -2);
+  if (/ing$/.test(w) && w.length > 5) return w.slice(0, -3);
+  if (/ed$/.test(w) && w.length > 4) return w.slice(0, -2);
+  if (/s$/.test(w) && !STEM_KEEP.test(w)) return w.slice(0, -1);
+  return w;
+};
+const wordsOf = t => (t.toLowerCase().match(/[a-z0-9]+/g) || []);
+const stems = t => wordsOf(t).map(stem);
+const CORPUS = [];   // { k, r, id, name, nameL, nameS (stems), hay (name+domain stems Set), text, textS (stems string), textSet }
+const byId = {};
+function addDoc(k, r) {
+  const hayT = r.n + (k === 't' ? ' ' + (lab.dom[r.d] || '') : '');
+  const d = { k, r, id: r.id, idL: r.id.toLowerCase(), name: r.n, nameL: r.n.toLowerCase(), hay: new Set(stems(hayT)), hayL: hayT.toLowerCase(), text: '', textS: '', textSet: new Set() };
+  CORPUS.push(d); byId[r.id] = d;
+}
+X.T.forEach(r => addDoc('t', r)); X.I.forEach(r => addDoc('i', r)); X.C.forEach(r => addDoc('c', r));
+let loadedText = false, loadingText = null;
+function loadSearch() {
+  if (loadingText) return loadingText;
+  loadingText = FC.getJSON('/data/search.json').then(d => {
+    ['T', 'I', 'C'].forEach(g => d[g].forEach(row => {
+      const o = byId[row[0]]; if (!o) return;
+      o.text = row[2] + (row[3] ? ' ' + row[3] : '');
+      const st = stems(o.text); o.textSet = new Set(st); o.textS = ' ' + st.join(' ') + ' ';
+    }));
+    loadedText = true;
+    if (document.activeElement === q && q.value.trim()) runSearch();
+  }).catch(() => { loadingText = null; });
+  return loadingText;
+}
+/* tiers: exact id > id prefix > name starts-with > name contains > all words in name > description or context */
+function scoreDoc(d, text, toks, ts) {
+  const ql = text.toLowerCase();
+  if (d.idL === ql) return 1000;
+  if (ql.length >= 3 && /\d|-/.test(ql) && d.idL.startsWith(ql)) return 900;
+  if (d.nameL.startsWith(ql)) return 800;
+  if (d.nameL.includes(ql)) return 700;
+  const inName = toks.every((t, n) => d.hayL.includes(t) || d.hay.has(ts[n]));
+  if (inName) return 600 + (toks.every(t => d.nameL.split(/\W+/).some(w => w.startsWith(t))) ? 20 : 0);
+  if (loadedText) {
+    const mixed = toks.every((t, n) => d.hayL.includes(t) || d.hay.has(ts[n]) || d.textSet.has(ts[n]));
+    const ph = ' ' + ts.join(' ') + ' ', pc = Math.min(3, d.textS.split(ph).length - 1);
+    if (mixed) return 300 + (pc ? 50 + pc * 5 : 0) + (d.hay.size && toks.some((t, n) => d.hay.has(ts[n])) ? 20 : 0);
   }
-  return s;
+  return 0;
 }
+function snippet(d, toks, ts) {
+  const t = d.text; if (!t) return '';
+  const re = /[A-Za-z0-9]+/g; let m; const hits = [];
+  while ((m = re.exec(t))) { const sm = stem(m[0]); if (ts.includes(sm)) hits.push([m.index, m.index + m[0].length, sm]); }
+  if (!hits.length) return '';
+  // start at the first hit whose following 100 characters cover the most distinct query words
+  let at = hits[0][0], best = 0;
+  hits.forEach(h => { const n = new Set(hits.filter(x => x[0] >= h[0] && x[0] < h[0] + 100).map(x => x[2])).size; if (n > best) { best = n; at = h[0]; } });
+  const from = Math.max(0, at - 36), to = Math.min(t.length, from + 110);
+  let out = '', pos = from;
+  hits.filter(h => h[0] >= from && h[1] <= to).forEach(h => { out += esc(t.slice(pos, h[0])) + '<mark>' + esc(t.slice(h[0], h[1])) + '</mark>'; pos = h[1]; });
+  out += esc(t.slice(pos, to));
+  return (from > 0 ? '...' : '') + out + (to < t.length ? '...' : '');
+}
+const MAXR = 12;
 function search(text) {
-  const toks = text.toLowerCase().split(/\s+/).filter(Boolean);
-  if (!toks.length) return [];
-  const rank = (arr, k, nameOf, max) => arr.map(r => ({ k, r, s: score(nameOf(r), r.id, toks) })).filter(x => x.s)
-    .sort((a, b) => b.s - a.s || (b.r.u || 0) - (a.r.u || 0) || nameOf(a.r).localeCompare(nameOf(b.r))).slice(0, max);
-  return [].concat(rank(X.T, 't', r => r.n + ' ' + (lab.dom[r.d] || ''), 6), rank(X.I, 'i', r => r.n, 8), rank(X.C, 'c', r => r.n, 8));
+  text = text.trim().replace(/\s+/g, ' ');
+  const toks = text.toLowerCase().split(' ').filter(Boolean);
+  if (!toks.length) return { list: [], more: 0 };
+  const ts = toks.map(stem);
+  const hits = [];
+  CORPUS.forEach(d => { const s = scoreDoc(d, text, toks, ts); if (s) hits.push({ k: d.k, r: d.r, s, d }); });
+  hits.sort((a, b) => b.s - a.s || (b.r.u || 0) - (a.r.u || 0) || a.d.name.localeCompare(b.d.name));
+  // fill 12 slots by score, at most 6 per kind first so one kind does not crowd the others out
+  const pick = [], per = { t: 0, i: 0, c: 0 };
+  hits.forEach(h => { if (pick.length < MAXR && per[h.k] < 6) { pick.push(h); per[h.k]++; } });
+  hits.forEach(h => { if (pick.length < MAXR && !pick.includes(h)) pick.push(h); });
+  const list = ['t', 'i', 'c'].flatMap(k => pick.filter(h => h.k === k));
+  list.forEach(h => { h.desc = h.s < 600 ? snippet(h.d, toks, ts) : ''; });
+  return { list, more: hits.length - list.length };
 }
+let results = [], active = -1, more = 0;
+function runSearch() { const r = search(q.value); results = r.list; more = r.more; active = results.length ? 0 : -1; paintResults(); }
 function paintResults() {
   if (!results.length) {
-    qlist.hidden = !q.value.trim(); qlist.innerHTML = q.value.trim() ? '<li role="presentation" class="meta">No match. Try fewer words.</li>' : '';
+    qlist.hidden = !q.value.trim(); qlist.innerHTML = q.value.trim() ? '<li role="presentation" class="meta">' + (loadingText && !loadedText ? 'Searching descriptions...' : 'No match. Try fewer words.') + '</li>' : '';
     q.setAttribute('aria-expanded', String(!qlist.hidden)); return;
   }
   let html = '', last = '';
   results.forEach((x, n) => {
-    if (x.k !== last) { last = x.k; html += '<li role="presentation" class="eyebrow">' + (x.k === 't' ? 'Typologies' : KIND[x.k] + 's') + '</li>'; }
+    if (x.k !== last) { last = x.k; html += '<li role="presentation" class="eyebrow">' + KIND[x.k] + '</li>'; }
     const meta = x.k === 't' ? esc(lab.dom[x.r.d] || '') : 'in ' + pl(x.r.u);
-    html += '<li role="option" id="qo' + n + '" data-n="' + n + '" class="c-' + x.k + '" aria-selected="' + (n === active) + '">' + MARK[x.k] + '<span>' + esc(x.r.n) + '</span><span class="meta">' + meta + '</span></li>';
+    const why = x.s < 600 ? '<span class="why">' + (x.desc ? 'Matches ' + (x.k === 't' ? 'description or context' : 'description') + ': ' + x.desc : 'Matches description') + '</span>' : '';
+    html += '<li role="option" id="qo' + n + '" data-n="' + n + '" class="c-' + x.k + '" aria-selected="' + (n === active) + '" aria-label="' + esc(KIND[x.k] + ': ' + x.r.n + (x.s < 600 ? ', matches description' : '')) + '">' + MARK[x.k] + '<span class="rt"><span>' + esc(x.r.n) + '</span>' + why + '</span><span class="meta">' + meta + '</span></li>';
   });
+  if (more > 0) html += '<li role="presentation" class="meta more">' + more + ' more. Add a word to narrow the search.</li>';
   qlist.innerHTML = html; qlist.hidden = false; q.setAttribute('aria-expanded', 'true');
   if (active >= 0) q.setAttribute('aria-activedescendant', 'qo' + active); else q.removeAttribute('aria-activedescendant');
 }
 function closeResults() { qlist.hidden = true; q.setAttribute('aria-expanded', 'false'); q.removeAttribute('aria-activedescendant'); active = -1; }
 function choose(n) { const x = results[n]; if (!x) return; q.value = ''; results = []; closeResults(); dom = ''; go(x.k, x.r.id); }
-q.addEventListener('input', () => { results = search(q.value); active = results.length ? 0 : -1; paintResults(); });
+q.addEventListener('input', () => { loadSearch(); runSearch(); });
+q.addEventListener('focus', loadSearch, { once: true });
 q.addEventListener('keydown', e => {
   if (e.key === 'ArrowDown' && results.length) { e.preventDefault(); active = (active + 1) % results.length; paintResults(); $('#qo' + active).scrollIntoView({ block: 'nearest' }); }
   else if (e.key === 'ArrowUp' && results.length) { e.preventDefault(); active = (active - 1 + results.length) % results.length; paintResults(); $('#qo' + active).scrollIntoView({ block: 'nearest' }); }
@@ -396,16 +470,19 @@ let ro = null, rq = 0;
 function relayout() { cancelAnimationFrame(rq); rq = requestAnimationFrame(() => drawLines(false, true)); }
 
 /* ---------- render ---------- */
+const setTitle = n => { document.title = n + ' | Linkage | FC Risk Indicators'; };
+const nameOf = () => ({ t: TM, i: IM, c: CM })[S.mode][S.id].n;
 async function render(first) {
   const my = ++tok; first = first !== false;
+  setTitle(nameOf());   // synchronous: title follows the selection before any data loads
   closeDrawer(false); ex = { l: false, r: false };
   paintControls(); paintStrip();
   if (S.mode === 't') {
     let d;
     try { d = await FC.getJSON('/data/t/' + S.id + '.json'); } catch (e) { view.innerHTML = '<p class="notice">Could not load this typology.</p>'; return; }
     if (my !== tok) return;
-    cur = d; document.title = d.n + ' | Linkage | FC Risk Indicators';
-  } else { cur = null; document.title = (S.mode === 'i' ? IM : CM)[S.id].n + ' | Linkage | FC Risk Indicators'; }
+    cur = d; setTitle(d.n);
+  } else cur = null;
   renderDiagram(first);
   const want = S.want; S.want = '';
   if (want && M) {

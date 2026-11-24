@@ -1,0 +1,1 @@
+{"id":"IND-TXN-005","n":"Transfers to many newly created crypto addresses","ds":"Repeated small or fixed-amount transfers to many fresh or new crypto addresses.","s":"medium","fp":"Privacy-conscious users and wallet software that rotates addresses can produce this pattern.","det":["transaction_monitoring"],"cat":"transaction"}

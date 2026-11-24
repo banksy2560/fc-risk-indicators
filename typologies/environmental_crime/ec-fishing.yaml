@@ -22,6 +22,12 @@ typology:
     basis: ai_inferred
     rationale: Vessel owners, traders and processors with seafood trade finance, vessel insurance and
       crew payments through agencies.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: IUU fishing involves vessel owners, seafood trade and trade finance; no retail expression.
   sectors:
   - banking
   - corporate_services

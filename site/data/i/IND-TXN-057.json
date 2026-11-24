@@ -1,0 +1,1 @@
+{"id":"IND-TXN-057","n":"P2P payments received from third-party bank accounts","ds":"Buyers pay from accounts not in the buyer's name, or sellers receive from unknown payers.","s":"medium","fp":"Family-funded purchases.","det":["transaction_monitoring"],"cat":"transaction"}

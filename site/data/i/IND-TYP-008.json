@@ -1,0 +1,1 @@
+{"id":"IND-TYP-008","n":"Inbound funds traced to exploited protocols or hacks","ds":"Deposits have provenance in a smart-contract exploit, bridge hack or theft attributed by analytics providers.","s":"high","fp":"Funds returned under a bounty or recovered legitimately.","det":["transaction_monitoring","external_intel"],"cat":"typology_specific"}

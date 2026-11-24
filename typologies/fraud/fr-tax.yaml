@@ -12,6 +12,7 @@ typology:
     - fast_payments
     - cheque
     - direct_debit_batch
+    - stored_value_wallet
     customer_segments:
     - retail
     - new_to_bank
@@ -20,6 +21,16 @@ typology:
     - prepaid_stored_value
     basis: ai_inferred
     rationale: Refunds/benefit payments landing in mule or prepaid accounts.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      channels:
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Fraudulent refunds and benefit payments landing in mule or stolen-identity accounts.
   sectors:
   - banking
   - payments

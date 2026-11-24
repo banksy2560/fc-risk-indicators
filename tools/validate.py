@@ -66,6 +66,15 @@ def main(root, strict):
         for dim in ("channels","payment_rails","customer_segments","products"):
             for v in (ex or {}).get(dim, []) or []:
                 if v not in voc.get(dim, []): errs.append(f"{t['id']}: exposure {dim} value '{v}' not in vocab.yaml")
+        cons = (ex or {}).get("consumer")
+        if cons is not None:
+            scope = voc.get("consumer_scope", {})
+            sp = {x["id"] for x in scope.get("products", [])}; sc = {x["id"] for x in scope.get("channels", [])}
+            for v in cons.get("products", []) or []:
+                if v not in sp: errs.append(f"{t['id']}: consumer product '{v}' not in vocab consumer_scope")
+            for v in cons.get("channels", []) or []:
+                if v not in sc: errs.append(f"{t['id']}: consumer channel '{v}' not in vocab consumer_scope")
+            if not isinstance(cons.get("relevant"), bool): errs.append(f"{t['id']}: consumer.relevant must be true/false")
         seen = set()
         for l in t["indicators"]:
             n_link += 1

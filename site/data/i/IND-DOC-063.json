@@ -1,0 +1,1 @@
+{"id":"IND-DOC-063","n":"Discrepancy between loading port, origin documents and tracking","ds":"Declared origin differs from vessel tracking and port records.","s":"high","fp":"Port calls vary with operational changes.","det":["document_review","external_intel"],"cat":"document"}

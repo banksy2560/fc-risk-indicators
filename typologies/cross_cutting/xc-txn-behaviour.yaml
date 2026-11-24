@@ -12,6 +12,13 @@ typology:
     products: []
     basis: ai_inferred
     rationale: Typology-agnostic transaction red flags; no principal exposure.
+    consumer:
+      relevant: true
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Cross-cutting risk factor; applies across all consumer products and channels. Typology-agnostic
+        transaction red flags.
   sectors:
   - all
   sources:

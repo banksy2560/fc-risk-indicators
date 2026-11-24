@@ -1,0 +1,1 @@
+{"id":"IND-BEH-007","n":"Remote-access, emulator or automation tools in session","ds":"Remote-desktop, screen-sharing, emulator or scripted-control tools are detected during onboarding, login or payment sessions.","s":"high","fp":"IT support and accessibility tools can trigger detections.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

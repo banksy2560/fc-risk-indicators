@@ -1,0 +1,1 @@
+{"id":"IND-TXN-146","n":"Urgent transfers described as emergency family or legal payments","ds":"Customer receives or sends sudden large transfers framed as emergencies, to unfamiliar parties or accounts abroad.","s":"medium","fp":"Genuine medical and legal emergencies produce similar urgency.","det":["transaction_monitoring","investigator_judgement"],"cat":"transaction"}

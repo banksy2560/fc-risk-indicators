@@ -11,18 +11,34 @@ typology:
     - broker_intermediary
     payment_rails:
     - wire_swift
+    - loan_disbursement
     customer_segments:
     - designated_person
     - private_wealth
     - pep_related
     - regulated_nonbank_dnfbp
+    - third_party_funder
     products:
     - real_assets
     - transaction_account
-    - loan_mortgage
+    - personal_loan
+    - home_loan_fixed
+    - home_loan_variable
     basis: ai_inferred
     rationale: Yachts, aircraft, art and property held via intermediaries and shell companies; dealers
       and brokers involved.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - home_loan_fixed
+      - home_loan_variable
+      channels:
+      - branch
+      - online_banking
+      basis: ai_inferred
+      rationale: Designated persons buying property via home loans or large transfers; branch and digital
+        funding of purchases; art and yachts out of scope.
   sectors:
   - art_luxury
   - real_estate

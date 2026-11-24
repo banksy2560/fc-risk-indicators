@@ -1,0 +1,1 @@
+{"id":"IND-BEH-025","n":"Repeated wins by the same supplier with narrow margins","ds":"One supplier repeatedly wins just below competitors or in rotation among a small group.","s":"medium","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["customer_behaviour","investigator_judgement"],"cat":"behavioural"}

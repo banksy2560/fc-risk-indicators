@@ -22,6 +22,13 @@ typology:
     - prepaid_stored_value
     basis: ai_inferred
     rationale: Mobile money and remittance with agent cash endpoints and SIM-swap abuse.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Mobile money and remittance operator abuse with agent cash endpoints; out of scope for
+        consumer deposit and credit products.
   stage:
   - layering
   sectors:

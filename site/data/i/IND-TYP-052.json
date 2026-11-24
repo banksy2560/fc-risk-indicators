@@ -1,0 +1,1 @@
+{"id":"IND-TYP-052","n":"Screening alerts closed repeatedly for the same pattern with minimal rationale","ds":"Internal indicator of weak alert handling that may mask manipulation.","s":"low","fp":"Genuine recurrent false positives.","det":["investigator_judgement"],"cat":"typology_specific"}

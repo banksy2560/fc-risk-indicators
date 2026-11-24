@@ -30,6 +30,10 @@ payment_rails:
   - insurance_premium_claim
   - informal_value_transfer   # hawala and similar
   - payroll_expense           # payroll, petty cash, procurement and expense flows
+  - loan_disbursement         # loan or credit funds paid out (to customer, third party, seller, cash-out)
+  - loan_early_payout         # early, lump-sum or third-party loan repayment and payout
+  - bill_payment              # bill-pay and biller-code style payments (e.g. BPAY)
+  - bnpl_cash_like            # buy-now-pay-later and cash-like credit uses
 customer_segments:
   - retail
   - student_youth
@@ -49,11 +53,18 @@ customer_segments:
   - public_sector
   - employee_internal
   - designated_person         # sanctioned, designated or associated persons
+  - sole_trader               # self-employed individual using personal products for business
+  - third_party_funder        # guarantor, gifted-deposit giver or other third party funding the customer
 products:
   - transaction_account
-  - savings_deposit
+  - savings_deposit           # DEPRECATED: split into savings_account and term_deposit
+  - savings_account
+  - term_deposit
   - credit_card
-  - loan_mortgage
+  - loan_mortgage             # DEPRECATED: split into personal_loan, home_loan_fixed, home_loan_variable
+  - personal_loan
+  - home_loan_fixed
+  - home_loan_variable
   - trade_finance
   - investment_securities
   - insurance_pension
@@ -65,3 +76,19 @@ products:
   - onchain_defi
   - real_assets               # property, art, vessels, commodities held outside the bank
   - company_formation_services
+
+# Consumer-bank scope used by the Product mapper (ids must exist above). Labels are what users see.
+consumer_scope:
+  products:
+    - {id: transaction_account, label: Everyday account}
+    - {id: savings_account, label: Savings account}
+    - {id: term_deposit, label: Term deposit}
+    - {id: credit_card, label: Credit card}
+    - {id: personal_loan, label: Personal loan}
+    - {id: home_loan_fixed, label: Home loan (fixed)}
+    - {id: home_loan_variable, label: Home loan (variable)}
+  channels:
+    - {id: mobile_app, label: Mobile app}
+    - {id: online_banking, label: Internet banking}
+    - {id: call_centre, label: Phone banking}
+    - {id: branch, label: Retail network}

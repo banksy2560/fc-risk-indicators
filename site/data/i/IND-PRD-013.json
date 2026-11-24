@@ -1,0 +1,1 @@
+{"id":"IND-PRD-013","n":"Anonymous or lightly verified prepaid or stored-value instruments","ds":"Prepaid cards or stored-value products without full ID, with high load limits, cross-border use or turnover inconsistent with design.","s":"high","fp":"Prepaid cards serve the unbanked.","det":["transaction_monitoring","kyc_review"],"cat":"product_channel"}

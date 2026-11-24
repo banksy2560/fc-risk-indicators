@@ -1,0 +1,1 @@
+{"id":"IND-TXN-115","n":"Funds move in fixed commission-like deductions","ds":"Recurring small percentage retained from inbound flows consistent with fee-taking by an intermediary.","s":"high","fp":"Brokers and payment agents charge fees.","det":["transaction_monitoring","investigator_judgement"],"cat":"transaction"}

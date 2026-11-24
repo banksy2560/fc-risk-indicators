@@ -1,0 +1,1 @@
+{"id":"IND-TXN-006","n":"Cash deposits just below reporting or identification threshold","ds":"Repeated cash deposits kept just under a reporting, identification or monitoring threshold.","s":"high","fp":"Customers may deposit regular round sums that coincidentally sit below thresholds.","det":["transaction_monitoring"],"cat":"transaction"}

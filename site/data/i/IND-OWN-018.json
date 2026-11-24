@@ -1,0 +1,1 @@
+{"id":"IND-OWN-018","n":"Payment facilitator onboarding lacks beneficial-owner data","ds":"Sub-merchants onboarded without full ownership or identity checks.","s":"high","fp":"Low-risk micro-merchants under threshold.","det":["kyc_review"],"cat":"ownership_structure"}

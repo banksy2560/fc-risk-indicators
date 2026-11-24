@@ -12,14 +12,31 @@ typology:
     payment_rails:
     - card
     - cash
+    - loan_disbursement
+    - bnpl_cash_like
     customer_segments:
     - retail
     - new_to_bank
     products:
     - credit_card
-    - loan_mortgage
+    - personal_loan
+    - home_loan_fixed
+    - home_loan_variable
     basis: ai_inferred
     rationale: Credit lines maxed out with cash advances and gift cards.
+    consumer:
+      relevant: true
+      products:
+      - credit_card
+      - personal_loan
+      - transaction_account
+      channels:
+      - mobile_app
+      - online_banking
+      - branch
+      basis: ai_inferred
+      rationale: Credit built up then maxed via cash advances and gift cards; personal loan and overdraft
+        first-party default with no intent to repay.
   sectors:
   - banking
   - payments

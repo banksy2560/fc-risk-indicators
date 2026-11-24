@@ -1,0 +1,1 @@
+{"id":"IND-BEH-020","n":"New account or entity with sudden high activity","ds":"A recently opened account or newly formed entity with little history abruptly sees large or numerous payments unrelated to its profile.","s":"high","fp":"New businesses may ramp up quickly; assess against stated plans.","det":["transaction_monitoring","kyc_review"],"cat":"behavioural"}

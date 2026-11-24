@@ -25,6 +25,17 @@ typology:
     - crypto_custody
     basis: ai_inferred
     rationale: Multi-hop mule chain via PSPs, correspondents and off-ramps.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      channels:
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Fast onward movement of fraud proceeds through mule everyday and savings accounts into
+        other institutions.
   sectors:
   - banking
   - payments

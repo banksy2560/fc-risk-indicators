@@ -1,0 +1,1 @@
+{"id":"IND-GEO-030","n":"Payments routed through banks in jurisdictions with weak controls for no clear reason","ds":"Routing does not follow normal correspondent paths.","s":"medium","fp":"Routes vary.","det":["transaction_monitoring"],"cat":"geographic"}

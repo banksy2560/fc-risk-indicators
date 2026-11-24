@@ -1,0 +1,1 @@
+{"id":"IND-TXN-051","n":"Sales of high-value items with no shipping or delivery evidence","ds":"Orders marked complete without tracking, or delivered to unrelated addresses.","s":"high","fp":"Digital goods.","det":["transaction_monitoring","investigator_judgement"],"cat":"transaction"}

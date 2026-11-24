@@ -1,0 +1,1 @@
+{"id":"IND-DOC-038","n":"Same invoice or shipment financed or invoiced multiple times","ds":"The same invoice, bill of lading or goods are presented to multiple financiers or invoiced more than once.","s":"high","fp":"Reassignments.","det":["document_review","transaction_monitoring"],"cat":"document"}

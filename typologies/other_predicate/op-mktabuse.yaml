@@ -26,6 +26,13 @@ typology:
     - transaction_account
     basis: ai_inferred
     rationale: Trading accounts and token venues; proceeds moved offshore or into virtual assets.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Securities and token market manipulation runs through brokerage/trading venues, not consumer
+        deposit or credit products.
   stage:
   - placement
   - layering

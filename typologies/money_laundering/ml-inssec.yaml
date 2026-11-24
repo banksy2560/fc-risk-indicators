@@ -19,6 +19,12 @@ typology:
     - investment_securities
     basis: ai_inferred
     rationale: Single-premium policy cancellation and securities trading layering through brokers.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Insurance and securities layering sits in products the consumer bank scope does not cover.
   stage:
   - placement
   - layering

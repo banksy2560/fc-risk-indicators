@@ -23,6 +23,19 @@ typology:
     basis: ai_inferred
     rationale: Victims contacted by phone, SMS or email and induced to share codes or move money; card
       details used at new merchants and wallets.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      - credit_card
+      channels:
+      - call_centre
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Victims called or texted by impersonators and induced to share codes or move money; card
+        details loaded to wallets.
   sectors:
   - banking
   - payments

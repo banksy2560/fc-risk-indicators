@@ -30,6 +30,18 @@ typology:
     basis: ai_inferred
     rationale: Victims approached via social and messaging platforms; mule accounts collect and consolidate,
       then crypto off-ramps or wires abroad.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      channels:
+      - mobile_app
+      - online_banking
+      - branch
+      basis: ai_inferred
+      rationale: Recruited mule everyday and savings accounts collect and consolidate scam proceeds before
+        crypto or offshore cash-out.
   sectors:
   - banking
   - payments

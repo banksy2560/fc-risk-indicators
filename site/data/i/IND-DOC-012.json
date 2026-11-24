@@ -1,0 +1,1 @@
+{"id":"IND-DOC-012","n":"Applicant details match watchlist or fraud record","ds":"Application data matches known fraud, mule or exited-customer records.","s":"high","fp":"Common names cause false matches.","det":["screening","kyc_review"],"cat":"document"}

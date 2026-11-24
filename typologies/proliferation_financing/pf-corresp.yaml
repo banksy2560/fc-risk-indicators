@@ -18,6 +18,13 @@ typology:
     - trade_finance
     basis: ai_inferred
     rationale: Respondent banks, nested accounts and SWIFT message review.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Correspondent and joint-venture channels are institution-to-institution, no consumer
+        product.
   sectors:
   - banking
   - payments

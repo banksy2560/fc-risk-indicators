@@ -14,12 +14,21 @@ typology:
     customer_segments:
     - new_to_bank
     - student_youth
-    - retail
     - fintech_psp
     products:
     - transaction_account
     basis: ai_inferred
     rationale: Rapid remote onboarding at digital-only providers used for mule accounts.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      channels:
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Rapid remote onboarding to open mule or pass-through accounts in bulk.
   stage:
   - placement
   - layering

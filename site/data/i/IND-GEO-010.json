@@ -1,0 +1,1 @@
+{"id":"IND-GEO-010","n":"First payment to a new beneficiary in a different jurisdiction","ds":"Victim-side: payment to a new account, often foreign, unrelated to the supplier's usual country.","s":"high","fp":"New suppliers or overseas expansion.","det":["transaction_monitoring"],"cat":"geographic"}

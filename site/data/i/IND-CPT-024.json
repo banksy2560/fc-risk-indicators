@@ -1,0 +1,1 @@
+{"id":"IND-CPT-024","n":"Repair or medical invoices inflated or from linked providers","ds":"Providers submit pattern-bearing invoices with unusual pricing.","s":"medium","fp":"Legitimate specialist providers.","det":["document_review","transaction_monitoring"],"cat":"counterparty"}

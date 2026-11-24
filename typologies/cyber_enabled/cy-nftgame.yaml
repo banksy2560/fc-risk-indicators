@@ -23,6 +23,12 @@ typology:
     basis: ai_inferred
     rationale: NFT marketplaces and game economies; wash trading between wallets, in-game currency cash-out
       and stolen-card funding.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: NFT wash trading and in-game currency economies sit on external platforms and wallets.
   stage:
   - placement
   - layering

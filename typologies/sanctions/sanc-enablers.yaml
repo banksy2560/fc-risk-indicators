@@ -24,6 +24,13 @@ typology:
     basis: ai_inferred
     rationale: Lawyers, TCSPs and brokers structuring and moving funds for designated persons; informal
       netting and barter also seen.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Professional enabler and company-service-provider structuring is commercial/private client,
+        not retail consumer.
   sectors:
   - corporate_services
   - dnfbp

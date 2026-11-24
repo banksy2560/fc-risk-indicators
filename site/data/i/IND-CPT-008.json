@@ -1,0 +1,1 @@
+{"id":"IND-CPT-008","n":"Cash-out through multiple accounts of same user group","ds":"Proceeds are routed to several accounts sharing devices or beneficiaries and cashed out in fiat by different parties.","s":"medium","fp":"Family members sharing devices.","det":["transaction_monitoring","investigator_judgement"],"cat":"counterparty"}

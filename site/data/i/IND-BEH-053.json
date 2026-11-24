@@ -1,0 +1,1 @@
+{"id":"IND-BEH-053","n":"Customer refuses or cannot support wallet ownership verification","ds":"Refusal to sign a message, microtransaction or provide proof of control when requested.","s":"medium","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

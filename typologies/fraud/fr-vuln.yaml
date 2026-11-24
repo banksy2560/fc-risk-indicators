@@ -13,14 +13,32 @@ typology:
     payment_rails:
     - cash
     - fast_payments
+    - card
+    - loan_disbursement
     customer_segments:
     - vulnerable_elderly
     products:
     - transaction_account
-    - savings_deposit
+    - savings_account
+    - term_deposit
     - investment_securities
     basis: ai_inferred
     rationale: Third-party directed withdrawals and transfers; branch intervention.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      - term_deposit
+      - credit_card
+      - personal_loan
+      channels:
+      - branch
+      - call_centre
+      - online_banking
+      basis: ai_inferred
+      rationale: Third parties, carers or attorneys directing withdrawals, term deposit breaks and borrowing;
+        branch and phone staff are key detection points.
   sectors:
   - banking
   - securities

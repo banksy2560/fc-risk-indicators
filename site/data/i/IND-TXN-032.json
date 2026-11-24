@@ -1,0 +1,1 @@
+{"id":"IND-TXN-032","n":"Rapid stored-value or wallet hops then cash-out","ds":"Stored value or funds move quickly between wallets or cards and are then cashed out.","s":"medium","fp":"Normal wallet top-ups and withdrawals.","det":["transaction_monitoring"],"cat":"transaction"}

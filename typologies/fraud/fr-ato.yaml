@@ -13,6 +13,7 @@ typology:
     payment_rails:
     - fast_payments
     - card
+    - loan_disbursement
     customer_segments:
     - retail
     products:
@@ -21,6 +22,22 @@ typology:
     - crypto_custody
     basis: ai_inferred
     rationale: Credential/device compromise in digital and call-centre channels.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      - term_deposit
+      - credit_card
+      - personal_loan
+      - home_loan_variable
+      channels:
+      - mobile_app
+      - online_banking
+      - call_centre
+      basis: ai_inferred
+      rationale: Credential, SIM-swap and device takeover enabling payments, card use, fraudulent loan
+        draws, redraw and term deposit break-outs.
   sectors:
   - banking
   - payments

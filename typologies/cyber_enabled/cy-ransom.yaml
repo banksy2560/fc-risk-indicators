@@ -21,6 +21,13 @@ typology:
     - insurance_pension
     basis: ai_inferred
     rationale: Victim payments via exchanges/OTC and operator cash-out; insurers and IR facilitators.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Ransomware payments are mainly business victims and crypto operator cash-out; not a realistic
+        consumer product pattern.
   stage:
   - layering
   - integration

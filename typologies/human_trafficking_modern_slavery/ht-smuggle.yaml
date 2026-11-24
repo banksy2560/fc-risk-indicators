@@ -24,6 +24,16 @@ typology:
     basis: ai_inferred
     rationale: Fees collected from migrants and families via remittance, hawala-type guarantees and cash;
       recruitment advertised on social platforms.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      channels:
+      - branch
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Fees paid by migrants or families via cash deposits and transfers to facilitator accounts.
   sectors:
   - banking
   - mvts

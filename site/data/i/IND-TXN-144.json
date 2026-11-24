@@ -1,0 +1,1 @@
+{"id":"IND-TXN-144","n":"Payments in and out the same day with thin margin","ds":"Funds received from buyer are paid onward to supplier, often same day, leaving little retained.","s":"medium","fp":"Distributors and agents may operate on thin margins and pass-through.","det":["transaction_monitoring"],"cat":"transaction"}

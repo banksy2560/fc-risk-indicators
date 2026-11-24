@@ -25,6 +25,13 @@ typology:
     basis: ai_inferred
     rationale: Marketplace and gig platforms with seller payouts, refund and chargeback cycling, vouchers
       and account rental; platforms act as PSPs/merchants.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Marketplace and gig platform misuse is a platform/PSP and merchant-side risk, not a consumer
+        bank product pattern.
   stage:
   - layering
   sectors:

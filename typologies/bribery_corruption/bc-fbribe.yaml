@@ -20,6 +20,13 @@ typology:
     basis: ai_inferred
     rationale: Commission/consultancy payments to agents or shells for foreign official benefit via international
       wires.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Commission payments to agents for foreign officials via international wires; corporate
+        and correspondent flows.
   sectors:
   - banking
   - corporate_services

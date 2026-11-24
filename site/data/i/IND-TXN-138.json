@@ -1,0 +1,1 @@
+{"id":"IND-TXN-138","n":"Use of cover payments that omit underlying parties","ds":"Cover message shows only the banks, with details of ultimate parties absent.","s":"medium","fp":"Cover method is used for ordinary correspondent business.","det":["transaction_monitoring","investigator_judgement"],"cat":"transaction"}

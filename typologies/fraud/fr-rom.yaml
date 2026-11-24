@@ -13,6 +13,7 @@ typology:
     - fast_payments
     - crypto_onramp_offramp
     - cross_border_remittance
+    - loan_disbursement
     customer_segments:
     - retail
     - vulnerable_elderly
@@ -21,6 +22,19 @@ typology:
     - crypto_custody
     basis: ai_inferred
     rationale: Victim payments to exchanges and offshore accounts.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      - personal_loan
+      channels:
+      - mobile_app
+      - online_banking
+      - branch
+      basis: ai_inferred
+      rationale: Victims send repeated payments to fake partners or platforms, sometimes funded by personal
+        loans; branch staff may spot coercion.
   sectors:
   - banking
   - payments

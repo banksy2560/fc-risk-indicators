@@ -13,16 +13,29 @@ typology:
     - cash
     - cross_border_remittance
     - wire_swift
-    - insurance_premium_claim
+    - fast_payments
     customer_segments:
     - retail
     - sme
-    - nonprofit
+    - sole_trader
+    - third_party_funder
     products:
     - transaction_account
     - insurance_pension
     basis: ai_inferred
     rationale: Ransom and levy payments, diaspora collections, cash couriers and kidnap cover.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      channels:
+      - branch
+      - online_banking
+      - mobile_app
+      - call_centre
+      basis: ai_inferred
+      rationale: Diaspora or victims send emergency or extortion payments, often cash or third party;
+        coerced payments appear in everyday accounts and in branch, and by phone instruction.
   sectors:
   - banking
   - mvts

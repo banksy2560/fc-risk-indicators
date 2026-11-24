@@ -20,6 +20,13 @@ typology:
     basis: ai_inferred
     rationale: Fraud against public bodies and large buyers via bid rigging, fictitious suppliers and
       false benefit claims; officials collude with suppliers; payments flow through procurement/purchasing.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Bid rigging, fictitious suppliers and public procurement are corporate or public-sector;
+        benefit fraud is covered under tax and identity typologies.
   sectors:
   - all
   sources:

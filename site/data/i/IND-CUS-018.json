@@ -1,0 +1,1 @@
+{"id":"IND-CUS-018","n":"Customer in a high-risk sector","ds":"Customer operates in a sector with elevated misuse risk, such as precious metals, gambling, crypto, arms, or money transfer.","s":"medium","fp":"Most firms in these sectors are regulated and compliant.","det":["kyc_review"],"cat":"customer"}

@@ -1,0 +1,1 @@
+{"id":"IND-TYP-004","n":"Direct exposure to known darknet market addresses","ds":"Customer deposits or withdrawals have direct or near-direct exposure to addresses attributed to darknet markets or their escrow wallets.","s":"high","fp":"Exposure through very diluted chains; researchers and journalists.","det":["transaction_monitoring","external_intel"],"cat":"typology_specific"}

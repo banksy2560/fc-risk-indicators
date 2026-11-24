@@ -13,6 +13,8 @@ typology:
     payment_rails:
     - fast_payments
     - cash
+    - crypto_onramp_offramp
+    - loan_disbursement
     customer_segments:
     - retail
     - student_youth
@@ -22,6 +24,20 @@ typology:
     - transaction_account
     basis: ai_inferred
     rationale: Account takeover and mule accounts moving scam proceeds quickly to cash-out.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      - credit_card
+      - personal_loan
+      channels:
+      - mobile_app
+      - online_banking
+      - call_centre
+      basis: ai_inferred
+      rationale: Takeover and mule accounts moving scam proceeds; loan and card takeover enables cash-out,
+        and call centre used for social engineering and credential resets.
   stage:
   - layering
   sectors:

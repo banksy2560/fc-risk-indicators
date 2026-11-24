@@ -1,0 +1,1 @@
+{"id":"IND-BEH-108","n":"Frequent changes of intermediary banks or repeated reformatting of payments","ds":"Rejected payments are resubmitted with altered details.","s":"high","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["customer_behaviour","investigator_judgement"],"cat":"behavioural"}

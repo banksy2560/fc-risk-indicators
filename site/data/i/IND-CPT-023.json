@@ -1,0 +1,1 @@
+{"id":"IND-CPT-023","n":"Repeated claims across insurers by linked parties","ds":"Same people, vehicles or addresses appear in multiple claims.","s":"high","fp":"Coincidental similarity.","det":["transaction_monitoring"],"cat":"counterparty"}

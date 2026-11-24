@@ -1,1 +1,0 @@
-{"id":"CTL-067","links":[{"typ":"CY-PAYFAC","inds":["IND-OWN-010","IND-OWN-018","IND-PRD-025","IND-TXN-019","IND-TYP-016"]},{"typ":"FR-BUST","inds":["IND-CPT-022","IND-TXN-065"]},{"typ":"FR-CNP","inds":["IND-CPT-021","IND-CPT-022"]},{"typ":"OP-COUNTER","inds":["IND-CUS-045"]},{"typ":"TX-SKIM","inds":["IND-PRD-061"]}]}

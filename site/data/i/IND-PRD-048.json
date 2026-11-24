@@ -1,0 +1,1 @@
+{"id":"IND-PRD-048","n":"Account credentials accessed from remote locations or by third parties","ds":"Logins from foreign IPs or remote-access tools soon after opening.","s":"medium","fp":"Travel and VPN use are common.","det":["transaction_monitoring","customer_behaviour"],"cat":"product_channel"}

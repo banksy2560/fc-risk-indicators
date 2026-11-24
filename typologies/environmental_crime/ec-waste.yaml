@@ -20,6 +20,13 @@ typology:
     basis: ai_inferred
     rationale: Waste firms, shippers and brokers disguising waste as used goods; cash to informal tippers
       and rotating shell operators.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Waste brokers, shippers and tipping operators are commercial; no realistic consumer product
+        path.
   sectors:
   - banking
   - corporate_services

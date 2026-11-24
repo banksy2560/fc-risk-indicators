@@ -1,0 +1,1 @@
+{"id":"IND-TXN-031","n":"Large credit followed by prompt withdrawals","ds":"A cheque deposit or refund is credited and quickly withdrawn or transferred before it clears or is verified.","s":"high","fp":"Customers needing urgent access to funds.","det":["transaction_monitoring"],"cat":"transaction"}

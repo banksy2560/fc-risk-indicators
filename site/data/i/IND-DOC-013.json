@@ -1,0 +1,1 @@
+{"id":"IND-DOC-013","n":"Signature or contact details differ on later instructions","ds":"Later instructions carry signatures or contact details that depart from onboarding records.","s":"medium","fp":"Signatures naturally vary.","det":["document_review","transaction_monitoring"],"cat":"document"}

@@ -1,0 +1,1 @@
+{"id":"CTL-053","n":"Risk-weighted counterparty monitoring","ds":"Weights alert priority by the assessed risk of the counterparty and profiles counterparties that cannot be explained by the customer's business. It directs analyst attention to payments involving higher-risk parties.","t":"detective","im":"rule","aka":["Counterparty relationship profiling"]}

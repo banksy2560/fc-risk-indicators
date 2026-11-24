@@ -1,0 +1,1 @@
+{"id":"IND-DOC-020","n":"Trade documents inconsistent with each other","ds":"Bill of lading, invoice, customs, letter of credit or payment details disagree on goods, quantity, price, origin, parties or route.","s":"high","fp":"Clerical errors or HS-code variations occur.","det":["document_review","investigator_judgement"],"cat":"document"}

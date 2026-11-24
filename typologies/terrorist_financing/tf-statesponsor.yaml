@@ -25,6 +25,13 @@ typology:
     basis: ai_inferred
     rationale: Commodity trades (oil, minerals, antiquities) via brokers and front companies; state or
       quasi-state transfers to non-state actors; barter and cash settlement.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: State sponsorship and commodity trading funding is trade finance and correspondent business,
+        not consumer.
   sectors:
   - banking
   - trade_finance

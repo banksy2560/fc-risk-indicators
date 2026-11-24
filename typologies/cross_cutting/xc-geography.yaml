@@ -19,6 +19,13 @@ typology:
     - trade_finance
     basis: ai_inferred
     rationale: 'Geography-linked flows: cross-border wires, remittance and trade via high-risk jurisdictions/hubs.'
+    consumer:
+      relevant: true
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Cross-cutting risk factor; applies across all consumer products and channels. Geographic
+        exposure factors.
   sectors:
   - all
   sources:

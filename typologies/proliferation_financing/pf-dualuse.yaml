@@ -21,6 +21,13 @@ typology:
     - transaction_account
     basis: ai_inferred
     rationale: Front companies paying for controlled goods; trade and payment review.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Dual-use procurement via front companies and trade documents is commercial trade finance;
+        not a consumer product risk.
   sectors:
   - banking
   - trade_finance

@@ -1,0 +1,1 @@
+{"id":"IND-TYP-018","n":"Tops-up with fraudulent funding sources","ds":"Loads via cards or accounts reported stolen, followed by cash-out.","s":"high","fp":"Disputed genuine charges.","det":["transaction_monitoring"],"cat":"typology_specific"}

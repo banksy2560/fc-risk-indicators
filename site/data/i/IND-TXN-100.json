@@ -1,0 +1,1 @@
+{"id":"IND-TXN-100","n":"Cash deposits exceed plausible business capacity","ds":"Declared turnover or deposits are higher than the premises size, staffing, opening hours or stock purchases would support.","s":"high","fp":"New or fast-growing businesses can legitimately outperform peers.","det":["transaction_monitoring","kyc_review"],"cat":"transaction"}

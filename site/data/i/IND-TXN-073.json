@@ -1,0 +1,1 @@
+{"id":"IND-TXN-073","n":"Alterations to payroll or master data outside cycle","ds":"Changes made around pay run by one user.","s":"medium","fp":"Genuine corrections.","det":["transaction_monitoring"],"cat":"transaction"}

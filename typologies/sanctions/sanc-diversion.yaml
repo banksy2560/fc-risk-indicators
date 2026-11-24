@@ -21,6 +21,13 @@ typology:
     - transaction_account
     basis: ai_inferred
     rationale: Third-country transshipment through newly active traders and trade finance.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Trade diversion and transshipment of restricted goods is commercial trade activity outside
+        consumer products.
   sectors:
   - banking
   - trade_finance

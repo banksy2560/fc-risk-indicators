@@ -1,0 +1,1 @@
+{"id":"IND-TXN-027","n":"Large buy-in or deposits with little underlying activity","ds":"Substantial funds are deposited or bought in with minimal gambling or betting activity before withdrawal.","s":"high","fp":"Players who deposit but pause play.","det":["transaction_monitoring","customer_behaviour"],"cat":"transaction"}

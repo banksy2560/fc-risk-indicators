@@ -1,0 +1,1 @@
+{"id":"IND-TXN-019","n":"Refund and chargeback abuse","ds":"Unusual refund or chargeback volumes or cycles relative to sales.","s":"high","fp":"Seasonal returns, disputes or product quality issues.","det":["transaction_monitoring"],"cat":"transaction"}

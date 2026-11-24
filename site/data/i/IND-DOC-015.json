@@ -1,0 +1,1 @@
+{"id":"IND-DOC-015","n":"Missing, incomplete or placeholder originator and beneficiary information","ds":"Payment messages omit, truncate or use generic placeholder data for originator or beneficiary details.","s":"high","fp":"Poor data from correspondent partners.","det":["transaction_monitoring","document_review"],"cat":"document"}

@@ -12,16 +12,37 @@ typology:
     - branch
     payment_rails:
     - card
+    - loan_disbursement
+    - bnpl_cash_like
     customer_segments:
     - new_to_bank
     - retail
     - student_youth
     products:
     - credit_card
-    - loan_mortgage
+    - personal_loan
+    - home_loan_fixed
+    - home_loan_variable
     - transaction_account
     basis: ai_inferred
     rationale: Account and credit opening with stolen/synthetic identities.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      - credit_card
+      - personal_loan
+      - home_loan_fixed
+      - home_loan_variable
+      channels:
+      - mobile_app
+      - online_banking
+      - call_centre
+      - branch
+      basis: ai_inferred
+      rationale: Accounts and credit opened with stolen or synthetic identities across digital, phone
+        and branch origination.
   sectors:
   - banking
   - payments

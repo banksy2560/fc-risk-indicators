@@ -1,0 +1,1 @@
+{"id":"IND-BEH-042","n":"Operational-security behaviours at onboarding and login","ds":"Use of Tor, disposable email, burner phones and rotated devices alongside high-volume trading.","s":"medium","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

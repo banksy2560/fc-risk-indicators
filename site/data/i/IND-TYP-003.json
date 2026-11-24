@@ -1,0 +1,1 @@
+{"id":"IND-TYP-003","n":"Operator lacks effective transaction monitoring","ds":"Operator fails to monitor wallets, refunds or complaints, allowing patterns to persist.","s":"medium","fp":"Early-stage operators.","det":["investigator_judgement"],"cat":"typology_specific"}

@@ -19,6 +19,12 @@ typology:
     - insurance_pension
     basis: ai_inferred
     rationale: Lump-sum contributions, transfers and early withdrawals in pension/super accounts.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Pension and superannuation accounts are not among the seven consumer products.
   sectors:
   - insurance
   - securities

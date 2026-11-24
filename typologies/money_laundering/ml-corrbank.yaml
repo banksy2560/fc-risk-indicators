@@ -18,6 +18,13 @@ typology:
     - correspondent_account
     basis: ai_inferred
     rationale: Respondent and nested bank/PSP flows via correspondent accounts over SWIFT.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Correspondent and nested banking is an interbank relationship with no retail product
+        or channel.
   stage:
   - layering
   sectors:

@@ -10,30 +10,33 @@
 <meta property="og:site_name" content="FC Risk Indicators">
 <meta property="og:title" content="{{TITLE}}">
 <meta property="og:description" content="{{DESC}}">
-<meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.5 22.5 12 12 22.5 1.5 12z' fill='%233F3D99'/%3E%3Ccircle cx='12' cy='12' r='4.4' fill='white'/%3E%3Ccircle cx='12' cy='12' r='2.2' fill='%23B3262E'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap"></noscript>
-<link rel="stylesheet" href="assets/app.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="{{ASSET:app.css}}">
+<script>window.FC_V="{{DVER}}";document.documentElement.classList.add("js")</script>
 </head>
-<body class="{{BODYCLASS}}" data-page="{{PAGE}}" data-mode="{{MODE}}">
+<body data-page="{{PAGE}}">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="m-t" viewBox="0 0 24 24"><path d="M12 1.5 22.5 12 12 22.5 1.5 12z" fill="currentColor"/></symbol>
+<symbol id="m-i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="2.4"/></symbol>
+<symbol id="m-c" viewBox="0 0 24 24"><path d="M12 1.8 20.5 5v6.3c0 5.2-3.6 9.3-8.5 11-4.9-1.7-8.5-5.8-8.5-11V5z" fill="currentColor"/></symbol>
+</defs></svg>
 <a class="skip" href="#main">Skip to content</a>
-<div class="banner" role="region" aria-label="Content status"><div class="wrap"><strong>Draft v0.1</strong><span>AI-drafted and not yet reviewed by subject-matter experts. <a href="about#status">What this means</a></span></div></div>
+<div class="banner" role="region" aria-label="Content status"><div class="wrap"><strong>Draft v0.1</strong><span>AI-drafted and unreviewed. Exposure tags are AI-inferred. Signal strength is not a risk score. No human has confirmed any citation. <a href="/about#status">What this means</a></span></div></div>
 <header class="top"><div class="wrap">
-<a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5 22.5 12 12 22.5 1.5 12z" fill="var(--typ)"/><circle cx="12" cy="12" r="4.4" fill="var(--bg)"/><circle cx="12" cy="12" r="2.2" fill="var(--tape)"/></svg>FC Risk Indicators</a>
-<nav aria-label="Primary"><a href="./" data-nav="home">Home</a><a href="explorer" data-nav="explorer">Explorer</a><a href="relationships" data-nav="relationships">Relationships</a><a href="coverage" data-nav="coverage">Coverage</a><a href="about" data-nav="about">About</a></nav>
-<button type="button" class="cmdk" data-open-search aria-label="Search the library" aria-keyshortcuts="Meta+K Control+K"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="lbl">Search typologies, indicators, controls</span><kbd data-kbd>Ctrl K</kbd></button>
+<a class="brand" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5 22.5 12 12 22.5 1.5 12z" fill="var(--typ)"/><circle cx="12" cy="12" r="4.4" fill="var(--surface)"/><circle cx="12" cy="12" r="2.2" fill="var(--tape)"/></svg>FC Risk Indicators</a>
+<nav aria-label="Primary"><a href="/" data-nav="home">Linkage</a><a href="/product" data-nav="product">Product mapper</a><a href="/about" data-nav="about">About</a></nav>
 </div></header>
-<div id="nofetch" class="wrap" hidden><div class="notice" role="alert"><strong>Data could not be loaded.</strong> This site loads its data with <code>fetch()</code>, which browsers block when a page is opened from disk (file://). Serve the <code>site/</code> folder over HTTP, for example <code>python3 tools/serve_site.py</code>, or use the deployed site.</div></div>
-<main id="main" class="wrap" tabindex="-1">
+<div id="nofetch" class="wrap" hidden><div class="notice" role="alert"><strong>Data could not be loaded.</strong> This site loads its data with <code>fetch()</code>, which browsers block for pages opened from disk. Serve the <code>site/</code> folder, for example with <code>python3 tools/serve_site.py</code>, or use the deployed site.</div></div>
+<main id="main" tabindex="-1">
 {{BODY}}
 </main>
 <footer class="site-footer"><div class="wrap">
-<p><strong>FC Risk Indicators v0.1 draft.</strong> AI-drafted, not reviewed by subject-matter experts; citations are unverified or agent-checked only. Indicators are red flags, not proof of crime. Nothing here is legal or compliance advice. Signal strength is indicative, not a risk score. Exposure tags are AI-inferred descriptors of where a typology typically shows up, not any institution's assessed exposure.</p>
-<p>Code: <a href="https://github.com/banksy2560/fc-risk-indicators/blob/main/LICENSE">Apache-2.0</a>. Content: <a href="https://github.com/banksy2560/fc-risk-indicators/blob/main/LICENSE-CONTENT">CC-BY-4.0</a>. <a href="https://github.com/banksy2560/fc-risk-indicators">Source on GitHub</a> | <a href="about#contribute">Contribute or review</a></p>
+<p>Indicators are red flags, not proof of crime. Nothing here is legal or compliance advice. <a href="https://github.com/banksy2560/fc-risk-indicators">Source on GitHub</a> | Code Apache-2.0, content CC-BY-4.0.</p>
 </div></footer>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
-<script defer src="assets/core.js"></script>
-{{SCRIPT}}
+<script defer src="{{ASSET:common.js}}"></script>
+{{SCRIPTS}}
 </body>
 </html>

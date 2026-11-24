@@ -1,0 +1,1 @@
+{"id":"IND-DOC-056","n":"Vessel identity discrepancies","ds":"Physical details, IMO or name do not match registry records, or signs of identity spoofing.","s":"high","fp":"Data entry errors occur.","det":["document_review","external_intel"],"cat":"document"}

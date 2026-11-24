@@ -21,6 +21,13 @@ typology:
     basis: ai_inferred
     rationale: DeFi protocols and bridges operate on-chain; regulated entities see exposure only at VASP
       on/off-ramps.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: On-chain protocol and bridge laundering; a consumer bank sees at most generic exchange
+        transfers covered elsewhere.
   stage:
   - layering
   sectors:

@@ -1,0 +1,1 @@
+{"id":"IND-BEH-017","n":"Repeated change of consignee or buyer in transit","ds":"Shipments or cargoes are re-routed, re-invoiced or have ownership shifted through successive parties without clear commercial reason.","s":"medium","fp":"Commodity trading legitimately involves resale in transit.","det":["transaction_monitoring","investigator_judgement"],"cat":"behavioural"}

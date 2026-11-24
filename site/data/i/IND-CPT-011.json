@@ -1,0 +1,1 @@
+{"id":"IND-CPT-011","n":"Funds sent to unlicensed or weakly regulated exchanges","ds":"Withdrawals or flows go to exchanges or VASPs that lack licensing or effective AML and sanctions controls.","s":"high","fp":"Some legitimate smaller platforms are not yet registered or are licensed in other regimes.","det":["transaction_monitoring","external_intel"],"cat":"counterparty"}

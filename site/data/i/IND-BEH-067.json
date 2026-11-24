@@ -1,0 +1,1 @@
+{"id":"IND-BEH-067","n":"Account created and used within minutes","ds":"New account follows rapid purchase flow.","s":"medium","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

@@ -1,0 +1,1 @@
+{"id":"IND-TXN-009","n":"Payments or claims split to stay below internal approval limits","ds":"Payments, claims or contracts are broken into amounts just under internal authorisation limits.","s":"medium","fp":"Routine small recurring purchases and budget-driven phasing can resemble this.","det":["transaction_monitoring"],"cat":"transaction"}

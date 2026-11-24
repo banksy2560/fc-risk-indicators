@@ -13,6 +13,7 @@ typology:
     payment_rails:
     - crypto_onramp_offramp
     - stored_value_wallet
+    - fast_payments
     customer_segments:
     - retail
     products:
@@ -21,6 +22,16 @@ typology:
     basis: ai_inferred
     rationale: Darknet vendors and buyers fund and cash out through crypto platforms and P2P sellers,
       with Tor/burner-based onboarding and gift-card/prepaid cash-out.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      channels:
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Customers fund darknet purchases or cash out proceeds through everyday account payments
+        to exchanges and P2P sellers.
   stage:
   - placement
   - layering

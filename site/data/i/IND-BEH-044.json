@@ -1,0 +1,1 @@
+{"id":"IND-BEH-044","n":"Account rental or resale signals","ds":"Credential changes, new device and region shifts for an established seller.","s":"medium","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

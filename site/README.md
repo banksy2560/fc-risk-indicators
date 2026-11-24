@@ -1,41 +1,36 @@
-# FC Risk Indicators: static site (Direction 2, "Research library")
+# FC Risk Indicators: static site
 
-Plain static site (no framework, no build step on the host). The generated output in this folder is committed and deployed as is.
+Plain static site, no framework and no build step on the host. The generated output in this folder is committed and deployed as is. Two jobs only:
 
-## Rebuild after the YAML changes
+- `/` Linkage: a hub-and-spoke diagram. The typology is a card in the centre, its indicators (what you would observe) on the left, its controls (what mitigates) on the right. Click an indicator to trace the controls linked to it in this typology, or a control to trace its indicators. A slim drawer holds descriptions, typology-specific context, false-positive notes, sources with status tags and "also used in N typologies" pivots. Search an indicator or control to get the same diagram with that item in the centre and every typology it appears in on the left. A "Consumer bank view" (product and channel) narrows the typology tab strip. Copy link and CSV export act on what is displayed.
+- `/product` Product mapper (consumer bank): pick one of 7 products, tick the channels (4), answer only the questions that apply, and see typologies as Strong / Possible / Base fit (specificity of fit, not risk). Also a 7 x 4 product-by-channel grid, manual include/exclude, "Open linkage", and a product pack CSV. Everything runs in the browser; state lives in the URL hash and `localStorage`.
+- `/about` status, how linking works, how the mapper works and its limits, citation tags, licences.
+
+Old routes redirect (see `vercel.json`): `/typologies`, `/indicators`, `/controls`, `/explorer`, `/relationships`, `/coverage` go to `/`; the hash is kept, so `/controls#CTL-012` lands on `/#CTL-012`.
+
+## Rebuild
 ```
 pip install pyyaml
-python3 tools/build_site.py        # run from the repo root (git is used for "recently added" dates)
+python3 tools/build_site.py          # single generator, re-runnable
 python3 tools/validate.py . --strict
+python3 tools/serve_site.py 8000     # local server; mimics cleanUrls and the vercel.json redirects
 ```
-`tools/build_site.py` is the single generator. It reads `controls/`, `indicators/`, `typologies/` and `vocab.yaml` and regenerates:
-- `site/data/index.json` (lightweight index of all three catalogues, labels, exposure and git dates; about 550 KB raw, about 120 KB gzipped)
-- `site/data/typologies/<ID>.json`, `indicators/<ID>.json`, `controls/<ID>.json` (lazy-loaded record detail; indicator files hold inherited exposure and provenance)
-- `site/data/notes.json` (data sources and false-positive notes; fetched only when exporting the indicator list as CSV)
-- `site/data/links.csv` (every typology, indicator and control link)
-- `site/*.html` (assembled from `tools/site_src/layout.html` and `tools/site_src/pages/*.html`; `typologies`, `indicators`, `controls` and `explorer` are the same explorer page with a different default tab)
+`tools/build_site.py` reads `controls/`, `indicators/`, `typologies/`, `vocab.yaml` and `questionnaire/questions_v2.yaml`, and writes:
+- `data/index.json` small index (about 183 KB raw, 40 KB gzipped): typologies with exposure and consumer scope, indicator and control names, and every typology to indicator to control link. Search, the tab strip, reverse views, the mapper and the grid all derive from it.
+- `data/t/<ID>.json` one typology's linkage (nodes, per-link controls, contexts, sources; 14 KB at most), fetched on demand.
+- `data/i/<ID>.json`, `data/c/<ID>.json` canonical indicator and control detail, fetched only for the reverse-view drawer.
+- `data/questionnaire.json` questions, options, example profiles.
+- `assets/<name>.<hash>.<ext>` content-hashed copies of `tools/site_src/assets/*`.
+- `*.html` assembled from `tools/site_src/layout.html` and `tools/site_src/pages/*.html`.
+The build fails on any unresolved link, any tag value not in `vocab.yaml` (including `consumer_scope`), a question mapping outside its allowed dimensions, or a bad profile. Edit sources in `tools/site_src/`, never the generated files.
 
-`site/assets/` (`app.css`, `core.js`, `home.js`, `explorer.js`, `relationships.js`, `coverage.js`) is hand-written and untouched by the build. Edit page text in `tools/site_src/pages/`, not in `site/*.html`. The build exits non-zero if a link or exposure value does not resolve.
-
-## Derived data (nothing invented)
-- **Inherited exposure**: an indicator's exposure is the union of the exposure of every typology that links it. The per-typology tags are kept in the indicator record.
-- **Cross-cutting typologies**: a `cross_cutting` typology with an empty exposure dimension "applies across all" of it. The site says so instead of "none", and such typologies (and indicators linked to them) match any value of that dimension in exposure filters. Empty dimensions on other typologies show "No tags" and do not match.
-- **Recently added**: commit time of the first git commit that added each typology file. If git history is unavailable the home panel is omitted. Indicators and controls live in shared files so have no date.
-- **Source evidence facet**: best citation tag among a typology's sources (agent-checked with link / without link / unverified); indicators take the best of their typologies. Never means human-confirmed.
-- **Review status**: real `status` values (all `draft`); typologies and controls have no status field and default to `draft`.
-
-## Preview locally
-```
-python3 tools/serve_site.py 8000   # then open http://127.0.0.1:8000/
-```
-`tools/serve_site.py` mimics Vercel's `cleanUrls`. Opening files from disk (file://) will not work because pages use `fetch()`; a message explains this.
+## Caching
+Asset filenames carry a content hash and data URLs carry `?v=<data hash>`, so `/assets/*` and `/data/*` are cached as immutable and stale files cannot mix with new HTML (HTML is revalidated on every load by default).
 
 ## Deploy (Vercel)
-Import the repo, set **Root Directory** to `site`, Framework Preset "Other", no build command. `vercel.json` enables `cleanUrls` and sets cache headers for `/data` and `/assets`.
+Import the repo, set Root Directory to `site`, Framework Preset "Other", no build command.
 
-## Pages and citable routes
-- `/` dashboard; `/explorer` browse and compare; `/relationships` typology to indicators to controls flow; `/coverage` typology x control-family matrix (linkage counts only); `/about`
-- Citable records (hash routes, also bare ids): `/typologies#ML-MULE`, `/indicators#IND-TXN-017`, `/controls#CTL-037`. Filter state uses `#m=i&channel=mobile_app&sev=high&sel=IND-TXN-017`. Flow: `/relationships#t=ML-MULE&sel=CTL-012`.
-- Search palette: `/` or Ctrl/Cmd-K on any page.
+## Motion
+Only transform, opacity and clip-path animate; tokens are at the top of `app.css`. Keyboard use (arrows, Enter, Esc) never animates. Under `prefers-reduced-motion` only short opacity fades remain. `data-motion="off"` on `<html>` disables motion.
 
 External network use: Google Fonts only (system font fallbacks).

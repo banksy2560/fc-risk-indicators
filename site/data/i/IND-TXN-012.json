@@ -1,0 +1,1 @@
+{"id":"IND-TXN-012","n":"Sudden large increase in transaction volume","ds":"Transaction volume or value rises abruptly well beyond historical levels, including through a respondent or reactivated account.","s":"medium","fp":"Business growth, seasonality, acquisitions or one-off events.","det":["transaction_monitoring"],"cat":"transaction"}

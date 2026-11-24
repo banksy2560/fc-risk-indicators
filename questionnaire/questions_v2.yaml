@@ -1,0 +1,1116 @@
+# Consumer-bank product risk assessment questionnaire, v2 (see questionnaire/README.md "v2: consumer-bank scope").
+# Applicability aid only: no scores or ratings. Q01/Q02 map to products and channels; Q03+ map ONLY to payment_rails and customer_segments.
+# Profiles are illustrative of a typical Australian-style consumer product; they are not assessments of any real product.
+version: 2
+scope: consumer
+sections:
+  - id: product_basics
+    title: "Product and channels"
+  - id: customers
+    title: "Target customers"
+  - id: money_movement
+    title: "Money movement and payment features"
+  - id: product_features
+    title: "Product-specific features"
+  - id: lending
+    title: "Lending features"
+  - id: channel_controls
+    title: "Channel-specific features"
+questions:
+  - id: Q01
+    section: product_basics
+    text: "Which product are you assessing?"
+    help: "Pick exactly one. Run the questionnaire once per product; home loans are split into fixed and variable because their features differ."
+    type: single
+    options:
+      - id: Q01-A
+        label: "Everyday account"
+        maps_to: {"products": ["transaction_account"]}
+        note: "Maps to the transaction_account product tag; other questions are filtered to this product."
+      - id: Q01-B
+        label: "Savings account"
+        maps_to: {"products": ["savings_account"]}
+        note: "Maps to the savings_account product tag; other questions are filtered to this product."
+      - id: Q01-C
+        label: "Term deposit"
+        maps_to: {"products": ["term_deposit"]}
+        note: "Maps to the term_deposit product tag; other questions are filtered to this product."
+      - id: Q01-D
+        label: "Credit card"
+        maps_to: {"products": ["credit_card"]}
+        note: "Maps to the credit_card product tag; other questions are filtered to this product."
+      - id: Q01-E
+        label: "Personal loan"
+        maps_to: {"products": ["personal_loan"]}
+        note: "Maps to the personal_loan product tag; other questions are filtered to this product."
+      - id: Q01-F
+        label: "Home loan (fixed rate)"
+        maps_to: {"products": ["home_loan_fixed"]}
+        note: "Maps to the home_loan_fixed product tag; other questions are filtered to this product."
+      - id: Q01-G
+        label: "Home loan (variable rate)"
+        maps_to: {"products": ["home_loan_variable"]}
+        note: "Maps to the home_loan_variable product tag; other questions are filtered to this product."
+  - id: Q02
+    section: product_basics
+    text: "Through which channels is this product available or serviced?"
+    help: "Tick every channel customers can use to open, use or service the product, not only the main one."
+    type: multi
+    options:
+      - id: Q02-A
+        label: "Mobile app"
+        maps_to: {"channels": ["mobile_app"]}
+        note: "Maps to the mobile_app channel tag; channel-specific questions are filtered accordingly."
+      - id: Q02-B
+        label: "Internet banking"
+        maps_to: {"channels": ["online_banking"]}
+        note: "Maps to the online_banking channel tag; channel-specific questions are filtered accordingly."
+      - id: Q02-C
+        label: "Phone banking (call centre)"
+        maps_to: {"channels": ["call_centre"]}
+        note: "Maps to the call_centre channel tag; channel-specific questions are filtered accordingly."
+      - id: Q02-D
+        label: "Retail network (branches)"
+        maps_to: {"channels": ["branch"]}
+        note: "Maps to the branch channel tag; channel-specific questions are filtered accordingly."
+  - id: Q03
+    section: customers
+    text: "Who is this product designed for and open to?"
+    help: "Tick every group the product is available to, including through exceptions or special offers. Mass-market individuals are the default."
+    type: multi
+    options:
+      - id: Q03-A
+        label: "Adult individuals generally (mass market)"
+        maps_to: {}
+        note: "Mass-market individuals are the baseline; deliberately no retail tag, because most typologies list retail and it would not discriminate between them."
+      - id: Q03-B
+        label: "Children, teenagers or students (youth or student offers, minor accounts)"
+        maps_to: {"customer_segments": ["student_youth"]}
+        note: "Youth and student offers map to student_youth, a common mule-recruitment and scam-target group."
+      - id: Q03-C
+        label: "Older customers, or customers likely to be vulnerable (seniors offers, carers, customers who rely on others to bank)"
+        maps_to: {"customer_segments": ["vulnerable_elderly"]}
+        note: "Older and vulnerable customers map to vulnerable_elderly (scams, elder financial abuse)."
+      - id: Q03-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q04
+    section: customers
+    text: "Is the product open to customers who live overseas, hold temporary visas, or have links to politically exposed people?"
+    help: "Think about eligibility rules and what happens in practice, not just the target market."
+    type: multi
+    options:
+      - id: Q04-A
+        label: "Non-residents, temporary visa holders, or customers with overseas income or addresses"
+        maps_to: {"customer_segments": ["non_resident"]}
+        note: "Maps to non_resident."
+      - id: Q04-B
+        label: "Customers who are, or are related to or closely associated with, politically exposed persons (PEPs)"
+        maps_to: {"customer_segments": ["pep_related"]}
+        note: "Maps to pep_related."
+      - id: Q04-C
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q05
+    section: customers
+    text: "Do sole traders or self-employed customers commonly use this personal product for business purposes?"
+    help: "Sole traders (self-employed individuals) often run business receipts and payments through personal products, which blurs personal and business activity and weakens business-customer controls."
+    type: single
+    options:
+      - id: Q05-A
+        label: "Yes, this is common or expected"
+        maps_to: {"customer_segments": ["sole_trader"]}
+        note: "Maps to sole_trader (self-employed individual using a personal product for business), replacing the weaker sme tag."
+      - id: Q05-B
+        label: "No, business use is excluded or rare"
+        maps_to: {}
+        note: "No tags."
+      - id: Q05-C
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q06
+    section: customers
+    text: "Can customers who are new to the bank, or have little or no credit or banking history, open this product?"
+    help: "Include customers with a thin file, recent arrivals and customers with no existing relationship."
+    type: single
+    options:
+      - id: Q06-A
+        label: "Yes, new-to-bank customers can open it, often with limited history"
+        maps_to: {"customer_segments": ["new_to_bank"]}
+        note: "Maps to new_to_bank (synthetic identity, mule and first-party fraud exposure)."
+      - id: Q06-B
+        label: "No, an existing relationship or established history is required"
+        maps_to: {}
+        note: "No tags."
+      - id: Q06-C
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q07
+    section: money_movement
+    text: "Can customers send and receive real-time (fast) payments from this account?"
+    help: "Real-time payments settle in seconds and cannot be recalled easily, so funds can move out before a scam or mule account is detected."
+    type: multi
+    applies_to_products: [transaction_account, savings_account]
+    options:
+      - id: Q07-A
+        label: "Yes, send real-time payments to other people (pay anyone)"
+        maps_to: {"payment_rails": ["fast_payments"]}
+        note: "Maps to fast_payments."
+      - id: Q07-B
+        label: "Yes, receive real-time payments from other people"
+        maps_to: {"payment_rails": ["fast_payments"]}
+        note: "Inbound fast payments also map to fast_payments (mule and scam proceeds)."
+      - id: Q07-C
+        label: "Funds can be paid to external accounts in the customer's own name only"
+        maps_to: {}
+        note: "Own-name-only restriction: no rail added beyond the above."
+      - id: Q07-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q08
+    section: money_movement
+    text: "How are limits and controls set for payments to new payees?"
+    help: "Look at daily limits, first-payment holds, cooling-off periods and confirmation of payee."
+    type: single
+    applies_to_products: [transaction_account, savings_account]
+    options:
+      - id: Q08-A
+        label: "High or no limits for new payees, funds go immediately"
+        maps_to: {"payment_rails": ["fast_payments"]}
+        note: "Weak new-payee friction increases fast-payment exposure."
+      - id: Q08-B
+        label: "Moderate limits with some friction (e.g. lower first-day limit, warning messages)"
+        maps_to: {"payment_rails": ["fast_payments"]}
+        note: "Fast payments still available, so rail remains relevant."
+      - id: Q08-C
+        label: "Strict controls (e.g. holds on new payees, step-up authentication, payee name checks)"
+        maps_to: {}
+        note: "Strong controls: assessed by the institution; no extra rail tag."
+      - id: Q08-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q09
+    section: money_movement
+    text: "How can customers put cash in and take cash out of this account?"
+    help: "Cash is anonymous and hard to trace. Include ATMs with deposit capability and branch counters."
+    type: multi
+    applies_to_products: [transaction_account, savings_account]
+    options:
+      - id: Q09-A
+        label: "Cash deposits at ATMs or intelligent deposit machines"
+        maps_to: {"payment_rails": ["cash"]}
+        note: "Maps to cash."
+      - id: Q09-B
+        label: "Cash deposits or withdrawals over the branch counter"
+        maps_to: {"payment_rails": ["cash"]}
+        note: "Maps to cash."
+      - id: Q09-C
+        label: "Cash withdrawals at ATMs or via cash-out at retailers"
+        maps_to: {"payment_rails": ["cash"]}
+        note: "Maps to cash."
+      - id: Q09-D
+        label: "No cash handling is allowed on this product"
+        maps_to: {}
+        note: "No tags."
+      - id: Q09-E
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q10
+    section: money_movement
+    text: "Does this account allow cheques, direct debits or bill payments?"
+    help: "Cheques are slow to clear and open to alteration; direct debits can be used to pull funds from unaware third parties; biller-code (BPAY style) payments move value to third-party billers and can be used to settle other people's obligations."
+    type: multi
+    applies_to_products: [transaction_account]
+    options:
+      - id: Q10-A
+        label: "Cheque deposits or cheque books"
+        maps_to: {"payment_rails": ["cheque"]}
+        note: "Maps to cheque."
+      - id: Q10-B
+        label: "Direct debits or recurring batch payments (e.g. regular payment authorities)"
+        maps_to: {"payment_rails": ["direct_debit_batch"]}
+        note: "Maps to direct_debit_batch."
+      - id: Q10-C
+        label: "Bill payments using biller codes (e.g. BPAY) or bill-pay services"
+        maps_to: {"payment_rails": ["bill_payment"]}
+        note: "Maps to bill_payment."
+      - id: Q10-D
+        label: "No cheques, direct debits or bill payments"
+        maps_to: {}
+        note: "No tags."
+      - id: Q10-E
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q11
+    section: money_movement
+    text: "What cards are linked to this account, and where can they be used?"
+    help: "Include debit cards, digital wallet provisioning, and overseas use."
+    type: multi
+    applies_to_products: [transaction_account]
+    options:
+      - id: Q11-A
+        label: "Debit card for in-store, ATM and online (card-not-present) use"
+        maps_to: {"payment_rails": ["card"]}
+        note: "Maps to card."
+      - id: Q11-B
+        label: "Digital wallets (e.g. phone or watch tap-and-pay)"
+        maps_to: {"payment_rails": ["card"]}
+        note: "Wallet tap-and-pay is a card token, so it maps to card only (stored_value_wallet is reserved for prepaid or stored-value accounts, not in scope)."
+      - id: Q11-C
+        label: "Overseas ATM and card use enabled by default or by request"
+        maps_to: {"payment_rails": ["card", "cash"]}
+        note: "Overseas card and cash withdrawal map to card and cash."
+      - id: Q11-D
+        label: "No card is linked"
+        maps_to: {}
+        note: "No tags."
+      - id: Q11-E
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q12
+    section: money_movement
+    text: "Can customers make international transfers from this account?"
+    help: "Include SWIFT transfers, overseas remittance services and foreign-currency payments, in any channel."
+    type: multi
+    applies_to_products: [transaction_account, savings_account]
+    options:
+      - id: Q12-A
+        label: "SWIFT or bank-to-bank international transfers"
+        maps_to: {"payment_rails": ["wire_swift"]}
+        note: "Maps to wire_swift."
+      - id: Q12-B
+        label: "Remittance or money-transfer service, including to high-risk corridors"
+        maps_to: {"payment_rails": ["cross_border_remittance"]}
+        note: "Maps to cross_border_remittance."
+      - id: Q12-C
+        label: "International transfers not offered"
+        maps_to: {}
+        note: "No tags."
+      - id: Q12-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q13
+    section: money_movement
+    text: "Can the account be held jointly, or can someone else operate it for the customer?"
+    help: "Joint holders, power of attorney, authorised signatories and carers all count."
+    type: multi
+    applies_to_products: [transaction_account, savings_account, term_deposit, credit_card]
+    options:
+      - id: Q13-A
+        label: "Joint accounts with any other person (family, friends, unrelated)"
+        maps_to: {}
+        note: "Baseline segment: no tag (retail is not used because it does not discriminate between typologies)."
+      - id: Q13-B
+        label: "Power of attorney, guardianship or authorised third-party operators"
+        maps_to: {"customer_segments": ["vulnerable_elderly"]}
+        note: "Third-party operators map to vulnerable_elderly (financial abuse, coerced access)."
+      - id: Q13-C
+        label: "Parent or guardian access to a minor's account"
+        maps_to: {"customer_segments": ["student_youth"]}
+        note: "Maps to student_youth."
+      - id: Q13-D
+        label: "Single holder only, no third-party access"
+        maps_to: {}
+        note: "No tags."
+      - id: Q13-E
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q14
+    section: product_features
+    text: "How are interest or bonus rates structured, and can customers withdraw freely?"
+    help: "Bonus rates that depend on deposits or balances can encourage structuring or parking of funds from third parties."
+    type: multi
+    applies_to_products: [savings_account]
+    options:
+      - id: Q14-A
+        label: "Bonus interest for monthly deposits or regular transfers into the account"
+        maps_to: {"payment_rails": ["fast_payments", "direct_debit_batch"]}
+        note: "Deposit-count incentives map to fast_payments and direct_debit_batch (incoming transfers)."
+      - id: Q14-B
+        label: "Bonus interest for keeping a minimum balance or no withdrawals"
+        maps_to: {}
+        note: "No rail follows; behaviour-based controls apply."
+      - id: Q14-C
+        label: "High promotional rate that attracts large new money from other institutions"
+        maps_to: {"payment_rails": ["fast_payments", "wire_swift"]}
+        note: "Large inbound funds map to fast_payments and wire_swift."
+      - id: Q14-D
+        label: "Customers can withdraw any amount at any time with no notice or limit"
+        maps_to: {"payment_rails": ["fast_payments", "cash"]}
+        note: "Instant unrestricted withdrawal maps to fast_payments and cash."
+      - id: Q14-E
+        label: "Withdrawals are limited by number, amount or notice period, or the rate is flat with no conditions"
+        maps_to: {}
+        note: "Limits reduce pass-through use; no rail tag."
+      - id: Q14-F
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q15
+    section: product_features
+    text: "What are the minimum and maximum deposit amounts for this term deposit?"
+    help: "Large maximums can be used to place significant funds with a low question-asking threshold. Tick all that apply."
+    type: multi
+    applies_to_products: [term_deposit]
+    options:
+      - id: Q15-A
+        label: "Large maximum (e.g. above $1 million) or no maximum"
+        maps_to: {"payment_rails": ["wire_swift"], "customer_segments": ["private_wealth"]}
+        note: "High value placements map to wire_swift and private_wealth."
+      - id: Q15-B
+        label: "Mid-range maximum (e.g. up to a few hundred thousand dollars)"
+        maps_to: {}
+        note: "Baseline segment: no tag."
+      - id: Q15-C
+        label: "Low minimum (e.g. $1,000 or less) used by many small savers"
+        maps_to: {}
+        note: "Baseline segment: no tag (retail is not used because it does not discriminate between typologies)."
+      - id: Q15-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q16
+    section: product_features
+    text: "How can a term deposit be funded?"
+    help: "Consider the source of the initial lump sum and any top-ups at rollover."
+    type: multi
+    applies_to_products: [term_deposit]
+    options:
+      - id: Q16-A
+        label: "Transfer from a customer's existing account with the bank"
+        maps_to: {"payment_rails": ["fast_payments"]}
+        note: "Internal transfers map to fast_payments."
+      - id: Q16-B
+        label: "Transfer from an account at another bank or funded by a third party"
+        maps_to: {"payment_rails": ["fast_payments"], "customer_segments": ["third_party_funder"]}
+        note: "Funding from another bank or a third party maps to fast_payments and third_party_funder."
+      - id: Q16-C
+        label: "Cash or cheque deposit at a branch"
+        maps_to: {"payment_rails": ["cash", "cheque"]}
+        note: "Maps to cash and cheque."
+      - id: Q16-D
+        label: "Funds from overseas"
+        maps_to: {"payment_rails": ["wire_swift", "cross_border_remittance"], "customer_segments": ["non_resident"]}
+        note: "Overseas funding maps to wire_swift, cross_border_remittance and non_resident."
+      - id: Q16-E
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q17
+    section: product_features
+    text: "What happens if a customer wants to break the term deposit early?"
+    help: "Early break is the point at which a term deposit becomes liquid again, so early-break rules decide how it could be used to layer funds."
+    type: single
+    applies_to_products: [term_deposit]
+    options:
+      - id: Q17-A
+        label: "Allowed with notice and a penalty, but paid out to any account the customer nominates"
+        maps_to: {"payment_rails": ["fast_payments", "wire_swift"]}
+        note: "Liquid early exit to arbitrary accounts maps to fast_payments and wire_swift."
+      - id: Q17-B
+        label: "Allowed only in exceptional circumstances (hardship, death) and paid to the original account"
+        maps_to: {}
+        note: "Restricted: no extra rail."
+      - id: Q17-C
+        label: "Not allowed"
+        maps_to: {}
+        note: "No tags."
+      - id: Q17-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q18
+    section: product_features
+    text: "Where can maturity proceeds be paid?"
+    help: "Third-party and cheque payouts break the link between the customer and the original source of funds."
+    type: multi
+    applies_to_products: [term_deposit]
+    options:
+      - id: Q18-A
+        label: "To the customer's own account at the same bank only"
+        maps_to: {}
+        note: "Closed loop: no tags."
+      - id: Q18-B
+        label: "To an account at another bank in the customer's name"
+        maps_to: {"payment_rails": ["fast_payments"]}
+        note: "Maps to fast_payments."
+      - id: Q18-C
+        label: "To a third party's account, or to an account in another name"
+        maps_to: {"payment_rails": ["fast_payments"], "customer_segments": ["professional_intermediary"]}
+        note: "Third-party payout maps to fast_payments; payouts to other names also hint at intermediary involvement, mapped to professional_intermediary."
+      - id: Q18-D
+        label: "By cheque"
+        maps_to: {"payment_rails": ["cheque"]}
+        note: "Maps to cheque."
+      - id: Q18-E
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q19
+    section: product_features
+    text: "Do term deposits roll over automatically, and can funds be added or the nominated account changed?"
+    help: "Automatic rollover with changes to nominated accounts is a common ATO and layering route."
+    type: multi
+    applies_to_products: [term_deposit]
+    options:
+      - id: Q19-A
+        label: "Automatic rollover with the option to top up"
+        maps_to: {"payment_rails": ["fast_payments", "cash"]}
+        note: "Top-ups at rollover map to fast_payments and cash."
+      - id: Q19-B
+        label: "Nominated payout account can be changed by phone, online or in branch"
+        maps_to: {"payment_rails": ["fast_payments"], "customer_segments": ["vulnerable_elderly"]}
+        note: "Remote changes map to fast_payments; vulnerable customers are targeted for account takeover."
+      - id: Q19-C
+        label: "Automatic rollover only, no changes without a new application"
+        maps_to: {}
+        note: "No tags."
+      - id: Q19-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q44
+    section: product_features
+    text: "Can the term deposit be used as security for borrowing?"
+    help: "Loans secured on deposits are a classic loan-back route: borrowed funds are paid out while the deposit is broken or liquidated to repay."
+    type: single
+    applies_to_products: [term_deposit]
+    options:
+      - id: Q44-A
+        label: "Yes, the bank lends against the deposit (lien or loan against deposit)"
+        maps_to: {"payment_rails": ["loan_disbursement", "loan_early_payout"]}
+        note: "Loan against deposit: loan_disbursement and loan_early_payout."
+      - id: Q44-B
+        label: "Yes, it can secure borrowing by someone else (third party or other lender)"
+        maps_to: {"payment_rails": ["loan_disbursement"], "customer_segments": ["third_party_funder"]}
+        note: "Deposit securing a third party's borrowing: loan_disbursement and third_party_funder."
+      - id: Q44-C
+        label: "No, the deposit cannot be used as security"
+        maps_to: {}
+        note: "No tags."
+      - id: Q44-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q20
+    section: product_features
+    text: "Can customers take cash advances on the credit card?"
+    help: "Cash advances move credit into cash and are a known route for fraud proceeds and gambling."
+    type: multi
+    applies_to_products: [credit_card]
+    options:
+      - id: Q20-A
+        label: "Cash advance at ATMs or branches"
+        maps_to: {"payment_rails": ["cash", "card", "bnpl_cash_like"]}
+        note: "Cash advances are cash-like credit: cash, card and bnpl_cash_like."
+      - id: Q20-B
+        label: "Cash-like transactions (e.g. gambling, money orders, crypto purchases)"
+        maps_to: {"payment_rails": ["card", "crypto_onramp_offramp", "bnpl_cash_like"]}
+        note: "Cash-like purchases map to card, crypto on/off-ramp and bnpl_cash_like."
+      - id: Q20-C
+        label: "Cash advances and cash-like transactions are blocked"
+        maps_to: {}
+        note: "No tags."
+      - id: Q20-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q21
+    section: product_features
+    text: "Can customers transfer balances from other cards or use the card to pay other lenders?"
+    help: "Balance transfers and bill-pay can be used to cycle funds between facilities."
+    type: multi
+    applies_to_products: [credit_card]
+    options:
+      - id: Q21-A
+        label: "Balance transfers from other credit cards or personal loans"
+        maps_to: {"payment_rails": ["card", "loan_disbursement"]}
+        note: "Balance transfers pay out credit to other lenders: card and loan_disbursement."
+      - id: Q21-B
+        label: "Bill payments (biller codes) or transfers to third-party accounts from the card"
+        maps_to: {"payment_rails": ["bill_payment", "card", "fast_payments"]}
+        note: "Bill payments or transfers from the card map to bill_payment, card and fast_payments."
+      - id: Q21-C
+        label: "Neither"
+        maps_to: {}
+        note: "No tags."
+      - id: Q21-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q22
+    section: product_features
+    text: "What happens when customers overpay or hold a credit balance on the card?"
+    help: "Overpayments can be refunded to a different account, creating a \"clean\" payout."
+    type: multi
+    applies_to_products: [credit_card]
+    options:
+      - id: Q22-A
+        label: "Credit balances above the limit are allowed and refunded on request"
+        maps_to: {"payment_rails": ["fast_payments", "cash"]}
+        note: "Maps to fast_payments and cash."
+      - id: Q22-B
+        label: "Refunds are paid to a different account or by cheque"
+        maps_to: {"payment_rails": ["cheque", "wire_swift"]}
+        note: "Maps to cheque and wire_swift."
+      - id: Q22-C
+        label: "Refunds only go back to the account that made the payment"
+        maps_to: {}
+        note: "Closed loop: no tags."
+      - id: Q22-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q23
+    section: product_features
+    text: "Does the card allow additional cardholders, and how are credit limit increases handled?"
+    help: "Additional cardholders are often family members; automated limit increases can be used for bust-out."
+    type: multi
+    applies_to_products: [credit_card]
+    options:
+      - id: Q23-A
+        label: "Additional cardholders, including under 18s or people unrelated to the primary holder"
+        maps_to: {"payment_rails": ["card"], "customer_segments": ["student_youth", "vulnerable_elderly"]}
+        note: "Maps to card, student_youth and vulnerable_elderly."
+      - id: Q23-B
+        label: "Credit limit increase available by app, online or phone without full reassessment"
+        maps_to: {"payment_rails": ["card"], "customer_segments": ["new_to_bank"]}
+        note: "Easy limit increase maps to card and new_to_bank (bust-out fraud)."
+      - id: Q23-C
+        label: "Limit increases need a new application and income verification"
+        maps_to: {}
+        note: "No tags."
+      - id: Q23-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q24
+    section: product_features
+    text: "Where can the card be used?"
+    help: "Consider overseas use, online (card-not-present) use, and digital wallets."
+    type: multi
+    applies_to_products: [credit_card]
+    options:
+      - id: Q24-A
+        label: "Overseas in-store and ATM use"
+        maps_to: {"payment_rails": ["card", "cash"]}
+        note: "Maps to card and cash."
+      - id: Q24-B
+        label: "Online and phone purchases (card-not-present)"
+        maps_to: {"payment_rails": ["card"]}
+        note: "Maps to card."
+      - id: Q24-C
+        label: "Digital wallets and \"buy now pay later\" or instalment features"
+        maps_to: {"payment_rails": ["card", "bnpl_cash_like"]}
+        note: "BNPL and instalment features map to card and bnpl_cash_like."
+      - id: Q24-D
+        label: "Gambling, crypto exchange or other higher-risk merchants not blocked"
+        maps_to: {"payment_rails": ["card", "crypto_onramp_offramp", "bnpl_cash_like"]}
+        note: "Higher-risk and cash-like merchants map to card, crypto and bnpl_cash_like."
+      - id: Q24-E
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q25
+    section: lending
+    text: "What is the loan used for, and is the purpose checked?"
+    help: "Unverified or flexible purposes allow loan funds to be used for scam payments, gambling or cash."
+    type: single
+    applies_to_products: [personal_loan]
+    options:
+      - id: Q25-A
+        label: "Any purpose, not checked (e.g. cash out, \"personal use\")"
+        maps_to: {"payment_rails": ["loan_disbursement", "fast_payments", "cash"]}
+        note: "Unchecked purpose allows cash-out: loan_disbursement, fast_payments and cash."
+      - id: Q25-B
+        label: "Specific purpose (e.g. vehicle, renovation, debt consolidation), checked with invoices or payout to a third party"
+        maps_to: {"payment_rails": ["loan_disbursement"]}
+        note: "Purpose-checked loans still disburse credit, often to a seller or supplier: loan_disbursement."
+      - id: Q25-C
+        label: "Education or travel for customers who are overseas or temporary residents"
+        maps_to: {"payment_rails": ["loan_disbursement", "cross_border_remittance"], "customer_segments": ["non_resident", "student_youth"]}
+        note: "Overseas-linked education or travel loans map to loan_disbursement, remittance, non_resident and student_youth."
+      - id: Q25-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q26
+    section: lending
+    text: "Is the loan unsecured, or secured on something other than property?"
+    help: "Loans secured on cash, term deposits or cars have different loan-back and asset-laundering risks."
+    type: single
+    applies_to_products: [personal_loan]
+    options:
+      - id: Q26-A
+        label: "Unsecured"
+        maps_to: {"payment_rails": ["fast_payments"]}
+        note: "Unsecured credit is typically paid out by fast payment."
+      - id: Q26-B
+        label: "Secured on a vehicle, boat or other asset"
+        maps_to: {"payment_rails": ["wire_swift"], "customer_segments": ["private_wealth"]}
+        note: "Asset-secured loans map to wire_swift and private_wealth."
+      - id: Q26-C
+        label: "Secured on cash or a term deposit (including loans against deposits held with the bank)"
+        maps_to: {"payment_rails": ["loan_disbursement", "loan_early_payout", "wire_swift"], "customer_segments": ["private_wealth"]}
+        note: "Loans against deposits are the loan-back pattern: loan_disbursement, loan_early_payout (repayment by breaking or liquidating the deposit), wire_swift, private_wealth."
+      - id: Q26-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q27
+    section: lending
+    text: "How quickly, and to whom, is the money paid out?"
+    help: "Fast, direct or third-party payouts leave little time for checks; payout to third parties and cash-out are loan disbursement exposure."
+    type: multi
+    applies_to_products: [personal_loan, home_loan_fixed, home_loan_variable]
+    options:
+      - id: Q27-A
+        label: "Same day or instant to the customer's account"
+        maps_to: {"payment_rails": ["loan_disbursement", "fast_payments"]}
+        note: "Instant payout to the customer: loan_disbursement and fast_payments."
+      - id: Q27-B
+        label: "Directly to a third party (dealer, builder, conveyancer, settlement agent)"
+        maps_to: {"payment_rails": ["loan_disbursement", "wire_swift", "fast_payments"], "customer_segments": ["professional_intermediary"]}
+        note: "Third-party payout: loan_disbursement, wire_swift, fast_payments and professional_intermediary."
+      - id: Q27-C
+        label: "By cheque or cash"
+        maps_to: {"payment_rails": ["loan_disbursement", "cheque", "cash"]}
+        note: "Cheque or cash payout: loan_disbursement, cheque and cash."
+      - id: Q27-D
+        label: "Payout only after settlement or document checks (no cash-out)"
+        maps_to: {}
+        note: "No tags."
+      - id: Q27-E
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q28
+    section: lending
+    text: "Can customers top up the loan or draw more later?"
+    help: "Top-ups and redraws increase the cash that can be extracted from existing facilities."
+    type: single
+    applies_to_products: [personal_loan]
+    options:
+      - id: Q28-A
+        label: "Yes, top-ups are available and approved quickly, often without a fresh assessment"
+        maps_to: {"payment_rails": ["loan_disbursement", "fast_payments"]}
+        note: "Fast top-ups are repeat disbursements: loan_disbursement and fast_payments."
+      - id: Q28-B
+        label: "Top-ups need a full new application"
+        maps_to: {}
+        note: "No tags."
+      - id: Q28-C
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q43
+    section: lending
+    text: "Can the loan be used like a line of credit, or for buy-now-pay-later or point-of-sale finance?"
+    help: "Credit that behaves like cash, or that pays merchants directly, is exposed to cash-out and merchant-collusion typologies."
+    type: multi
+    applies_to_products: [personal_loan]
+    options:
+      - id: Q43-A
+        label: "Point-of-sale, buy-now-pay-later or instalment finance paid direct to retailers"
+        maps_to: {"payment_rails": ["loan_disbursement", "bnpl_cash_like"]}
+        note: "Merchant-paid and BNPL style credit maps to loan_disbursement and bnpl_cash_like."
+      - id: Q43-B
+        label: "Revolving or redraw-style access to further cash after settlement"
+        maps_to: {"payment_rails": ["loan_disbursement", "bnpl_cash_like", "cash"]}
+        note: "Cash-like credit access maps to loan_disbursement, bnpl_cash_like and cash."
+      - id: Q43-C
+        label: "One-off fixed drawdown only"
+        maps_to: {}
+        note: "No tags."
+      - id: Q43-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q29
+    section: lending
+    text: "Can customers repay early or in lump sums, and who makes repayments?"
+    help: "Early and third-party payouts clear the loan quickly and can launder value or hide the true source of funds."
+    type: multi
+    applies_to_products: [personal_loan, home_loan_fixed, home_loan_variable]
+    options:
+      - id: Q29-A
+        label: "Lump-sum or early payout allowed without a fee"
+        maps_to: {"payment_rails": ["loan_early_payout"]}
+        note: "Early or lump-sum payout maps to loan_early_payout."
+      - id: Q29-B
+        label: "Repayments in cash at branch or by cheque"
+        maps_to: {"payment_rails": ["cash", "cheque"]}
+        note: "Maps to cash and cheque."
+      - id: Q29-C
+        label: "Repayments from overseas accounts or by third parties unrelated to the borrower"
+        maps_to: {"payment_rails": ["loan_early_payout", "wire_swift", "cross_border_remittance"], "customer_segments": ["non_resident", "third_party_funder"]}
+        note: "Overseas or unrelated third-party repayments: loan_early_payout, wire_swift, remittance, non_resident and third_party_funder."
+      - id: Q29-D
+        label: "Regular repayments paid by a third party or company on the borrower's behalf"
+        maps_to: {"payment_rails": ["loan_early_payout", "fast_payments"], "customer_segments": ["third_party_funder"]}
+        note: "Repayments by a third party or company on the borrower's behalf: loan_early_payout, fast_payments and third_party_funder."
+      - id: Q29-E
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q30
+    section: lending
+    text: "Are loans arranged through brokers, introducers or other third parties?"
+    help: "Intermediaries sit between the bank and the customer and can alter or fabricate documents."
+    type: single
+    applies_to_products: [personal_loan, home_loan_fixed, home_loan_variable]
+    options:
+      - id: Q30-A
+        label: "Yes, a large share comes from brokers or introducers"
+        maps_to: {"customer_segments": ["professional_intermediary"]}
+        note: "Maps to professional_intermediary."
+      - id: Q30-B
+        label: "Direct only (branch, phone or online)"
+        maps_to: {}
+        note: "No tags."
+      - id: Q30-C
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q31
+    section: lending
+    text: "Do guarantors, co-borrowers or other third parties commonly support or fund the loan?"
+    help: "Guarantors and third-party funders can be coerced, elderly or acting as a front for the real beneficiary."
+    type: multi
+    applies_to_products: [personal_loan, home_loan_fixed, home_loan_variable]
+    options:
+      - id: Q31-A
+        label: "Guarantor required or commonly used (e.g. parents guaranteeing a young borrower)"
+        maps_to: {"customer_segments": ["third_party_funder"]}
+        note: "Guarantors are a third party funding or backing the borrower: third_party_funder."
+      - id: Q31-B
+        label: "Joint borrowers who are unrelated or recently introduced"
+        maps_to: {"customer_segments": ["new_to_bank", "third_party_funder"]}
+        note: "Unrelated or recently introduced joint borrowers map to new_to_bank and third_party_funder."
+      - id: Q31-C
+        label: "Single borrower, no guarantor"
+        maps_to: {}
+        note: "No tags."
+      - id: Q31-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q32
+    section: lending
+    text: "Is the home loan mainly for living in or for investment?"
+    help: "Investor lending involves rental income, multiple properties and more complex funding."
+    type: single
+    applies_to_products: [home_loan_fixed, home_loan_variable]
+    options:
+      - id: Q32-A
+        label: "Mostly owner-occupier"
+        maps_to: {}
+        note: "Baseline segment: no tag (retail is not used because it does not discriminate between typologies)."
+      - id: Q32-B
+        label: "Mix of owner-occupier and investor lending"
+        maps_to: {"customer_segments": ["private_wealth"]}
+        note: "Maps to private_wealth."
+      - id: Q32-C
+        label: "Mostly investors, including those with several properties or self-managed funds"
+        maps_to: {"customer_segments": ["private_wealth"]}
+        note: "Investor-heavy lending maps to private_wealth."
+      - id: Q32-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q33
+    section: lending
+    text: "Where does the borrower's deposit come from, and how is it checked?"
+    help: "Gifted deposits and deposits from overseas or in cash are a known property laundering route."
+    type: multi
+    applies_to_products: [home_loan_fixed, home_loan_variable]
+    options:
+      - id: Q33-A
+        label: "Savings held with the bank for some time"
+        maps_to: {}
+        note: "Baseline segment: no tag (retail is not used because it does not discriminate between typologies)."
+      - id: Q33-B
+        label: "Gifted by family or other third parties"
+        maps_to: {"payment_rails": ["fast_payments"], "customer_segments": ["third_party_funder"]}
+        note: "Gifted deposits map to third_party_funder and fast_payments."
+      - id: Q33-C
+        label: "Sent from overseas"
+        maps_to: {"payment_rails": ["wire_swift", "cross_border_remittance"], "customer_segments": ["non_resident"]}
+        note: "Maps to wire_swift, cross_border_remittance and non_resident."
+      - id: Q33-D
+        label: "Paid in cash or with large cheques"
+        maps_to: {"payment_rails": ["cash", "cheque"]}
+        note: "Maps to cash and cheque."
+      - id: Q33-E
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q34
+    section: lending
+    text: "How is the property valued before lending?"
+    help: "Valuations are a control point; broker-chosen or desktop valuations can be manipulated."
+    type: single
+    applies_to_products: [home_loan_fixed, home_loan_variable]
+    options:
+      - id: Q34-A
+        label: "Independent panel valuer chosen by the bank"
+        maps_to: {}
+        note: "Strong control: no tags."
+      - id: Q34-B
+        label: "Valuer or valuation firm nominated by the broker or borrower"
+        maps_to: {"customer_segments": ["professional_intermediary"]}
+        note: "Maps to professional_intermediary."
+      - id: Q34-C
+        label: "Automated or desktop valuations for some loans"
+        maps_to: {"customer_segments": ["professional_intermediary"]}
+        note: "Maps to professional_intermediary."
+      - id: Q34-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q35
+    section: lending
+    text: "How are fixed-rate locks and break costs handled?"
+    help: "Break costs and rate locks affect when and how large lump sums are paid."
+    type: multi
+    applies_to_products: [home_loan_fixed]
+    options:
+      - id: Q35-A
+        label: "Rate lock available before settlement, often arranged by a broker"
+        maps_to: {"customer_segments": ["professional_intermediary"]}
+        note: "Maps to professional_intermediary."
+      - id: Q35-B
+        label: "Early exit or full payout during the fixed term, subject to a break cost"
+        maps_to: {"payment_rails": ["loan_early_payout"]}
+        note: "Early exit or full payout during the fixed term: loan_early_payout."
+      - id: Q35-C
+        label: "Break costs may be paid by a third party or unrelated account"
+        maps_to: {"payment_rails": ["loan_early_payout", "fast_payments"], "customer_segments": ["third_party_funder"]}
+        note: "Third-party break costs or payout: loan_early_payout, fast_payments, third_party_funder."
+      - id: Q35-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q36
+    section: lending
+    text: "Does the loan have an offset account, redraw, or flexible extra repayments?"
+    help: "Offsets and redraws let borrowers hold and withdraw large sums, so the loan acts like a transaction account."
+    type: multi
+    applies_to_products: [home_loan_variable]
+    options:
+      - id: Q36-A
+        label: "Offset account linked to the loan, accepting deposits from anyone"
+        maps_to: {"payment_rails": ["fast_payments", "cash"]}
+        note: "Offset accepting deposits from anyone: fast_payments and cash."
+      - id: Q36-B
+        label: "Redraw of extra repayments to any account via app, online or phone"
+        maps_to: {"payment_rails": ["loan_disbursement", "fast_payments", "wire_swift"]}
+        note: "Redraw to any account is a disbursement of loan funds: loan_disbursement, fast_payments, wire_swift."
+      - id: Q36-C
+        label: "Redraw by cash or cheque at branch"
+        maps_to: {"payment_rails": ["loan_disbursement", "cash", "cheque"]}
+        note: "Redraw by cash or cheque: loan_disbursement, cash, cheque."
+      - id: Q36-D
+        label: "Unlimited extra repayments without fees, or the loan can be split into fixed and variable parts"
+        maps_to: {"payment_rails": ["loan_early_payout"]}
+        note: "Unlimited extra repayments allow rapid payout: loan_early_payout."
+      - id: Q36-E
+        label: "Neither feature, and extra repayments are capped or fee-based"
+        maps_to: {}
+        note: "No tags."
+      - id: Q36-F
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q37
+    section: channel_controls
+    text: "How are new customers identified and onboarded in the app or online?"
+    help: "Remote onboarding relies on document and biometric checks that can be defeated by synthetic or stolen identities."
+    type: multi
+    applies_to_channels: [mobile_app, online_banking]
+    options:
+      - id: Q37-A
+        label: "Fully remote with electronic ID or document checks and no face-to-face contact"
+        maps_to: {"customer_segments": ["new_to_bank"]}
+        note: "Maps to new_to_bank (remote onboarding is where synthetic and stolen identities enter)."
+      - id: Q37-B
+        label: "Remote onboarding available to non-residents or customers with foreign ID"
+        maps_to: {"customer_segments": ["non_resident"]}
+        note: "Maps to non_resident."
+      - id: Q37-C
+        label: "Customers must verify ID in a branch or by video call with a bank employee"
+        maps_to: {}
+        note: "No tags."
+      - id: Q37-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q38
+    section: channel_controls
+    text: "What controls protect devices and sessions in the app or online?"
+    help: "Device and session controls reduce account takeover and remote-access scams."
+    type: multi
+    applies_to_channels: [mobile_app, online_banking]
+    options:
+      - id: Q38-A
+        label: "A new device or browser can make payments straight away"
+        maps_to: {"payment_rails": ["fast_payments"]}
+        note: "Maps to fast_payments."
+      - id: Q38-B
+        label: "Customers can share screens or allow remote access without detection"
+        maps_to: {"customer_segments": ["vulnerable_elderly"]}
+        note: "Maps to vulnerable_elderly."
+      - id: Q38-C
+        label: "Device binding, one-time codes and session risk checks are applied"
+        maps_to: {}
+        note: "No tags."
+      - id: Q38-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q39
+    section: channel_controls
+    text: "Can customers change contact details, limits or payees remotely?"
+    help: "Changing contact details and limits is the first step of most account takeover."
+    type: multi
+    applies_to_channels: [mobile_app, online_banking, call_centre]
+    options:
+      - id: Q39-A
+        label: "Change mobile number, email or address in the app, online or by phone"
+        maps_to: {"payment_rails": ["fast_payments"]}
+        note: "Maps to fast_payments."
+      - id: Q39-B
+        label: "Increase payment or card limits remotely"
+        maps_to: {"payment_rails": ["fast_payments", "card"]}
+        note: "Maps to fast_payments and card."
+      - id: Q39-C
+        label: "All changes require extra verification or a branch visit"
+        maps_to: {}
+        note: "No tags."
+      - id: Q39-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q40
+    section: channel_controls
+    text: "How are customers authenticated, and what can they instruct, by phone?"
+    help: "Call-centre social engineering is a common route to account takeover and unauthorised payments."
+    type: multi
+    applies_to_channels: [call_centre]
+    options:
+      - id: Q40-A
+        label: "Identity verified with personal details only, no one-time code"
+        maps_to: {"customer_segments": ["vulnerable_elderly"]}
+        note: "Maps to vulnerable_elderly."
+      - id: Q40-B
+        label: "Phone instructions can include payments, large or international transfers"
+        maps_to: {"payment_rails": ["fast_payments", "wire_swift"]}
+        note: "Maps to fast_payments and wire_swift."
+      - id: Q40-C
+        label: "Customers can be called back or verified with a one-time code"
+        maps_to: {}
+        note: "No tags."
+      - id: Q40-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q41
+    section: channel_controls
+    text: "What cash handling and ID checks happen at the branch counter?"
+    help: "Branch staff see customers, cash and documents directly."
+    type: multi
+    applies_to_channels: [branch]
+    options:
+      - id: Q41-A
+        label: "Cash deposits and withdrawals above reporting thresholds"
+        maps_to: {"payment_rails": ["cash"]}
+        note: "Maps to cash."
+      - id: Q41-B
+        label: "Third parties depositing cash into customer accounts"
+        maps_to: {"payment_rails": ["cash"]}
+        note: "Maps to cash."
+      - id: Q41-C
+        label: "Foreign or unfamiliar ID documents accepted"
+        maps_to: {"customer_segments": ["non_resident", "new_to_bank"]}
+        note: "Maps to non_resident and new_to_bank."
+      - id: Q41-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+  - id: Q42
+    section: channel_controls
+    text: "Do customers come to the branch or phone line with someone else who speaks for them?"
+    help: "Accompanied customers can signal coercion or exploitation."
+    type: multi
+    applies_to_channels: [branch, call_centre]
+    options:
+      - id: Q42-A
+        label: "Older or vulnerable customers who are accompanied by others"
+        maps_to: {"customer_segments": ["vulnerable_elderly"]}
+        note: "Maps to vulnerable_elderly."
+      - id: Q42-B
+        label: "Young customers or students accompanied by non-family members"
+        maps_to: {"customer_segments": ["student_youth"]}
+        note: "Maps to student_youth."
+      - id: Q42-C
+        label: "Customers new to the bank who are accompanied by an introducer"
+        maps_to: {"customer_segments": ["new_to_bank"]}
+        note: "Maps to new_to_bank."
+      - id: Q42-D
+        label: "Not sure / not applicable"
+        maps_to: {}
+        note: "No tags."
+profiles:
+  - id: P-TA
+    name: "Illustrative everyday account"
+    description: "Illustrative only, not an assessment of any real product. Mass-market everyday account with real-time payments, debit card and digital wallets, cheques and direct debits, ATM and branch cash, joint and POA access, SWIFT transfers, all four channels."
+    product: transaction_account
+    answers: [Q01-A, Q02-A, Q02-B, Q02-C, Q02-D, Q03-A, Q03-B, Q03-C, Q05-B, Q06-A, Q07-A, Q07-B, Q08-B, Q09-A, Q09-B, Q09-C, Q10-B, Q10-C, Q11-A, Q11-B, Q12-A, Q13-A, Q13-B, Q13-C, Q37-A, Q38-C, Q39-A, Q40-B, Q41-A, Q41-B]
+    channels: [mobile_app, online_banking, call_centre, branch]
+  - id: P-SA
+    name: "Illustrative savings account"
+    description: "Illustrative only, not an assessment of any real product. Bonus-interest online saver linked to an everyday account, real-time transfers in and out, ATM and branch deposits, withdrawal limits, joint holding; app, internet banking and branch."
+    product: savings_account
+    answers: [Q01-B, Q02-A, Q02-B, Q02-D, Q03-A, Q03-B, Q05-B, Q06-A, Q07-A, Q07-B, Q08-B, Q09-A, Q09-B, Q12-C, Q13-A, Q13-D, Q14-A, Q14-E, Q37-A, Q38-C, Q39-A, Q41-A]
+    channels: [mobile_app, online_banking, branch]
+  - id: P-TD
+    name: "Illustrative term deposit"
+    description: "Illustrative only, not an assessment of any real product. Fixed-term deposit funded from the customer's own accounts or other banks, early break with penalty to any nominated account, maturity to own or other-bank account, auto-rollover, loans against the deposit; internet banking, phone and branch."
+    product: term_deposit
+    answers: [Q01-C, Q02-B, Q02-C, Q02-D, Q03-A, Q05-B, Q06-B, Q13-A, Q15-B, Q15-C, Q16-A, Q16-B, Q17-A, Q18-B, Q19-A, Q37-C, Q38-C, Q39-A, Q40-C, Q41-A, Q44-A]
+    channels: [online_banking, call_centre, branch]
+  - id: P-CC
+    name: "Illustrative credit card"
+    description: "Illustrative only, not an assessment of any real product. Mass-market credit card with cash advance, balance transfers, additional cardholders, online limit increases, overseas and card-not-present use, digital wallets; all four channels."
+    product: credit_card
+    answers: [Q01-D, Q02-A, Q02-B, Q02-C, Q02-D, Q03-A, Q05-A, Q06-B, Q13-D, Q20-A, Q21-A, Q21-B, Q22-A, Q23-B, Q24-A, Q24-B, Q24-C, Q37-A, Q38-C, Q39-A, Q39-B, Q40-C]
+    channels: [mobile_app, online_banking, call_centre, branch]
+  - id: P-PL
+    name: "Illustrative unsecured personal loan"
+    description: "Illustrative only, not an assessment of any real product. Unsecured personal loan with purpose check, same-day payout to the customer, top-ups, early repayment, some broker origination, existing-customer ID checks; app, internet banking and phone."
+    product: personal_loan
+    answers: [Q01-E, Q02-A, Q02-B, Q02-C, Q03-A, Q05-A, Q06-B, Q25-B, Q26-A, Q27-A, Q28-A, Q29-A, Q30-A, Q31-C, Q37-C, Q38-C, Q39-A, Q40-C, Q43-C]
+    channels: [mobile_app, online_banking, call_centre]
+  - id: P-HF
+    name: "Illustrative fixed-rate home loan"
+    description: "Illustrative only, not an assessment of any real product. Mostly owner-occupier home loan, broker-originated, gifted deposits, settlement to conveyancer, fixed-term break costs, lump-sum exit; internet banking, phone and branch."
+    product: home_loan_fixed
+    answers: [Q01-F, Q02-B, Q02-C, Q02-D, Q03-A, Q05-B, Q06-B, Q27-D, Q29-A, Q30-A, Q31-C, Q32-A, Q33-A, Q33-B, Q34-B, Q35-A, Q35-B, Q37-A, Q38-C, Q39-A, Q40-C, Q41-A, Q42-C]
+    channels: [online_banking, call_centre, branch]
+  - id: P-HV
+    name: "Illustrative variable-rate home loan"
+    description: "Illustrative only, not an assessment of any real product. Mostly owner-occupier variable loan with offset account, redraw, unlimited extra repayments, broker-originated, savings-funded deposit; all four channels."
+    product: home_loan_variable
+    answers: [Q01-G, Q02-A, Q02-B, Q02-C, Q02-D, Q03-A, Q05-B, Q06-B, Q27-D, Q29-A, Q30-A, Q31-C, Q32-A, Q33-A, Q34-B, Q36-A, Q36-B, Q36-D, Q37-A, Q38-C, Q39-A, Q39-B, Q40-C, Q41-A]
+    channels: [mobile_app, online_banking, call_centre, branch]

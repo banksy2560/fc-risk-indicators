@@ -1,0 +1,1 @@
+{"id":"IND-TXN-104","n":"Transaction volumes disproportionate to respondent's size","ds":"Flows far exceed expected levels for the respondent's balance sheet or footprint.","s":"medium","fp":"Business growth or new products.","det":["transaction_monitoring"],"cat":"transaction"}

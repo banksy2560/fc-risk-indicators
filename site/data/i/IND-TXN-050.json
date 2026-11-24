@@ -1,0 +1,1 @@
+{"id":"IND-TXN-050","n":"Wrapped or low-liquidity token conversions at poor rates","ds":"Customer accepts clearly unfavourable swap prices or uses thin-liquidity tokens, suggesting priority on obscuring origin.","s":"medium","fp":"Illiquid-market inexperience.","det":["transaction_monitoring"],"cat":"transaction"}

@@ -1,0 +1,1 @@
+{"id":"IND-BEH-075","n":"Insider override of credit policy or unusual speed of approval","ds":"Staff-approved exceptions or rapid decisions with limited verification.","s":"medium","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["customer_behaviour","investigator_judgement"],"cat":"behavioural"}

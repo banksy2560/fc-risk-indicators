@@ -1,0 +1,1 @@
+{"id":"IND-TXN-101","n":"Deposits unsupported by supplier or cost-of-sales activity","ds":"Cash takings are high but there are few payments to suppliers, rent, wages or tax authorities.","s":"high","fp":"Cash-paid suppliers or off-account costs may exist.","det":["transaction_monitoring","investigator_judgement"],"cat":"transaction"}

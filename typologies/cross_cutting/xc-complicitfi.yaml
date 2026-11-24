@@ -19,6 +19,13 @@ typology:
     basis: ai_inferred
     rationale: Insider and counterparty-bank complicity; correspondent/respondent relationships and staff
       override.
+    consumer:
+      relevant: true
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Cross-cutting risk factor; applies across all consumer products and channels. Insider
+        complicity can touch any product or channel.
   sectors:
   - all
   sources:

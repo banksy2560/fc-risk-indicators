@@ -1,0 +1,1 @@
+{"id":"IND-CPT-012","n":"Agent with unusual cash volumes or splitting behaviour","ds":"Agent location processes volumes far above peers, with suspicious customer splitting.","s":"high","fp":"High-footfall locations.","det":["transaction_monitoring","investigator_judgement"],"cat":"counterparty"}

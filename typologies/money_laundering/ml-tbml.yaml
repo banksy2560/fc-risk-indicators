@@ -18,6 +18,12 @@ typology:
     - trade_finance
     basis: ai_inferred
     rationale: Invoice manipulation and LC/bill of lading discrepancies in trade finance.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Trade-based laundering depends on trade finance and invoicing, absent from consumer products.
   stage:
   - layering
   - integration

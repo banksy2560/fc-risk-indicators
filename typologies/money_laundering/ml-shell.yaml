@@ -20,6 +20,12 @@ typology:
     - transaction_account
     basis: ai_inferred
     rationale: Shell/front company accounts moving funds without operations.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Shell and front companies are corporate customers; no consumer product exposure.
   stage:
   - layering
   - integration

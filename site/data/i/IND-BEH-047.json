@@ -1,0 +1,1 @@
+{"id":"IND-BEH-047","n":"Referral or incentive abuse patterns","ds":"Clusters of accounts claiming rewards and withdrawing promptly.","s":"low","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

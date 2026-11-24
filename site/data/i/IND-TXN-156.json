@@ -1,0 +1,1 @@
+{"id":"IND-TXN-156","n":"Sudden large inflows from newly funded unhosted wallets","ds":"Large first deposits from unhosted wallets with no history, followed by immediate transfers out.","s":"medium","fp":"Users migrating between platforms behave this way.","det":["transaction_monitoring"],"cat":"transaction"}

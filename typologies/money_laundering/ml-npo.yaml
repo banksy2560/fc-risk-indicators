@@ -19,6 +19,12 @@ typology:
     - transaction_account
     basis: ai_inferred
     rationale: Charity accounts and donation channels used for mixing and moving funds.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Charity and NPO accounts are organisational customers, not retail consumers.
   stage:
   - placement
   - layering

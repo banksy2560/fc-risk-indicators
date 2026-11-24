@@ -1,0 +1,1 @@
+{"id":"IND-TXN-014","n":"Volumes exceed documented production or capacity","ds":"Exports or output reported exceed documented production, concession or capacity limits.","s":"high","fp":"Stockpiles, undocumented but legitimate sources or reporting lags.","det":["transaction_monitoring","investigator_judgement","external_intel"],"cat":"transaction"}

@@ -1,0 +1,1 @@
+{"id":"IND-BEH-043","n":"Withdrawals to bridge contracts at odds with profile","ds":"Retail customers with no on-chain history send large sums directly to bridges or DeFi contracts.","s":"low","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

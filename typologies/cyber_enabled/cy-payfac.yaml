@@ -20,6 +20,13 @@ typology:
     - merchant_services
     basis: ai_inferred
     rationale: Transaction laundering through sub-merchants of facilitators and acquirers.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Transaction laundering through facilitators and sub-merchants is a merchant acquiring
+        risk.
   stage:
   - layering
   - integration

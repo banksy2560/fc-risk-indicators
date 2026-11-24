@@ -1,0 +1,1 @@
+{"id":"IND-TXN-046","n":"Frequent small purchases to marketplace-linked addresses","ds":"Repeated low-value withdrawals to wallets clustering with market deposit infrastructure, consistent with buyer activity.","s":"medium","fp":"False cluster attribution.","det":["transaction_monitoring"],"cat":"transaction"}

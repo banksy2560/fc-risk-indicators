@@ -14,16 +14,34 @@ typology:
     payment_rails:
     - card
     - cash
+    - loan_disbursement
+    - bnpl_cash_like
     customer_segments:
     - retail
     - student_youth
     products:
     - transaction_account
     - credit_card
-    - loan_mortgage
+    - personal_loan
+    - home_loan_fixed
+    - home_loan_variable
     - prepaid_stored_value
     basis: ai_inferred
     rationale: 'Low-value retail activity: credit, asset liquidation and cash.'
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      - credit_card
+      - personal_loan
+      channels:
+      - mobile_app
+      - online_banking
+      - branch
+      basis: ai_inferred
+      rationale: Small attacker self-funds from savings, cards and personal loans, with cash-out and purchases;
+        blends into retail banking.
   sectors:
   - banking
   - payments

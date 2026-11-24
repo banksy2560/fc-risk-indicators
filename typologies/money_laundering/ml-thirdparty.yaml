@@ -12,13 +12,31 @@ typology:
     - fast_payments
     - wire_swift
     - cash
+    - bill_payment
     customer_segments:
     - retail
-    - sme
+    - sole_trader
+    - third_party_funder
+    - professional_intermediary
     products:
     - transaction_account
     basis: ai_inferred
     rationale: Unrelated third-party payers/payees and commingling in personal/business accounts.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      - credit_card
+      - personal_loan
+      channels:
+      - mobile_app
+      - online_banking
+      - branch
+      - call_centre
+      basis: ai_inferred
+      rationale: Third-party payments, shared mandates and account use by non-holders across everyday,
+        savings, card repayments and loan funding.
   stage:
   - layering
   sectors:

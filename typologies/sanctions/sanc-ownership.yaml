@@ -12,17 +12,29 @@ typology:
     - digital_onboarding
     payment_rails:
     - wire_swift
+    - fast_payments
     customer_segments:
     - designated_person
-    - corporate
     - private_wealth
     - professional_intermediary
+    - third_party_funder
     products:
     - transaction_account
     - company_formation_services
     basis: ai_inferred
     rationale: Designated persons holding control via nominees, relatives and layered holding companies;
       exposed at onboarding and ownership screening.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      channels:
+      - online_banking
+      - mobile_app
+      - branch
+      basis: ai_inferred
+      rationale: Nominee or relative holds accounts for a designated person; consumer accounts opened
+        digitally or in branch can act as fronts, though corporate layering is out of scope.
   sectors:
   - banking
   - corporate_services

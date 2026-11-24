@@ -1,0 +1,1 @@
+{"id":"IND-CPT-021","n":"Merchant chargeback ratio above scheme thresholds","ds":"Merchant-side: high disputes and refunds.","s":"high","fp":"Seasonal peaks.","det":["transaction_monitoring"],"cat":"counterparty"}

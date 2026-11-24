@@ -1,0 +1,1 @@
+{"id":"IND-TYP-014","n":"Wash or matched trades between connected parties","ds":"Assets or securities are traded repeatedly between linked accounts or wallets at unrealistic prices.","s":"high","fp":"Collectors moving assets between own wallets.","det":["transaction_monitoring","external_intel","investigator_judgement"],"cat":"typology_specific"}

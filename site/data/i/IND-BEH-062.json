@@ -1,0 +1,1 @@
+{"id":"IND-BEH-062","n":"Corporate login from unusual location or after mailbox rule change","ds":"mailbox forwarding rules and unfamiliar logins precede payment fraud.","s":"medium","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

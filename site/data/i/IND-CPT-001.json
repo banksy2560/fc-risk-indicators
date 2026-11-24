@@ -1,0 +1,1 @@
+{"id":"IND-CPT-001","n":"Customs broker or freight forwarder with unusually high disbursements","ds":"Broker invoices include large unitemised 'disbursements' or 'duties' that exceed published tariffs.","s":"medium","fp":"Duties vary with classification and valuation disputes.","det":["document_review","transaction_monitoring"],"cat":"counterparty"}

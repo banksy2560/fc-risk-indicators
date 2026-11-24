@@ -1,0 +1,1 @@
+{"id":"IND-TXN-029","n":"Payment references suggesting scam scripts","ds":"Payment narratives or references contain wording linked to scams such as safe accounts or investment schemes.","s":"medium","fp":"Innocuous use of similar words.","det":["transaction_monitoring"],"cat":"transaction"}

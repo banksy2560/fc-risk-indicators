@@ -1,0 +1,1 @@
+{"id":"IND-DOC-059","n":"Vessel, voyage or shipper details missing or implausible","ds":"Transport documents lack vessel identifiers or show impossible voyage timing.","s":"high","fp":"Booking details can change before departure.","det":["document_review","investigator_judgement"],"cat":"document"}

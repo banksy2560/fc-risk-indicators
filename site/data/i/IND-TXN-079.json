@@ -1,0 +1,1 @@
+{"id":"IND-TXN-079","n":"Funds routed to multiple small accounts then consolidated","ds":"Mule-side: scam proceeds are split across many personal and corporate accounts before consolidation and cash-out.","s":"high","fp":"Payroll or marketplace payouts with similar structure.","det":["transaction_monitoring"],"cat":"transaction"}

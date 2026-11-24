@@ -1,0 +1,1 @@
+{"id":"CTL-051","n":"Mule account detection model","ds":"Model that scores inbound-then-outbound pass-through, new-payee churn, counterparty diversity and profile mismatch to flag likely mule accounts. It prioritises accounts for review and restriction.","t":"detective","im":"model","aka":["Single-purpose account detection","Pass-through mule model","Mule account detection"]}

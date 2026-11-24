@@ -23,6 +23,13 @@ typology:
     basis: ai_inferred
     rationale: Formation agents and nominee/registered-office providers introduce non-face-to-face clients
       and sometimes operate client bank accounts.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Company and trust service provider misuse concerns corporate formation and intermediaries,
+        not consumer products.
   stage:
   - layering
   - integration

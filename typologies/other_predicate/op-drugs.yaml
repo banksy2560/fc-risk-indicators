@@ -17,11 +17,24 @@ typology:
     - trade_instruments
     customer_segments:
     - retail
+    - sole_trader
     - sme
     products:
     - transaction_account
     basis: ai_inferred
     rationale: Cash deposits from multiple locations, precursor purchases and IVTS/trade.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      channels:
+      - branch
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Drug cash placed as many small deposits into retail accounts then moved on digitally;
+        lifestyle spend funded by cash.
   sectors:
   - banking
   - payments

@@ -26,6 +26,13 @@ typology:
     rationale: Club/franchise acquisition, sponsorship and transfer-fee payments are large cross-border
       wires between corporates and wealthy owners, with agents as intermediaries; the club or rights are
       the asset held outside the bank.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Club ownership, sponsorship and transfer fees are corporate and institutional flows,
+        not consumer products.
   sectors:
   - all
   sources:

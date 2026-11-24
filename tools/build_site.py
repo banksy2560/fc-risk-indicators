@@ -1,24 +1,20 @@
 #!/usr/bin/env python3
-"""Build the static site data and pages into site/.
+"""Build the static site (data, versioned assets, pages) into site/.
 
-Reads controls/, indicators/, typologies/ and vocab.yaml and writes:
-  site/data/index.json              lightweight index (all three catalogues + labels + git dates)
-  site/data/typologies/<ID>.json    full typology record (exposure, sources, per-indicator context)
-  site/data/indicators/<ID>.json    full indicator record, provenance, inherited exposure, per-typology detail
-  site/data/controls/<ID>.json      per-control reverse links
-  site/data/notes.json              data sources and false-positive notes per indicator (loaded only for list CSV export)
-  site/data/links.csv               every typology -> indicator -> control link as CSV
-  site/*.html                       pages assembled from tools/site_src/ (layout + page bodies)
-Needs only pyyaml (and git, optionally, for "recently added" dates).
-Usage: python3 tools/build_site.py [repo_root]
-
-Derived data (nothing is invented):
-  * exposure of an indicator = union of the exposure of every typology that links it
-  * a cross_cutting typology with an EMPTY exposure dimension "applies across all" of that dimension (flag `ux`)
-  * `added` / `ac` = commit time and short hash of the first git commit that added the typology file
-    (omitted when git history is unavailable)
+Reads controls/, indicators/, typologies/, vocab.yaml and questionnaire/questions_v2.yaml and writes:
+  site/data/index.json         small index for search, the typology picker, reverse views and the product mapper
+                               (typologies + exposure, indicator and control names, every typology->indicator->control link)
+  site/data/t/<ID>.json        linkage for one typology (nodes, per-link controls, contexts, sources)
+  site/data/i/<ID>.json        canonical indicator detail (loaded only for the reverse-view drawer)
+  site/data/c/<ID>.json        canonical control detail (same)
+  site/data/questionnaire.json questions, options and example profiles, validated against vocab.yaml
+  site/assets/<name>.<hash>.<ext>  content-hashed copies of tools/site_src/assets/*
+  site/*.html                  pages assembled from tools/site_src/layout.html + pages/*.html
+Needs only pyyaml. Usage: python3 tools/build_site.py [repo_root]
+The questionnaire is built from questionnaire/questions_v2.yaml (consumer-bank scope); the old v1 file is ignored.
+The build exits non-zero on any unresolved link or any tag value that is not in vocab.yaml.
 """
-import csv, glob, io, json, os, re, shutil, subprocess, sys
+import glob, hashlib, json, os, re, shutil, sys
 from collections import defaultdict
 import yaml
 
@@ -34,11 +30,8 @@ DOMAINS = [
     ('environmental_crime', 'Environmental crime'), ('cyber_enabled', 'Cyber-enabled crime'),
     ('other_predicate', 'Other predicate offences'), ('cross_cutting', 'Cross-cutting'),
 ]
-# exposure dimensions: YAML key -> short key used in the JSON
-DIMS = [('channels', 'ch'), ('payment_rails', 'rl'), ('customer_segments', 'sg'), ('products', 'pr')]
-DIM_TITLE = {'channels': 'Channels', 'payment_rails': 'Payment rails', 'customer_segments': 'Customer segments', 'products': 'Products'}
-
-# human-readable labels. Anything not listed falls back to "Capitalised words".
+DIMS = [('channels', 'ch', 'Channels'), ('payment_rails', 'rl', 'Payment rails'),
+        ('customer_segments', 'sg', 'Customer segments'), ('products', 'pr', 'Products')]
 OVERRIDE = {
     'atm': 'ATM', 'api_open_banking': 'API / open banking', 'wire_swift': 'Wire transfer (SWIFT)',
     'crypto_onramp_offramp': 'Crypto on/off-ramp', 'informal_value_transfer': 'Informal value transfer (hawala)',
@@ -47,7 +40,7 @@ OVERRIDE = {
     'cross_border_remittance': 'Cross-border remittance', 'stored_value_wallet': 'Stored-value wallet',
     'trade_instruments': 'Trade instruments', 'fast_payments': 'Fast payments',
     'face_to_face_professional': 'Face-to-face professional', 'digital_onboarding': 'Digital (remote) onboarding',
-    'online_platform': 'Online platform (marketplace, gig, gaming, social)', 'remote_contact': 'Remote contact (email, phone, SMS)',
+    'online_platform': 'Online platform', 'remote_contact': 'Remote contact (email, phone, SMS)',
     'broker_intermediary': 'Broker or intermediary', 'merchant_acquiring': 'Merchant acquiring', 'call_centre': 'Call centre',
     'sme': 'SME', 'pep_related': 'PEP-related', 'msb_remitter': 'MSB / remitter', 'fintech_psp': 'Fintech / payment service provider',
     'regulated_nonbank_dnfbp': 'Regulated non-bank / DNFBP', 'designated_person': 'Designated or sanctioned person',
@@ -59,11 +52,7 @@ OVERRIDE = {
     'correspondent_account': 'Correspondent account', 'crypto_custody': 'Crypto custody', 'onchain_defi': 'On-chain and DeFi',
     'real_assets': 'Real assets (property, art, vessels, commodities)', 'company_formation_services': 'Company formation services',
     'transaction_account': 'Transaction account', 'savings_deposit': 'Savings and deposits', 'credit_card': 'Credit card',
-    'trade_finance': 'Trade finance', 'merchant_services': 'Merchant services',
-    'casino_gaming': 'Casinos and gaming', 'dnfbp': 'DNFBP', 'mvts': 'MVTS', 'art_luxury': 'Art and luxury', 'real_estate': 'Real estate',
-    'corporate_services': 'Corporate services', 'all': 'All sectors', 'fintech': 'Fintech',
-    'product_channel': 'Product / channel', 'typology_specific': 'Typology-specific', 'kyc_review': 'KYC review',
-    'external_intel': 'External intelligence',
+    'trade_finance': 'Trade finance', 'merchant_services': 'Merchant services', 'card': 'Card', 'cash': 'Cash', 'cheque': 'Cheque',
 }
 
 
@@ -82,8 +71,7 @@ def load(pattern, key):
     out = {}
     for f in sorted(glob.glob(os.path.join(ROOT, pattern))):
         doc = yaml.safe_load(open(f, encoding='utf-8'))
-        items = doc[key] if key in doc else [doc]
-        for it in (items if isinstance(items, list) else [items]):
+        for it in doc[key]:
             out[it['id']] = it
     return out
 
@@ -93,41 +81,13 @@ def parse_source(raw):
     tag = ''
     m = re.search(r'\[([^\]]+)\]\s*$', raw)
     if m:
-        tag = m.group(1).strip()
-        raw = raw[:m.start()].strip()
+        tag, raw = m.group(1).strip(), raw[:m.start()].strip()
     url = ''
     m = re.search(r'<(https?://[^>\s]+)>', raw)
     if m:
         url = m.group(1)
         raw = (raw[:m.start()] + raw[m.end():]).strip()
-    return {'text': raw, 'url': url, 'tag': tag or 'untagged'}
-
-
-def evid_status(sources):
-    """Best citation status among a typology's sources. Never means human-confirmed."""
-    checked = [s for s in sources if 'agent-reviewed' in s['tag']]
-    if any(s['url'] for s in checked):
-        return 'checked_link'
-    if checked:
-        return 'checked'
-    return 'unverified'
-
-
-EVID_RANK = {'checked_link': 0, 'checked': 1, 'unverified': 2}
-
-
-def git_first_added(path):
-    """(iso commit time, short hash, subject) of the commit that first added `path`, or None."""
-    try:
-        out = subprocess.run(['git', '-C', ROOT, 'log', '--diff-filter=A', '--format=%cI|%h|%s', '--', path],
-                             capture_output=True, text=True, timeout=30)
-        lines = [l for l in out.stdout.strip().splitlines() if l]
-        if out.returncode != 0 or not lines:
-            return None
-        d, h, s = lines[-1].split('|', 2)
-        return d, h, s
-    except Exception:
-        return None
+    return {'t': raw, 'u': url, 'g': tag or 'untagged'}
 
 
 def dump(path, obj):
@@ -136,263 +96,263 @@ def dump(path, obj):
         json.dump(obj, f, separators=(',', ':'), ensure_ascii=False)
 
 
+def hash8(data):
+    return hashlib.sha1(data if isinstance(data, bytes) else data.encode('utf-8')).hexdigest()[:8]
+
+
+def build_questionnaire(vocab, problems):
+    """questionnaire/questions_v2.yaml (consumer-bank scope). Every tag value is validated against vocab.yaml."""
+    path = os.path.join(ROOT, 'questionnaire', 'questions_v2.yaml')
+    if not os.path.exists(path):
+        problems.append('questionnaire/questions_v2.yaml not found')
+        return {}
+    q = yaml.safe_load(open(path, encoding='utf-8')) or {}
+    scope = vocab.get('consumer_scope') or {}
+    cprod = [p['id'] for p in scope.get('products', [])]
+    cchan = [c['id'] for c in scope.get('channels', [])]
+    sections = q.get('sections') or []
+    sec_ids = {s['id'] for s in sections}
+    questions, opt_ids, opt_q = [], set(), {}
+    for qu in q.get('questions') or []:
+        qid = qu.get('id')
+        where = 'question %s' % qid
+        if qu.get('section') not in sec_ids:
+            problems.append('%s: unknown section %r' % (where, qu.get('section')))
+        if qu.get('type') not in ('single', 'multi'):
+            problems.append('%s: type must be single or multi' % where)
+        ap = list(qu.get('applies_to_products') or [])
+        ac = list(qu.get('applies_to_channels') or [])
+        for v in ap:
+            if v not in cprod:
+                problems.append('%s: applies_to_products %r not in vocab consumer_scope' % (where, v))
+        for v in ac:
+            if v not in cchan:
+                problems.append('%s: applies_to_channels %r not in vocab consumer_scope' % (where, v))
+        opts = []
+        for o in qu.get('options') or []:
+            if o['id'] in opt_ids:
+                problems.append('duplicate option id %s' % o['id'])
+            opt_ids.add(o['id']); opt_q[o['id']] = qid
+            maps = o.get('maps_to') or {}
+            allowed = ['products'] if qid == 'Q01' else ['channels'] if qid == 'Q02' else ['payment_rails', 'customer_segments']
+            m = {}
+            for k in maps:
+                if k not in allowed:
+                    problems.append('%s: question %s may not map to %r' % (o['id'], qid, k))
+            for k, s, _ in DIMS:
+                vals = list(maps.get(k) or [])
+                for v in vals:
+                    if v not in vocab.get(k, []):
+                        problems.append('%s: %s value %r not in vocab.yaml' % (o['id'], k, v))
+                    if k == 'products' and v not in cprod:
+                        problems.append('%s: product %r is not a consumer_scope product' % (o['id'], v))
+                    if k == 'channels' and v not in cchan:
+                        problems.append('%s: channel %r is not a consumer_scope channel' % (o['id'], v))
+                if vals:
+                    m[s] = vals
+            opts.append({'id': o['id'], 'l': norm(o.get('label')), 'm': m, 'n': norm(o.get('note'))})
+        questions.append({'id': qid, 's': qu.get('section'), 't': norm(qu.get('text')), 'h': norm(qu.get('help')),
+                          'ty': qu.get('type'), 'o': opts, 'ap': ap, 'ac': ac})
+    profiles = []
+    for p in q.get('profiles') or []:
+        ids = list(p.get('answers') or [])
+        for a in ids:
+            if a not in opt_ids:
+                problems.append('profile %s: unknown option %s' % (p.get('id'), a))
+        if p.get('product') not in cprod:
+            problems.append('profile %s: product %r not in consumer_scope' % (p.get('id'), p.get('product')))
+        for c in p.get('channels') or []:
+            if c not in cchan:
+                problems.append('profile %s: channel %r not in consumer_scope' % (p.get('id'), c))
+        per_q = defaultdict(int)
+        for a in ids:
+            per_q[opt_q.get(a)] += 1
+        for qu in questions:
+            if qu['ty'] == 'single' and per_q.get(qu['id'], 0) > 1:
+                problems.append('profile %s selects several options of single question %s' % (p.get('id'), qu['id']))
+        profiles.append({'id': str(p.get('id')), 'n': norm(p.get('name') or p.get('id')), 'd': norm(p.get('description')),
+                         'p': p.get('product'), 'ch': list(p.get('channels') or []), 'a': ids})
+    return {'version': q.get('version', 2), 'scope': q.get('scope', 'consumer'),
+            'sections': [{'id': s['id'], 't': norm(s.get('title'))} for s in sections],
+            'questions': questions, 'profiles': profiles}
+
+
 def main():
     ctl = load('controls/*.yaml', 'controls')
     ind = load('indicators/*.yaml', 'indicators')
     vocab = yaml.safe_load(open(os.path.join(ROOT, 'vocab.yaml'), encoding='utf-8'))
-    typ, typ_file = {}, {}
+    typ = {}
     for f in sorted(glob.glob(os.path.join(ROOT, 'typologies', '*', '*.yaml'))):
         t = yaml.safe_load(open(f, encoding='utf-8'))['typology']
         typ[t['id']] = t
-        typ_file[t['id']] = os.path.relpath(f, ROOT)
-    dom_order = [d for d, _ in DOMAINS]
     problems = []
+    dom_order = [d for d, _ in DOMAINS]
 
-    # ---- exposure per typology (+ universal flags for cross-cutting)
-    texp, tux = {}, {}
+    texp, tux, tcn = {}, {}, {}
     for tid, t in typ.items():
         e = t.get('exposure') or {}
-        texp[tid] = {s: list(e.get(k) or []) for k, s in DIMS}
-        tux[tid] = [s for k, s in DIMS if not e.get(k) and t['domain'] == 'cross_cutting']
-        for k, s in DIMS:
+        texp[tid] = {s: list(e.get(k) or []) for k, s, _ in DIMS}
+        for k, s, _ in DIMS:
             for v in texp[tid][s]:
                 if v not in vocab.get(k, []):
                     problems.append('%s exposure %s has value %r not in vocab.yaml' % (tid, k, v))
+        cn = e.get('consumer') or {}
+        scope = vocab.get('consumer_scope') or {}
+        cp = [x['id'] for x in scope.get('products', [])]; cc = [x['id'] for x in scope.get('channels', [])]
+        for v in cn.get('products') or []:
+            if v not in cp:
+                problems.append('%s consumer product %r not in vocab consumer_scope' % (tid, v))
+        for v in cn.get('channels') or []:
+            if v not in cc:
+                problems.append('%s consumer channel %r not in vocab consumer_scope' % (tid, v))
+        tcn[tid] = {'r': 1 if cn.get('relevant') else 0, 'p': list(cn.get('products') or []), 'c': list(cn.get('channels') or []),
+                    'rt': norm(cn.get('rationale'))} if cn.get('relevant') else {'r': 0}
+        # "applies across all": consumer-relevant with empty products and channels (the cross-cutting typologies)
+        tux[tid] = 1 if (cn.get('relevant') and not cn.get('products') and not cn.get('channels')) else 0
 
-    # ---- reverse maps
-    ind_typs, ctl_typs, ctl_inds, ind_ctls = defaultdict(list), defaultdict(set), defaultdict(set), defaultdict(set)
-    ctl_links = defaultdict(lambda: defaultdict(list))
-    typ_ctls = {}
+    ind_typs, ctl_typs = defaultdict(set), defaultdict(set)
     for tid, t in typ.items():
-        cs = set()
         for l in t.get('indicators', []):
-            r = l['ref']
-            if r not in ind:
-                problems.append('%s links unknown indicator %s' % (tid, r)); continue
-            ind_typs[r].append(tid)
+            if l['ref'] not in ind:
+                problems.append('%s links unknown indicator %s' % (tid, l['ref'])); continue
+            ind_typs[l['ref']].add(tid)
             for c in l.get('controls', []):
                 if c not in ctl:
-                    problems.append('%s/%s links unknown control %s' % (tid, r, c)); continue
-                cs.add(c); ctl_typs[c].add(tid); ctl_inds[c].add(r); ind_ctls[r].add(c)
-                ctl_links[c][tid].append(r)
-        typ_ctls[tid] = sorted(cs)
+                    problems.append('%s/%s links unknown control %s' % (tid, l['ref'], c)); continue
+                ctl_typs[c].add(tid)
 
-    sources = {tid: [parse_source(s) for s in t.get('sources', [])] for tid, t in typ.items()}
-    tevid = {tid: evid_status(sources[tid]) for tid in typ}
+    order = sorted(typ, key=lambda k: (dom_order.index(typ[k]['domain']) if typ[k]['domain'] in dom_order else 99, norm(typ[k]['name'])))
+    present = [d for d, _ in DOMAINS if any(typ[k]['domain'] == d for k in typ)]
 
-    # ---- git dates (typologies only: indicators and controls live in shared family files)
-    added = {tid: git_first_added(typ_file[tid]) for tid in typ}
-    have_git = all(added.values())
-    commits = {}
-    if have_git:
-        for v in added.values():
-            commits[v[1]] = {'date': v[0][:10], 'subject': v[2]}
-
-    # ---- labels
     labels = {
-        'domain': {d: l for d, l in DOMAINS},
+        'dom': {d: l for d, l in DOMAINS if d in present},
+        'dim': {s: title for _, s, title in DIMS},
+        'tag': {s: {v: nice(v) for v in vocab.get(k, [])} for k, s, _ in DIMS},
+        'ct': {k: nice(k) for k in ['preventive', 'detective', 'corrective', 'governance']},
+        'im': {k: nice(k) for k in ['rule', 'model', 'process', 'policy', 'training', 'technology']},
         'cat': {k: nice(k) for k in ['customer', 'transaction', 'geographic', 'product_channel', 'behavioural',
                                       'ownership_structure', 'document', 'counterparty', 'typology_specific']},
+        'cp': {x['id']: x['label'] for x in (vocab.get('consumer_scope') or {}).get('products', [])},
+        'cc': {x['id']: x['label'] for x in (vocab.get('consumer_scope') or {}).get('channels', [])},
         'det': {k: nice(k) for k in ['transaction_monitoring', 'kyc_review', 'screening', 'customer_behaviour',
                                       'document_review', 'investigator_judgement', 'external_intel']},
-        'sev': {'low': 'Low', 'medium': 'Medium', 'high': 'High'},
-        'ctype': {k: nice(k) for k in ['preventive', 'detective', 'corrective', 'governance']},
-        'impl': {k: nice(k) for k in ['rule', 'model', 'process', 'policy', 'training', 'technology']},
-        'eff': {'low': 'Low', 'medium': 'Medium', 'high': 'High'},
-        'stage': {k: nice(k) for k in ['placement', 'layering', 'integration']},
-        'sector': {k: nice(k) for k in sorted({s for t in typ.values() for s in t.get('sectors', [])})},
-        'family': {k: nice(k) for k in sorted({c.get('family') for c in ctl.values()})},
-        'status': {'draft': 'Draft - unreviewed', 'sme_reviewed': 'SME reviewed', 'validated': 'Validated'},
-        'prov': {'ai_drafted': 'AI-drafted', 'human_authored': 'Human-authored', 'mixed': 'Mixed AI and human'},
-        'evb': {'ai_draft_unreviewed': 'AI draft, unreviewed', 'published_guidance': 'Published guidance',
-                'regulator_typology': 'Regulator typology', 'case_study': 'Case study',
-                'practitioner_judgement': 'Practitioner judgement'},
-        'conf': {'unassessed': 'Unassessed', 'low': 'Low', 'medium': 'Medium', 'high': 'High'},
-        'evid': {'checked_link': 'Agent-checked source with link', 'checked': 'Agent-checked source, no link',
-                 'unverified': 'Unverified sources only'},
-        'dim': {s: DIM_TITLE[k] for k, s in DIMS},
+        'sec': {k: nice(k) for k in sorted({s for t in typ.values() for s in t.get('sectors', [])})},
     }
-    for k, s in DIMS:
-        labels[s] = {v: nice(v) for v in vocab.get(k, [])}
-    labels['vocab'] = {s: list(vocab.get(k, [])) for k, s in DIMS}
-    labels['statusOrder'] = ['draft', 'sme_reviewed', 'validated']
 
-    # ---- index
-    domains = [{'id': d, 'label': l, 'n': sum(1 for t in typ.values() if t['domain'] == d)} for d, l in DOMAINS
-               if any(t['domain'] == d for t in typ.values())]
+    links = {}
+    for tid in order:
+        row = []
+        for l in typ[tid].get('indicators', []):
+            if l['ref'] in ind:
+                row.append([l['ref'], [c for c in l.get('controls', []) if c in ctl]])
+        links[tid] = row
+
+    def tcount(tid):
+        return len({c for _, cs in links[tid] for c in cs})
+
     index = {
-        'version': '0.1',
-        'counts': {'typologies': len(typ), 'indicators': len(ind), 'controls': len(ctl)},
-        'domains': domains, 'labels': labels, 'commits': commits,
-        'typologies': [], 'indicators': [], 'controls': [],
+        'labels': labels, 'domains': present,
+        'T': [{'id': k, 'n': norm(typ[k]['name']), 'd': typ[k]['domain'], 'e': texp[k], 'x': tux[k], 'cn': tcn[k],
+               'ni': len(links[k]), 'nc': tcount(k)} for k in order],
+        'I': [{'id': k, 'n': norm(v['name']), 's': v.get('severity', ''), 'u': len(ind_typs[k])} for k, v in ind.items()],
+        'C': [{'id': k, 'n': norm(v['name']), 't': v.get('type', ''), 'u': len(ctl_typs[k])} for k, v in ctl.items()],
+        'L': links,
     }
-    order = sorted(typ.items(), key=lambda kv: (dom_order.index(kv[1]['domain']) if kv[1]['domain'] in dom_order else 99, norm(kv[1]['name'])))
-    for tid, t in order:
-        row = {'id': tid, 'name': norm(t['name']), 'domain': t['domain'], 'sectors': t.get('sectors', []),
-               'stage': t.get('stage', []), 'desc': norm(t.get('description')),
-               'nInd': len(t.get('indicators', [])), 'nCtl': len(typ_ctls[tid]), 'ctls': typ_ctls[tid],
-               'exp': texp[tid], 'ux': tux[tid], 'evid': tevid[tid], 'st': t.get('status', 'draft'),
-               'nSrc': len(sources[tid])}
-        if have_git:
-            row['added'] = added[tid][0]
-            row['ac'] = added[tid][1]
-        index['typologies'].append(row)
-    for iid, i in ind.items():
-        index['indicators'].append({
-            'id': iid, 'name': norm(i['name']), 'cat': i.get('category', ''), 'sev': i.get('severity', ''),
-            'desc': norm(i.get('description')), 'det': i.get('detection_type', []),
-            'used': len(set(ind_typs[iid])), 'typs': sorted(set(ind_typs[iid])), 'ctls': sorted(ind_ctls[iid]),
-            'st': i.get('status', 'draft'), 'pv': i.get('provenance', 'ai_drafted'),
-            'eb': i.get('evidence_basis', 'ai_draft_unreviewed'), 'cf': i.get('confidence', 'unassessed')})
-    for cid, c in ctl.items():
-        index['controls'].append({
-            'id': cid, 'name': norm(c['name']), 'family': c.get('family', ''), 'type': c.get('type', ''),
-            'impl': c.get('implementation', ''), 'eff': c.get('effectiveness', ''), 'desc': norm(c.get('description')),
-            'aka': [norm(a) for a in c.get('also_known_as', [])],
-            'nTyp': len(ctl_typs[cid]), 'nInd': len(ctl_inds[cid]),
-            'typs': sorted(ctl_typs[cid]), 'inds': sorted(ctl_inds[cid]), 'st': c.get('status', 'draft')})
 
-    # ---- details
-    for d in ('typologies', 'indicators', 'controls'):
-        shutil.rmtree(os.path.join(SITE, 'data', d), ignore_errors=True)
-    for tid, t in typ.items():
+    # ---- clean outputs
+    for d in ('data', 'assets'):
+        shutil.rmtree(os.path.join(SITE, d), ignore_errors=True)
+    for old in glob.glob(os.path.join(SITE, '*.html')):
+        os.remove(old)
+
+    dump(os.path.join(SITE, 'data', 'questionnaire.json'), build_questionnaire(vocab, problems))
+
+    for tid in order:
+        t = typ[tid]
         e = t.get('exposure') or {}
-        links = []
-        for l in t.get('indicators', []):
+        nodes, first_idx = [], {}
+        for n, l in enumerate(t.get('indicators', [])):
             c = ind.get(l['ref'])
-            if not c: continue
-            links.append({
-                'ref': l['ref'], 'legacy': l.get('legacy_id', ''), 'name': norm(l.get('name_in_typology') or c['name']),
-                'canon': norm(c['name']), 'cat': c.get('category', ''),
-                'sev': l.get('severity_in_typology') or c.get('severity', ''), 'canonSev': c.get('severity', ''),
-                'desc': norm(c.get('description')), 'ctx': norm(l.get('context')),
-                'fp': norm(l.get('false_positive_context') or c.get('false_positive_notes')),
-                'det': c.get('detection_type', []), 'data': c.get('data_sources', []),
-                'used': len(set(ind_typs[l['ref']])), 'controls': l.get('controls', []),
-                'refs': [norm(r) for r in l.get('references', [])]})
-        rec = {'id': tid, 'name': norm(t['name']), 'domain': t['domain'], 'description': norm(t.get('description')),
-               'stage': t.get('stage', []), 'sectors': t.get('sectors', []), 'sources': sources[tid],
-               'exposure': {'exp': texp[tid], 'ux': tux[tid], 'basis': e.get('basis', ''), 'rationale': norm(e.get('rationale'))},
-               'evid': tevid[tid], 'status': t.get('status', 'draft'),
-               'indicators': links, 'controls': typ_ctls[tid]}
-        if have_git:
-            rec['added'] = {'date': added[tid][0][:10], 'commit': added[tid][1], 'subject': added[tid][2]}
-        dump(os.path.join(SITE, 'data', 'typologies', tid + '.json'), rec)
-    notes = {}
+            if not c:
+                continue
+            nm = norm(l.get('name_in_typology') or c['name'])
+            node = {'id': l['ref'], 'n': nm, 's': l.get('severity_in_typology') or c.get('severity', ''),
+                    'cx': norm(l.get('context')), 'fp': norm(l.get('false_positive_context') or c.get('false_positive_notes')),
+                    'ds': norm(c.get('description')), 'u': len(ind_typs[l['ref']]),
+                    'c': [x for x in l.get('controls', []) if x in ctl]}
+            if norm(c['name']) != nm:
+                node['cn'] = norm(c['name'])
+            nodes.append(node)
+            for x in node['c']:
+                first_idx.setdefault(x, len(nodes) - 1)
+        cids = sorted(first_idx, key=lambda x: (first_idx[x], norm(ctl[x]['name'])))
+        rec = {'id': tid, 'n': norm(t['name']), 'd': t['domain'], 'ds': norm(t.get('description')),
+               'st': t.get('stage', []), 'sc': t.get('sectors', []),
+               'src': [parse_source(s) for s in t.get('sources', [])],
+               'e': texp[tid], 'x': tux[tid], 'cn': tcn[tid], 'rat': norm(e.get('rationale')),
+               'ind': nodes,
+               'ctl': [{'id': x, 'n': norm(ctl[x]['name']), 't': ctl[x].get('type', ''), 'im': ctl[x].get('implementation', ''),
+                        'ds': norm(ctl[x].get('description')), 'u': len(ctl_typs[x])} for x in cids]}
+        dump(os.path.join(SITE, 'data', 't', tid + '.json'), rec)
     for iid, i in ind.items():
-        ls, union, ux, srcs = [], {s: [] for _, s in DIMS}, set(), []
-        seen_src = {}
-        for tid in dict.fromkeys(ind_typs[iid]):
-            for l in typ[tid]['indicators']:
-                if l['ref'] == iid:
-                    ls.append({'typ': tid, 'name': norm(l.get('name_in_typology') or i['name']),
-                               'sev': l.get('severity_in_typology') or i.get('severity', ''),
-                               'ctx': norm(l.get('context')), 'fp': norm(l.get('false_positive_context')),
-                               'controls': l.get('controls', []), 'exp': texp[tid], 'ux': tux[tid]})
-            for s in sources[tid]:
-                key = s['text']
-                if key in seen_src:
-                    seen_src[key]['from'].append(tid)
-                else:
-                    seen_src[key] = dict(s, **{'from': [tid]}); srcs.append(seen_src[key])
-            for s in texp[tid]:
-                for v in texp[tid][s]:
-                    if v not in union[s]: union[s].append(v)
-            ux.update(tux[tid])
-        for s in union:
-            union[s] = [v for v in labels['vocab'][s] if v in union[s]]
-        dump(os.path.join(SITE, 'data', 'indicators', iid + '.json'), {
-            'id': iid, 'name': norm(i['name']), 'description': norm(i.get('description')),
-            'cat': i.get('category', ''), 'sev': i.get('severity', ''), 'det': i.get('detection_type', []),
-            'data': i.get('data_sources', []), 'fp': norm(i.get('false_positive_notes')),
-            'status': i.get('status', 'draft'), 'provenance': i.get('provenance', 'ai_drafted'),
-            'evidence_basis': i.get('evidence_basis', 'ai_draft_unreviewed'), 'confidence': i.get('confidence', 'unassessed'),
-            'last_reviewed': str(i.get('last_reviewed') or ''),
-            'exposure': {'exp': union, 'ux': [s for _, s in DIMS if s in ux]},
-            'sources': srcs, 'links': ls})
-        notes[iid] = {'data': i.get('data_sources', []), 'fp': norm(i.get('false_positive_notes'))}
+        dump(os.path.join(SITE, 'data', 'i', iid + '.json'), {
+            'id': iid, 'n': norm(i['name']), 'ds': norm(i.get('description')), 's': i.get('severity', ''),
+            'fp': norm(i.get('false_positive_notes')), 'det': i.get('detection_type', []), 'cat': i.get('category', '')})
     for cid, c in ctl.items():
-        dump(os.path.join(SITE, 'data', 'controls', cid + '.json'), {
-            'id': cid, 'links': [{'typ': t, 'inds': sorted(set(v))} for t, v in sorted(ctl_links[cid].items())]})
-    dump(os.path.join(SITE, 'data', 'notes.json'), notes)
+        dump(os.path.join(SITE, 'data', 'c', cid + '.json'), {
+            'id': cid, 'n': norm(c['name']), 'ds': norm(c.get('description')), 't': c.get('type', ''),
+            'im': c.get('implementation', ''), 'aka': [norm(a) for a in c.get('also_known_as', [])]})
     dump(os.path.join(SITE, 'data', 'index.json'), index)
+    dver = hash8(open(os.path.join(SITE, 'data', 'index.json'), 'rb').read() +
+                 open(os.path.join(SITE, 'data', 'questionnaire.json'), 'rb').read() +
+                 b''.join(open(f, 'rb').read() for f in sorted(glob.glob(os.path.join(SITE, 'data', 't', '*.json')))))
 
-    # ---- links.csv
-    buf = io.StringIO()
-    w = csv.writer(buf, lineterminator='\r\n')
-    w.writerow(['typology_id', 'typology', 'domain', 'indicator_id', 'indicator', 'indicator_category',
-                'signal_strength_in_typology (indicative, not a risk score)', 'control_id', 'control', 'control_type',
-                'control_family', 'review_status', 'provenance'])
-    for tid, t in order:
-        for l in t.get('indicators', []):
-            c = ind[l['ref']]
-            for cid in l.get('controls', []):
-                w.writerow([tid, norm(t['name']), labels['domain'].get(t['domain'], t['domain']), l['ref'],
-                            norm(l.get('name_in_typology') or c['name']), labels['cat'].get(c.get('category'), ''),
-                            l.get('severity_in_typology') or c.get('severity', ''), cid, norm(ctl[cid]['name']),
-                            ctl[cid].get('type', ''), labels['family'].get(ctl[cid].get('family'), ''),
-                            'draft - unreviewed', 'AI-drafted'])
-    with open(os.path.join(SITE, 'data', 'links.csv'), 'w', encoding='utf-8', newline='') as f:
-        f.write('﻿' + buf.getvalue())
+    # ---- content-hashed assets
+    amap = {}
+    os.makedirs(os.path.join(SITE, 'assets'))
+    for f in sorted(glob.glob(os.path.join(SRC, 'assets', '*'))):
+        raw = open(f, 'rb').read()
+        base, ext = os.path.splitext(os.path.basename(f))
+        out = '%s.%s%s' % (base, hash8(raw), ext)
+        shutil.copyfile(f, os.path.join(SITE, 'assets', out))
+        amap[os.path.basename(f)] = '/assets/' + out
 
     # ---- pages
     layout = open(os.path.join(SRC, 'layout.html'), encoding='utf-8').read()
-    tagcount = defaultdict(int)
-    for ss in sources.values():
-        for s in ss: tagcount[s['tag']] += 1
-    subs = {'{{N_TYP}}': str(len(typ)), '{{N_IND}}': str(len(ind)), '{{N_CTL}}': str(len(ctl)),
-            '{{N_FAM}}': str(len({c.get('family') for c in ctl.values()})), '{{N_LINK}}': str(sum(len(v) for v in ind_typs.values())),
-            '{{N_SRC}}': str(sum(len(v) for v in sources.values()))}
-    for tg, n in tagcount.items():
-        subs['{{TAGN:%s}}' % tg] = str(n)
-    # remove generated pages that no longer have a source
-    for old in glob.glob(os.path.join(SITE, '*.html')):
-        os.remove(old)
     npages = 0
     for f in sorted(glob.glob(os.path.join(SRC, 'pages', '*.html'))):
         raw = open(f, encoding='utf-8').read()
-        meta = {}
         m = re.match(r'<!--\s*(.*?)\s*-->\s*', raw, re.S)
+        meta = {}
         for line in m.group(1).splitlines():
             k, _, v = line.partition(':'); meta[k.strip()] = v.strip()
-        body = raw[m.end():]
         name = os.path.basename(f)[:-5]
-        variants = [(name, {})]
-        if meta.get('aliases'):      # e.g. aliases: typologies=t, indicators=i, controls=c
-            variants = []
-            for a in meta['aliases'].split(','):
-                an, _, mode = a.strip().partition('=')
-                variants.append((an, {'{{MODE}}': mode, '{{TITLE}}': nice(an) + ' | FC Risk Indicators',
-                                      '{{DESC}}': meta['desc_' + an]}))
-        for out, extra in variants:
-            page = layout
-            vals = {'{{TITLE}}': meta['title'], '{{DESC}}': meta['description'], '{{PAGE}}': out,
-                    '{{SCRIPT}}': meta.get('script', ''), '{{MODE}}': '', '{{BODYCLASS}}': meta.get('class', ''),
-                    '{{BODY}}': body}
-            vals.update(extra)
-            nav = meta.get('nav', '')
-            page = re.sub(r' data-nav="([^"]*)"', lambda mm: ' aria-current="page"' if mm.group(1) == nav else '', page)
+        scripts = ''.join('<script defer src="{{ASSET:%s}}"></script>' % s.strip() for s in meta.get('scripts', '').split(',') if s.strip())
+        page = layout
+        nav = meta.get('nav', '')
+        page = re.sub(r' data-nav="([^"]*)"', lambda mm: ' aria-current="page"' if mm.group(1) == nav else '', page)
+        vals = {'{{TITLE}}': meta['title'], '{{DESC}}': meta['description'], '{{PAGE}}': name,
+                '{{SCRIPTS}}': scripts, '{{DVER}}': dver, '{{BODY}}': raw[m.end():]}
+        for _ in range(2):
             for k, v in vals.items():
                 page = page.replace(k, v)
-            for k, v in vals.items():       # body may contain placeholders such as {{MODE}}
-                page = page.replace(k, v)
-            for k, v in subs.items():
-                page = page.replace(k, v)
-            left = re.findall(r'\{\{[A-Z_:a-z-]+\}\}', page)
-            if left:
-                problems.append('%s.html has unresolved placeholders %s' % (out, sorted(set(left))))
-            open(os.path.join(SITE, out + '.html'), 'w', encoding='utf-8').write(page); npages += 1
+        page = re.sub(r'\{\{ASSET:([^}]+)\}\}', lambda mm: amap.get(mm.group(1)) or problems.append('missing asset ' + mm.group(1)) or '', page)
+        left = re.findall(r'\{\{[A-Za-z_:.-]+\}\}', page)
+        if left:
+            problems.append('%s.html has unresolved placeholders %s' % (name, sorted(set(left))))
+        open(os.path.join(SITE, name + '.html'), 'w', encoding='utf-8').write(page)
+        npages += 1
 
-    # ---- report
-    tot = sum(os.path.getsize(os.path.join(dp, fn)) for dp, _, fs in os.walk(SITE) for fn in fs)
-    nfiles = sum(len(fs) for _, _, fs in os.walk(os.path.join(SITE, 'data')))
-    print('typologies %d, indicators %d, controls %d' % (len(typ), len(ind), len(ctl)))
-    print('index.json %d bytes; notes.json %d; links.csv %d; %d data files; %d pages; site total %.1f KB; git dates: %s' % (
-        os.path.getsize(os.path.join(SITE, 'data', 'index.json')), os.path.getsize(os.path.join(SITE, 'data', 'notes.json')),
-        os.path.getsize(os.path.join(SITE, 'data', 'links.csv')), nfiles, npages, tot / 1024, 'yes' if have_git else 'no (panel omitted)'))
+    sz = lambda p: os.path.getsize(os.path.join(SITE, p))
+    print('typologies %d, indicators %d, controls %d, links %d' % (len(typ), len(ind), len(ctl), sum(len(v) for v in links.values())))
+    print('index.json %d bytes; questionnaire.json %d bytes (%s); largest t/*.json %d bytes; %d pages; data version %s' % (
+        sz('data/index.json'), sz('data/questionnaire.json'),
+        'from questionnaire/questions_v2.yaml',
+        max(sz('data/t/' + t + '.json') for t in typ), npages, dver))
     for p in problems:
-        print('WARNING:', p)
-    if problems: sys.exit(1)
+        print('ERROR:', p)
+    if problems:
+        sys.exit(1)
 
 
 if __name__ == '__main__':

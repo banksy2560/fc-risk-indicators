@@ -17,9 +17,18 @@ typology:
     - corporate
     products:
     - trade_finance
-    - loan_mortgage
+    - personal_loan
+    - home_loan_fixed
+    - home_loan_variable
     basis: ai_inferred
     rationale: Duplicate/fictitious receivable and trade financing.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Invoice and trade-receivable financing is a commercial lending product with no consumer
+        equivalent.
   sectors:
   - banking
   - corporate_services

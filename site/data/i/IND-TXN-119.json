@@ -1,0 +1,1 @@
+{"id":"IND-TXN-119","n":"Multiple firearm or component purchases by one person for others","ds":"Repeated purchases of guns, parts or ammunition inconsistent with sport use, paid by different people.","s":"high","fp":"Collectors and ranges buy in volume.","det":["transaction_monitoring","investigator_judgement"],"cat":"transaction"}

@@ -1,0 +1,1 @@
+{"id":"IND-CPT-037","n":"Shared devices, IP addresses or contact details across accounts","ds":"Multiple unrelated accounts share devices, phone numbers, email or addresses.","s":"high","fp":"Households and shared workplaces share details.","det":["transaction_monitoring","investigator_judgement"],"cat":"counterparty"}

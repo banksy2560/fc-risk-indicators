@@ -10,6 +10,8 @@ typology:
     payment_rails:
     - cash
     - wire_swift
+    - card
+    - loan_disbursement
     customer_segments:
     - regulated_nonbank_dnfbp
     - private_wealth
@@ -20,6 +22,19 @@ typology:
     basis: ai_inferred
     rationale: Dealers in art, jewellery, metals and luxury vehicles (DNFBPs) receive cash or wires from
       wealthy buyers; the goods are real assets held outside the bank.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - credit_card
+      - personal_loan
+      channels:
+      - branch
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Luxury goods purchases funded by transfers, card spend or loan proceeds; unrelated-party
+        payments and cash handled at branch.
   stage:
   - placement
   - layering

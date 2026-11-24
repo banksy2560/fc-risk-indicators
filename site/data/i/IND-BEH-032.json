@@ -1,0 +1,1 @@
+{"id":"IND-BEH-032","n":"Poor customer and transaction data quality","ds":"Missing, inconsistent or incorrectly mapped data weakens screening and monitoring.","s":"high","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["investigator_judgement"],"cat":"behavioural"}

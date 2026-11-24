@@ -1,0 +1,1 @@
+{"id":"IND-TXN-007","n":"Cash deposits split across branches, ATMs or accounts","ds":"Cash is deposited in several locations, channels or accounts on the same day or over a short period so that no single deposit stands out.","s":"high","fp":"Businesses with multiple outlets may deposit locally at different branches.","det":["transaction_monitoring"],"cat":"transaction"}

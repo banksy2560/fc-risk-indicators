@@ -1,0 +1,1 @@
+{"id":"IND-CPT-031","n":"Payments to platforms flagged for illegal content","ds":"Payments to websites, hosting or payment accounts identified in intelligence as selling abuse material.","s":"high","fp":"Domain intelligence can include false matches.","det":["screening","external_intel"],"cat":"counterparty"}

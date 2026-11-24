@@ -1,0 +1,1 @@
+{"id":"IND-TYP-016","n":"Transaction descriptors or products inconsistent with registered business","ds":"Card data show goods or services unrelated to the merchant's declared activity or website.","s":"high","fp":"Diversified merchants.","det":["transaction_monitoring"],"cat":"typology_specific"}

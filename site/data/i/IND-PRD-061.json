@@ -1,0 +1,1 @@
+{"id":"IND-PRD-061","n":"POS software with sales-suppression features or tampered records","ds":"Use of unfamiliar till software, offline mode usage, or missing sequential receipts.","s":"high","fp":"Software glitches or offline trading can cause gaps.","det":["investigator_judgement","external_intel"],"cat":"product_channel"}

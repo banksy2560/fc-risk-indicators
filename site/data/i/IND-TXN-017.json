@@ -1,0 +1,1 @@
+{"id":"IND-TXN-017","n":"Workers paid to third-party or multiple accounts","ds":"Wages are paid to accounts not held by the worker or split across several accounts.","s":"high","fp":"Workers may have family accounts or split pay by choice.","det":["transaction_monitoring","investigator_judgement","kyc_review"],"cat":"transaction"}

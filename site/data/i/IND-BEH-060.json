@@ -1,0 +1,1 @@
+{"id":"IND-BEH-060","n":"Session shows automated or scripted interaction","ds":"Non-human timing, headless browser or scripted API calls.","s":"medium","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

@@ -1,0 +1,1 @@
+{"id":"IND-DOC-017","n":"Dates of birth, SSN or national ID not matching authoritative records","ds":"Authoritative checks fail or show multiple identities on one number.","s":"high","fp":"Registry delays.","det":["kyc_review"],"cat":"document"}

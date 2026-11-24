@@ -15,10 +15,24 @@ typology:
     customer_segments:
     - retail
     - sme
+    - sole_trader
     products:
     - transaction_account
     basis: ai_inferred
     rationale: Sub-threshold cash deposits across branches, ATMs and agents.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      - term_deposit
+      channels:
+      - branch
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Sub-threshold cash deposits at branch and ATM-linked flows into accounts, term deposit
+        placement, with rapid digital onward movement.
   stage:
   - placement
   sectors:

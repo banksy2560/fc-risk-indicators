@@ -1,0 +1,1 @@
+{"id":"IND-TXN-066","n":"Rapid payments from third-party or overdrawn accounts to inflate limits","ds":"Payments that bounce or are reversed after credit is restored.","s":"high","fp":"Genuine payment errors.","det":["transaction_monitoring"],"cat":"transaction"}

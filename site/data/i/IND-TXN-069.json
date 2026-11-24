@@ -1,0 +1,1 @@
+{"id":"IND-TXN-069","n":"Card testing with many small authorisations","ds":"Bursts of low-value attempts across cards, many declined, followed by a successful larger purchase.","s":"high","fp":"Merchant retries.","det":["transaction_monitoring"],"cat":"transaction"}

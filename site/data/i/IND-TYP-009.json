@@ -1,0 +1,1 @@
+{"id":"IND-TYP-009","n":"Interaction with sanctioned or designated contracts, mixers or addresses","ds":"Transfers touch contracts, pools, relayers or addresses designated by authorities or flagged in advisories.","s":"high","fp":"Indirect exposure via shared liquidity.","det":["screening","external_intel"],"cat":"typology_specific"}

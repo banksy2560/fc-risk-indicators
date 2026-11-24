@@ -24,6 +24,13 @@ typology:
     basis: ai_inferred
     rationale: Safe deposit boxes at branches and goods in free ports or bonded storage, with bearer instruments
       bought for cash; title and value shift without bank payments.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Free ports, bearer instruments and safe deposit custody are outside the seven consumer
+        products; no deposit or lending mechanic.
   sectors:
   - art_luxury
   - banking

@@ -1,0 +1,1 @@
+{"id":"IND-CUS-029","n":"Multiple prior scam alerts or repeat victimisation","ds":"Victim-side: the customer previously reported or was warned of fraud and is again sending payments to new payees.","s":"medium","fp":"Customers who have since become aware and are genuinely transacting.","det":["kyc_review","customer_behaviour"],"cat":"customer"}

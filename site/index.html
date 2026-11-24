@@ -4,55 +4,68 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>FC Risk Indicators | Financial crime typologies, indicators and controls</title>
-<meta name="description" content="An open library of financial crime typologies, the indicators that reveal them, the controls that address them and the sources behind them. v0.1 draft, AI-drafted and unreviewed.">
+<title>Linkage | FC Risk Indicators</title>
+<meta name="description" content="See how a financial crime typology links to the indicators you would observe and the controls that mitigate them. Search an indicator or control to find every typology it appears in.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="FC Risk Indicators">
-<meta property="og:title" content="FC Risk Indicators | Financial crime typologies, indicators and controls">
-<meta property="og:description" content="An open library of financial crime typologies, the indicators that reveal them, the controls that address them and the sources behind them. v0.1 draft, AI-drafted and unreviewed.">
-<meta name="twitter:card" content="summary">
+<meta property="og:title" content="Linkage | FC Risk Indicators">
+<meta property="og:description" content="See how a financial crime typology links to the indicators you would observe and the controls that mitigate them. Search an indicator or control to find every typology it appears in.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.5 22.5 12 12 22.5 1.5 12z' fill='%233F3D99'/%3E%3Ccircle cx='12' cy='12' r='4.4' fill='white'/%3E%3Ccircle cx='12' cy='12' r='2.2' fill='%23B3262E'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap"></noscript>
-<link rel="stylesheet" href="assets/app.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/assets/app.be81bc7e.css">
+<script>window.FC_V="52b00ef9";document.documentElement.classList.add("js")</script>
 </head>
-<body class="" data-page="index" data-mode="">
+<body data-page="index">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="m-t" viewBox="0 0 24 24"><path d="M12 1.5 22.5 12 12 22.5 1.5 12z" fill="currentColor"/></symbol>
+<symbol id="m-i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="2.4"/></symbol>
+<symbol id="m-c" viewBox="0 0 24 24"><path d="M12 1.8 20.5 5v6.3c0 5.2-3.6 9.3-8.5 11-4.9-1.7-8.5-5.8-8.5-11V5z" fill="currentColor"/></symbol>
+</defs></svg>
 <a class="skip" href="#main">Skip to content</a>
-<div class="banner" role="region" aria-label="Content status"><div class="wrap"><strong>Draft v0.1</strong><span>AI-drafted and not yet reviewed by subject-matter experts. <a href="about#status">What this means</a></span></div></div>
+<div class="banner" role="region" aria-label="Content status"><div class="wrap"><strong>Draft v0.1</strong><span>AI-drafted and unreviewed. Exposure tags are AI-inferred. Signal strength is not a risk score. No human has confirmed any citation. <a href="/about#status">What this means</a></span></div></div>
 <header class="top"><div class="wrap">
-<a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5 22.5 12 12 22.5 1.5 12z" fill="var(--typ)"/><circle cx="12" cy="12" r="4.4" fill="var(--bg)"/><circle cx="12" cy="12" r="2.2" fill="var(--tape)"/></svg>FC Risk Indicators</a>
-<nav aria-label="Primary"><a href="./" aria-current="page">Home</a><a href="explorer">Explorer</a><a href="relationships">Relationships</a><a href="coverage">Coverage</a><a href="about">About</a></nav>
-<button type="button" class="cmdk" data-open-search aria-label="Search the library" aria-keyshortcuts="Meta+K Control+K"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="lbl">Search typologies, indicators, controls</span><kbd data-kbd>Ctrl K</kbd></button>
+<a class="brand" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5 22.5 12 12 22.5 1.5 12z" fill="var(--typ)"/><circle cx="12" cy="12" r="4.4" fill="var(--surface)"/><circle cx="12" cy="12" r="2.2" fill="var(--tape)"/></svg>FC Risk Indicators</a>
+<nav aria-label="Primary"><a href="/" aria-current="page">Linkage</a><a href="/product">Product mapper</a><a href="/about">About</a></nav>
 </div></header>
-<div id="nofetch" class="wrap" hidden><div class="notice" role="alert"><strong>Data could not be loaded.</strong> This site loads its data with <code>fetch()</code>, which browsers block when a page is opened from disk (file://). Serve the <code>site/</code> folder over HTTP, for example <code>python3 tools/serve_site.py</code>, or use the deployed site.</div></div>
-<main id="main" class="wrap" tabindex="-1">
-<section class="hero" aria-labelledby="h1">
- <h1 id="h1" class="display">Look up a financial crime typology, its red flags and the controls that address it.</h1>
- <p class="lede" id="stats"></p>
- <button type="button" class="bigsearch" data-open-search aria-label="Search the library"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search typologies, indicators and controls</span><kbd data-kbd>Ctrl K</kbd></button>
-</section>
-<section class="bt" aria-labelledby="bth">
- <h2 id="bth">How a typology connects</h2>
- <div class="tabs-ix" id="btpick" role="group" aria-label="Choose an example typology"></div>
- <div class="bt-sheet"><div class="bflow" id="bt"></div>
- <p class="bnote" id="btnote"></p></div>
-</section>
-<div class="grid">
- <section class="panel s6" aria-labelledby="dh"><h2 id="dh">Browse by domain</h2><ul class="blist" id="domains"></ul></section>
- <section class="panel s6" aria-labelledby="gh"><h2 id="gh">Browse indicators by category</h2><ul class="blist" id="cat"></ul></section>
- <section class="panel s4" aria-labelledby="th"><h2 id="th">Most reused indicators</h2><ol class="rank" id="topI"></ol></section>
- <section class="panel s4" aria-labelledby="ch"><h2 id="ch">Most reused controls</h2><ol class="rank" id="topC"></ol></section>
- <section class="panel s4" id="recentcard" aria-labelledby="rh" hidden><h2 id="rh">Latest typologies</h2><ol class="rank" id="recent"></ol><p class="note" id="recentnote"></p></section>
+<div id="nofetch" class="wrap" hidden><div class="notice" role="alert"><strong>Data could not be loaded.</strong> This site loads its data with <code>fetch()</code>, which browsers block for pages opened from disk. Serve the <code>site/</code> folder, for example with <code>python3 tools/serve_site.py</code>, or use the deployed site.</div></div>
+<main id="main" tabindex="-1">
+<div class="wrap">
+<h1 class="display pagetitle">How a typology connects to indicators and controls</h1>
+<form class="finder" role="search" onsubmit="return false">
+ <div class="field grow">
+  <label for="q">Search a typology, indicator or control</label>
+  <div class="combo">
+   <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="For example: mule, structuring, sanctions screening" role="combobox" aria-expanded="false" aria-controls="qlist" aria-autocomplete="list">
+   <ul id="qlist" role="listbox" aria-label="Search results" hidden></ul>
+  </div>
+ </div>
+ <div class="field"><label for="dom">Domain</label><select id="dom"></select></div>
+ <div class="field"><label class="chk"><input type="checkbox" id="cbon"> Consumer bank view</label></div>
+</form>
+<div class="cbrow" id="cbrow" hidden>
+ <div class="field"><label for="cbp">Product</label><select id="cbp"></select></div>
+ <div class="field"><label for="cbc">Channel</label><select id="cbc"></select></div>
+ <p class="cbnote" id="cbnote"></p>
 </div>
-<p class="foot-note">Counts come from the full v0.1 library at build time. "Reused" counts links, not quality or importance. Gaps in the library are on the <a href="coverage">Coverage</a> page.</p>
+<div class="sheetwrap" id="sheetwrap" aria-live="polite">
+ <div class="tabs-ix" id="strip" role="group" aria-label="Typologies"></div>
+ <div id="view"><p class="loading">Loading...</p></div>
+</div>
+</div>
+<aside id="drawer" class="drawer" aria-label="Details">
+ <div class="drawer-head"><span class="eyebrow" id="dkind"></span><button type="button" class="x" id="dclose" aria-label="Close details">Close <kbd>Esc</kbd></button></div>
+ <div class="drawer-body" id="dbody" tabindex="-1"></div>
+</aside>
+<div id="scrim" class="scrim" hidden></div>
+<noscript><div class="wrap"><p class="notice">This page needs JavaScript to draw the linkage.</p></div></noscript>
 
 </main>
 <footer class="site-footer"><div class="wrap">
-<p><strong>FC Risk Indicators v0.1 draft.</strong> AI-drafted, not reviewed by subject-matter experts; citations are unverified or agent-checked only. Indicators are red flags, not proof of crime. Nothing here is legal or compliance advice. Signal strength is indicative, not a risk score. Exposure tags are AI-inferred descriptors of where a typology typically shows up, not any institution's assessed exposure.</p>
-<p>Code: <a href="https://github.com/banksy2560/fc-risk-indicators/blob/main/LICENSE">Apache-2.0</a>. Content: <a href="https://github.com/banksy2560/fc-risk-indicators/blob/main/LICENSE-CONTENT">CC-BY-4.0</a>. <a href="https://github.com/banksy2560/fc-risk-indicators">Source on GitHub</a> | <a href="about#contribute">Contribute or review</a></p>
+<p>Indicators are red flags, not proof of crime. Nothing here is legal or compliance advice. <a href="https://github.com/banksy2560/fc-risk-indicators">Source on GitHub</a> | Code Apache-2.0, content CC-BY-4.0.</p>
 </div></footer>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
-<script defer src="assets/core.js"></script>
-<script defer src="assets/home.js"></script>
+<script defer src="/assets/common.f298d492.js"></script>
+<script defer src="/assets/linkage.c7bbd4aa.js"></script>
 </body>
 </html>

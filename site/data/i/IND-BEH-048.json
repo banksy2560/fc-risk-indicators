@@ -1,0 +1,1 @@
+{"id":"IND-BEH-048","n":"Card-not-present volume with testing patterns","ds":"Many small authorisations from varied cards, consistent with card testing then fraud.","s":"medium","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

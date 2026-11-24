@@ -1,0 +1,1 @@
+{"id":"IND-TXN-140","n":"Cash withdrawals match payroll amounts","ds":"Large cash withdrawals shortly after receiving client funds, close to total weekly wages, with no matching payroll tax payments.","s":"high","fp":"Genuine cash-in-hand wages exist in some sectors.","det":["transaction_monitoring","investigator_judgement"],"cat":"transaction"}

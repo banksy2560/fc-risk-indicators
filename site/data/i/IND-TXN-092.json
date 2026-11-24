@@ -1,0 +1,1 @@
+{"id":"IND-TXN-092","n":"Crypto transfers to addresses linked to abuse marketplaces","ds":"Customer sends virtual assets to wallets clustered with abuse-related services.","s":"high","fp":"Mixed-use services create indirect exposure.","det":["transaction_monitoring","external_intel"],"cat":"transaction"}

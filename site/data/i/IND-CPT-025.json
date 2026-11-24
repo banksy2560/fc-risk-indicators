@@ -1,0 +1,1 @@
+{"id":"IND-CPT-025","n":"Broker or intermediary with unusual early default rate","ds":"Applications from one source show disproportionate early payment default or document anomalies.","s":"high","fp":"Higher-risk niche lenders.","det":["transaction_monitoring","investigator_judgement"],"cat":"counterparty"}

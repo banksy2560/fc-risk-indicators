@@ -22,6 +22,13 @@ typology:
     basis: ai_inferred
     rationale: Labour providers and ghost employers withdrawing cash payroll, paying workers via shared
       accounts, and bogus self-employment; employees are the payees.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Ghost-employer payroll fraud is an employer/business scheme; consumer accounts are only
+        incidental wage recipients.
   sectors:
   - banking
   - payments

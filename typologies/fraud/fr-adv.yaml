@@ -12,6 +12,7 @@ typology:
     - fast_payments
     - cross_border_remittance
     - cheque
+    - card
     customer_segments:
     - retail
     - vulnerable_elderly
@@ -19,6 +20,19 @@ typology:
     - transaction_account
     basis: ai_inferred
     rationale: Victims pay fees; overpayment cheque variants; mule receiving accounts.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      - credit_card
+      channels:
+      - mobile_app
+      - online_banking
+      - branch
+      basis: ai_inferred
+      rationale: Victims pay advance fees and mules receive funds in everyday and savings accounts; cards
+        and in-branch cash also used.
   sectors:
   - banking
   - payments

@@ -1,0 +1,1 @@
+{"id":"IND-TXN-047","n":"Layered swaps through multiple DEX pools and bridges","ds":"On-chain history shows repeated swaps and bridge crossings with no yield or trading logic before arrival at the platform.","s":"high","fp":"Yield farmers and aggregators routing automatically.","det":["transaction_monitoring"],"cat":"transaction"}

@@ -1,0 +1,1 @@
+{"id":"IND-DOC-005","n":"Identity document tampering or forensic failure","ds":"Identity document or selfie shows alteration, font or layout anomalies, or fails security-feature or forensic checks (including deepfake or injection artefacts).","s":"high","fp":"Worn or poorly scanned genuine documents can fail checks.","det":["document_review"],"cat":"document"}

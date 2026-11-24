@@ -15,17 +15,37 @@ typology:
     - wire_swift
     - cheque
     - cash
+    - loan_disbursement
     customer_segments:
     - private_wealth
     - non_resident
     - professional_intermediary
+    - third_party_funder
     products:
-    - savings_deposit
+    - savings_account
+    - term_deposit
     - investment_securities
-    - loan_mortgage
+    - personal_loan
+    - home_loan_fixed
+    - home_loan_variable
     - transaction_account
     basis: ai_inferred
     rationale: Undeclared foreign accounts, nominee entities and tax residency inconsistencies.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      - term_deposit
+      - home_loan_fixed
+      - home_loan_variable
+      channels:
+      - branch
+      - online_banking
+      - call_centre
+      basis: ai_inferred
+      rationale: Undeclared offshore income and assets surface in retail deposits, term deposits and loans
+        with foreign funds and residency inconsistencies.
   sectors:
   - banking
   - securities

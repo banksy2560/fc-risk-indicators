@@ -1,0 +1,1 @@
+{"id":"IND-BEH-031","n":"Monitoring scenarios not tuned or validated","ds":"Rules and models have not been calibrated, tested or reviewed against current risk.","s":"high","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["investigator_judgement"],"cat":"behavioural"}

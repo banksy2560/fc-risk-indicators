@@ -1,0 +1,1 @@
+{"id":"IND-CPT-020","n":"Change of beneficiary bank details close to a payment","ds":"Victim-side: supplier payment details are altered shortly before an invoice is due, via email or portal.","s":"high","fp":"Real supplier bank migrations.","det":["transaction_monitoring","document_review"],"cat":"counterparty"}

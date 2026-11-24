@@ -19,6 +19,16 @@ typology:
     - crypto_custody
     basis: ai_inferred
     rationale: Transfers to unhosted wallets and P2P exchange at fiat on/off-ramps.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      channels:
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Customers send fiat to exchanges and P2P sellers for unhosted wallets, often scam-driven;
+        seen through everyday account payments.
   stage:
   - placement
   - layering

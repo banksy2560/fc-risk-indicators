@@ -1,0 +1,1 @@
+{"id":"IND-TYP-005","n":"Use of mixers, privacy coins or privacy pools around platform activity","ds":"Funds pass through mixers, privacy coins or privacy-preserving pools before or after platform activity without commercial rationale.","s":"high","fp":"Genuine privacy preference.","det":["transaction_monitoring","external_intel","kyc_review"],"cat":"typology_specific"}

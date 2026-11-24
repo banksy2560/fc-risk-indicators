@@ -20,6 +20,12 @@ typology:
     - correspondent_account
     basis: ai_inferred
     rationale: LCs, open-account trade and transshipment documentary inconsistencies.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Letters of credit and transshipment obfuscation are corporate trade finance, not retail.
   sectors:
   - banking
   - trade_finance

@@ -23,6 +23,13 @@ typology:
     basis: ai_inferred
     rationale: Front import-export businesses, payments to officials and ground-level cash; sales advertised
       on social media and marketplaces with app/crypto payments.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Driven by front import-export firms and trade documents; individual consumer purchases
+        are incidental and not the indicator set.
   sectors:
   - banking
   - payments

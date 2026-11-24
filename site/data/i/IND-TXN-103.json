@@ -1,0 +1,1 @@
+{"id":"IND-TXN-103","n":"Large cash withdrawals paired with deposits of equivalent value","ds":"Cash is repeatedly withdrawn and redeposited, or round-tripped with associated accounts.","s":"medium","fp":"Float management for tills may look similar.","det":["transaction_monitoring"],"cat":"transaction"}

@@ -21,6 +21,12 @@ typology:
     basis: ai_inferred
     rationale: Petty cash and intermediary/broker fees paid by corporates, often to personal accounts
       or in cash; customs broker trade flows.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Corporate facilitation payments and intermediary fees; not a retail product pattern.
   sectors:
   - banking
   - payments

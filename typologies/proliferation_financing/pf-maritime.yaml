@@ -24,6 +24,12 @@ typology:
     basis: ai_inferred
     rationale: Shipowners, managers and charterers using flag hopping, AIS manipulation and STS transfers;
       vessel is the real asset; insurance and P&I changes.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Vessel, flag and ship-to-ship evasion is commercial maritime and trade finance only.
   sectors:
   - banking
   - trade_finance

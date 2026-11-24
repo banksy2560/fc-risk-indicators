@@ -15,6 +15,7 @@ typology:
     - cash
     - card
     - cross_border_remittance
+    - loan_disbursement
     customer_segments:
     - retail
     - new_to_bank
@@ -26,6 +27,19 @@ typology:
     basis: ai_inferred
     rationale: Controlled accounts, cash deposits, adverts and short-stay bookings; front businesses (e.g.
       massage, car-wash, restaurant) with poor payroll evidence.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - credit_card
+      - personal_loan
+      channels:
+      - branch
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Third-party controlled accounts, cash deposits, adverts and travel/accommodation spend,
+        plus coerced credit.
   sectors:
   - banking
   - payments

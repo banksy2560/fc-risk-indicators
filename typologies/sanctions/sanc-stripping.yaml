@@ -17,6 +17,13 @@ typology:
     - transaction_account
     basis: ai_inferred
     rationale: Payment-message manipulation in SWIFT and correspondent routing.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Payment-message manipulation is a correspondent/SWIFT issue not originated by consumer
+        products.
   sectors:
   - banking
   - payments

@@ -1,0 +1,1 @@
+{"id":"IND-TYP-017","n":"Use of multiple shell merchant accounts to spread volume","ds":"Volumes distributed across many accounts to stay below monitoring thresholds.","s":"medium","fp":"Business structure choices.","det":["transaction_monitoring","investigator_judgement"],"cat":"typology_specific"}

@@ -1,0 +1,1 @@
+{"id":"IND-TXN-025","n":"Sudden liquidation of savings or assets","ds":"Savings, investments or assets are sold abruptly, followed by withdrawal or transfer.","s":"medium","fp":"Planned purchases, retirement or genuine need for funds.","det":["transaction_monitoring","investigator_judgement"],"cat":"transaction"}

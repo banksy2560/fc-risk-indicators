@@ -1,0 +1,1 @@
+{"id":"IND-BEH-072","n":"Employee never takes leave or resists rotation","ds":"Behavioural red flag for concealment.","s":"medium","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["customer_behaviour","investigator_judgement"],"cat":"behavioural"}

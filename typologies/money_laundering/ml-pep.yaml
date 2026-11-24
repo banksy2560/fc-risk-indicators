@@ -10,15 +10,35 @@ typology:
     - face_to_face_professional
     payment_rails:
     - wire_swift
+    - loan_disbursement
+    - loan_early_payout
     customer_segments:
     - pep_related
     - private_wealth
     - non_resident
+    - third_party_funder
     products:
     - transaction_account
     - investment_securities
     basis: ai_inferred
     rationale: PEP/associate flows via foreign accounts, companies and assets.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      - term_deposit
+      - credit_card
+      - personal_loan
+      - home_loan_fixed
+      - home_loan_variable
+      channels:
+      - branch
+      - online_banking
+      - call_centre
+      basis: ai_inferred
+      rationale: PEP and associate customer risk can arise across all consumer products, including property
+        lending and lump-sum deposits; a customer-risk typology.
   stage:
   - layering
   - integration

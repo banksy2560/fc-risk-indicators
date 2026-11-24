@@ -2,6 +2,7 @@
 """Build the static site (data, versioned assets, pages) into site/.
 
 Reads controls/, indicators/, typologies/, vocab.yaml and questionnaire/questions_v2.yaml and writes:
+  site/data/search.json        compact text for the Linkage search (id, name, description; key terms for typologies), fetched lazily
   site/data/index.json         small index for search, the typology picker, reverse views and the product mapper
                                (typologies + exposure, indicator and control names, every typology->indicator->control link)
   site/data/t/<ID>.json        linkage for one typology (nodes, per-link controls, contexts, sources)
@@ -98,6 +99,40 @@ def dump(path, obj):
 
 def hash8(data):
     return hashlib.sha1(data if isinstance(data, bytes) else data.encode('utf-8')).hexdigest()[:8]
+
+
+STOP = set('a an and are as at be by for from has have in into is it its of on or that the their them they this to was were with which who when while than then also not no may can more most other such via per use used using up out over under after before between within across through all any each both one two our your you we if but so these those there here being been'.split())
+
+
+def key_terms(t, extra_text, name):
+    """Distinctive words and word pairs from a typology's per-link contexts that its description does not already use."""
+    seen = set(re.findall(r'[a-z]{3,}', (name + ' ' + norm(t.get('description')) + ' ' + extra_text).lower()))
+    words, pairs = defaultdict(int), defaultdict(int)
+    for l in t.get('indicators', []):
+        toks = re.findall(r'[a-z][a-z-]{2,}', norm(l.get('context')).lower())
+        for a in toks:
+            if a not in STOP and a not in seen:
+                words[a] += 1
+        for a, b in zip(toks, toks[1:]):
+            if a not in STOP and b not in STOP:
+                pairs[a + ' ' + b] += 1
+    top = lambda d, n, m: [k for k, v in sorted(d.items(), key=lambda kv: (-kv[1], kv[0])) if v >= m][:n]
+    return ' '.join(top(pairs, 10, 2) + top(words, 18, 2))
+
+
+def build_search(typ, ind, ctl):
+    """Compact search corpus: [id, name, description(, key terms)] per typology, indicator and control. No per-link text."""
+    T = []
+    for k, t in typ.items():
+        e = t.get('exposure') or {}
+        rats = []
+        for r in (norm(e.get('rationale')), norm((e.get('consumer') or {}).get('rationale'))):
+            if r and r not in rats:
+                rats.append(r)
+        T.append([k, norm(t['name']), norm(t.get('description')) + (' ' + ' '.join(rats) if rats else ''),
+                  key_terms(t, ' '.join(rats), t['name'])])
+    return {'T': T, 'I': [[k, norm(v['name']), norm(v.get('description'))] for k, v in ind.items()],
+            'C': [[k, norm(v['name']), norm(v.get('description'))] for k, v in ctl.items()]}
 
 
 def build_questionnaire(vocab, problems):
@@ -303,7 +338,9 @@ def main():
             'id': cid, 'n': norm(c['name']), 'ds': norm(c.get('description')), 't': c.get('type', ''),
             'im': c.get('implementation', ''), 'aka': [norm(a) for a in c.get('also_known_as', [])]})
     dump(os.path.join(SITE, 'data', 'index.json'), index)
+    dump(os.path.join(SITE, 'data', 'search.json'), build_search(typ, ind, ctl))
     dver = hash8(open(os.path.join(SITE, 'data', 'index.json'), 'rb').read() +
+                 open(os.path.join(SITE, 'data', 'search.json'), 'rb').read() +
                  open(os.path.join(SITE, 'data', 'questionnaire.json'), 'rb').read() +
                  b''.join(open(f, 'rb').read() for f in sorted(glob.glob(os.path.join(SITE, 'data', 't', '*.json')))))
 
@@ -345,6 +382,7 @@ def main():
 
     sz = lambda p: os.path.getsize(os.path.join(SITE, p))
     print('typologies %d, indicators %d, controls %d, links %d' % (len(typ), len(ind), len(ctl), sum(len(v) for v in links.values())))
+    print('search.json %d bytes' % sz('data/search.json'))
     print('index.json %d bytes; questionnaire.json %d bytes (%s); largest t/*.json %d bytes; %d pages; data version %s' % (
         sz('data/index.json'), sz('data/questionnaire.json'),
         'from questionnaire/questions_v2.yaml',

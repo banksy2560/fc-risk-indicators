@@ -3,7 +3,7 @@
 Plain static site, no framework and no build step on the host. The generated output in this folder is committed and deployed as is. Two jobs only:
 
 - `/` Linkage: a hub-and-spoke diagram. The typology is a card in the centre, its indicators (what you would observe) on the left, its controls (what mitigates) on the right. Click an indicator to trace the controls linked to it in this typology, or a control to trace its indicators. A slim drawer holds descriptions, typology-specific context, false-positive notes, sources with status tags and "also used in N typologies" pivots. Search an indicator or control to get the same diagram with that item in the centre and every typology it appears in on the left. A "Consumer bank view" (product and channel) narrows the typology tab strip. Copy link and CSV export act on what is displayed.
-- `/product` Product mapper (consumer bank): pick one of 7 products, tick the channels (4), answer only the questions that apply, and see typologies as Strong / Possible / Base fit (specificity of fit, not risk). Also a 7 x 4 product-by-channel grid, manual include/exclude, "Open linkage", and a product pack CSV. Everything runs in the browser; state lives in the URL hash and `localStorage`.
+- `/product` Product mapper (consumer bank): pick one of 7 products, tick the channels (4), answer only the questions that apply, and see typologies as Strong / Possible / Base fit (specificity of fit, not risk). Also a 7 x 4 product-by-channel grid, manual include/exclude, "Open linkage", and a product pack CSV. Everything runs in the browser; state lives in the URL hash and `localStorage`. A fresh visit without a hash starts blank and offers Resume / Forget for the saved answers.
 - `/about` status, how linking works, how the mapper works and its limits, citation tags, licences.
 
 Old routes redirect (see `vercel.json`): `/typologies`, `/indicators`, `/controls`, `/explorer`, `/relationships`, `/coverage` go to `/`; the hash is kept, so `/controls#CTL-012` lands on `/#CTL-012`.
@@ -17,6 +17,7 @@ python3 tools/serve_site.py 8000     # local server; mimics cleanUrls and the ve
 ```
 `tools/build_site.py` reads `controls/`, `indicators/`, `typologies/`, `vocab.yaml` and `questionnaire/questions_v2.yaml`, and writes:
 - `data/index.json` small index (about 183 KB raw, 40 KB gzipped): typologies with exposure and consumer scope, indicator and control names, and every typology to indicator to control link. Search, the tab strip, reverse views, the mapper and the grid all derive from it.
+- `data/search.json` (about 234 KB raw, 76 KB gzipped) id, name, description and typology key terms; fetched lazily on first focus or keystroke in the Linkage search.
 - `data/t/<ID>.json` one typology's linkage (nodes, per-link controls, contexts, sources; 14 KB at most), fetched on demand.
 - `data/i/<ID>.json`, `data/c/<ID>.json` canonical indicator and control detail, fetched only for the reverse-view drawer.
 - `data/questionnaire.json` questions, options, example profiles.

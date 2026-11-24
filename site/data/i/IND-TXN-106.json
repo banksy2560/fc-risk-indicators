@@ -1,0 +1,1 @@
+{"id":"IND-TXN-106","n":"Aborted transactions with funds returned elsewhere","ds":"Deals cancelled and money sent to different parties.","s":"medium","fp":"Deals collapse.","det":["transaction_monitoring","investigator_judgement"],"cat":"transaction"}

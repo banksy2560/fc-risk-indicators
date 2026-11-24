@@ -1,0 +1,1 @@
+{"id":"IND-TXN-072","n":"Employee accounts receive unusual payments","ds":"Staff accounts credited from customers, vendors or dormant accounts.","s":"high","fp":"Salary advances.","det":["transaction_monitoring"],"cat":"transaction"}

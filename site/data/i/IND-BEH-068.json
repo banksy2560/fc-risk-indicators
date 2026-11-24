@@ -1,0 +1,1 @@
+{"id":"IND-BEH-068","n":"Victim reports unknown accounts or credit enquiries","ds":"customer discovers accounts opened in their name through alerts or reports.","s":"medium","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["customer_behaviour","investigator_judgement"],"cat":"behavioural"}

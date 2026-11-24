@@ -1,0 +1,1 @@
+{"id":"IND-BEH-069","n":"Customer reports unsolicited call or text from 'the bank'","ds":"contact claims to be from the bank's fraud team and requests action, codes or transfers.","s":"high","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

@@ -1,0 +1,1 @@
+{"id":"IND-TXN-011","n":"Dormant account suddenly reactivated or high-velocity activity","ds":"A dormant or low-activity account suddenly shows high-velocity inflows and outflows.","s":"high","fp":"Seasonal use, life events or a customer returning after absence.","det":["transaction_monitoring"],"cat":"transaction"}

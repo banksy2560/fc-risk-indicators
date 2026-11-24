@@ -1,0 +1,1 @@
+{"id":"IND-CPT-019","n":"Beneficiary account name mismatch or no-match result","ds":"Victim-side: confirmation-of-payee check returns no match or close match and the customer proceeds regardless.","s":"medium","fp":"Typos, trading names or joint accounts producing benign mismatches.","det":["transaction_monitoring","customer_behaviour"],"cat":"counterparty"}

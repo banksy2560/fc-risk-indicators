@@ -1,0 +1,1 @@
+{"id":"IND-GEO-026","n":"Access from sanctioned jurisdictions via VPN or proxy","ds":"Technical indicators suggest the user is located in a comprehensively sanctioned area.","s":"high","fp":"Privacy tools are widely used.","det":["transaction_monitoring","kyc_review"],"cat":"geographic"}

@@ -1,0 +1,1 @@
+{"id":"IND-TYP-020","n":"Unhosted wallet with high-risk counterparties in history","ds":"Self-hosted address has prior exposure to illicit services, scams or sanctioned addresses.","s":"high","fp":"Inherited exposure from dusting.","det":["transaction_monitoring","external_intel"],"cat":"typology_specific"}

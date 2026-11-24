@@ -1,0 +1,1 @@
+{"id":"IND-TYP-036","n":"Circular trade or invoices among connected entities","ds":"Invoices cycled among related firms, returning funds to origin.","s":"high","fp":"Group trading.","det":["transaction_monitoring","investigator_judgement"],"cat":"typology_specific"}

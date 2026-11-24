@@ -1,0 +1,1 @@
+{"id":"IND-BEH-046","n":"Rapid sequence of new payee additions","ds":"Many new beneficiaries added in a short period, often to unrelated accounts.","s":"medium","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

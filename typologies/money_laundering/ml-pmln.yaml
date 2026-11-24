@@ -14,16 +14,29 @@ typology:
     - cross_border_remittance
     - cash
     - informal_value_transfer
+    - fast_payments
     customer_segments:
-    - corporate
-    - sme
     - professional_intermediary
     - msb_remitter
+    - sme
+    - corporate
     products:
     - transaction_account
     basis: ai_inferred
     rationale: Specialist networks use front-company accounts, MSBs, couriers and informal value transfer
       with mirror transactions across jurisdictions.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      channels:
+      - mobile_app
+      - online_banking
+      - branch
+      basis: ai_inferred
+      rationale: Professional launderers recruit or run multiple personal accounts for third-party flows
+        with fee retention; commercial and trade elements excluded.
   stage:
   - placement
   - layering

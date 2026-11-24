@@ -1,0 +1,1 @@
+{"id":"IND-TXN-010","n":"Repeated round-value transactions","ds":"Transactions are repeatedly in round or unusually uniform amounts that do not fit the stated purpose.","s":"medium","fp":"Rents, salaries, loan instalments and fees are commonly round amounts.","det":["transaction_monitoring"],"cat":"transaction"}

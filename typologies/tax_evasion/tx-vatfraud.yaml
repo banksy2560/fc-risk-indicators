@@ -21,6 +21,12 @@ typology:
     basis: ai_inferred
     rationale: Missing-trader chains between thin companies with same-day circular flows of VAT-bearing
       payments.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Missing-trader carousel fraud runs through business accounts and trade chains, not consumers.
   sectors:
   - banking
   - payments

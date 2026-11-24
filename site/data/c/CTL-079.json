@@ -1,0 +1,1 @@
+{"id":"CTL-079","n":"Deposit holds and funds-availability policy","ds":"Places risk-based holds on uncleared or unusual inbound items and funds, limiting withdrawal until the item is confirmed good. It protects against losses from counterfeit, reversible or suspicious deposits.","t":"preventive","im":"policy","aka":["Real-time inbound payment holds"]}

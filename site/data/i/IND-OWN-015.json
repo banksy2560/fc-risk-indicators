@@ -1,0 +1,1 @@
+{"id":"IND-OWN-015","n":"Declared and discovered ownership mismatch","ds":"Registry, media or documents show owners different from those declared by the customer.","s":"high","fp":"Registries lag and may be outdated.","det":["kyc_review","external_intel"],"cat":"ownership_structure"}

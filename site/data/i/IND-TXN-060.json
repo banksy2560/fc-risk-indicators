@@ -1,0 +1,1 @@
+{"id":"IND-TXN-060","n":"Diamond or gem trade with undervalued or round-trip transactions","ds":"Stones traded at prices off market, flowing through several traders and returning to origin.","s":"medium","fp":"Valuation of stones is subjective.","det":["transaction_monitoring","investigator_judgement"],"cat":"transaction"}

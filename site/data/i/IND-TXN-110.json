@@ -1,0 +1,1 @@
+{"id":"IND-TXN-110","n":"Overfunded policies and partial withdrawals","ds":"Paid in excess of required premium then withdrawn.","s":"medium","fp":"Misestimates happen.","det":["transaction_monitoring"],"cat":"transaction"}

@@ -12,6 +12,8 @@ typology:
     - cash
     - cheque
     - wire_swift
+    - fast_payments
+    - bnpl_cash_like
     customer_segments:
     - retail
     - private_wealth
@@ -20,6 +22,17 @@ typology:
     - transaction_account
     basis: ai_inferred
     rationale: Casino chip purchase/cash-out, deposit accounts, junkets; funded by cash and bank sources.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - credit_card
+      channels:
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Consumers fund gambling and cash out winnings via Everyday account payments and card
+        spend; casino-floor chips and junkets are out of scope.
   stage:
   - placement
   - layering

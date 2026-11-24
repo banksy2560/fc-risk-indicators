@@ -1,0 +1,1 @@
+{"id":"IND-CUS-025","n":"Vessel with history of AIS gaps or name and flag changes","ds":"Vessel switches off position tracking, changes names or flags often and is on IUU lists.","s":"high","fp":"Technical faults and legitimate re-flagging occur.","det":["screening","external_intel"],"cat":"customer"}

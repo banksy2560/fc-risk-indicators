@@ -19,10 +19,18 @@ typology:
     products:
     - transaction_account
     - trade_finance
-    - loan_mortgage
+    - personal_loan
+    - home_loan_fixed
+    - home_loan_variable
     basis: ai_inferred
     rationale: Intra-group charges, royalties and intercompany loans to low-tax affiliates; conduit entities
       with same-day pass-through.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Intra-group pricing abuse concerns corporate groups and trade, not consumer products.
   sectors:
   - banking
   - trade_finance

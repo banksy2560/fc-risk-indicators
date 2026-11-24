@@ -13,12 +13,24 @@ typology:
     - wire_swift
     - fast_payments
     customer_segments:
+    - retail
     - sme
     - corporate
+    - sole_trader
     products:
     - transaction_account
     basis: ai_inferred
     rationale: Business payment redirection via email compromise, mostly wires.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      channels:
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Consumers pay deposits or settlement funds to redirected details on spoofed invoices
+        (e.g. conveyancing, tradespeople); business wire variants are out of scope.
   sectors:
   - banking
   - payments

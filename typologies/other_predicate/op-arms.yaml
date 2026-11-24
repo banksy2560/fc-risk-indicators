@@ -23,6 +23,13 @@ typology:
     basis: ai_inferred
     rationale: Dealer and broker payments, trade documentation and shipping for transfers, plus cash and
       straw purchases by individuals; arms dealers are regulated non-bank businesses.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Arms trafficking is mainly dealer, brokering and shipping finance; retail purchases show
+        no distinctive consumer product mechanics.
   sectors:
   - banking
   - payments

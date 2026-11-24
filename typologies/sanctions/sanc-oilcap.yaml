@@ -21,6 +21,13 @@ typology:
     - insurance_pension
     basis: ai_inferred
     rationale: Commodity traders, attestations, tanker insurance and ship-to-ship transfers.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Oil price-cap and ship-to-ship evasion is commodity trade finance and insurance, no consumer
+        exposure.
   sectors:
   - banking
   - trade_finance

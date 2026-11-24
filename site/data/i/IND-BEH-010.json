@@ -1,0 +1,1 @@
+{"id":"IND-BEH-010","n":"SIM swap or number port before transfers","ds":"Mobile number is ported or SIM replaced shortly before one-time-passcode-protected actions or outbound transfers.","s":"high","fp":"Customers legitimately replace lost or upgraded phones.","det":["transaction_monitoring","external_intel"],"cat":"behavioural"}

@@ -1,0 +1,1 @@
+{"id":"IND-CPT-009","n":"Counterparty is a non-compliant cross-chain service","ds":"Flows route through aggregators or bridges without KYC and with no governance accountability.","s":"medium","fp":"Many such services are used by mainstream traders.","det":["transaction_monitoring","external_intel"],"cat":"counterparty"}

@@ -1,0 +1,1 @@
+{"id":"IND-TYP-027","n":"Ghost employee or duplicate bank account on payroll","ds":"Payroll records show employees without HR evidence or shared bank details.","s":"high","fp":"Shared family accounts.","det":["transaction_monitoring"],"cat":"typology_specific"}

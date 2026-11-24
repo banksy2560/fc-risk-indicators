@@ -20,6 +20,13 @@ typology:
     basis: ai_inferred
     rationale: Opaque corporate/trust ownership, nominees and layered offshore entities, often set up
       via professionals.
+    consumer:
+      relevant: true
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Cross-cutting risk factor; applies across all consumer products and channels. Opaque
+        ownership and nominee arrangements.
   sectors:
   - banking
   - corporate_services

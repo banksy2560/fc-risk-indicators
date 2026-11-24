@@ -1,0 +1,1 @@
+{"id":"IND-CUS-036","n":"Frequent cash-in-transit use by a non-retail customer","ds":"Cash collected or delivered without commercial need.","s":"medium","fp":"Genuine retail.","det":["transaction_monitoring","kyc_review"],"cat":"customer"}

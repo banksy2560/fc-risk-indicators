@@ -1,0 +1,1 @@
+{"id":"IND-TXN-040","n":"Post-award payments from supplier to buyer-linked accounts","ds":"Winning supplier transfers funds to persons or companies connected to the procuring official shortly after payment.","s":"high","fp":"Supplier subcontracting may pay related parties innocently.","det":["transaction_monitoring","investigator_judgement"],"cat":"transaction"}

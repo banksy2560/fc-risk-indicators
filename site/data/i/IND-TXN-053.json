@@ -1,0 +1,1 @@
+{"id":"IND-TXN-053","n":"Newly minted NFT sold immediately for large sums to unrelated wallet","ds":"Creator mints and sells quickly to a single buyer funded by a cluster with no history.","s":"medium","fp":"Primary sales by established artists.","det":["transaction_monitoring"],"cat":"transaction"}

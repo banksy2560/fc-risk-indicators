@@ -1,0 +1,1 @@
+{"id":"IND-CUS-046","n":"Pharmacy, clinic or online pharmacy with abnormal opioid volumes","ds":"Dispensing, imports or payments exceeding peers for controlled substances.","s":"medium","fp":"Specialist clinics may have high volumes.","det":["kyc_review","investigator_judgement"],"cat":"customer"}

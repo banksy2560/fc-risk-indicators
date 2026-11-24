@@ -15,12 +15,21 @@ typology:
     customer_segments:
     - retail
     - new_to_bank
-    - fintech_psp
     products:
     - crypto_custody
     - transaction_account
     basis: ai_inferred
     rationale: Self-hosted wallets, mixers, P2P exchanges, fiat on and off-ramps.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      channels:
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Customers send small amounts from everyday accounts to exchanges and self-hosted wallets
+        via remote channels.
   sectors:
   - crypto
   - fintech

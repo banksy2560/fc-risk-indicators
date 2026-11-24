@@ -21,6 +21,13 @@ typology:
     basis: ai_inferred
     rationale: Timber exporters and traders; cash to informal suppliers, trade documents and payments
       to officials for permits.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Timber trade and concession flows run through corporate and trade-finance relationships,
+        not retail products.
   sectors:
   - banking
   - corporate_services

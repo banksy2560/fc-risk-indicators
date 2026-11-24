@@ -1,0 +1,1 @@
+{"id":"CTL-148","n":"Unhosted wallet ownership proof","ds":"Requires proof of control, such as a signed message or small test transfer, before large transfers to or from privately held wallets are accepted. It confirms the customer owns the wallet and prevents use of third-party or hostile-controlled addresses.","t":"preventive","im":"process","aka":[]}

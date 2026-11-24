@@ -1,0 +1,1 @@
+{"id":"IND-BEH-109","n":"Request to hold mail or avoid statements and reporting","ds":"Customer asks for hold-mail, numbered accounts or avoids providing tax identification numbers.","s":"medium","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["customer_behaviour","investigator_judgement"],"cat":"behavioural"}

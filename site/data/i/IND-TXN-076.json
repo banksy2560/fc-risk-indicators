@@ -1,0 +1,1 @@
+{"id":"IND-TXN-076","n":"Outflows paying earlier investors in matching round amounts","ds":"Operator-side: credits are followed by payments to prior investors in neat sums, plus cash-outs to insiders.","s":"high","fp":"Legitimate coupon or dividend payments.","det":["transaction_monitoring"],"cat":"transaction"}

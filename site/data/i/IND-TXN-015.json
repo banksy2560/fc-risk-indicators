@@ -1,0 +1,1 @@
+{"id":"IND-TXN-015","n":"Circular or round-trip flows among related parties","ds":"Funds or goods-linked payments loop back to the originator or between related counterparties, or are traded back and forth.","s":"high","fp":"Group treasury arrangements and legitimate back-to-back trading.","det":["transaction_monitoring","investigator_judgement"],"cat":"transaction"}

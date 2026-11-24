@@ -17,12 +17,22 @@ typology:
     customer_segments:
     - sme
     - corporate
+    - sole_trader
     products:
     - transaction_account
     - merchant_services
     - trade_finance
     basis: ai_inferred
     rationale: Cash-heavy retailers and wholesalers, cash deposits and supplier remittances.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      channels:
+      - branch
+      basis: ai_inferred
+      rationale: Retail cash proceeds of illicit tobacco deposited via everyday accounts at branch; trade
+        and merchant elements are out of consumer scope.
   sectors:
   - banking
   - payments

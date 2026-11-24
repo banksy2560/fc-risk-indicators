@@ -1,0 +1,1 @@
+{"id":"IND-BEH-022","n":"Overpayment by cheque or money order from an unknown party","ds":"A cheque or money order from an unknown party exceeds the amount due and a refund of the excess is requested before clearance.","s":"high","fp":"Genuine overpayments occur but rarely with refund pressure.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

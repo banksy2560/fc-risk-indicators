@@ -1,0 +1,1 @@
+{"id":"IND-TXN-127","n":"Payments that include references to designated or restricted entities","ds":"Payment messages show names, addresses or vessels linked to restricted lists.","s":"high","fp":"Partial name matches generate false hits.","det":["screening","transaction_monitoring"],"cat":"transaction"}

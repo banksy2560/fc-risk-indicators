@@ -1,0 +1,1 @@
+{"id":"IND-TXN-056","n":"Large transfers to or from unhosted wallets without ownership proof","ds":"High-value transfers involve self-hosted addresses where the customer has not demonstrated control.","s":"medium","fp":"Customers who self-custody for security.","det":["transaction_monitoring"],"cat":"transaction"}

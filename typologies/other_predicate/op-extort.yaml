@@ -12,14 +12,29 @@ typology:
     payment_rails:
     - cash
     - fast_payments
+    - loan_disbursement
     customer_segments:
     - sme
     - vulnerable_elderly
-    - retail
+    - sole_trader
     products:
     - transaction_account
     basis: ai_inferred
     rationale: Regular unexplained payments and cash withdrawals by small businesses/vulnerable victims.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      - personal_loan
+      channels:
+      - branch
+      - call_centre
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Victims pay protection or loan-shark money from personal accounts, with coerced cash
+        withdrawals, accompanied visits and collector accounts; personal loans taken to pay.
   sectors:
   - banking
   - payments

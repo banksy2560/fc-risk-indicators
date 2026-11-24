@@ -16,6 +16,7 @@ typology:
     - crypto_onramp_offramp
     - cash
     - stored_value_wallet
+    - bnpl_cash_like
     customer_segments:
     - retail
     - sme
@@ -28,6 +29,17 @@ typology:
     basis: ai_inferred
     rationale: Betting payments via card/bank to disguised merchants, nested processors, e-wallets and
       crypto.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - credit_card
+      channels:
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Customers fund offshore or unlicensed betting via card and bank payments, and use accounts
+        as pass-through wallets; mostly digital.
   sectors:
   - banking
   - payments

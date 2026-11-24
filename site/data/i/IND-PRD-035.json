@@ -1,0 +1,1 @@
+{"id":"IND-PRD-035","n":"Spike in digital wallet provisioning on one customer card","ds":"Attacker provisions the card to multiple wallets after obtaining one-time codes.","s":"medium","fp":"Multiple devices owned by customer.","det":["transaction_monitoring"],"cat":"product_channel"}

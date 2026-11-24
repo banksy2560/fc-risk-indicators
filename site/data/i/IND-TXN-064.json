@@ -1,0 +1,1 @@
+{"id":"IND-TXN-064","n":"New payee added and funds drained rapidly","ds":"Attacker adds beneficiaries and transfers most of the balance in one session.","s":"high","fp":"Genuine house or business payments.","det":["transaction_monitoring"],"cat":"transaction"}

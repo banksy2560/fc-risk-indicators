@@ -14,14 +14,24 @@ typology:
     - cross_border_remittance
     customer_segments:
     - non_resident
-    - fintech_psp
-    - sme
+    - new_to_bank
+    - sole_trader
     products:
     - crypto_custody
     - transaction_account
     basis: ai_inferred
     rationale: Cyber-theft proceeds via VASPs and OTC desks; IT-worker earnings routed to third-party
       accounts.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      channels:
+      - online_banking
+      - mobile_app
+      basis: ai_inferred
+      rationale: Mule-style everyday accounts receive remote IT-worker earnings or cyber-theft proceeds,
+        opened and operated digitally.
   sectors:
   - banking
   - crypto

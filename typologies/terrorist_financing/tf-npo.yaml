@@ -15,13 +15,28 @@ typology:
     - cash
     - cross_border_remittance
     - wire_swift
+    - fast_payments
     customer_segments:
     - nonprofit
+    - retail
     products:
     - transaction_account
-    - savings_deposit
+    - savings_account
+    - term_deposit
     basis: ai_inferred
     rationale: Charities collecting cash and sending funds to conflict areas.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      channels:
+      - branch
+      - online_banking
+      - mobile_app
+      basis: ai_inferred
+      rationale: Charity or community group accounts at a consumer bank receiving collections and forwarding
+        funds offshore; mostly retail-held accounts.
   sectors:
   - banking
   - mvts

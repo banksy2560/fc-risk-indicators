@@ -21,6 +21,16 @@ typology:
     - safe_deposit_custody
     basis: ai_inferred
     rationale: Physical cash placed via deposits and exchange houses; trade fronts.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      channels:
+      - branch
+      basis: ai_inferred
+      rationale: Smuggled or carried cash placed through over-the-counter deposits into personal accounts;
+        physical cash is a branch-only channel.
   stage:
   - placement
   - layering

@@ -15,12 +15,24 @@ typology:
     - card
     - cross_border_remittance
     customer_segments:
+    - sole_trader
     - sme
+    - cash_intensive_business
     products:
     - transaction_account
     - merchant_services
     basis: ai_inferred
     rationale: Cash-intensive business sales suppression, structured deposits.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      channels:
+      - branch
+      - online_banking
+      basis: ai_inferred
+      rationale: Small cash business owners structure skimmed takings into personal everyday accounts,
+        mainly via branch cash deposits.
   sectors:
   - banking
   - payments

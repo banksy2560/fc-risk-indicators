@@ -1,0 +1,1 @@
+{"id":"IND-PRD-033","n":"Spoofed phone number matching the bank's real number","ds":"Outbound spoofing makes calls appear genuine; call-detail records reveal the discrepancy.","s":"medium","fp":"Legitimate forwarding.","det":["external_intel"],"cat":"product_channel"}

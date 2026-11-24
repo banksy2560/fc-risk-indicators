@@ -1,0 +1,1 @@
+{"id":"IND-BEH-014","n":"Rapid resale or return of recently acquired asset","ds":"An asset is bought and quickly resold or returned for a refund in a different payment form, with no apparent reason or improvement.","s":"medium","fp":"Genuine market changes or buyer remorse can cause quick resale.","det":["transaction_monitoring","investigator_judgement"],"cat":"behavioural"}

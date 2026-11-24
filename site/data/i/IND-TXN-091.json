@@ -1,0 +1,1 @@
+{"id":"IND-TXN-091","n":"Repeated low-value payments to overseas recipients with live-stream links","ds":"Small recurring transfers to individuals in jurisdictions of known high-risk, with references to live shows or streaming.","s":"high","fp":"Remittances to family and creator payments are common.","det":["transaction_monitoring","investigator_judgement"],"cat":"transaction"}

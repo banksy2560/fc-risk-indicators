@@ -1,0 +1,1 @@
+{"id":"IND-TXN-024","n":"Payment directed to personal or third-party account","ds":"Payment is requested to, or credited to, a personal, third-party or differently named account rather than the contracted payee.","s":"high","fp":"Factoring, assignment, or legitimate account changes.","det":["transaction_monitoring","customer_behaviour"],"cat":"transaction"}

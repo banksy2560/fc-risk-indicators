@@ -1,0 +1,1 @@
+{"id":"IND-TXN-149","n":"Loans or credit taken with no repayment intent","ds":"Customer obtains borrowing and then leaves the jurisdiction, defaulting.","s":"medium","fp":"Job loss and financial trouble cause defaults.","det":["transaction_monitoring","investigator_judgement"],"cat":"transaction"}

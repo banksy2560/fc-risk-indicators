@@ -12,15 +12,27 @@ typology:
     payment_rails:
     - cash
     - cheque
+    - card
     customer_segments:
     - cash_intensive_business
     - sme
+    - sole_trader
     products:
     - transaction_account
     - merchant_services
     basis: ai_inferred
     rationale: Restaurants, car washes, laundromats and similar cash-heavy businesses deposit inflated
       takings at branches and ATMs; card acquiring also relevant.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      channels:
+      - branch
+      basis: ai_inferred
+      rationale: Sole traders banking inflated cash takings via personal Everyday or savings accounts,
+        mainly over the counter; merchant and business-only elements are out of scope.
   stage:
   - placement
   - layering

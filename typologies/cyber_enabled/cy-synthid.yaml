@@ -9,17 +9,37 @@ typology:
     channels:
     - online_banking
     - mobile_app
-    payment_rails: []
+    payment_rails:
+    - card
+    - loan_disbursement
     customer_segments:
     - new_to_bank
     - retail
     products:
     - transaction_account
     - credit_card
-    - loan_mortgage
+    - personal_loan
+    - home_loan_fixed
+    - home_loan_variable
     basis: ai_inferred
     rationale: Synthetic/deepfake identities in remote onboarding leading to credit bust-out and mule
       use.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      - credit_card
+      - personal_loan
+      - home_loan_fixed
+      - home_loan_variable
+      channels:
+      - mobile_app
+      - online_banking
+      - call_centre
+      basis: ai_inferred
+      rationale: Synthetic and deepfake identities in remote applications drive bust-out, loan fraud and
+        mule use; voice cloning hits phone banking.
   stage:
   - placement
   sectors:

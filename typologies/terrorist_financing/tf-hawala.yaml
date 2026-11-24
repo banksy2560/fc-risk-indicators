@@ -14,17 +14,28 @@ typology:
     - informal_value_transfer
     - cross_border_remittance
     - cash
-    - trade_instruments
+    - fast_payments
     customer_segments:
     - msb_remitter
-    - sme
+    - sole_trader
     - retail
-    - fintech_psp
+    - third_party_funder
     products:
     - transaction_account
     basis: ai_inferred
     rationale: Informal and poorly supervised MVTS operators with pooled accounts, structured cash and
       trade-based settlement to conflict areas.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      channels:
+      - branch
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Informal value transfer via cash deposits by many people and pooled receipts into everyday
+        accounts; branch cash and remote transfers.
   sectors:
   - mvts
   - banking

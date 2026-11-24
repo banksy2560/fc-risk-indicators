@@ -1,0 +1,1 @@
+{"id":"IND-TYP-047","n":"AIS gaps in sensitive areas","ds":"Vessel stops transmitting position data for extended periods near ports or transhipment areas of concern.","s":"high","fp":"Poor coverage and equipment faults cause gaps.","det":["external_intel","investigator_judgement"],"cat":"typology_specific"}

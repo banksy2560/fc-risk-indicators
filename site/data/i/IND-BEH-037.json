@@ -1,0 +1,1 @@
+{"id":"IND-BEH-037","n":"Slow or poor-quality suspicious activity reporting","ds":"Reports are filed late, are thin in content or the volume is out of line with peers.","s":"high","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["investigator_judgement"],"cat":"behavioural"}

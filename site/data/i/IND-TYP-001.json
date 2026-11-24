@@ -1,0 +1,1 @@
+{"id":"IND-TYP-001","n":"Same external wallet used by multiple unrelated customers","ds":"Many different customers send to or whitelist the same external address.","s":"high","fp":"Merchant or charity address.","det":["transaction_monitoring","external_intel"],"cat":"typology_specific"}

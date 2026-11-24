@@ -1,0 +1,1 @@
+{"id":"IND-PRD-005","n":"Spike in volume via a single channel, agent or source","ds":"Unusual surge in accounts or claims originating from one channel, introducer, agent, IP range or device.","s":"medium","fp":"Campaigns and partnerships cause legitimate spikes.","det":["transaction_monitoring","customer_behaviour"],"cat":"product_channel"}

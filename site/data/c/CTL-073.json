@@ -1,0 +1,1 @@
+{"id":"CTL-073","n":"Strong authentication and step-up","ds":"Requires phishing-resistant authentication and additional verification on risky sessions, credential or payee changes and large payments. It blocks unauthorised access and payments.","t":"preventive","im":"technology","aka":["Step-up authentication on risky events","Step-up authentication","Step-up verification"]}

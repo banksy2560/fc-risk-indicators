@@ -1,0 +1,1 @@
+{"id":"IND-BEH-016","n":"Frequent changes of customer or entity details","ds":"Customer or entity repeatedly changes name, address, contact details, directors, signatories or ownership.","s":"medium","fp":"Restructurings and growth-related changes are common for young businesses.","det":["kyc_review","customer_behaviour","investigator_judgement"],"cat":"behavioural"}

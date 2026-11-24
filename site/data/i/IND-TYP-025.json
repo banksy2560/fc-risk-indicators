@@ -1,0 +1,1 @@
+{"id":"IND-TYP-025","n":"Claim shortly after policy inception or increase in cover","ds":"Loss occurs soon after purchase or upgrade of cover.","s":"high","fp":"Genuine early loss.","det":["transaction_monitoring","investigator_judgement"],"cat":"typology_specific"}

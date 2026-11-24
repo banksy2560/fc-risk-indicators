@@ -1,0 +1,1 @@
+{"id":"IND-BEH-040","n":"Use of multiple kiosks across locations in one day","ds":"User travels between machines to avoid limits or detection.","s":"medium","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

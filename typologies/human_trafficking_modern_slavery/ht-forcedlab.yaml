@@ -26,6 +26,18 @@ typology:
     basis: ai_inferred
     rationale: Worker accounts controlled by employers, cash payroll, recruitment fees and remittance
       to a few beneficiaries; labour providers and high-risk suppliers.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - personal_loan
+      channels:
+      - branch
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Worker accounts and cards controlled by employers or recruiters, wage skimming, recruitment-fee
+        debt and coerced loans.
   sectors:
   - banking
   - payments

@@ -1,0 +1,1 @@
+{"id":"IND-BEH-070","n":"One-time passcode shared or requested during a call","ds":"authentication codes are read out or entered while the customer is on a live call.","s":"high","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

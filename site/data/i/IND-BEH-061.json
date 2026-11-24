@@ -1,0 +1,1 @@
+{"id":"IND-BEH-061","n":"Payment initiated outside normal approval chain","ds":"bypass of the usual purchase order or approval, or approver working remotely at odd hours.","s":"medium","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

@@ -18,14 +18,24 @@ typology:
     - stored_value_wallet
     customer_segments:
     - retail
-    - fintech_psp
     - nonprofit
+    - third_party_funder
     products:
     - transaction_account
     - prepaid_stored_value
     - crypto_custody
     basis: ai_inferred
     rationale: Online fundraising with many small donations via platforms and wallets.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      channels:
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Donations to crowdfunding or social media appeals paid and received by everyday accounts
+        via remote channels.
   sectors:
   - payments
   - fintech

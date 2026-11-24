@@ -1,0 +1,1 @@
+{"id":"IND-TXN-105","n":"Pooled flows with frequent round-sum payments","ds":"Large round-value payments or repeated amounts for multiple unrelated beneficiaries.","s":"medium","fp":"Settlement batches.","det":["transaction_monitoring"],"cat":"transaction"}

@@ -1,0 +1,1 @@
+{"id":"IND-BEH-028","n":"Occupation or business inconsistent with wealth","ds":"Declared occupation, age or business does not plausibly explain the scale of assets or funds.","s":"medium","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["customer_behaviour","investigator_judgement"],"cat":"behavioural"}

@@ -12,6 +12,13 @@ typology:
     products: []
     basis: ai_inferred
     rationale: Institution's own control environment; not an exposure of a channel, rail, segment or product.
+    consumer:
+      relevant: true
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Cross-cutting risk factor; applies across all consumer products and channels. Bank control-environment
+        weaknesses.
   sectors:
   - all
   sources:

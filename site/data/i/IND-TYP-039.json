@@ -1,0 +1,1 @@
+{"id":"IND-TYP-039","n":"Currency denomination or condition anomalies","ds":"Cash arrives in unusual bundles, rubber-banded small notes, or mixed denominations inconsistent with the stated source.","s":"low","fp":"Retail cash is often in small notes; condition varies by source.","det":["customer_behaviour","investigator_judgement"],"cat":"typology_specific"}

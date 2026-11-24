@@ -1,0 +1,1 @@
+{"id":"IND-TXN-081","n":"Multiple refunds into the same account","ds":"Unrelated refunds converge on one account or card.","s":"high","fp":"Tax preparers.","det":["transaction_monitoring"],"cat":"transaction"}

@@ -21,6 +21,13 @@ typology:
     basis: ai_inferred
     rationale: Law-firm client and escrow accounts and receiving banks handle settlement and award payouts
       between related parties; wire-based.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Sham litigation and settlements run through law firm client or escrow accounts, outside
+        consumer scope.
   stage:
   - layering
   - integration

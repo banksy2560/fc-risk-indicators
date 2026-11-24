@@ -1,0 +1,1 @@
+{"id":"IND-BEH-021","n":"Customer disputes legitimate transactions","ds":"Customer falsely claims non-receipt or unauthorised use for transactions they made, often from their own device.","s":"medium","fp":"Genuine fraud and merchant errors also produce disputes.","det":["transaction_monitoring","investigator_judgement"],"cat":"behavioural"}

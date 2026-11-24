@@ -1,0 +1,1 @@
+{"id":"IND-TYP-038","n":"Complex use of multiple services for single flow","ds":"One flow touches cash, remitters, trade invoices, crypto and corporate accounts in a short time.","s":"medium","fp":"Complex corporate treasury flows exist.","det":["investigator_judgement","transaction_monitoring"],"cat":"typology_specific"}

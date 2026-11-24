@@ -23,6 +23,17 @@ typology:
     - prepaid_stored_value
     basis: ai_inferred
     rationale: Small recurring payments to individuals or sites; wallets, crypto, remittance.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - credit_card
+      channels:
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Small recurring payments to individuals or sites by card or fast payment from personal
+        accounts.
   sectors:
   - banking
   - payments

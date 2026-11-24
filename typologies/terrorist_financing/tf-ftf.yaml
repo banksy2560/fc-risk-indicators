@@ -15,15 +15,33 @@ typology:
     - card
     - cash
     - cross_border_remittance
+    - loan_disbursement
     customer_segments:
     - retail
     - student_youth
+    - third_party_funder
     products:
     - transaction_account
     - credit_card
-    - loan_mortgage
+    - personal_loan
+    - home_loan_fixed
+    - home_loan_variable
     basis: ai_inferred
     rationale: Pre-travel account emptying, borrowing and ATM use abroad.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      - credit_card
+      - personal_loan
+      channels:
+      - mobile_app
+      - online_banking
+      - branch
+      basis: ai_inferred
+      rationale: Pre-travel account run-down, cash withdrawals, card use on transit routes and borrowing
+        before departure.
   sectors:
   - banking
   - payments

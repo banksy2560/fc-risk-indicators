@@ -1,0 +1,1 @@
+{"id":"IND-TXN-044","n":"Use of multiple accounts to move funds","ds":"Customer spreads activity across many accounts, products or institutions.","s":"medium","fp":"Customers separate budgets legitimately.","det":["transaction_monitoring"],"cat":"transaction"}

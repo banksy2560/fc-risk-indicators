@@ -11,6 +11,7 @@ typology:
     payment_rails:
     - cash
     - crypto_onramp_offramp
+    - bnpl_cash_like
     customer_segments:
     - vulnerable_elderly
     - retail
@@ -18,6 +19,19 @@ typology:
     - crypto_custody
     basis: ai_inferred
     rationale: Cash-to-crypto kiosks used by scam victims and for placement.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      - credit_card
+      channels:
+      - mobile_app
+      - call_centre
+      - branch
+      basis: ai_inferred
+      rationale: 'Hard call: kiosk is outside the bank, but scam victims coached by phone withdraw cash
+        or cash-advance to feed kiosks; visible as unusual cash withdrawals and transfers.'
   stage:
   - placement
   sectors:

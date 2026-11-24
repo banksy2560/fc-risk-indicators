@@ -13,16 +13,33 @@ typology:
     - call_centre
     payment_rails:
     - fast_payments
+    - bill_payment
+    - loan_disbursement
     customer_segments:
     - retail
     - vulnerable_elderly
+    - sole_trader
     - sme
     products:
     - transaction_account
-    - savings_deposit
+    - savings_account
+    - term_deposit
     basis: ai_inferred
     rationale: Customer-authorised push payments in digital channels with live-call and remote-access
       signals.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      channels:
+      - mobile_app
+      - online_banking
+      - call_centre
+      - branch
+      basis: ai_inferred
+      rationale: Customer-authorised payments from everyday/savings accounts, often under phone coaching;
+        branch tellers can intervene.
   sectors:
   - banking
   - payments

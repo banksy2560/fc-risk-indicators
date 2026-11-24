@@ -21,6 +21,13 @@ typology:
     basis: ai_inferred
     rationale: Mixers, privacy coins and chain-hopping seen at crypto platform deposits and withdrawals;
       often remote and anonymised access.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Mixer and chain-hopping activity occurs inside crypto platforms; no consumer bank product
+        exposure.
   stage:
   - layering
   sectors:

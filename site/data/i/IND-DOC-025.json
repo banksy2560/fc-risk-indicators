@@ -1,0 +1,1 @@
+{"id":"IND-DOC-025","n":"Lookalike or recently registered sender domain","ds":"Spoofed email domain or reply-to differs subtly from the genuine counterparty.","s":"high","fp":"Marketing or third-party senders.","det":["document_review","external_intel"],"cat":"document"}

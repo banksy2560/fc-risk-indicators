@@ -1,0 +1,1 @@
+{"id":"IND-TXN-129","n":"Large OTC or peer-to-peer purchases paid in cash or non-bank rails","ds":"Purchases with limited traceability to source of funds.","s":"medium","fp":"Cash purchase happens in some markets.","det":["transaction_monitoring","kyc_review"],"cat":"transaction"}

@@ -22,6 +22,13 @@ typology:
     basis: ai_inferred
     rationale: Carbon credits and allowances traded via brokers and registries, sold to corporates and
       retail; credits are an asset outside the bank.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Carbon credit fraud involves registries, brokers and corporate trading, not consumer
+        bank products.
   sectors:
   - banking
   - securities

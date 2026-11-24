@@ -1,0 +1,1 @@
+{"id":"IND-TXN-052","n":"Rapid sequential conversions across many asset types","ds":"Funds received are swapped through several tokens or stablecoins in quick succession with no apparent trading rationale before withdrawal.","s":"high","fp":"Active traders, arbitrageurs and market makers.","det":["transaction_monitoring"],"cat":"transaction"}

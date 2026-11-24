@@ -1,0 +1,1 @@
+{"id":"IND-TXN-123","n":"Regular fixed payments from a small business to an individual with no invoices","ds":"Payments at regular intervals to a person or company with no service provided.","s":"high","fp":"Rent and retainers also recur.","det":["transaction_monitoring","investigator_judgement"],"cat":"transaction"}

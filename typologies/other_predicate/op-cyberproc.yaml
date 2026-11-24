@@ -13,15 +13,30 @@ typology:
     - fast_payments
     - crypto_onramp_offramp
     - cross_border_remittance
+    - loan_disbursement
     customer_segments:
     - retail
     - vulnerable_elderly
-    - corporate
+    - new_to_bank
     products:
     - transaction_account
     - crypto_custody
     basis: ai_inferred
     rationale: Scam, BEC and ransomware proceeds via mules, instant payments and crypto.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      - credit_card
+      - personal_loan
+      channels:
+      - mobile_app
+      - online_banking
+      - call_centre
+      basis: ai_inferred
+      rationale: Cybercrime proceeds, ATO, scams and mule cash-out on retail accounts, card fraud and
+        loan fraud, via digital and phone social engineering.
   sectors:
   - banking
   - payments

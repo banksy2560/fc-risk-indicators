@@ -10,16 +10,33 @@ typology:
     - broker_intermediary
     - branch
     - digital_onboarding
-    payment_rails: []
+    payment_rails:
+    - loan_disbursement
+    - loan_early_payout
     customer_segments:
     - retail
-    - sme
+    - sole_trader
+    - third_party_funder
     - professional_intermediary
     products:
-    - loan_mortgage
+    - personal_loan
+    - home_loan_fixed
+    - home_loan_variable
     basis: ai_inferred
     rationale: Mortgage and loan applications via brokers, valuers and conveyancers, including remote
       applications; proceeds diversion is secondary so no single rail tagged.
+    consumer:
+      relevant: true
+      products:
+      - personal_loan
+      - home_loan_fixed
+      - home_loan_variable
+      channels:
+      - mobile_app
+      - online_banking
+      - branch
+      basis: ai_inferred
+      rationale: Misstated income, identity or valuation and straw buyers on personal and home loan applications.
   sectors:
   - banking
   - fintech

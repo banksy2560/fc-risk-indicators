@@ -23,6 +23,13 @@ typology:
     basis: ai_inferred
     rationale: Art and antiquities dealers, auction houses and agents settle by wire or cash; artworks
       are stored in free ports or custody and sometimes used as loan collateral.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Art and antiquities trafficking relies on dealers, free ports and custody, outside consumer
+        scope.
   sectors:
   - art_luxury
   - banking

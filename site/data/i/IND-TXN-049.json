@@ -1,0 +1,1 @@
+{"id":"IND-TXN-049","n":"Rapid cash-out after cross-chain arrival","ds":"Assets arriving via bridge are sold into fiat or stablecoin and withdrawn within a short window.","s":"medium","fp":"Normal arbitrage.","det":["transaction_monitoring"],"cat":"transaction"}

@@ -1,0 +1,1 @@
+{"id":"IND-BEH-009","n":"Multiple failed logins followed by success","ds":"Repeated failed authentication attempts, often across accounts from one source, followed by successful access.","s":"medium","fp":"Customers forgetting passwords produce similar patterns.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

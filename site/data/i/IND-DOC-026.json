@@ -1,0 +1,1 @@
+{"id":"IND-DOC-026","n":"Invoice amount or format differs from prior invoices","ds":"Victim-side: genuine-looking invoice has altered layout, round figures or inconsistent references.","s":"medium","fp":"Billing system changes.","det":["document_review"],"cat":"document"}

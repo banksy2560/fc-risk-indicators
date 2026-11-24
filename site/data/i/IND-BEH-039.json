@@ -1,0 +1,1 @@
+{"id":"IND-BEH-039","n":"Older customer on first use with large amounts","ds":"First-time, elderly user deposits large sums, often on a phone call, consistent with scam coercion.","s":"high","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

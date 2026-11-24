@@ -18,6 +18,13 @@ typology:
     - trade_finance
     basis: ai_inferred
     rationale: Supplier payments and post-award flows to connected parties in procurement.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Procurement kickbacks and bid rigging are corporate and trade finance flows with no retail
+        product expression.
   sectors:
   - banking
   - corporate_services

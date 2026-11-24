@@ -24,6 +24,13 @@ typology:
     basis: ai_inferred
     rationale: Gold and gem dealers, refiners and scrap buyers pay cash to informal miners, then deposit
       and export; metals are real assets.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Gold, refiner and mining-dealer flows are business and trade activity outside consumer
+        products.
   sectors:
   - banking
   - dnfbp

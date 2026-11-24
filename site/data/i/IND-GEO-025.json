@@ -1,0 +1,1 @@
+{"id":"IND-GEO-025","n":"Port calls at locations of concern followed by false next port","ds":"Vessel declares destinations inconsistent with subsequent movements.","s":"medium","fp":"Cargo routing changes frequently.","det":["external_intel","document_review"],"cat":"geographic"}

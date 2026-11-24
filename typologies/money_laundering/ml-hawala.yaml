@@ -18,11 +18,24 @@ typology:
     - retail
     - sme
     - non_resident
+    - sole_trader
     products:
     - transaction_account
     basis: ai_inferred
     rationale: Informal operators settling by netting, trade or cash, using pooled bank accounts as collection
       points.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      channels:
+      - branch
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Personal accounts used as collection points for informal remittance, with cash in at
+        branch and onward digital payments to many parties.
   stage:
   - layering
   sectors:

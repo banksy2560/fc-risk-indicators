@@ -1,0 +1,1 @@
+{"id":"CTL-111","n":"Cover payment transparency checks","ds":"Compares the serial payment message with the accompanying cover message so that originator, beneficiary and intermediary details can be checked for consistency. It stops parties being hidden by splitting a payment chain across messages.","t":"preventive","im":"process","aka":[]}

@@ -1,0 +1,1 @@
+{"id":"IND-BEH-041","n":"Customer recruited online for fake job offering payment handling","ds":"Customer describes job ads asking to receive and forward funds.","s":"medium","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

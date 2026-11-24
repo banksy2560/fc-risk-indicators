@@ -1,0 +1,1 @@
+{"id":"IND-DOC-008","n":"Shared identifiers across unrelated customers","ds":"Same phone, email, address, device or ID number appears across multiple unrelated customers or users.","s":"high","fp":"Families and shared households legitimately share details.","det":["kyc_review","transaction_monitoring"],"cat":"document"}

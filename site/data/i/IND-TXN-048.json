@@ -1,0 +1,1 @@
+{"id":"IND-TXN-048","n":"Use of freshly created wallets funded from a single source","ds":"Chain of new wallets each funded by the previous one before depositing to a regulated service.","s":"medium","fp":"Wallet hygiene and per-protocol wallets.","det":["transaction_monitoring"],"cat":"transaction"}

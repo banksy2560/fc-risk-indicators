@@ -1,0 +1,1 @@
+{"id":"IND-PRD-038","n":"Loan, credit card or remortgage taken to fund transfers","ds":"Victim-side: the customer draws credit or equity shortly before sending money away, often citing a vague purpose.","s":"medium","fp":"Legitimate refinancing for investment.","det":["transaction_monitoring","kyc_review"],"cat":"product_channel"}

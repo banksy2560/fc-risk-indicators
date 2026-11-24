@@ -1,0 +1,1 @@
+{"id":"IND-TXN-111","n":"Securities deposited then transferred out without trading","ds":"Shares deposited and moved with no market activity.","s":"medium","fp":"Custody moves.","det":["transaction_monitoring"],"cat":"transaction"}

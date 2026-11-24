@@ -1,0 +1,1 @@
+{"id":"IND-BEH-035","n":"Inadequate or outdated enterprise risk assessment","ds":"Risk assessment is stale, unscoped, or not used to drive controls.","s":"high","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["investigator_judgement"],"cat":"behavioural"}

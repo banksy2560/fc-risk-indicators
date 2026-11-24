@@ -1,0 +1,1 @@
+{"id":"IND-CUS-053","n":"Operator account with transactions inconsistent with a retail remittance profile","ds":"Business accounts of an MVTS or agent receive large pooled deposits and send bulk payments to a small set of foreign counterparties.","s":"high","fp":"Genuine MVTS legitimately pool funds.","det":["transaction_monitoring","kyc_review"],"cat":"customer"}

@@ -12,17 +12,36 @@ typology:
     payment_rails:
     - wire_swift
     - cash
+    - loan_disbursement
+    - loan_early_payout
     customer_segments:
     - private_wealth
     - non_resident
-    - corporate
     - regulated_nonbank_dnfbp
+    - third_party_funder
     products:
-    - loan_mortgage
+    - personal_loan
+    - home_loan_fixed
+    - home_loan_variable
     - real_assets
     basis: ai_inferred
     rationale: Property purchases through agents, conveyancers and offshore vehicles, with mortgage financing
       and early repayment.
+    consumer:
+      relevant: true
+      products:
+      - home_loan_fixed
+      - home_loan_variable
+      - transaction_account
+      - savings_account
+      - term_deposit
+      channels:
+      - branch
+      - online_banking
+      - call_centre
+      basis: ai_inferred
+      rationale: Property purchase and mortgage fraud, source of deposit, valuation manipulation and early
+        or third-party payout; funds staged through deposit accounts.
   stage:
   - layering
   - integration

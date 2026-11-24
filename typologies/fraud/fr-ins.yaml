@@ -19,6 +19,13 @@ typology:
     basis: ai_inferred
     rationale: Claims and policy fraud through brokers (ghost broking), repairers and medical providers;
       claimants often contact insurers remotely.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Insurance claims, ghost broking and policy fraud sit with insurers, not consumer bank
+        products.
   sectors:
   - insurance
   - banking

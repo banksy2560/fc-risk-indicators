@@ -20,6 +20,13 @@ typology:
     basis: ai_inferred
     rationale: Ghost employees, expense and vendor fraud within payroll and procurement flows, committed
       by staff; also bank staff abusing privileged access.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Payroll, ghost employee and procurement insider fraud is employer-side and corporate
+        in nature.
   sectors:
   - all
   sources:

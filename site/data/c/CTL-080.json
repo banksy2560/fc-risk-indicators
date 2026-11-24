@@ -1,0 +1,1 @@
+{"id":"CTL-080","n":"Cardholder authentication and tokenisation","ds":"Authenticates the cardholder at online checkout through an additional challenge and replaces stored card numbers with tokens. It blocks use of stolen card details and shifts liability for unauthorised transactions.","t":"preventive","im":"technology","aka":["3-D Secure and tokenisation"]}

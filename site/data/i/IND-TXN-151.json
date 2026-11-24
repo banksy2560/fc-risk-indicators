@@ -1,0 +1,1 @@
+{"id":"IND-TXN-151","n":"Settlement via trade, with mismatched invoices","ds":"Offsetting flows are arranged through trade payments unrelated to the underlying goods.","s":"medium","fp":"Genuine trade can be netted among related firms.","det":["document_review","transaction_monitoring"],"cat":"transaction"}

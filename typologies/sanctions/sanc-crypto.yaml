@@ -17,11 +17,22 @@ typology:
     - retail
     - fintech_psp
     - non_resident
+    - designated_person
     products:
     - crypto_custody
     - transaction_account
     basis: ai_inferred
     rationale: Exchanges, unhosted wallets, mixers and stablecoins; VASP exposure.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      channels:
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Customers send or receive funds to crypto exchanges and wallets from everyday accounts;
+        custody itself out of scope.
   sectors:
   - crypto
   - fintech

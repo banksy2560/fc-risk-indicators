@@ -1,0 +1,1 @@
+{"id":"IND-BEH-050","n":"Mismatch between claimed identity and device, IP or voice","ds":"Geolocation, language or voice biometrics inconsistent with the stated identity.","s":"medium","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

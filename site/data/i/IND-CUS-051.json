@@ -1,0 +1,1 @@
+{"id":"IND-CUS-051","n":"Inconsistent tax residency declarations","ds":"Customer self-certifies residence in one jurisdiction while mailing address, phone, spending or travel point to another.","s":"high","fp":"Expatriates and frequent travellers may have complex but genuine residency.","det":["kyc_review","investigator_judgement"],"cat":"customer"}

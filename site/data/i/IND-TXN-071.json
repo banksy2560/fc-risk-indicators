@@ -1,0 +1,1 @@
+{"id":"IND-TXN-071","n":"Customer instructed to move money to a 'safe' account","ds":"Victim-side: pretext of protection leads to transfers to unfamiliar accounts.","s":"high","fp":"Genuine account moves.","det":["transaction_monitoring","customer_behaviour"],"cat":"transaction"}

@@ -1,0 +1,1 @@
+{"id":"IND-TXN-058","n":"Same credits sold multiple times or retired and resold","ds":"Serial numbers appear in more than one transaction or after retirement.","s":"high","fp":"Registry timing issues can show duplicate records.","det":["document_review","investigator_judgement"],"cat":"transaction"}

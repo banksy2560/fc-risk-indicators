@@ -1,0 +1,1 @@
+{"id":"IND-CUS-023","n":"Third-party payer funds purchase on behalf of a victim","ds":"Incident response firm, broker or insurer funds crypto on behalf of a client, with unclear client identity or authorisation.","s":"medium","fp":"Legitimate professional ransom-negotiation services, subject to sanctions checks.","det":["kyc_review"],"cat":"customer"}

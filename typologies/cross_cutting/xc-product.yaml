@@ -23,6 +23,13 @@ typology:
     basis: ai_inferred
     rationale: 'Generic product-risk list: private banking, correspondent, trade, prepaid, virtual assets,
       safe deposit.'
+    consumer:
+      relevant: true
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Cross-cutting risk factor; applies across all consumer products and channels. Generic
+        product risk factors.
   sectors:
   - all
   sources:

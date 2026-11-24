@@ -22,6 +22,12 @@ typology:
     - prepaid_stored_value
     basis: ai_inferred
     rationale: Bulk loads and cash-out of prepaid cards by many holders or mules.
+    consumer:
+      relevant: false
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Prepaid and stored-value card abuse; the consumer product set has no prepaid product.
   stage:
   - placement
   - layering

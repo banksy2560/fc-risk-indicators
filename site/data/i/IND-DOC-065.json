@@ -1,0 +1,1 @@
+{"id":"IND-DOC-065","n":"Different party name between message and underlying invoice","ds":"Payment shows one remitter while documents show another.","s":"medium","fp":"Third-party payers exist.","det":["document_review","transaction_monitoring"],"cat":"document"}

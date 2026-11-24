@@ -18,6 +18,13 @@ typology:
     - transaction_account
     basis: ai_inferred
     rationale: Identity document fraud seen at onboarding, remote and in-person.
+    consumer:
+      relevant: true
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Cross-cutting risk factor; applies across all consumer products and channels. Identity
+        document integrity at onboarding.
   sectors:
   - all
   sources:

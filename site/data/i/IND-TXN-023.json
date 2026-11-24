@@ -1,0 +1,1 @@
+{"id":"IND-TXN-023","n":"Payments from or for third parties unrelated to the underlying trade","ds":"Payments are made by parties with no apparent link to the underlying transaction, goods or services.","s":"medium","fp":"Group companies, agents or financiers may pay on behalf of the principal.","det":["transaction_monitoring","document_review"],"cat":"transaction"}

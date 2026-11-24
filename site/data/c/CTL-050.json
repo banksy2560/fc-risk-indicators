@@ -1,0 +1,1 @@
+{"id":"CTL-050","n":"Successor and phoenix entity detection","ds":"Links newly formed companies to failed or abandoned predecessors through shared officers, addresses, customers and bank details. It detects serial use of disposable entities to shed liabilities and move value.","t":"detective","im":"model","aka":["Phoenix company analytics","Phoenix company detection"]}

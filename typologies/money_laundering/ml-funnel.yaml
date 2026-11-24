@@ -12,14 +12,27 @@ typology:
     payment_rails:
     - cash
     - cross_border_remittance
+    - fast_payments
     customer_segments:
-    - retail
     - student_youth
     - new_to_bank
+    - third_party_funder
     products:
     - transaction_account
     basis: ai_inferred
     rationale: Multi-location cash deposits and rapid ATM withdrawals elsewhere on retail accounts.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      channels:
+      - branch
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Funnel accounts take geographically dispersed cash deposits and move funds on fast; retail
+        accounts with branch deposits and digital onward transfer.
   stage:
   - placement
   - layering

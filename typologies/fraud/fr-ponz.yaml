@@ -21,6 +21,19 @@ typology:
     - investment_securities
     basis: ai_inferred
     rationale: Investor deposits to operators; crypto and securities variants.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      - term_deposit
+      channels:
+      - mobile_app
+      - online_banking
+      - branch
+      basis: ai_inferred
+      rationale: Victims send savings, including broken term deposits, to scheme operators; operators
+        and mules receive in everyday accounts.
   sectors:
   - banking
   - securities

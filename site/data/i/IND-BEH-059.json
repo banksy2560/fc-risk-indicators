@@ -1,0 +1,1 @@
+{"id":"IND-BEH-059","n":"Password reset or credential change from unrecognised channel","ds":"Self-service reset triggered from an unfamiliar environment.","s":"medium","fp":"May have innocent explanations; assess in context of customer profile and other indicators.","det":["transaction_monitoring","customer_behaviour"],"cat":"behavioural"}

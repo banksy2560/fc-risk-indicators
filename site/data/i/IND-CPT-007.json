@@ -1,0 +1,1 @@
+{"id":"IND-CPT-007","n":"Same beneficiary reached by many mule accounts","ds":"Graph shows many accounts paying the same ultimate beneficiary.","s":"high","fp":"Landlord or merchant.","det":["transaction_monitoring"],"cat":"counterparty"}

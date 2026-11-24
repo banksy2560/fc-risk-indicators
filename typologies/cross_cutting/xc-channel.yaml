@@ -17,6 +17,13 @@ typology:
     - transaction_account
     basis: ai_inferred
     rationale: 'Generic channel risk: non-face-to-face onboarding, introducers and third-party reliance.'
+    consumer:
+      relevant: true
+      products: []
+      channels: []
+      basis: ai_inferred
+      rationale: Cross-cutting risk factor; applies across all consumer products and channels. Covers
+        remote onboarding and introducers.
   sectors:
   - all
   sources:

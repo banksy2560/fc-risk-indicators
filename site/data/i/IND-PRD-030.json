@@ -1,0 +1,1 @@
+{"id":"IND-PRD-030","n":"3-D Secure bypass or failed authentication retried","ds":"Attempts changed to non-authenticated channels.","s":"medium","fp":"Technical failure.","det":["transaction_monitoring"],"cat":"product_channel"}

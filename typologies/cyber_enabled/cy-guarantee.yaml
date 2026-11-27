@@ -1,0 +1,93 @@
+typology:
+  id: CY-GUARANTEE
+  name: Guarantee marketplaces and no-KYC laundering infrastructure for scam proceeds
+  domain: cyber_enabled
+  description: Messaging-platform 'guarantee' (escrow) marketplaces, associated tokens and payment providers,
+    no-KYC exchanges and informal OTC desks provide money-laundering-as-a-service to scam centres and
+    other criminals. Providers rebrand after enforcement, hide their location, and favour stablecoins
+    marketed as unfreezable.
+  exposure:
+    channels:
+    - online_platform
+    payment_rails:
+    - crypto_onramp_offramp
+    - stored_value_wallet
+    customer_segments:
+    - fintech_psp
+    - retail
+    products:
+    - crypto_custody
+    - onchain_defi
+    basis: ai_inferred
+    rationale: Exchange and wallet flows, OTC desks and stablecoin rails.
+  stage:
+  - layering
+  - integration
+  sectors:
+  - crypto
+  - payments
+  - fintech
+  sources:
+  - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+    Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+    [agent-retrieved 2026-11-27]
+  indicators:
+  - ref: IND-TYP-069
+    context: Direct or indirect exposure to guarantee-marketplace addresses, tokens or clusters sharing
+      their infrastructure.
+    controls:
+    - CTL-145
+    - CTL-147
+    - CTL-149
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+      Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-CPT-065
+    context: A counterparty payment provider rebrands to hide its link to a marketplace subject to takedowns
+      or enforcement.
+    controls:
+    - CTL-149
+    - CTL-032
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+      Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-GEO-045
+    context: An exchange provider appears to operate from a scam-centre region and hides its location
+      or structure.
+    controls:
+    - CTL-149
+    - CTL-027
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+      Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-TXN-162
+    context: Large flows in a stablecoin advertised as unfreezable or non-cooperative with authorities.
+    controls:
+    - CTL-145
+    - CTL-147
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+      Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-TXN-163
+    context: An exchange customer uses platform liquidity to run offsetting trades as an unregistered
+      OTC or P2P desk.
+    controls:
+    - CTL-061
+    - CTL-145
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+      Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-CPT-064
+    context: Funds go to an exchange or remitter advertising 'no KYC' or a false regulator approval.
+    controls:
+    - CTL-116
+    - CTL-149
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+      Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+      [agent-retrieved 2026-11-27]

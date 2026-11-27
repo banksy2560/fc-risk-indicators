@@ -1124,3 +1124,47 @@ indicators:
   provenance: ai_drafted
   evidence_basis: ai_draft_unreviewed
   confidence: unassessed
+- id: IND-TYP-069
+  name: Exposure to guarantee-marketplace wallets, tokens or shared infrastructure
+  description: Direct or indirect transactions with addresses, tokens or address clusters attributed to,
+    or sharing on-chain infrastructure with, a messaging-platform 'guarantee' (escrow) marketplace, with
+    no apparent lawful purpose.
+  category: typology_specific
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - blockchain_analytics
+  - wallet_addresses
+  false_positive_notes: Attribution lag or shared custodial infrastructure used by many unrelated services.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - cyber_enabled/CY-GUARANTEE
+  - fraud/FR-SCOMP
+  evidence:
+  - source_id: SRC-FINCEN
+    authority: FinCEN (US Treasury)
+    source_type: fiu
+    publication: FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment Scam
+      Centers (FIN-2026-Alert005)
+    url: https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf
+    published: '2026-09-03'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: f4f28995f714476a454bc8e1235cc304b462ab830cc730aeff7dc75590e89e92
+      of: pdf_bytes
+    excerpt: Blockchain analysis indicates that a customer has transacted directly or indirectly with
+      a digital asset address attributed to a guarantee marketplace and the transactions have no apparent
+      economic, business, or lawful purpose.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan

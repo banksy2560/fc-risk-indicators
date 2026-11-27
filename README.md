@@ -3,19 +3,23 @@
 An open-source catalogue of financial crime **risk indicators (red flags)** organised by **typology**, each paired with **candidate controls** that can mitigate it. Covers money laundering, terrorist and proliferation financing, sanctions evasion, fraud, bribery and corruption, tax evasion, human trafficking, environmental crime, cyber-enabled crime and cross-cutting risk factors.
 
 > **Status: v0.1 draft. Not reviewed.**
-> Content was drafted with AI assistance and has **not** been validated by subject-matter experts. Source citations were written from model knowledge and **have not been verified**: check any citation before relying on it. Indicators are red flags, not proof of crime. Nothing here is legal or compliance advice, and no institution should treat it as a complete or approved risk assessment.
+> Content was drafted with AI assistance and has **not** been validated by subject-matter experts. Most source citations were written from model knowledge and **have not been verified**: check any citation before relying on it. Entries added by the weekly scan (from 2026-11-27) cite documents the agent actually retrieved, with excerpts and snapshot hashes, but are still AI-drafted and unreviewed. Indicators are red flags, not proof of crime. Nothing here is legal or compliance advice, and no institution should treat it as a complete or approved risk assessment.
 
 ## What this is (and isn't)
 - A reusable **input** to an institution's own ML/TF/fraud risk assessment, control design and monitoring scenarios.
 - **Typology is the unit of analysis.** Products, channels, payment rails and customer segments are exposure dimensions, not separate registers.
 - **Not** a risk register, RCSA, scoring model or alternative methodology. It prescribes no residual-risk calculation and no worst-of aggregation. `severity` means indicative signal strength only.
-- See [DESIGN.md](DESIGN.md) for design principles and [SCHEMA.md](SCHEMA.md) for the format.
+- See [DESIGN.md](DESIGN.md) for design principles, [SCHEMA.md](SCHEMA.md) for the format and [docs/architecture.md](docs/architecture.md) for the research-agent design.
+- **Public sources only.** Nothing internal to any employer or institution is used or accepted.
 
 ## Layout
 ```
-controls/<family>.yaml        # 177 canonical controls, each defined once
-indicators/<category>.yaml    # 676 canonical indicators, each defined once
-typologies/<domain>/*.yaml    # 115 typologies linking to indicators + controls
+controls/<family>.yaml        # 178 canonical controls, each defined once
+indicators/<category>.yaml    # 709 canonical indicators, each defined once
+typologies/<domain>/*.yaml    # 121 typologies linking to indicators + controls
+sources/registry.yaml         # public authoritative sources and publications scanned
+docs/architecture.md          # target design of the research agent that feeds this repo
+CHANGELOG.md                  # one entry per scan / release
 build/                        # generated reverse views (control -> typologies etc.)
 tools/validate.py             # integrity + duplicate checks (needs pyyaml)
 tools/build_index.py          # regenerates build/
@@ -31,6 +35,7 @@ python3 tools/build_index.py .   # regenerate build/
 
 ## Citation status tags
 Each typology `sources` entry carries a tag. **No citation has been confirmed by a human.**
+- `[agent-retrieved YYYY-MM-DD]` an AI agent fetched and read the document on that date; the indicator stores a short verbatim excerpt and a snapshot hash. Not human-verified.
 - `[agent-reviewed]` an AI agent searched for it and found a matching real document (a listed URL may not have been fetched). Still verify before relying on it.
 - `[corrected, agent-reviewed]` the original title/year/publisher was wrong and was corrected by the same process.
 - `[unverified]`, `[corrected, unverified]`: not confirmed by search; from model knowledge.

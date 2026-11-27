@@ -1,0 +1,120 @@
+typology:
+  id: ML-CUCKOO
+  name: Cuckoo smurfing (third-party cash deposits offsetting international transfers)
+  domain: money_laundering
+  description: A professional money-laundering network accepts an overseas client's request to send money
+    to someone in another country, then, instead of moving the funds, has local 'smurfs' pay criminal
+    cash into the expecting recipient's account in structured amounts. The recipient is usually unaware.
+    Cross-border value moves by offsetting, without a matching international transfer.
+  exposure:
+    channels:
+    - branch
+    - atm
+    payment_rails:
+    - cash
+    - cross_border_remittance
+    - informal_value_transfer
+    customer_segments:
+    - retail
+    - non_resident
+    - student_youth
+    - msb_remitter
+    products:
+    - transaction_account
+    - savings_account
+    basis: ai_inferred
+    rationale: Cash deposited at branches and deposit machines into personal accounts of people expecting
+      overseas funds.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      channels:
+      - branch
+      basis: ai_inferred
+      rationale: Everyday and savings accounts of customers expecting family remittances or property funds
+        from abroad.
+  stage:
+  - placement
+  - layering
+  sectors:
+  - banking
+  - mvts
+  - payments
+  sources:
+  - 'AUSTRAC (Fintel Alliance), Financial crime guide: Detect and report cuckoo smurfing (2021-06) <https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/detect-and-report-cuckoo-smurfing>
+    [agent-retrieved 2026-11-27]'
+  indicators:
+  - ref: IND-TXN-168
+    context: 'The ''cuckoo''s nest'': the account holder expects an international transfer, but receives
+      cash from strangers instead, sometimes totalling the expected amount.'
+    controls:
+    - CTL-046
+    - CTL-064
+    - CTL-022
+    references:
+    - 'AUSTRAC (Fintel Alliance), Financial crime guide: Detect and report cuckoo smurfing (2021-06) <https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/detect-and-report-cuckoo-smurfing>
+      [agent-retrieved 2026-11-27]'
+  - ref: IND-TXN-169
+    context: A smurf uses one card or mobile number to deposit cash into several unrelated customers'
+      accounts, often favouring one machine.
+    controls:
+    - CTL-046
+    - CTL-049
+    - CTL-048
+    references:
+    - 'AUSTRAC (Fintel Alliance), Financial crime guide: Detect and report cuckoo smurfing (2021-06) <https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/detect-and-report-cuckoo-smurfing>
+      [agent-retrieved 2026-11-27]'
+  - ref: IND-TXN-007
+    context: Same-day cash deposits across multiple branches and deposit machines into the receiving account.
+    controls:
+    - CTL-038
+    - CTL-064
+    references:
+    - 'AUSTRAC (Fintel Alliance), Financial crime guide: Detect and report cuckoo smurfing (2021-06) <https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/detect-and-report-cuckoo-smurfing>
+      [agent-retrieved 2026-11-27]'
+  - ref: IND-TXN-006
+    context: Deposits predominantly under the A$10,000 cash reporting threshold.
+    controls:
+    - CTL-038
+    - CTL-044
+    references:
+    - 'AUSTRAC (Fintel Alliance), Financial crime guide: Detect and report cuckoo smurfing (2021-06) <https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/detect-and-report-cuckoo-smurfing>
+      [agent-retrieved 2026-11-27]'
+  - ref: IND-CPT-035
+    context: The same account receives cash from several different third-party depositors with no apparent
+      relationship to the holder.
+    controls:
+    - CTL-046
+    - CTL-041
+    references:
+    - 'AUSTRAC (Fintel Alliance), Financial crime guide: Detect and report cuckoo smurfing (2021-06) <https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/detect-and-report-cuckoo-smurfing>
+      [agent-retrieved 2026-11-27]'
+  - ref: IND-GEO-046
+    context: Deposits made in a different state or suburb from the account holder, at locations with low
+      surveillance.
+    controls:
+    - CTL-064
+    - CTL-045
+    references:
+    - 'AUSTRAC (Fintel Alliance), Financial crime guide: Detect and report cuckoo smurfing (2021-06) <https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/detect-and-report-cuckoo-smurfing>
+      [agent-retrieved 2026-11-27]'
+  - ref: IND-CPT-066
+    context: Recorded depositor names, initials or phone numbers look invented or recur across deposits
+      by different people.
+    controls:
+    - CTL-046
+    - CTL-049
+    references:
+    - 'AUSTRAC (Fintel Alliance), Financial crime guide: Detect and report cuckoo smurfing (2021-06) <https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/detect-and-report-cuckoo-smurfing>
+      [agent-retrieved 2026-11-27]'
+  - ref: IND-TXN-016
+    context: Value is settled by offsetting between jurisdictions, so no matching incoming international
+      transfer is seen.
+    controls:
+    - CTL-061
+    - CTL-045
+    references:
+    - 'AUSTRAC (Fintel Alliance), Financial crime guide: Detect and report cuckoo smurfing (2021-06) <https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/detect-and-report-cuckoo-smurfing>
+      [agent-retrieved 2026-11-27]'

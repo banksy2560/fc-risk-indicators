@@ -1,0 +1,1 @@
+{"id":"IND-BEH-126","n":"Gambler conceals identity or location with repeated VPN use, many devices or mismatched residence","ds":"A player repeatedly uses VPNs or multiple devices, or their detected location conflicts with their declared residence.","s":"medium","fp":"Privacy-conscious users, travellers or corporate VPNs.","det":["customer_behaviour"],"cat":"behavioural"}

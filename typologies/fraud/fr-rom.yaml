@@ -47,6 +47,9 @@ typology:
     [corrected, agent-reviewed]
   - UK Finance, Annual Fraud Report (specify year, e.g. 2025) <https://www.ukfinance.org.uk/> [corrected,
     agent-reviewed]
+  - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+    Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+    [agent-retrieved 2026-11-27]
   indicators:
   - ref: IND-TXN-078
     legacy_id: FR-ROM-001

@@ -50,6 +50,9 @@ typology:
     agent-reviewed]
   - FCA, Guidance for firms on the fair treatment of vulnerable customers (FG21/1, 2021) <https://www.fca.org.uk/publications/finalised-guidance/guidance-firms-fair-treatment-vulnerable-customers>
     [corrected, agent-reviewed]
+  - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+    Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+    [agent-retrieved 2026-11-27]
   indicators:
   - ref: IND-TXN-013
     legacy_id: FR-VULN-001
@@ -145,3 +148,12 @@ typology:
     - CTL-075
     references:
     - FinCEN, Advisory on Elder Financial Exploitation (2022)
+  - ref: IND-BEH-122
+    context: Older customers cash in retirement savings to buy bullion collected by couriers.
+    controls:
+    - CTL-075
+    - CTL-170
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+      Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+      [agent-retrieved 2026-11-27]

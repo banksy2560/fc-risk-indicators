@@ -1,0 +1,108 @@
+typology:
+  id: SANC-SETTLE
+  name: Sanctions-evasion settlement networks and sanctions-linked stablecoins
+  domain: sanctions
+  description: Wholesale cross-border settlement networks serving sanctioned states and their proxies
+    use sub-agent shell companies across third countries, mis-invoiced trade, dedicated VPN and email
+    infrastructure, and sanctions-linked stablecoins to move payments for trade, including dual-use and
+    petroleum goods, outside the reach of sanctions.
+  exposure:
+    channels:
+    - online_banking
+    - api_open_banking
+    payment_rails:
+    - wire_swift
+    - trade_instruments
+    - crypto_onramp_offramp
+    customer_segments:
+    - corporate
+    - sme
+    - fintech_psp
+    - designated_person
+    products:
+    - trade_finance
+    - correspondent_account
+    - crypto_custody
+    basis: ai_inferred
+    rationale: Corporate trade payments, correspondent flows and stablecoin settlement.
+  sectors:
+  - banking
+  - trade_finance
+  - crypto
+  - corporate_services
+  sources:
+  - FinCEN (US Treasury), FinCEN Alert on the A7 Network (FIN-2026-Alert007) (2026-10-01) <https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf>
+    [agent-retrieved 2026-11-27]
+  indicators:
+  - ref: IND-TXN-165
+    context: Direct or indirect exposure to a sanctions-linked settlement stablecoin, including wrapped
+      versions.
+    controls:
+    - CTL-145
+    - CTL-029
+    - CTL-036
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on the A7 Network (FIN-2026-Alert007) (2026-10-01) <https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-TXN-166
+    context: Importers or shippers pay for petroleum, dual-use or military-relevant goods in stablecoins.
+    controls:
+    - CTL-130
+    - CTL-145
+    - CTL-133
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on the A7 Network (FIN-2026-Alert007) (2026-10-01) <https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-TXN-167
+    context: Payments hop through shell companies in several third countries before reaching the end beneficiary.
+    controls:
+    - CTL-048
+    - CTL-034
+    - CTL-005
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on the A7 Network (FIN-2026-Alert007) (2026-10-01) <https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-OWN-007
+    context: A recently formed company suddenly runs high volumes of large one-off transactions without
+      recurring counterparties.
+    controls:
+    - CTL-054
+    - CTL-010
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on the A7 Network (FIN-2026-Alert007) (2026-10-01) <https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-DOC-070
+    context: Invoices show AI-generation or tampering artefacts, out-of-place Cyrillic characters, or
+      analog stamps on digital documents.
+    controls:
+    - CTL-123
+    - CTL-002
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on the A7 Network (FIN-2026-Alert007) (2026-10-01) <https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-DOC-026
+    context: Shipping invoices use templates that differ from those previously seen from the same counterparty.
+    controls:
+    - CTL-123
+    - CTL-132
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on the A7 Network (FIN-2026-Alert007) (2026-10-01) <https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-BEH-123
+    context: Account access or registration emails resolve to VPN or mail infrastructure publicly linked
+      to the network.
+    controls:
+    - CTL-092
+    - CTL-029
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on the A7 Network (FIN-2026-Alert007) (2026-10-01) <https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-CUS-055
+    context: A stablecoin OTC or block-trading firm grows suddenly in jurisdictions linked to the network
+      with little public footprint.
+    controls:
+    - CTL-149
+    - CTL-042
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on the A7 Network (FIN-2026-Alert007) (2026-10-01) <https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf>
+      [agent-retrieved 2026-11-27]

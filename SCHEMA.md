@@ -90,5 +90,32 @@ Indicator provenance (all currently `draft` / `ai_drafted`):
 ```
 Controlled vocabularies live in `vocab.yaml`; extend there. `severity` means indicative signal strength only.
 
+## Evidence and review fields (v0.3, additive, optional)
+Indicators added by the research agent (see [docs/architecture.md](docs/architecture.md)) also carry:
+```yaml
+    evidence_basis: regulator_typology
+    confidence: unassessed            # human confidence; set by a reviewer
+    taxonomy_nodes: [fraud/FR-RECOV]  # domain/typology ids that link this indicator
+    evidence:
+      - source_id: SRC-FINCEN         # sources/registry.yaml
+        authority: FinCEN (US Treasury)
+        source_type: fiu              # fiu | regulator | standard_setter | law_enforcement | sanctions_authority | government | intergovernmental | industry_body | fiu_network
+        publication: <title>
+        url: <link>
+        published: 2026-09-03         # YYYY-MM-DD or YYYY-MM as printed
+        retrieved: 2026-11-27
+        snapshot: {sha256: <hash>, of: pdf_bytes}   # pdf_bytes | extracted_text
+        excerpt: short verbatim quote
+        extraction_confidence: high   # AI extraction confidence, not an SME judgement
+    review:
+      state: unreviewed               # unreviewed | maker_review | checker_review | approved | rejected
+      workflow: maker_checker_pending
+      maker: null
+      checker: null
+      decided: null
+    added_in: 2026-11-27-scan
+```
+Typology links added by the agent carry `references:` with `[agent-retrieved YYYY-MM-DD]` tags. Existing entries are unchanged; the validator ignores these extra fields.
+
 ## Generated views
 `python3 tools/build_index.py .` writes `build/`: flat typology-indicator-control CSV, control and indicator usage, typology x control matrix, and `REVERSE_INDEX.md` (most reused controls and indicators).

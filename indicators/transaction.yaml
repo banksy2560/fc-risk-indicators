@@ -2606,3 +2606,507 @@ indicators:
   provenance: ai_drafted
   evidence_basis: ai_draft_unreviewed
   confidence: unassessed
+- id: IND-TXN-162
+  name: Substantial use of a stablecoin marketed as unfreezable or not cooperating with law enforcement
+  description: The customer moves significant value in a stablecoin whose issuer advertises that tokens
+    cannot be frozen or seized, or that it does not cooperate with authorities.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - blockchain_analytics
+  - wallet_addresses
+  false_positive_notes: Small exploratory holdings by customers trading many tokens.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - cyber_enabled/CY-GUARANTEE
+  - sanctions/SANC-CRYPTO
+  evidence:
+  - source_id: SRC-FINCEN
+    authority: FinCEN (US Treasury)
+    source_type: fiu
+    publication: FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment Scam
+      Centers (FIN-2026-Alert005)
+    url: https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf
+    published: '2026-09-03'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: f4f28995f714476a454bc8e1235cc304b462ab830cc730aeff7dc75590e89e92
+      of: pdf_bytes
+    excerpt: A customer conducts substantial transactions using a stablecoin whose issuer advertises that
+      it does not cooperate with law enforcement or that its stablecoin cannot be seized or frozen.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-TXN-163
+  name: Exchange customer runs offsetting trades like an unregistered OTC or P2P desk
+  description: A retail or business exchange customer uses platform liquidity for large numbers of offsetting
+    buy and sell trades consistent with operating an unregistered OTC broker or peer-to-peer exchanger.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - exchange_trade_data
+  - account_transactions
+  false_positive_notes: Registered market makers or active traders with disclosed strategies.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - cyber_enabled/CY-GUARANTEE
+  evidence:
+  - source_id: SRC-FINCEN
+    authority: FinCEN (US Treasury)
+    source_type: fiu
+    publication: FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment Scam
+      Centers (FIN-2026-Alert005)
+    url: https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf
+    published: '2026-09-03'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: f4f28995f714476a454bc8e1235cc304b462ab830cc730aeff7dc75590e89e92
+      of: pdf_bytes
+    excerpt: A customer of a digital asset exchange appears to be using liquidity provided by the digital
+      asset exchange to execute large numbers of offsetting transactions consistent with operation as
+      an OTC broker or P2P exchanger.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-TXN-164
+  name: Stablecoins received from a DeFi service without AML controls, converted and withdrawn as fiat
+  description: Stablecoin deposits arrive from a decentralised service lacking AML/CFT controls and are
+    promptly converted to fiat currency and withdrawn.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - blockchain_analytics
+  - account_transactions
+  false_positive_notes: Legitimate DeFi yield or liquidity withdrawals by an established, documented customer.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - fraud/FR-SCOMP
+  evidence:
+  - source_id: SRC-FINCEN
+    authority: FinCEN (US Treasury)
+    source_type: fiu
+    publication: FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment Scam
+      Centers (FIN-2026-Alert005)
+    url: https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf
+    published: '2026-09-03'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: f4f28995f714476a454bc8e1235cc304b462ab830cc730aeff7dc75590e89e92
+      of: pdf_bytes
+    excerpt: A customer receives stablecoin deposits from a DeFi service that lacks AML/CFT controls,
+      converts the funds to fiat currency, and withdraws the proceeds.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-TXN-165
+  name: Exposure to a sanctions-linked settlement stablecoin or its wrapped versions
+  description: The customer offers, has traded in, or has direct or indirect exposure to a stablecoin
+    publicly identified by authorities as part of a sanctions-evasion settlement network, including wrapped
+    or derivative versions.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - screening
+  - external_intel
+  data_sources:
+  - blockchain_analytics
+  - wallet_addresses
+  - sanctions_lists
+  false_positive_notes: Indirect exposure several hops removed through large exchanges, without other
+    indicators.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - sanctions/SANC-CRYPTO
+  - sanctions/SANC-SETTLE
+  evidence:
+  - source_id: SRC-FINCEN
+    authority: FinCEN (US Treasury)
+    source_type: fiu
+    publication: FinCEN Alert on the A7 Network (FIN-2026-Alert007)
+    url: https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf
+    published: '2026-10-01'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: acee635ac708c0b70b62b73f80521f012ab2fae25d868bfd4ce79681d9337883
+      of: pdf_bytes
+    excerpt: A customer offers, has traded in, or has historic direct or indirect exposure to trades denominated
+      in the A7A5 token or in derivative, or “wrapped,” tokens based on the A7A5 token.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-TXN-166
+  name: Trade customer pays in stablecoins for commodities not usually bought with digital assets
+  description: An importer, exporter or shipping customer uses stablecoins for large or high-volume purchases,
+    especially of goods such as military, dual-use or petroleum products that are rarely paid for in digital
+    assets.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - kyc_review
+  data_sources:
+  - account_transactions
+  - trade_documents
+  - blockchain_analytics
+  false_positive_notes: Established digital-asset-native merchants trading goods where crypto settlement
+    is common.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - sanctions/SANC-SETTLE
+  evidence:
+  - source_id: SRC-FINCEN
+    authority: FinCEN (US Treasury)
+    source_type: fiu
+    publication: FinCEN Alert on the A7 Network (FIN-2026-Alert007)
+    url: https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf
+    published: '2026-10-01'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: acee635ac708c0b70b62b73f80521f012ab2fae25d868bfd4ce79681d9337883
+      of: pdf_bytes
+    excerpt: A customer engaged in international trade, import/export, or shipping using stablecoins to
+      make large purchases or engage in a high volume of transactions, especially to pay for commodities
+      not usually traded using digital assets
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-TXN-167
+  name: Payments routed through several shell companies in different jurisdictions before reaching the
+    end recipient
+  description: Funds pass through a sequence of apparent shell or front companies across multiple countries
+    with no clear economic purpose before arriving at the final beneficiary.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - account_transactions
+  - payment_messages
+  - corporate_registry
+  false_positive_notes: Legitimate group treasury or commissionaire structures with documented intercompany
+    agreements.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - sanctions/SANC-SETTLE
+  evidence:
+  - source_id: SRC-FINCEN
+    authority: FinCEN (US Treasury)
+    source_type: fiu
+    publication: FinCEN Alert on the A7 Network (FIN-2026-Alert007)
+    url: https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf
+    published: '2026-10-01'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: acee635ac708c0b70b62b73f80521f012ab2fae25d868bfd4ce79681d9337883
+      of: pdf_bytes
+    excerpt: A customer routes payments through several potential shell companies in multiple jurisdictions
+      for no clear economic purpose before the funds arrive at their final destination.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-TXN-168
+  name: Account expecting an overseas transfer instead receives domestic third-party cash deposits
+  description: An account holder awaiting funds from abroad (for example family remittance or a property
+    deposit) receives structured cash deposits from unrelated local depositors, sometimes matching the
+    expected international amount.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - account_transactions
+  - cash_deposit_records
+  - international_transfer_reports
+  false_positive_notes: Genuine domestic relatives paying in cash on the sender's behalf, with a clear,
+    documented relationship.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - money_laundering/ML-CUCKOO
+  evidence:
+  - source_id: SRC-AUSTRAC
+    authority: AUSTRAC (Fintel Alliance)
+    source_type: fiu
+    publication: 'Financial crime guide: Detect and report cuckoo smurfing'
+    url: https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/detect-and-report-cuckoo-smurfing
+    published: 2021-06
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: 04dcd335f216b0b44edacd9146b1ee30d2b49de57b3a5ef7df3edfe3d7ca8a89
+      of: extracted_text
+    excerpt: 'Cash deposits matching an incoming international funds transfer instruction (IFTI) report.
+      Note: If no incoming IFTIs are identified this may be indicative of unregistered remittance activity.'
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-TXN-169
+  name: One card or phone number used to make cash deposits into many unrelated accounts
+  description: The same depositor card, mobile number or identity is used at deposit machines or branches
+    to pay cash into multiple third-party accounts, often across suburbs or repeatedly at one machine.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - cash_deposit_records
+  - atm_logs
+  - branch_records
+  false_positive_notes: Business staff banking takings into several company accounts they are authorised
+    on.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - money_laundering/ML-CUCKOO
+  evidence:
+  - source_id: SRC-AUSTRAC
+    authority: AUSTRAC (Fintel Alliance)
+    source_type: fiu
+    publication: 'Financial crime guide: Detect and report cuckoo smurfing'
+    url: https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/detect-and-report-cuckoo-smurfing
+    published: 2021-06
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: 04dcd335f216b0b44edacd9146b1ee30d2b49de57b3a5ef7df3edfe3d7ca8a89
+      of: extracted_text
+    excerpt: Cash deposits via ATMs across multiple accounts using a single card (issued by a domestic
+      or international financial institution) or mobile number.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-TXN-170
+  name: Repeated very low-value payments to one recipient carrying messages
+  description: A sender makes frequent payments of cents or a few dollars to the same person over days
+    or months, where the payment appears to serve as a messaging channel rather than a transfer of value.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - account_transactions
+  - payment_text
+  false_positive_notes: Test payments, games between friends, or small regular allowances.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - other_predicate/OP-PAYTEXT
+  evidence:
+  - source_id: SRC-AUSTRAC
+    authority: AUSTRAC (Fintel Alliance)
+    source_type: fiu
+    publication: 'Financial crime guide: Preventing misuse and criminal communication through payment
+      text fields'
+    url: https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/preventing-misuse-and-criminal-communication-through-payment-text-fields
+    published: 2021-11
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: c5662ed9d1f9f4f31772ebdf6ddfc0e461f67826b8da8514d66aa8d2c9cf4106
+      of: extracted_text
+    excerpt: Payments can be as low as $0.01 and are typically below $10.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-TXN-171
+  name: High volume of small payments through phone-number payment aliases, quickly forwarded
+  description: An account receives many low-value inbound payments addressed to a phone-number payment
+    alias (e.g. PayID) and moves the funds on in a tiered pattern, consistent with micro-laundering of
+    unlawful gambling proceeds.
+  category: transaction
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - account_transactions
+  - payment_alias_registry
+  false_positive_notes: Small sellers, sporting clubs or shared-expense groups collecting many small payments.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - other_predicate/OP-GAMBLE
+  - other_predicate/OP-SCAMBLE
+  evidence:
+  - source_id: SRC-AUSTRAC
+    authority: AUSTRAC (Fintel Alliance)
+    source_type: fiu
+    publication: 'Scambling: the nexus between scams, money mules and micro-laundering'
+    url: https://www.austrac.gov.au/sites/default/files/2025-12/Scambling%20-%20the%20nexus%20between%20scams%2C%20money%20mules%20and%20micro-laundering.pdf
+    published: 2025-11
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: 075c711d1bcf8b2c3dd33f9189e1adf871fa0c6ee367ae0d52b09c9dc4ddb1f2
+      of: extracted_text
+    excerpt: Money laundering is happening through tiered mule networks. This is characterised by a high
+      volume of low-value transactions, also described as micro-laundering.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-TXN-172
+  name: Recurring instalment-style payments to unknown parties following threats
+  description: A business owner makes a series of smaller cash or e-transfer payments to new or unknown
+    recipients, consistent with paying an extortion demand in instalments.
+  category: transaction
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - account_transactions
+  - customer_contact_notes
+  false_positive_notes: Genuine supplier payment plans or loan repayments with documentation.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - other_predicate/OP-EXTORT
+  evidence:
+  - source_id: SRC-FINTRAC
+    authority: FINTRAC (Canada)
+    source_type: fiu
+    publication: Special Bulletin on money laundering associated with extortion directed at Canada's South
+      Asian diaspora (FINTRAC-2026-SB002)
+    url: https://fintrac-canafe.canada.ca/intel/bulletins/csad-dsac-eng.pdf
+    published: 2026-04
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: 9e1d8b6e731424de166a2437409ae0a429747f72b385c0292c360c07299f17b9
+      of: extracted_text
+    excerpt: FINTRAC analysis suggests that victims negotiate large demands for smaller one-time or reoccurring
+      “payment plans”.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-TXN-173
+  name: Spending on short-term lodging, car hire and fuel near incident locations far from the customer's
+    base
+  description: A customer with no prior links to an area pays for hotels or short-term rentals, travel,
+    fuel and fast food there, around the time of violent or extortion incidents, alongside other suspicious
+    flows.
+  category: transaction
+  severity: low
+  detection_type:
+  - transaction_monitoring
+  - external_intel
+  data_sources:
+  - card_transactions
+  - adverse_media
+  false_positive_notes: Ordinary travel, study or work trips; only meaningful combined with other indicators.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - other_predicate/OP-EXTORT
+  evidence:
+  - source_id: SRC-FINTRAC
+    authority: FINTRAC (Canada)
+    source_type: fiu
+    publication: Special Bulletin on money laundering associated with extortion directed at Canada's South
+      Asian diaspora (FINTRAC-2026-SB002)
+    url: https://fintrac-canafe.canada.ca/intel/bulletins/csad-dsac-eng.pdf
+    published: 2026-04
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: 9e1d8b6e731424de166a2437409ae0a429747f72b385c0292c360c07299f17b9
+      of: extracted_text
+    excerpt: may pay for lodging (hotels or short-term rentals), travel booking services, gas or petrol,
+      and fast food in locations subject to extortion activities
+    extraction_confidence: medium
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan

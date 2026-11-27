@@ -1029,3 +1029,215 @@ indicators:
   provenance: ai_drafted
   evidence_basis: ai_draft_unreviewed
   confidence: unassessed
+- id: IND-CPT-063
+  name: Payment to a fund-recovery service that cannot show it is legitimate
+  description: A customer who has already lost money pays a firm, 'lawyer' or 'investigator' promising
+    to recover the losses, without credible documentation, licensing or engagement terms.
+  category: counterparty
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - external_intel
+  data_sources:
+  - payment_instructions
+  - customer_contact_notes
+  - adverse_media
+  false_positive_notes: Engagement of a genuine, licensed law firm with verifiable credentials and standard
+    fee arrangements.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - fraud/FR-RECOV
+  evidence:
+  - source_id: SRC-FINCEN
+    authority: FinCEN (US Treasury)
+    source_type: fiu
+    publication: FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment Scam
+      Centers (FIN-2026-Alert005)
+    url: https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf
+    published: '2026-09-03'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: f4f28995f714476a454bc8e1235cc304b462ab830cc730aeff7dc75590e89e92
+      of: pdf_bytes
+    excerpt: A customer states that a payment is intended to retain a law firm or other entity to recover
+      funds lost to fraud but lacks documentation demonstrating that the service is legitimate.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-CPT-064
+  name: Receiving exchange or remitter advertises 'no KYC' or claims false regulator approval
+  description: Open-source checks show the money service business or digital asset exchange receiving
+    customer funds markets itself as needing no identity checks, or falsely claims it is approved by a
+    regulator or FIU.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - external_intel
+  - screening
+  data_sources:
+  - open_source_research
+  - counterparty_records
+  false_positive_notes: Marketing that refers accurately to a real registration or licence.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - cyber_enabled/CY-GUARANTEE
+  - fraud/FR-SCOMP
+  evidence:
+  - source_id: SRC-FINCEN
+    authority: FinCEN (US Treasury)
+    source_type: fiu
+    publication: FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment Scam
+      Centers (FIN-2026-Alert005)
+    url: https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf
+    published: '2026-09-03'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: f4f28995f714476a454bc8e1235cc304b462ab830cc730aeff7dc75590e89e92
+      of: pdf_bytes
+    excerpt: Open-source information shows that a digital asset exchange receiving customer funds is advertising
+      services “with no KYC” or a lack of compliance measures.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-CPT-065
+  name: Payment provider rebrands to distance itself from a marketplace hit by enforcement or takedown
+  description: A counterparty payment or exchange service changes name, branding or website in an apparent
+    attempt to hide its link to a marketplace that faced law-enforcement action, takedowns or negative
+    news.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - external_intel
+  - kyc_review
+  data_sources:
+  - open_source_research
+  - adverse_media
+  - counterparty_records
+  false_positive_notes: Ordinary rebranding after a genuine merger or change of strategy.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - cyber_enabled/CY-GUARANTEE
+  evidence:
+  - source_id: SRC-FINCEN
+    authority: FinCEN (US Treasury)
+    source_type: fiu
+    publication: FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment Scam
+      Centers (FIN-2026-Alert005)
+    url: https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf
+    published: '2026-09-03'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: f4f28995f714476a454bc8e1235cc304b462ab830cc730aeff7dc75590e89e92
+      of: pdf_bytes
+    excerpt: a payment service provider operating a guarantee marketplace changed its name, branding,
+      website, or other features of its public presentation in an apparent attempt to mask its association
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-CPT-066
+  name: Depositor names or contact details appear fictitious or are reused across many deposits
+  description: Recorded depositor names, initials or phone numbers look invented or recur across deposits
+    made by apparently different people.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - cash_deposit_records
+  - branch_records
+  false_positive_notes: Data-entry shortcuts by staff or shared family phone numbers.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - money_laundering/ML-CUCKOO
+  evidence:
+  - source_id: SRC-AUSTRAC
+    authority: AUSTRAC (Fintel Alliance)
+    source_type: fiu
+    publication: 'Financial crime guide: Detect and report cuckoo smurfing'
+    url: https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/detect-and-report-cuckoo-smurfing
+    published: 2021-06
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: 04dcd335f216b0b44edacd9146b1ee30d2b49de57b3a5ef7df3edfe3d7ca8a89
+      of: extracted_text
+    excerpt: Indicators that multiple depositors may be using the same customer details, such as reusing
+      names and phone numbers to conduct multiple or frequent deposits.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-CPT-067
+  name: Business spend on telecoms, numbers, hosting or computing capacity out of line with its profile
+  description: A business or individual customer pays unusually large or recurring amounts for phone numbers,
+    connectivity, domains, cloud or computing capacity, advertising or electricity that its stated activity
+    does not explain.
+  category: counterparty
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - account_transactions
+  - merchant_data
+  false_positive_notes: Genuine call centres, data-heavy start-ups, crypto miners or marketing agencies.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - fraud/FR-SCOMP
+  evidence:
+  - source_id: SRC-FATF
+    authority: FATF
+    source_type: standard_setter
+    publication: 'Combating End-to-End Illicit Financial Flows Linked to Scam Compounds: Applying the
+      FATF Toolkit to the Fraud Epidemic'
+    url: https://www.fatf-gafi.org/en/publications/Methodsandtrends/combating-illicit-financial-flows-linked-to-scam-compounds.html
+    published: '2026-11-05'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: 2b6d4690147690b36de518e7a6d98633ee78fbef34149c66cf55f93fc5861bda
+      of: extracted_text
+    excerpt: At scale, automated and AI-enabled scam activity may also create material demand for computing
+      capacity, data storage and bandwidth, whether procured directly or through cloud and other service
+      providers.
+    extraction_confidence: medium
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan

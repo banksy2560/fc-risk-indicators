@@ -1,0 +1,102 @@
+typology:
+  id: FR-RECOV
+  name: Fund-recovery scams and official-impersonation follow-on scams
+  domain: fraud
+  description: People who have already lost money to scams are targeted again by fake law firms, 'investigators'
+    or officials who promise to recover funds, or by callers posing as police or government who direct
+    them to pay in digital assets, gift cards, precious metals handed to couriers, or international wires.
+  exposure:
+    channels:
+    - remote_contact
+    - online_banking
+    - mobile_app
+    - branch
+    payment_rails:
+    - fast_payments
+    - wire_swift
+    - crypto_onramp_offramp
+    - cash
+    customer_segments:
+    - retail
+    - vulnerable_elderly
+    products:
+    - transaction_account
+    - savings_account
+    - investment_securities
+    - insurance_pension
+    basis: ai_inferred
+    rationale: Previously scammed retail customers paying from everyday, savings or retirement funds after
+      phone contact.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      - savings_account
+      - term_deposit
+      channels:
+      - call_centre
+      - branch
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Repeat-victim customers moving savings after calls; branch and phone staff can intervene.
+  sectors:
+  - banking
+  - payments
+  - crypto
+  - securities
+  sources:
+  - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+    Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+    [agent-retrieved 2026-11-27]
+  indicators:
+  - ref: IND-CPT-063
+    context: A prior scam victim pays a 'recovery' firm or 'lawyer' that cannot show it is genuine.
+    controls:
+    - CTL-068
+    - CTL-170
+    - CTL-075
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+      Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-BEH-121
+    context: The customer says police or a government agency told them to pay in crypto, gift cards, gold
+      or by overseas wire.
+    controls:
+    - CTL-068
+    - CTL-170
+    - CTL-071
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+      Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-BEH-122
+    context: Retirement or investment savings are cashed in to buy gold that a courier will collect.
+    controls:
+    - CTL-075
+    - CTL-170
+    - CTL-068
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+      Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-CUS-029
+    context: The customer has reported a scam before and is again sending money to new payees.
+    controls:
+    - CTL-075
+    - CTL-068
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+      Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-BEH-004
+    context: The customer is on the phone with, or being coached by, the 'recovery agent' or 'official'
+      while transacting.
+    controls:
+    - CTL-170
+    - CTL-075
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+      Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+      [agent-retrieved 2026-11-27]

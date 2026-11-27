@@ -508,3 +508,58 @@ indicators:
   provenance: ai_drafted
   evidence_basis: ai_draft_unreviewed
   confidence: unassessed
+- id: IND-OWN-030
+  name: Gambling operator with threshold-avoiding ownership, white-label dependence or frequent brand
+    and URL changes
+  description: An operator or platform customer structures shareholdings to stay under regulatory-check
+    thresholds, relies on loosely overseen white-label or third-party providers, or frequently changes
+    its website, brand or company name.
+  category: ownership_structure
+  severity: high
+  detection_type:
+  - kyc_review
+  - external_intel
+  data_sources:
+  - corporate_registry
+  - licence_registers
+  - open_source_research
+  false_positive_notes: Legitimate multi-brand operators with disclosed group structures and licences.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - other_predicate/OP-GAMBLE
+  evidence:
+  - source_id: SRC-FATF
+    authority: FATF
+    source_type: standard_setter
+    publication: Risks of Gaming and Gambling (Red Flag Risk Indicators)
+    url: https://www.fatf-gafi.org/en/publications/Methodsandtrends/risks-of-gaming-and-gambling.html
+    published: '2026-09-09'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: 1b241a7a1817a8117d42ecd589722405c7658b0ab98c171ff4d36aa095baacad
+      of: extracted_text
+    excerpt: Structuring beneficial ownership shareholding in a way which aims to bypass/avoid thresholds
+      for regulatory checks
+    extraction_confidence: high
+  - source_id: SRC-FATF
+    authority: FATF
+    source_type: standard_setter
+    publication: Risks of Gaming and Gambling (Red Flag Risk Indicators)
+    url: https://www.fatf-gafi.org/en/publications/Methodsandtrends/risks-of-gaming-and-gambling.html
+    published: '2026-09-09'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: 1b241a7a1817a8117d42ecd589722405c7658b0ab98c171ff4d36aa095baacad
+      of: extracted_text
+    excerpt: Frequent changes of platform URLs /website addresses or company/brand name.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan

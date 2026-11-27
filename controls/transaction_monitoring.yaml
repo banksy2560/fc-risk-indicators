@@ -406,3 +406,14 @@ controls:
   - Remitter profile checks
   - Channel policy
   - Pooled-activity analytics
+- id: CTL-178
+  name: Operational-infrastructure spend anomaly monitoring
+  family: transaction_monitoring
+  type: detective
+  implementation: rule
+  effectiveness: low
+  description: Flags customers whose payments for telecoms numbers, connectivity, hosting, cloud or computing
+    capacity, advertising and utilities are out of line with their stated business. It surfaces the upstream
+    operating footprint of industrialised fraud operations that victim-side monitoring misses.
+  also_known_as:
+  - Telecoms and infrastructure spend monitoring

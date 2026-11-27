@@ -46,6 +46,9 @@ typology:
   - FATF, INTERPOL and Egmont Group, Illicit Financial Flows from Cyber-enabled Fraud (2023) [unverified]
   - FATF, Recommendation 16 (payment transparency) revisions and Interpretive Note (2025) [unverified]
   - FATF, Guidance on Correspondent Banking Services (2016) [unverified]
+  - 'FATF, Combating End-to-End Illicit Financial Flows Linked to Scam Compounds: Applying the FATF Toolkit
+    to the Fraud Epidemic (2026-11-05) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/combating-illicit-financial-flows-linked-to-scam-compounds.html>
+    [agent-retrieved 2026-11-27]'
   indicators:
   - ref: IND-TXN-001
     context: Cross-border fraud proceeds are forwarded onward within minutes or hours in near-equal amounts,

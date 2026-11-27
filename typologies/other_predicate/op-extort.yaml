@@ -45,6 +45,9 @@ typology:
   - UNODC, public material on organised crime and extortion [replacement suggested, unverified]
   - Europol, European Union Serious and Organised Crime Threat Assessment (EU SOCTA) (specify year, e.g.
     2021 or 2025) [corrected, unverified]
+  - FINTRAC (Canada), Special Bulletin on money laundering associated with extortion directed at Canada's
+    South Asian diaspora (FINTRAC-2026-SB002) (2026-04) <https://fintrac-canafe.canada.ca/intel/bulletins/csad-dsac-eng.pdf>
+    [agent-retrieved 2026-11-27]
   indicators:
   - ref: IND-TXN-123
     legacy_id: OP-EXTORT-001
@@ -105,3 +108,24 @@ typology:
     controls:
     - CTL-124
     - CTL-005
+  - ref: IND-TXN-172
+    context: Victim business owners pay extortion demands as smaller one-off or recurring 'payment plan'
+      amounts.
+    controls:
+    - CTL-042
+    - CTL-170
+    - CTL-100
+    references:
+    - FINTRAC (Canada), Special Bulletin on money laundering associated with extortion directed at Canada's
+      South Asian diaspora (FINTRAC-2026-SB002) (2026-04) <https://fintrac-canafe.canada.ca/intel/bulletins/csad-dsac-eng.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-TXN-173
+    context: Suspected enforcers' card spend on lodging, car hire, fuel and food near incident locations
+      far from their usual base.
+    controls:
+    - CTL-045
+    - CTL-093
+    references:
+    - FINTRAC (Canada), Special Bulletin on money laundering associated with extortion directed at Canada's
+      South Asian diaspora (FINTRAC-2026-SB002) (2026-04) <https://fintrac-canafe.canada.ca/intel/bulletins/csad-dsac-eng.pdf>
+      [agent-retrieved 2026-11-27]

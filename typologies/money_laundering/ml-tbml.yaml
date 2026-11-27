@@ -38,6 +38,8 @@ typology:
     [agent-reviewed]'
   - ICC, BAFT and Wolfsberg Group, Trade Finance Principles (2019 update) <https://wolfsberg-group.org/>
     [corrected, agent-reviewed]
+  - FinCEN (US Treasury), FinCEN Alert on the A7 Network (FIN-2026-Alert007) (2026-10-01) <https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf>
+    [agent-retrieved 2026-11-27]
   indicators:
   - ref: IND-TXN-020
     legacy_id: ML-TBML-001
@@ -112,3 +114,11 @@ typology:
     false_positive_context: Negotiating changes are common.
     controls:
     - CTL-132
+  - ref: IND-DOC-070
+    context: Trade invoices or shipping documents that appear AI-generated or digitally altered.
+    controls:
+    - CTL-123
+    - CTL-086
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on the A7 Network (FIN-2026-Alert007) (2026-10-01) <https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf>
+      [agent-retrieved 2026-11-27]

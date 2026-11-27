@@ -49,6 +49,9 @@ typology:
     [corrected, agent-reviewed]
   - FATF, Money Laundering Through Money Remittance and Currency Exchange Providers (2010) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/Moneylaunderingthroughmoneyremittanceandcurrencyexchangeproviders.html>
     [agent-reviewed]
+  - FATF, Investigating Professional Money Laundering, Underground Banking, and the Use of Hawala and
+    Other Similar Service Providers (2026-09-03) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/pml-underground-banking-hawala-hossps.html>
+    [agent-retrieved 2026-11-27]
   indicators:
   - ref: IND-CUS-006
     legacy_id: ML-HAWALA-001

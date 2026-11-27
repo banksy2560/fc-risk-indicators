@@ -1102,3 +1102,85 @@ indicators:
   provenance: ai_drafted
   evidence_basis: ai_draft_unreviewed
   confidence: unassessed
+- id: IND-DOC-070
+  name: Trade documents show signs of AI generation or tampering
+  description: Invoices, shipping papers or certificates show malformed letters, garbled wording, distorted
+    seals or logos, out-of-place characters from another script, or a physical stamp on an otherwise digital
+    document.
+  category: document
+  severity: high
+  detection_type:
+  - document_review
+  data_sources:
+  - trade_documents
+  - invoices
+  false_positive_notes: Poor-quality scans, translation artefacts or legitimate bilingual documents.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - money_laundering/ML-TBML
+  - sanctions/SANC-SETTLE
+  evidence:
+  - source_id: SRC-FINCEN
+    authority: FinCEN (US Treasury)
+    source_type: fiu
+    publication: FinCEN Alert on the A7 Network (FIN-2026-Alert007)
+    url: https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf
+    published: '2026-10-01'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: acee635ac708c0b70b62b73f80521f012ab2fae25d868bfd4ce79681d9337883
+      of: pdf_bytes
+    excerpt: Documentation associated with a customer’s transactions appears to have been modified or
+      wholly created using AI, for example displaying incorrectly formed letters, garbled wording, and
+      malformed seals or other iconography.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-DOC-071
+  name: Payment text contains threats, coercion, references to self-harm or coded criminal terms
+  description: Free-text descriptions on payments include threats, harassment, demands for contact, references
+    to suicide or self-harm, or slang, emojis and abbreviations that hide criminal meaning.
+  category: document
+  severity: high
+  detection_type:
+  - transaction_monitoring
+  - investigator_judgement
+  data_sources:
+  - payment_text
+  false_positive_notes: Jokes, song lyrics or banter between consenting parties; context matters.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - other_predicate/OP-PAYTEXT
+  evidence:
+  - source_id: SRC-AUSTRAC
+    authority: AUSTRAC (Fintel Alliance)
+    source_type: fiu
+    publication: 'Financial crime guide: Preventing misuse and criminal communication through payment
+      text fields'
+    url: https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/preventing-misuse-and-criminal-communication-through-payment-text-fields
+    published: 2021-11
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: c5662ed9d1f9f4f31772ebdf6ddfc0e461f67826b8da8514d66aa8d2c9cf4106
+      of: extracted_text
+    excerpt: Payment text fields are being used to communicate and facilitate serious offences by individuals
+      and organised crime groups to coerce, threaten, stalk or harass their victim.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan

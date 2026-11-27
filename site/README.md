@@ -34,4 +34,4 @@ Import the repo, set Root Directory to `site`, Framework Preset "Other", no buil
 ## Motion
 Only transform, opacity and clip-path animate; tokens are at the top of `app.css`. Keyboard use (arrows, Enter, Esc) never animates. Under `prefers-reduced-motion` only short opacity fades remain. `data-motion="off"` on `<html>` disables motion.
 
-External network use: Google Fonts only (system font fallbacks).
+Fonts (Inter, DM Sans; SIL OFL 1.1, see `tools/site_src/assets/fonts-ofl.txt`) are self-hosted. External network use: the home page hero loads its artwork video and still from a CloudFront URL.

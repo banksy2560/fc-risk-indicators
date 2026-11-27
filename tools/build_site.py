@@ -369,7 +369,8 @@ def main():
         nav = meta.get('nav', '')
         page = re.sub(r' data-nav="([^"]*)"', lambda mm: ' aria-current="page"' if mm.group(1) == nav else '', page)
         vals = {'{{TITLE}}': meta['title'], '{{DESC}}': meta['description'], '{{PAGE}}': name,
-                '{{SCRIPTS}}': scripts, '{{DVER}}': dver, '{{BODY}}': raw[m.end():]}
+                '{{SCRIPTS}}': scripts, '{{DVER}}': dver,
+                '{{N_TYP}}': str(len(typ)), '{{N_IND}}': str(len(ind)), '{{N_CTL}}': str(len(ctl)), '{{BODY}}': raw[m.end():]}
         for _ in range(2):
             for k, v in vals.items():
                 page = page.replace(k, v)

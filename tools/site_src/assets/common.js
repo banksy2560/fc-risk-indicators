@@ -84,3 +84,13 @@ document.addEventListener('DOMContentLoaded', () => {
   io.observe(dia);
 });
 })();
+
+/* small-screen menu */
+(() => {
+  const top = document.querySelector('.top'), b = top && top.querySelector('.menu');
+  if (!b) return;
+  const set = open => { top.classList.toggle('menu-open', open); b.setAttribute('aria-expanded', open); };
+  b.addEventListener('click', () => set(!top.classList.contains('menu-open')));
+  document.addEventListener('click', e => { if (!top.contains(e.target)) set(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && top.classList.contains('menu-open')) { set(false); b.focus(); } });
+})();

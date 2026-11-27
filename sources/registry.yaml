@@ -1,13 +1,21 @@
 # Source registry (layer 1-2 of docs/architecture.md). AI-maintained, unreviewed.
 meta:
   description: Registry of public, authoritative sources scanned by the typology research agent. Public
-    sources only; never internal or institution-specific data.
+    sources only; never internal or institution-specific data. tools/ingest.py reads fetch and
+    feed_url. fetch is rss, atom, html (a server-rendered listing), json (a public JSON listing
+    when there is no feed) or manual (no reliable machine-readable listing).
   updated: '2026-11-27'
   status_values:
   - extracted
   - source_update_only
   - identified_not_extracted
   - quarantined
+  fetch_values:
+  - rss
+  - atom
+  - html
+  - json
+  - manual
 sources:
 - id: SRC-FATF
   authority: Financial Action Task Force (FATF)
@@ -15,108 +23,171 @@ sources:
   jurisdiction: international
   url: https://www.fatf-gafi.org/en/publications.html
   scan: weekly
+  fetch: html
+  feed_url: https://www.fatf-gafi.org/en/the-fatf/news.html
+  fetch_note: No public RSS. The news page is the chronological list. Cloudflare often challenges scripted clients.
 - id: SRC-AUSTRAC
   authority: AUSTRAC, incl. Fintel Alliance financial crime guides
   type: fiu
   jurisdiction: AU
   url: https://www.austrac.gov.au/government-and-partners/fintel-alliance
   scan: weekly
+  fetch: rss
+  feed_url: https://www.austrac.gov.au/media-release/rss.xml
+  fetch_note: Official media-release RSS. AUSTRAC has said the feed will be replaced by email alerts; it was still published on 2026-11-27.
 - id: SRC-FINCEN
   authority: FinCEN (US Treasury)
   type: fiu
   jurisdiction: US
   url: https://www.fincen.gov/resources/advisoriesbulletinsfact-sheets
   scan: weekly
+  fetch: html
+  feed_url: https://www.fincen.gov/resources/advisoriesbulletinsfact-sheets
+  fetch_note: No official RSS. Advisories, alerts, notices and fact sheets are a server-rendered table.
 - id: SRC-FINTRAC
   authority: FINTRAC (Canada)
   type: fiu
   jurisdiction: CA
   url: https://fintrac-canafe.canada.ca/intel/intel-eng
   scan: weekly
+  fetch: atom
+  feed_url: https://fintrac-canafe.canada.ca/rss/rss-eng.xml
+  fetch_note: Official What's New Atom feed. The strategic-intelligence catalogue is a separate scripted table.
 - id: SRC-EGMONT
   authority: Egmont Group
   type: fiu_network
   jurisdiction: international
   url: https://egmontgroup.org/
   scan: weekly
+  fetch: rss
+  feed_url: https://egmontgroup.org/resource_type/publications/feed/
+  fetch_note: WordPress publications archive. The site-wide /feed/ is empty.
 - id: SRC-ASIC
   authority: ASIC
   type: regulator
   jurisdiction: AU
   url: https://asic.gov.au/
   scan: weekly
+  fetch: json
+  feed_url: https://download.asic.gov.au/asic-nga/data/newsroom/newsroom-mr-latest.json
+  json_title: name
+  json_url: url
+  json_date: publishedDate
+  json_url_base: https://www.asic.gov.au
+  fetch_note: No RSS. The media-release page is client-rendered; this is the public JSON that page loads.
 - id: SRC-NASC
   authority: National Anti-Scam Centre / Scamwatch (ACCC)
   type: government
   jurisdiction: AU
   url: https://www.nasc.gov.au/reports-and-publications
   scan: weekly
+  fetch: html
+  feed_url: https://www.nasc.gov.au/reports-and-publications
+  fetch_note: No RSS found. Akamai often denies scripted clients; failures are quarantined.
 - id: SRC-NCA
   authority: UK National Crime Agency
   type: law_enforcement
   jurisdiction: UK
   url: https://www.nationalcrimeagency.gov.uk/
   scan: weekly
+  fetch: rss
+  feed_url: https://www.nationalcrimeagency.gov.uk/news?format=feed&type=rss
+  fetch_note: Joomla news RSS.
 - id: SRC-FCA
   authority: UK Financial Conduct Authority
   type: regulator
   jurisdiction: UK
   url: https://www.fca.org.uk/
   scan: weekly
+  fetch: rss
+  feed_url: https://www.fca.org.uk/news/rss.xml
+  fetch_note: Official news RSS. The separate warnings feed is not ingested.
 - id: SRC-EUROPOL
   authority: Europol (IOCTA and threat assessments)
   type: law_enforcement
   jurisdiction: EU
   url: https://www.europol.europa.eu/publications-events/main-reports
   scan: weekly
+  fetch: rss
+  feed_url: https://www.europol.europa.eu/cms/api/rss/news
+  fetch_note: Official newsroom RSS. Items often omit a publication date.
 - id: SRC-EBA
   authority: European Banking Authority
   type: regulator
   jurisdiction: EU
   url: https://www.eba.europa.eu/
   scan: weekly
+  fetch: rss
+  feed_url: https://www.eba.europa.eu/news-press/news/rss.xml
+  fetch_note: Official news RSS.
 - id: SRC-MAS
   authority: Monetary Authority of Singapore
   type: regulator
   jurisdiction: SG
   url: https://www.mas.gov.sg/
   scan: weekly
+  fetch: json
+  feed_url: 'https://www.mas.gov.sg/api/v1/search?json.nl=map&q=*:*&rows=30&start=0&fq=mas_mastercontenttypes_sm:"News"&sort=mas_date_tdt desc&wt=json'
+  json_path: response.docs
+  json_title: document_title_string_s
+  json_url: page_url_s
+  json_date: mas_date_tdt
+  json_url_base: https://www.mas.gov.sg
+  fetch_note: No RSS. The news page is a client-side search; this is the public API that page calls.
 - id: SRC-HKMA
   authority: Hong Kong Monetary Authority
   type: regulator
   jurisdiction: HK
   url: https://www.hkma.gov.hk/
   scan: weekly
+  fetch: rss
+  feed_url: https://www.hkma.gov.hk/eng/other-information/rss/rss_circulars.xml
+  fetch_note: Official circulars RSS. The press-release feed is mostly tender notices and is not ingested.
 - id: SRC-INTERPOL
   authority: INTERPOL
   type: law_enforcement
   jurisdiction: international
   url: https://www.interpol.int/
   scan: weekly
+  fetch: html
+  feed_url: https://www.interpol.int/en/News-and-Events/News
+  fetch_note: No working RSS found. The news page often returns a failover shell to scripted clients.
 - id: SRC-UNODC
   authority: UNODC
   type: intergovernmental
   jurisdiction: international
   url: https://www.unodc.org/
   scan: weekly
+  fetch: html
+  feed_url: https://www.unodc.org/unodc/en/press/index.html?latest=
+  fetch_note: Server-rendered digital press room. A publications RSS exists but currently carries a single item, so it is not the listing used here.
 - id: SRC-WOLFSBERG
   authority: Wolfsberg Group
   type: industry_body
   jurisdiction: international
   url: https://wolfsberg-group.org/
   scan: weekly
+  fetch: html
+  feed_url: https://wolfsberg-group.org/resources
+  fetch_note: No RSS. /feed/ 404s. The resources page is server-rendered.
 - id: SRC-OFAC
   authority: US Treasury OFAC
   type: sanctions_authority
   jurisdiction: US
   url: https://ofac.treasury.gov/
   scan: weekly
+  fetch: html
+  feed_url: https://ofac.treasury.gov/recent-actions
+  fetch_note: OFAC retired its RSS feed on 31 January 2025. Recent actions are a server-rendered listing.
 - id: SRC-DFAT
   authority: DFAT Australian Sanctions Office
   type: sanctions_authority
   jurisdiction: AU
   url: https://www.dfat.gov.au/international-relations/security/sanctions
   scan: weekly
+  fetch: html
+  feed_url: https://www.dfat.gov.au/taxonomy/term/3418
+  fetch_note: Australian Sanctions Office news listing. No RSS found.
 publications:
 - id: FINCEN-2026-A005
   source_id: SRC-FINCEN

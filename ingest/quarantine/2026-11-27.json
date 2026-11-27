@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-27",
+  "failures": [
+    {
+      "source_id": "SRC-FATF",
+      "authority": "Financial Action Task Force (FATF)",
+      "fetch": "html",
+      "feed_url": "https://www.fatf-gafi.org/en/the-fatf/news.html",
+      "error": "HTTP 403 from https://www.fatf-gafi.org/en/the-fatf/news.html (blocked or transient); HTTP 403 from https://www.fatf-gafi.org/en/the-fatf/news.html (blocked or transient)"
+    },
+    {
+      "source_id": "SRC-AUSTRAC",
+      "authority": "AUSTRAC, incl. Fintel Alliance financial crime guides",
+      "fetch": "rss",
+      "feed_url": "https://www.austrac.gov.au/media-release/rss.xml",
+      "error": "ReadTimeout: HTTPSConnectionPool(host='www.austrac.gov.au', port=443): Read timed out. (read timeout=25); ReadTimeout: HTTPSConnectionPool(host='www.austrac.gov.au', port=443): Read timed out. (read timeout=25)"
+    },
+    {
+      "source_id": "SRC-NASC",
+      "authority": "National Anti-Scam Centre / Scamwatch (ACCC)",
+      "fetch": "html",
+      "feed_url": "https://www.nasc.gov.au/reports-and-publications",
+      "error": "HTTP 403 from https://www.nasc.gov.au/reports-and-publications (blocked or transient); HTTP 403 from https://www.nasc.gov.au/reports-and-publications (blocked or transient)"
+    },
+    {
+      "source_id": "SRC-INTERPOL",
+      "authority": "INTERPOL",
+      "fetch": "html",
+      "feed_url": "https://www.interpol.int/en/News-and-Events/News",
+      "error": "HTTP 403 from https://www.interpol.int/en/News-and-Events/News (blocked or transient); HTTP 403 from https://www.interpol.int/en/News-and-Events/News (blocked or transient)"
+    },
+    {
+      "source_id": "SRC-DFAT",
+      "authority": "DFAT Australian Sanctions Office",
+      "fetch": "html",
+      "feed_url": "https://www.dfat.gov.au/taxonomy/term/3418",
+      "error": "ReadTimeout: HTTPSConnectionPool(host='www.dfat.gov.au', port=443): Read timed out. (read timeout=25); ReadTimeout: HTTPSConnectionPool(host='www.dfat.gov.au', port=443): Read timed out. (read timeout=25)"
+    }
+  ]
+}

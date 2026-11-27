@@ -2,6 +2,11 @@
 
 All content is AI-drafted and unreviewed unless a human has marked it `sme_reviewed`. Each scan is one "model run" in the sense of [docs/architecture.md](docs/architecture.md).
 
+## 2026-11-27: publication ingest
+The repetitive fetch and de-duplication of the weekly scan now runs in code. `tools/ingest.py` reads `sources/registry.yaml`, fetches each public listing (RSS, Atom, HTML or JSON), and records a SHA-256 of the normalised URL and title in `ingest/seen.json`. The first successful fetch of a source seeds items already published. Later runs write only unseen items to `ingest/new/YYYY-MM-DD.json`. A source that fails goes to `ingest/quarantine/` and does not fail the run.
+
+`.github/workflows/ingest.yml` runs that script every Sunday at 20:00 UTC and opens a pull request labelled `new-publications` when there is something new. `.github/workflows/validate.yml` runs `tools/validate.py --strict` and the build scripts on pull requests and on pushes to main. An AI reviewer still drafts typologies and indicators from the new items, for human maker/checker review.
+
 ## 2026-11-27: weekly scan, baseline run
 Scope: global public sources on financial crime and fraud red flags, focused on the last 12 months. Sources used are in [sources/registry.yaml](sources/registry.yaml) (9 publications extracted, 11 more identified for the next run).
 

@@ -1,0 +1,5 @@
+# Direct dependencies for tools/ingest.py.
+# tools/validate.py, tools/build_index.py and tools/build_site.py need PyYAML only.
+requests==2.34.2
+feedparser==6.0.14
+PyYAML==6.0.4

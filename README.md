@@ -18,11 +18,15 @@ controls/<family>.yaml        # 178 canonical controls, each defined once
 indicators/<category>.yaml    # 709 canonical indicators, each defined once
 typologies/<domain>/*.yaml    # 121 typologies linking to indicators + controls
 sources/registry.yaml         # public authoritative sources and publications scanned
+ingest/seen.json              # hash of each publication already seen, and when
+ingest/new/                   # genuinely new items from a weekly ingest run
+ingest/quarantine/            # sources that failed to fetch or parse
 docs/architecture.md          # target design of the research agent that feeds this repo
 CHANGELOG.md                  # one entry per scan / release
 build/                        # generated reverse views (control -> typologies etc.)
 tools/validate.py             # integrity + duplicate checks (needs pyyaml)
 tools/build_index.py          # regenerates build/
+tools/ingest.py               # fetches public listings and de-duplicates them
 ```
 Controls and indicators are **linked, not copied**: one control serves many indicators and typologies. See [SCHEMA.md](SCHEMA.md).
 
@@ -31,6 +35,16 @@ Controls and indicators are **linked, not copied**: one control serves many indi
 pip install pyyaml
 python3 tools/validate.py .      # add --strict to fail on warnings
 python3 tools/build_index.py .   # regenerate build/
+```
+
+## Ingestion
+The weekly scan's fetch and de-duplication run in GitHub Actions, not in the model. `tools/ingest.py` reads `sources/registry.yaml`, fetches each public feed or listing, and skips anything already recorded in `ingest/seen.json`. New items are written to `ingest/new/YYYY-MM-DD.json`. A failed source is quarantined and does not stop the run.
+
+[`.github/workflows/ingest.yml`](.github/workflows/ingest.yml) runs every Sunday at 20:00 UTC (Monday morning in Sydney). If there are new publications it opens a pull request titled `Ingest: N new publications (YYYY-MM-DD)` and labelled `new-publications`. If there are none, it commits the seen-state or quarantine update to `main` and opens no pull request. An AI reviewer then drafts typologies and indicators from that pull request only, for human maker/checker review. See [docs/architecture.md](docs/architecture.md).
+
+```
+pip install -r requirements.txt
+python3 tools/ingest.py .
 ```
 
 ## Citation status tags

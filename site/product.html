@@ -3,17 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="dark">
 <title>Product mapper | FC Risk Indicators</title>
 <meta name="description" content="Answer product risk assessment questions to see which typologies are relevant by exposure overlap, then open the linkage or export a product pack. Runs in your browser.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="FC Risk Indicators">
 <meta property="og:title" content="Product mapper | FC Risk Indicators">
 <meta property="og:description" content="Answer product risk assessment questions to see which typologies are relevant by exposure overlap, then open the linkage or export a product pack. Runs in your browser.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.5 22.5 12 12 22.5 1.5 12z' fill='%233F3D99'/%3E%3Ccircle cx='12' cy='12' r='4.4' fill='white'/%3E%3Ccircle cx='12' cy='12' r='2.2' fill='%23B3262E'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/app.e80f6653.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.5 22.5 12 12 22.5 1.5 12z' fill='%236f5adc'/%3E%3Ccircle cx='12' cy='12' r='4.4' fill='white'/%3E%3Ccircle cx='12' cy='12' r='2.2' fill='%237ee6d6'/%3E%3C/svg%3E">
+<style>@font-face{font-family:"Inter";src:url(/assets/inter.f11d729b.woff2) format("woff2");font-weight:100 900;font-display:swap}@font-face{font-family:"DM Sans";src:url(/assets/dmsans.c57593e0.woff2) format("woff2");font-weight:100 1000;font-display:swap}</style>
+<link rel="stylesheet" href="/assets/app.80cccd3d.css">
 <script>window.FC_V="10a743bc";document.documentElement.classList.add("js")</script>
 </head>
 <body data-page="product">
@@ -25,8 +24,9 @@
 <a class="skip" href="#main">Skip to content</a>
 <div class="banner" role="region" aria-label="Content status"><div class="wrap"><strong>Draft v0.1</strong><span>AI-drafted and unreviewed. Exposure tags are AI-inferred. Signal strength is not a risk score. No human has confirmed any citation. <a href="/about#status">What this means</a></span></div></div>
 <header class="top"><div class="wrap">
-<a class="brand" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5 22.5 12 12 22.5 1.5 12z" fill="var(--typ)"/><circle cx="12" cy="12" r="4.4" fill="var(--surface)"/><circle cx="12" cy="12" r="2.2" fill="var(--tape)"/></svg>FC Risk Indicators</a>
-<nav aria-label="Primary"><a href="/">Linkage</a><a href="/product" aria-current="page">Product mapper</a><a href="/about">About</a></nav>
+<a class="brand" href="/" aria-label="FC Risk Indicators, home"><span class="tile" aria-hidden="true">FC</span><span>Risk Indicators</span></a>
+<button type="button" class="menu" aria-label="Menu" aria-expanded="false" aria-controls="nav"><i></i></button>
+<nav id="nav" aria-label="Primary"><a href="/">Linkage</a><a href="/product" aria-current="page">Product mapper</a><a href="/about">About</a></nav>
 </div></header>
 <div id="nofetch" class="wrap" hidden><div class="notice" role="alert"><strong>Data could not be loaded.</strong> This site loads its data with <code>fetch()</code>, which browsers block for pages opened from disk. Serve the <code>site/</code> folder, for example with <code>python3 tools/serve_site.py</code>, or use the deployed site.</div></div>
 <main id="main" tabindex="-1">
@@ -41,7 +41,7 @@
 <p>Indicators are red flags, not proof of crime. Nothing here is legal or compliance advice. <a href="https://github.com/banksy2560/fc-risk-indicators">Source on GitHub</a> | Code Apache-2.0, content CC-BY-4.0.</p>
 </div></footer>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
-<script defer src="/assets/common.f298d492.js"></script>
+<script defer src="/assets/common.fb9e5f55.js"></script>
 <script defer src="/assets/product.8c6dd78e.js"></script>
 </body>
 </html>

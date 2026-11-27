@@ -711,3 +711,85 @@ indicators:
   provenance: ai_drafted
   evidence_basis: ai_draft_unreviewed
   confidence: unassessed
+- id: IND-GEO-045
+  name: Exchange provider obscures its location or structure while appearing to operate in a scam-centre
+    region
+  description: A payment service provider offering digital asset exchange appears to operate from a jurisdiction
+    associated with scam centres and takes steps to hide where it is based or who owns it.
+  category: geographic
+  severity: medium
+  detection_type:
+  - kyc_review
+  - external_intel
+  data_sources:
+  - counterparty_records
+  - open_source_research
+  false_positive_notes: Providers with transparent licensing and disclosed ownership in the same region.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - cyber_enabled/CY-GUARANTEE
+  evidence:
+  - source_id: SRC-FINCEN
+    authority: FinCEN (US Treasury)
+    source_type: fiu
+    publication: FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment Scam
+      Centers (FIN-2026-Alert005)
+    url: https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf
+    published: '2026-09-03'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: f4f28995f714476a454bc8e1235cc304b462ab830cc730aeff7dc75590e89e92
+      of: pdf_bytes
+    excerpt: A payment service provider that offers digital asset exchange services appears to operate
+      in Burma, Cambodia, or Laos, and appears to take measures to obfuscate its location or corporate
+      structure.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-GEO-046
+  name: Cash deposits made far from where the account holder lives or banks
+  description: Cash is paid in at branches or machines in a different state, region or suburb from the
+    account holder, often on the same day at several locations.
+  category: geographic
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  data_sources:
+  - cash_deposit_records
+  - atm_logs
+  - customer_records
+  false_positive_notes: Travelling or relocating customers, or relatives depositing on their behalf.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - money_laundering/ML-CUCKOO
+  evidence:
+  - source_id: SRC-AUSTRAC
+    authority: AUSTRAC (Fintel Alliance)
+    source_type: fiu
+    publication: 'Financial crime guide: Detect and report cuckoo smurfing'
+    url: https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/detect-and-report-cuckoo-smurfing
+    published: 2021-06
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: 04dcd335f216b0b44edacd9146b1ee30d2b49de57b3a5ef7df3edfe3d7ca8a89
+      of: extracted_text
+    excerpt: Cash deposits conducted in a different state from where the account is held.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan

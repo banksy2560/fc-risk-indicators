@@ -1,0 +1,319 @@
+# Source registry (layer 1-2 of docs/architecture.md). AI-maintained, unreviewed.
+meta:
+  description: Registry of public, authoritative sources scanned by the typology research agent. Public
+    sources only; never internal or institution-specific data.
+  updated: '2026-11-27'
+  status_values:
+  - extracted
+  - source_update_only
+  - identified_not_extracted
+  - quarantined
+sources:
+- id: SRC-FATF
+  authority: Financial Action Task Force (FATF)
+  type: standard_setter
+  jurisdiction: international
+  url: https://www.fatf-gafi.org/en/publications.html
+  scan: weekly
+- id: SRC-AUSTRAC
+  authority: AUSTRAC, incl. Fintel Alliance financial crime guides
+  type: fiu
+  jurisdiction: AU
+  url: https://www.austrac.gov.au/government-and-partners/fintel-alliance
+  scan: weekly
+- id: SRC-FINCEN
+  authority: FinCEN (US Treasury)
+  type: fiu
+  jurisdiction: US
+  url: https://www.fincen.gov/resources/advisoriesbulletinsfact-sheets
+  scan: weekly
+- id: SRC-FINTRAC
+  authority: FINTRAC (Canada)
+  type: fiu
+  jurisdiction: CA
+  url: https://fintrac-canafe.canada.ca/intel/intel-eng
+  scan: weekly
+- id: SRC-EGMONT
+  authority: Egmont Group
+  type: fiu_network
+  jurisdiction: international
+  url: https://egmontgroup.org/
+  scan: weekly
+- id: SRC-ASIC
+  authority: ASIC
+  type: regulator
+  jurisdiction: AU
+  url: https://asic.gov.au/
+  scan: weekly
+- id: SRC-NASC
+  authority: National Anti-Scam Centre / Scamwatch (ACCC)
+  type: government
+  jurisdiction: AU
+  url: https://www.nasc.gov.au/reports-and-publications
+  scan: weekly
+- id: SRC-NCA
+  authority: UK National Crime Agency
+  type: law_enforcement
+  jurisdiction: UK
+  url: https://www.nationalcrimeagency.gov.uk/
+  scan: weekly
+- id: SRC-FCA
+  authority: UK Financial Conduct Authority
+  type: regulator
+  jurisdiction: UK
+  url: https://www.fca.org.uk/
+  scan: weekly
+- id: SRC-EUROPOL
+  authority: Europol (IOCTA and threat assessments)
+  type: law_enforcement
+  jurisdiction: EU
+  url: https://www.europol.europa.eu/publications-events/main-reports
+  scan: weekly
+- id: SRC-EBA
+  authority: European Banking Authority
+  type: regulator
+  jurisdiction: EU
+  url: https://www.eba.europa.eu/
+  scan: weekly
+- id: SRC-MAS
+  authority: Monetary Authority of Singapore
+  type: regulator
+  jurisdiction: SG
+  url: https://www.mas.gov.sg/
+  scan: weekly
+- id: SRC-HKMA
+  authority: Hong Kong Monetary Authority
+  type: regulator
+  jurisdiction: HK
+  url: https://www.hkma.gov.hk/
+  scan: weekly
+- id: SRC-INTERPOL
+  authority: INTERPOL
+  type: law_enforcement
+  jurisdiction: international
+  url: https://www.interpol.int/
+  scan: weekly
+- id: SRC-UNODC
+  authority: UNODC
+  type: intergovernmental
+  jurisdiction: international
+  url: https://www.unodc.org/
+  scan: weekly
+- id: SRC-WOLFSBERG
+  authority: Wolfsberg Group
+  type: industry_body
+  jurisdiction: international
+  url: https://wolfsberg-group.org/
+  scan: weekly
+- id: SRC-OFAC
+  authority: US Treasury OFAC
+  type: sanctions_authority
+  jurisdiction: US
+  url: https://ofac.treasury.gov/
+  scan: weekly
+- id: SRC-DFAT
+  authority: DFAT Australian Sanctions Office
+  type: sanctions_authority
+  jurisdiction: AU
+  url: https://www.dfat.gov.au/international-relations/security/sanctions
+  scan: weekly
+publications:
+- id: FINCEN-2026-A005
+  source_id: SRC-FINCEN
+  title: FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment Scam Centers
+    (FIN-2026-Alert005)
+  url: https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf
+  published: '2026-09-03'
+  retrieved: '2026-11-27'
+  snapshot:
+    sha256: f4f28995f714476a454bc8e1235cc304b462ab830cc730aeff7dc75590e89e92
+    of: pdf_bytes
+  status: extracted
+  indicators:
+  - IND-BEH-121
+  - IND-BEH-122
+  - IND-CPT-063
+  - IND-CPT-064
+  - IND-CPT-065
+  - IND-GEO-045
+  - IND-TXN-162
+  - IND-TXN-163
+  - IND-TXN-164
+  - IND-TYP-069
+- id: FINCEN-2026-A007
+  source_id: SRC-FINCEN
+  title: FinCEN Alert on the A7 Network (FIN-2026-Alert007)
+  url: https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf
+  published: '2026-10-01'
+  retrieved: '2026-11-27'
+  snapshot:
+    sha256: acee635ac708c0b70b62b73f80521f012ab2fae25d868bfd4ce79681d9337883
+    of: pdf_bytes
+  status: extracted
+  indicators:
+  - IND-BEH-123
+  - IND-CUS-055
+  - IND-DOC-070
+  - IND-TXN-165
+  - IND-TXN-166
+  - IND-TXN-167
+- id: FATF-2026-SCAMCOMP
+  source_id: SRC-FATF
+  title: 'Combating End-to-End Illicit Financial Flows Linked to Scam Compounds: Applying the FATF Toolkit
+    to the Fraud Epidemic'
+  url: https://www.fatf-gafi.org/en/publications/Methodsandtrends/combating-illicit-financial-flows-linked-to-scam-compounds.html
+  published: '2026-11-05'
+  retrieved: '2026-11-27'
+  snapshot:
+    sha256: 2b6d4690147690b36de518e7a6d98633ee78fbef34149c66cf55f93fc5861bda
+    of: extracted_text
+  status: extracted
+  indicators:
+  - IND-CPT-067
+  - IND-PRD-071
+- id: FATF-2026-GAMING
+  source_id: SRC-FATF
+  title: Risks of Gaming and Gambling (Red Flag Risk Indicators)
+  url: https://www.fatf-gafi.org/en/publications/Methodsandtrends/risks-of-gaming-and-gambling.html
+  published: '2026-09-09'
+  retrieved: '2026-11-27'
+  snapshot:
+    sha256: 1b241a7a1817a8117d42ecd589722405c7658b0ab98c171ff4d36aa095baacad
+    of: extracted_text
+  status: extracted
+  indicators:
+  - IND-BEH-126
+  - IND-CUS-056
+  - IND-OWN-030
+  - IND-PRD-070
+- id: FATF-2026-PML
+  source_id: SRC-FATF
+  title: Investigating Professional Money Laundering, Underground Banking, and the Use of Hawala and Other
+    Similar Service Providers
+  url: https://www.fatf-gafi.org/en/publications/Methodsandtrends/pml-underground-banking-hawala-hossps.html
+  published: '2026-09-03'
+  retrieved: '2026-11-27'
+  snapshot:
+    sha256: 27cd8cb8c90704ca0a7efe7e09b74da8cfb84e1716a07b4a3ee014a28613b841
+    of: extracted_text
+  status: source_update_only
+  indicators: []
+  note: Cited as an updated source on ML-HAWALA and ML-PMLN; no new indicators extracted this run.
+- id: AUSTRAC-2025-SCAMBLING
+  source_id: SRC-AUSTRAC
+  title: 'Scambling: the nexus between scams, money mules and micro-laundering'
+  url: https://www.austrac.gov.au/sites/default/files/2025-12/Scambling%20-%20the%20nexus%20between%20scams%2C%20money%20mules%20and%20micro-laundering.pdf
+  published: 2025-11
+  retrieved: '2026-11-27'
+  snapshot:
+    sha256: 075c711d1bcf8b2c3dd33f9189e1adf871fa0c6ee367ae0d52b09c9dc4ddb1f2
+    of: extracted_text
+  status: extracted
+  indicators:
+  - IND-BEH-125
+  - IND-TXN-171
+- id: AUSTRAC-2021-CUCKOO
+  source_id: SRC-AUSTRAC
+  title: 'Financial crime guide: Detect and report cuckoo smurfing'
+  url: https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/detect-and-report-cuckoo-smurfing
+  published: 2021-06
+  retrieved: '2026-11-27'
+  snapshot:
+    sha256: 04dcd335f216b0b44edacd9146b1ee30d2b49de57b3a5ef7df3edfe3d7ca8a89
+    of: extracted_text
+  status: extracted
+  indicators:
+  - IND-CPT-066
+  - IND-GEO-046
+  - IND-TXN-168
+  - IND-TXN-169
+  note: Guide dated June 2021; landing page last updated 30 Mar 2026; method still cited in Fintel Alliance
+    2025-26 performance reporting.
+- id: AUSTRAC-2021-PAYTEXT
+  source_id: SRC-AUSTRAC
+  title: 'Financial crime guide: Preventing misuse and criminal communication through payment text fields'
+  url: https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/preventing-misuse-and-criminal-communication-through-payment-text-fields
+  published: 2021-11
+  retrieved: '2026-11-27'
+  snapshot:
+    sha256: c5662ed9d1f9f4f31772ebdf6ddfc0e461f67826b8da8514d66aa8d2c9cf4106
+    of: extracted_text
+  status: extracted
+  indicators:
+  - IND-BEH-124
+  - IND-DOC-071
+  - IND-TXN-170
+  note: Guide dated November 2021; landing page last updated 27 Mar 2026.
+- id: FINTRAC-2026-SB002
+  source_id: SRC-FINTRAC
+  title: Special Bulletin on money laundering associated with extortion directed at Canada's South Asian
+    diaspora (FINTRAC-2026-SB002)
+  url: https://fintrac-canafe.canada.ca/intel/bulletins/csad-dsac-eng.pdf
+  published: 2026-04
+  retrieved: '2026-11-27'
+  snapshot:
+    sha256: 9e1d8b6e731424de166a2437409ae0a429747f72b385c0292c360c07299f17b9
+    of: extracted_text
+  status: extracted
+  indicators:
+  - IND-TXN-172
+  - IND-TXN-173
+queue:
+- title: 'Targeting scams: report of the National Anti-Scam Centre on scams data and activity 2025'
+  source_id: SRC-NASC
+  url: https://www.nasc.gov.au/reports-and-publications/targeting-scams/targeting-scams-report-of-the-national-anti-scam-centre-on-scams-data-and-activity-2025
+  published: '2026-03-30'
+  status: identified_not_extracted
+- title: 'IOCTA 2026: The evolving threat landscape'
+  source_id: SRC-EUROPOL
+  url: https://www.europol.europa.eu/publication-events/main-reports/iocta-2026-evolving-threat-landscape
+  published: '2026-04-28'
+  status: identified_not_extracted
+- title: FinCEN Alert on Fraud Schemes Targeting Federal Student Aid (FIN-2026-Alert004)
+  source_id: SRC-FINCEN
+  url: https://www.fincen.gov/system/files/2026-07/FinCEN-Alert-Fraud-Schemes-Targeting-Federal-Student-Aid.pdf
+  published: '2026-07-24'
+  status: identified_not_extracted
+- title: FinCEN Alert to Counter Iranian Abuse of Religious Charity (FIN-2026-Alert008)
+  source_id: SRC-FINCEN
+  url: https://www.fincen.gov/resources/advisoriesbulletinsfact-sheets
+  published: '2026-10-15'
+  status: identified_not_extracted
+- title: FinCEN Alert on Risks Associated with Foreign-Agent-Directed Transactions (FIN-2026-Alert009)
+  source_id: SRC-FINCEN
+  url: https://www.fincen.gov/resources/advisoriesbulletinsfact-sheets
+  published: '2026-10-30'
+  status: identified_not_extracted
+- title: FINTRAC Special Bulletin on human trafficking risks associated with major international sporting
+    and entertainment events
+  source_id: SRC-FINTRAC
+  url: https://fintrac-canafe.canada.ca/intel/bulletins/sport-eng.pdf
+  published: '2026-05-28'
+  status: identified_not_extracted
+- title: FINTRAC updated money laundering indicators for online child sexual exploitation
+  source_id: SRC-FINTRAC
+  url: https://fintrac-canafe.canada.ca/new-neuf/nr/2025-11-27-eng
+  published: '2025-11-27'
+  status: identified_not_extracted
+- title: 'AUSTRAC: Combating the sexual exploitation of children for financial gain activity indicators
+    report'
+  source_id: SRC-AUSTRAC
+  url: https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/combating-sexual-exploitation-children-financial-gain-activity-indicators-report
+  published: unknown (page updated 2026-03-30)
+  status: identified_not_extracted
+- title: FATF Targeted Report on Regulatory Challenges from Decentralised Finance (DeFi)
+  source_id: SRC-FATF
+  url: https://www.fatf-gafi.org/content/dam/fatf-gafi/reports/targeted-report-decentralised-finance-2026.pdf
+  published: '2026'
+  status: identified_not_extracted
+- title: FATF Understanding and Mitigating the Risks of Offshore Virtual Asset Service Providers
+  source_id: SRC-FATF
+  url: https://www.fatf-gafi.org/content/dam/fatf-gafi/reports/Understanding-Mitigating-Risks-Offshore-VASPs.pdf
+  published: unknown
+  status: identified_not_extracted
+- title: MAS papers on cyber risks of generative AI and deepfakes (via Singapore MinLaw AML/CFT Division
+    notice)
+  source_id: SRC-MAS
+  url: https://acd.mlaw.gov.sg/news/cyber-risks-associated-with-genai-and-deepfakes/
+  published: '2025-09-29'
+  status: identified_not_extracted

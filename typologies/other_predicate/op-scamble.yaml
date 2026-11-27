@@ -1,0 +1,92 @@
+typology:
+  id: OP-SCAMBLE
+  name: 'Scambling: unlawful online gambling apps and micro-laundering through mule accounts'
+  domain: other_predicate
+  description: Unlawful, mostly offshore online casino and poker-machine sites and apps, promoted through
+    social media and app stores, take players' money and personal data and launder proceeds through tiered
+    networks of mule accounts using high volumes of low-value payments. Players, often in vulnerable or
+    remote communities, may become mules by sharing account or payment-alias details for game credits.
+  exposure:
+    channels:
+    - online_platform
+    - mobile_app
+    payment_rails:
+    - fast_payments
+    - card
+    customer_segments:
+    - retail
+    - vulnerable_elderly
+    - student_youth
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Phone-number payment aliases and everyday accounts used for many small gambling-related
+      transfers.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      channels:
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Players and recruited mules use everyday accounts and app payments.
+  sectors:
+  - banking
+  - payments
+  - casino_gaming
+  sources:
+  - 'AUSTRAC (Fintel Alliance), Scambling: the nexus between scams, money mules and micro-laundering (2025-11)
+    <https://www.austrac.gov.au/sites/default/files/2025-12/Scambling%20-%20the%20nexus%20between%20scams%2C%20money%20mules%20and%20micro-laundering.pdf>
+    [agent-retrieved 2026-11-27]'
+  indicators:
+  - ref: IND-TXN-171
+    context: Mule accounts receive many small inbound payments addressed to a phone-number payment alias
+      and pass them up a tiered network.
+    controls:
+    - CTL-051
+    - CTL-041
+    - CTL-040
+    references:
+    - 'AUSTRAC (Fintel Alliance), Scambling: the nexus between scams, money mules and micro-laundering
+      (2025-11) <https://www.austrac.gov.au/sites/default/files/2025-12/Scambling%20-%20the%20nexus%20between%20scams%2C%20money%20mules%20and%20micro-laundering.pdf>
+      [agent-retrieved 2026-11-27]'
+  - ref: IND-BEH-125
+    context: A player discloses giving account or alias details to a gambling app or contact in exchange
+      for game credits.
+    controls:
+    - CTL-170
+    - CTL-022
+    - CTL-074
+    references:
+    - 'AUSTRAC (Fintel Alliance), Scambling: the nexus between scams, money mules and micro-laundering
+      (2025-11) <https://www.austrac.gov.au/sites/default/files/2025-12/Scambling%20-%20the%20nexus%20between%20scams%2C%20money%20mules%20and%20micro-laundering.pdf>
+      [agent-retrieved 2026-11-27]'
+  - ref: IND-BEH-044
+    context: Social media groups and ads offer to 'buy' or 'rent' bank accounts for use by the network.
+    controls:
+    - CTL-051
+    - CTL-082
+    references:
+    - 'AUSTRAC (Fintel Alliance), Scambling: the nexus between scams, money mules and micro-laundering
+      (2025-11) <https://www.austrac.gov.au/sites/default/files/2025-12/Scambling%20-%20the%20nexus%20between%20scams%2C%20money%20mules%20and%20micro-laundering.pdf>
+      [agent-retrieved 2026-11-27]'
+  - ref: IND-CPT-026
+    context: Payments to unlawful offshore gambling sites or apps that are not licensed to offer services
+      in Australia.
+    controls:
+    - CTL-082
+    - CTL-053
+    references:
+    - 'AUSTRAC (Fintel Alliance), Scambling: the nexus between scams, money mules and micro-laundering
+      (2025-11) <https://www.austrac.gov.au/sites/default/files/2025-12/Scambling%20-%20the%20nexus%20between%20scams%2C%20money%20mules%20and%20micro-laundering.pdf>
+      [agent-retrieved 2026-11-27]'
+  - ref: IND-CUS-028
+    context: New or reactivated personal accounts suddenly receive many unrelated small payments.
+    controls:
+    - CTL-054
+    - CTL-051
+    references:
+    - 'AUSTRAC (Fintel Alliance), Scambling: the nexus between scams, money mules and micro-laundering
+      (2025-11) <https://www.austrac.gov.au/sites/default/files/2025-12/Scambling%20-%20the%20nexus%20between%20scams%2C%20money%20mules%20and%20micro-laundering.pdf>
+      [agent-retrieved 2026-11-27]'

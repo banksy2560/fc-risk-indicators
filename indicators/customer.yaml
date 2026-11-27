@@ -924,3 +924,87 @@ indicators:
   provenance: ai_drafted
   evidence_basis: ai_draft_unreviewed
   confidence: unassessed
+- id: IND-CUS-055
+  name: OTC or block-trading crypto firm with sudden unexplained growth, thin online presence and short
+    history
+  description: A digital asset firm focused on stablecoin-fiat pairs, or suspected of unregistered money
+    transmission, shows abrupt unexplained growth linked to jurisdictions of concern while having little
+    public footprint or operating history.
+  category: customer
+  severity: medium
+  detection_type:
+  - kyc_review
+  - transaction_monitoring
+  data_sources:
+  - customer_records
+  - account_transactions
+  - open_source_research
+  false_positive_notes: Genuine start-ups growing after a funding round or new licence, with transparent
+    ownership.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - sanctions/SANC-SETTLE
+  evidence:
+  - source_id: SRC-FINCEN
+    authority: FinCEN (US Treasury)
+    source_type: fiu
+    publication: FinCEN Alert on the A7 Network (FIN-2026-Alert007)
+    url: https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf
+    published: '2026-10-01'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: acee635ac708c0b70b62b73f80521f012ab2fae25d868bfd4ce79681d9337883
+      of: pdf_bytes
+    excerpt: sees a sudden, unexplainable growth in activity in jurisdictions with known touchpoints to
+      A7 Network operations, especially if they have a minimal online presence or limited operating history.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-CUS-056
+  name: Gambling account holder does not match the payment method used to fund or withdraw
+  description: Details on an online betting or casino account differ from the owner of the card, bank
+    account or wallet used for deposits and withdrawals.
+  category: customer
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - kyc_review
+  data_sources:
+  - gaming_account_records
+  - payment_instrument_records
+  false_positive_notes: Joint accounts or family cards used with consent and disclosed.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - money_laundering/ML-CASINO
+  evidence:
+  - source_id: SRC-FATF
+    authority: FATF
+    source_type: standard_setter
+    publication: Risks of Gaming and Gambling (Red Flag Risk Indicators)
+    url: https://www.fatf-gafi.org/en/publications/Methodsandtrends/risks-of-gaming-and-gambling.html
+    published: '2026-09-09'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: 1b241a7a1817a8117d42ecd589722405c7658b0ab98c171ff4d36aa095baacad
+      of: extracted_text
+    excerpt: Online betting account details do not match the account details of the payment method for
+      deposits and withdrawals.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan

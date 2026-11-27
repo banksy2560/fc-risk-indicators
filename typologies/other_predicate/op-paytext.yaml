@@ -1,0 +1,74 @@
+typology:
+  id: OP-PAYTEXT
+  name: Payment text field abuse and criminal communication
+  domain: other_predicate
+  description: Free-text fields on low-value payments are used as a messaging channel to stalk, harass,
+    threaten or coerce a victim (often in family and domestic violence, including breaches of protection
+    orders), to make extortion threats, to signal self-harm, or to communicate about criminal activity.
+    The money is incidental; the message is the harm.
+  exposure:
+    channels:
+    - mobile_app
+    - online_banking
+    payment_rails:
+    - fast_payments
+    customer_segments:
+    - retail
+    - vulnerable_elderly
+    - student_youth
+    products:
+    - transaction_account
+    basis: ai_inferred
+    rationale: Real-time account-to-account payments with long free-text references sent from banking
+      apps.
+    consumer:
+      relevant: true
+      products:
+      - transaction_account
+      channels:
+      - mobile_app
+      - online_banking
+      basis: ai_inferred
+      rationale: Everyday accounts send and receive messages through payment descriptions in app and internet
+        banking.
+  sectors:
+  - banking
+  - payments
+  - fintech
+  sources:
+  - 'AUSTRAC (Fintel Alliance), Financial crime guide: Preventing misuse and criminal communication through
+    payment text fields (2021-11) <https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/preventing-misuse-and-criminal-communication-through-payment-text-fields>
+    [agent-retrieved 2026-11-27]'
+  indicators:
+  - ref: IND-TXN-170
+    context: Cents or a few dollars sent repeatedly to the same person, where the description field carries
+      the real content.
+    controls:
+    - CTL-030
+    - CTL-037
+    - CTL-100
+    references:
+    - 'AUSTRAC (Fintel Alliance), Financial crime guide: Preventing misuse and criminal communication
+      through payment text fields (2021-11) <https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/preventing-misuse-and-criminal-communication-through-payment-text-fields>
+      [agent-retrieved 2026-11-27]'
+  - ref: IND-DOC-071
+    context: Threatening, coercive, self-harm or coded criminal language in payment descriptions, including
+      misspellings to fit character limits or evade term lists.
+    controls:
+    - CTL-030
+    - CTL-100
+    - CTL-093
+    references:
+    - 'AUSTRAC (Fintel Alliance), Financial crime guide: Preventing misuse and criminal communication
+      through payment text fields (2021-11) <https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/preventing-misuse-and-criminal-communication-through-payment-text-fields>
+      [agent-retrieved 2026-11-27]'
+  - ref: IND-BEH-124
+    context: Messages flow one way only, or continue or rise in value after the sender is warned or blocked.
+    controls:
+    - CTL-030
+    - CTL-016
+    - CTL-100
+    references:
+    - 'AUSTRAC (Fintel Alliance), Financial crime guide: Preventing misuse and criminal communication
+      through payment text fields (2021-11) <https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/preventing-misuse-and-criminal-communication-through-payment-text-fields>
+      [agent-retrieved 2026-11-27]'

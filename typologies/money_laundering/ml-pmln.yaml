@@ -53,6 +53,9 @@ typology:
     agent-reviewed]
   - Europol, European Union Serious and Organised Crime Threat Assessment (EU SOCTA) (specify 2021 or
     2025) <https://www.europol.europa.eu/> [corrected, agent-reviewed]
+  - FATF, Investigating Professional Money Laundering, Underground Banking, and the Use of Hawala and
+    Other Similar Service Providers (2026-09-03) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/pml-underground-banking-hawala-hossps.html>
+    [agent-retrieved 2026-11-27]
   indicators:
   - ref: IND-OWN-010
     legacy_id: ML-PMLN-001

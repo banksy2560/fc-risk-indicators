@@ -2183,3 +2183,255 @@ indicators:
   provenance: ai_drafted
   evidence_basis: ai_draft_unreviewed
   confidence: unassessed
+- id: IND-BEH-121
+  name: Customer says an official told them to pay in crypto, gold, gift cards or by international wire
+  description: The customer explains a payment as instructed by someone claiming to be police, a regulator
+    or another government body, using digital assets, precious metals, gift cards or an overseas wire.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_contact_notes
+  - payment_instructions
+  false_positive_notes: Genuine tax or fine payments made through official, verifiable channels.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - fraud/FR-IMP
+  - fraud/FR-RECOV
+  evidence:
+  - source_id: SRC-FINCEN
+    authority: FinCEN (US Treasury)
+    source_type: fiu
+    publication: FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment Scam
+      Centers (FIN-2026-Alert005)
+    url: https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf
+    published: '2026-09-03'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: f4f28995f714476a454bc8e1235cc304b462ab830cc730aeff7dc75590e89e92
+      of: pdf_bytes
+    excerpt: A customer states that they were directed by a purported representative of law enforcement
+      or a government agency to make a payment using digital assets, to conduct an international wire
+      transfer, or to purchase precious metals or gift cards.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-BEH-122
+  name: Savings or retirement funds withdrawn to buy gold that is handed to a courier
+  description: The customer liquidates investment or retirement savings to buy bullion or gold and says
+    they have been told to hand it to a courier or collector.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - transaction_monitoring
+  data_sources:
+  - account_transactions
+  - customer_contact_notes
+  false_positive_notes: Genuine bullion investment held in the customer's own custody or a recognised
+    vault.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - fraud/FR-IMP
+  - fraud/FR-RECOV
+  - fraud/FR-VULN
+  evidence:
+  - source_id: SRC-FINCEN
+    authority: FinCEN (US Treasury)
+    source_type: fiu
+    publication: FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment Scam
+      Centers (FIN-2026-Alert005)
+    url: https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf
+    published: '2026-09-03'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: f4f28995f714476a454bc8e1235cc304b462ab830cc730aeff7dc75590e89e92
+      of: pdf_bytes
+    excerpt: A customer withdraws funds from an investment or retirement account to purchase gold from
+      a precious metals dealer and indicates that they have been instructed to hand the gold to a courier.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-BEH-123
+  name: Account accessed through VPN, email or web infrastructure publicly tied to a designated network
+  description: Logins, registration emails or the customer's business website resolve to VPN services,
+    mail servers or IP ranges that authorities have publicly linked to a sanctions-evasion network.
+  category: behavioural
+  severity: high
+  detection_type:
+  - customer_behaviour
+  - external_intel
+  data_sources:
+  - device_ip_logs
+  - email_metadata
+  - threat_intelligence
+  false_positive_notes: Shared commercial hosting or VPN exit nodes used by many unrelated users.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - sanctions/SANC-SETTLE
+  evidence:
+  - source_id: SRC-FINCEN
+    authority: FinCEN (US Treasury)
+    source_type: fiu
+    publication: FinCEN Alert on the A7 Network (FIN-2026-Alert007)
+    url: https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf
+    published: '2026-10-01'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: acee635ac708c0b70b62b73f80521f012ab2fae25d868bfd4ce79681d9337883
+      of: pdf_bytes
+    excerpt: A customer accesses a financial account or conducts transactions from an IP address that
+      resolves to identified VPN infrastructure known to be affiliated [...] and the A7 Network
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-BEH-124
+  name: One-sided payment messaging that continues without reply or after warnings
+  description: One person keeps sending low-value payments with text to another who never replies, or
+    the pattern resumes or escalates in value after the institution has warned or blocked the sender.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - transaction_monitoring
+  - customer_behaviour
+  data_sources:
+  - account_transactions
+  - payment_text
+  - customer_contact_notes
+  false_positive_notes: Regular one-way payments such as pocket money or rent with routine references.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - other_predicate/OP-PAYTEXT
+  evidence:
+  - source_id: SRC-AUSTRAC
+    authority: AUSTRAC (Fintel Alliance)
+    source_type: fiu
+    publication: 'Financial crime guide: Preventing misuse and criminal communication through payment
+      text fields'
+    url: https://www.austrac.gov.au/industry-and-business/education-and-resources/publications-and-resources/preventing-misuse-and-criminal-communication-through-payment-text-fields
+    published: 2021-11
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: c5662ed9d1f9f4f31772ebdf6ddfc0e461f67826b8da8514d66aa8d2c9cf4106
+      of: extracted_text
+    excerpt: One person sending low value payments with no reciprocal reply is more likely indicative
+      of abuse or harassment.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-BEH-125
+  name: Customer shares account or payment-alias details with an online gambling or gaming app in return
+    for credits
+  description: The customer reveals they gave their account number or payment alias to a gambling or gaming
+    platform, or to someone met through one, to earn game credits or rewards, and now sees unexplained
+    flows.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  - investigator_judgement
+  data_sources:
+  - customer_contact_notes
+  - account_transactions
+  false_positive_notes: Customers sharing details with a licensed operator for legitimate withdrawals.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - other_predicate/OP-SCAMBLE
+  evidence:
+  - source_id: SRC-AUSTRAC
+    authority: AUSTRAC (Fintel Alliance)
+    source_type: fiu
+    publication: 'Scambling: the nexus between scams, money mules and micro-laundering'
+    url: https://www.austrac.gov.au/sites/default/files/2025-12/Scambling%20-%20the%20nexus%20between%20scams%2C%20money%20mules%20and%20micro-laundering.pdf
+    published: 2025-11
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: 075c711d1bcf8b2c3dd33f9189e1adf871fa0c6ee367ae0d52b09c9dc4ddb1f2
+      of: extracted_text
+    excerpt: A large proportion have become mules after sharing their account and/or PayID details to
+      earn game credits
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan
+- id: IND-BEH-126
+  name: Gambler conceals identity or location with repeated VPN use, many devices or mismatched residence
+  description: A player repeatedly uses VPNs or multiple devices, or their detected location conflicts
+    with their declared residence.
+  category: behavioural
+  severity: medium
+  detection_type:
+  - customer_behaviour
+  data_sources:
+  - device_ip_logs
+  - gaming_account_records
+  false_positive_notes: Privacy-conscious users, travellers or corporate VPNs.
+  status: draft
+  provenance: ai_drafted
+  evidence_basis: regulator_typology
+  confidence: unassessed
+  taxonomy_nodes:
+  - money_laundering/ML-CASINO
+  evidence:
+  - source_id: SRC-FATF
+    authority: FATF
+    source_type: standard_setter
+    publication: Risks of Gaming and Gambling (Red Flag Risk Indicators)
+    url: https://www.fatf-gafi.org/en/publications/Methodsandtrends/risks-of-gaming-and-gambling.html
+    published: '2026-09-09'
+    retrieved: '2026-11-27'
+    snapshot:
+      sha256: 1b241a7a1817a8117d42ecd589722405c7658b0ab98c171ff4d36aa095baacad
+      of: extracted_text
+    excerpt: Deliberate attempts at concealment of identity such as repeated virtual private network (VPN)
+      use, multiple device use and discrepancies between the customer’s claimed residence and their detected
+      location.
+    extraction_confidence: high
+  review:
+    state: unreviewed
+    workflow: maker_checker_pending
+    maker: null
+    checker: null
+    decided: null
+  added_in: 2026-11-27-scan

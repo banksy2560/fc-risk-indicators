@@ -45,6 +45,9 @@ typology:
     agent-reviewed]
   - FCA, consumer warnings on impersonation fraud (general) [too vague, unverified]
   - FinCEN, advisories on cyber-enabled fraud (general) [too vague, unverified]
+  - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+    Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+    [agent-retrieved 2026-11-27]
   indicators:
   - ref: IND-BEH-069
     legacy_id: FR-IMP-001
@@ -141,3 +144,23 @@ typology:
     - CTL-037
     references:
     - UK Finance, Annual Fraud Report (published annually)
+  - ref: IND-BEH-121
+    context: 'Government or police impersonation: the ''official'' directs payment in crypto, gift cards,
+      precious metals or by international wire.'
+    controls:
+    - CTL-068
+    - CTL-170
+    - CTL-074
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+      Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-BEH-122
+    context: Victim told to convert savings to gold and hand it to a courier for 'safekeeping'.
+    controls:
+    - CTL-075
+    - CTL-170
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+      Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+      [agent-retrieved 2026-11-27]

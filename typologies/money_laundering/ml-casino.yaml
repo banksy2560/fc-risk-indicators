@@ -43,6 +43,8 @@ typology:
   - FATF, Vulnerabilities of Casinos and Gaming Sector (2009) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/Vulnerabilitiesofcasinosandgamingsector.html>
     [agent-reviewed]
   - FATF, Guidance on the Risk-Based Approach for Casinos (2008) <https://www.fatf-gafi.org/> [agent-reviewed]
+  - FATF, Risks of Gaming and Gambling (Red Flag Risk Indicators) (2026-09-09) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/risks-of-gaming-and-gambling.html>
+    [agent-retrieved 2026-11-27]
   indicators:
   - ref: IND-TXN-027
     legacy_id: ML-CASINO-001
@@ -106,3 +108,20 @@ typology:
     false_positive_context: Rare coincidence.
     controls:
     - CTL-153
+  - ref: IND-CUS-056
+    context: Online betting or casino account details differ from the owner of the funding or withdrawal
+      payment method.
+    controls:
+    - CTL-152
+    - CTL-153
+    references:
+    - FATF, Risks of Gaming and Gambling (Red Flag Risk Indicators) (2026-09-09) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/risks-of-gaming-and-gambling.html>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-BEH-126
+    context: Players conceal identity or location using VPNs, multiple devices or mismatched residence.
+    controls:
+    - CTL-092
+    - CTL-090
+    references:
+    - FATF, Risks of Gaming and Gambling (Red Flag Risk Indicators) (2026-09-09) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/risks-of-gaming-and-gambling.html>
+      [agent-retrieved 2026-11-27]

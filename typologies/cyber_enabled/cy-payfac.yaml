@@ -39,6 +39,8 @@ typology:
     Services (2013) <https://www.fatf-gafi.org/content/fatf-gafi/en/publications/Fatfrecommendations/Rba-npps-2013.html>
     [agent-reviewed]
   - Card scheme rules on merchant and payment facilitator monitoring (general reference) [too vague, unverified]
+  - FATF, Risks of Gaming and Gambling (Red Flag Risk Indicators) (2026-09-09) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/risks-of-gaming-and-gambling.html>
+    [agent-retrieved 2026-11-27]
   indicators:
   - ref: IND-TYP-016
     legacy_id: CY-PAYFAC-001
@@ -124,3 +126,12 @@ typology:
     - CTL-048
     - CTL-057
     - CTL-093
+  - ref: IND-PRD-070
+    context: 'Transaction laundering for gambling: sham merchants make gambling deposits look like retail
+      sales.'
+    controls:
+    - CTL-057
+    - CTL-067
+    references:
+    - FATF, Risks of Gaming and Gambling (Red Flag Risk Indicators) (2026-09-09) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/risks-of-gaming-and-gambling.html>
+      [agent-retrieved 2026-11-27]

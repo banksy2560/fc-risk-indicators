@@ -421,6 +421,19 @@ CY-GIGPLAT,cyber_enabled,IND-BEH-044,Account rental or resale signals,medium,CTL
 CY-GIGPLAT,cyber_enabled,IND-TYP-011,Buyers directed off-platform to pay,medium,CTL-083,Consortium and external intelligence data,detective,fraud_prevention_friction
 CY-GIGPLAT,cyber_enabled,IND-TYP-011,Buyers directed off-platform to pay,medium,CTL-076,"Seller, organiser and payee verification with payout controls",preventive,fraud_prevention_friction
 CY-GIGPLAT,cyber_enabled,IND-TYP-011,Buyers directed off-platform to pay,medium,CTL-068,Dynamic payment friction and scam warnings,preventive,fraud_prevention_friction
+CY-GUARANTEE,cyber_enabled,IND-TYP-069,"Exposure to guarantee-marketplace wallets, tokens or shared infrastructure",high,CTL-145,Blockchain analytics and wallet attribution,detective,virtual_assets
+CY-GUARANTEE,cyber_enabled,IND-TYP-069,"Exposure to guarantee-marketplace wallets, tokens or shared infrastructure",high,CTL-147,Obfuscation exposure and thresholds,detective,virtual_assets
+CY-GUARANTEE,cyber_enabled,IND-TYP-069,"Exposure to guarantee-marketplace wallets, tokens or shared infrastructure",high,CTL-149,Counterparty VASP and platform due diligence,preventive,virtual_assets
+CY-GUARANTEE,cyber_enabled,IND-CPT-065,Payment provider rebrands to distance itself from a marketplace hit by enforcement or takedown,medium,CTL-149,Counterparty VASP and platform due diligence,preventive,virtual_assets
+CY-GUARANTEE,cyber_enabled,IND-CPT-065,Payment provider rebrands to distance itself from a marketplace hit by enforcement or takedown,medium,CTL-032,Adverse media and enforcement screening,detective,screening
+CY-GUARANTEE,cyber_enabled,IND-GEO-045,Exchange provider obscures its location or structure while appearing to operate in a scam-centre region,medium,CTL-149,Counterparty VASP and platform due diligence,preventive,virtual_assets
+CY-GUARANTEE,cyber_enabled,IND-GEO-045,Exchange provider obscures its location or structure while appearing to operate in a scam-centre region,medium,CTL-027,High-risk jurisdiction enhanced measures,preventive,enhanced_due_diligence
+CY-GUARANTEE,cyber_enabled,IND-TXN-162,Substantial use of a stablecoin marketed as unfreezable or not cooperating with law enforcement,high,CTL-145,Blockchain analytics and wallet attribution,detective,virtual_assets
+CY-GUARANTEE,cyber_enabled,IND-TXN-162,Substantial use of a stablecoin marketed as unfreezable or not cooperating with law enforcement,high,CTL-147,Obfuscation exposure and thresholds,detective,virtual_assets
+CY-GUARANTEE,cyber_enabled,IND-TXN-163,Exchange customer runs offsetting trades like an unregistered OTC or P2P desk,medium,CTL-061,Unlicensed money transfer detection,detective,transaction_monitoring
+CY-GUARANTEE,cyber_enabled,IND-TXN-163,Exchange customer runs offsetting trades like an unregistered OTC or P2P desk,medium,CTL-145,Blockchain analytics and wallet attribution,detective,virtual_assets
+CY-GUARANTEE,cyber_enabled,IND-CPT-064,Receiving exchange or remitter advertises 'no KYC' or claims false regulator approval,medium,CTL-116,Licence and regulatory status verification,preventive,third_party_correspondent
+CY-GUARANTEE,cyber_enabled,IND-CPT-064,Receiving exchange or remitter advertises 'no KYC' or claims false regulator approval,medium,CTL-149,Counterparty VASP and platform due diligence,preventive,virtual_assets
 CY-MIXER,cyber_enabled,IND-TYP-012,Deposits with direct or indirect exposure to mixing services,high,CTL-145,Blockchain analytics and wallet attribution,detective,virtual_assets
 CY-MIXER,cyber_enabled,IND-TYP-012,Deposits with direct or indirect exposure to mixing services,high,CTL-029,Sanctions and restricted-party screening,preventive,screening
 CY-MIXER,cyber_enabled,IND-TYP-012,Deposits with direct or indirect exposure to mixing services,high,CTL-093,Specialist investigation and suspicious activity reporting,corrective,investigation_reporting
@@ -571,6 +584,8 @@ CY-PAYFAC,cyber_enabled,IND-OWN-018,Payment facilitator onboarding lacks benefic
 CY-PAYFAC,cyber_enabled,IND-TYP-017,Use of multiple shell merchant accounts to spread volume,medium,CTL-048,Graph and network link analytics,detective,transaction_monitoring
 CY-PAYFAC,cyber_enabled,IND-TYP-017,Use of multiple shell merchant accounts to spread volume,medium,CTL-057,Merchant transaction and portfolio monitoring,detective,transaction_monitoring
 CY-PAYFAC,cyber_enabled,IND-TYP-017,Use of multiple shell merchant accounts to spread volume,medium,CTL-093,Specialist investigation and suspicious activity reporting,corrective,investigation_reporting
+CY-PAYFAC,cyber_enabled,IND-PRD-070,Gambling payments disguised as ordinary retail purchases through sham merchants,high,CTL-057,Merchant transaction and portfolio monitoring,detective,transaction_monitoring
+CY-PAYFAC,cyber_enabled,IND-PRD-070,Gambling payments disguised as ordinary retail purchases through sham merchants,high,CTL-067,Merchant onboarding and business verification,preventive,fraud_prevention_friction
 CY-PREPAID,cyber_enabled,IND-TXN-033,Bulk purchase of cards by one person or entity,high,CTL-037,"Velocity, volume and threshold rules",detective,transaction_monitoring
 CY-PREPAID,cyber_enabled,IND-TXN-033,Bulk purchase of cards by one person or entity,high,CTL-004,Duplicate and synthetic identity checks at onboarding,preventive,customer_due_diligence
 CY-PREPAID,cyber_enabled,IND-TXN-033,Bulk purchase of cards by one person or entity,high,CTL-072,Risk-based transaction and account limits,preventive,fraud_prevention_friction
@@ -1032,6 +1047,11 @@ FR-IMP,fraud,IND-PRD-034,Payment card details used at new merchants immediately 
 FR-IMP,fraud,IND-PRD-035,Spike in digital wallet provisioning on one customer card,medium,CTL-073,Strong authentication and step-up,preventive,fraud_prevention_friction
 FR-IMP,fraud,IND-PRD-035,Spike in digital wallet provisioning on one customer card,medium,CTL-090,Device intelligence and fingerprinting,detective,behavioural_device_analytics
 FR-IMP,fraud,IND-PRD-035,Spike in digital wallet provisioning on one customer card,medium,CTL-037,"Velocity, volume and threshold rules",detective,transaction_monitoring
+FR-IMP,fraud,IND-BEH-121,"Customer says an official told them to pay in crypto, gold, gift cards or by international wire",high,CTL-068,Dynamic payment friction and scam warnings,preventive,fraud_prevention_friction
+FR-IMP,fraud,IND-BEH-121,"Customer says an official told them to pay in crypto, gold, gift cards or by international wire",high,CTL-170,Front-line recognition and conversation training,preventive,training_culture
+FR-IMP,fraud,IND-BEH-121,"Customer says an official told them to pay in crypto, gold, gift cards or by international wire",high,CTL-074,Customer education and awareness,preventive,fraud_prevention_friction
+FR-IMP,fraud,IND-BEH-122,Savings or retirement funds withdrawn to buy gold that is handed to a courier,high,CTL-075,Trusted-contact and vulnerable-customer process,preventive,fraud_prevention_friction
+FR-IMP,fraud,IND-BEH-122,Savings or retirement funds withdrawn to buy gold that is handed to a courier,high,CTL-170,Front-line recognition and conversation training,preventive,training_culture
 FR-INS,fraud,IND-TYP-025,Claim shortly after policy inception or increase in cover,high,CTL-084,"Income, affordability and underwriting verification",preventive,fraud_prevention_friction
 FR-INS,fraud,IND-TYP-025,Claim shortly after policy inception or increase in cover,high,CTL-085,Claims analytics and payment verification,detective,fraud_prevention_friction
 FR-INS,fraud,IND-TYP-025,Claim shortly after policy inception or increase in cover,high,CTL-083,Consortium and external intelligence data,detective,fraud_prevention_friction
@@ -1162,6 +1182,19 @@ FR-PROC,fraud,IND-DOC-037,Claim details contradict income or residency evidence,
 FR-PROC,fraud,IND-PRD-005,Spike in claims via one agent or channel,medium,CTL-085,Claims analytics and payment verification,detective,fraud_prevention_friction
 FR-PROC,fraud,IND-PRD-005,Spike in claims via one agent or channel,medium,CTL-175,"Sampling, quality assurance and analytics audit",detective,record_keeping_audit
 FR-PROC,fraud,IND-PRD-005,Spike in claims via one agent or channel,medium,CTL-094,Case management and cross-team escalation,governance,investigation_reporting
+FR-RECOV,fraud,IND-CPT-063,Payment to a fund-recovery service that cannot show it is legitimate,high,CTL-068,Dynamic payment friction and scam warnings,preventive,fraud_prevention_friction
+FR-RECOV,fraud,IND-CPT-063,Payment to a fund-recovery service that cannot show it is legitimate,high,CTL-170,Front-line recognition and conversation training,preventive,training_culture
+FR-RECOV,fraud,IND-CPT-063,Payment to a fund-recovery service that cannot show it is legitimate,high,CTL-075,Trusted-contact and vulnerable-customer process,preventive,fraud_prevention_friction
+FR-RECOV,fraud,IND-BEH-121,"Customer says an official told them to pay in crypto, gold, gift cards or by international wire",high,CTL-068,Dynamic payment friction and scam warnings,preventive,fraud_prevention_friction
+FR-RECOV,fraud,IND-BEH-121,"Customer says an official told them to pay in crypto, gold, gift cards or by international wire",high,CTL-170,Front-line recognition and conversation training,preventive,training_culture
+FR-RECOV,fraud,IND-BEH-121,"Customer says an official told them to pay in crypto, gold, gift cards or by international wire",high,CTL-071,Cooling-off and delayed release for new payees,preventive,fraud_prevention_friction
+FR-RECOV,fraud,IND-BEH-122,Savings or retirement funds withdrawn to buy gold that is handed to a courier,high,CTL-075,Trusted-contact and vulnerable-customer process,preventive,fraud_prevention_friction
+FR-RECOV,fraud,IND-BEH-122,Savings or retirement funds withdrawn to buy gold that is handed to a courier,high,CTL-170,Front-line recognition and conversation training,preventive,training_culture
+FR-RECOV,fraud,IND-BEH-122,Savings or retirement funds withdrawn to buy gold that is handed to a courier,high,CTL-068,Dynamic payment friction and scam warnings,preventive,fraud_prevention_friction
+FR-RECOV,fraud,IND-CUS-029,Multiple prior scam alerts or repeat victimisation,medium,CTL-075,Trusted-contact and vulnerable-customer process,preventive,fraud_prevention_friction
+FR-RECOV,fraud,IND-CUS-029,Multiple prior scam alerts or repeat victimisation,medium,CTL-068,Dynamic payment friction and scam warnings,preventive,fraud_prevention_friction
+FR-RECOV,fraud,IND-BEH-004,"Customer accompanied, directed or coached by a third party",high,CTL-170,Front-line recognition and conversation training,preventive,training_culture
+FR-RECOV,fraud,IND-BEH-004,"Customer accompanied, directed or coached by a third party",high,CTL-075,Trusted-contact and vulnerable-customer process,preventive,fraud_prevention_friction
 FR-ROM,fraud,IND-TXN-078,Escalating transfers to crypto exchanges by a first-time buyer,high,CTL-145,Blockchain analytics and wallet attribution,detective,virtual_assets
 FR-ROM,fraud,IND-TXN-078,Escalating transfers to crypto exchanges by a first-time buyer,high,CTL-068,Dynamic payment friction and scam warnings,preventive,fraud_prevention_friction
 FR-ROM,fraud,IND-TXN-078,Escalating transfers to crypto exchanges by a first-time buyer,high,CTL-091,Behavioural biometrics and session analytics,detective,behavioural_device_analytics
@@ -1213,6 +1246,18 @@ FR-SCOMP,fraud,IND-CUS-054,Operating-company profile with scam-infrastructure sp
 FR-SCOMP,fraud,IND-TYP-061,"Payments by relatives for release or ""fees"" for a person held abroad",medium,CTL-100,Safeguarding and victim-centred referral protocol,corrective,investigation_reporting
 FR-SCOMP,fraud,IND-TYP-061,"Payments by relatives for release or ""fees"" for a person held abroad",medium,CTL-170,Front-line recognition and conversation training,preventive,training_culture
 FR-SCOMP,fraud,IND-TYP-061,"Payments by relatives for release or ""fees"" for a person held abroad",medium,CTL-052,Typology-based scenario design,detective,transaction_monitoring
+FR-SCOMP,fraud,IND-CPT-067,"Business spend on telecoms, numbers, hosting or computing capacity out of line with its profile",medium,CTL-178,Operational-infrastructure spend anomaly monitoring,detective,transaction_monitoring
+FR-SCOMP,fraud,IND-CPT-067,"Business spend on telecoms, numbers, hosting or computing capacity out of line with its profile",medium,CTL-042,Profile-versus-activity deviation monitoring,detective,transaction_monitoring
+FR-SCOMP,fraud,IND-PRD-071,Virtual account numbers obscure which institution or account actually receives funds,medium,CTL-109,Payable-through and sub-account controls,preventive,third_party_correspondent
+FR-SCOMP,fraud,IND-PRD-071,Virtual account numbers obscure which institution or account actually receives funds,medium,CTL-053,Risk-weighted counterparty monitoring,detective,transaction_monitoring
+FR-SCOMP,fraud,IND-CUS-008,One person holding multiple identities or accounts,medium,CTL-004,Duplicate and synthetic identity checks at onboarding,preventive,customer_due_diligence
+FR-SCOMP,fraud,IND-CUS-008,One person holding multiple identities or accounts,medium,CTL-049,Shared-identifier clustering and entity linkage,detective,transaction_monitoring
+FR-SCOMP,fraud,IND-TXN-164,"Stablecoins received from a DeFi service without AML controls, converted and withdrawn as fiat",medium,CTL-145,Blockchain analytics and wallet attribution,detective,virtual_assets
+FR-SCOMP,fraud,IND-TXN-164,"Stablecoins received from a DeFi service without AML controls, converted and withdrawn as fiat",medium,CTL-147,Obfuscation exposure and thresholds,detective,virtual_assets
+FR-SCOMP,fraud,IND-TYP-069,"Exposure to guarantee-marketplace wallets, tokens or shared infrastructure",high,CTL-145,Blockchain analytics and wallet attribution,detective,virtual_assets
+FR-SCOMP,fraud,IND-TYP-069,"Exposure to guarantee-marketplace wallets, tokens or shared infrastructure",high,CTL-149,Counterparty VASP and platform due diligence,preventive,virtual_assets
+FR-SCOMP,fraud,IND-CPT-064,Receiving exchange or remitter advertises 'no KYC' or claims false regulator approval,medium,CTL-116,Licence and regulatory status verification,preventive,third_party_correspondent
+FR-SCOMP,fraud,IND-CPT-064,Receiving exchange or remitter advertises 'no KYC' or claims false regulator approval,medium,CTL-068,Dynamic payment friction and scam warnings,preventive,fraud_prevention_friction
 FR-TAX,fraud,IND-TXN-024,Refund or benefit credited to account of different name,high,CTL-089,Refund destination and validation controls,preventive,fraud_prevention_friction
 FR-TAX,fraud,IND-TXN-024,Refund or benefit credited to account of different name,high,CTL-069,Payee name verification,preventive,fraud_prevention_friction
 FR-TAX,fraud,IND-TXN-024,Refund or benefit credited to account of different name,high,CTL-051,Mule account detection model,detective,transaction_monitoring
@@ -1288,6 +1333,8 @@ FR-VULN,fraud,IND-CUS-014,"Changes to statements delivery, address or contact",m
 FR-VULN,fraud,IND-TXN-087,Property or investment sold under pressure,medium,CTL-170,Front-line recognition and conversation training,preventive,training_culture
 FR-VULN,fraud,IND-TXN-087,Property or investment sold under pressure,medium,CTL-071,Cooling-off and delayed release for new payees,preventive,fraud_prevention_friction
 FR-VULN,fraud,IND-TXN-087,Property or investment sold under pressure,medium,CTL-075,Trusted-contact and vulnerable-customer process,preventive,fraud_prevention_friction
+FR-VULN,fraud,IND-BEH-122,Savings or retirement funds withdrawn to buy gold that is handed to a courier,high,CTL-075,Trusted-contact and vulnerable-customer process,preventive,fraud_prevention_friction
+FR-VULN,fraud,IND-BEH-122,Savings or retirement funds withdrawn to buy gold that is handed to a courier,high,CTL-170,Front-line recognition and conversation training,preventive,training_culture
 FR-XBMULE,fraud,IND-TXN-001,Rapid pass-through of received funds,high,CTL-040,Pass-through and rapid movement detection,detective,transaction_monitoring
 FR-XBMULE,fraud,IND-TXN-001,Rapid pass-through of received funds,high,CTL-051,Mule account detection model,detective,transaction_monitoring
 FR-XBMULE,fraud,IND-TXN-042,Rapid movement through correspondent or private banking channels,medium,CTL-040,Pass-through and rapid movement detection,detective,transaction_monitoring
@@ -1420,6 +1467,10 @@ ML-CASINO,money_laundering,IND-TYP-031,Junket or VIP operators moving funds acro
 ML-CASINO,money_laundering,IND-PRD-044,Online gaming accounts with deposit via multiple cards or wallets,medium,CTL-153,Gaming and betting play surveillance,detective,sector_and_product_specific
 ML-CASINO,money_laundering,IND-DOC-040,Winnings claims lacking supporting records,medium,CTL-152,Gaming cash-out and win-document controls,preventive,sector_and_product_specific
 ML-CASINO,money_laundering,IND-TYP-032,Player collusion or chip-dumping,medium,CTL-153,Gaming and betting play surveillance,detective,sector_and_product_specific
+ML-CASINO,money_laundering,IND-CUS-056,Gambling account holder does not match the payment method used to fund or withdraw,medium,CTL-152,Gaming cash-out and win-document controls,preventive,sector_and_product_specific
+ML-CASINO,money_laundering,IND-CUS-056,Gambling account holder does not match the payment method used to fund or withdraw,medium,CTL-153,Gaming and betting play surveillance,detective,sector_and_product_specific
+ML-CASINO,money_laundering,IND-BEH-126,"Gambler conceals identity or location with repeated VPN use, many devices or mismatched residence",medium,CTL-092,"IP, geolocation and anonymisation detection",detective,behavioural_device_analytics
+ML-CASINO,money_laundering,IND-BEH-126,"Gambler conceals identity or location with repeated VPN use, many devices or mismatched residence",medium,CTL-090,Device intelligence and fingerprinting,detective,behavioural_device_analytics
 ML-CORRBANK,money_laundering,IND-CPT-034,Respondent serves undisclosed downstream institutions,high,CTL-105,Nested activity disclosure and detection,preventive,third_party_correspondent
 ML-CORRBANK,money_laundering,IND-CPT-034,Respondent serves undisclosed downstream institutions,high,CTL-104,Correspondent respondent due diligence and risk rating,preventive,third_party_correspondent
 ML-CORRBANK,money_laundering,IND-CPT-034,Respondent serves undisclosed downstream institutions,high,CTL-106,Periodic respondent review and volume monitoring,detective,third_party_correspondent
@@ -1441,6 +1492,24 @@ ML-CORRBANK,money_laundering,IND-PRD-017,Payable-through account use by responde
 ML-CORRBANK,money_laundering,IND-PRD-017,Payable-through account use by respondent's customers,high,CTL-106,Periodic respondent review and volume monitoring,detective,third_party_correspondent
 ML-CORRBANK,money_laundering,IND-CPT-059,Adverse media or enforcement on respondent,medium,CTL-032,Adverse media and enforcement screening,detective,screening
 ML-CORRBANK,money_laundering,IND-CPT-059,Adverse media or enforcement on respondent,medium,CTL-106,Periodic respondent review and volume monitoring,detective,third_party_correspondent
+ML-CUCKOO,money_laundering,IND-TXN-168,Account expecting an overseas transfer instead receives domestic third-party cash deposits,high,CTL-046,Third-party payer and depositor controls,preventive,transaction_monitoring
+ML-CUCKOO,money_laundering,IND-TXN-168,Account expecting an overseas transfer instead receives domestic third-party cash deposits,high,CTL-064,Cash deposit profiling and peer benchmarking,detective,cash_controls
+ML-CUCKOO,money_laundering,IND-TXN-168,Account expecting an overseas transfer instead receives domestic third-party cash deposits,high,CTL-022,Customer enquiry on unusual activity,corrective,customer_due_diligence
+ML-CUCKOO,money_laundering,IND-TXN-169,One card or phone number used to make cash deposits into many unrelated accounts,high,CTL-046,Third-party payer and depositor controls,preventive,transaction_monitoring
+ML-CUCKOO,money_laundering,IND-TXN-169,One card or phone number used to make cash deposits into many unrelated accounts,high,CTL-049,Shared-identifier clustering and entity linkage,detective,transaction_monitoring
+ML-CUCKOO,money_laundering,IND-TXN-169,One card or phone number used to make cash deposits into many unrelated accounts,high,CTL-048,Graph and network link analytics,detective,transaction_monitoring
+ML-CUCKOO,money_laundering,IND-TXN-007,"Cash deposits split across branches, ATMs or accounts",high,CTL-038,Structuring and threshold-avoidance detection,detective,transaction_monitoring
+ML-CUCKOO,money_laundering,IND-TXN-007,"Cash deposits split across branches, ATMs or accounts",high,CTL-064,Cash deposit profiling and peer benchmarking,detective,cash_controls
+ML-CUCKOO,money_laundering,IND-TXN-006,Cash deposits just below reporting or identification threshold,high,CTL-038,Structuring and threshold-avoidance detection,detective,transaction_monitoring
+ML-CUCKOO,money_laundering,IND-TXN-006,Cash deposits just below reporting or identification threshold,high,CTL-044,Round-amount and repeated-value pattern detection,detective,transaction_monitoring
+ML-CUCKOO,money_laundering,IND-CPT-035,Many unrelated depositors paying into one account,high,CTL-046,Third-party payer and depositor controls,preventive,transaction_monitoring
+ML-CUCKOO,money_laundering,IND-CPT-035,Many unrelated depositors paying into one account,high,CTL-041,"Fan-in, fan-out and funnel account detection",detective,transaction_monitoring
+ML-CUCKOO,money_laundering,IND-GEO-046,Cash deposits made far from where the account holder lives or banks,medium,CTL-064,Cash deposit profiling and peer benchmarking,detective,cash_controls
+ML-CUCKOO,money_laundering,IND-GEO-046,Cash deposits made far from where the account holder lives or banks,medium,CTL-045,Geographic and corridor-based monitoring,detective,transaction_monitoring
+ML-CUCKOO,money_laundering,IND-CPT-066,Depositor names or contact details appear fictitious or are reused across many deposits,medium,CTL-046,Third-party payer and depositor controls,preventive,transaction_monitoring
+ML-CUCKOO,money_laundering,IND-CPT-066,Depositor names or contact details appear fictitious or are reused across many deposits,medium,CTL-049,Shared-identifier clustering and entity linkage,detective,transaction_monitoring
+ML-CUCKOO,money_laundering,IND-TXN-016,Mirror or offsetting transactions between jurisdictions,medium,CTL-061,Unlicensed money transfer detection,detective,transaction_monitoring
+ML-CUCKOO,money_laundering,IND-TXN-016,Mirror or offsetting transactions between jurisdictions,medium,CTL-045,Geographic and corridor-based monitoring,detective,transaction_monitoring
 ML-FREEPORT,money_laundering,IND-PRD-053,Art or collectibles held in free ports without display or trade,medium,CTL-127,Free-zone and free-port due diligence,preventive,trade_and_supply_chain
 ML-FREEPORT,money_laundering,IND-PRD-053,Art or collectibles held in free ports without display or trade,medium,CTL-141,Independent valuation and appraisal,preventive,trade_and_supply_chain
 ML-FREEPORT,money_laundering,IND-PRD-015,Safe deposit boxes,medium,CTL-150,Product-specific misuse surveillance,detective,sector_and_product_specific
@@ -1781,6 +1850,8 @@ ML-TBML,money_laundering,IND-PRD-050,Dual-use or high-risk goods without support
 ML-TBML,money_laundering,IND-TYP-040,Phantom shipment indicators,high,CTL-125,Shipment tracking and logistics evidence,detective,trade_and_supply_chain
 ML-TBML,money_laundering,IND-TYP-040,Phantom shipment indicators,high,CTL-086,Independent verification of underlying transaction,preventive,fraud_prevention_friction
 ML-TBML,money_laundering,IND-BEH-097,Frequent amendments or letter of credit changes,medium,CTL-132,Trade amendment monitoring,detective,trade_and_supply_chain
+ML-TBML,money_laundering,IND-DOC-070,Trade documents show signs of AI generation or tampering,high,CTL-123,Trade document review and consistency checking,preventive,trade_and_supply_chain
+ML-TBML,money_laundering,IND-DOC-070,Trade documents show signs of AI generation or tampering,high,CTL-086,Independent verification of underlying transaction,preventive,fraud_prevention_friction
 ML-TCSP,money_laundering,IND-TYP-041,Bulk company formation for undisclosed clients,high,CTL-117,Gatekeeper and company service provider due diligence,preventive,third_party_correspondent
 ML-TCSP,money_laundering,IND-TYP-041,Bulk company formation for undisclosed clients,high,CTL-049,Shared-identifier clustering and entity linkage,detective,transaction_monitoring
 ML-TCSP,money_laundering,IND-TYP-041,Bulk company formation for undisclosed clients,high,CTL-004,Duplicate and synthetic identity checks at onboarding,preventive,customer_due_diligence
@@ -1916,6 +1987,11 @@ OP-EXTORT,other_predicate,IND-CPT-059,Associates linked to known organised crime
 OP-EXTORT,other_predicate,IND-CPT-059,Associates linked to known organised crime groups,high,CTL-095,Network case investigation,corrective,investigation_reporting
 OP-EXTORT,other_predicate,IND-DOC-051,"Forced purchase of services, supplies or cars at inflated prices",medium,CTL-124,Price and value benchmarking,detective,trade_and_supply_chain
 OP-EXTORT,other_predicate,IND-DOC-051,"Forced purchase of services, supplies or cars at inflated prices",medium,CTL-005,Beneficial ownership identification and verification,preventive,customer_due_diligence
+OP-EXTORT,other_predicate,IND-TXN-172,Recurring instalment-style payments to unknown parties following threats,medium,CTL-042,Profile-versus-activity deviation monitoring,detective,transaction_monitoring
+OP-EXTORT,other_predicate,IND-TXN-172,Recurring instalment-style payments to unknown parties following threats,medium,CTL-170,Front-line recognition and conversation training,preventive,training_culture
+OP-EXTORT,other_predicate,IND-TXN-172,Recurring instalment-style payments to unknown parties following threats,medium,CTL-100,Safeguarding and victim-centred referral protocol,corrective,investigation_reporting
+OP-EXTORT,other_predicate,IND-TXN-173,"Spending on short-term lodging, car hire and fuel near incident locations far from the customer's base",low,CTL-045,Geographic and corridor-based monitoring,detective,transaction_monitoring
+OP-EXTORT,other_predicate,IND-TXN-173,"Spending on short-term lodging, car hire and fuel near incident locations far from the customer's base",low,CTL-093,Specialist investigation and suspicious activity reporting,corrective,investigation_reporting
 OP-GAMBLE,other_predicate,IND-CPT-026,Payments to unlicensed gambling operators or via nested processors,high,CTL-057,Merchant transaction and portfolio monitoring,detective,transaction_monitoring
 OP-GAMBLE,other_predicate,IND-CPT-026,Payments to unlicensed gambling operators or via nested processors,high,CTL-029,Sanctions and restricted-party screening,preventive,screening
 OP-GAMBLE,other_predicate,IND-TXN-004,Many accounts funding a few betting accounts or agents,high,CTL-021,Agent and distribution network due diligence,preventive,customer_due_diligence
@@ -1933,6 +2009,13 @@ OP-GAMBLE,other_predicate,IND-CUS-047,Underground casino or card house with cash
 OP-GAMBLE,other_predicate,IND-CUS-047,Underground casino or card house with cash and chip sales,medium,CTL-012,Source of funds verification,preventive,customer_due_diligence
 OP-GAMBLE,other_predicate,IND-PRD-058,Use of crypto and prepaid cards for gambling top-ups,medium,CTL-145,Blockchain analytics and wallet attribution,detective,virtual_assets
 OP-GAMBLE,other_predicate,IND-PRD-058,Use of crypto and prepaid cards for gambling top-ups,medium,CTL-012,Source of funds verification,preventive,customer_due_diligence
+OP-GAMBLE,other_predicate,IND-OWN-030,"Gambling operator with threshold-avoiding ownership, white-label dependence or frequent brand and URL changes",high,CTL-117,Gatekeeper and company service provider due diligence,preventive,third_party_correspondent
+OP-GAMBLE,other_predicate,IND-OWN-030,"Gambling operator with threshold-avoiding ownership, white-label dependence or frequent brand and URL changes",high,CTL-116,Licence and regulatory status verification,preventive,third_party_correspondent
+OP-GAMBLE,other_predicate,IND-OWN-030,"Gambling operator with threshold-avoiding ownership, white-label dependence or frequent brand and URL changes",high,CTL-032,Adverse media and enforcement screening,detective,screening
+OP-GAMBLE,other_predicate,IND-PRD-070,Gambling payments disguised as ordinary retail purchases through sham merchants,high,CTL-057,Merchant transaction and portfolio monitoring,detective,transaction_monitoring
+OP-GAMBLE,other_predicate,IND-PRD-070,Gambling payments disguised as ordinary retail purchases through sham merchants,high,CTL-067,Merchant onboarding and business verification,preventive,fraud_prevention_friction
+OP-GAMBLE,other_predicate,IND-TXN-171,"High volume of small payments through phone-number payment aliases, quickly forwarded",high,CTL-051,Mule account detection model,detective,transaction_monitoring
+OP-GAMBLE,other_predicate,IND-TXN-171,"High volume of small payments through phone-number payment aliases, quickly forwarded",high,CTL-041,"Fan-in, fan-out and funnel account detection",detective,transaction_monitoring
 OP-MKTABUSE,other_predicate,IND-TYP-014,Wash or matched trades between connected parties,high,CTL-150,Product-specific misuse surveillance,detective,sector_and_product_specific
 OP-MKTABUSE,other_predicate,IND-TYP-014,Wash or matched trades between connected parties,high,CTL-048,Graph and network link analytics,detective,transaction_monitoring
 OP-MKTABUSE,other_predicate,IND-TYP-014,Wash or matched trades between connected parties,high,CTL-047,Circular flow and round-tripping detection,detective,transaction_monitoring
@@ -1960,6 +2043,27 @@ OP-MKTABUSE,other_predicate,IND-TXN-159,Orders placed and cancelled without inte
 OP-MKTABUSE,other_predicate,IND-TYP-067,Token deployer or insider wallets distributing holdings into promoted price rise,high,CTL-145,Blockchain analytics and wallet attribution,detective,virtual_assets
 OP-MKTABUSE,other_predicate,IND-TYP-067,Token deployer or insider wallets distributing holdings into promoted price rise,high,CTL-147,Obfuscation exposure and thresholds,detective,virtual_assets
 OP-MKTABUSE,other_predicate,IND-TYP-067,Token deployer or insider wallets distributing holdings into promoted price rise,high,CTL-149,Counterparty VASP and platform due diligence,preventive,virtual_assets
+OP-PAYTEXT,other_predicate,IND-TXN-170,Repeated very low-value payments to one recipient carrying messages,medium,CTL-030,Payment message and free-text screening,preventive,screening
+OP-PAYTEXT,other_predicate,IND-TXN-170,Repeated very low-value payments to one recipient carrying messages,medium,CTL-037,"Velocity, volume and threshold rules",detective,transaction_monitoring
+OP-PAYTEXT,other_predicate,IND-TXN-170,Repeated very low-value payments to one recipient carrying messages,medium,CTL-100,Safeguarding and victim-centred referral protocol,corrective,investigation_reporting
+OP-PAYTEXT,other_predicate,IND-DOC-071,"Payment text contains threats, coercion, references to self-harm or coded criminal terms",high,CTL-030,Payment message and free-text screening,preventive,screening
+OP-PAYTEXT,other_predicate,IND-DOC-071,"Payment text contains threats, coercion, references to self-harm or coded criminal terms",high,CTL-100,Safeguarding and victim-centred referral protocol,corrective,investigation_reporting
+OP-PAYTEXT,other_predicate,IND-DOC-071,"Payment text contains threats, coercion, references to self-harm or coded criminal terms",high,CTL-093,Specialist investigation and suspicious activity reporting,corrective,investigation_reporting
+OP-PAYTEXT,other_predicate,IND-BEH-124,One-sided payment messaging that continues without reply or after warnings,medium,CTL-030,Payment message and free-text screening,preventive,screening
+OP-PAYTEXT,other_predicate,IND-BEH-124,One-sided payment messaging that continues without reply or after warnings,medium,CTL-016,"Account restriction, decline and exit policy",corrective,customer_due_diligence
+OP-PAYTEXT,other_predicate,IND-BEH-124,One-sided payment messaging that continues without reply or after warnings,medium,CTL-100,Safeguarding and victim-centred referral protocol,corrective,investigation_reporting
+OP-SCAMBLE,other_predicate,IND-TXN-171,"High volume of small payments through phone-number payment aliases, quickly forwarded",high,CTL-051,Mule account detection model,detective,transaction_monitoring
+OP-SCAMBLE,other_predicate,IND-TXN-171,"High volume of small payments through phone-number payment aliases, quickly forwarded",high,CTL-041,"Fan-in, fan-out and funnel account detection",detective,transaction_monitoring
+OP-SCAMBLE,other_predicate,IND-TXN-171,"High volume of small payments through phone-number payment aliases, quickly forwarded",high,CTL-040,Pass-through and rapid movement detection,detective,transaction_monitoring
+OP-SCAMBLE,other_predicate,IND-BEH-125,Customer shares account or payment-alias details with an online gambling or gaming app in return for credits,medium,CTL-170,Front-line recognition and conversation training,preventive,training_culture
+OP-SCAMBLE,other_predicate,IND-BEH-125,Customer shares account or payment-alias details with an online gambling or gaming app in return for credits,medium,CTL-022,Customer enquiry on unusual activity,corrective,customer_due_diligence
+OP-SCAMBLE,other_predicate,IND-BEH-125,Customer shares account or payment-alias details with an online gambling or gaming app in return for credits,medium,CTL-074,Customer education and awareness,preventive,fraud_prevention_friction
+OP-SCAMBLE,other_predicate,IND-BEH-044,Account rental or resale signals,medium,CTL-051,Mule account detection model,detective,transaction_monitoring
+OP-SCAMBLE,other_predicate,IND-BEH-044,Account rental or resale signals,medium,CTL-082,Threat intelligence and takedown,detective,fraud_prevention_friction
+OP-SCAMBLE,other_predicate,IND-CPT-026,Unlicensed or cloned operator receiving payments,high,CTL-082,Threat intelligence and takedown,detective,fraud_prevention_friction
+OP-SCAMBLE,other_predicate,IND-CPT-026,Unlicensed or cloned operator receiving payments,high,CTL-053,Risk-weighted counterparty monitoring,detective,transaction_monitoring
+OP-SCAMBLE,other_predicate,IND-CUS-028,Receiving account is new or recently dormant with many unrelated senders,high,CTL-054,Tightened monitoring for new accounts and entities,detective,transaction_monitoring
+OP-SCAMBLE,other_predicate,IND-CUS-028,Receiving account is new or recently dormant with many unrelated senders,high,CTL-051,Mule account detection model,detective,transaction_monitoring
 OP-TOBACCO,other_predicate,IND-TXN-125,Wholesaler purchases far exceed local market demand,high,CTL-139,Volume and capacity plausibility analytics,detective,trade_and_supply_chain
 OP-TOBACCO,other_predicate,IND-TXN-125,Wholesaler purchases far exceed local market demand,high,CTL-112,Third-party and intermediary due diligence,preventive,third_party_correspondent
 OP-TOBACCO,other_predicate,IND-DOC-052,Goods in transit declared to low-tax or non-EU destinations but not arriving,high,CTL-123,Trade document review and consistency checking,preventive,trade_and_supply_chain
@@ -2073,6 +2177,10 @@ SANC-CRYPTO,sanctions,IND-TXN-130,Stablecoin use to hold value of designated per
 SANC-CRYPTO,sanctions,IND-TXN-130,Stablecoin use to hold value of designated person's funds,medium,CTL-012,Source of funds verification,preventive,customer_due_diligence
 SANC-CRYPTO,sanctions,IND-BEH-005,Account sharing or intermediary accounts used by third parties,medium,CTL-090,Device intelligence and fingerprinting,detective,behavioural_device_analytics
 SANC-CRYPTO,sanctions,IND-BEH-005,Account sharing or intermediary accounts used by third parties,medium,CTL-016,"Account restriction, decline and exit policy",corrective,customer_due_diligence
+SANC-CRYPTO,sanctions,IND-TXN-165,Exposure to a sanctions-linked settlement stablecoin or its wrapped versions,high,CTL-145,Blockchain analytics and wallet attribution,detective,virtual_assets
+SANC-CRYPTO,sanctions,IND-TXN-165,Exposure to a sanctions-linked settlement stablecoin or its wrapped versions,high,CTL-029,Sanctions and restricted-party screening,preventive,screening
+SANC-CRYPTO,sanctions,IND-TXN-162,Substantial use of a stablecoin marketed as unfreezable or not cooperating with law enforcement,high,CTL-145,Blockchain analytics and wallet attribution,detective,virtual_assets
+SANC-CRYPTO,sanctions,IND-TXN-162,Substantial use of a stablecoin marketed as unfreezable or not cooperating with law enforcement,high,CTL-147,Obfuscation exposure and thresholds,detective,virtual_assets
 SANC-DIVERSION,sanctions,IND-CUS-050,Customer in transit country suddenly trades controlled or high-priority items,high,CTL-133,Counterparty capacity and trade profile assessment,preventive,trade_and_supply_chain
 SANC-DIVERSION,sanctions,IND-CUS-050,Customer in transit country suddenly trades controlled or high-priority items,high,CTL-014,Periodic and event-driven KYC refresh,preventive,customer_due_diligence
 SANC-DIVERSION,sanctions,IND-CUS-050,Customer in transit country suddenly trades controlled or high-priority items,high,CTL-130,Control-list and dual-use goods screening,preventive,trade_and_supply_chain
@@ -2156,6 +2264,25 @@ SANC-OWNERSHIP,sanctions,IND-BEH-001,Customer unwilling or unable to explain own
 SANC-OWNERSHIP,sanctions,IND-BEH-001,Customer unwilling or unable to explain ownership or control,medium,CTL-036,Sanctions escalation and legal clearance,governance,sanctions_specific
 SANC-OWNERSHIP,sanctions,IND-OWN-028,"Shared addresses, phone numbers or advisers with designated entities",medium,CTL-049,Shared-identifier clustering and entity linkage,detective,transaction_monitoring
 SANC-OWNERSHIP,sanctions,IND-OWN-028,"Shared addresses, phone numbers or advisers with designated entities",medium,CTL-171,Typology-focused staff training,preventive,training_culture
+SANC-SETTLE,sanctions,IND-TXN-165,Exposure to a sanctions-linked settlement stablecoin or its wrapped versions,high,CTL-145,Blockchain analytics and wallet attribution,detective,virtual_assets
+SANC-SETTLE,sanctions,IND-TXN-165,Exposure to a sanctions-linked settlement stablecoin or its wrapped versions,high,CTL-029,Sanctions and restricted-party screening,preventive,screening
+SANC-SETTLE,sanctions,IND-TXN-165,Exposure to a sanctions-linked settlement stablecoin or its wrapped versions,high,CTL-036,Sanctions escalation and legal clearance,governance,sanctions_specific
+SANC-SETTLE,sanctions,IND-TXN-166,Trade customer pays in stablecoins for commodities not usually bought with digital assets,high,CTL-130,Control-list and dual-use goods screening,preventive,trade_and_supply_chain
+SANC-SETTLE,sanctions,IND-TXN-166,Trade customer pays in stablecoins for commodities not usually bought with digital assets,high,CTL-145,Blockchain analytics and wallet attribution,detective,virtual_assets
+SANC-SETTLE,sanctions,IND-TXN-166,Trade customer pays in stablecoins for commodities not usually bought with digital assets,high,CTL-133,Counterparty capacity and trade profile assessment,preventive,trade_and_supply_chain
+SANC-SETTLE,sanctions,IND-TXN-167,Payments routed through several shell companies in different jurisdictions before reaching the end recipient,high,CTL-048,Graph and network link analytics,detective,transaction_monitoring
+SANC-SETTLE,sanctions,IND-TXN-167,Payments routed through several shell companies in different jurisdictions before reaching the end recipient,high,CTL-034,Aggregated ownership and control assessment,preventive,sanctions_specific
+SANC-SETTLE,sanctions,IND-TXN-167,Payments routed through several shell companies in different jurisdictions before reaching the end recipient,high,CTL-005,Beneficial ownership identification and verification,preventive,customer_due_diligence
+SANC-SETTLE,sanctions,IND-OWN-007,Newly formed entity with vague purpose and large flows,high,CTL-054,Tightened monitoring for new accounts and entities,detective,transaction_monitoring
+SANC-SETTLE,sanctions,IND-OWN-007,Newly formed entity with vague purpose and large flows,high,CTL-010,Substance and physical presence verification,preventive,customer_due_diligence
+SANC-SETTLE,sanctions,IND-DOC-070,Trade documents show signs of AI generation or tampering,high,CTL-123,Trade document review and consistency checking,preventive,trade_and_supply_chain
+SANC-SETTLE,sanctions,IND-DOC-070,Trade documents show signs of AI generation or tampering,high,CTL-002,Identity and supporting document authentication,preventive,customer_due_diligence
+SANC-SETTLE,sanctions,IND-DOC-026,Invoice amount or format differs from prior invoices,medium,CTL-123,Trade document review and consistency checking,preventive,trade_and_supply_chain
+SANC-SETTLE,sanctions,IND-DOC-026,Invoice amount or format differs from prior invoices,medium,CTL-132,Trade amendment monitoring,detective,trade_and_supply_chain
+SANC-SETTLE,sanctions,IND-BEH-123,"Account accessed through VPN, email or web infrastructure publicly tied to a designated network",high,CTL-092,"IP, geolocation and anonymisation detection",detective,behavioural_device_analytics
+SANC-SETTLE,sanctions,IND-BEH-123,"Account accessed through VPN, email or web infrastructure publicly tied to a designated network",high,CTL-029,Sanctions and restricted-party screening,preventive,screening
+SANC-SETTLE,sanctions,IND-CUS-055,"OTC or block-trading crypto firm with sudden unexplained growth, thin online presence and short history",medium,CTL-149,Counterparty VASP and platform due diligence,preventive,virtual_assets
+SANC-SETTLE,sanctions,IND-CUS-055,"OTC or block-trading crypto firm with sudden unexplained growth, thin online presence and short history",medium,CTL-042,Profile-versus-activity deviation monitoring,detective,transaction_monitoring
 SANC-STRIPPING,sanctions,IND-DOC-015,"Originator or beneficiary fields missing, generic or truncated",high,CTL-110,Payment message completeness and quality controls,preventive,third_party_correspondent
 SANC-STRIPPING,sanctions,IND-DOC-015,"Originator or beneficiary fields missing, generic or truncated",high,CTL-107,Request-for-information process,corrective,third_party_correspondent
 SANC-STRIPPING,sanctions,IND-TXN-138,Use of cover payments that omit underlying parties,medium,CTL-111,Cover payment transparency checks,preventive,third_party_correspondent

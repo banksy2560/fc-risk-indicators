@@ -52,6 +52,11 @@ typology:
   - Council of Europe, Convention on the Manipulation of Sports Competitions (2014) [unverified]
   - 'Closest: FATF/APG, Vulnerabilities of Casinos and Gaming Sector (2009); FATF, Risks of Gaming and
     Gambling (2026) [replacement suggested, unverified]'
+  - FATF, Risks of Gaming and Gambling (Red Flag Risk Indicators) (2026-09-09) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/risks-of-gaming-and-gambling.html>
+    [agent-retrieved 2026-11-27]
+  - 'AUSTRAC (Fintel Alliance), Scambling: the nexus between scams, money mules and micro-laundering (2025-11)
+    <https://www.austrac.gov.au/sites/default/files/2025-12/Scambling%20-%20the%20nexus%20between%20scams%2C%20money%20mules%20and%20micro-laundering.pdf>
+    [agent-retrieved 2026-11-27]'
   indicators:
   - ref: IND-CPT-026
     legacy_id: OP-GAMBLE-001
@@ -114,3 +119,30 @@ typology:
     controls:
     - CTL-145
     - CTL-012
+  - ref: IND-OWN-030
+    context: Illegal or grey-market operators hide ownership, rely on white-label providers and rotate
+      URLs and brands.
+    controls:
+    - CTL-117
+    - CTL-116
+    - CTL-032
+    references:
+    - FATF, Risks of Gaming and Gambling (Red Flag Risk Indicators) (2026-09-09) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/risks-of-gaming-and-gambling.html>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-PRD-070
+    context: Illicit operators process gambling deposits through sham domestic merchant identities.
+    controls:
+    - CTL-057
+    - CTL-067
+    references:
+    - FATF, Risks of Gaming and Gambling (Red Flag Risk Indicators) (2026-09-09) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/risks-of-gaming-and-gambling.html>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-TXN-171
+    context: Unlawful gambling proceeds micro-laundered through many small payments to mule payment aliases.
+    controls:
+    - CTL-051
+    - CTL-041
+    references:
+    - 'AUSTRAC (Fintel Alliance), Scambling: the nexus between scams, money mules and micro-laundering
+      (2025-11) <https://www.austrac.gov.au/sites/default/files/2025-12/Scambling%20-%20the%20nexus%20between%20scams%2C%20money%20mules%20and%20micro-laundering.pdf>
+      [agent-retrieved 2026-11-27]'

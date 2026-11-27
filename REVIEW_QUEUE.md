@@ -32,6 +32,13 @@ Borderline merges made by AI clustering. Each typology link keeps its `legacy_id
 ## Added in this release (AI-drafted, unreviewed, sources unverified)
 FR-SCOMP, FR-XBMULE, OP-MKTABUSE, XC-COMPLICITFI, ML-SHAMLEGAL, ML-SPORTS, ML-FREEPORT, ML-PENSION, TX-TRANSFERPRICE. Source: coverage gaps from the reference review and approved by the maintainer.
 
+## Added by weekly scan 2026-11-27 (AI-drafted, unreviewed, sources retrieved)
+Maker/checker pending for 33 new indicators (`review.state: unreviewed`), 6 new typologies (ML-CUCKOO, OP-PAYTEXT, OP-SCAMBLE, CY-GUARANTEE, SANC-SETTLE, FR-RECOV), 1 new control (CTL-178) and new links in FR-SCOMP, FR-IMP, FR-VULN, SANC-CRYPTO, ML-TBML, OP-GAMBLE, ML-CASINO, CY-PAYFAC, OP-EXTORT. See [CHANGELOG.md](CHANGELOG.md).
+- Check that the AUSTRAC cuckoo smurfing (2021) and payment text field (2021) guides are still current; their landing pages were updated in March 2026.
+- CTL-178 partly fills the FR-SCOMP telecoms/infrastructure-spend control gap above; confirm or refine.
+- IND-TXN-173 (spend near incident locations) is weak on its own; consider whether to keep it.
+- SANC-SETTLE is drawn from one source (FinCEN); add UK, EU or Australian sanctions authority material before approval.
+
 ## Data quality
 - Singleton indicators kept original wording and some generic default `detection_type` / `data_sources` / `false_positive_notes`.
 - All citations are unverified (see README).

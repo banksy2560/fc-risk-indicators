@@ -43,6 +43,8 @@ typology:
     2019 onward) [corrected, unverified]
   - OFSI, Cryptoassets Threat Assessment (July 2025); OFSI/FCA/BoE, Joint statement on sanctions and the
     cryptoasset sector (March 2022) [replacement suggested, unverified]
+  - FinCEN (US Treasury), FinCEN Alert on the A7 Network (FIN-2026-Alert007) (2026-10-01) <https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf>
+    [agent-retrieved 2026-11-27]
   indicators:
   - ref: IND-CPT-050
     legacy_id: SANC-CRYPTO-001
@@ -109,3 +111,21 @@ typology:
     controls:
     - CTL-090
     - CTL-016
+  - ref: IND-TXN-165
+    context: Holding or trading a sanctions-linked settlement stablecoin, including wrapped versions on
+      other chains.
+    controls:
+    - CTL-145
+    - CTL-029
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on the A7 Network (FIN-2026-Alert007) (2026-10-01) <https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-TXN-162
+    context: Use of stablecoins advertised as unfreezable to keep value beyond the reach of asset freezes.
+    controls:
+    - CTL-145
+    - CTL-147
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+      Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+      [agent-retrieved 2026-11-27]

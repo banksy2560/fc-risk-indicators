@@ -54,6 +54,12 @@ typology:
     [unverified]
   - UNODC, Transnational Organized Crime and the Convergence of Cyber-Enabled Fraud, Underground Banking
     and Technological Innovation in Southeast Asia (2024) [unverified]
+  - 'FATF, Combating End-to-End Illicit Financial Flows Linked to Scam Compounds: Applying the FATF Toolkit
+    to the Fraud Epidemic (2026-11-05) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/combating-illicit-financial-flows-linked-to-scam-compounds.html>
+    [agent-retrieved 2026-11-27]'
+  - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+    Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+    [agent-retrieved 2026-11-27]
   indicators:
   - ref: IND-BEH-079
     context: Recruited or complicit account holders receive victim funds and quickly convert to stablecoins
@@ -119,3 +125,61 @@ typology:
     - CTL-100
     - CTL-170
     - CTL-052
+  - ref: IND-CPT-067
+    context: 'Upstream footprint of the operation: payments for phone numbers, connectivity, hosting,
+      cloud or computing capacity, advertising and unusually high electricity or internet bills.'
+    controls:
+    - CTL-178
+    - CTL-042
+    references:
+    - 'FATF, Combating End-to-End Illicit Financial Flows Linked to Scam Compounds: Applying the FATF
+      Toolkit to the Fraud Epidemic (2026-11-05) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/combating-illicit-financial-flows-linked-to-scam-compounds.html>
+      [agent-retrieved 2026-11-27]'
+  - ref: IND-PRD-071
+    context: Victim payments are collected through virtual account numbers (e.g. virtual IBANs) that hide
+      the underlying account or institution.
+    controls:
+    - CTL-109
+    - CTL-053
+    references:
+    - 'FATF, Combating End-to-End Illicit Financial Flows Linked to Scam Compounds: Applying the FATF
+      Toolkit to the Fraud Epidemic (2026-11-05) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/combating-illicit-financial-flows-linked-to-scam-compounds.html>
+      [agent-retrieved 2026-11-27]'
+  - ref: IND-CUS-008
+    context: Bought, sold or stolen identities used to open multiple accounts or wallets across providers,
+      defeating name matching.
+    controls:
+    - CTL-004
+    - CTL-049
+    references:
+    - 'FATF, Combating End-to-End Illicit Financial Flows Linked to Scam Compounds: Applying the FATF
+      Toolkit to the Fraud Epidemic (2026-11-05) <https://www.fatf-gafi.org/en/publications/Methodsandtrends/combating-illicit-financial-flows-linked-to-scam-compounds.html>
+      [agent-retrieved 2026-11-27]'
+  - ref: IND-TXN-164
+    context: Proceeds pass through DeFi services without AML controls and come back as stablecoins that
+      are cashed out.
+    controls:
+    - CTL-145
+    - CTL-147
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+      Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-TYP-069
+    context: Laundering through guarantee-marketplace infrastructure linked to scam centres.
+    controls:
+    - CTL-145
+    - CTL-149
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+      Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+      [agent-retrieved 2026-11-27]
+  - ref: IND-CPT-064
+    context: Victim funds sent to a remitter or exchange advertising 'no KYC' or a false regulator approval.
+    controls:
+    - CTL-116
+    - CTL-068
+    references:
+    - FinCEN (US Treasury), FinCEN Alert on Money Laundering Activity Associated with Digital Asset Investment
+      Scam Centers (FIN-2026-Alert005) (2026-09-03) <https://www.fincen.gov/system/files/2026-08/FinCEN-Alert-Scam-Centers.pdf>
+      [agent-retrieved 2026-11-27]
